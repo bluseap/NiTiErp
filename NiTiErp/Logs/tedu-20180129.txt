@@ -1,0 +1,1463 @@
+2018-01-29T22:13:45.2369429+07:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-01-29T22:14:01.5272699+07:00  [INF] Executed DbCommand ("99"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-01-29T22:14:04.8449597+07:00  [INF] Executed DbCommand ("203"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-01-29T22:14:07.4140481+07:00  [INF] Executed DbCommand ("166"ms) [Parameters=["@p0='?', @p1='?' (Size = 4000), @p2='?' (Size = 250), @p3='?' (Size = 4000), @p4='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AppRoles] ([Id], [ConcurrencyStamp], [Description], [Name], [NormalizedName])
+VALUES (@p0, @p1, @p2, @p3, @p4);" (0723d8ff)
+2018-01-29T22:14:07.5653397+07:00  [INF] Executed DbCommand ("73"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-01-29T22:14:07.5889418+07:00  [INF] Executed DbCommand ("12"ms) [Parameters=["@p0='?', @p1='?' (Size = 4000), @p2='?' (Size = 250), @p3='?' (Size = 4000), @p4='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AppRoles] ([Id], [ConcurrencyStamp], [Description], [Name], [NormalizedName])
+VALUES (@p0, @p1, @p2, @p3, @p4);" (0723d8ff)
+2018-01-29T22:14:07.6003798+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-01-29T22:14:07.6106562+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=["@p0='?', @p1='?' (Size = 4000), @p2='?' (Size = 250), @p3='?' (Size = 4000), @p4='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AppRoles] ([Id], [ConcurrencyStamp], [Description], [Name], [NormalizedName])
+VALUES (@p0, @p1, @p2, @p3, @p4);" (0723d8ff)
+2018-01-29T22:14:07.7249881+07:00  [INF] Executed DbCommand ("30"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-01-29T22:14:08.0387226+07:00  [WRN] User "(null)" password validation failed: "PasswordTooShort". (2f223212)
+2018-01-29T22:14:08.0907941+07:00  [INF] Executed DbCommand ("31"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AppUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2018-01-29T22:14:15.0349003+07:00  [ERR] An error occurred while seeding the database (90f98c9f)
+System.AggregateException: One or more errors occurred. (Value cannot be null.
+Parameter name: user) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: user
+   at Microsoft.AspNetCore.Identity.UserManager`1.<AddToRoleAsync>d__104.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at NiTiErp.Data.EF.DbInitializer.<Seed>d__4.MoveNext() in D:\netCore\NiTiErp\NiTiErp.Data.EF\DbInitializer.cs:line 61
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.Wait()
+   at NiTiErp.Program.Main(String[] args) in D:\netCore\NiTiErp\NiTiErp\Program.cs:line 30
+---> (Inner Exception #0) System.ArgumentNullException: Value cannot be null.
+Parameter name: user
+   at Microsoft.AspNetCore.Identity.UserManager`1.<AddToRoleAsync>d__104.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at NiTiErp.Data.EF.DbInitializer.<Seed>d__4.MoveNext() in D:\netCore\NiTiErp\NiTiErp.Data.EF\DbInitializer.cs:line 61<---
+
+2018-01-29T22:14:18.6911958+07:00 0HLB75BRENMOD:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/   (ca22a1cb)
+2018-01-29T22:14:25.6183312+07:00 0HLB75BRENMOD:00000001 [INF] Executing action method "NiTiErp.Controllers.HomeController.Index (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-01-29T22:14:25.6316100+07:00 0HLB75BRENMOD:00000001 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-01-29T22:14:26.0900203+07:00 0HLB75BRENMOD:00000001 [WRN] The Include operation for navigation '"[c].Products"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2018-01-29T22:14:26.8176481+07:00 0HLB75BRENMOD:00000001 [INF] Executed DbCommand ("401"ms) [Parameters=["@__p_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [c].[Id], [c].[Name], [c].[Description], [c].[ParentId], [c].[HomeOrder], [c].[Image], [c].[HomeFlag], [c].[DateCreated], [c].[DateModified], [c].[SortOrder], [c].[Status], [c].[SeoPageTitle], [c].[SeoAlias], [c].[SeoKeywords], [c].[SeoDescription]
+FROM [ProductCategories] AS [c]
+WHERE [c].[HomeFlag] = 1
+ORDER BY [c].[HomeOrder]" (0723d8ff)
+2018-01-29T22:14:27.3623723+07:00 0HLB75BRENMOD:00000001 [INF] Executed DbCommand ("145"ms) [Parameters=["@__p_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id] AS [Id1], [x].[Name], [x].[CategoryId] AS [Id0], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x.ProductCategory].[Id], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) AND ([x].[HotFlag] = 1)
+ORDER BY [DateCreated0] DESC" (0723d8ff)
+2018-01-29T22:14:27.4183783+07:00 0HLB75BRENMOD:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=["@__p_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id] AS [Id1], [x].[Name], [x].[CategoryId] AS [Id0], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x.ProductCategory].[Id], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated0] DESC" (0723d8ff)
+2018-01-29T22:14:27.6283498+07:00 0HLB75BRENMOD:00000001 [INF] Executed DbCommand ("173"ms) [Parameters=["@__p_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[Image], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[DateCreated], [x].[DateModified], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [Blogs] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC" (0723d8ff)
+2018-01-29T22:14:27.7819729+07:00 0HLB75BRENMOD:00000001 [INF] Executed DbCommand ("129"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Image], [x].[Url], [x].[DisplayOrder], [x].[Status], [x].[Content], [x].[GroupAlias]
+FROM [Slides] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)" (0723d8ff)
+2018-01-29T22:15:08.4223356+07:00 0HLB75BRENMOD:00000001 [INF] Executed action "NiTiErp.Controllers.HomeController.Index (NiTiErp)" in 42953.7101ms (afa2e885)
+2018-01-29T22:15:09.7991727+07:00 0HLB75BRENMOD:00000001 [ERR] An unhandled exception has occurred while executing the request (cf926119)
+Microsoft.AspNetCore.Mvc.Razor.Compilation.CompilationFailedException: One or more compilation failures occurred:
+D:\netCore\NiTiErp\NiTiErp\Views\_ViewImports.cshtml(2,19): error CS0234: The type or namespace name 'Models' does not exist in the namespace 'TeduCoreApp' (are you missing an assembly reference?)
+D:\netCore\NiTiErp\NiTiErp\Views\_ViewImports.cshtml(3,19): error CS0234: The type or namespace name 'Models' does not exist in the namespace 'TeduCoreApp' (are you missing an assembly reference?)
+D:\netCore\NiTiErp\NiTiErp\Views\_ViewImports.cshtml(4,19): error CS0234: The type or namespace name 'Models' does not exist in the namespace 'TeduCoreApp' (are you missing an assembly reference?)
+D:\netCore\NiTiErp\NiTiErp\Views\_ViewImports.cshtml(5,19): error CS0234: The type or namespace name 'Data' does not exist in the namespace 'TeduCoreApp' (are you missing an assembly reference?)
+D:\netCore\NiTiErp\NiTiErp\Views\_ViewImports.cshtml(6,19): error CS0234: The type or namespace name 'Extensions' does not exist in the namespace 'TeduCoreApp' (are you missing an assembly reference?)
+D:\netCore\NiTiErp\NiTiErp\Views\_ViewImports.cshtml(7,19): error CS0234: The type or namespace name 'Application' does not exist in the namespace 'TeduCoreApp' (are you missing an assembly reference?)
+ngbgzn20.xgx(50,94): error CS0246: The type or namespace name 'HomeViewModel' could not be found (are you missing a using directive or an assembly reference?)
+ngbgzn20.xgx(1173,71): error CS0246: The type or namespace name 'HomeViewModel' could not be found (are you missing a using directive or an assembly reference?)
+   at Microsoft.AspNetCore.Mvc.Razor.Internal.RazorViewCompiler.CompileAndEmit(RazorCodeDocument codeDocument, String generatedCode)
+   at Microsoft.AspNetCore.Mvc.Razor.Internal.RazorViewCompiler.CompileAndEmit(String relativePath)
+   at Microsoft.AspNetCore.Mvc.Razor.Internal.RazorViewCompiler.CreateCacheEntry(String normalizedPath)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.AspNetCore.Mvc.Razor.Internal.DefaultRazorPageFactoryProvider.CreateFactory(String relativePath)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorViewEngine.CreateCacheResult(HashSet`1 expirationTokens, String relativePath, Boolean isMainPage)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorViewEngine.OnCacheMiss(ViewLocationExpanderContext expanderContext, ViewLocationCacheKey cacheKey)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorViewEngine.LocatePageFromViewLocations(ActionContext actionContext, String pageName, Boolean isMainPage)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorViewEngine.FindView(ActionContext context, String viewName, Boolean isMainPage)
+   at Microsoft.AspNetCore.Mvc.ViewEngines.CompositeViewEngine.FindView(ActionContext context, String viewName, Boolean isMainPage)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.ViewResultExecutor.FindView(ActionContext actionContext, ViewResult viewResult)
+   at Microsoft.AspNetCore.Mvc.ViewResult.<ExecuteResultAsync>d__26.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeResultAsync>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResultFilterAsync>d__24.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResultExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeFilterPipelineAsync>d__17.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.<Invoke>d__9.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Session.SessionMiddleware.<Invoke>d__9.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at WebMarkupMin.AspNetCore2.WebMarkupMinMiddleware.<Invoke>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at NiTiErp.Middleware.ImageResizerMiddleware.<Invoke>d__7.MoveNext() in D:\netCore\NiTiErp\NiTiErp\Middleware\ImageResizerMiddleware.cs:line 70
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.<Invoke>d__7.MoveNext()
+2018-01-29T22:15:10.1510679+07:00 0HLB75BRENMOD:00000001 [INF] Request finished in 52040.5735ms 500 text/html; charset=utf-8 (791a596a)
+2018-01-29T22:15:23.9610790+07:00 0HLB75BRENMOD:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/login   (ca22a1cb)
+2018-01-29T22:15:24.0074046+07:00 0HLB75BRENMOD:00000002 [INF] Request finished in 49.6136ms 404  (791a596a)
+2018-01-29T22:15:24.1399814+07:00 0HLB75BRENMOF:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/favicon.ico   (ca22a1cb)
+2018-01-29T22:15:24.3001149+07:00 0HLB75BRENMOF:00000001 [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\favicon.ico"' (27b0a520)
+2018-01-29T22:15:24.3098255+07:00 0HLB75BRENMOF:00000001 [INF] Request finished in 171.7117ms 200 image/x-icon (791a596a)
+2018-01-29T22:20:22.8982276+07:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-01-29T22:20:30.2433425+07:00  [INF] Executed DbCommand ("100"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-01-29T22:20:30.6296127+07:00  [INF] Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-01-29T22:20:32.4422492+07:00  [INF] Executed DbCommand ("374"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AppUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2018-01-29T22:20:33.5905274+07:00  [INF] Executed DbCommand ("601"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AppUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2018-01-29T22:20:35.0503284+07:00  [INF] Executed DbCommand ("526"ms) [Parameters=["@p0='?', @p1='?', @p2='?' (Size = 4000), @p3='?', @p4='?', @p5='?' (Size = 4000), @p6='?', @p7='?', @p8='?' (Size = 4000), @p9='?', @p10='?' (Size = 4000), @p11='?', @p12='?', @p13='?' (Size = 4000), @p14='?' (Size = 4000), @p15='?' (Size = 4000), @p16='?' (Size = 4000), @p17='?', @p18='?' (Size = 4000), @p19='?', @p20='?', @p21='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AppUsers] ([Id], [AccessFailedCount], [Avatar], [Balance], [BirthDay], [ConcurrencyStamp], [DateCreated], [DateModified], [Email], [EmailConfirmed], [FullName], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [SecurityStamp], [Status], [TwoFactorEnabled], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21);" (0723d8ff)
+2018-01-29T22:20:35.1176450+07:00  [INF] Executed DbCommand ("36"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AppUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2018-01-29T22:20:35.5156469+07:00  [INF] Executed DbCommand ("353"ms) [Parameters=["@__normalizedRoleName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedRoleName_0" (0723d8ff)
+2018-01-29T22:20:35.8323604+07:00  [INF] Executed DbCommand ("284"ms) [Parameters=["@__get_Item_0='?', @__get_Item_1='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[RoleId], [e].[UserId]
+FROM [AppUserRoles] AS [e]
+WHERE ([e].[RoleId] = @__get_Item_0) AND ([e].[UserId] = @__get_Item_1)" (0723d8ff)
+2018-01-29T22:20:35.8424237+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedRoleName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedRoleName_0" (0723d8ff)
+2018-01-29T22:20:35.8775935+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AppUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2018-01-29T22:20:35.9017318+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AppUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2018-01-29T22:20:36.7819360+07:00  [INF] Executed DbCommand ("856"ms) [Parameters=["@p0='?', @p1='?', @p23='?', @p2='?', @p3='?' (Size = 4000), @p4='?', @p5='?', @p6='?' (Size = 4000), @p7='?', @p8='?', @p9='?' (Size = 4000), @p10='?', @p11='?' (Size = 4000), @p12='?', @p13='?', @p14='?' (Size = 4000), @p15='?' (Size = 4000), @p16='?' (Size = 4000), @p17='?' (Size = 4000), @p18='?', @p19='?' (Size = 4000), @p20='?', @p21='?', @p22='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AppUserRoles] ([RoleId], [UserId])
+VALUES (@p0, @p1);
+UPDATE [AppUsers] SET [AccessFailedCount] = @p2, [Avatar] = @p3, [Balance] = @p4, [BirthDay] = @p5, [ConcurrencyStamp] = @p6, [DateCreated] = @p7, [DateModified] = @p8, [Email] = @p9, [EmailConfirmed] = @p10, [FullName] = @p11, [LockoutEnabled] = @p12, [LockoutEnd] = @p13, [NormalizedEmail] = @p14, [NormalizedUserName] = @p15, [PasswordHash] = @p16, [PhoneNumber] = @p17, [PhoneNumberConfirmed] = @p18, [SecurityStamp] = @p19, [Status] = @p20, [TwoFactorEnabled] = @p21, [UserName] = @p22
+WHERE [Id] = @p23;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2018-01-29T22:20:37.7781000+07:00  [INF] Executed DbCommand ("136"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ContactDetails] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-01-29T22:20:38.1799055+07:00  [INF] Executed DbCommand ("281"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Functions] AS [f]" (0723d8ff)
+2018-01-29T22:20:38.3837706+07:00  [INF] Executed DbCommand ("114"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Footers] AS [x]
+WHERE [x].[Id] = 'DefaultFooterId'" (0723d8ff)
+2018-01-29T22:20:38.4259084+07:00  [INF] Executed DbCommand ("30"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Colors] AS [c]" (0723d8ff)
+2018-01-29T22:20:38.4674427+07:00  [INF] Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AdvertistmentPages] AS [a]" (0723d8ff)
+2018-01-29T22:20:38.5110579+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Slides] AS [s]" (0723d8ff)
+2018-01-29T22:20:38.5435788+07:00  [INF] Executed DbCommand ("15"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Sizes] AS [s]" (0723d8ff)
+2018-01-29T22:20:38.5648999+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2018-01-29T22:20:38.8003268+07:00  [INF] Executed DbCommand ("26"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeTitle')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-01-29T22:20:38.8704247+07:00  [INF] Executed DbCommand ("45"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaKeyword')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-01-29T22:20:38.9101856+07:00  [INF] Executed DbCommand ("28"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaDescription')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-01-29T22:20:45.3474808+07:00  [INF] Executed DbCommand ("303"ms) [Parameters=["@p0='?' (Size = 450), @p1='?' (Size = 4000), @p2='?' (Size = 450), @p3='?' (Size = 4000), @p4='?' (Size = 450), @p5='?' (Size = 4000), @p6='?' (Size = 250), @p7='?' (Size = 250), @p8='?' (Size = 250), @p9='?' (Size = 250), @p10='?' (Size = 250), @p11='?' (Size = 250), @p12='?' (Size = 250), @p13='?' (Size = 250), @p14='?' (Size = 255), @p15='?' (Size = 250), @p16='?' (Size = 250), @p17='?', @p18='?', @p19='?' (Size = 250), @p20='?' (Size = 4000), @p21='?' (Size = 50), @p22='?', @p23='?' (Size = 250), @p24='?' (Size = 255), @p25='?' (Size = 4000), @p26='?' (Size = 450), @p27='?' (Size = 4000), @p28='?' (Size = 128), @p29='?' (Size = 128), @p30='?', @p31='?', @p32='?' (Size = 250), @p33='?' (Size = 450), @p34='?' (Size = 4000), @p35='?' (Size = 128), @p36='?' (Size = 128), @p37='?', @p38='?', @p39='?' (Size = 250), @p40='?' (Size = 450), @p41='?' (Size = 4000), @p42='?' (Size = 128), @p43='?' (Size = 128), @p44='?', @p45='?', @p46='?' (Size = 250), @p47='?' (Size = 450), @p48='?' (Size = 4000), @p49='?' (Size = 128), @p50='?' (Size = 128), @p51='?', @p52='?', @p53='?' (Size = 250), @p54='?' (Size = 450), @p55='?' (Size = 4000), @p56='?' (Size = 128), @p57='?' (Size = 128), @p58='?', @p59='?', @p60='?' (Size = 250), @p61='?' (Size = 450), @p62='?' (Size = 4000), @p63='?' (Size = 128), @p64='?' (Size = 128), @p65='?', @p66='?', @p67='?' (Size = 250), @p68='?' (Size = 450), @p69='?' (Size = 4000), @p70='?' (Size = 128), @p71='?' (Size = 128), @p72='?', @p73='?', @p74='?' (Size = 250), @p75='?' (Size = 450), @p76='?' (Size = 4000), @p77='?' (Size = 128), @p78='?' (Size = 128), @p79='?', @p80='?', @p81='?' (Size = 250), @p82='?' (Size = 450), @p83='?' (Size = 4000), @p84='?' (Size = 128), @p85='?' (Size = 128), @p86='?', @p87='?', @p88='?' (Size = 250), @p89='?' (Size = 450), @p90='?' (Size = 4000), @p91='?' (Size = 128), @p92='?' (Size = 128), @p93='?', @p94='?', @p95='?' (Size = 250), @p96='?' (Size = 450), @p97='?' (Size = 4000), @p98='?' (Size = 128), @p99='?' (Size = 128), @p100='?', @p101='?', @p102='?' (Size = 250), @p103='?' (Size = 450), @p104='?' (Size = 4000), @p105='?' (Size = 128), @p106='?' (Size = 128), @p107='?', @p108='?', @p109='?' (Size = 250), @p110='?' (Size = 450), @p111='?' (Size = 4000), @p112='?' (Size = 128), @p113='?' (Size = 128), @p114='?', @p115='?', @p116='?' (Size = 250), @p117='?' (Size = 450), @p118='?' (Size = 4000), @p119='?' (Size = 128), @p120='?' (Size = 128), @p121='?', @p122='?', @p123='?' (Size = 250), @p124='?' (Size = 450), @p125='?' (Size = 4000), @p126='?' (Size = 128), @p127='?' (Size = 128), @p128='?', @p129='?', @p130='?' (Size = 250), @p131='?' (Size = 450), @p132='?' (Size = 4000), @p133='?' (Size = 128), @p134='?' (Size = 128), @p135='?', @p136='?', @p137='?' (Size = 250), @p138='?' (Size = 450), @p139='?' (Size = 4000), @p140='?' (Size = 128), @p141='?' (Size = 128), @p142='?', @p143='?', @p144='?' (Size = 250), @p145='?' (Size = 450), @p146='?' (Size = 4000), @p147='?' (Size = 128), @p148='?' (Size = 128), @p149='?', @p150='?', @p151='?' (Size = 250), @p152='?' (Size = 450), @p153='?' (Size = 4000), @p154='?' (Size = 128), @p155='?' (Size = 128), @p156='?', @p157='?', @p158='?' (Size = 250), @p159='?' (Size = 450), @p160='?' (Size = 4000), @p161='?' (Size = 128), @p162='?' (Size = 128), @p163='?', @p164='?', @p165='?' (Size = 250), @p166='?' (Size = 450), @p167='?' (Size = 4000), @p168='?' (Size = 128), @p169='?' (Size = 128), @p170='?', @p171='?', @p172='?' (Size = 250), @p173='?' (Size = 450), @p174='?' (Size = 4000), @p175='?' (Size = 128), @p176='?' (Size = 128), @p177='?', @p178='?', @p179='?' (Size = 250), @p180='?' (Size = 450), @p181='?' (Size = 4000), @p182='?' (Size = 128), @p183='?' (Size = 128), @p184='?', @p185='?', @p186='?' (Size = 250), @p187='?' (Size = 450), @p188='?' (Size = 4000), @p189='?' (Size = 128), @p190='?' (Size = 128), @p191='?', @p192='?', @p193='?' (Size = 250), @p194='?' (Size = 450), @p195='?' (Size = 4000), @p196='?' (Size = 128), @p197='?' (Size = 128), @p198='?', @p199='?', @p200='?' (Size = 250), @p201='?', @p202='?', @p203='?' (Size = 4000), @p204='?', @p205='?', @p206='?' (Size = 4000), @p207='?' (Size = 4000), @p208='?', @p209='?' (Size = 4000), @p210='?' (Size = 4000), @p211='?' (Size = 4000), @p212='?' (Size = 4000), @p213='?', @p214='?', @p215='?', @p216='?', @p217='?' (Size = 4000), @p218='?', @p219='?', @p220='?' (Size = 4000), @p221='?' (Size = 4000), @p222='?', @p223='?' (Size = 4000), @p224='?' (Size = 4000), @p225='?' (Size = 4000), @p226='?' (Size = 4000), @p227='?', @p228='?', @p229='?', @p230='?', @p231='?' (Size = 4000), @p232='?', @p233='?', @p234='?' (Size = 4000), @p235='?' (Size = 4000), @p236='?', @p237='?' (Size = 4000), @p238='?' (Size = 4000), @p239='?' (Size = 4000), @p240='?' (Size = 4000), @p241='?', @p242='?', @p243='?', @p244='?', @p245='?' (Size = 4000), @p246='?', @p247='?', @p248='?' (Size = 4000), @p249='?' (Size = 4000), @p250='?', @p251='?' (Size = 4000), @p252='?' (Size = 4000), @p253='?' (Size = 4000), @p254='?' (Size = 4000), @p255='?', @p256='?', @p257='?' (Size = 250), @p258='?' (Size = 250), @p259='?' (Size = 250), @p260='?' (Size = 250), @p261='?' (Size = 250), @p262='?' (Size = 250), @p263='?' (Size = 4000), @p264='?' (Size = 250), @p265='?', @p266='?' (Size = 25), @p267='?' (Size = 250), @p268='?' (Size = 250), @p269='?', @p270='?' (Size = 250), @p271='?' (Size = 4000), @p272='?' (Size = 250), @p273='?', @p274='?' (Size = 25), @p275='?' (Size = 250), @p276='?' (Size = 250), @p277='?', @p278='?' (Size = 250), @p279='?' (Size = 4000), @p280='?' (Size = 250), @p281='?', @p282='?' (Size = 25), @p283='?' (Size = 250), @p284='?' (Size = 250), @p285='?', @p286='?' (Size = 250), @p287='?' (Size = 4000), @p288='?' (Size = 250), @p289='?', @p290='?' (Size = 25), @p291='?' (Size = 250), @p292='?' (Size = 250), @p293='?', @p294='?' (Size = 250), @p295='?' (Size = 4000), @p296='?' (Size = 250), @p297='?', @p298='?' (Size = 25), @p299='?' (Size = 250), @p300='?' (Size = 250), @p301='?', @p302='?' (Size = 250), @p303='?' (Size = 4000), @p304='?' (Size = 250), @p305='?', @p306='?' (Size = 25), @p307='?' (Size = 250), @p308='?' (Size = 250), @p309='?', @p310='?' (Size = 250), @p311='?' (Size = 4000), @p312='?' (Size = 250), @p313='?', @p314='?' (Size = 25), @p315='?' (Size = 250), @p316='?' (Size = 250), @p317='?', @p318='?' (Size = 250), @p319='?' (Size = 4000), @p320='?' (Size = 250), @p321='?', @p322='?' (Size = 25), @p323='?' (Size = 250), @p324='?' (Size = 250), @p325='?', @p326='?' (Size = 250), @p327='?' (Size = 4000), @p328='?' (Size = 250), @p329='?', @p330='?' (Size = 25), @p331='?' (Size = 250), @p332='?' (Size = 250), @p333='?', @p334='?' (Size = 250), @p335='?' (Size = 4000), @p336='?' (Size = 250), @p337='?', @p338='?' (Size = 25), @p339='?' (Size = 250), @p340='?' (Size = 250), @p341='?', @p342='?' (Size = 250), @p343='?' (Size = 4000), @p344='?' (Size = 250), @p345='?', @p346='?' (Size = 25), @p347='?' (Size = 250), @p348='?' (Size = 250), @p349='?', @p350='?' (Size = 250), @p351='?' (Size = 4000), @p352='?' (Size = 250), @p353='?', @p354='?' (Size = 25), @p355='?' (Size = 250), @p356='?' (Size = 250), @p357='?', @p358='?' (Size = 250), @p359='?' (Size = 4000), @p360='?' (Size = 250), @p361='?', @p362='?' (Size = 25), @p363='?' (Size = 250), @p364='?' (Size = 250), @p365='?', @p366='?' (Size = 250), @p367='?' (Size = 4000), @p368='?' (Size = 250), @p369='?', @p370='?' (Size = 25), @p371='?' (Size = 250), @p372='?' (Size = 250), @p373='?', @p374='?' (Size = 250), @p375='?' (Size = 255), @p376='?' (Size = 128), @p377='?', @p378='?' (Size = 4000), @p379='?', @p380='?', @p381='?', @p382='?', @p383='?' (Size = 255), @p384='?' (Size = 128), @p385='?', @p386='?' (Size = 4000), @p387='?', @p388='?', @p389='?', @p390='?', @p391='?' (Size = 255), @p392='?' (Size = 128), @p393='?', @p394='?' (Size = 4000), @p395='?', @p396='?', @p397='?', @p398='?'"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AdvertistmentPages] ([Id], [Name])
+VALUES (@p0, @p1),
+(@p2, @p3),
+(@p4, @p5);
+DECLARE @inserted3 TABLE ([Id] int, [_Position] [int]);
+MERGE [Colors] USING (
+VALUES (@p6, @p7, 0),
+(@p8, @p9, 1),
+(@p10, @p11, 2),
+(@p12, @p13, 3)) AS i ([Code], [Name], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([Code], [Name])
+VALUES (i.[Code], i.[Name])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted3;
+
+SELECT [t].[Id] FROM [Colors] t
+INNER JOIN @inserted3 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];
+
+INSERT INTO [ContactDetails] ([Id], [Address], [Email], [Lat], [Lng], [Name], [Other], [Phone], [Status], [Website])
+VALUES (@p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23);
+INSERT INTO [Footers] ([Id], [Content])
+VALUES (@p24, @p25);
+INSERT INTO [Functions] ([Id], [IconCss], [Name], [ParentId], [SortOrder], [Status], [URL])
+VALUES (@p26, @p27, @p28, @p29, @p30, @p31, @p32),
+(@p33, @p34, @p35, @p36, @p37, @p38, @p39),
+(@p40, @p41, @p42, @p43, @p44, @p45, @p46),
+(@p47, @p48, @p49, @p50, @p51, @p52, @p53),
+(@p54, @p55, @p56, @p57, @p58, @p59, @p60),
+(@p61, @p62, @p63, @p64, @p65, @p66, @p67),
+(@p68, @p69, @p70, @p71, @p72, @p73, @p74),
+(@p75, @p76, @p77, @p78, @p79, @p80, @p81),
+(@p82, @p83, @p84, @p85, @p86, @p87, @p88),
+(@p89, @p90, @p91, @p92, @p93, @p94, @p95),
+(@p96, @p97, @p98, @p99, @p100, @p101, @p102),
+(@p103, @p104, @p105, @p106, @p107, @p108, @p109),
+(@p110, @p111, @p112, @p113, @p114, @p115, @p116),
+(@p117, @p118, @p119, @p120, @p121, @p122, @p123),
+(@p124, @p125, @p126, @p127, @p128, @p129, @p130),
+(@p131, @p132, @p133, @p134, @p135, @p136, @p137),
+(@p138, @p139, @p140, @p141, @p142, @p143, @p144),
+(@p145, @p146, @p147, @p148, @p149, @p150, @p151),
+(@p152, @p153, @p154, @p155, @p156, @p157, @p158),
+(@p159, @p160, @p161, @p162, @p163, @p164, @p165),
+(@p166, @p167, @p168, @p169, @p170, @p171, @p172),
+(@p173, @p174, @p175, @p176, @p177, @p178, @p179),
+(@p180, @p181, @p182, @p183, @p184, @p185, @p186),
+(@p187, @p188, @p189, @p190, @p191, @p192, @p193),
+(@p194, @p195, @p196, @p197, @p198, @p199, @p200);
+DECLARE @inserted34 TABLE ([Id] int, [_Position] [int]);
+MERGE [ProductCategories] USING (
+VALUES (@p201, @p202, @p203, @p204, @p205, @p206, @p207, @p208, @p209, @p210, @p211, @p212, @p213, @p214, 0),
+(@p215, @p216, @p217, @p218, @p219, @p220, @p221, @p222, @p223, @p224, @p225, @p226, @p227, @p228, 1),
+(@p229, @p230, @p231, @p232, @p233, @p234, @p235, @p236, @p237, @p238, @p239, @p240, @p241, @p242, 2),
+(@p243, @p244, @p245, @p246, @p247, @p248, @p249, @p250, @p251, @p252, @p253, @p254, @p255, @p256, 3)) AS i ([DateCreated], [DateModified], [Description], [HomeFlag], [HomeOrder], [Image], [Name], [ParentId], [SeoAlias], [SeoDescription], [SeoKeywords], [SeoPageTitle], [SortOrder], [Status], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([DateCreated], [DateModified], [Description], [HomeFlag], [HomeOrder], [Image], [Name], [ParentId], [SeoAlias], [SeoDescription], [SeoKeywords], [SeoPageTitle], [SortOrder], [Status])
+VALUES (i.[DateCreated], i.[DateModified], i.[Description], i.[HomeFlag], i.[HomeOrder], i.[Image], i.[Name], i.[ParentId], i.[SeoAlias], i.[SeoDescription], i.[SeoKeywords], i.[SeoPageTitle], i.[SortOrder], i.[Status])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted34;
+
+SELECT [t].[Id] FROM [ProductCategories] t
+INNER JOIN @inserted34 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];
+
+DECLARE @inserted38 TABLE ([Id] int, [_Position] [int]);
+MERGE [Sizes] USING (
+VALUES (@p257, 0),
+(@p258, 1),
+(@p259, 2),
+(@p260, 3),
+(@p261, 4),
+(@p262, 5)) AS i ([Name], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([Name])
+VALUES (i.[Name])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted38;
+
+SELECT [t].[Id] FROM [Sizes] t
+INNER JOIN @inserted38 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];
+
+DECLARE @inserted44 TABLE ([Id] int, [_Position] [int]);
+MERGE [Slides] USING (
+VALUES (@p263, @p264, @p265, @p266, @p267, @p268, @p269, @p270, 0),
+(@p271, @p272, @p273, @p274, @p275, @p276, @p277, @p278, 1),
+(@p279, @p280, @p281, @p282, @p283, @p284, @p285, @p286, 2),
+(@p287, @p288, @p289, @p290, @p291, @p292, @p293, @p294, 3),
+(@p295, @p296, @p297, @p298, @p299, @p300, @p301, @p302, 4),
+(@p303, @p304, @p305, @p306, @p307, @p308, @p309, @p310, 5),
+(@p311, @p312, @p313, @p314, @p315, @p316, @p317, @p318, 6),
+(@p319, @p320, @p321, @p322, @p323, @p324, @p325, @p326, 7),
+(@p327, @p328, @p329, @p330, @p331, @p332, @p333, @p334, 8),
+(@p335, @p336, @p337, @p338, @p339, @p340, @p341, @p342, 9),
+(@p343, @p344, @p345, @p346, @p347, @p348, @p349, @p350, 10),
+(@p351, @p352, @p353, @p354, @p355, @p356, @p357, @p358, 11),
+(@p359, @p360, @p361, @p362, @p363, @p364, @p365, @p366, 12),
+(@p367, @p368, @p369, @p370, @p371, @p372, @p373, @p374, 13)) AS i ([Content], [Description], [DisplayOrder], [GroupAlias], [Image], [Name], [Status], [Url], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([Content], [Description], [DisplayOrder], [GroupAlias], [Image], [Name], [Status], [Url])
+VALUES (i.[Content], i.[Description], i.[DisplayOrder], i.[GroupAlias], i.[Image], i.[Name], i.[Status], i.[Url])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted44;
+
+SELECT [t].[Id] FROM [Slides] t
+INNER JOIN @inserted44 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];
+
+INSERT INTO [SystemConfigs] ([Id], [Name], [Status], [Value1], [Value2], [Value3], [Value4], [Value5])
+VALUES (@p375, @p376, @p377, @p378, @p379, @p380, @p381, @p382),
+(@p383, @p384, @p385, @p386, @p387, @p388, @p389, @p390),
+(@p391, @p392, @p393, @p394, @p395, @p396, @p397, @p398);" (0723d8ff)
+2018-01-29T22:20:47.0628167+07:00  [INF] Executed DbCommand ("630"ms) [Parameters=["@p399='?' (Size = 20), @p400='?' (Size = 250), @p401='?' (Size = 450), @p402='?' (Size = 20), @p403='?' (Size = 250), @p404='?' (Size = 450), @p405='?' (Size = 20), @p406='?' (Size = 250), @p407='?' (Size = 450), @p408='?', @p409='?' (Size = 4000), @p410='?', @p411='?', @p412='?' (Size = 255), @p413='?', @p414='?', @p415='?' (Size = 255), @p416='?' (Size = 255), @p417='?', @p418='?', @p419='?', @p420='?' (Size = 255), @p421='?' (Size = 255), @p422='?' (Size = 255), @p423='?' (Size = 4000), @p424='?', @p425='?' (Size = 255), @p426='?' (Size = 255), @p427='?', @p428='?', @p429='?' (Size = 4000), @p430='?', @p431='?', @p432='?' (Size = 255), @p433='?', @p434='?', @p435='?' (Size = 255), @p436='?' (Size = 255), @p437='?', @p438='?', @p439='?', @p440='?' (Size = 255), @p441='?' (Size = 255), @p442='?' (Size = 255), @p443='?' (Size = 4000), @p444='?', @p445='?' (Size = 255), @p446='?' (Size = 255), @p447='?', @p448='?', @p449='?' (Size = 4000), @p450='?', @p451='?', @p452='?' (Size = 255), @p453='?', @p454='?', @p455='?' (Size = 255), @p456='?' (Size = 255), @p457='?', @p458='?', @p459='?', @p460='?' (Size = 255), @p461='?' (Size = 255), @p462='?' (Size = 255), @p463='?' (Size = 4000), @p464='?', @p465='?' (Size = 255), @p466='?' (Size = 255), @p467='?', @p468='?', @p469='?' (Size = 4000), @p470='?', @p471='?', @p472='?' (Size = 255), @p473='?', @p474='?', @p475='?' (Size = 255), @p476='?' (Size = 255), @p477='?', @p478='?', @p479='?', @p480='?' (Size = 255), @p481='?' (Size = 255), @p482='?' (Size = 255), @p483='?' (Size = 4000), @p484='?', @p485='?' (Size = 255), @p486='?' (Size = 255), @p487='?', @p488='?', @p489='?' (Size = 4000), @p490='?', @p491='?', @p492='?' (Size = 255), @p493='?', @p494='?', @p495='?' (Size = 255), @p496='?' (Size = 255), @p497='?', @p498='?', @p499='?', @p500='?' (Size = 255), @p501='?' (Size = 255), @p502='?' (Size = 255), @p503='?' (Size = 4000), @p504='?', @p505='?' (Size = 255), @p506='?' (Size = 255), @p507='?', @p508='?', @p509='?' (Size = 4000), @p510='?', @p511='?', @p512='?' (Size = 255), @p513='?', @p514='?', @p515='?' (Size = 255), @p516='?' (Size = 255), @p517='?', @p518='?', @p519='?', @p520='?' (Size = 255), @p521='?' (Size = 255), @p522='?' (Size = 255), @p523='?' (Size = 4000), @p524='?', @p525='?' (Size = 255), @p526='?' (Size = 255), @p527='?', @p528='?', @p529='?' (Size = 4000), @p530='?', @p531='?', @p532='?' (Size = 255), @p533='?', @p534='?', @p535='?' (Size = 255), @p536='?' (Size = 255), @p537='?', @p538='?', @p539='?', @p540='?' (Size = 255), @p541='?' (Size = 255), @p542='?' (Size = 255), @p543='?' (Size = 4000), @p544='?', @p545='?' (Size = 255), @p546='?' (Size = 255), @p547='?', @p548='?', @p549='?' (Size = 4000), @p550='?', @p551='?', @p552='?' (Size = 255), @p553='?', @p554='?', @p555='?' (Size = 255), @p556='?' (Size = 255), @p557='?', @p558='?', @p559='?', @p560='?' (Size = 255), @p561='?' (Size = 255), @p562='?' (Size = 255), @p563='?' (Size = 4000), @p564='?', @p565='?' (Size = 255), @p566='?' (Size = 255), @p567='?', @p568='?', @p569='?' (Size = 4000), @p570='?', @p571='?', @p572='?' (Size = 255), @p573='?', @p574='?', @p575='?' (Size = 255), @p576='?' (Size = 255), @p577='?', @p578='?', @p579='?', @p580='?' (Size = 255), @p581='?' (Size = 255), @p582='?' (Size = 255), @p583='?' (Size = 4000), @p584='?', @p585='?' (Size = 255), @p586='?' (Size = 255), @p587='?', @p588='?', @p589='?' (Size = 4000), @p590='?', @p591='?', @p592='?' (Size = 255), @p593='?', @p594='?', @p595='?' (Size = 255), @p596='?' (Size = 255), @p597='?', @p598='?', @p599='?', @p600='?' (Size = 255), @p601='?' (Size = 255), @p602='?' (Size = 255), @p603='?' (Size = 4000), @p604='?', @p605='?' (Size = 255), @p606='?' (Size = 255), @p607='?', @p608='?', @p609='?' (Size = 4000), @p610='?', @p611='?', @p612='?' (Size = 255), @p613='?', @p614='?', @p615='?' (Size = 255), @p616='?' (Size = 255), @p617='?', @p618='?', @p619='?', @p620='?' (Size = 255), @p621='?' (Size = 255), @p622='?' (Size = 255), @p623='?' (Size = 4000), @p624='?', @p625='?' (Size = 255), @p626='?' (Size = 255), @p627='?', @p628='?', @p629='?' (Size = 4000), @p630='?', @p631='?', @p632='?' (Size = 255), @p633='?', @p634='?', @p635='?' (Size = 255), @p636='?' (Size = 255), @p637='?', @p638='?', @p639='?', @p640='?' (Size = 255), @p641='?' (Size = 255), @p642='?' (Size = 255), @p643='?' (Size = 4000), @p644='?', @p645='?' (Size = 255), @p646='?' (Size = 255), @p647='?', @p648='?', @p649='?' (Size = 4000), @p650='?', @p651='?', @p652='?' (Size = 255), @p653='?', @p654='?', @p655='?' (Size = 255), @p656='?' (Size = 255), @p657='?', @p658='?', @p659='?', @p660='?' (Size = 255), @p661='?' (Size = 255), @p662='?' (Size = 255), @p663='?' (Size = 4000), @p664='?', @p665='?' (Size = 255), @p666='?' (Size = 255), @p667='?', @p668='?', @p669='?' (Size = 4000), @p670='?', @p671='?', @p672='?' (Size = 255), @p673='?', @p674='?', @p675='?' (Size = 255), @p676='?' (Size = 255), @p677='?', @p678='?', @p679='?', @p680='?' (Size = 255), @p681='?' (Size = 255), @p682='?' (Size = 255), @p683='?' (Size = 4000), @p684='?', @p685='?' (Size = 255), @p686='?' (Size = 255), @p687='?', @p688='?', @p689='?' (Size = 4000), @p690='?', @p691='?', @p692='?' (Size = 255), @p693='?', @p694='?', @p695='?' (Size = 255), @p696='?' (Size = 255), @p697='?', @p698='?', @p699='?', @p700='?' (Size = 255), @p701='?' (Size = 255), @p702='?' (Size = 255), @p703='?' (Size = 4000), @p704='?', @p705='?' (Size = 255), @p706='?' (Size = 255), @p707='?', @p708='?', @p709='?' (Size = 4000), @p710='?', @p711='?', @p712='?' (Size = 255), @p713='?', @p714='?', @p715='?' (Size = 255), @p716='?' (Size = 255), @p717='?', @p718='?', @p719='?', @p720='?' (Size = 255), @p721='?' (Size = 255), @p722='?' (Size = 255), @p723='?' (Size = 4000), @p724='?', @p725='?' (Size = 255), @p726='?' (Size = 255), @p727='?', @p728='?', @p729='?' (Size = 4000), @p730='?', @p731='?', @p732='?' (Size = 255), @p733='?', @p734='?', @p735='?' (Size = 255), @p736='?' (Size = 255), @p737='?', @p738='?', @p739='?', @p740='?' (Size = 255), @p741='?' (Size = 255), @p742='?' (Size = 255), @p743='?' (Size = 4000), @p744='?', @p745='?' (Size = 255), @p746='?' (Size = 255), @p747='?', @p748='?', @p749='?' (Size = 4000), @p750='?', @p751='?', @p752='?' (Size = 255), @p753='?', @p754='?', @p755='?' (Size = 255), @p756='?' (Size = 255), @p757='?', @p758='?', @p759='?', @p760='?' (Size = 255), @p761='?' (Size = 255), @p762='?' (Size = 255), @p763='?' (Size = 4000), @p764='?', @p765='?' (Size = 255), @p766='?' (Size = 255), @p767='?', @p768='?', @p769='?' (Size = 4000), @p770='?', @p771='?', @p772='?' (Size = 255), @p773='?', @p774='?', @p775='?' (Size = 255), @p776='?' (Size = 255), @p777='?', @p778='?', @p779='?', @p780='?' (Size = 255), @p781='?' (Size = 255), @p782='?' (Size = 255), @p783='?' (Size = 4000), @p784='?', @p785='?' (Size = 255), @p786='?' (Size = 255), @p787='?', @p788='?', @p789='?' (Size = 4000), @p790='?', @p791='?', @p792='?' (Size = 255), @p793='?', @p794='?', @p795='?' (Size = 255), @p796='?' (Size = 255), @p797='?', @p798='?', @p799='?', @p800='?' (Size = 255), @p801='?' (Size = 255), @p802='?' (Size = 255), @p803='?' (Size = 4000), @p804='?', @p805='?' (Size = 255), @p806='?' (Size = 255), @p807='?'"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AdvertistmentPositions] ([Id], [Name], [PageId])
+VALUES (@p399, @p400, @p401),
+(@p402, @p403, @p404),
+(@p405, @p406, @p407);
+DECLARE @inserted3 TABLE ([Id] int, [_Position] [int]);
+MERGE [Products] USING (
+VALUES (@p408, @p409, @p410, @p411, @p412, @p413, @p414, @p415, @p416, @p417, @p418, @p419, @p420, @p421, @p422, @p423, @p424, @p425, @p426, @p427, 0),
+(@p428, @p429, @p430, @p431, @p432, @p433, @p434, @p435, @p436, @p437, @p438, @p439, @p440, @p441, @p442, @p443, @p444, @p445, @p446, @p447, 1),
+(@p448, @p449, @p450, @p451, @p452, @p453, @p454, @p455, @p456, @p457, @p458, @p459, @p460, @p461, @p462, @p463, @p464, @p465, @p466, @p467, 2),
+(@p468, @p469, @p470, @p471, @p472, @p473, @p474, @p475, @p476, @p477, @p478, @p479, @p480, @p481, @p482, @p483, @p484, @p485, @p486, @p487, 3),
+(@p488, @p489, @p490, @p491, @p492, @p493, @p494, @p495, @p496, @p497, @p498, @p499, @p500, @p501, @p502, @p503, @p504, @p505, @p506, @p507, 4),
+(@p508, @p509, @p510, @p511, @p512, @p513, @p514, @p515, @p516, @p517, @p518, @p519, @p520, @p521, @p522, @p523, @p524, @p525, @p526, @p527, 5),
+(@p528, @p529, @p530, @p531, @p532, @p533, @p534, @p535, @p536, @p537, @p538, @p539, @p540, @p541, @p542, @p543, @p544, @p545, @p546, @p547, 6),
+(@p548, @p549, @p550, @p551, @p552, @p553, @p554, @p555, @p556, @p557, @p558, @p559, @p560, @p561, @p562, @p563, @p564, @p565, @p566, @p567, 7),
+(@p568, @p569, @p570, @p571, @p572, @p573, @p574, @p575, @p576, @p577, @p578, @p579, @p580, @p581, @p582, @p583, @p584, @p585, @p586, @p587, 8),
+(@p588, @p589, @p590, @p591, @p592, @p593, @p594, @p595, @p596, @p597, @p598, @p599, @p600, @p601, @p602, @p603, @p604, @p605, @p606, @p607, 9),
+(@p608, @p609, @p610, @p611, @p612, @p613, @p614, @p615, @p616, @p617, @p618, @p619, @p620, @p621, @p622, @p623, @p624, @p625, @p626, @p627, 10),
+(@p628, @p629, @p630, @p631, @p632, @p633, @p634, @p635, @p636, @p637, @p638, @p639, @p640, @p641, @p642, @p643, @p644, @p645, @p646, @p647, 11),
+(@p648, @p649, @p650, @p651, @p652, @p653, @p654, @p655, @p656, @p657, @p658, @p659, @p660, @p661, @p662, @p663, @p664, @p665, @p666, @p667, 12),
+(@p668, @p669, @p670, @p671, @p672, @p673, @p674, @p675, @p676, @p677, @p678, @p679, @p680, @p681, @p682, @p683, @p684, @p685, @p686, @p687, 13),
+(@p688, @p689, @p690, @p691, @p692, @p693, @p694, @p695, @p696, @p697, @p698, @p699, @p700, @p701, @p702, @p703, @p704, @p705, @p706, @p707, 14),
+(@p708, @p709, @p710, @p711, @p712, @p713, @p714, @p715, @p716, @p717, @p718, @p719, @p720, @p721, @p722, @p723, @p724, @p725, @p726, @p727, 15),
+(@p728, @p729, @p730, @p731, @p732, @p733, @p734, @p735, @p736, @p737, @p738, @p739, @p740, @p741, @p742, @p743, @p744, @p745, @p746, @p747, 16),
+(@p748, @p749, @p750, @p751, @p752, @p753, @p754, @p755, @p756, @p757, @p758, @p759, @p760, @p761, @p762, @p763, @p764, @p765, @p766, @p767, 17),
+(@p768, @p769, @p770, @p771, @p772, @p773, @p774, @p775, @p776, @p777, @p778, @p779, @p780, @p781, @p782, @p783, @p784, @p785, @p786, @p787, 18),
+(@p788, @p789, @p790, @p791, @p792, @p793, @p794, @p795, @p796, @p797, @p798, @p799, @p800, @p801, @p802, @p803, @p804, @p805, @p806, @p807, 19)) AS i ([CategoryId], [Content], [DateCreated], [DateModified], [Description], [HomeFlag], [HotFlag], [Image], [Name], [OriginalPrice], [Price], [PromotionPrice], [SeoAlias], [SeoDescription], [SeoKeywords], [SeoPageTitle], [Status], [Tags], [Unit], [ViewCount], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([CategoryId], [Content], [DateCreated], [DateModified], [Description], [HomeFlag], [HotFlag], [Image], [Name], [OriginalPrice], [Price], [PromotionPrice], [SeoAlias], [SeoDescription], [SeoKeywords], [SeoPageTitle], [Status], [Tags], [Unit], [ViewCount])
+VALUES (i.[CategoryId], i.[Content], i.[DateCreated], i.[DateModified], i.[Description], i.[HomeFlag], i.[HotFlag], i.[Image], i.[Name], i.[OriginalPrice], i.[Price], i.[PromotionPrice], i.[SeoAlias], i.[SeoDescription], i.[SeoKeywords], i.[SeoPageTitle], i.[Status], i.[Tags], i.[Unit], i.[ViewCount])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted3;
+
+SELECT [t].[Id] FROM [Products] t
+INNER JOIN @inserted3 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];" (0723d8ff)
+2018-01-29T22:20:53.5635919+07:00 0HLB75FGO4UVS:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/   (ca22a1cb)
+2018-01-29T22:21:01.7767561+07:00 0HLB75FGO4UVS:00000001 [INF] Executing action method "NiTiErp.Controllers.HomeController.Index (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-01-29T22:21:01.7894164+07:00 0HLB75FGO4UVS:00000001 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-01-29T22:21:02.2163967+07:00 0HLB75FGO4UVS:00000001 [WRN] The Include operation for navigation '"[c].Products"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2018-01-29T22:21:02.7542420+07:00 0HLB75FGO4UVS:00000001 [INF] Executed DbCommand ("216"ms) [Parameters=["@__p_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [c].[Id], [c].[Name], [c].[Description], [c].[ParentId], [c].[HomeOrder], [c].[Image], [c].[HomeFlag], [c].[DateCreated], [c].[DateModified], [c].[SortOrder], [c].[Status], [c].[SeoPageTitle], [c].[SeoAlias], [c].[SeoKeywords], [c].[SeoDescription]
+FROM [ProductCategories] AS [c]
+WHERE [c].[HomeFlag] = 1
+ORDER BY [c].[HomeOrder]" (0723d8ff)
+2018-01-29T22:21:03.2187700+07:00 0HLB75FGO4UVS:00000001 [INF] Executed DbCommand ("196"ms) [Parameters=["@__p_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id] AS [Id1], [x].[Name], [x].[CategoryId] AS [Id0], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x.ProductCategory].[Id], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) AND ([x].[HotFlag] = 1)
+ORDER BY [DateCreated0] DESC" (0723d8ff)
+2018-01-29T22:21:03.3941993+07:00 0HLB75FGO4UVS:00000001 [INF] Executed DbCommand ("115"ms) [Parameters=["@__p_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id] AS [Id1], [x].[Name], [x].[CategoryId] AS [Id0], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x.ProductCategory].[Id], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated0] DESC" (0723d8ff)
+2018-01-29T22:21:03.4576344+07:00 0HLB75FGO4UVS:00000001 [INF] Executed DbCommand ("45"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:21:03.4659016+07:00 0HLB75FGO4UVS:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:21:03.4705571+07:00 0HLB75FGO4UVS:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:21:03.4753541+07:00 0HLB75FGO4UVS:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:21:03.4796504+07:00 0HLB75FGO4UVS:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:21:03.5043504+07:00 0HLB75FGO4UVS:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[Image], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[DateCreated], [x].[DateModified], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [Blogs] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC" (0723d8ff)
+2018-01-29T22:21:03.8349225+07:00 0HLB75FGO4UVS:00000001 [INF] Executed DbCommand ("311"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Image], [x].[Url], [x].[DisplayOrder], [x].[Status], [x].[Content], [x].[GroupAlias]
+FROM [Slides] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)" (0723d8ff)
+2018-01-29T22:22:02.3929014+07:00 0HLB75FGO4UVS:00000001 [INF] Executed action "NiTiErp.Controllers.HomeController.Index (NiTiErp)" in 60719.2365ms (afa2e885)
+2018-01-29T22:22:06.2962291+07:00 0HLB75FGO4UVS:00000001 [ERR] An unhandled exception has occurred while executing the request (cf926119)
+Microsoft.AspNetCore.Mvc.Razor.Compilation.CompilationFailedException: One or more compilation failures occurred:
+D:\netCore\NiTiErp\NiTiErp\Views\_ViewImports.cshtml(2,19): error CS0234: The type or namespace name 'Models' does not exist in the namespace 'TeduCoreApp' (are you missing an assembly reference?)
+D:\netCore\NiTiErp\NiTiErp\Views\_ViewImports.cshtml(3,19): error CS0234: The type or namespace name 'Models' does not exist in the namespace 'TeduCoreApp' (are you missing an assembly reference?)
+D:\netCore\NiTiErp\NiTiErp\Views\_ViewImports.cshtml(4,19): error CS0234: The type or namespace name 'Models' does not exist in the namespace 'TeduCoreApp' (are you missing an assembly reference?)
+D:\netCore\NiTiErp\NiTiErp\Views\_ViewImports.cshtml(5,19): error CS0234: The type or namespace name 'Data' does not exist in the namespace 'TeduCoreApp' (are you missing an assembly reference?)
+D:\netCore\NiTiErp\NiTiErp\Views\_ViewImports.cshtml(6,19): error CS0234: The type or namespace name 'Extensions' does not exist in the namespace 'TeduCoreApp' (are you missing an assembly reference?)
+D:\netCore\NiTiErp\NiTiErp\Views\_ViewImports.cshtml(7,19): error CS0234: The type or namespace name 'Application' does not exist in the namespace 'TeduCoreApp' (are you missing an assembly reference?)
+bjzmjwzm.pvq(50,94): error CS0246: The type or namespace name 'HomeViewModel' could not be found (are you missing a using directive or an assembly reference?)
+bjzmjwzm.pvq(1173,71): error CS0246: The type or namespace name 'HomeViewModel' could not be found (are you missing a using directive or an assembly reference?)
+   at Microsoft.AspNetCore.Mvc.Razor.Internal.RazorViewCompiler.CompileAndEmit(RazorCodeDocument codeDocument, String generatedCode)
+   at Microsoft.AspNetCore.Mvc.Razor.Internal.RazorViewCompiler.CompileAndEmit(String relativePath)
+   at Microsoft.AspNetCore.Mvc.Razor.Internal.RazorViewCompiler.CreateCacheEntry(String normalizedPath)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.AspNetCore.Mvc.Razor.Internal.DefaultRazorPageFactoryProvider.CreateFactory(String relativePath)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorViewEngine.CreateCacheResult(HashSet`1 expirationTokens, String relativePath, Boolean isMainPage)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorViewEngine.OnCacheMiss(ViewLocationExpanderContext expanderContext, ViewLocationCacheKey cacheKey)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorViewEngine.LocatePageFromViewLocations(ActionContext actionContext, String pageName, Boolean isMainPage)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorViewEngine.FindView(ActionContext context, String viewName, Boolean isMainPage)
+   at Microsoft.AspNetCore.Mvc.ViewEngines.CompositeViewEngine.FindView(ActionContext context, String viewName, Boolean isMainPage)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.ViewResultExecutor.FindView(ActionContext actionContext, ViewResult viewResult)
+   at Microsoft.AspNetCore.Mvc.ViewResult.<ExecuteResultAsync>d__26.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeResultAsync>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResultFilterAsync>d__24.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResultExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeFilterPipelineAsync>d__17.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.<Invoke>d__9.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Session.SessionMiddleware.<Invoke>d__9.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at WebMarkupMin.AspNetCore2.WebMarkupMinMiddleware.<Invoke>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at NiTiErp.Middleware.ImageResizerMiddleware.<Invoke>d__7.MoveNext() in D:\netCore\NiTiErp\NiTiErp\Middleware\ImageResizerMiddleware.cs:line 70
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.<Invoke>d__7.MoveNext()
+2018-01-29T22:22:06.8568352+07:00 0HLB75FGO4UVS:00000001 [INF] Request finished in 74350.1681ms 500 text/html; charset=utf-8 (791a596a)
+2018-01-29T22:22:34.3343961+07:00 0HLB75FGO4UVS:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/favicon.ico   (ca22a1cb)
+2018-01-29T22:22:34.7168294+07:00 0HLB75FGO4UVS:00000002 [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\favicon.ico"' (27b0a520)
+2018-01-29T22:22:34.8086771+07:00 0HLB75FGO4UVS:00000002 [INF] Request finished in 473.0618ms 200 image/x-icon (791a596a)
+2018-01-29T22:27:03.3826021+07:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-01-29T22:27:03.8761877+07:00  [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-01-29T22:27:03.9163252+07:00  [INF] Executed DbCommand ("20"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-01-29T22:27:03.9255246+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ContactDetails] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-01-29T22:27:03.9432996+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Functions] AS [f]" (0723d8ff)
+2018-01-29T22:27:03.9756494+07:00  [INF] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Footers] AS [x]
+WHERE [x].[Id] = 'DefaultFooterId'" (0723d8ff)
+2018-01-29T22:27:03.9821044+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Colors] AS [c]" (0723d8ff)
+2018-01-29T22:27:03.9886378+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AdvertistmentPages] AS [a]" (0723d8ff)
+2018-01-29T22:27:03.9955359+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Slides] AS [s]" (0723d8ff)
+2018-01-29T22:27:04.0019408+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Sizes] AS [s]" (0723d8ff)
+2018-01-29T22:27:04.0082661+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2018-01-29T22:27:04.0191306+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeTitle')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-01-29T22:27:04.0298212+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaKeyword')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-01-29T22:27:04.0400667+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaDescription')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-01-29T22:27:04.4979050+07:00 0HLB75J02K9EN:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/   (ca22a1cb)
+2018-01-29T22:27:04.9564798+07:00 0HLB75J02K9EN:00000001 [INF] Executing action method "NiTiErp.Controllers.HomeController.Index (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-01-29T22:27:04.9737912+07:00 0HLB75J02K9EN:00000001 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-01-29T22:27:05.0536059+07:00 0HLB75J02K9EN:00000001 [WRN] The Include operation for navigation '"[c].Products"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2018-01-29T22:27:05.1440303+07:00 0HLB75J02K9EN:00000001 [INF] Executed DbCommand ("32"ms) [Parameters=["@__p_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [c].[Id], [c].[Name], [c].[Description], [c].[ParentId], [c].[HomeOrder], [c].[Image], [c].[HomeFlag], [c].[DateCreated], [c].[DateModified], [c].[SortOrder], [c].[Status], [c].[SeoPageTitle], [c].[SeoAlias], [c].[SeoKeywords], [c].[SeoDescription]
+FROM [ProductCategories] AS [c]
+WHERE [c].[HomeFlag] = 1
+ORDER BY [c].[HomeOrder]" (0723d8ff)
+2018-01-29T22:27:05.2033293+07:00 0HLB75J02K9EN:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__p_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id] AS [Id1], [x].[Name], [x].[CategoryId] AS [Id0], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x.ProductCategory].[Id], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) AND ([x].[HotFlag] = 1)
+ORDER BY [DateCreated0] DESC" (0723d8ff)
+2018-01-29T22:27:05.2418518+07:00 0HLB75J02K9EN:00000001 [INF] Executed DbCommand ("5"ms) [Parameters=["@__p_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id] AS [Id1], [x].[Name], [x].[CategoryId] AS [Id0], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x.ProductCategory].[Id], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated0] DESC" (0723d8ff)
+2018-01-29T22:27:05.2639284+07:00 0HLB75J02K9EN:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:05.2731243+07:00 0HLB75J02K9EN:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:05.2780899+07:00 0HLB75J02K9EN:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:05.2833540+07:00 0HLB75J02K9EN:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:05.2878082+07:00 0HLB75J02K9EN:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:05.3122828+07:00 0HLB75J02K9EN:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[Image], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[DateCreated], [x].[DateModified], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [Blogs] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC" (0723d8ff)
+2018-01-29T22:27:05.3330886+07:00 0HLB75J02K9EN:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Image], [x].[Url], [x].[DisplayOrder], [x].[Status], [x].[Content], [x].[GroupAlias]
+FROM [Slides] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)" (0723d8ff)
+2018-01-29T22:27:12.7622983+07:00 0HLB75J02K9EN:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-01-29T22:27:13.6342290+07:00 0HLB75J02K9EN:00000001 [INF] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId]" (0723d8ff)
+2018-01-29T22:27:13.6435994+07:00 0HLB75J02K9EN:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:13.6482757+07:00 0HLB75J02K9EN:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:13.6537607+07:00 0HLB75J02K9EN:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:13.6596869+07:00 0HLB75J02K9EN:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:14.6656397+07:00 0HLB75J02K9EN:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId]" (0723d8ff)
+2018-01-29T22:27:14.6700908+07:00 0HLB75J02K9EN:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:14.6745090+07:00 0HLB75J02K9EN:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:14.6787954+07:00 0HLB75J02K9EN:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:14.6832480+07:00 0HLB75J02K9EN:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:14.9102030+07:00 0HLB75J02K9EN:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId]" (0723d8ff)
+2018-01-29T22:27:14.9194804+07:00 0HLB75J02K9EN:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:14.9286971+07:00 0HLB75J02K9EN:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:14.9448717+07:00 0HLB75J02K9EN:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:14.9610435+07:00 0HLB75J02K9EN:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:15.4812369+07:00 0HLB75J02K9EN:00000001 [INF] Executed action "NiTiErp.Controllers.HomeController.Index (NiTiErp)" in 10544.6161ms (afa2e885)
+2018-01-29T22:27:16.1050597+07:00 0HLB75J02K9EN:00000001 [INF] Request finished in 11664.8772ms 200 text/html; charset=utf-8 (791a596a)
+2018-01-29T22:27:16.1924985+07:00 0HLB75J02K9EN:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/notifyjs/dist/styles/metro/notify-metro.css   (ca22a1cb)
+2018-01-29T22:27:16.2016353+07:00 0HLB75J02K9EO:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/flag-default.jpg   (ca22a1cb)
+2018-01-29T22:27:16.2331349+07:00 0HLB75J02K9ER:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/js/jquery.min.js   (ca22a1cb)
+2018-01-29T22:27:16.2562284+07:00 0HLB75J02K9EP:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/style.css   (ca22a1cb)
+2018-01-29T22:27:16.2828822+07:00 0HLB75J02K9ER:00000001 [INF] Sending file. Request path: '"/client-side/js/jquery.min.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\js\jquery.min.js"' (27b0a520)
+2018-01-29T22:27:16.2841558+07:00 0HLB75J02K9EO:00000001 [INF] Sending file. Request path: '"/client-side/images/flag-default.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\flag-default.jpg"' (27b0a520)
+2018-01-29T22:27:16.2891957+07:00 0HLB75J02K9EP:00000001 [INF] Sending file. Request path: '"/client-side/style.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\style.css"' (27b0a520)
+2018-01-29T22:27:16.2914358+07:00 0HLB75J02K9EN:00000002 [INF] Sending file. Request path: '"/lib/notifyjs/dist/styles/metro/notify-metro.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\notifyjs\dist\styles\metro\notify-metro.css"' (27b0a520)
+2018-01-29T22:27:16.3195464+07:00 0HLB75J02K9EP:00000001 [INF] Request finished in 112.5922ms 200 text/css (791a596a)
+2018-01-29T22:27:16.3464424+07:00 0HLB75J02K9EO:00000001 [INF] Request finished in 125.6763ms 200 image/jpeg (791a596a)
+2018-01-29T22:27:16.3750636+07:00 0HLB75J02K9ET:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/js/mobile-menu.js   (ca22a1cb)
+2018-01-29T22:27:16.4025844+07:00 0HLB75J02K9EN:00000002 [INF] Request finished in 135.2429ms 200 text/css (791a596a)
+2018-01-29T22:27:16.4138563+07:00 0HLB75J02K9EQ:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/js/bootstrap.min.js   (ca22a1cb)
+2018-01-29T22:27:16.4168466+07:00 0HLB75J02K9ES:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/js/owl.carousel.min.js   (ca22a1cb)
+2018-01-29T22:27:16.4300038+07:00 0HLB75J02K9ES:00000001 [INF] Sending file. Request path: '"/client-side/js/owl.carousel.min.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\js\owl.carousel.min.js"' (27b0a520)
+2018-01-29T22:27:16.4317085+07:00 0HLB75J02K9ET:00000001 [INF] Sending file. Request path: '"/client-side/js/mobile-menu.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\js\mobile-menu.js"' (27b0a520)
+2018-01-29T22:27:16.4420672+07:00 0HLB75J02K9EQ:00000001 [INF] Sending file. Request path: '"/client-side/js/bootstrap.min.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\js\bootstrap.min.js"' (27b0a520)
+2018-01-29T22:27:16.4574917+07:00 0HLB75J02K9EV:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/js/jquery-ui.js   (ca22a1cb)
+2018-01-29T22:27:16.4591811+07:00 0HLB75J02K9ET:00000001 [INF] Request finished in 88.5723ms 200 application/javascript (791a596a)
+2018-01-29T22:27:16.4679291+07:00 0HLB75J02K9EV:00000001 [INF] Sending file. Request path: '"/client-side/js/jquery-ui.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\js\jquery-ui.js"' (27b0a520)
+2018-01-29T22:27:16.4693162+07:00 0HLB75J02K9EQ:00000001 [INF] Request finished in 93.5485ms 200 application/javascript (791a596a)
+2018-01-29T22:27:16.4990001+07:00 0HLB75J02K9F1:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/flag-english.jpg   (ca22a1cb)
+2018-01-29T22:27:16.5224560+07:00 0HLB75J02K9ES:00000001 [INF] Request finished in 36.4694ms 200 application/javascript (791a596a)
+2018-01-29T22:27:16.5239163+07:00 0HLB75J02K9F3:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/flag-brazil.jpg   (ca22a1cb)
+2018-01-29T22:27:16.5261496+07:00 0HLB75J02K9F1:00000001 [INF] Sending file. Request path: '"/client-side/images/flag-english.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\flag-english.jpg"' (27b0a520)
+2018-01-29T22:27:16.5345580+07:00 0HLB75J02K9EU:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/js/countdown.js   (ca22a1cb)
+2018-01-29T22:27:16.5388820+07:00 0HLB75J02K9F5:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/flag-spain.jpg   (ca22a1cb)
+2018-01-29T22:27:16.5577767+07:00 0HLB75J02K9F3:00000001 [INF] Sending file. Request path: '"/client-side/images/flag-brazil.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\flag-brazil.jpg"' (27b0a520)
+2018-01-29T22:27:16.6156459+07:00 0HLB75J02K9F5:00000001 [INF] Sending file. Request path: '"/client-side/images/flag-spain.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\flag-spain.jpg"' (27b0a520)
+2018-01-29T22:27:16.6761900+07:00 0HLB75J02K9F5:00000001 [INF] Request finished in 85.6243ms 200 image/jpeg (791a596a)
+2018-01-29T22:27:16.6768988+07:00 0HLB75J02K9F7:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/products/product-1.jpg   (ca22a1cb)
+2018-01-29T22:27:16.7235096+07:00 0HLB75J02K9F7:00000001 [INF] Sending file. Request path: '"/client-side/images/products/product-1.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\products\product-1.jpg"' (27b0a520)
+2018-01-29T22:27:16.7296972+07:00 0HLB75J02K9F5:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/shortcodes/post.css   (ca22a1cb)
+2018-01-29T22:27:16.7508137+07:00 0HLB75J02K9F1:00000001 [INF] Request finished in 62.8218ms 200 image/jpeg (791a596a)
+2018-01-29T22:27:16.7782782+07:00 0HLB75J02K9F5:00000002 [INF] Sending file. Request path: '"/client-side/css/shortcodes/post.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\shortcodes\post.css"' (27b0a520)
+2018-01-29T22:27:16.7904315+07:00 0HLB75J02K9F1:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/pe-icon-7-stroke.min.css   (ca22a1cb)
+2018-01-29T22:27:16.7964588+07:00 0HLB75J02K9F1:00000002 [INF] Sending file. Request path: '"/client-side/css/pe-icon-7-stroke.min.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\pe-icon-7-stroke.min.css"' (27b0a520)
+2018-01-29T22:27:16.8036418+07:00 0HLB75J02K9EU:00000001 [INF] Sending file. Request path: '"/client-side/js/countdown.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\js\countdown.js"' (27b0a520)
+2018-01-29T22:27:16.8145517+07:00 0HLB75J02K9EU:00000001 [INF] Request finished in 344.0306ms 200 application/javascript (791a596a)
+2018-01-29T22:27:16.8191767+07:00 0HLB75J02K9F5:00000002 [INF] Request finished in 82.1948ms 200 text/css (791a596a)
+2018-01-29T22:27:16.8314084+07:00 0HLB75J02K9F0:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/flag-german.jpg   (ca22a1cb)
+2018-01-29T22:27:16.8375813+07:00 0HLB75J02K9F1:00000002 [INF] Request finished in 24.9749ms 200 text/css (791a596a)
+2018-01-29T22:27:16.8404718+07:00 0HLB75J02K9F9:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/slider/slide-3.jpg   (ca22a1cb)
+2018-01-29T22:27:16.8490031+07:00 0HLB75J02K9F0:00000001 [INF] Sending file. Request path: '"/client-side/images/flag-german.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\flag-german.jpg"' (27b0a520)
+2018-01-29T22:27:16.8669141+07:00 0HLB75J02K9FB:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/slider/slide-2.jpg   (ca22a1cb)
+2018-01-29T22:27:16.8762984+07:00 0HLB75J02K9F9:00000001 [INF] Sending file. Request path: '"/client-side/images/slider/slide-3.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\slider\slide-3.jpg"' (27b0a520)
+2018-01-29T22:27:16.8971080+07:00 0HLB75J02K9F4:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/logo.png   (ca22a1cb)
+2018-01-29T22:27:16.9021697+07:00 0HLB75J02K9F0:00000001 [INF] Request finished in 24.9046ms 200 image/jpeg (791a596a)
+2018-01-29T22:27:16.9119720+07:00 0HLB75J02K9F4:00000001 [INF] Sending file. Request path: '"/client-side/images/logo.png"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\logo.png"' (27b0a520)
+2018-01-29T22:27:16.9173482+07:00 0HLB75J02K9FB:00000001 [INF] Sending file. Request path: '"/client-side/images/slider/slide-2.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\slider\slide-2.jpg"' (27b0a520)
+2018-01-29T22:27:16.9288514+07:00 0HLB75J02K9F2:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/flag-chile.jpg   (ca22a1cb)
+2018-01-29T22:27:16.9423659+07:00 0HLB75J02K9F6:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/js/main.js   (ca22a1cb)
+2018-01-29T22:27:16.9465710+07:00 0HLB75J02K9F8:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/slider/slide-1.jpg   (ca22a1cb)
+2018-01-29T22:27:16.9563342+07:00 0HLB75J02K9F2:00000001 [INF] Sending file. Request path: '"/client-side/images/flag-chile.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\flag-chile.jpg"' (27b0a520)
+2018-01-29T22:27:16.9714365+07:00 0HLB75J02K9F2:00000001 [INF] Request finished in 79.3821ms 200 image/jpeg (791a596a)
+2018-01-29T22:27:16.9778205+07:00 0HLB75J02K9F8:00000001 [INF] Sending file. Request path: '"/client-side/images/slider/slide-1.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\slider\slide-1.jpg"' (27b0a520)
+2018-01-29T22:27:16.9857768+07:00 0HLB75J02K9F6:00000001 [INF] Sending file. Request path: '"/client-side/js/main.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\js\main.js"' (27b0a520)
+2018-01-29T22:27:16.9983020+07:00 0HLB75J02K9F6:00000001 [INF] Request finished in 80.0271ms 200 application/javascript (791a596a)
+2018-01-29T22:27:17.0020503+07:00 0HLB75J02K9FA:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/sub1.jpg   (ca22a1cb)
+2018-01-29T22:27:17.0041366+07:00 0HLB75J02K9FF:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/sub1a.jpg   (ca22a1cb)
+2018-01-29T22:27:17.0373541+07:00 0HLB75J02K9FF:00000001 [INF] Sending file. Request path: '"/client-side/images/sub1a.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\sub1a.jpg"' (27b0a520)
+2018-01-29T22:27:17.0482276+07:00 0HLB75J02K9FA:00000001 [INF] Sending file. Request path: '"/client-side/images/sub1.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\sub1.jpg"' (27b0a520)
+2018-01-29T22:27:17.0695040+07:00 0HLB75J02K9FF:00000001 [INF] Request finished in 53.1267ms 200 image/jpeg (791a596a)
+2018-01-29T22:27:17.0906585+07:00 0HLB75J02K9FG:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/banner-women.jpg   (ca22a1cb)
+2018-01-29T22:27:17.0966224+07:00 0HLB75J02K9FA:00000001 [INF] Request finished in 131.1758ms 200 image/jpeg (791a596a)
+2018-01-29T22:27:17.1003445+07:00 0HLB75J02K9FC:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/products/product-1.jpg?w=190   (ca22a1cb)
+2018-01-29T22:27:17.1892174+07:00 0HLB75J02K9FG:00000001 [INF] Sending file. Request path: '"/client-side/images/banner-women.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\banner-women.jpg"' (27b0a520)
+2018-01-29T22:27:17.1976264+07:00 0HLB75J02K9FL:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/footer-logo.png   (ca22a1cb)
+2018-01-29T22:27:17.2009315+07:00 0HLB75J02K9FD:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/banner-sunglasses.jpg   (ca22a1cb)
+2018-01-29T22:27:17.2041763+07:00 0HLB75J02K9FE:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/banner-kids.jpg   (ca22a1cb)
+2018-01-29T22:27:17.2075273+07:00 0HLB75J02K9FH:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/banner-arrival.jpg   (ca22a1cb)
+2018-01-29T22:27:17.2141267+07:00 0HLB75J02K9FJ:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/paypal.png   (ca22a1cb)
+2018-01-29T22:27:17.2339714+07:00 0HLB75J02K9FN:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/js/revolution-slider.js   (ca22a1cb)
+2018-01-29T22:27:17.2430031+07:00 0HLB75J02K9FL:00000001 [INF] Sending file. Request path: '"/client-side/images/footer-logo.png"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\footer-logo.png"' (27b0a520)
+2018-01-29T22:27:17.2541671+07:00 0HLB75J02K9FH:00000001 [INF] Sending file. Request path: '"/client-side/images/banner-arrival.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\banner-arrival.jpg"' (27b0a520)
+2018-01-29T22:27:17.2586779+07:00 0HLB75J02K9FC:00000001 [INF] Resizing /client-side/images/products/product-1.jpg with params w: 190, h: 0, autorotate: False, quality: 100, format: jpg, mode: max (d9bba74d)
+2018-01-29T22:27:17.2660206+07:00 0HLB75J02K9FJ:00000001 [INF] Sending file. Request path: '"/client-side/images/paypal.png"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\paypal.png"' (27b0a520)
+2018-01-29T22:27:17.2750650+07:00 0HLB75J02K9FQ:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/notifyjs/dist/styles/metro/notify-metro.js   (ca22a1cb)
+2018-01-29T22:27:17.2859646+07:00 0HLB75J02K9FD:00000001 [INF] Sending file. Request path: '"/client-side/images/banner-sunglasses.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\banner-sunglasses.jpg"' (27b0a520)
+2018-01-29T22:27:17.2887400+07:00 0HLB75J02K9FG:00000001 [INF] Request finished in 193.6279ms 200 image/jpeg (791a596a)
+2018-01-29T22:27:17.3033721+07:00 0HLB75J02K9FE:00000001 [INF] Sending file. Request path: '"/client-side/images/banner-kids.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\banner-kids.jpg"' (27b0a520)
+2018-01-29T22:27:17.3080250+07:00 0HLB75J02K9FN:00000001 [INF] Sending file. Request path: '"/client-side/js/revolution-slider.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\js\revolution-slider.js"' (27b0a520)
+2018-01-29T22:27:17.3381130+07:00 0HLB75J02K9FL:00000001 [INF] Request finished in 119.7481ms 200 image/png (791a596a)
+2018-01-29T22:27:17.3430362+07:00 0HLB75J02K9FS:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-app/shared/tedu.js   (ca22a1cb)
+2018-01-29T22:27:17.3510432+07:00 0HLB75J02K9FH:00000001 [INF] Request finished in 118.473ms 200 image/jpeg (791a596a)
+2018-01-29T22:27:17.3691662+07:00 0HLB75J02K9FQ:00000001 [INF] Sending file. Request path: '"/lib/notifyjs/dist/styles/metro/notify-metro.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\notifyjs\dist\styles\metro\notify-metro.js"' (27b0a520)
+2018-01-29T22:27:17.3946480+07:00 0HLB75J02K9FJ:00000001 [INF] Request finished in 152.0824ms 200 image/png (791a596a)
+2018-01-29T22:27:17.4085250+07:00 0HLB75J02K9FK:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/discover.png   (ca22a1cb)
+2018-01-29T22:27:17.4179719+07:00 0HLB75J02K9FS:00000001 [INF] Sending file. Request path: '"/client-app/shared/tedu.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-app\shared\tedu.js"' (27b0a520)
+2018-01-29T22:27:17.4656920+07:00 0HLB75J02K9FD:00000001 [INF] Request finished in 191.1044ms 200 image/jpeg (791a596a)
+2018-01-29T22:27:17.4889443+07:00 0HLB75J02K9FM:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/notifyjs/dist/notify.js   (ca22a1cb)
+2018-01-29T22:27:17.4982335+07:00 0HLB75J02K9FE:00000001 [INF] Request finished in 215.3136ms 200 image/jpeg (791a596a)
+2018-01-29T22:27:17.5055132+07:00 0HLB75J02K9FO:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/mustache/mustache.js   (ca22a1cb)
+2018-01-29T22:27:17.5797211+07:00 0HLB75J02K9FR:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-app/controllers/base/index.js   (ca22a1cb)
+2018-01-29T22:27:17.5854927+07:00 0HLB75J02K9FK:00000001 [INF] Sending file. Request path: '"/client-side/images/discover.png"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\discover.png"' (27b0a520)
+2018-01-29T22:27:17.5980454+07:00 0HLB75J02K9FQ:00000001 [INF] Request finished in 238.2414ms 200 application/javascript (791a596a)
+2018-01-29T22:27:17.6024851+07:00 0HLB75J02K9FT:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/master-card.png   (ca22a1cb)
+2018-01-29T22:27:17.6087913+07:00 0HLB75J02K9FM:00000001 [INF] Sending file. Request path: '"/lib/notifyjs/dist/notify.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\notifyjs\dist\notify.js"' (27b0a520)
+2018-01-29T22:27:17.6249787+07:00 0HLB75J02K9FO:00000001 [INF] Sending file. Request path: '"/lib/mustache/mustache.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\mustache\mustache.js"' (27b0a520)
+2018-01-29T22:27:17.6333371+07:00 0HLB75J02K9FS:00000001 [INF] Request finished in 302.2112ms 200 application/javascript (791a596a)
+2018-01-29T22:27:17.6547596+07:00 0HLB75J02K9FR:00000001 [INF] Sending file. Request path: '"/client-app/controllers/base/index.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-app\controllers\base\index.js"' (27b0a520)
+2018-01-29T22:27:17.6723879+07:00 0HLB75J02K9FT:00000001 [INF] Sending file. Request path: '"/client-side/images/master-card.png"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\master-card.png"' (27b0a520)
+2018-01-29T22:27:17.6742552+07:00 0HLB75J02K9FP:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/banner-left.jpg   (ca22a1cb)
+2018-01-29T22:27:17.6770256+07:00 0HLB75J02K9FU:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-app/controllers/home/index.js   (ca22a1cb)
+2018-01-29T22:27:17.6795352+07:00 0HLB75J02K9FK:00000001 [INF] Request finished in 296.2034ms 200 image/png (791a596a)
+2018-01-29T22:27:17.6843453+07:00 0HLB75J02K9FO:00000001 [INF] Request finished in 275.787ms 200 application/javascript (791a596a)
+2018-01-29T22:27:17.6880244+07:00 0HLB75J02K9EN:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/bootstrap.min.css   (ca22a1cb)
+2018-01-29T22:27:17.6900240+07:00 0HLB75J02K9FM:00000001 [INF] Request finished in 246.5254ms 200 application/javascript (791a596a)
+2018-01-29T22:27:17.6966099+07:00 0HLB75J02K9EP:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/animate.css   (ca22a1cb)
+2018-01-29T22:27:17.7053191+07:00 0HLB75J02K9EO:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/font-awesome.min.css   (ca22a1cb)
+2018-01-29T22:27:17.7076634+07:00 0HLB75J02K9FR:00000001 [INF] Request finished in 274.143ms 200 application/javascript (791a596a)
+2018-01-29T22:27:17.7208666+07:00 0HLB75J02K9FT:00000001 [INF] Request finished in 182.435ms 200 image/png (791a596a)
+2018-01-29T22:27:17.7262412+07:00 0HLB75J02K9EN:00000003 [INF] Sending file. Request path: '"/client-side/css/bootstrap.min.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\bootstrap.min.css"' (27b0a520)
+2018-01-29T22:27:17.7312717+07:00 0HLB75J02K9FU:00000001 [INF] Sending file. Request path: '"/client-app/controllers/home/index.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-app\controllers\home\index.js"' (27b0a520)
+2018-01-29T22:27:17.7345853+07:00 0HLB75J02K9F3:00000001 [INF] Request finished in 1199.5411ms 200 image/jpeg (791a596a)
+2018-01-29T22:27:17.7514780+07:00 0HLB75J02K9ES:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/owl.carousel.css   (ca22a1cb)
+2018-01-29T22:27:17.8088885+07:00 0HLB75J02K9EP:00000002 [INF] Sending file. Request path: '"/client-side/css/animate.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\animate.css"' (27b0a520)
+2018-01-29T22:27:17.8191686+07:00 0HLB75J02K9ET:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/owl.transitions.css   (ca22a1cb)
+2018-01-29T22:27:17.8250790+07:00 0HLB75J02K9EQ:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/simple-line-icons.css   (ca22a1cb)
+2018-01-29T22:27:17.8278349+07:00 0HLB75J02K9ES:00000002 [INF] Sending file. Request path: '"/client-side/css/owl.carousel.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\owl.carousel.css"' (27b0a520)
+2018-01-29T22:27:17.8345178+07:00 0HLB75J02K9FV:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/revolution-slider.css   (ca22a1cb)
+2018-01-29T22:27:17.8393388+07:00 0HLB75J02K9G0:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/jquery-ui.css   (ca22a1cb)
+2018-01-29T22:27:17.8484983+07:00 0HLB75J02K9G1:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/flexslider.css   (ca22a1cb)
+2018-01-29T22:27:17.8525822+07:00 0HLB75J02K9EO:00000002 [INF] Sending file. Request path: '"/client-side/css/font-awesome.min.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\font-awesome.min.css"' (27b0a520)
+2018-01-29T22:27:17.8583853+07:00 0HLB75J02K9FP:00000001 [INF] Sending file. Request path: '"/client-side/images/banner-left.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\banner-left.jpg"' (27b0a520)
+2018-01-29T22:27:17.8750693+07:00 0HLB75J02K9FU:00000001 [INF] Request finished in 205.7899ms 200 application/javascript (791a596a)
+2018-01-29T22:27:17.8842456+07:00 0HLB75J02K9ET:00000002 [INF] Sending file. Request path: '"/client-side/css/owl.transitions.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\owl.transitions.css"' (27b0a520)
+2018-01-29T22:27:17.8864836+07:00 0HLB75J02K9G2:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/blog.css   (ca22a1cb)
+2018-01-29T22:27:17.8918532+07:00 0HLB75J02K9FV:00000001 [INF] Sending file. Request path: '"/client-side/css/revolution-slider.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\revolution-slider.css"' (27b0a520)
+2018-01-29T22:27:17.8973687+07:00 0HLB75J02K9G0:00000001 [INF] Sending file. Request path: '"/client-side/css/jquery-ui.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\jquery-ui.css"' (27b0a520)
+2018-01-29T22:27:17.9073902+07:00 0HLB75J02K9EQ:00000002 [INF] Sending file. Request path: '"/client-side/css/simple-line-icons.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\simple-line-icons.css"' (27b0a520)
+2018-01-29T22:27:17.9185278+07:00 0HLB75J02K9G1:00000001 [INF] Sending file. Request path: '"/client-side/css/flexslider.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\flexslider.css"' (27b0a520)
+2018-01-29T22:27:17.9526202+07:00 0HLB75J02K9G2:00000001 [INF] Sending file. Request path: '"/client-side/css/blog.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\blog.css"' (27b0a520)
+2018-01-29T22:27:17.9557959+07:00 0HLB75J02K9EO:00000002 [INF] Request finished in 199.3595ms 200 text/css (791a596a)
+2018-01-29T22:27:17.9595675+07:00 0HLB75J02K9FP:00000001 [INF] Request finished in 683.1209ms 200 image/jpeg (791a596a)
+2018-01-29T22:27:17.9665627+07:00 0HLB75J02K9G3:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/shortcode.css   (ca22a1cb)
+2018-01-29T22:27:17.9733529+07:00 0HLB75J02K9ET:00000002 [INF] Request finished in 165.5388ms 200 text/css (791a596a)
+2018-01-29T22:27:18.0028648+07:00 0HLB75J02K9EP:00000002 [INF] Request finished in 218.581ms 200 text/css (791a596a)
+2018-01-29T22:27:18.0062362+07:00 0HLB75J02K9G0:00000001 [INF] Request finished in 156.7361ms 200 text/css (791a596a)
+2018-01-29T22:27:18.0101058+07:00 0HLB75J02K9G4:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/shortcodes/featured-box.css   (ca22a1cb)
+2018-01-29T22:27:18.0170515+07:00 0HLB75J02K9FI:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/visa.png   (ca22a1cb)
+2018-01-29T22:27:18.0197949+07:00 0HLB75J02K9G6:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/quick_view_popup.css   (ca22a1cb)
+2018-01-29T22:27:18.0222407+07:00 0HLB75J02K9EQ:00000002 [INF] Request finished in 225.7865ms 200 text/css (791a596a)
+2018-01-29T22:27:18.0240806+07:00 0HLB75J02K9G3:00000001 [INF] Sending file. Request path: '"/client-side/css/shortcode.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\shortcode.css"' (27b0a520)
+2018-01-29T22:27:18.0274435+07:00 0HLB75J02K9G5:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/shortcodes/shortcodes.css   (ca22a1cb)
+2018-01-29T22:27:18.0375703+07:00 0HLB75J02K9G7:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/style.css   (ca22a1cb)
+2018-01-29T22:27:18.0462369+07:00 0HLB75J02K9G8:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/shortcodes/pricing-table.css   (ca22a1cb)
+2018-01-29T22:27:18.0588914+07:00 0HLB75J02K9G9:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/shortcodes/tooltip.css   (ca22a1cb)
+2018-01-29T22:27:18.0623782+07:00 0HLB75J02K9G6:00000001 [INF] Sending file. Request path: '"/client-side/css/quick_view_popup.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\quick_view_popup.css"' (27b0a520)
+2018-01-29T22:27:18.0641907+07:00 0HLB75J02K9G4:00000001 [INF] Sending file. Request path: '"/client-side/css/shortcodes/featured-box.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\shortcodes\featured-box.css"' (27b0a520)
+2018-01-29T22:27:18.0658503+07:00 0HLB75J02K9G3:00000001 [INF] Request finished in 130.4624ms 200 text/css (791a596a)
+2018-01-29T22:27:18.1051654+07:00 0HLB75J02K9GA:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/responsive.css   (ca22a1cb)
+2018-01-29T22:27:18.1209296+07:00 0HLB75J02K9G5:00000001 [INF] Sending file. Request path: '"/client-side/css/shortcodes/shortcodes.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\shortcodes\shortcodes.css"' (27b0a520)
+2018-01-29T22:27:18.1326220+07:00 0HLB75J02K9G7:00000001 [INF] Sending file. Request path: '"/client-side/css/style.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\style.css"' (27b0a520)
+2018-01-29T22:27:18.1376764+07:00 0HLB75J02K9G9:00000001 [INF] Sending file. Request path: '"/client-side/css/shortcodes/tooltip.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\shortcodes\tooltip.css"' (27b0a520)
+2018-01-29T22:27:18.1406310+07:00 0HLB75J02K9G4:00000001 [INF] Request finished in 154.1276ms 200 text/css (791a596a)
+2018-01-29T22:27:18.1482498+07:00 0HLB75J02K9F7:00000001 [INF] Request finished in 1433.5385ms 200 image/jpeg (791a596a)
+2018-01-29T22:27:18.1546323+07:00 0HLB75J02K9F4:00000001 [INF] Request finished in 1216.3315ms 200 image/png (791a596a)
+2018-01-29T22:27:18.1568532+07:00 0HLB75J02K9GA:00000001 [INF] Sending file. Request path: '"/client-side/css/responsive.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\responsive.css"' (27b0a520)
+2018-01-29T22:27:18.1592144+07:00 0HLB75J02K9G8:00000001 [INF] Sending file. Request path: '"/client-side/css/shortcodes/pricing-table.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\shortcodes\pricing-table.css"' (27b0a520)
+2018-01-29T22:27:18.1622921+07:00 0HLB75J02K9FI:00000001 [INF] Sending file. Request path: '"/client-side/images/visa.png"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\visa.png"' (27b0a520)
+2018-01-29T22:27:18.1665230+07:00 0HLB75J02K9EV:00000001 [INF] Request finished in 1647.3945ms 200 application/javascript (791a596a)
+2018-01-29T22:27:18.1696533+07:00 0HLB75J02K9ES:00000002 [INF] Request finished in 421.3716ms 200 text/css (791a596a)
+2018-01-29T22:27:18.2101812+07:00 0HLB75J02K9G9:00000001 [INF] Request finished in 136.0727ms 200 text/css (791a596a)
+2018-01-29T22:27:18.2146762+07:00 0HLB75J02K9G1:00000001 [INF] Request finished in 352.1321ms 200 text/css (791a596a)
+2018-01-29T22:27:18.2327636+07:00 0HLB75J02K9G2:00000001 [INF] Request finished in 326.1514ms 200 text/css (791a596a)
+2018-01-29T22:27:18.2366735+07:00 0HLB75J02K9FI:00000001 [INF] Request finished in 984.5858ms 200 image/png (791a596a)
+2018-01-29T22:27:18.2390702+07:00 0HLB75J02K9GA:00000001 [INF] Request finished in 140.2417ms 200 text/css (791a596a)
+2018-01-29T22:27:18.2622260+07:00 0HLB75J02K9FV:00000001 [INF] Request finished in 408.3005ms 200 text/css (791a596a)
+2018-01-29T22:27:18.2677395+07:00 0HLB75J02K9G6:00000001 [INF] Request finished in 233.6693ms 200 text/css (791a596a)
+2018-01-29T22:27:18.3276721+07:00 0HLB75J02K9FB:00000001 [INF] Request finished in 1391.5505ms 200 image/jpeg (791a596a)
+2018-01-29T22:27:18.3350190+07:00 0HLB75J02K9G8:00000001 [INF] Request finished in 183.2813ms 200 text/css (791a596a)
+2018-01-29T22:27:18.3800789+07:00 0HLB75J02K9ER:00000001 [INF] Request finished in 2089.5368ms 200 application/javascript (791a596a)
+2018-01-29T22:27:18.4368117+07:00 0HLB75J02K9F8:00000001 [INF] Request finished in 1311.5893ms 200 image/jpeg (791a596a)
+2018-01-29T22:27:18.4433578+07:00 0HLB75J02K9G7:00000001 [INF] Request finished in 327.3879ms 200 text/css (791a596a)
+2018-01-29T22:27:18.4483300+07:00 0HLB75J02K9EN:00000003 [INF] Request finished in 634.4382ms 200 text/css (791a596a)
+2018-01-29T22:27:18.4605355+07:00 0HLB75J02K9FN:00000001 [INF] Request finished in 1189.5011ms 200 application/javascript (791a596a)
+2018-01-29T22:27:18.4686905+07:00 0HLB75J02K9G5:00000001 [INF] Request finished in 440.9054ms 200 text/css (791a596a)
+2018-01-29T22:27:18.4763428+07:00 0HLB75J02K9F9:00000001 [INF] Request finished in 1488.7774ms 200 image/jpeg (791a596a)
+2018-01-29T22:27:18.5516871+07:00 0HLB75J02K9FC:00000001 [INF] Request finished in 1570.9769ms 200 image/jpeg (791a596a)
+2018-01-29T22:27:19.4022952+07:00 0HLB75J02K9F5:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/fonts/font-awesome/fontawesome-webfont.woff2?v=4.7.0   (ca22a1cb)
+2018-01-29T22:27:19.4105284+07:00 0HLB75J02K9F5:00000003 [INF] Sending file. Request path: '"/client-side/fonts/font-awesome/fontawesome-webfont.woff2"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\fonts\font-awesome\fontawesome-webfont.woff2"' (27b0a520)
+2018-01-29T22:27:19.4342180+07:00 0HLB75J02K9F5:00000003 [INF] Request finished in 23.8164ms 200 font/woff2 (791a596a)
+2018-01-29T22:27:19.4832133+07:00 0HLB75J02K9F1:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/bg_text_des.png   (ca22a1cb)
+2018-01-29T22:27:19.4918768+07:00 0HLB75J02K9F1:00000003 [INF] Sending file. Request path: '"/client-side/images/bg_text_des.png"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\bg_text_des.png"' (27b0a520)
+2018-01-29T22:27:19.4985034+07:00 0HLB75J02K9EU:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/fonts/simple-line-icons/Simple-Line-Icons.woff2?v=2.4.0   (ca22a1cb)
+2018-01-29T22:27:19.5217143+07:00 0HLB75J02K9F1:00000003 [INF] Request finished in 18.1538ms 200 image/png (791a596a)
+2018-01-29T22:27:19.5264669+07:00 0HLB75J02K9EU:00000002 [INF] Sending file. Request path: '"/client-side/fonts/simple-line-icons/Simple-Line-Icons.woff2"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\fonts\simple-line-icons\Simple-Line-Icons.woff2"' (27b0a520)
+2018-01-29T22:27:19.5324407+07:00 0HLB75J02K9EU:00000002 [INF] Request finished in 50.6679ms 200 font/woff2 (791a596a)
+2018-01-29T22:27:21.3176374+07:00 0HLB75J02K9F0:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/   (ca22a1cb)
+2018-01-29T22:27:21.3503552+07:00 0HLB75J02K9F0:00000002 [INF] Executing action method "NiTiErp.Controllers.HomeController.Index (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-01-29T22:27:21.3556570+07:00 0HLB75J02K9F0:00000002 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-01-29T22:27:21.3632222+07:00 0HLB75J02K9F0:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [c].[Id], [c].[Name], [c].[Description], [c].[ParentId], [c].[HomeOrder], [c].[Image], [c].[HomeFlag], [c].[DateCreated], [c].[DateModified], [c].[SortOrder], [c].[Status], [c].[SeoPageTitle], [c].[SeoAlias], [c].[SeoKeywords], [c].[SeoDescription]
+FROM [ProductCategories] AS [c]
+WHERE [c].[HomeFlag] = 1
+ORDER BY [c].[HomeOrder]" (0723d8ff)
+2018-01-29T22:27:21.3697933+07:00 0HLB75J02K9F0:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id] AS [Id1], [x].[Name], [x].[CategoryId] AS [Id0], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x.ProductCategory].[Id], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) AND ([x].[HotFlag] = 1)
+ORDER BY [DateCreated0] DESC" (0723d8ff)
+2018-01-29T22:27:21.3769514+07:00 0HLB75J02K9F0:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id] AS [Id1], [x].[Name], [x].[CategoryId] AS [Id0], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x.ProductCategory].[Id], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated0] DESC" (0723d8ff)
+2018-01-29T22:27:21.3837911+07:00 0HLB75J02K9F0:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:21.3904961+07:00 0HLB75J02K9F0:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:21.3973181+07:00 0HLB75J02K9F0:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:21.4041096+07:00 0HLB75J02K9F0:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:21.4106345+07:00 0HLB75J02K9F0:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:21.4200046+07:00 0HLB75J02K9F0:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[Image], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[DateCreated], [x].[DateModified], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [Blogs] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC" (0723d8ff)
+2018-01-29T22:27:21.4269509+07:00 0HLB75J02K9F0:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Image], [x].[Url], [x].[DisplayOrder], [x].[Status], [x].[Content], [x].[GroupAlias]
+FROM [Slides] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)" (0723d8ff)
+2018-01-29T22:27:21.4320701+07:00 0HLB75J02K9F0:00000002 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-01-29T22:27:21.4434687+07:00 0HLB75J02K9F0:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId]" (0723d8ff)
+2018-01-29T22:27:21.4491243+07:00 0HLB75J02K9F0:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:21.4529391+07:00 0HLB75J02K9F0:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:21.4641625+07:00 0HLB75J02K9F0:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:21.4699976+07:00 0HLB75J02K9F0:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:21.4764346+07:00 0HLB75J02K9F0:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId]" (0723d8ff)
+2018-01-29T22:27:21.4809986+07:00 0HLB75J02K9F0:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:21.4853534+07:00 0HLB75J02K9F0:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:21.4895536+07:00 0HLB75J02K9F0:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:21.4948740+07:00 0HLB75J02K9F0:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:21.4998697+07:00 0HLB75J02K9F0:00000002 [INF] Executed action "NiTiErp.Controllers.HomeController.Index (NiTiErp)" in 173.8129ms (afa2e885)
+2018-01-29T22:27:21.5349008+07:00 0HLB75J02K9F0:00000002 [INF] Request finished in 218.8889ms 200 text/html; charset=utf-8 (791a596a)
+2018-01-29T22:27:38.9138850+07:00 0HLB75J02K9F2:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/   (ca22a1cb)
+2018-01-29T22:27:38.9191756+07:00 0HLB75J02K9F2:00000002 [INF] Executing action method "NiTiErp.Controllers.HomeController.Index (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-01-29T22:27:38.9236273+07:00 0HLB75J02K9F2:00000002 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-01-29T22:27:38.9283905+07:00 0HLB75J02K9F2:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [c].[Id], [c].[Name], [c].[Description], [c].[ParentId], [c].[HomeOrder], [c].[Image], [c].[HomeFlag], [c].[DateCreated], [c].[DateModified], [c].[SortOrder], [c].[Status], [c].[SeoPageTitle], [c].[SeoAlias], [c].[SeoKeywords], [c].[SeoDescription]
+FROM [ProductCategories] AS [c]
+WHERE [c].[HomeFlag] = 1
+ORDER BY [c].[HomeOrder]" (0723d8ff)
+2018-01-29T22:27:38.9331744+07:00 0HLB75J02K9F2:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id] AS [Id1], [x].[Name], [x].[CategoryId] AS [Id0], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x.ProductCategory].[Id], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) AND ([x].[HotFlag] = 1)
+ORDER BY [DateCreated0] DESC" (0723d8ff)
+2018-01-29T22:27:38.9403118+07:00 0HLB75J02K9F2:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id] AS [Id1], [x].[Name], [x].[CategoryId] AS [Id0], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x.ProductCategory].[Id], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated0] DESC" (0723d8ff)
+2018-01-29T22:27:38.9451037+07:00 0HLB75J02K9F2:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:38.9496731+07:00 0HLB75J02K9F2:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:38.9541637+07:00 0HLB75J02K9F2:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:38.9589318+07:00 0HLB75J02K9F2:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:38.9638373+07:00 0HLB75J02K9F2:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:38.9695185+07:00 0HLB75J02K9F2:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[Image], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[DateCreated], [x].[DateModified], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [Blogs] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC" (0723d8ff)
+2018-01-29T22:27:38.9748967+07:00 0HLB75J02K9F2:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Image], [x].[Url], [x].[DisplayOrder], [x].[Status], [x].[Content], [x].[GroupAlias]
+FROM [Slides] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)" (0723d8ff)
+2018-01-29T22:27:38.9782379+07:00 0HLB75J02K9F2:00000002 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-01-29T22:27:38.9836225+07:00 0HLB75J02K9F2:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId]" (0723d8ff)
+2018-01-29T22:27:38.9876121+07:00 0HLB75J02K9F2:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:38.9921180+07:00 0HLB75J02K9F2:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:38.9961598+07:00 0HLB75J02K9F2:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:39.0004415+07:00 0HLB75J02K9F2:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:39.0057979+07:00 0HLB75J02K9F2:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId]" (0723d8ff)
+2018-01-29T22:27:39.0096483+07:00 0HLB75J02K9F2:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:39.0135856+07:00 0HLB75J02K9F2:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:39.0174335+07:00 0HLB75J02K9F2:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:39.0231591+07:00 0HLB75J02K9F2:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:39.0281862+07:00 0HLB75J02K9F2:00000002 [INF] Executed action "NiTiErp.Controllers.HomeController.Index (NiTiErp)" in 109.9909ms (afa2e885)
+2018-01-29T22:27:39.0780033+07:00 0HLB75J02K9F2:00000002 [INF] Request finished in 157.8793ms 200 text/html; charset=utf-8 (791a596a)
+2018-01-29T22:27:39.1487844+07:00 0HLB75J02K9F6:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/products/product-1.jpg?w=190   (ca22a1cb)
+2018-01-29T22:27:39.1536507+07:00 0HLB75J02K9F6:00000002 [INF] Resizing /client-side/images/products/product-1.jpg with params w: 190, h: 0, autorotate: False, quality: 100, format: jpg, mode: max (d9bba74d)
+2018-01-29T22:27:39.1584978+07:00 0HLB75J02K9F6:00000002 [INF] Serving from cache (7e5e9bde)
+2018-01-29T22:27:39.1661403+07:00 0HLB75J02K9F6:00000002 [INF] Request finished in 18.4543ms 200 image/jpeg (791a596a)
+2018-01-29T22:27:39.5407048+07:00 0HLB75J02K9FF:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/   (ca22a1cb)
+2018-01-29T22:27:39.5447299+07:00 0HLB75J02K9FF:00000002 [INF] Executing action method "NiTiErp.Controllers.HomeController.Index (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-01-29T22:27:39.5493328+07:00 0HLB75J02K9FF:00000002 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-01-29T22:27:39.5556055+07:00 0HLB75J02K9FF:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [c].[Id], [c].[Name], [c].[Description], [c].[ParentId], [c].[HomeOrder], [c].[Image], [c].[HomeFlag], [c].[DateCreated], [c].[DateModified], [c].[SortOrder], [c].[Status], [c].[SeoPageTitle], [c].[SeoAlias], [c].[SeoKeywords], [c].[SeoDescription]
+FROM [ProductCategories] AS [c]
+WHERE [c].[HomeFlag] = 1
+ORDER BY [c].[HomeOrder]" (0723d8ff)
+2018-01-29T22:27:39.5610668+07:00 0HLB75J02K9FF:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id] AS [Id1], [x].[Name], [x].[CategoryId] AS [Id0], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x.ProductCategory].[Id], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) AND ([x].[HotFlag] = 1)
+ORDER BY [DateCreated0] DESC" (0723d8ff)
+2018-01-29T22:27:39.5675351+07:00 0HLB75J02K9FF:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id] AS [Id1], [x].[Name], [x].[CategoryId] AS [Id0], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x.ProductCategory].[Id], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated0] DESC" (0723d8ff)
+2018-01-29T22:27:39.5728783+07:00 0HLB75J02K9FF:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:39.5788484+07:00 0HLB75J02K9FF:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:39.5838681+07:00 0HLB75J02K9FF:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:39.5893767+07:00 0HLB75J02K9FF:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:39.5941774+07:00 0HLB75J02K9FF:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:39.5995952+07:00 0HLB75J02K9FF:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[Image], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[DateCreated], [x].[DateModified], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [Blogs] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC" (0723d8ff)
+2018-01-29T22:27:39.6083675+07:00 0HLB75J02K9FF:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Image], [x].[Url], [x].[DisplayOrder], [x].[Status], [x].[Content], [x].[GroupAlias]
+FROM [Slides] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)" (0723d8ff)
+2018-01-29T22:27:39.6132746+07:00 0HLB75J02K9FF:00000002 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-01-29T22:27:39.6255432+07:00 0HLB75J02K9FF:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId]" (0723d8ff)
+2018-01-29T22:27:39.6319547+07:00 0HLB75J02K9FF:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:39.6424163+07:00 0HLB75J02K9FF:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:39.6483305+07:00 0HLB75J02K9FF:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:39.6562858+07:00 0HLB75J02K9FF:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:39.6723491+07:00 0HLB75J02K9FF:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId]" (0723d8ff)
+2018-01-29T22:27:39.7070278+07:00 0HLB75J02K9FF:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:39.7524707+07:00 0HLB75J02K9FF:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:39.7595347+07:00 0HLB75J02K9FF:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:39.7667420+07:00 0HLB75J02K9FF:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-01-29T22:27:39.7877929+07:00 0HLB75J02K9FF:00000002 [INF] Executed action "NiTiErp.Controllers.HomeController.Index (NiTiErp)" in 227.0125ms (afa2e885)
+2018-01-29T22:27:39.8579940+07:00 0HLB75J02K9FF:00000002 [INF] Request finished in 312.0484ms 200 text/html; charset=utf-8 (791a596a)
+2018-01-29T22:27:44.3428195+07:00 0HLB75J02K9FA:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/women-shirt-c.1.html   (ca22a1cb)
+2018-01-29T22:27:44.4591437+07:00 0HLB75J02K9FA:00000002 [INF] Executing action method "NiTiErp.Controllers.ProductController.Catalog (NiTiErp)" with arguments (["1", "", "", "1"]) - ModelState is Valid (ba7f4ac2)
+2018-01-29T22:27:44.4950901+07:00 0HLB75J02K9FA:00000002 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-01-29T22:27:44.5348047+07:00 0HLB75J02K9FA:00000002 [INF] Executed DbCommand ("33"ms) [Parameters=["@__categoryId_Value_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Products] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[CategoryId] = @__categoryId_Value_0)" (0723d8ff)
+2018-01-29T22:27:45.1366535+07:00 0HLB75J02K9FA:00000002 [ERR] Failed executing DbCommand ("319"ms) [Parameters=["@__categoryId_Value_0='?', @__p_1='?', @__p_2='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id] AS [Id1], [x].[Name], [x].[CategoryId] AS [Id0], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x.ProductCategory].[Id], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) AND ([x].[CategoryId] = @__categoryId_Value_0)
+ORDER BY [DateCreated0] DESC
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY" (627a98df)
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'OFFSET'.
+Invalid usage of the option NEXT in the FETCH statement.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(Boolean buffer)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+ClientConnectionId:bb988f33-c591-4fd0-b705-720cf9f04288
+Error Number:102,State:1,Class:15
+2018-01-29T22:27:45.2348519+07:00 0HLB75J02K9FA:00000002 [ERR] An exception occurred in the database while iterating the results of a query for context type '"NiTiErp.Data.EF.AppDbContext"'."
+""System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'OFFSET'.
+Invalid usage of the option NEXT in the FETCH statement.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(Boolean buffer)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+ClientConnectionId:bb988f33-c591-4fd0-b705-720cf9f04288
+Error Number:102,State:1,Class:15" (64e2593c)
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'OFFSET'.
+Invalid usage of the option NEXT in the FETCH statement.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(Boolean buffer)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+   at System.Collections.Generic.List`1.AddEnumerable(IEnumerable`1 enumerable)
+ClientConnectionId:bb988f33-c591-4fd0-b705-720cf9f04288
+Error Number:102,State:1,Class:15
+2018-01-29T22:28:04.5131137+07:00 0HLB75J02K9FA:00000002 [INF] Executed action "NiTiErp.Controllers.ProductController.Catalog (NiTiErp)" in 20112.7265ms (afa2e885)
+2018-01-29T22:28:04.9621094+07:00 0HLB75J02K9FA:00000002 [INF] Executed DbCommand ("83"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2018-01-29T22:28:04.9970668+07:00 0HLB75J02K9FA:00000002 [INF] Executed DbCommand ("17"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2018-01-29T22:28:05.0338591+07:00 0HLB75J02K9FA:00000002 [INF] Request finished in 20680.7196ms 500 text/html; charset=utf-8 (791a596a)
+2018-01-29T22:28:13.3236346+07:00 0HLB75J02K9FG:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/login   (ca22a1cb)
+2018-01-29T22:28:13.3330594+07:00 0HLB75J02K9FG:00000002 [INF] Request finished in 6.2901ms 404  (791a596a)
+2018-01-29T22:28:16.2950330+07:00 0HLB75J02K9FL:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/login   (ca22a1cb)
+2018-01-29T22:28:16.3009161+07:00 0HLB75J02K9FL:00000002 [INF] Request finished in 4.5634ms 404  (791a596a)
+2018-01-29T22:28:23.4318802+07:00 0HLB75J02K9F2:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin   (ca22a1cb)
+2018-01-29T22:28:23.4418218+07:00 0HLB75J02K9F2:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.LoginController.Index (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-01-29T22:28:23.6590388+07:00 0HLB75J02K9F2:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.LoginController.Index (NiTiErp)" in 221.0622ms (afa2e885)
+2018-01-29T22:28:23.8192878+07:00 0HLB75J02K9F2:00000003 [ERR] An unhandled exception has occurred while executing the request (cf926119)
+Microsoft.AspNetCore.Mvc.Razor.Compilation.CompilationFailedException: One or more compilation failures occurred:
+D:\netCore\NiTiErp\NiTiErp\Areas\Admin\Views\_ViewImports.cshtml(2,19): error CS0234: The type or namespace name 'Models' does not exist in the namespace 'TeduCoreApp' (are you missing an assembly reference?)
+D:\netCore\NiTiErp\NiTiErp\Areas\Admin\Views\_ViewImports.cshtml(3,19): error CS0234: The type or namespace name 'Models' does not exist in the namespace 'TeduCoreApp' (are you missing an assembly reference?)
+D:\netCore\NiTiErp\NiTiErp\Areas\Admin\Views\_ViewImports.cshtml(4,19): error CS0234: The type or namespace name 'Models' does not exist in the namespace 'TeduCoreApp' (are you missing an assembly reference?)
+D:\netCore\NiTiErp\NiTiErp\Areas\Admin\Views\_ViewImports.cshtml(5,19): error CS0234: The type or namespace name 'Data' does not exist in the namespace 'TeduCoreApp' (are you missing an assembly reference?)
+D:\netCore\NiTiErp\NiTiErp\Areas\Admin\Views\_ViewImports.cshtml(6,19): error CS0234: The type or namespace name 'Application' does not exist in the namespace 'TeduCoreApp' (are you missing an assembly reference?)
+   at Microsoft.AspNetCore.Mvc.Razor.Internal.RazorViewCompiler.CompileAndEmit(RazorCodeDocument codeDocument, String generatedCode)
+   at Microsoft.AspNetCore.Mvc.Razor.Internal.RazorViewCompiler.CompileAndEmit(String relativePath)
+   at Microsoft.AspNetCore.Mvc.Razor.Internal.RazorViewCompiler.CreateCacheEntry(String normalizedPath)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.AspNetCore.Mvc.Razor.Internal.DefaultRazorPageFactoryProvider.CreateFactory(String relativePath)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorViewEngine.CreateCacheResult(HashSet`1 expirationTokens, String relativePath, Boolean isMainPage)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorViewEngine.OnCacheMiss(ViewLocationExpanderContext expanderContext, ViewLocationCacheKey cacheKey)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorViewEngine.LocatePageFromViewLocations(ActionContext actionContext, String pageName, Boolean isMainPage)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorViewEngine.FindView(ActionContext context, String viewName, Boolean isMainPage)
+   at Microsoft.AspNetCore.Mvc.ViewEngines.CompositeViewEngine.FindView(ActionContext context, String viewName, Boolean isMainPage)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.ViewResultExecutor.FindView(ActionContext actionContext, ViewResult viewResult)
+   at Microsoft.AspNetCore.Mvc.ViewResult.<ExecuteResultAsync>d__26.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeResultAsync>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResultFilterAsync>d__24.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResultExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeFilterPipelineAsync>d__17.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.<Invoke>d__9.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Session.SessionMiddleware.<Invoke>d__9.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at WebMarkupMin.AspNetCore2.WebMarkupMinMiddleware.<Invoke>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at NiTiErp.Middleware.ImageResizerMiddleware.<Invoke>d__7.MoveNext() in D:\netCore\NiTiErp\NiTiErp\Middleware\ImageResizerMiddleware.cs:line 70
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.<Invoke>d__7.MoveNext()
+2018-01-29T22:28:23.9418055+07:00 0HLB75J02K9F2:00000003 [INF] Request finished in 511.8645ms 500 text/html; charset=utf-8 (791a596a)
