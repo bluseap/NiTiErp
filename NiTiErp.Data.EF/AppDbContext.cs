@@ -120,6 +120,7 @@ namespace NiTiErp.Data.EF
             var builder = new DbContextOptionsBuilder<AppDbContext>();
             var connectionString = configuration.GetConnectionString("DefaultConnection");
             builder.UseSqlServer(connectionString);
+
             return new AppDbContext(builder.Options);
         }
     }

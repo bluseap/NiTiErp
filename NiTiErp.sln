@@ -43,7 +43,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infrastructure", "4 - Infrastructure", "{0C9FF5A2-ED49-4384-87C4-CB683CCE9CAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NiTiErp.WebApi", "NiTiErp.WebApi\NiTiErp.WebApi.csproj", "{C451DC2D-1640-4462-9D0D-644F5C7A1916}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiTiErp.WebApi", "NiTiErp.WebApi\NiTiErp.WebApi.csproj", "{C451DC2D-1640-4462-9D0D-644F5C7A1916}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D6FCF81E-D639-4C9F-A5D8-EFBA18D5B41F} = {D6FCF81E-D639-4C9F-A5D8-EFBA18D5B41F}
 		{E2456E26-E769-4387-B07F-690C3E197CF3} = {E2456E26-E769-4387-B07F-690C3E197CF3}
@@ -53,7 +53,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NiTiErp.WebApi", "NiTiErp.W
 		{C540CEB2-3058-42EF-B0A8-7BDD0DAA3FB2} = {C540CEB2-3058-42EF-B0A8-7BDD0DAA3FB2}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NiTiErp.Application.Dapper", "NiTiErp.Application.Dapper\NiTiErp.Application.Dapper.csproj", "{BA30C762-46F7-463B-B559-2C23328DAD67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiTiErp.Application.Dapper", "NiTiErp.Application.Dapper\NiTiErp.Application.Dapper.csproj", "{BA30C762-46F7-463B-B559-2C23328DAD67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
