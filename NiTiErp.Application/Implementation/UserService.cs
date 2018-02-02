@@ -11,16 +11,21 @@ using NiTiErp.Application.Interfaces;
 using NiTiErp.Application.ViewModels.System;
 using NiTiErp.Data.Entities;
 using NiTiErp.Utilities.Dtos;
+using NiTiErp.Application.Dapper.Interfaces;
+using NiTiErp.Utilities.Helpers;
 
 namespace NiTiErp.Application.Implementation
 {
     public class UserService : IUserService
-    {
+    {        
+        private readonly IAppUserRolesService _appuserrolesService;
         private readonly UserManager<AppUser> _userManager;
-        public UserService(UserManager<AppUser> userManager)
+
+        public UserService(UserManager<AppUser> userManager, IAppUserRolesService appuserrolesService)
         {
             _userManager = userManager;
-        }
+            _appuserrolesService = appuserrolesService;            
+        }       
 
         public async Task<bool> AddAsync(AppUserViewModel userVm)
         {
@@ -106,13 +111,16 @@ namespace NiTiErp.Application.Implementation
             //Remove current roles in db
             var currentRoles = await _userManager.GetRolesAsync(user);
 
-            var result = await _userManager.AddToRolesAsync(user,
-                userVm.Roles.Except(currentRoles).ToArray());
+            var result = await _userManager.AddToRolesAsync(user, userVm.Roles.Except(currentRoles).ToArray());
 
             if (result.Succeeded)
             {
                 string[] needRemoveRoles = currentRoles.Except(userVm.Roles).ToArray();
-                await _userManager.RemoveFromRolesAsync(user, needRemoveRoles);
+                await _userManager.RemoveFromRolesAsync(user, needRemoveRoles);                
+
+                var roles = TextHelper.ConvertStringArrayToString(needRemoveRoles);
+
+                await _appuserrolesService.RemoveFromRolesAsync(roles, user.Id.ToString());
 
                 //Update user detail
                 user.FullName = userVm.FullName;

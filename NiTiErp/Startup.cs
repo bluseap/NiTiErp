@@ -172,6 +172,7 @@ namespace NiTiErp
             services.AddTransient<IContactService, ContactService>();
             services.AddTransient<IPageService, PageService>();
             services.AddTransient<IReportService, ReportService>();
+            services.AddTransient<IAppUserRolesService, AppUserRolesService>();
 
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 

@@ -9,42 +9,40 @@ using System.Threading.Tasks;
 using NiTiErp.Application.Dapper.Interfaces;
 using NiTiErp.Application.Dapper.ViewModels;
 
+
 namespace NiTiErp.Application.Dapper.Implementation
 {
-    public class ReportService : IReportService
+    public class AppUserRolesService : IAppUserRolesService
     {
         private readonly IConfiguration _configuration;
 
-        public ReportService(IConfiguration configuration)
+        public AppUserRolesService(IConfiguration configuration)
         {
             _configuration = configuration;
         }
-        public async Task<IEnumerable<RevenueReportViewModel>> GetReportAsync(string fromDate, string toDate)
-        {
+       
+        public async Task<IEnumerable<AppUserRolesViewModel>> RemoveFromRolesAsync(string roleId, string userId)
+        {           
+
             using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
                 await sqlConnection.OpenAsync();
                 var dynamicParameters = new DynamicParameters();
-                var now = DateTime.Now;
 
-                var firstDayOfMonth = new DateTime(now.Year, now.Month, 1);
-                var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
-
-                dynamicParameters.Add("@fromDate", string.IsNullOrEmpty(fromDate) ? firstDayOfMonth.ToString("MM/dd/yyyy") : fromDate);
-                dynamicParameters.Add("@toDate", string.IsNullOrEmpty(toDate) ? lastDayOfMonth.ToString("MM/dd/yyyy") : toDate);
+                dynamicParameters.Add("@RoleId", roleId);
+                dynamicParameters.Add("@UserId", userId);
 
                 try
                 {
-                    return await sqlConnection.QueryAsync<RevenueReportViewModel>(
-                        "GetRevenueDaily", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return await sqlConnection.QueryAsync<AppUserRolesViewModel>(
+                        "RemoveFromRolesAsync", dynamicParameters, commandType: CommandType.StoredProcedure);
                 }
                 catch (Exception ex)
                 {
                     throw;
                 }
             }
+            
         }
-
-        
     }
 }
