@@ -8,7 +8,6 @@
     <Folder Include="AutoMapper\" />
     <Folder Include="Implementation\" />
     <Folder Include="Interfaces\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\NiTiErp.Application.Dapper\NiTiErp.Application.Dapper.csproj" />
     <ProjectReference Include="..\NiTiErp.Data.EF\NiTiErp.Data.EF.csproj" />
     <ProjectReference Include="..\NiTiErp.Data\NiTiErp.Data.csproj" />
     <ProjectReference Include="..\NiTiErp.Utilities\NiTiErp.Utilities.csproj" />

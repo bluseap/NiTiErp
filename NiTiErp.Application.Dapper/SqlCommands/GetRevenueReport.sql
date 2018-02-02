@@ -16,6 +16,6 @@ BEGIN
 				AND b.DateCreated >= cast(@fromDate as date)
                 group by b.DateCreated
 END
-
+/*
 EXEC dbo.GetRevenueDaily @fromDate = '12/01/2017',
-                         @toDate = '01/16/2018' 
+                         @toDate = '01/16/2018' */

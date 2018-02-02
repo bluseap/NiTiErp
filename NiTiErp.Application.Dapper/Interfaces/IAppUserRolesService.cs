@@ -6,9 +6,8 @@ using NiTiErp.Application.Dapper.ViewModels;
 
 namespace NiTiErp.Application.Dapper.Interfaces
 {
-    public interface IReportService
+    public interface IAppUserRolesService
     {
-        Task<IEnumerable<RevenueReportViewModel>> GetReportAsync(string fromDate, string toDate);
-        
+        Task<IEnumerable<AppUserRolesViewModel>> RemoveFromRolesAsync(string roleId, string userId);
     }
 }

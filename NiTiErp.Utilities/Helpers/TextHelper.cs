@@ -33,6 +33,7 @@ namespace NiTiErp.Utilities.Helpers
             }
             return str2;
         }
+
         public static string ToString(decimal number)
         {
             string s = number.ToString("#");
@@ -108,5 +109,18 @@ namespace NiTiErp.Utilities.Helpers
             if (booAm) str = "Âm " + str;
             return str + "đồng chẵn";
         }
+
+        public static string ConvertStringArrayToString(string[] array)
+        {
+            // Concatenate all the elements into a StringBuilder.
+            StringBuilder builder = new StringBuilder();
+            foreach (string value in array)
+            {
+                builder.Append(value);
+                builder.Append(",");
+            }
+            return builder.ToString();
+        }
+
     }
 }
