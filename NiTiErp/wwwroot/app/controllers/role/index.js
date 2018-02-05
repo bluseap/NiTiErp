@@ -4,6 +4,8 @@
     this.initialize = function () {
         loadData();
         registerEvents();
+
+        loadFunctionList();
     }
 
     function registerEvents() {
@@ -41,8 +43,11 @@
         //Grant permission
         $('body').on('click', '.btn-grant', function () {
             $('#hidRoleId').val($(this).data('id'));
-            $.when(loadFunctionList())
-                .done(fillPermission($('#hidRoleId').val()));
+
+            //$.when(loadFunctionList()).done(fillPermission($('#hidRoleId').val()));
+            //loadFunctionList();
+            fillPermission($('#hidRoleId').val());
+
             $('#modal-grantpermission').modal('show');
         });
 
@@ -277,24 +282,32 @@
 
                 if ($('.ckView:checked').length == $('#tblFunction tbody tr .ckView').length) {
                     $('#ckCheckAllView').prop('checked', true);
-                } else {
+                }
+                else {
                     $('#ckCheckAllView').prop('checked', false);
                 }
+
                 if ($('.ckAdd:checked').length == $('#tblFunction tbody tr .ckAdd').length) {
                     $('#ckCheckAllCreate').prop('checked', true);
-                } else {
+                }
+                else {
                     $('#ckCheckAllCreate').prop('checked', false);
                 }
+
                 if ($('.ckEdit:checked').length == $('#tblFunction tbody tr .ckEdit').length) {
                     $('#ckCheckAllEdit').prop('checked', true);
-                } else {
+                }
+                else {
                     $('#ckCheckAllEdit').prop('checked', false);
                 }
+
                 if ($('.ckDelete:checked').length == $('#tblFunction tbody tr .ckDelete').length) {
                     $('#ckCheckAllDelete').prop('checked', true);
-                } else {
+                }
+                else {
                     $('#ckCheckAllDelete').prop('checked', false);
                 }
+
                 tedu.stopLoading();
             },
             error: function (status) {

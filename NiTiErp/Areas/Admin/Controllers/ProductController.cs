@@ -79,6 +79,7 @@ namespace NiTiErp.Areas.Admin.Controllers
                 productVm.SeoAlias = TextHelper.ToUnsignString(productVm.Name);
                 if (productVm.Id == 0)
                 {
+                    productVm.DateCreated = DateTime.Now;
                     _productService.Add(productVm);
                 }
                 else

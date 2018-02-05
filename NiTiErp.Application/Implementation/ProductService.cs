@@ -35,8 +35,8 @@ namespace NiTiErp.Application.Implementation
             IProductQuantityRepository productQuantityRepository,
             IProductImageRepository productImageRepository,
             IWholePriceRepository wholePriceRepository,
-        IUnitOfWork unitOfWork,
-        IProductTagRepository productTagRepository)
+            IUnitOfWork unitOfWork,
+            IProductTagRepository productTagRepository)
         {
             _productRepository = productRepository;
             _tagRepository = tagRepository;
@@ -236,8 +236,8 @@ namespace NiTiErp.Application.Implementation
         }
 
         public void AddImages(int productId, string[] images)
-        {
-            _productImageRepository.RemoveMultiple(_productImageRepository.FindAll(x => x.ProductId == productId).ToList());
+        {            
+            //_productImageRepository.RemoveMultiple(_productImageRepository.FindAll(x => x.ProductId == productId).ToList());
             foreach (var image in images)
             {
                 _productImageRepository.Add(new ProductImage()
