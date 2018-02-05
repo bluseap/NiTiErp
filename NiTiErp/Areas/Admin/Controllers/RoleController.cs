@@ -28,6 +28,7 @@ namespace NiTiErp.Areas.Admin.Controllers
 
             return new OkObjectResult(model);
         }
+
         [HttpGet]
         public async Task<IActionResult> GetById(Guid id)
         {
@@ -69,10 +70,11 @@ namespace NiTiErp.Areas.Admin.Controllers
             {
                 return new BadRequestObjectResult(ModelState);
             }
+
             await _roleService.DeleteAsync(id);
+
             return new OkObjectResult(id);
         }
-
 
         [HttpPost]
         public IActionResult ListAllFunction(Guid roleId)

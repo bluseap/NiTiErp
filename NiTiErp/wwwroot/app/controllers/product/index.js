@@ -3,6 +3,8 @@
     var imageManagement = new ImageManagement();
     var wholePriceManagement = new WholePriceManagement();
 
+    var images = [];
+
     this.initialize = function () {
         loadCategories();
         loadData();
@@ -70,7 +72,9 @@
                 processData: false,
                 data: data,
                 success: function (path) {
-                    $('#txtImage').val(path);
+                    //$('#txtImage').val(path);
+                    clearFileInput($("#fileInputImage"));
+                    images.push(path);
                     tedu.notify('Upload image succesful!', 'success');
 
                 },
@@ -84,6 +88,7 @@
             e.preventDefault();
             var that = $(this).data('id');
             loadDetails(that);
+            clearFileInput($("#fileInputImage"));
         });
 
         $('body').on('click', '.btn-delete', function (e) {
@@ -202,7 +207,7 @@
                     Id: id,
                     Name: name,
                     CategoryId: categoryId,
-                    Image: '',
+                    Image: images,
                     Price: price,
                     OriginalPrice: originalPrice,
                     PromotionPrice: promotionPrice,
@@ -229,6 +234,8 @@
 
                     tedu.stopLoading();
                     loadData(true);
+
+                    clearFileInput($("#fileInputImage"));
                 },
                 error: function () {
                     tedu.notify('Has an error in save product progress', 'error');
@@ -239,7 +246,7 @@
         }
     }
 
-    function deleteProduct(id) {
+    function deleteProduct(that) {
         tedu.confirm('Are you sure to delete?', function () {
             $.ajax({
                 type: "POST",
@@ -262,7 +269,7 @@
         });
     }
 
-    function loadDetails(id) {
+    function loadDetails(that) {
         $.ajax({
             type: "GET",
             url: "/Admin/Product/GetById",
@@ -407,7 +414,7 @@
                         Image: item.Image == null ? '<img src="/admin-side/images/user.png" width=25' : '<img src="' + item.Image + '" width=25 />',
                         CategoryName: item.ProductCategory.Name,
                         Price: tedu.formatNumber(item.Price, 0),
-                        CreatedDate: tedu.dateTimeFormatJson(item.DateCreated),
+                        CreatedDate: tedu.getFormattedDate(item.DateCreated),
                         Status: tedu.getStatus(item.Status)
                     });
                     
@@ -449,4 +456,14 @@
             }
         });
     }
+
+    function clearFileInput(ctrl) {
+        //try {
+        //    ctrl.value = null;
+        //} catch (ex) { }
+        //if (ctrl.value) {
+        //    ctrl.parentNode.replaceChild(ctrl.cloneNode(true), ctrl);
+        //}
+    }
+
 }

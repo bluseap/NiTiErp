@@ -17,10 +17,12 @@
             loadImages();
             $('#modal-image-manage').modal('show');
         });
+
         $('body').on('click', '.btn-delete-image', function (e) {
             e.preventDefault();
             $(this).closest('div').remove();
         });
+
         $("#fileImage").on('change', function () {
             var fileUpload = $(this).get(0);
             var files = fileUpload.files;
@@ -37,6 +39,7 @@
                 success: function (path) {
                     clearFileInput($("#fileImage"));
                     images.push(path);
+
                     $('#image-list').append('<div class="col-md-3"><img width="100"  data-path="' + path + '" src="' + path + '"></div>');
                     tedu.notify('Đã tải ảnh lên thành công!', 'success');
 
@@ -52,6 +55,7 @@
             $.each($('#image-list').find('img'), function (i, item) {
                 imageList.push($(this).data('path'));
             });
+
             $.ajax({
                 url: '/admin/Product/SaveImages',
                 data: {
@@ -68,6 +72,7 @@
             });
         });
     }
+
     function loadImages() {
         $.ajax({
             url: '/admin/Product/GetImages',
