@@ -122,5 +122,19 @@ namespace NiTiErp.Utilities.Helpers
             return builder.ToString();
         }
 
+        public static string ConvertStringDatetime(DateTime datetime)
+        {
+            var day = datetime.Day;
+            var month = datetime.Month;
+            var year = datetime.Year;
+            var hour = datetime.Hour;
+            var min = datetime.Minute;
+            var ss = datetime.Second;
+
+            var result = year.ToString() + month.ToString() + day.ToString() + hour.ToString() + min.ToString() + ss.ToString();
+
+            return result;
+        }
+
     }
 }
