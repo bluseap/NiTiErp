@@ -12,21 +12,25 @@ using System.Net.Http.Headers;
 using NiTiErp.Application.Interfaces;
 using NiTiErp.Application.ViewModels.Product;
 using NiTiErp.Utilities.Helpers;
+using NiTiErp.Application.Dapper.Interfaces;
 
 namespace NiTiErp.Areas.Admin.Controllers
 {
     public class ProductController : BaseController
     {
+        private readonly IProductsImagesService _productImagesService;
         private IProductService _productService;
         private IProductCategoryService _productCategoryService;
         private readonly IHostingEnvironment _hostingEnvironment;
 
         public ProductController(IProductService productService, 
             IProductCategoryService productCategoryService,
-            IHostingEnvironment hostingEnvironment)
+            IProductsImagesService productImagesService,
+        IHostingEnvironment hostingEnvironment)
         {
             _productService = productService;
             _productCategoryService = productCategoryService;
+            _productImagesService = productImagesService;
             _hostingEnvironment = hostingEnvironment;
         }
 
@@ -120,12 +124,23 @@ namespace NiTiErp.Areas.Admin.Controllers
             var quantities = _productService.GetQuantities(productId);
             return new OkObjectResult(quantities);
         }
+
         [HttpPost]
         public IActionResult SaveImages(int productId, string[] images)
         {
             _productService.AddImages(productId, images);
             _productService.Save();
             return new OkObjectResult(images);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteImages(int productId, string[] images)
+        {
+            var image = TextHelper.ConvertStringArrayToString(images);
+
+            var resule = _productImagesService.RemoveProductImagesPara(1, productId, 1, image, "delproimages");
+
+            return new OkObjectResult(resule);            
         }
 
         [HttpGet]

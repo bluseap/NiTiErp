@@ -54,9 +54,9 @@
 
         });
 
-        $('#btnSelectImg').on('click', function () {
-            $('#fileInputImage').click();
-        });
+        //$('#btnSelectImg').on('click', function () {
+        //    $('#fileInputImage').click();
+        //});
 
         $("#fileInputImage").on('change', function () {
             var fileUpload = $(this).get(0);
@@ -72,11 +72,11 @@
                 processData: false,
                 data: data,
                 success: function (path) {
-                    //$('#txtImage').val(path);
+                    //$('#txtImage').val(path);  
                     clearFileInput($("#fileInputImage"));
                     images.push(path);
                     tedu.notify('Upload image succesful!', 'success');
-
+                    
                 },
                 error: function () {
                     tedu.notify('There was error uploading files!', 'error');
@@ -87,8 +87,8 @@
         $('body').on('click', '.btn-edit', function (e) {
             e.preventDefault();
             var that = $(this).data('id');
-            loadDetails(that);
-            clearFileInput($("#fileInputImage"));
+            //clearFileInput();
+            loadDetails(that);            
         });
 
         $('body').on('click', '.btn-delete', function (e) {
@@ -150,6 +150,8 @@
                 }
             });
         });
+
+        
     }
 
     function registerControls() {
@@ -196,7 +198,7 @@
             var seoAlias = $('#txtSeoAliasM').val();
 
             var content = CKEDITOR.instances.txtContent.getData();
-            var status = $('#ckStatusM').prop('checked') == true ? 1 : 0;
+            var status = $('#ckStatusM').prop('checked') === true ? 1 : 0;
             var hot = $('#ckHotM').prop('checked');
             var showHome = $('#ckShowHomeM').prop('checked');
 
@@ -235,7 +237,7 @@
                     tedu.stopLoading();
                     loadData(true);
 
-                    clearFileInput($("#fileInputImage"));
+                    clearFileInput();
                 },
                 error: function () {
                     tedu.notify('Has an error in save product progress', 'error');
@@ -300,12 +302,14 @@
                 $('#txtSeoAliasM').val(data.SeoAlias);
 
                 CKEDITOR.instances.txtContent.setData(data.Content);
-                $('#ckStatusM').prop('checked', data.Status == 1);
+                $('#ckStatusM').prop('checked', data.Status === 1);
                 $('#ckHotM').prop('checked', data.HotFlag);
                 $('#ckShowHomeM').prop('checked', data.HomeFlag);
 
                 $('#modal-add-edit').modal('show');
                 tedu.stopLoading();
+
+                clearFileInput();
 
             },
             error: function (status) {
@@ -339,7 +343,7 @@
                 $('#ddlCategoryIdImportExcel').combotree({
                     data: arr
                 });
-                if (selectedId != undefined) {
+                if (selectedId !== undefined) {
                     $('#ddlCategoryIdM').combotree('setValue', selectedId);
                 }
             }
@@ -411,7 +415,7 @@
                     render += Mustache.render(template, {
                         Id: item.Id,
                         Name: item.Name,
-                        Image: item.Image == null ? '<img src="/admin-side/images/user.png" width=25' : '<img src="' + item.Image + '" width=25 />',
+                        Image: item.Image === null ? '<img src="/admin-side/images/user.png" width=25' : '<img src="' + item.Image + '" width=25 />',
                         CategoryName: item.ProductCategory.Name,
                         Price: tedu.formatNumber(item.Price, 0),
                         CreatedDate: tedu.getFormattedDate(item.DateCreated),
@@ -420,7 +424,7 @@
                     
                 });
                 $('#lblTotalRecords').text(response.RowCount);
-                if (render != '') {
+                if (render !== '') {
                     $('#tbl-content').html(render);
                 }
                 wrapPaging(response.RowCount, function () {

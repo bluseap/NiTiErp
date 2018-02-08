@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using System.Net.Http.Headers;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using NiTiErp.Utilities.Helpers;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -75,20 +76,23 @@ namespace NiTiErp.Areas.Admin.Controllers
                                     .Trim('"');
 
                 var imageFolder = $@"\uploaded\images\{now.ToString("yyyyMMdd")}";
-
+                
                 string folder = _hostingEnvironment.WebRootPath + imageFolder;
 
                 if (!Directory.Exists(folder))
                 {
                     Directory.CreateDirectory(folder);
                 }
-                string filePath = Path.Combine(folder, filename);
+
+                var datetimeFilename = TextHelper.ConvertStringDatetime(now) + filename;
+                string filePath = Path.Combine(folder, datetimeFilename);
                 using (FileStream fs = System.IO.File.Create(filePath))
                 {
                     file.CopyTo(fs);
                     fs.Flush();
                 }
-                return new OkObjectResult(Path.Combine(imageFolder, filename).Replace(@"\", @"/"));
+
+                return new OkObjectResult(Path.Combine(imageFolder, datetimeFilename).Replace(@"\", @"/"));
             }
         }
     }
