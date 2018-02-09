@@ -46,6 +46,8 @@ namespace NiTiErp.Data.Entities
 
         public bool? HomeFlag { get; set; }
 
+        public string CorporationId { get; set; }
+
         public DateTime DateCreated { set; get; }
         public DateTime DateModified { set; get; }
         public int SortOrder { set; get; }

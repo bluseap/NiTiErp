@@ -130,5 +130,7 @@ namespace NiTiErp.Data.Entities
         public DateTime DateModified {set;get;}
 
         public Status Status {set;get;}
+
+        public string CorporationId { get; set; }
     }
 }

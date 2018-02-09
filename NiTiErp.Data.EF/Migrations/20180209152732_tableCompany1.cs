@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace NiTiErp.Data.EF.Migrations
 {
-    public partial class initial2 : Migration
+    public partial class tableCompany1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -85,8 +85,7 @@ namespace NiTiErp.Data.EF.Migrations
                 columns: table => new
                 {
                     RoleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Active = table.Column<bool>(type: "bit", nullable: true)
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -201,6 +200,26 @@ namespace NiTiErp.Data.EF.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Corporations",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateModified = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    PhoneNumber1 = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    PhoneNumber2 = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    TaxNumber = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    WebName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Corporations", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Feedbacks",
                 columns: table => new
                 {
@@ -276,32 +295,6 @@ namespace NiTiErp.Data.EF.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Pages", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProductCategories",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateModified = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    HomeFlag = table.Column<bool>(type: "bit", nullable: true),
-                    HomeOrder = table.Column<int>(type: "int", nullable: true),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ParentId = table.Column<int>(type: "int", nullable: true),
-                    SeoAlias = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SeoDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SeoKeywords = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SeoPageTitle = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SortOrder = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductCategories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -439,6 +432,39 @@ namespace NiTiErp.Data.EF.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ProductCategories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CorporationId = table.Column<string>(type: "varchar(50)", nullable: true),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateModified = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HomeFlag = table.Column<bool>(type: "bit", nullable: true),
+                    HomeOrder = table.Column<int>(type: "int", nullable: true),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ParentId = table.Column<int>(type: "int", nullable: true),
+                    SeoAlias = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SeoDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SeoKeywords = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SeoPageTitle = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SortOrder = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductCategories", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProductCategories_Corporations_CorporationId",
+                        column: x => x.CorporationId,
+                        principalTable: "Corporations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Permissions",
                 columns: table => new
                 {
@@ -464,44 +490,6 @@ namespace NiTiErp.Data.EF.Migrations
                         name: "FK_Permissions_AppRoles_RoleId",
                         column: x => x.RoleId,
                         principalTable: "AppRoles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Products",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CategoryId = table.Column<int>(type: "int", nullable: false),
-                    Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateModified = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    HomeFlag = table.Column<bool>(type: "bit", nullable: true),
-                    HotFlag = table.Column<bool>(type: "bit", nullable: true),
-                    Image = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    OriginalPrice = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
-                    PromotionPrice = table.Column<decimal>(type: "decimal(18, 2)", nullable: true),
-                    SeoAlias = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true),
-                    SeoDescription = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    SeoKeywords = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    SeoPageTitle = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Status = table.Column<int>(type: "int", nullable: false),
-                    Tags = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Unit = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    ViewCount = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Products", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Products_ProductCategories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "ProductCategories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -578,6 +566,51 @@ namespace NiTiErp.Data.EF.Migrations
                         principalTable: "Announcements",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Products",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CorporationId = table.Column<string>(type: "varchar(50)", nullable: true),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateModified = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    HomeFlag = table.Column<bool>(type: "bit", nullable: true),
+                    HotFlag = table.Column<bool>(type: "bit", nullable: true),
+                    Image = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    OriginalPrice = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    PromotionPrice = table.Column<decimal>(type: "decimal(18, 2)", nullable: true),
+                    SeoAlias = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true),
+                    SeoDescription = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    SeoKeywords = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    SeoPageTitle = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    Tags = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    Unit = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    ViewCount = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Products_ProductCategories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "ProductCategories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Products_Corporations_CorporationId",
+                        column: x => x.CorporationId,
+                        principalTable: "Corporations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -791,6 +824,11 @@ namespace NiTiErp.Data.EF.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ProductCategories_CorporationId",
+                table: "ProductCategories",
+                column: "CorporationId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ProductImages_ProductId",
                 table: "ProductImages",
                 column: "ProductId");
@@ -814,6 +852,11 @@ namespace NiTiErp.Data.EF.Migrations
                 name: "IX_Products_CategoryId",
                 table: "Products",
                 column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Products_CorporationId",
+                table: "Products",
+                column: "CorporationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductTags_ProductId",
@@ -934,6 +977,9 @@ namespace NiTiErp.Data.EF.Migrations
 
             migrationBuilder.DropTable(
                 name: "ProductCategories");
+
+            migrationBuilder.DropTable(
+                name: "Corporations");
         }
     }
 }
