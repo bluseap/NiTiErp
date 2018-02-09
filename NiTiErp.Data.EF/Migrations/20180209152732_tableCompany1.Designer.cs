@@ -12,8 +12,8 @@ using System;
 namespace NiTiErp.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20180131151430_initial3")]
-    partial class initial3
+    [Migration("20180209152732_tableCompany1")]
+    partial class tableCompany1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -471,6 +471,44 @@ namespace NiTiErp.Data.EF.Migrations
                     b.ToTable("ContactDetails");
                 });
 
+            modelBuilder.Entity("NiTiErp.Data.Entities.Corporation", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("varchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Address")
+                        .HasMaxLength(1000);
+
+                    b.Property<DateTime>("DateCreated");
+
+                    b.Property<DateTime>("DateModified");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(500);
+
+                    b.Property<string>("PhoneNumber1")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("PhoneNumber2")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("TaxNumber")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("WebName")
+                        .HasMaxLength(100);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Corporations");
+                });
+
             modelBuilder.Entity("NiTiErp.Data.Entities.Feedback", b =>
                 {
                     b.Property<int>("Id")
@@ -619,6 +657,8 @@ namespace NiTiErp.Data.EF.Migrations
 
                     b.Property<string>("Content");
 
+                    b.Property<string>("CorporationId");
+
                     b.Property<DateTime>("DateCreated");
 
                     b.Property<DateTime>("DateModified");
@@ -669,6 +709,8 @@ namespace NiTiErp.Data.EF.Migrations
 
                     b.HasIndex("CategoryId");
 
+                    b.HasIndex("CorporationId");
+
                     b.ToTable("Products");
                 });
 
@@ -676,6 +718,8 @@ namespace NiTiErp.Data.EF.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CorporationId");
 
                     b.Property<DateTime>("DateCreated");
 
@@ -706,6 +750,8 @@ namespace NiTiErp.Data.EF.Migrations
                     b.Property<int>("Status");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CorporationId");
 
                     b.ToTable("ProductCategories");
                 });
@@ -981,6 +1027,17 @@ namespace NiTiErp.Data.EF.Migrations
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("NiTiErp.Data.Entities.Corporation")
+                        .WithMany("Products")
+                        .HasForeignKey("CorporationId");
+                });
+
+            modelBuilder.Entity("NiTiErp.Data.Entities.ProductCategory", b =>
+                {
+                    b.HasOne("NiTiErp.Data.Entities.Corporation")
+                        .WithMany("ProductCategories")
+                        .HasForeignKey("CorporationId");
                 });
 
             modelBuilder.Entity("NiTiErp.Data.Entities.ProductImage", b =>
