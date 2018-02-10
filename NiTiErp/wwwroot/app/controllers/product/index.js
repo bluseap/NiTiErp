@@ -149,9 +149,7 @@
                     tedu.stopLoading();
                 }
             });
-        });
-
-        
+        });        
     }
 
     function registerControls() {
@@ -237,7 +235,9 @@
                     tedu.stopLoading();
                     loadData(true);
 
-                    clearFileInput();
+                    //clearFileInput();
+                    clearFileInput($("#fileInputImage"));
+                    images = [];
                 },
                 error: function () {
                     tedu.notify('Has an error in save product progress', 'error');
@@ -462,12 +462,13 @@
     }
 
     function clearFileInput(ctrl) {
-        //try {
-        //    ctrl.value = null;
-        //} catch (ex) { }
-        //if (ctrl.value) {
-        //    ctrl.parentNode.replaceChild(ctrl.cloneNode(true), ctrl);
-        //}
+        try {
+            txtImage.value('');
+            images = [];
+            ctrl.value = null;
+            ctrl.value('');
+        }
+        catch (ex) { }
     }
 
 }

@@ -17,6 +17,9 @@ namespace NiTiErp.Data.Entities
         {
             ProductCategories = new List<ProductCategory>();
             Products = new List<Product>();
+            Colors = new List<Color>();
+            Sizes = new List<Size>();
+            AppUsers = new List<AppUser>();
         }
 
         [StringLength(500)]
@@ -47,6 +50,9 @@ namespace NiTiErp.Data.Entities
 
         public virtual ICollection<ProductCategory> ProductCategories { set; get; }
         public virtual ICollection<Product> Products { set; get; }
+        public virtual ICollection<Color> Colors { set; get; }
+        public virtual ICollection<Size> Sizes { set; get; }
+        public virtual ICollection<AppUser> AppUsers { set; get; }
 
     }
 }

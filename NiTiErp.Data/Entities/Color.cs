@@ -19,5 +19,7 @@ namespace NiTiErp.Data.Entities
 
         [StringLength(250)]
         public string Code { get; set; }
+
+        public string CorporationId { get; set; }
     }
 }
