@@ -15,6 +15,7 @@ namespace NiTiErp.Data.EF
         private readonly AppDbContext _context;
         private UserManager<AppUser> _userManager;
         private RoleManager<AppRole> _roleManager;
+       
         public DbInitializer(AppDbContext context, UserManager<AppUser> userManager, RoleManager<AppRole> roleManager)
         {
             _context = context;
@@ -45,6 +46,15 @@ namespace NiTiErp.Data.EF
                     Description = "Customer"
                 });
             }
+            if (_context.Corporations.Count() == 0)
+            {
+                List<Corporation> listCorporation = new List<Corporation>()
+                {
+                    new Corporation() {Id="NT0001", Address="641 Trần Hưng Đạo, Long Xuyên, An Giang.", DateCreated=DateTime.Now, DateModified=DateTime.Now, Email="lenguyen@gmail.com", Name="Nguyên Lê",PhoneNumber1="0967072555",PhoneNumber2="0967072555",TaxNumber="00001555",WebName="https://powaco.com.vn" }
+                    
+                };
+                _context.Corporations.AddRange(listCorporation);
+            }
             if (!_userManager.Users.Any())
             {
                 await _userManager.CreateAsync(new AppUser()
@@ -55,7 +65,8 @@ namespace NiTiErp.Data.EF
                     Balance = 0,
                     DateCreated = DateTime.Now,
                     DateModified = DateTime.Now,
-                    Status = Status.Active
+                    Status = Status.Active,
+                    CorporationId = "NT0001"
                 }, "123654$");
                 var user = await _userManager.FindByNameAsync("admin");
                 await _userManager.AddToRoleAsync(user, "Admin");
@@ -125,10 +136,10 @@ namespace NiTiErp.Data.EF
             {
                 List<Color> listColor = new List<Color>()
                 {
-                    new Color() {Name="Black", Code="#000000" },
-                    new Color() {Name="White", Code="#FFFFFF"},
-                    new Color() {Name="Red", Code="#ff0000" },
-                    new Color() {Name="Blue", Code="#1000ff" },
+                    new Color() {Name="Black", Code="#000000" ,CorporationId="NT0001"},
+                    new Color() {Name="White", Code="#FFFFFF",CorporationId="NT0001"},
+                    new Color() {Name="Red", Code="#ff0000",CorporationId="NT0001" },
+                    new Color() {Name="Blue", Code="#1000ff",CorporationId="NT0001" },
                 };
                 _context.Colors.AddRange(listColor);
             }
@@ -181,12 +192,12 @@ namespace NiTiErp.Data.EF
             {
                 List<Size> listSize = new List<Size>()
                 {
-                    new Size() { Name="XXL" },
-                    new Size() { Name="XL"},
-                    new Size() { Name="L" },
-                    new Size() { Name="M" },
-                    new Size() { Name="S" },
-                    new Size() { Name="XS" }
+                    new Size() { Name="XXL",CorporationId="NT0001" },
+                    new Size() { Name="XL",CorporationId="NT0001"},
+                    new Size() { Name="L" ,CorporationId="NT0001"},
+                    new Size() { Name="M",CorporationId="NT0001" },
+                    new Size() { Name="S" ,CorporationId="NT0001"},
+                    new Size() { Name="XS",CorporationId="NT0001" }
                 };
                 _context.Sizes.AddRange(listSize);
             }
@@ -195,42 +206,42 @@ namespace NiTiErp.Data.EF
             {
                 List<ProductCategory> listProductCategory = new List<ProductCategory>()
                 {
-                    new ProductCategory() { Name="Men shirt",SeoAlias="men-shirt",ParentId = null,Status=Status.Active,SortOrder=1,
+                    new ProductCategory() { Name="Men shirt",SeoAlias="men-shirt",ParentId = null,Status=Status.Active,SortOrder=1,CorporationId="NT0001",
                         Products = new List<Product>()
                         {
-                            new Product(){Name = "Product 1",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-1",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
-                            new Product(){Name = "Product 2",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-2",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
-                            new Product(){Name = "Product 3",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-3",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
-                            new Product(){Name = "Product 4",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-4",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
-                            new Product(){Name = "Product 5",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-5",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
+                            new Product(){Name = "Product 1",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-1",Price = 1000,Status = Status.Active,OriginalPrice = 1000,CorporationId="NT0001"},
+                            new Product(){Name = "Product 2",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-2",Price = 1000,Status = Status.Active,OriginalPrice = 1000,CorporationId="NT0001"},
+                            new Product(){Name = "Product 3",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-3",Price = 1000,Status = Status.Active,OriginalPrice = 1000,CorporationId="NT0001"},
+                            new Product(){Name = "Product 4",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-4",Price = 1000,Status = Status.Active,OriginalPrice = 1000,CorporationId="NT0001"},
+                            new Product(){Name = "Product 5",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-5",Price = 1000,Status = Status.Active,OriginalPrice = 1000,CorporationId="NT0001"},
                         }
                     },
-                    new ProductCategory() { Name="Women shirt",SeoAlias="women-shirt",ParentId = null,Status=Status.Active ,SortOrder=2,
+                    new ProductCategory() { Name="Women shirt",SeoAlias="women-shirt",ParentId = null,Status=Status.Active ,SortOrder=2,CorporationId="NT0001",
                         Products = new List<Product>()
                         {
-                            new Product(){Name = "Product 6",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-6",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
-                            new Product(){Name = "Product 7",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-7",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
-                            new Product(){Name = "Product 8",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-8",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
-                            new Product(){Name = "Product 9",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-9",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
-                            new Product(){Name = "Product 10",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-10",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
+                            new Product(){Name = "Product 6",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-6",Price = 1000,Status = Status.Active,OriginalPrice = 1000,CorporationId="NT0001"},
+                            new Product(){Name = "Product 7",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-7",Price = 1000,Status = Status.Active,OriginalPrice = 1000,CorporationId="NT0001"},
+                            new Product(){Name = "Product 8",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-8",Price = 1000,Status = Status.Active,OriginalPrice = 1000,CorporationId="NT0001"},
+                            new Product(){Name = "Product 9",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-9",Price = 1000,Status = Status.Active,OriginalPrice = 1000,CorporationId="NT0001"},
+                            new Product(){Name = "Product 10",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-10",Price = 1000,Status = Status.Active,OriginalPrice = 1000,CorporationId="NT0001"},
                         }},
-                    new ProductCategory() { Name="Men shoes",SeoAlias="men-shoes",ParentId = null,Status=Status.Active ,SortOrder=3,
+                    new ProductCategory() { Name="Men shoes",SeoAlias="men-shoes",ParentId = null,Status=Status.Active ,SortOrder=3,CorporationId="NT0001",
                         Products = new List<Product>()
                         {
-                            new Product(){Name = "Product 11",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-11",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
-                            new Product(){Name = "Product 12",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-12",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
-                            new Product(){Name = "Product 13",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-13",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
-                            new Product(){Name = "Product 14",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-14",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
-                            new Product(){Name = "Product 15",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-15",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
+                            new Product(){Name = "Product 11",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-11",Price = 1000,Status = Status.Active,OriginalPrice = 1000,CorporationId="NT0001"},
+                            new Product(){Name = "Product 12",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-12",Price = 1000,Status = Status.Active,OriginalPrice = 1000,CorporationId="NT0001"},
+                            new Product(){Name = "Product 13",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-13",Price = 1000,Status = Status.Active,OriginalPrice = 1000,CorporationId="NT0001"},
+                            new Product(){Name = "Product 14",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-14",Price = 1000,Status = Status.Active,OriginalPrice = 1000,CorporationId="NT0001"},
+                            new Product(){Name = "Product 15",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-15",Price = 1000,Status = Status.Active,OriginalPrice = 1000,CorporationId="NT0001"},
                         }},
-                    new ProductCategory() { Name="Woment shoes",SeoAlias="women-shoes",ParentId = null,Status=Status.Active,SortOrder=4,
+                    new ProductCategory() { Name="Woment shoes",SeoAlias="women-shoes",ParentId = null,Status=Status.Active,SortOrder=4,CorporationId="NT0001",
                         Products = new List<Product>()
                         {
-                            new Product(){Name = "Product 16",DateCreated=DateTime.Now, Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-16",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
-                            new Product(){Name = "Product 17",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-17",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
-                            new Product(){Name = "Product 18",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-18",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
-                            new Product(){Name = "Product 19",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-19",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
-                            new Product(){Name = "Product 20",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-20",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
+                            new Product(){Name = "Product 16",DateCreated=DateTime.Now, Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-16",Price = 1000,Status = Status.Active,OriginalPrice = 1000,CorporationId="NT0001"},
+                            new Product(){Name = "Product 17",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-17",Price = 1000,Status = Status.Active,OriginalPrice = 1000,CorporationId="NT0001"},
+                            new Product(){Name = "Product 18",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-18",Price = 1000,Status = Status.Active,OriginalPrice = 1000,CorporationId="NT0001"},
+                            new Product(){Name = "Product 19",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-19",Price = 1000,Status = Status.Active,OriginalPrice = 1000,CorporationId="NT0001"},
+                            new Product(){Name = "Product 20",DateCreated=DateTime.Now,Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-20",Price = 1000,Status = Status.Active,OriginalPrice = 1000,CorporationId="NT0001"},
                         }}
                 };
                 _context.ProductCategories.AddRange(listProductCategory);

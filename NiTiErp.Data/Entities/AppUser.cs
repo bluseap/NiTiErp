@@ -34,5 +34,6 @@ namespace NiTiErp.Data.Entities
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
         public Status Status { get; set; }
+        public string CorporationId { get; set; }
     }
 }

@@ -16,5 +16,6 @@ namespace NiTiErp.Data.Entities
         {
             get; set;
         }
+        public string CorporationId { get; set; }
     }
 }
