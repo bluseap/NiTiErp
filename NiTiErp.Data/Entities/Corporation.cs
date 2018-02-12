@@ -19,7 +19,7 @@ namespace NiTiErp.Data.Entities
             Products = new List<Product>();
             Colors = new List<Color>();
             Sizes = new List<Size>();
-            AppUsers = new List<AppUser>();
+            AppUsers = new List<AppUser>();            
         }
 
         [StringLength(500)]
@@ -44,6 +44,13 @@ namespace NiTiErp.Data.Entities
         [StringLength(100)]
         public string WebName { get; set; }
 
+        [StringLength(200)]
+        public string Image { get; set; }
+        [StringLength(200)]
+        public string ImageLogo { get; set; }
+
+        public string CorporationServiceId { get; set; }
+
         public DateTime DateCreated { set; get; }
         public DateTime DateModified { set; get; }
 
@@ -53,6 +60,7 @@ namespace NiTiErp.Data.Entities
         public virtual ICollection<Color> Colors { set; get; }
         public virtual ICollection<Size> Sizes { set; get; }
         public virtual ICollection<AppUser> AppUsers { set; get; }
+       
 
     }
 }

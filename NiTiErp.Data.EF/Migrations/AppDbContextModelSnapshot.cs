@@ -488,12 +488,20 @@ namespace NiTiErp.Data.EF.Migrations
                     b.Property<string>("Address")
                         .HasMaxLength(1000);
 
+                    b.Property<string>("CorporationServiceId");
+
                     b.Property<DateTime>("DateCreated");
 
                     b.Property<DateTime>("DateModified");
 
                     b.Property<string>("Email")
                         .HasMaxLength(100);
+
+                    b.Property<string>("Image")
+                        .HasMaxLength(200);
+
+                    b.Property<string>("ImageLogo")
+                        .HasMaxLength(200);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -513,7 +521,33 @@ namespace NiTiErp.Data.EF.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CorporationServiceId");
+
                     b.ToTable("Corporations");
+                });
+
+            modelBuilder.Entity("NiTiErp.Data.Entities.CorporationService", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("varchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<bool>("Active");
+
+                    b.Property<DateTime>("DateCreated");
+
+                    b.Property<DateTime>("DateModified");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(500);
+
+                    b.Property<int>("Order");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CorporationServices");
                 });
 
             modelBuilder.Entity("NiTiErp.Data.Entities.Feedback", b =>
@@ -1031,6 +1065,13 @@ namespace NiTiErp.Data.EF.Migrations
                     b.HasOne("NiTiErp.Data.Entities.Corporation")
                         .WithMany("Colors")
                         .HasForeignKey("CorporationId");
+                });
+
+            modelBuilder.Entity("NiTiErp.Data.Entities.Corporation", b =>
+                {
+                    b.HasOne("NiTiErp.Data.Entities.CorporationService")
+                        .WithMany("Corporations")
+                        .HasForeignKey("CorporationServiceId");
                 });
 
             modelBuilder.Entity("NiTiErp.Data.Entities.Permission", b =>

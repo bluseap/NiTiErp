@@ -51,6 +51,7 @@ namespace NiTiErp.Data.EF
 
         public DbSet<Tag> Tags { set; get; }
         public DbSet<Corporation> Corporations { set; get; }
+        public DbSet<CorporationService> CorporationServices { set; get; }
         public DbSet<Permission> Permissions { get; set; }
         public DbSet<WholePrice> WholePrices { get; set; }
 
@@ -77,6 +78,7 @@ namespace NiTiErp.Data.EF
 
             #endregion Identity Config
             builder.AddConfiguration(new CorporationConfiguration());
+            builder.AddConfiguration(new CorporationServiceConfiguration());
             builder.AddConfiguration(new TagConfiguration());
             builder.AddConfiguration(new BlogTagConfiguration());
             builder.AddConfiguration(new ContactDetailConfiguration());
