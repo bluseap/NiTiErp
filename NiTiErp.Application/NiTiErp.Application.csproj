@@ -6,8 +6,6 @@
 
   <ItemGroup>
     <Folder Include="AutoMapper\" />
-    <Folder Include="Implementation\" />
-    <Folder Include="Interfaces\" />
   </ItemGroup>
 
   <ItemGroup>

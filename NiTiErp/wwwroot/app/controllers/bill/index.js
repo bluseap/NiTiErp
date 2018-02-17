@@ -80,7 +80,7 @@
                     $('#ddlBillStatus').val(data.BillStatus);
 
                     var billDetails = data.BillDetails;
-                    if (data.BillDetails != null && data.BillDetails.length > 0) {
+                    if (data.BillDetails !== null && data.BillDetails.length > 0) {
                         var render = '';
                         var templateDetails = $('#template-table-bill-details').html();
 
@@ -364,7 +364,7 @@
                         });
                     });
                     $("#lbl-total-records").text(response.RowCount);
-                    if (render != undefined) {
+                    if (render !== undefined) {
                         $('#tbl-content').html(render);
 
                     }
@@ -387,7 +387,7 @@
     };
     function getPaymentMethodName(paymentMethod) {
         var method = $.grep(cachedObj.paymentMethods, function (element, index) {
-            return element.Value == paymentMethod;
+            return element.Value === paymentMethod;
         });
         if (method.length > 0)
             return method[0].Name;
@@ -395,7 +395,7 @@
     }
     function getBillStatusName(status) {
         var status = $.grep(cachedObj.billStatuses, function (element, index) {
-            return element.Value == status;
+            return element.Value === status;
         });
         if (status.length > 0)
             return status[0].Name;

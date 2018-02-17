@@ -36,7 +36,8 @@ namespace NiTiErp.Application.Implementation
                 Email = userVm.Email,
                 FullName = userVm.FullName,
                 DateCreated = DateTime.Now,
-                PhoneNumber = userVm.PhoneNumber
+                PhoneNumber = userVm.PhoneNumber,
+                CorporationId = userVm.CorporationId
             };
             var result = await _userManager.CreateAsync(user, userVm.Password);
             if (result.Succeeded && userVm.Roles.Count > 0)
@@ -127,6 +128,7 @@ namespace NiTiErp.Application.Implementation
                 user.Status = userVm.Status;
                 user.Email = userVm.Email;
                 user.PhoneNumber = userVm.PhoneNumber;
+                user.CorporationId = userVm.CorporationId;
                 await _userManager.UpdateAsync(user);
             }
 

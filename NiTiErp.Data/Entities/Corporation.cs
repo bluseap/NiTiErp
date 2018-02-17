@@ -22,6 +22,25 @@ namespace NiTiErp.Data.Entities
             AppUsers = new List<AppUser>();            
         }
 
+        public Corporation(string id, string name, string address, string phonenumber1, string phonenumber2, 
+            string taxnumber, string email,  string webname, string image, string imagelogo,
+            string corporationServiceid, DateTime datecreated, DateTime datemodified)
+        {
+            Id = id;
+            Name = name;
+            Address = address;
+            PhoneNumber1 = phonenumber1;
+            PhoneNumber2 = phonenumber2;
+            TaxNumber = taxnumber;
+            Email = email;
+            WebName = webname;
+            Image = image;
+            ImageLogo = imagelogo;
+            CorporationServiceId = corporationServiceid;
+            DateCreated = datecreated;
+            DateModified = datemodified;
+        }
+
         [StringLength(500)]
         [Required]
         public string Name { get; set; }
