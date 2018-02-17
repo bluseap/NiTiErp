@@ -19,6 +19,7 @@ namespace NiTiErp.Application.ViewModels.System
         public string UserName { set; get; }
         public string Address { get; set; }
         public string PhoneNumber { set; get; }
+        public string CorporationId { get; set; }
         public string Avatar { get; set; }
         public Status Status { get; set; }
 

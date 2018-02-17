@@ -1,6 +1,7 @@
 ﻿var UserController = function () {
-    this.initialize = function () {
+    this.initialize = function () {        
         loadData();
+        loadCorporation();
         registerEvents();
     }
 
@@ -67,6 +68,7 @@
                     $('#txtUserName').val(data.UserName);
                     $('#txtEmail').val(data.Email);
                     $('#txtPhoneNumber').val(data.PhoneNumber);
+                    $('#ddlCorporation').val(data.CorporationId);
                     $('#ckStatus').prop('checked', data.Status === 1);
 
                     initRoleList(data.Roles);
@@ -99,6 +101,7 @@
                         roles.push($(item).prop('value'));
                 });
                 var status = $('#ckStatus').prop('checked') === true ? 1 : 0;
+                var corporationId = $('#ddlCorporation').val();
 
                 $.ajax({
                     type: "POST",
@@ -110,8 +113,9 @@
                         Password: password,
                         Email: email,
                         PhoneNumber: phoneNumber,
+                        CorporationId: corporationId,
                         Status: status,
-                        Roles: roles
+                        Roles: roles                        
                     },
                     dataType: "json",
                     beforeSend: function () {
@@ -281,4 +285,21 @@
             }
         });
     }
+
+    function loadCorporation() {
+        return $.ajax({
+            type: "GET",
+            url: "/admin/corporation/GetAllCorporations",
+            dataType: "json",
+            success: function (response) {
+                //cachedObj.paymentMethods = response;
+                var render = "";
+                $.each(response, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.Name + "</option>";
+                });
+                $('#ddlCorporation').html(render);
+            }
+        });
+    }
+
 }

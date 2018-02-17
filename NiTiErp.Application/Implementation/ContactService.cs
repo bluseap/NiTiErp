@@ -68,7 +68,6 @@ namespace NiTiErp.Application.Implementation
             return paginationSet;
         }
 
-
         public ContactViewModel GetById(string id)
         {
             return Mapper.Map<Contact, ContactViewModel>(_contactRepository.FindById(id));

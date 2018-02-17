@@ -6,6 +6,7 @@ using NiTiErp.Application.ViewModels.Blog;
 using NiTiErp.Application.ViewModels.Common;
 using NiTiErp.Application.ViewModels.Product;
 using NiTiErp.Application.ViewModels.System;
+using NiTiErp.Application.ViewModels.Corporation;
 using NiTiErp.Data.Entities;
 
 namespace NiTiErp.Application.AutoMapper
@@ -29,9 +30,7 @@ namespace NiTiErp.Application.AutoMapper
 
             CreateMap<PermissionViewModel, Permission>()
             .ConstructUsing(c => new Permission(c.RoleId, c.FunctionId, c.CanCreate, c.CanRead, c.CanUpdate, c.CanDelete));
-
-
-
+            
             CreateMap<BillViewModel, Bill>()
               .ConstructUsing(c => new Bill(c.Id,c.CustomerName, c.CustomerAddress, 
               c.CustomerMobile, c.CustomerMessage, c.BillStatus, 
@@ -44,6 +43,9 @@ namespace NiTiErp.Application.AutoMapper
 
             CreateMap<ContactViewModel, Contact>()
                 .ConstructUsing(c => new Contact(c.Id, c.Name, c.Phone, c.Email, c.Website, c.Address, c.Other, c.Lng, c.Lat, c.Status));
+
+            CreateMap<CorporationViewModel, Corporation>()
+                .ConstructUsing(c => new Corporation(c.Id, c.Name, c.Address, c.PhoneNumber1, c.PhoneNumber2, c.TaxNumber, c.Email, c.WebName, c.Image, c.ImageLogo, c.CorporationServiceId, c.DateCreated, c.DateModified));
 
             CreateMap<FeedbackViewModel, Feedback>()
                 .ConstructUsing(c => new Feedback(c.Id, c.Name, c.Email, c.Message, c.Status));

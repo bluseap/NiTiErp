@@ -6,6 +6,7 @@ using NiTiErp.Application.ViewModels.Blog;
 using NiTiErp.Application.ViewModels.Common;
 using NiTiErp.Application.ViewModels.Product;
 using NiTiErp.Application.ViewModels.System;
+using NiTiErp.Application.ViewModels.Corporation;
 using NiTiErp.Data.Entities;
 
 namespace NiTiErp.Application.AutoMapper
@@ -37,6 +38,8 @@ namespace NiTiErp.Application.AutoMapper
             CreateMap<Footer, FooterViewModel>().MaxDepth(2);
             CreateMap<Feedback, FeedbackViewModel>().MaxDepth(2);
             CreateMap<Contact, ContactViewModel>().MaxDepth(2);
+            CreateMap<Corporation, CorporationViewModel>().MaxDepth(2);
+
             CreateMap<Page, PageViewModel>().MaxDepth(2);
 
         }
