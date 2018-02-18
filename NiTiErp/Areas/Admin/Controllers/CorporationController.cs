@@ -15,7 +15,7 @@ using NiTiErp.Utilities.Helpers;
 using NiTiErp.Application.Dapper.Interfaces;
 
 namespace NiTiErp.Areas.Admin.Controllers
-{
+{    
     public class CorporationController : BaseController
     {        
         private ICorporationService _corporationService;

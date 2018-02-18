@@ -12,5 +12,5 @@ namespace NiTiErp.Areas.Admin.Controllers
     public class BaseController : Controller
     {
         
-    }
+    }   
 }
