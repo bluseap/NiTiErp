@@ -212,6 +212,8 @@ namespace NiTiErp
                 routes.MapRoute(name: "areaRoute",
                     template: "{area:exists}/{controller=Login}/{action=Index}/{id?}");
 
+                routes.MapRoute(name: "areaClientRoute",
+                    template: "{area:exists}/{controller=CorporationClient}/{action=Index}/{id?}");
 
             });
 
