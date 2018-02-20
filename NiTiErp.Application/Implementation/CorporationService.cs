@@ -43,7 +43,8 @@ namespace NiTiErp.Application.Implementation
 
         public List<CorporationViewModel> GetAll()
         {
-            return _corporationRepository.FindAll().ProjectTo<CorporationViewModel>().ToList();
+            return _corporationRepository.FindAll().ProjectTo<CorporationViewModel>()
+                .OrderByDescending(p => p.DateCreated).ToList();
         }
 
         public PagedResult<CorporationViewModel> GetAllPaging(string keyword, int page, int pageSize)

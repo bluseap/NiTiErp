@@ -164,13 +164,13 @@
 
     };
 
-
     function disableFieldEdit(disabled) {
         $('#txtUserName').prop('disabled', disabled);
         $('#txtPassword').prop('disabled', disabled);
         $('#txtConfirmPassword').prop('disabled', disabled);
 
     }
+
     function resetFormMaintainance() {
         disableFieldEdit(false);
         $('#hidId').val('');

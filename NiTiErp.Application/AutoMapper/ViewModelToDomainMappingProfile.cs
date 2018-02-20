@@ -47,6 +47,9 @@ namespace NiTiErp.Application.AutoMapper
             CreateMap<CorporationViewModel, Corporation>()
                 .ConstructUsing(c => new Corporation(c.Id, c.Name, c.Address, c.PhoneNumber1, c.PhoneNumber2, c.TaxNumber, c.Email, c.WebName, c.Image, c.ImageLogo, c.CorporationServiceId, c.DateCreated, c.DateModified));
 
+            CreateMap<CorporationServiceViewModel, CorporationService>()
+                .ConstructUsing(c => new CorporationService(c.Id, c.Active, c.DateCreated, c.DateModified, c.Name, c.Order));
+
             CreateMap<FeedbackViewModel, Feedback>()
                 .ConstructUsing(c => new Feedback(c.Id, c.Name, c.Email, c.Message, c.Status));
 

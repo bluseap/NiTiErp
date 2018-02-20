@@ -159,6 +159,7 @@ namespace NiTiErp
             services.AddTransient<IFooterRepository, FooterRepository>();
 
             services.AddTransient<ICorporationRepository, CorporationRepository>();
+            services.AddTransient<ICorporationServiceRepository, CorporationServiceRepository>();
 
             //Serrvices
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
@@ -172,6 +173,7 @@ namespace NiTiErp
             services.AddTransient<IFeedbackService, FeedbackService>();
             services.AddTransient<IContactService, ContactService>();
             services.AddTransient<ICorporationService, Application.Implementation.CorporationService>();
+            services.AddTransient<ICorporationServiceService, Application.Implementation.CorporationServiceService>();
 
             services.AddTransient<IPageService, PageService>();
             services.AddTransient<IReportService, ReportService>();

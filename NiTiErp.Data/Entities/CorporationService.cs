@@ -18,6 +18,16 @@ namespace NiTiErp.Data.Entities
             Corporations = new List<Corporation>();
         }
 
+        public CorporationService(string id, bool active, DateTime datecreated, DateTime datemodified, string name, int order)
+        {
+            Id = id;
+            Active = active;
+            DateCreated = datecreated;
+            DateModified = datemodified;
+            Name = name;
+            Order = order;
+        }
+
         [StringLength(500)]
         [Required]
         public string Name { get; set; }
