@@ -38,7 +38,9 @@ namespace NiTiErp.Application.AutoMapper
             CreateMap<Footer, FooterViewModel>().MaxDepth(2);
             CreateMap<Feedback, FeedbackViewModel>().MaxDepth(2);
             CreateMap<Contact, ContactViewModel>().MaxDepth(2);
+
             CreateMap<Corporation, CorporationViewModel>().MaxDepth(2);
+            CreateMap<CorporationService, CorporationServiceViewModel>().MaxDepth(2);
 
             CreateMap<Page, PageViewModel>().MaxDepth(2);
 

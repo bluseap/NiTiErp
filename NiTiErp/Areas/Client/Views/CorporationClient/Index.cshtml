@@ -1,6 +1,7 @@
 ﻿@{
     Layout = null;
 }
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login </title>
+    <title>Corporation </title>
     <!-- Bootstrap -->
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <!-- Font Awesome -->
@@ -21,46 +22,92 @@
     <link href="~/lib/notifyjs/dist/styles/metro/notify-metro.css" rel="stylesheet" />
     <!-- Custom Theme Style -->
     <link href="~/admin-side/css/custom.css" rel="stylesheet" />
+
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
 </head>
 <body class="login">
-    <div>
-        <div class="login_wrapper">
-            <div class="animate form login_form">
-                <section class="login_content">
-                    <form id="frmLogin">
-                        
-                        <h1>Login</h1>
-                        <div>
-                            <input type="text" class="form-control" name="userName" placeholder="User name" id="txtUserName" required="" />
-                        </div>
-                        <div>
-                            <input type="password" class="form-control" name="password" id="txtPassword" placeholder="Password" required="" />
-                        </div>
-                        <div>
-                            <a class="btn btn-default submit" href="#" id="btnLogin">Login</a>
-                            <a class="reset_pass" href="#">Forgot password?</a>
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="separator">
-                            <div class="clearfix"></div>
-                            <br />
-                            <div>
-                                <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                                <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
-                            </div>
-                        </div>
-                    </form>
-                </section>
+    <div class="login_wrapper_width">
+        <div class="">
+            <h1>Corporation</h1>
+            <div class="title_right">
+                <div class="col-md-12 col-sm-12  form-group pull-right">
+                    <button id="btnCreate" class="btn btn-success" type="button">Create</button>
+                </div>
             </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Logo</th>                               
+                            </tr>
+                        </thead>
+                        <tbody id="tbl-content"></tbody>
+                    </table>
+                </div>
+            </div>
+            <script id="table-template" type="x-tmpl-mustache">
+                <tr>
+                    <td>{{Name}}</td>
+                    <td>{{Email}}</td>
+                    <td>{{PhoneNumber1}}</td>
+                    <td>{{{ImageLogo}}}</td>                   
+                </tr>
+            </script>
         </div>
     </div>
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/lib/notifyjs/dist/notify.js"></script>
-    <script src="~/lib/notifyjs/dist/styles/metro/notify-metro.js"></script>
-    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-    <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
-   
-   
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/notifyjs/dist/notify.js"></script>
+        <script src="~/lib/notifyjs/dist/styles/metro/notify-metro.js"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+        <!-- Bootstrap -->
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <!-- FastClick -->
+        <script src="~/lib/fastclick/lib/fastclick.js"></script>
+        <!-- NProgress -->
+        <script src="~/lib/nprogress/nprogress.js"></script>
+        <!-- Chart.js -->
+        <script src="~/lib/mustache/mustache.js"></script>
+        <script src="~/lib/Chart.js/dist/Chart.js"></script>
+        <!-- jQuery Sparklines -->
+        <script src="~/lib/twbs-pagination/jquery.twbsPagination.js"></script>
+        <script src="~/lib/jquery-sparkline/dist/jquery.sparkline.js"></script>
+        <!-- bootstrap-daterangepicker -->
+        <script src="~/lib/moment/moment.js"></script>
+        <script src="~/lib/bootstrap-daterangepicker/daterangepicker.js"></script>
+        <script src="~/lib/notifyjs/dist/notify.js"></script>
+        <script src="~/lib/notifyjs/dist/styles/metro/notify-metro.js"></script>
+        <script src="~/lib/bootbox/bootbox.js"></script>
+        <!-- Custom Theme Scripts -->
+        <script src="~/admin-side/js/custom.min.js"></script>
+        <!-- Flot -->
+        <script src="~/lib/flot/jquery.flot.js"></script>
+        <script src="~/lib/flot/jquery.flot.pie.js"></script>
+        <script src="~/lib/flot/jquery.flot.time.js"></script>
+        <script src="~/lib/flot/jquery.flot.stack.js"></script>
+        <script src="~/lib/flot/jquery.flot.resize.js"></script>
+        <!-- Flot plugins -->
+        <script src="~/lib/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+        <script src="~/lib/flot-spline/js/jquery.flot.spline.min.js"></script>
+        <script src="~/lib/flot.curvedlines/curvedLines.js"></script>
+        <!-- DateJS -->
+        <script src="~/lib/DateJS/build/date.js"></script>
+
+        <script src="~/app/shared/tedu.js"></script>
+
+        <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
+        <script src="~/app/controllers/CorporationClient/index.js" asp-append-version="true"></script>
+        <script>
+        var corporationClient = new corporationClientController();
+        corporationClient.initialize();
+        </script>
+
+        @Html.Partial("_AddEditModal.cshtml")
 </body>
 </html>
