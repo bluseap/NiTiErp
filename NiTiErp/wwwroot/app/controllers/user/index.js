@@ -162,7 +162,7 @@
             });
         });
 
-    };
+    }
 
     function disableFieldEdit(disabled) {
         $('#txtUserName').prop('disabled', disabled);
