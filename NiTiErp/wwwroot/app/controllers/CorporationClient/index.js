@@ -1,12 +1,8 @@
 ﻿var corporationClientController = function () {
-
-
-    this.initialize = function () {
-        
+    this.initialize = function () {        
         loadData();
         loadCorporationService();
         registerEvents();        
-
     }
 
     function registerEvents() {
@@ -29,8 +25,8 @@
                     required: true,
                     email: true
                 },
-                txtCorporationName: {required: true},
-                txtCorporationAddress: {required: true}
+                txtCorporationName: { required: true },
+                txtCorporationAddress: { required: true }
             }
         });
 
@@ -39,7 +35,19 @@
             $('#modal-add-edit').modal('show');
         });
 
-    }    
+        $("#btnCreateNew").on('click', function (e) {
+            resetFormMaintainance();
+            $('#modal-add-edit').modal('show');
+        });
+        $('#btnSaveCor').on('click', function (e) {
+            if ($('#frmMaintainance').valid()) {
+                e.preventDefault();
+                resetFormMaintainance();
+            }
+            return false;
+        });
+
+    }
 
     function loadData(isPageChanged) {
         var template = $('#table-template').html();
@@ -50,7 +58,7 @@
             dataType: 'json',
             success: function (response) {
                 var template = $('#table-template').html();
-                console.log(response);
+                //console.log(response);
                 $.each(response, function (i, item) {
                     render += Mustache.render(template, {
                         Id: item.Id,

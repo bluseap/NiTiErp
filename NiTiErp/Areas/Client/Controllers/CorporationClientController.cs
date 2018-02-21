@@ -13,6 +13,7 @@ using NiTiErp.Application.Interfaces;
 using NiTiErp.Application.ViewModels.Corporation;
 using NiTiErp.Utilities.Helpers;
 using NiTiErp.Application.Dapper.Interfaces;
+using PaulMiami.AspNetCore.Mvc.Recaptcha;
 
 namespace NiTiErp.Areas.Client.Controllers
 {
@@ -75,6 +76,7 @@ namespace NiTiErp.Areas.Client.Controllers
         }
 
         [HttpPost]
+        [ValidateRecaptcha]
         public IActionResult SaveEntity(CorporationViewModel corporationVm)
         {
             if (!ModelState.IsValid)
