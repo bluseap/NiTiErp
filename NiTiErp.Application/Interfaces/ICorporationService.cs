@@ -7,12 +7,14 @@ using NiTiErp.Utilities.Dtos;
 namespace NiTiErp.Application.Interfaces
 {
     public interface ICorporationService
-    {
+    { 
         void Add(CorporationViewModel corporationVm);
 
         void Update(CorporationViewModel corporationVm);
 
         void Delete(string id);
+
+        string CorporationNewId();
 
         List<CorporationViewModel> GetAll();
 

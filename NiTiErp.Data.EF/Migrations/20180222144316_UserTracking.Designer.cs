@@ -12,9 +12,10 @@ using System;
 namespace NiTiErp.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180222144316_UserTracking")]
+    partial class UserTracking
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -275,11 +276,9 @@ namespace NiTiErp.Data.EF.Migrations
 
                     b.Property<bool>("TwoFactorEnabled");
 
-                    b.Property<string>("UserCreated")
-                        .HasMaxLength(20);
+                    b.Property<string>("UserCreated");
 
-                    b.Property<string>("UserModified")
-                        .HasMaxLength(20);
+                    b.Property<string>("UserModified");
 
                     b.Property<string>("UserName");
 
@@ -323,11 +322,9 @@ namespace NiTiErp.Data.EF.Migrations
 
                     b.Property<int>("Status");
 
-                    b.Property<string>("UserCreated")
-                        .HasMaxLength(20);
+                    b.Property<string>("UserCreated");
 
-                    b.Property<string>("UserModified")
-                        .HasMaxLength(20);
+                    b.Property<string>("UserModified");
 
                     b.HasKey("Id");
 
@@ -407,11 +404,9 @@ namespace NiTiErp.Data.EF.Migrations
 
                     b.Property<string>("Tags");
 
-                    b.Property<string>("UserCreated")
-                        .HasMaxLength(20);
+                    b.Property<string>("UserCreated");
 
-                    b.Property<string>("UserModified")
-                        .HasMaxLength(20);
+                    b.Property<string>("UserModified");
 
                     b.Property<int?>("ViewCount");
 
@@ -569,11 +564,9 @@ namespace NiTiErp.Data.EF.Migrations
 
                     b.Property<int>("SortOrder");
 
-                    b.Property<string>("UserCreated")
-                        .HasMaxLength(20);
+                    b.Property<string>("UserCreated");
 
-                    b.Property<string>("UserModified")
-                        .HasMaxLength(20);
+                    b.Property<string>("UserModified");
 
                     b.HasKey("Id");
 
@@ -774,11 +767,9 @@ namespace NiTiErp.Data.EF.Migrations
                     b.Property<string>("Unit")
                         .HasMaxLength(255);
 
-                    b.Property<string>("UserCreated")
-                        .HasMaxLength(20);
+                    b.Property<string>("UserCreated");
 
-                    b.Property<string>("UserModified")
-                        .HasMaxLength(20);
+                    b.Property<string>("UserModified");
 
                     b.Property<int?>("ViewCount");
 
@@ -826,11 +817,9 @@ namespace NiTiErp.Data.EF.Migrations
 
                     b.Property<int>("Status");
 
-                    b.Property<string>("UserCreated")
-                        .HasMaxLength(20);
+                    b.Property<string>("UserCreated");
 
-                    b.Property<string>("UserModified")
-                        .HasMaxLength(20);
+                    b.Property<string>("UserModified");
 
                     b.HasKey("Id");
 
@@ -1000,38 +989,6 @@ namespace NiTiErp.Data.EF.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tags");
-                });
-
-            modelBuilder.Entity("NiTiErp.Data.Entities.UserTracking", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("DateCreated");
-
-                    b.Property<DateTime>("DateIpAddress")
-                        .HasMaxLength(200);
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(500);
-
-                    b.Property<string>("DeviceName")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("IpAddress")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("MacAddress");
-
-                    b.Property<string>("TableId")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("UserCreated")
-                        .HasMaxLength(20);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UserTrackings");
                 });
 
             modelBuilder.Entity("NiTiErp.Data.Entities.WholePrice", b =>

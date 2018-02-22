@@ -10,7 +10,7 @@ using NiTiErp.Infrastructure.SharedKernel;
 namespace NiTiErp.Data.Entities
 {
     [Table("Bills")]
-    public class Bill : DomainEntity<int>, ISwitchable, IDateTracking
+    public class Bill : DomainEntity<int>, ISwitchable, IDateTracking, IUserTracking
     {
         public Bill() { }
 
@@ -72,5 +72,9 @@ namespace NiTiErp.Data.Entities
         public virtual AppUser User { set; get; }
 
         public virtual ICollection<BillDetail> BillDetails { set; get; }
+        [StringLength(20)]
+        public string UserCreated { set; get; }
+        [StringLength(20)]
+        public string UserModified { set; get; }
     }
 }

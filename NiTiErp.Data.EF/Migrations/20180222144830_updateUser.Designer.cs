@@ -12,9 +12,10 @@ using System;
 namespace NiTiErp.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180222144830_updateUser")]
+    partial class updateUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1000,38 +1001,6 @@ namespace NiTiErp.Data.EF.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tags");
-                });
-
-            modelBuilder.Entity("NiTiErp.Data.Entities.UserTracking", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("DateCreated");
-
-                    b.Property<DateTime>("DateIpAddress")
-                        .HasMaxLength(200);
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(500);
-
-                    b.Property<string>("DeviceName")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("IpAddress")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("MacAddress");
-
-                    b.Property<string>("TableId")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("UserCreated")
-                        .HasMaxLength(20);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UserTrackings");
                 });
 
             modelBuilder.Entity("NiTiErp.Data.Entities.WholePrice", b =>

@@ -84,11 +84,13 @@ namespace NiTiErp.Areas.Client.Controllers
                 IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
                 return new BadRequestObjectResult(allErrors);
             }
-            else
+            else  
             {
                 if (corporationVm.Id == "0")
                 {
+                    corporationVm.Id = _corporationService.CorporationNewId();
                     corporationVm.DateCreated = DateTime.Now;
+
                     _corporationService.Add(corporationVm);
                 }
                 else

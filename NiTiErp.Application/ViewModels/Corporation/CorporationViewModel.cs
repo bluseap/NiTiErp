@@ -41,5 +41,9 @@ namespace NiTiErp.Application.ViewModels.Corporation
 
         public DateTime DateCreated { set; get; }
         public DateTime DateModified { set; get; }
+        [StringLength(20)]
+        public string UserIdCreated { set; get; }
+        [StringLength(20)]
+        public string UserIdModified { set; get; }
     }
 }

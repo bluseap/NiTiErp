@@ -24,7 +24,8 @@ namespace NiTiErp.Data.Entities
 
         public Corporation(string id, string name, string address, string phonenumber1, string phonenumber2, 
             string taxnumber, string email,  string webname, string image, string imagelogo,
-            string corporationServiceid, DateTime datecreated, DateTime datemodified)
+            string corporationServiceid, DateTime datecreated, DateTime datemodified, 
+            string useridCreate, string useridUpdate)
         {
             Id = id;
             Name = name;
@@ -39,6 +40,8 @@ namespace NiTiErp.Data.Entities
             CorporationServiceId = corporationServiceid;
             DateCreated = datecreated;
             DateModified = datemodified;
+            UserIdCreated = useridCreate;
+            UserIdModified = useridUpdate;
         }
 
         [StringLength(500)]
@@ -72,7 +75,10 @@ namespace NiTiErp.Data.Entities
 
         public DateTime DateCreated { set; get; }
         public DateTime DateModified { set; get; }
-
+        [StringLength(20)]
+        public string UserIdCreated { set; get; }
+        [StringLength(20)]
+        public string UserIdModified { set; get; }
 
         public virtual ICollection<ProductCategory> ProductCategories { set; get; }
         public virtual ICollection<Product> Products { set; get; }

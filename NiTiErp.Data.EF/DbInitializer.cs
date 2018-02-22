@@ -50,10 +50,10 @@ namespace NiTiErp.Data.EF
             {
                 List<CorporationService> listCorporationService = new List<CorporationService>()
                 {
-                    new CorporationService() {Id="NT001", Active = true, DateCreated=DateTime.Now, DateModified=DateTime.Now, Name="Siêu thị - Tạp hóa", Order = 1 },
-                    new CorporationService() {Id="NT002", Active = true, DateCreated=DateTime.Now, DateModified=DateTime.Now, Name="Vàng - Bạc", Order = 2 },
-                    new CorporationService() {Id="NT003", Active = true, DateCreated=DateTime.Now, DateModified=DateTime.Now, Name="Cafe - Quán ăn", Order = 3 },
-                    new CorporationService() {Id="NT004", Active = true, DateCreated=DateTime.Now, DateModified=DateTime.Now, Name="Nhà hàng - Khách sạn", Order = 4 }
+                    new CorporationService() {Id="NT001", Active = true, DateCreated=DateTime.Now, DateModified=DateTime.Now, Name="Siêu thị - Tạp hóa", SortOrder = 1 },
+                    new CorporationService() {Id="NT002", Active = true, DateCreated=DateTime.Now, DateModified=DateTime.Now, Name="Vàng - Bạc", SortOrder = 2 },
+                    new CorporationService() {Id="NT003", Active = true, DateCreated=DateTime.Now, DateModified=DateTime.Now, Name="Cafe - Quán ăn", SortOrder = 3 },
+                    new CorporationService() {Id="NT004", Active = true, DateCreated=DateTime.Now, DateModified=DateTime.Now, Name="Nhà hàng - Khách sạn", SortOrder = 4 }
 
                 };
                 _context.CorporationServices.AddRange(listCorporationService);
