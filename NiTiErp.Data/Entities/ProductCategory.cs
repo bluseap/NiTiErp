@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using NiTiErp.Data.Enums;
 using NiTiErp.Data.Interfaces;
@@ -10,7 +11,7 @@ namespace NiTiErp.Data.Entities
 {
     [Table("ProductCategories")]
     public class ProductCategory : DomainEntity<int>,
-        IHasSeoMetaData, ISwitchable, ISortable, IDateTracking
+        IHasSeoMetaData, ISwitchable, ISortable, IDateTracking,IUserTracking
     {
         public ProductCategory()
         {
@@ -58,5 +59,9 @@ namespace NiTiErp.Data.Entities
         public string SeoDescription { set; get; }
 
         public virtual ICollection<Product> Products { set; get; }
+        [StringLength(20)]
+        public string UserCreated { set; get; }
+        [StringLength(20)]
+        public string UserModified { set; get; }
     }
 }

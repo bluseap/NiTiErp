@@ -9,7 +9,7 @@ using NiTiErp.Infrastructure.SharedKernel;
 namespace NiTiErp.Data.Entities
 {
     [Table("Blogs")]
-    public class Blog : DomainEntity<int>, ISwitchable, IDateTracking, IHasSeoMetaData
+    public class Blog : DomainEntity<int>, ISwitchable, IDateTracking, IHasSeoMetaData,IUserTracking
     {
         public Blog() { }
         public Blog(string name,string thumbnailImage,
@@ -87,5 +87,9 @@ namespace NiTiErp.Data.Entities
 
         [MaxLength(256)]
         public string SeoDescription { set; get; }
+        [StringLength(20)]
+        public string UserCreated { set; get; }
+        [StringLength(20)]
+        public string UserModified { set; get; }
     }
 }

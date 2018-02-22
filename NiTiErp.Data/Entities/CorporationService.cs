@@ -11,7 +11,7 @@ using NiTiErp.Infrastructure.SharedKernel;
 namespace NiTiErp.Data.Entities
 {
     [Table("CorporationServices")]
-    public class CorporationService : DomainEntity<string>
+    public class CorporationService : DomainEntity<string>,IUserTracking
     {
         public CorporationService()
         {            
@@ -25,17 +25,21 @@ namespace NiTiErp.Data.Entities
             DateCreated = datecreated;
             DateModified = datemodified;
             Name = name;
-            Order = order;
+            SortOrder = order;
         }
 
         [StringLength(500)]
         [Required]
         public string Name { get; set; }
         public bool Active { get; set; }
-        public int Order { get; set; }
+        public int SortOrder { get; set; }
         public DateTime DateCreated { set; get; }
         public DateTime DateModified { set; get; }
 
         public virtual ICollection<Corporation> Corporations { set; get; }
+        [StringLength(20)]
+        public string UserCreated { set; get; }
+        [StringLength(20)]
+        public string UserModified { set; get; }
     }
 }

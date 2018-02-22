@@ -14,7 +14,7 @@ namespace NiTiErp.Application.ViewModels.Corporation
         [Required]
         public string Name { get; set; }
         public bool Active { get; set; }
-        public int Order { get; set; }
+        public int SortOrder { get; set; }
         public DateTime DateCreated { set; get; }
         public DateTime DateModified { set; get; }
     }

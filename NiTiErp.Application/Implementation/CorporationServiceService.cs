@@ -42,7 +42,7 @@ namespace NiTiErp.Application.Implementation
         public List<CorporationServiceViewModel> GetAll()
         {
             return _corserRepository.FindAll().ProjectTo<CorporationServiceViewModel>()
-                .OrderBy(p => p.Order).ToList();
+                .OrderBy(p => p.SortOrder).ToList();
         }
 
         public PagedResult<CorporationServiceViewModel> GetAllPaging(string keyword, int page, int pageSize)

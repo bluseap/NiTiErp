@@ -34,15 +34,54 @@
             resetFormMaintainance();
             $('#modal-add-edit').modal('show');
         });
-
-        $("#btnCreateNew").on('click', function (e) {
-            resetFormMaintainance();
-            $('#modal-add-edit').modal('show');
-        });
-        $('#btnSaveCor').on('click', function (e) {
+        
+        $('#btnSave').on('click', function (e) {
             if ($('#frmMaintainance').valid()) {
                 e.preventDefault();
-                resetFormMaintainance();
+                
+                var id = $('#hidId').val();
+                var fullName = $('#txtFullName').val();
+                var userName = $('#txtUserName').val();
+                var password = $('#txtPassword').val();
+                var email = $('#txtEmail').val();
+                var phoneNumber = $('#txtPhoneNumber').val();                
+               
+                var corporationName = $('#txtCorporationName').val();
+                var corporationAddress = $('#txtCorporationAddress').val();
+
+                var corporationId = $('#ddlCorporation').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/client/corporationClient/SaveEntity",
+                    data: {
+                        Id: id,
+                        FullName: fullName,
+                        UserName: userName,
+                        Password: password,
+                        Email: email,
+                        PhoneNumber: phoneNumber,
+                        CorporationName: corporationName,
+                        CorporationAddress: corporationAddress,
+                        CorporationId: corporationId
+                    },
+                    dataType: "json",
+                    beforeSend: function () {
+                        tedu.startLoading();
+                    },
+                    success: function () {
+                        tedu.notify('Save user succesful', 'success');
+                        $('#modal-add-edit').modal('hide');
+                        resetFormMaintainance();
+
+                        tedu.stopLoading();
+                        loadData(true);
+                    },
+                    error: function () {
+                        tedu.notify('Has an error', 'error');
+                        tedu.stopLoading();
+                    }
+                });
             }
             return false;
         });

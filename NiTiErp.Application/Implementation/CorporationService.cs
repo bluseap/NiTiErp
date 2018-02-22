@@ -41,6 +41,15 @@ namespace NiTiErp.Application.Implementation
             GC.SuppressFinalize(this);
         }
 
+        public string CorporationNewId()
+        {
+            var query = _corporationRepository.FindAll().Max(p => p.Id.Substring(2, 4));
+
+            string maxId = (int.Parse(query.Substring(2, 4)) + 1).ToString("D4");
+
+            return maxId;
+        }
+
         public List<CorporationViewModel> GetAll()
         {
             return _corporationRepository.FindAll().ProjectTo<CorporationViewModel>()

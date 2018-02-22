@@ -11,7 +11,7 @@ using NiTiErp.Infrastructure.SharedKernel;
 namespace NiTiErp.Data.Entities
 {
     [Table("Products")]
-    public class Product : DomainEntity<int>, ISwitchable, IDateTracking, IHasSeoMetaData
+    public class Product : DomainEntity<int>, ISwitchable, IDateTracking, IHasSeoMetaData,IUserTracking
     {
         public Product() {
             ProductTags = new List<ProductTag>();
@@ -132,5 +132,9 @@ namespace NiTiErp.Data.Entities
         public Status Status {set;get;}
 
         public string CorporationId { get; set; }
+        [StringLength(20)]
+        public string UserCreated { get; set; }
+        [StringLength(20)]
+        public string UserModified { get; set; }
     }
 }

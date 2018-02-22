@@ -45,10 +45,10 @@ namespace NiTiErp.Application.AutoMapper
                 .ConstructUsing(c => new Contact(c.Id, c.Name, c.Phone, c.Email, c.Website, c.Address, c.Other, c.Lng, c.Lat, c.Status));
 
             CreateMap<CorporationViewModel, Corporation>()
-                .ConstructUsing(c => new Corporation(c.Id, c.Name, c.Address, c.PhoneNumber1, c.PhoneNumber2, c.TaxNumber, c.Email, c.WebName, c.Image, c.ImageLogo, c.CorporationServiceId, c.DateCreated, c.DateModified));
+                .ConstructUsing(c => new Corporation(c.Id, c.Name, c.Address, c.PhoneNumber1, c.PhoneNumber2, c.TaxNumber, c.Email, c.WebName, c.Image, c.ImageLogo, c.CorporationServiceId, c.DateCreated, c.DateModified, c.UserIdCreated, c.UserIdModified));
 
             CreateMap<CorporationServiceViewModel, CorporationService>()
-                .ConstructUsing(c => new CorporationService(c.Id, c.Active, c.DateCreated, c.DateModified, c.Name, c.Order));
+                .ConstructUsing(c => new CorporationService(c.Id, c.Active, c.DateCreated, c.DateModified, c.Name, c.SortOrder));
 
             CreateMap<FeedbackViewModel, Feedback>()
                 .ConstructUsing(c => new Feedback(c.Id, c.Name, c.Email, c.Message, c.Status));
