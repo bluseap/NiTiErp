@@ -28,60 +28,104 @@
                 txtCorporationName: { required: true },
                 txtCorporationAddress: { required: true }
             }
-        });
+        });      
 
-        $("#btnCreate").on('click', function () {
+        $("#btnCreate").on('click', function () {   
             resetFormMaintainance();
             $('#modal-add-edit').modal('show');
         });
         
         $('#btnSave').on('click', function (e) {
             if ($('#frmMaintainance').valid()) {
-                e.preventDefault();
-                
-                var id = $('#hidId').val();
-                var fullName = $('#txtFullName').val();
-                var userName = $('#txtUserName').val();
-                var password = $('#txtPassword').val();
-                var email = $('#txtEmail').val();
-                var phoneNumber = $('#txtPhoneNumber').val();                
-               
-                var corporationName = $('#txtCorporationName').val();
-                var corporationAddress = $('#txtCorporationAddress').val();
+                var $captcha = $('#recaptchaErrorMessage'),
+                response = grecaptcha.getResponse();
 
-                var corporationId = $('#ddlCorporation').val();
-
-                $.ajax({
-                    type: "POST",
-                    url: "/client/corporationClient/SaveEntity",
-                    data: {
-                        Id: id,
-                        FullName: fullName,
-                        UserName: userName,
-                        Password: password,
-                        Email: email,
-                        PhoneNumber: phoneNumber,
-                        CorporationName: corporationName,
-                        CorporationAddress: corporationAddress,
-                        CorporationId: corporationId
-                    },
-                    dataType: "json",
-                    beforeSend: function () {
-                        tedu.startLoading();
-                    },
-                    success: function () {
-                        tedu.notify('Save user succesful', 'success');
-                        $('#modal-add-edit').modal('hide');
-                        resetFormMaintainance();
-
-                        tedu.stopLoading();
-                        loadData(true);
-                    },
-                    error: function () {
-                        tedu.notify('Has an error', 'error');
-                        tedu.stopLoading();
+                if (response.length === 0) {
+                    $('.text-danger').text("Validate that you are not a robot.");
+                    if (!$captcha.hasClass("error")) {
+                        $captcha.addClass("error");
                     }
-                });
+                }
+                else {
+                    //$('.text-danger').text('');
+                    //$captcha.removeClass("error");
+                    //alert('reCAPTCHA marked');
+                    e.preventDefault();
+
+                    var id = $('#hidId').val();
+                    var fullName = $('#txtFullName').val();
+                    var userName = $('#txtUserName').val();
+                    var password = $('#txtPassword').val();
+                    var email = $('#txtEmail').val();
+                    var phoneNumber = $('#txtPhoneNumber').val();
+
+                    var corporationName = $('#txtCorporationName').val();
+                    var corporationAddress = $('#txtCorporationAddress').val();
+                    var corporationServiceId = $('#ddlCorporationService').val();
+
+                    var roles = ["Admin"];
+                    var status = 1;
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/client/corporationClient/SaveEntity",
+                        data: {
+                            Address: corporationAddress,
+                            CorporationServiceId: corporationServiceId,
+                            Email: email,
+                            Name: corporationName,
+                            PhoneNumber1: phoneNumber
+                        },
+                        dataType: "json",
+                        beforeSend: function () {
+                            tedu.startLoading();
+                        },
+                        success: function () {
+                            tedu.notify('Save corporation succesful', 'success');
+                            $('#modal-add-edit').modal('hide');
+                            resetFormMaintainance();
+
+                            tedu.stopLoading();
+                            loadData(true);
+                        },
+                        error: function () {
+                            tedu.notify('Has an error', 'error');
+                            tedu.stopLoading();
+                        }
+                    });
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/client/corporationClient/SaveAppUserEntity",
+                        data: {
+                            Id: id,
+                            FullName: fullName,
+                            UserName: userName,
+                            Password: password,
+                            Email: email,
+                            PhoneNumber: phoneNumber,
+                            //CorporationId: corporationId,
+                            Status: status,
+                            Roles: roles
+                        },
+                        dataType: "json",
+                        beforeSend: function () {
+                            tedu.startLoading();
+                        },
+                        success: function () {
+                            tedu.notify('Save user succesful', 'success');
+                            $('#modal-add-edit').modal('hide');
+                            resetFormMaintainance();
+
+                            tedu.stopLoading();
+                            loadData(true);
+                        },
+                        error: function () {
+                            tedu.notify('Has an error', 'error');
+                            tedu.stopLoading();
+                        }
+                    });                   
+                }
             }
             return false;
         });
