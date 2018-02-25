@@ -45,7 +45,7 @@ namespace NiTiErp.Application.Implementation
         {
             var query = _corporationRepository.FindAll().Max(p => p.Id.Substring(2, 4));
 
-            string maxId = (int.Parse(query.Substring(2, 4)) + 1).ToString("D4");
+            string maxId = (int.Parse(query) + 1).ToString("D4");
 
             return maxId;
         }

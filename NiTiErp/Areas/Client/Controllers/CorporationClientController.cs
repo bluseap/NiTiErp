@@ -14,22 +14,28 @@ using NiTiErp.Application.ViewModels.Corporation;
 using NiTiErp.Utilities.Helpers;
 using NiTiErp.Application.Dapper.Interfaces;
 using PaulMiami.AspNetCore.Mvc.Recaptcha;
+using System.Threading.Tasks;
+using NiTiErp.Application.ViewModels.System;
+
 
 namespace NiTiErp.Areas.Client.Controllers
 {
     [Area("Client")]
     public class CorporationClientController : Controller
     {
+        private readonly IUserService _userService;
         private ICorporationServiceService _corserService;
         private ICorporationService _corporationService;
         private readonly IHostingEnvironment _hostingEnvironment;
 
         public CorporationClientController(ICorporationService corporationService, 
             ICorporationServiceService corserService,
+            IUserService userService,
             IHostingEnvironment hostingEnvironment)
         {
             _corporationService = corporationService;
             _corserService = corserService;
+            _userService = userService;
             _hostingEnvironment = hostingEnvironment;
         }
         
@@ -66,7 +72,7 @@ namespace NiTiErp.Areas.Client.Controllers
             var model = _corporationService.GetAllPaging(keyword, page, pageSize);
             return new OkObjectResult(model);
         }
-
+        
         [HttpGet]
         public IActionResult GetById(string id)
         {
@@ -74,22 +80,23 @@ namespace NiTiErp.Areas.Client.Controllers
 
             return new OkObjectResult(model);
         }
-
-        [HttpPost]
-        [ValidateRecaptcha]
+        
+        [HttpPost]        
         public IActionResult SaveEntity(CorporationViewModel corporationVm)
         {
             if (!ModelState.IsValid)
             {
                 IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
-                return new BadRequestObjectResult(allErrors);
+                return new BadRequestObjectResult(allErrors);                
             }
             else  
             {
-                if (corporationVm.Id == "0")
+                if (corporationVm.Id == null)
                 {
-                    corporationVm.Id = _corporationService.CorporationNewId();
+                    corporationVm.Id = corporationVm.Email.Substring(0,2).ToUpper() + _corporationService.CorporationNewId();
+
                     corporationVm.DateCreated = DateTime.Now;
+                    corporationVm.UserIdCreated = "Clients";
 
                     _corporationService.Add(corporationVm);
                 }
@@ -99,6 +106,30 @@ namespace NiTiErp.Areas.Client.Controllers
                 }
                 _corporationService.Save();
                 return new OkObjectResult(corporationVm);
+            }
+        }
+        
+        [HttpPost]        
+        public async Task<IActionResult> SaveAppUserEntity(AppUserViewModel userVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                if (userVm.Id == null)
+                {
+                    userVm.CorporationId = userVm.Email.Substring(0, 2).ToUpper() + _corporationService.CorporationNewId();
+
+                    await _userService.AddAsync(userVm);
+                }
+                else
+                {
+                    await _userService.UpdateAsync(userVm);
+                }
+                return new OkObjectResult(userVm);
             }
         }
 

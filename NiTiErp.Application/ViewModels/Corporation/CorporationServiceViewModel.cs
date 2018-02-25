@@ -17,5 +17,10 @@ namespace NiTiErp.Application.ViewModels.Corporation
         public int SortOrder { get; set; }
         public DateTime DateCreated { set; get; }
         public DateTime DateModified { set; get; }
+
+        [StringLength(20)]
+        public string UserCreated { set; get; }
+        [StringLength(20)]
+        public string UserModified { set; get; }
     }
 }
