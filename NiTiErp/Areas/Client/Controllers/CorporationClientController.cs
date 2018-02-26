@@ -17,7 +17,6 @@ using PaulMiami.AspNetCore.Mvc.Recaptcha;
 using System.Threading.Tasks;
 using NiTiErp.Application.ViewModels.System;
 
-
 namespace NiTiErp.Areas.Client.Controllers
 {
     [Area("Client")]
