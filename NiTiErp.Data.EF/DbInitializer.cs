@@ -31,26 +31,29 @@ namespace NiTiErp.Data.EF
                 {
                     Name = "Admin",
                     NormalizedName = "Admin",
-                    Description = "Top manager"
+                    Description = "Top manager",
+                    CorporationId= "NT0001"
                 });
                 await _roleManager.CreateAsync(new AppRole()
                 {
                     Name = "Staff",
                     NormalizedName = "Staff",
-                    Description = "Staff"
+                    Description = "Staff",
+                    CorporationId = "NT0001"
                 });
                 await _roleManager.CreateAsync(new AppRole()
                 {
                     Name = "Customer",
                     NormalizedName = "Customer",
-                    Description = "Customer"
+                    Description = "Customer",
+                    CorporationId = "NT0001"
                 });
             }
             if (_context.CorporationServices.Count() == 0)
             {
                 List<CorporationService> listCorporationService = new List<CorporationService>()
                 {
-                    new CorporationService() {Id="NT001", Active = true, DateCreated=DateTime.Now, DateModified=DateTime.Now, Name="Siêu thị - Tạp hóa", SortOrder = 1 },
+                    new CorporationService() {Id="NT001", Active = true, DateCreated=DateTime.Now, DateModified=DateTime.Now, Name="Shop - Siêu thị", SortOrder = 1 },
                     new CorporationService() {Id="NT002", Active = true, DateCreated=DateTime.Now, DateModified=DateTime.Now, Name="Vàng - Bạc", SortOrder = 2 },
                     new CorporationService() {Id="NT003", Active = true, DateCreated=DateTime.Now, DateModified=DateTime.Now, Name="Cafe - Quán ăn", SortOrder = 3 },
                     new CorporationService() {Id="NT004", Active = true, DateCreated=DateTime.Now, DateModified=DateTime.Now, Name="Nhà hàng - Khách sạn", SortOrder = 4 }
@@ -62,8 +65,8 @@ namespace NiTiErp.Data.EF
             {
                 List<Corporation> listCorporation = new List<Corporation>()
                 {
-                    new Corporation() {Id="NT0001", Address="641 Trần Hưng Đạo, Long Xuyên, An Giang.", CorporationServiceId = "NT001", DateCreated=DateTime.Now, DateModified=DateTime.Now, Email="lenguyen@gmail.com", Name="Shop NiTi",PhoneNumber1="0967072555",PhoneNumber2="0967072555",TaxNumber="00001555",WebName="https://powaco.com.vn" },
-                    new Corporation() {Id="NT0002", Address="641 Trần Hưng Đạo, Long Xuyên, An Giang.", CorporationServiceId = "NT002", DateCreated=DateTime.Now, DateModified=DateTime.Now, Email="lenguyen@gmail.com", Name="Vàng - Bạc - Kim cương NiTi",PhoneNumber1="0967072555",PhoneNumber2="0967072555",TaxNumber="00001555",WebName="https://powaco.com.vn" }
+                    new Corporation() {Id="NT0001", Address="641 Trần Hưng Đạo, Long Xuyên, An Giang.", CorporationServiceId = "NT001", DateCreated=DateTime.Now, DateModified=DateTime.Now, Email="khoinguyenaglx@gmail.com", Name="Shop NiTi",PhoneNumber1="0967072666",PhoneNumber2="0967072666",TaxNumber="00001555",WebName="https://powaco.com.vn" },
+                    new Corporation() {Id="NT0002", Address="641 Trần Hưng Đạo, Long Xuyên, An Giang.", CorporationServiceId = "NT002", DateCreated=DateTime.Now, DateModified=DateTime.Now, Email="khoinguyenaglx@gmail.com", Name="Vàng - Bạc - Kim cương NiTi",PhoneNumber1="0967072666",PhoneNumber2="0967072666",TaxNumber="00001555",WebName="https://powaco.com.vn" }
 
                 };
                 _context.Corporations.AddRange(listCorporation);

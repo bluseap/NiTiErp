@@ -36,6 +36,7 @@ namespace NiTiErp.Application.Implementation
                 Email = userVm.Email,
                 FullName = userVm.FullName,
                 DateCreated = DateTime.Now,
+                UserCreated = userVm.UserCreated,
                 PhoneNumber = userVm.PhoneNumber,
                 CorporationId = userVm.CorporationId
             };
@@ -97,6 +98,45 @@ namespace NiTiErp.Application.Implementation
             return paginationSet;
         }
 
+        public PagedResult<AppUserViewModel> GetAllPagingAsyncCor(string keyword, int page, int pageSize, 
+            string corporationId)
+        {
+            /*var query = _userManager.Users.Where(x => !x.Email.Equals("khoinguyenaglx@gmail.com")
+                    && !x.CorporationId.Substring(0, 2).Equals("NT"));*/
+            var query = _userManager.Users.Where(x => x.CorporationId.Equals(corporationId));
+
+            if (!string.IsNullOrEmpty(keyword))
+                query = query.Where(x => x.FullName.Contains(keyword) 
+                    || x.UserName.Contains(keyword) || x.Email.Contains(keyword));
+
+            int totalRow = query.Count();
+            query = query.Skip((page - 1) * pageSize)
+               .Take(pageSize);
+
+            var data = query.Select(x => new AppUserViewModel()
+            {
+                UserName = x.UserName,
+                Avatar = x.Avatar,
+                BirthDay = x.BirthDay.ToString(),
+                Email = x.Email,
+                FullName = x.FullName,
+                Id = x.Id,
+                PhoneNumber = x.PhoneNumber,
+                Status = x.Status,
+                DateCreated = x.DateCreated
+
+            }).ToList();
+            var paginationSet = new PagedResult<AppUserViewModel>()
+            {
+                Results = data,
+                CurrentPage = page,
+                RowCount = totalRow,
+                PageSize = pageSize
+            };
+
+            return paginationSet;
+        }
+
         public async Task<AppUserViewModel> GetById(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
@@ -113,7 +153,7 @@ namespace NiTiErp.Application.Implementation
             var currentRoles = await _userManager.GetRolesAsync(user);
 
             var result = await _userManager.AddToRolesAsync(user, userVm.Roles.Except(currentRoles).ToArray());
-
+                     
             if (result.Succeeded)
             {
                 string[] needRemoveRoles = currentRoles.Except(userVm.Roles).ToArray();
@@ -128,10 +168,24 @@ namespace NiTiErp.Application.Implementation
                 user.Status = userVm.Status;
                 user.Email = userVm.Email;
                 user.PhoneNumber = userVm.PhoneNumber;
-                user.CorporationId = userVm.CorporationId;
+                user.CorporationId = userVm.CorporationId;                
+              
                 await _userManager.UpdateAsync(user);
             }
 
+        }
+
+        public async Task EditPassAsync(AppUserViewModel userVm)
+        {
+            var user = await _userManager.FindByIdAsync(userVm.Id.ToString());
+
+            user.DateModified = DateTime.Now;
+            user.UserModified = userVm.UserModified;
+
+            //await _userManager.ChangePasswordAsync(user, userVm.CurrentPassword, userVm.NewPassword);   
+            string token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+            await _userManager.ResetPasswordAsync(user, token, userVm.NewPassword); 
         }
     }
 }

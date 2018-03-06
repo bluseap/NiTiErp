@@ -26,7 +26,7 @@ namespace NiTiErp.Application.AutoMapper
 
             CreateMap<AppUserViewModel, AppUser>()
             .ConstructUsing(c => new AppUser(c.Id.GetValueOrDefault(Guid.Empty), c.FullName, c.UserName, 
-            c.Email, c.PhoneNumber, c.Avatar, c.Status));
+            c.Email, c.PhoneNumber, c.Avatar, c.Status, c.CorporationId));
 
             CreateMap<PermissionViewModel, Permission>()
             .ConstructUsing(c => new Permission(c.RoleId, c.FunctionId, c.CanCreate, c.CanRead, c.CanUpdate, c.CanDelete));

@@ -14,7 +14,7 @@ namespace NiTiErp.Data.Entities
     {
         public AppUser() {  }
         public AppUser(Guid id, string fullName, string userName, 
-            string email, string phoneNumber, string avatar, Status status)
+            string email, string phoneNumber, string avatar, Status status, string corporationId)
         {
             Id = id;
             FullName = fullName;
@@ -23,6 +23,7 @@ namespace NiTiErp.Data.Entities
             PhoneNumber = phoneNumber;
             Avatar = avatar;
             Status = status;
+            CorporationId = corporationId;
         }
         public string FullName { get; set; }
 

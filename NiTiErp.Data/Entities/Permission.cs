@@ -32,8 +32,7 @@ namespace NiTiErp.Data.Entities
         public bool CanRead { set; get; }
 
         public bool CanUpdate { set; get; }
-        public bool CanDelete { set; get; }
-
+        public bool CanDelete { set; get; }        
 
         [ForeignKey("RoleId")]
         public virtual AppRole AppRole { get; set; }
