@@ -51,6 +51,7 @@ namespace NiTiErp.Data.EF
 
         public DbSet<Tag> Tags { set; get; }
         public DbSet<Corporation> Corporations { set; get; }
+        public DbSet<CorporationHistory> CorporationHistory { set; get; }
         public DbSet<CorporationService> CorporationServices { set; get; }
         public DbSet<UserTracking> UserTrackings { set; get; }
         public DbSet<Permission> Permissions { get; set; }

@@ -16,6 +16,8 @@ namespace NiTiErp.Application.ViewModels.System
         public string BirthDay { set; get; }
         public string Email { set; get; }
         public string Password { set; get; }
+        public string CurrentPassword { set; get; }
+        public string NewPassword { set; get; }
         public string UserName { set; get; }
         public string Address { get; set; }
         public string PhoneNumber { set; get; }
@@ -26,6 +28,9 @@ namespace NiTiErp.Application.ViewModels.System
         public string Gender { get; set; }
 
         public DateTime DateCreated { get; set; }
+        public string UserCreated { get; set; }
+        public DateTime DateModified { get; set; }
+        public string UserModified { get; set; }
 
         public List<string> Roles { get; set; }
     }

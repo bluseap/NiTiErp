@@ -46,10 +46,7 @@
                         $captcha.addClass("error");
                     }
                 }
-                else {
-                    //$('.text-danger').text('');
-                    //$captcha.removeClass("error");
-                    //alert('reCAPTCHA marked');
+                else {                    
                     e.preventDefault();
 
                     var id = $('#hidId').val();
@@ -148,7 +145,7 @@
                         Name: item.Name,
                         Email: item.Email,
                         PhoneNumber1: item.PhoneNumber1,
-                        ImageLogo: item.ImageLogo === null ? '<img src="/admin-side/images/user.png" width=50' : '<img src="' + item.Image + '" width=50 />',
+                        ImageLogo: item.ImageLogo === null ? '<img src="/admin-side/images/LogoNiTi.png" width=60' : '<img src="' + item.Image + '" width=60 />',
                         //Status: tedu.getStatus(item.Status)
                     });
                 });

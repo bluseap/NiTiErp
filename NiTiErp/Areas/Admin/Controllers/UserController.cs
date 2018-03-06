@@ -8,6 +8,7 @@ using NiTiErp.Application.ViewModels.System;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Authorization;
 using NiTiErp.Authorization;
+using NiTiErp.Extensions;
 
 namespace NiTiErp.Areas.Admin.Controllers
 {
@@ -52,6 +53,27 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        [HttpGet]
+        public IActionResult GetAllPagingCor(string keyword, int page, int pageSize)
+        {
+            var email = User.GetSpecificClaim("Email");
+
+            var id = User.GetSpecificClaim("UserId");
+            var username = User.GetSpecificClaim("UserName");
+            var corporationId = User.GetSpecificClaim("CorporationId");
+
+            if (email.Equals("khoinguyenaglx@gmail.com"))
+            {
+                var model = _userService.GetAllPagingAsync(keyword, page, pageSize);
+                return new OkObjectResult(model);
+            }
+            else
+            {
+                var model = _userService.GetAllPagingAsyncCor(keyword, page, pageSize, corporationId);
+                return new OkObjectResult(model);
+            }        
+        }
+
         [HttpPost]
         public async Task<IActionResult> SaveEntity(AppUserViewModel userVm)
         {
@@ -70,6 +92,25 @@ namespace NiTiErp.Areas.Admin.Controllers
                 {
                     await _userService.UpdateAsync(userVm);
                 }
+                return new OkObjectResult(userVm);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SaveEditPass(AppUserViewModel userVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                if (userVm.Id != null)
+                {
+                    await _userService.EditPassAsync(userVm);
+                }
+                
                 return new OkObjectResult(userVm);
             }
         }

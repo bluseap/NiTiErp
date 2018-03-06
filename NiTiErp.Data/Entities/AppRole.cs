@@ -21,5 +21,6 @@ namespace NiTiErp.Data.Entities
 
         [StringLength(250)]
         public string Description { get; set; }
+        public string CorporationId { get; set; }
     }
 }

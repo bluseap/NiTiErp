@@ -52,7 +52,8 @@
 
         $('body').on('click', '.btn-edit', function (e) {
             e.preventDefault();
-            var that = $(this).data('id');
+            var that = $(this).data('id');          
+
             $.ajax({
                 type: "GET",
                 url: "/Admin/User/GetById",
@@ -74,9 +75,39 @@
                     initRoleList(data.Roles);
 
                     disableFieldEdit(true);
+
                     $('#modal-add-edit').modal('show');
                     tedu.stopLoading();
 
+                },
+                error: function () {
+                    tedu.notify('Có lỗi xảy ra', 'error');
+                    tedu.stopLoading();
+                }
+            });
+        });
+
+        $('body').on('click', '.btn-editpass', function (e) {
+            e.preventDefault();
+            var that = $(this).data('id');
+
+            $('#txtCurrentPassword').prop('disabled', true);
+
+            $.ajax({
+                type: "GET",
+                url: "/Admin/User/GetById",
+                data: { id: that },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    var data = response;
+
+                    $('#hidEditPassId').val(data.Id);                   
+                    $('#modal-edit-password').modal('show');
+
+                    tedu.stopLoading();
                 },
                 error: function () {
                     tedu.notify('Có lỗi xảy ra', 'error');
@@ -138,6 +169,42 @@
             return false;
         });
 
+        $('#btnSaveEditPass').on('click', function (e) {
+            if ($('#frmMainEditPassword').valid()) {
+                e.preventDefault();
+
+                var id = $('#hidEditPassId').val();
+                var currentpassword = $('#txtCurrentPassword').val();
+                var newpassword = $('#txtNewPassword').val();                
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/User/SaveEditPass",
+                    data: {
+                        Id: id,
+                        CurrentPassword: currentpassword,
+                        NewPassword: newpassword                       
+                    },
+                    dataType: "json",
+                    beforeSend: function () {
+                        tedu.startLoading();
+                    },
+                    success: function () {
+                        tedu.notify('Edit password user succesful', 'success');
+                        $('#modal-edit-password').modal('hide');
+                        resetFormMaintainance();
+
+                        tedu.stopLoading();                        
+                    },
+                    error: function () {
+                        tedu.notify('Has an error', 'error');
+                        tedu.stopLoading();
+                    }
+                });
+            }
+            return false;
+        });
+
         $('body').on('click', '.btn-delete', function (e) {
             e.preventDefault();
             var that = $(this).data('id');
@@ -168,13 +235,15 @@
         $('#txtUserName').prop('disabled', disabled);
         $('#txtPassword').prop('disabled', disabled);
         $('#txtConfirmPassword').prop('disabled', disabled);
-
     }
 
     function resetFormMaintainance() {
         disableFieldEdit(false);
+
         $('#hidId').val('');
+
         initRoleList();
+
         $('#txtFullName').val('');
         $('#txtUserName').val('');
         $('#txtPassword').val('');
@@ -184,6 +253,8 @@
         $('#txtPhoneNumber').val('');
         $('#ckStatus').prop('checked', true);
 
+        $('#txtCurrentPassword').val('');
+        $('#txtNewPassword').val('');
     }
 
     function initRoleList(selectedRoles) {
@@ -215,7 +286,7 @@
     function loadData(isPageChanged) {
         $.ajax({
             type: "GET",
-            url: "/admin/user/GetAllPaging",
+            url: "/admin/user/GetAllPagingCor",
             data: {
                 categoryId: $('#ddl-category-search').val(),
                 keyword: $('#txt-search-keyword').val(),

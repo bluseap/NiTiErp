@@ -16,10 +16,12 @@ namespace NiTiErp.Application.Interfaces
         Task<List<AppUserViewModel>> GetAllAsync();
 
         PagedResult<AppUserViewModel> GetAllPagingAsync(string keyword, int page, int pageSize);
+        PagedResult<AppUserViewModel> GetAllPagingAsyncCor(string keyword, int page, int pageSize, string corporationId);
 
         Task<AppUserViewModel> GetById(string id);
 
 
         Task UpdateAsync(AppUserViewModel userVm);
+        Task EditPassAsync(AppUserViewModel userVm);
     }
 }

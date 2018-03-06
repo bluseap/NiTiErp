@@ -12,9 +12,10 @@ using System;
 namespace NiTiErp.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180305152713_update-corHis2")]
+    partial class updatecorHis2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -215,8 +216,6 @@ namespace NiTiErp.Data.EF.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("ConcurrencyStamp");
-
-                    b.Property<string>("CorporationId");
 
                     b.Property<string>("Description")
                         .HasMaxLength(250);
@@ -750,6 +749,8 @@ namespace NiTiErp.Data.EF.Migrations
                     b.Property<bool>("CanRead");
 
                     b.Property<bool>("CanUpdate");
+
+                    b.Property<string>("CorporationId");
 
                     b.Property<string>("FunctionId")
                         .IsRequired()
