@@ -228,7 +228,6 @@
                 });
             });
         });
-
     }
 
     function disableFieldEdit(disabled) {
