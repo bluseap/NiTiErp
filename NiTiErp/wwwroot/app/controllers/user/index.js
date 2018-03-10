@@ -13,7 +13,22 @@
             lang: 'en',
             rules: {
                 txtFullName: { required: true },
-                txtUserName: { required: true },
+                txtUserName: { required: true,                 
+                    remote: {
+                        type: "post",
+                        url: "/Admin/User/GetUserName",
+                        data: {
+                            userName: function() { return $("#txtUserName").val(); }
+                        },
+                        dataType: "json",
+                        success: function (response) {
+                            var username = $("#txtUserName").val();
+                            if (response.UserName == username) {
+                                tedu.notify('Trùng User name.', 'error');
+                            }
+                        }
+                    }
+                },
                 txtPassword: {
                     required: true,
                     minlength: 6
