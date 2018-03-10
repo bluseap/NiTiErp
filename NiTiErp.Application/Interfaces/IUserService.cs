@@ -23,5 +23,7 @@ namespace NiTiErp.Application.Interfaces
 
         Task UpdateAsync(AppUserViewModel userVm);
         Task EditPassAsync(AppUserViewModel userVm);
+
+        Task<AppUserViewModel> GetUserName(string username);
     }
 }

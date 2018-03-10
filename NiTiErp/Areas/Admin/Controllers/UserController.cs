@@ -53,6 +53,13 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> GetUserName(string username)
+        {
+            var model = await _userService.GetUserName(username);
+            return new OkObjectResult(model);
+        }
+
         [HttpGet]
         public IActionResult GetAllPagingCor(string keyword, int page, int pageSize)
         {

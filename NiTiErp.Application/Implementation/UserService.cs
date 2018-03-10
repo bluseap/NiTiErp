@@ -51,6 +51,15 @@ namespace NiTiErp.Application.Implementation
             return true;
         }
 
+        public async Task<AppUserViewModel> GetUserName(string username)
+        {
+            var user = await _userManager.FindByNameAsync(username);
+
+            var userVm = Mapper.Map<AppUser, AppUserViewModel>(user);
+            
+            return userVm;
+        }
+
         public async Task DeleteAsync(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
