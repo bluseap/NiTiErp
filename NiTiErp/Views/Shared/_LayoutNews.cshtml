@@ -1,0 +1,646 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic page needs -->
+    <meta charset="utf-8">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <![endif]-->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Index</title>
+    <meta name="description" content="@ViewData["MetaKeyword"]">
+    <meta name="keywords" content="@ViewData["MetaDescription"]" />
+
+   
+    
+    <!-- Mobile specific metas  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon  -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- CSS Style -->
+    <link rel="stylesheet" href="~/clientNews-side/style.css">
+</head>
+
+<body class="@ViewData["BodyClass"]">
+
+    <!-- mobile menu -->
+    @await Component.InvokeAsync("MobileNewsMenu")
+
+    <div id="page">
+        <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <!-- Header -->
+        <header>
+            <div class="header-container">
+                <div class="header-top">
+                    <div class="container">
+                        <div class="row">
+                            <!-- Header Language -->
+                            <div class="col-xs-12 col-sm-4 col-md-6">
+                                <div class="welcome-msg">Welcome to our store! </div>
+                                <div class="dropdown jtv-language-box">
+                                    <a role="button" data-toggle="dropdown" data-target="#" class="block-language dropdown-toggle" href="#"> <img class="img-responsive" src="images/flag-english.jpg" alt="language"> English <span class="caret"></span> </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li> <a class="selected" href="#"> <img class="img-responsive" src="images/flag-english.jpg" alt="flag"> <span>English</span> </a> </li>
+                                        <li> <a href="#"> <img class="img-responsive" src="images/flag-default.jpg" alt="flag"> <span>French</span> </a> </li>
+                                        <li> <a href="#"> <img class="img-responsive" src="images/flag-german.jpg" alt="flag"> <span>German</span> </a> </li>
+                                        <li> <a href="#"> <img class="img-responsive" src="images/flag-brazil.jpg" alt="flag"> <span>Brazil</span> </a> </li>
+                                        <li> <a href="#"> <img class="img-responsive" src="images/flag-chile.jpg" alt="flag"> <span>Chile</span> </a> </li>
+                                        <li> <a href="#"> <img class="img-responsive" src="images/flag-spain.jpg" alt="flag"> <span>Spain</span> </a> </li>
+                                    </ul>
+                                </div>
+                                <!-- End Header Language -->
+                                <!-- Header Currency -->
+                                <div class="dropdown jtv-currency-box">
+                                    <a role="button" data-toggle="dropdown" data-target="#" class="block-currency dropdown-toggle" href="#"> USD <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#"> $ - Dollar </a> </li>
+                                        <li><a href="#"> £ - Pound </a> </li>
+                                        <li><a href="#"> € - Euro </a> </li>
+                                    </ul>
+                                </div>
+                                <!-- End Header Currency -->
+
+                            </div>
+                            <div class="col-xs-6 col-sm-8 col-md-6 hidden-xs">
+                                <!-- Header Top Links -->
+                                <div class="jtv-top-links">
+                                    <div class="links">
+                                        <ul>
+                                            <li> <a title="My Account" href="account_page.html"><span class="hidden-xs">My Account</span></a> </li>
+                                            <li> <a title="Wishlist" href="wishlist.html">Wishlist</a> </li>
+                                            <li> <a title="Checkout" href="checkout.html"><span class="hidden-xs">Checkout</span></a> </li>
+                                            <li>
+                                                <div class="dropdown block-company-wrapper hidden-xs">
+                                                    <a role="button" data-toggle="dropdown" data-target="#" class="block-company dropdown-toggle" href="#"> More <span class="caret"></span></a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="about_us.html"> About Us </a> </li>
+                                                        <li><a href="#"> Customer Service </a> </li>
+                                                        <li><a href="#"> Privacy Policy </a> </li>
+                                                        <li><a href="sitemap.html">Site Map </a> </li>
+                                                        <li><a href="#">Search Terms </a> </li>
+                                                        <li><a href="#">Advanced Search </a> </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li> <a href="account_page.html"><span class="hidden-xs">Log In</span></a> </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- End Header Top Links -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                            <div class="jtv-top-cart-box">
+                                <!-- Top Cart -->
+                                <div class="mini-cart">
+                                    <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> <a href="shopping_cart.html"> <i class="pe-7s-cart"></i><span class="cart_count">2</span><span class="price">My Cart / $259.00</span> </a> </div>
+                                    <div>
+                                        <div class="jtv-top-cart-content">
+
+                                            <!--block-subtitle-->
+                                            <ul class="mini-products-list" id="cart-sidebar">
+                                                <li class="item first">
+                                                    <div class="item-inner">
+                                                        <a class="product-image" title="Product Title Here" ref="#"><img class="img-responsive" alt="Product Title Here" src="images/products/img01.jpg"> </a>
+                                                        <div class="product-details">
+                                                            <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
+                                                            <p class="product-name"><a href="#">Product Title Here</a> </p>
+                                                            <strong>1</strong> x <span class="price">$79.99</span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="item">
+                                                    <div class="item-inner">
+                                                        <a class="product-image" title="Product Title Here" href="single_product.html"><img class="img-responsive" alt="Product Title Here" src="images/products/img01.jpg"> </a>
+                                                        <div class="product-details">
+                                                            <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
+                                                            <p class="product-name"><a href="#">Product Title Here</a> </p>
+                                                            <strong>1</strong> x <span class="price">$88.89</span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="item last">
+                                                    <div class="item-inner">
+                                                        <a class="product-image" title="Product Title Here" href="single_product.html"><img class="img-responsive" alt="Product Title Here" src="images/products/img01.jpg"> </a>
+                                                        <div class="product-details">
+                                                            <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
+                                                            <p class="product-name"><a href="#">Product Title Here</a> </p>
+                                                            <strong>1</strong> x <span class="price">$85.99</span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+
+                                            <!--actions-->
+                                            <div class="actions">
+                                                <button class="btn-checkout" title="Checkout" type="button" onClick="checkout.html"><span>Checkout</span> </button>
+                                                <a href="shopping_cart.html" class="view-cart"><span>View Cart</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-4 col-sm-4 col-xs-12 jtv-logo-box">
+                            <!-- Header Logo -->
+                            <div class="logo"> <a title="eCommerce" href="index.html"><img class="img-responsive" alt="eCommerce" src="images/logo.png"> </a> </div>
+                            <!-- End Header Logo -->
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 hidden-xs">
+                            <div class="search-box">
+                                <form action="cat" method="POST" id="search_mini_form" name="Categories">
+                                    <input type="text" placeholder="Search entire store here..." value="Search" maxlength="70" name="search" id="search">
+                                    <button type="button" class="search-btn-bg"><i class="pe-7s-search"></i>&nbsp;</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- end header -->
+        <!-- Navigation -->
+
+        <nav>
+            <div class="container">
+
+                <div class="nav-inner">
+                    <div class="mm-toggle-wrap hidden-sm hidden-md hidden-lg">
+                        <div class="mm-toggle"><i class="fa fa-align-justify"></i><span class="mm-label">Categories</span> </div>
+                    </div>
+                    <!-- BEGIN NAV -->
+                    <ul id="nav" class="hidden-xs">
+                        <li class="drop-menu">
+                            <a href="index.html" class="level-top active"><span>Home</span></a>
+                            <ul>
+                                <li><a href="../index.html"><span>Home Version 1</span></a></li>
+                                <li><a href="index.html"><span>Home Version 2</span></a></li>
+                                <li><a href="../version3/index.html"><span>Home Version 3</span></a></li>
+                                <li><a href="../version4/index.html"><span>Home Version 4</span></a></li>
+                                <li><a href="../version3/index.html"><span>Home Version 3</span></a></li>
+                                <li><a href="../version4/index.html"><span>Home Version 4</span></a></li>
+                            </ul>
+                        </li>
+                        <li class="drop-menu">
+                            <a href="#"> <span>Pages</span> </a>
+                            <ul>
+                                <li class="sub-cat">
+                                    <a href="shop_grid.html"><span>Shop Grid</span></a>
+                                    <ul>
+                                        <li> <a href="shop_grid_right.html"> <span>Shop Grid Right Sidebar</span> </a> </li>
+                                        <li> <a href="shop_grid_fullwidth.html"> <span>Shop Grid Fullwidth</span> </a> </li>
+                                    </ul>
+                                </li>
+                                <li class="sub-cat">
+                                    <a href="shop_list.html"> <span>Shop List</span> </a>
+                                    <ul>
+                                        <li> <a href="shop_list_right.html"> <span>Shop List Right Sidebar</span> </a> </li>
+                                    </ul>
+                                </li>
+                                <li> <a href="single_product.html"> <span>Single Product</span> </a> </li>
+                                <li> <a href="shopping_cart.html"> <span>Shopping Cart</span> </a> </li>
+                                <li><a href="checkout.html"><span>Checkout</span></a> </li>
+                                <li> <a href="wishlist.html"> <span>Wishlist</span> </a> </li>
+                                <li><a href="compare.html"><span>Compare</span></a> </li>
+                                <li><a href="quick_view.html"><span>Quick View</span></a> </li>
+                                <li><a href="404error.html"><span>404 Error Page</span></a> </li>
+                            </ul>
+                        </li>
+                        <li class="mega-menu">
+                            <a class="level-top" href="shop_grid.html"><span>Smartphones</span></a>
+                            <div class="jtv-menu-block-wrapper">
+                                <div class="jtv-menu-block-wrapper2">
+                                    <div class="nav-block jtv-nav-block-center">
+                                        <div class="col-1">
+                                            <ul class="level0">
+                                                <li class="parent item">
+                                                    <a href="shop_grid.html"><span>Micromax Canvas</span></a>
+                                                    <ul class="level1">
+                                                        <li> <a href="shop_grid.html"><span>Computer Systems</span></a> </li>
+                                                        <li> <a href="shop_grid.html"><span>Digital Timer</span></a> </li>
+                                                        <li> <a href="shop_grid.html"><span>Dell Laptops</span></a> </li>
+                                                        <li> <a href="shop_grid.html"><span>Dish Antenna</span></a> </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="parent item">
+                                                    <a href="shop_grid.html"><span>Coolpad Note 3</span></a>
+                                                    <ul class="level1">
+                                                        <li> <a href="shop_grid.html"><span>Data Cables</span></a> </li>
+                                                        <li> <a href="shop_grid.html"><span>HTC U11</span></a> </li>
+                                                        <li> <a href="shop_grid.html"><span>Premium Dual</span></a> </li>
+                                                        <li> <a href="shop_grid.html"><span>Coolpad</span></a> </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="parent item">
+                                                    <a href="shop_grid.html"><span>Lenovo Phab 2</span></a>
+                                                    <ul class="level1">
+                                                        <li> <a href="shop_grid.html"><span>Honor 6X</span></a> </li>
+                                                        <li> <a href="shop_grid.html"><span>Lenovo Vibe K5</span></a> </li>
+                                                        <li> <a href="shop_grid.html"><span>Cases & Covers</span></a> </li>
+                                                        <li> <a href="shop_grid.html"><span>Oppo F3 Plus</span></a> </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="parent item">
+                                                    <a href="shop_grid.html"><span>Moto G Plus</span></a>
+                                                    <ul class="level1">
+                                                        <li> <a href="shop_grid.html"><span>Screen Protectors</span></a> </li>
+                                                        <li> <a href="shop_grid.html"><span>Moto G5 Plus</span></a> </li>
+                                                        <li> <a href="shop_grid.html"><span>HTC U Play</span></a> </li>
+                                                        <li> <a href="shop_grid.html"><span>Infocus Turbo 5</span></a> </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="parent item">
+                                                    <a href="shop_grid.html"><span>Lenovo K8 Note</span></a>
+                                                    <ul class="level1">
+                                                        <li> <a href="shop_grid.html"><span>Mobile Chargers</span></a> </li>
+                                                        <li> <a href="shop_grid.html"><span>VR headsets</span></a> </li>
+                                                        <li> <a href="shop_grid.html"><span>Bluetooth headsets</span></a> </li>
+                                                        <li> <a href="shop_grid.html"><span>Samsung On PRO</span></a> </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="parent item">
+                                                    <a href="shop_grid.html"><span>Sony Xperia XZ</span></a>
+                                                    <ul class="level1">
+                                                        <li> <a href="shop_grid.html"><span>Mobile Phones</span></a> </li>
+                                                        <li> <a href="shop_grid.html"><span>Asus Micromax</span></a> </li>
+                                                        <li> <a href="shop_grid.html"><span>Moto G Plus 4th Gen</span></a> </li>
+                                                        <li> <a href="shop_grid.html"><span>Power Banks</span></a> </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="jtv-nav-image1"> <a title="" href="#"><img class="img-responsive" alt="menu_image" src="images/menu-img1.jpg"> </a> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mega-menu">
+                            <a class="level-top" href="shop_grid.html"><span>Camera & Photo</span></a>
+                            <div class="jtv-menu-block-wrapper">
+                                <div class="jtv-menu-block-wrapper2">
+                                    <div class="nav-block jtv-nav-block-center">
+                                        <ul class="level0">
+                                            <li class="parent item">
+                                                <a href="shop_grid.html"><span>Mirrorless Cameras</span></a>
+                                                <ul class="level1">
+                                                    <li> <a href="shop_grid.html"><span>Fujifilm</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>sports</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Accessories</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Phones & Cases</span></a> </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent item">
+                                                <a href="shop_grid.html"><span>Digital Cameras</span></a>
+                                                <ul class="level1">
+                                                    <li> <a href="shop_grid.html"><span>Film Photography</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Printers & Scanners</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Projectors</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Tripods & Monopods</span></a> </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent item">
+                                                <a href="shop_grid.html"><span>Security Cameras</span></a>
+                                                <ul class="level1">
+                                                    <li> <a href="shop_grid.html"><span>Surveillance</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Photograph</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Lighting & Studio</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Flashes</span></a> </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent item">
+                                                <a href="shop_grid.html"><span>Action Cameras</span></a>
+                                                <ul class="level1">
+                                                    <li> <a href="shop_grid.html"><span>Graphite Croco</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Swiss Military Red</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Hidesign</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Benetton</span></a> </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent item">
+                                                <a href="shop_grid.html"><span>Digital SLRs</span></a>
+                                                <ul class="level1">
+                                                    <li> <a href="shop_grid.html"><span>Adorama Camera</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Entegron</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Camera & Video</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Focus Camera</span></a> </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent item">
+                                                <a href="shop_grid.html"><span>Olympus</span></a>
+                                                <ul class="level1">
+                                                    <li> <a href="shop_grid.html"><span>Unique Photo</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Multimeter</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Digital Panel</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Heating Devices</span></a> </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="jtv-nav-banner">
+                                        <div class="jtv-banner-box">
+                                            <div class="jtv-nav-banner-img"> <a href="#"><img class="img-responsive" src="images/menu-img2.jpg" alt="Handbag"> </a> </div>
+                                        </div>
+                                        <div class="jtv-banner-box">
+                                            <div class="jtv-nav-banner-img"> <a href="#"><img class="img-responsive" src="images/menu-img3.jpg" alt="Handbag"> </a> </div>
+                                        </div>
+                                        <div class="jtv-banner-box jtv-banner-box_last">
+                                            <div class="jtv-nav-banner-img"> <a href="#"><img class="img-responsive" src="images/menu-img4.jpg" alt="Handbag"> </a> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mega-menu">
+                            <a class="level-top" href="shop_grid.html"><span>Apple Store</span></a>
+                            <div class="jtv-menu-block-wrapper">
+                                <div class="jtv-menu-block-wrapper2">
+                                    <div class="nav-block jtv-nav-block-center">
+                                        <ul class="level0">
+                                            <li class="parent item">
+                                                <a href="shop_grid.html"><span>Apple iPhone 7</span></a>
+                                                <ul class="level1">
+                                                    <li> <a href="shop_grid.html"><span>Hobo Bag</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Fabric Bag</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Backpack Bga</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Laptop Bga</span></a> </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent item">
+                                                <a href="shop_grid.html"><span>TV/Movies</span></a>
+                                                <ul class="level1">
+                                                    <li> <a href="shop_grid.html"><span>Print Laptop Bag</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Office Bag</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>shoulder bags</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>leather totes</span></a> </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent item">
+                                                <a href="shop_grid.html"><span>Comics & Cartoons</span></a>
+                                                <ul class="level1">
+                                                    <li> <a href="shop_grid.html"><span>leather totes</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Office Bag </span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Fabric Bag</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>WallyPhones</span></a> </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent item">
+                                                <a href="shop_grid.html"><span>Professional</span></a>
+                                                <ul class="level1">
+                                                    <li> <a href="shop_grid.html"><span>Clutches bag</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Genuine bag </span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>WallyPhones </span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Leather Phones</span></a> </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent item">
+                                                <a href="shop_grid.html"><span>Sports</span></a>
+                                                <ul class="level1">
+                                                    <li> <a href="shop_grid.html"><span>Vivo Mobiles</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Moto Z Play</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Moto G5 Plus</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Infocus Turbo 5</span></a> </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent item">
+                                                <a href="shop_grid.html"><span>Sony Xperia</span></a>
+                                                <ul class="level1">
+                                                    <li> <a href="shop_grid.html"><span>Coolpad Mega 3</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Oppo F3 Plus</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Asus Zenfone</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Samsung On8</span></a> </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mega-menu">
+                            <a class="level-top" href="shop_grid.html"><span>Computers</span></a>
+                            <div class="jtv-menu-block-wrapper">
+                                <div class="jtv-menu-block-wrapper2">
+                                    <div class="nav-block jtv-nav-block-center jtv-menu-box-left">
+                                        <ul class="level0">
+                                            <li class="parent item">
+                                                <a href="shop_grid.html"><span>Desktops</span></a>
+                                                <ul class="level1">
+                                                    <li> <a href="shop_grid.html"><span>Accessories</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Computer Systems</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Motherboards</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Computer Scanners</span></a> </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent item">
+                                                <a href="shop_grid.html"><span>Tablet PC</span></a>
+                                                <ul class="level1">
+                                                    <li> <a href="shop_grid.html"><span>Computer Cables</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Transformer Testing</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Hard Disk Drive</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>RAM Card</span></a> </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent item">
+                                                <a href="shop_grid.html"><span>Laptops</span></a>
+                                                <ul class="level1">
+                                                    <li> <a href="shop_grid.html"><span>USB Pen Drive</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Desktop Computer</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Mainframes</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Flash Driv</span></a> </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent item">
+                                                <a href="shop_grid.html"><span>Industrial Computer</span></a>
+                                                <ul class="level1">
+                                                    <li> <a href="shop_grid.html"><span>Connectors</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Graphics Card</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>PCI Cards</span></a> </li>
+                                                    <li> <a href="shop_grid.html"><span>Cables & Modules</span></a> </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="nav-block nav-block-right std jtv-menu-box-right"><img class="img-responsive" src="images/menu-img5.jpg" alt="menu img"> </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mega-menu"> <a class="level-top" href="blog.html"><span>Blog</span></a> </li>
+                        <li class="nav-custom-link mega-menu">
+                            <a href="#" class="level-top"> <span>Buy this theme</span> </a>
+                            <div class="jtv-menu-block-wrapper custom-menu">
+                                <div class="header-nav-dropdown-wrapper">
+                                    <div class="jtv-custom-box">
+                                        <i class="fa fa-laptop"></i>
+                                        <h4 class="heading">100% Responsive Design</h4>
+                                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+                                    </div>
+                                    <div class="jtv-custom-box">
+                                        <i class="fa fa-book"></i>
+                                        <h4 class="heading">Easy Document</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dignissim erat ut laoreet pharetra.</p>
+                                    </div>
+                                    <div class="jtv-custom-box">
+                                        <i class="fa fa-fort-awesome"></i>
+                                        <h4 class="heading">Awesome Icon Fonts</h4>
+                                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                    </div>
+                                    <div class="jtv-custom-box">
+                                        <i class="fa fa-home"></i>
+                                        <h4 class="heading">4 Layout Home Pages</h4>
+                                        <p>Duis aute irure dolor in reprehenderit in voluptate velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- end nav -->
+               
+        @RenderBody()
+
+        <!-- Footer -->
+        @Html.Partial("_FooterNews.cshtml")
+        
+    </div>
+
+    <!-- End Footer -->
+    <!-- jquery js -->
+    <script src="~/clientNews-side/js/jquery.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="~/clientNews-side/js/bootstrap.min.js"></script>
+    <!-- owl.carousel.min js -->
+    <script src="~/clientNews-side/js/owl.carousel.min.js"></script>
+    <!-- jtv-jtv-mobile-menu js -->
+    <script src="~/clientNews-side/js/jtv-mobile-menu.js"></script>
+    <!-- countdown js -->
+    <script src="~/clientNews-side/js/countdown.js"></script>
+    <!-- main js -->
+    <script src="~/clientNews-side/js/main.js"></script>
+    <!-- rev-slider js -->
+    <script src="~/clientNews-side/js/rev-slider.js"></script>
+
+    <script src="~/clientNews-app/shared/niti.js"></script>
+
+    <script src="~/clientNews-app/controllers/base/index.js"></script>
+
+    <script type='text/javascript'>
+        jQuery(document).ready(function() {
+        jQuery('#jtv-rev_slider').show().revolution({
+        dottedOverlay: 'none',
+        delay: 5000,
+        startwidth: 945,
+        startheight: 550,
+        hideThumbs: 200,
+        thumbWidth: 200,
+        thumbHeight: 50,
+        thumbAmount: 2,
+        navigationType: 'thumb',
+        navigationArrows: 'solo',
+        navigationStyle: 'round',
+        touchenabled: 'on',
+        onHoverStop: 'on',
+        swipe_velocity: 0.7,
+        swipe_min_touches: 1,
+        swipe_max_touches: 1,
+        drag_block_vertical: false,
+        spinner: 'spinner0',
+        keyboardNavigation: 'off',
+        navigationHAlign: 'center',
+        navigationVAlign: 'bottom',
+        navigationHOffset: 0,
+        navigationVOffset: 20,
+        soloArrowLeftHalign: 'left',
+        soloArrowLeftValign: 'center',
+        soloArrowLeftHOffset: 20,
+        soloArrowLeftVOffset: 0,
+        soloArrowRightHalign: 'right',
+        soloArrowRightValign: 'center',
+        soloArrowRightHOffset: 20,
+        soloArrowRightVOffset: 0,
+        shadow: 0,
+        fullWidth: 'on',
+        fullScreen: 'off',
+        stopLoop: 'off',
+        stopAfterLoops: -1,
+        stopAtSlide: -1,
+        shuffle: 'off',
+        autoHeight: 'off',
+        forceFullWidth: 'on',
+        fullScreenAlignForce: 'off',
+        minFullScreenHeight: 0,
+        hideNavDelayOnMobile: 1500,
+        hideThumbsOnMobile: 'off',
+        hideBulletsOnMobile: 'off',
+        hideArrowsOnMobile: 'off',
+        hideThumbsUnderResolution: 0,
+        hideSliderAtLimit: 0,
+        hideCaptionAtLimit: 0,
+        hideAllCaptionAtLilmit: 0,
+        startWithSlide: 0,
+        fullScreenOffsetContainer: ''
+        });
+        });
+    </script>
+    <!-- Hot Deals Timer 1-->
+    <script type="text/javascript">
+var dthen1 = new Date("12/25/17 11:59:00 PM");
+start = "08/04/15 03:02:11 AM";
+start_date = Date.parse(start);
+var dnow1 = new Date(start_date);
+if (CountStepper > 0)
+ddiff = new Date((dnow1) - (dthen1));
+else
+ddiff = new Date((dthen1) - (dnow1));
+gsecs1 = Math.floor(ddiff.valueOf() / 1000);
+
+var iid1 = "countbox_1";
+CountBack_slider(gsecs1, "countbox_1", 1);
+    </script>
+    <!--Newsletter Popup Start-->
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog newsletter-popup">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div class="modal-body">
+                    <h4 class="modal-title">Signup Newsletter</h4>
+                    <form id="newsletter-form" method="post" action="#">
+                        <div class="content-subscribe">
+                            <div class="form-subscribe-header">
+                                <label>
+                                    Subscribe to our newsletters and don't miss new arrivals,<br>
+                                    the latest fashion updates and our promotions.
+                                </label>
+                            </div>
+                            <div class="input-box">
+                                <input type="text" class="input-text newsletter-subscribe" title="Sign up for our newsletter" name="email" placeholder="Enter your email address">
+                            </div>
+                            <div class="actions">
+                                <button class="button-subscribe" title="Subscribe" type="submit">Subscribe</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="subscribe-bottom">
+                        <input name="notshowpopup" id="notshowpopup" type="checkbox">
+                        Don’t show this popup again
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End of Newsletter Popup-->
+
+</body>
+</html>
+

@@ -39,8 +39,4 @@
     <ProjectReference Include="..\NiTiErp.Utilities\NiTiErp.Utilities.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\clientNews-app\controllers\home\" />
-  </ItemGroup>
-
 </Project>
