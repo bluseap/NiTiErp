@@ -15,7 +15,14 @@ namespace NiTiErp.Controllers
     {
         public IActionResult Index()
         {
+            ViewData["BodyClass"] = "cms-index-index cms-home-page";
+
             return View();
+        }
+
+        public IActionResult ErrorNews()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
