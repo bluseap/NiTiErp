@@ -78,11 +78,11 @@ body {
 	font-weight: 400;
 }
 #page {
-	left: 0;
-	position: relative;
-	width: 1350px;
-	margin: 40px auto;
-	background-color: #fff;
+    left: 0;
+    position: relative;
+    width: 1350px;
+    margin: !important;
+    background-color: #fff;
 }
 h2, .h2 {
 	font-size: 20px;
