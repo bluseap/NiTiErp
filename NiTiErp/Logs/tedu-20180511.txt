@@ -2095,3 +2095,92 @@ WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
 2018-05-11T14:32:19.0434076+07:00 0HLDN24O3HJRD:00000005 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
 2018-05-11T14:32:19.1268896+07:00 0HLDN24O3HJRD:00000005 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HomeController.GetRevenue (NiTiErp)" in 303.5283ms (afa2e885)
 2018-05-11T14:32:19.1418687+07:00 0HLDN24O3HJRD:00000005 [INF] Request finished in 327.1282ms 200 application/json; charset=utf-8 (791a596a)
+2018-05-11T14:36:05.4049663+07:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-05-11T14:36:05.5680989+07:00  [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-05-11T14:36:05.5908160+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [CorporationServices] AS [c]" (0723d8ff)
+2018-05-11T14:36:05.5971619+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Corporations] AS [c]" (0723d8ff)
+2018-05-11T14:36:05.6025740+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-05-11T14:36:05.6077632+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ContactDetails] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-05-11T14:36:05.6120535+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Functions] AS [f]" (0723d8ff)
+2018-05-11T14:36:05.6280291+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Footers] AS [x]
+WHERE [x].[Id] = 'DefaultFooterId'" (0723d8ff)
+2018-05-11T14:36:05.6323493+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Colors] AS [c]" (0723d8ff)
+2018-05-11T14:36:05.6367653+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AdvertistmentPages] AS [a]" (0723d8ff)
+2018-05-11T14:36:05.6407158+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Slides] AS [s]" (0723d8ff)
+2018-05-11T14:36:05.6448748+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Sizes] AS [s]" (0723d8ff)
+2018-05-11T14:36:05.6493038+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2018-05-11T14:36:05.6548290+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeTitle')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-05-11T14:36:05.6595513+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaKeyword')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-05-11T14:36:05.6640731+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaDescription')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-05-11T14:36:05.8486412+07:00 0HLDN27DEHF8J:00000001 [INF] Request starting HTTP/1.1 POST http://localhost:44352/Admin/Account/Logout application/x-www-form-urlencoded 0 (ca22a1cb)
+2018-05-11T14:36:05.9053516+07:00 0HLDN27DEHF8J:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-05-11T14:36:06.0275833+07:00 0HLDN27DEHF8J:00000001 [INF] Authorization was successful for user: "minh". (d7eb274a)
+2018-05-11T14:36:06.0383148+07:00 0HLDN27DEHF8J:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.AccountController.Logout (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-05-11T14:36:06.0441096+07:00 0HLDN27DEHF8J:00000001 [INF] AuthenticationScheme: "Identity.Application" signed out. (d3f50c8d)
+2018-05-11T14:36:06.0451966+07:00 0HLDN27DEHF8J:00000001 [INF] AuthenticationScheme: "Identity.External" signed out. (d3f50c8d)
+2018-05-11T14:36:06.0455390+07:00 0HLDN27DEHF8J:00000001 [INF] AuthenticationScheme: "Identity.TwoFactorUserId" signed out. (d3f50c8d)
+2018-05-11T14:36:06.0482724+07:00 0HLDN27DEHF8J:00000001 [INF] Executing RedirectResult, redirecting to "/Admin/Login/Index". (d98d540e)
+2018-05-11T14:36:06.0531269+07:00 0HLDN27DEHF8J:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.AccountController.Logout (NiTiErp)" in 30.219ms (afa2e885)
+2018-05-11T14:36:06.0592180+07:00 0HLDN27DEHF8J:00000001 [INF] Request finished in 218.9074ms 302  (791a596a)
+2018-05-11T14:36:06.0853732+07:00 0HLDN27DEHF8J:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/Admin/Login/Index   (ca22a1cb)
+2018-05-11T14:36:06.0911386+07:00 0HLDN27DEHF8J:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.LoginController.Index (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-05-11T14:36:08.5549818+07:00 0HLDN27DEHF8J:00000002 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Login/Index.cshtml". (9707eebe)
+2018-05-11T14:36:08.6313400+07:00 0HLDN27DEHF8J:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.LoginController.Index (NiTiErp)" in 2540.8614ms (afa2e885)
+2018-05-11T14:36:08.9423457+07:00 0HLDN27DEHF8J:00000002 [INF] Request finished in 2857.0144ms 200 text/html; charset=utf-8 (791a596a)
