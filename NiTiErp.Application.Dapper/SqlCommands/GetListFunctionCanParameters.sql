@@ -12,8 +12,7 @@ BEGIN
 	
 	--	@roleId		UserId
 	if @parameters = 'ListFunctionUserIdCanRead'
-	begin		
-		
+	begin				
 		select f.Id   ,f.IconCss      ,f.[Name]      ,f.ParentId      ,f.SortOrder      ,f.[Status]	,f.[URL]
 		from [Functions] f
 		where f.Id in (
