@@ -13,6 +13,7 @@ namespace NiTiErp.Utilities.Constants
         public const string CartSession = "CartSession";
 
         public const string ProductTag = "Product";
+
         public const string BlogTag = "Blog";
         public class AppRole
         {

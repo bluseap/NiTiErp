@@ -171,3 +171,167 @@ WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
 2018-04-14T15:08:06.8051763+07:00 0HLD1RQI2KNTJ:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/slider/slide-img2.jpg   (ca22a1cb)
 2018-04-14T15:08:06.8302305+07:00 0HLD1RQI2KNTD:00000002 [INF] Request finished in 33.2047ms 404  (791a596a)
 2018-04-14T15:08:06.8562420+07:00 0HLD1RQI2KNTJ:00000002 [INF] Request finished in 55.884ms 404  (791a596a)
+2018-04-14T15:32:45.7267980+07:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-04-14T15:32:46.0353554+07:00  [INF] Executed DbCommand ("63"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-04-14T15:32:46.1034636+07:00  [INF] Executed DbCommand ("47"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [CorporationServices] AS [c]" (0723d8ff)
+2018-04-14T15:32:46.1127039+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Corporations] AS [c]" (0723d8ff)
+2018-04-14T15:32:46.1195355+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-04-14T15:32:46.1259093+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ContactDetails] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-04-14T15:32:46.1311253+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Functions] AS [f]" (0723d8ff)
+2018-04-14T15:32:46.1485506+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Footers] AS [x]
+WHERE [x].[Id] = 'DefaultFooterId'" (0723d8ff)
+2018-04-14T15:32:46.1546467+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Colors] AS [c]" (0723d8ff)
+2018-04-14T15:32:46.1587010+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AdvertistmentPages] AS [a]" (0723d8ff)
+2018-04-14T15:32:46.1641471+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Slides] AS [s]" (0723d8ff)
+2018-04-14T15:32:46.1689795+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Sizes] AS [s]" (0723d8ff)
+2018-04-14T15:32:46.1735728+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2018-04-14T15:32:46.1797641+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeTitle')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-04-14T15:32:46.1853603+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaKeyword')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-04-14T15:32:46.1907433+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaDescription')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-04-14T15:32:46.6769140+07:00 0HLD1S96BK6OL:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/   (ca22a1cb)
+2018-04-14T15:32:46.9126768+07:00 0HLD1S96BK6OL:00000001 [INF] Executing action method "NiTiErp.Controllers.HomeNewsController.Index (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-04-14T15:32:52.4846247+07:00 0HLD1S96BK6OL:00000001 [INF] Executing ViewResult, running view at path "/Views/HomeNews/Index.cshtml". (9707eebe)
+2018-04-14T15:32:53.6275865+07:00 0HLD1S96BK6OL:00000001 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-04-14T15:32:53.7073875+07:00 0HLD1S96BK6OL:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId]" (0723d8ff)
+2018-04-14T15:32:53.7477062+07:00 0HLD1S96BK6OL:00000001 [INF] Executed DbCommand ("24"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-04-14T15:32:53.7557507+07:00 0HLD1S96BK6OL:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-04-14T15:32:53.7564607+07:00 0HLD1S96BK6OL:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-04-14T15:32:53.7570722+07:00 0HLD1S96BK6OL:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@_outer_Id='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[CategoryId], [dto].[Image], [dto].[Price], [dto].[PromotionPrice], [dto].[OriginalPrice], [dto].[Description], [dto].[Content], [dto].[HomeFlag], [dto].[HotFlag], [dto].[ViewCount], [dto].[Tags], [dto].[Unit], [dto].[SeoPageTitle], [dto].[SeoAlias], [dto].[SeoKeywords], [dto].[SeoDescription], [dto].[DateCreated], [dto].[DateModified], [dto].[Status]
+FROM [Products] AS [dto]
+WHERE @_outer_Id = [dto].[CategoryId]" (0723d8ff)
+2018-04-14T15:32:54.0927923+07:00 0HLD1S96BK6OL:00000001 [INF] Executed action "NiTiErp.Controllers.HomeNewsController.Index (NiTiErp)" in 7183.9501ms (afa2e885)
+2018-04-14T15:32:54.7407343+07:00 0HLD1S96BK6OL:00000001 [INF] Request finished in 8166.0159ms 200 text/html; charset=utf-8 (791a596a)
+2018-04-14T15:32:54.7844371+07:00 0HLD1S96BK6OL:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/flag-german.jpg   (ca22a1cb)
+2018-04-14T15:32:54.7847786+07:00 0HLD1S96BK6OM:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/flag-brazil.jpg   (ca22a1cb)
+2018-04-14T15:32:54.7849630+07:00 0HLD1S96BK6ON:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/flag-chile.jpg   (ca22a1cb)
+2018-04-14T15:32:54.7888164+07:00 0HLD1S96BK6OO:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/flag-default.jpg   (ca22a1cb)
+2018-04-14T15:32:54.7894965+07:00 0HLD1S96BK6OL:00000002 [INF] Request finished in 5.3117ms 404  (791a596a)
+2018-04-14T15:32:54.7895584+07:00 0HLD1S96BK6ON:00000001 [INF] Request finished in 4.513ms 404  (791a596a)
+2018-04-14T15:32:54.7942295+07:00 0HLD1S96BK6OO:00000001 [INF] Request finished in 5.4161ms 404  (791a596a)
+2018-04-14T15:32:54.7964641+07:00 0HLD1S96BK6OM:00000001 [INF] Request finished in 11.6239ms 404  (791a596a)
+2018-04-14T15:32:54.7966979+07:00 0HLD1S96BK6OP:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/flag-english.jpg   (ca22a1cb)
+2018-04-14T15:32:54.7975489+07:00 0HLD1S96BK6OP:00000001 [INF] Request finished in 0.7949ms 404  (791a596a)
+2018-04-14T15:32:54.7988010+07:00 0HLD1S96BK6OL:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/flag-spain.jpg   (ca22a1cb)
+2018-04-14T15:32:54.7999020+07:00 0HLD1S96BK6OL:00000003 [INF] Request finished in 1.3043ms 404  (791a596a)
+2018-04-14T15:32:54.8762702+07:00 0HLD1S96BK6ON:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/logo.png   (ca22a1cb)
+2018-04-14T15:32:54.8770412+07:00 0HLD1S96BK6ON:00000002 [INF] Request finished in 0.7747ms 404  (791a596a)
+2018-04-14T15:32:54.8773743+07:00 0HLD1S96BK6OO:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/products/img01.jpg   (ca22a1cb)
+2018-04-14T15:32:54.8781836+07:00 0HLD1S96BK6OO:00000002 [INF] Request finished in 0.7837ms 404  (791a596a)
+2018-04-14T15:32:54.8800549+07:00 0HLD1S96BK6OM:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/menu-img3.jpg   (ca22a1cb)
+2018-04-14T15:32:54.8810871+07:00 0HLD1S96BK6OM:00000002 [INF] Request finished in 0.9457ms 404  (791a596a)
+2018-04-14T15:32:54.8814419+07:00 0HLD1S96BK6OP:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/menu-img2.jpg   (ca22a1cb)
+2018-04-14T15:32:54.8823591+07:00 0HLD1S96BK6OP:00000002 [INF] Request finished in 0.7908ms 404  (791a596a)
+2018-04-14T15:32:54.8829460+07:00 0HLD1S96BK6OL:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/menu-img1.jpg   (ca22a1cb)
+2018-04-14T15:32:54.8839105+07:00 0HLD1S96BK6OL:00000004 [INF] Request finished in 0.9523ms 404  (791a596a)
+2018-04-14T15:32:54.8843132+07:00 0HLD1S96BK6OO:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/menu-img5.jpg   (ca22a1cb)
+2018-04-14T15:32:54.8846108+07:00 0HLD1S96BK6ON:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/menu-img4.jpg   (ca22a1cb)
+2018-04-14T15:32:54.8850518+07:00 0HLD1S96BK6OO:00000003 [INF] Request finished in 0.7324ms 404  (791a596a)
+2018-04-14T15:32:54.8855305+07:00 0HLD1S96BK6ON:00000003 [INF] Request finished in 1.0664ms 404  (791a596a)
+2018-04-14T15:32:54.8882480+07:00 0HLD1S96BK6OM:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/banner-img3.jpg   (ca22a1cb)
+2018-04-14T15:32:54.8892793+07:00 0HLD1S96BK6OM:00000003 [INF] Request finished in 0.9712ms 404  (791a596a)
+2018-04-14T15:32:54.8898622+07:00 0HLD1S96BK6OO:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/banner-img4.jpg   (ca22a1cb)
+2018-04-14T15:32:54.8907365+07:00 0HLD1S96BK6OO:00000004 [INF] Request finished in 0.9156ms 404  (791a596a)
+2018-04-14T15:32:54.8910941+07:00 0HLD1S96BK6OP:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/testimonials-img1.jpg   (ca22a1cb)
+2018-04-14T15:32:54.8918340+07:00 0HLD1S96BK6OP:00000003 [INF] Request finished in 0.7495ms 404  (791a596a)
+2018-04-14T15:32:54.8924333+07:00 0HLD1S96BK6OL:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/testimonials-img3.jpg   (ca22a1cb)
+2018-04-14T15:32:54.8934515+07:00 0HLD1S96BK6OL:00000005 [INF] Request finished in 1.0776ms 404  (791a596a)
+2018-04-14T15:32:54.8935635+07:00 0HLD1S96BK6ON:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/testimonials-img2.jpg   (ca22a1cb)
+2018-04-14T15:32:54.8954217+07:00 0HLD1S96BK6ON:00000004 [INF] Request finished in 0.7286ms 404  (791a596a)
+2018-04-14T15:32:54.8958270+07:00 0HLD1S96BK6OO:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/brand1.png   (ca22a1cb)
+2018-04-14T15:32:54.8963368+07:00 0HLD1S96BK6OM:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/blog-img1.jpg   (ca22a1cb)
+2018-04-14T15:32:54.8966133+07:00 0HLD1S96BK6OO:00000005 [INF] Request finished in 0.8297ms 404  (791a596a)
+2018-04-14T15:32:54.8969762+07:00 0HLD1S96BK6OM:00000004 [INF] Request finished in 0.7899ms 404  (791a596a)
+2018-04-14T15:32:54.8980087+07:00 0HLD1S96BK6OP:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/brand2.png   (ca22a1cb)
+2018-04-14T15:32:54.8990795+07:00 0HLD1S96BK6OP:00000004 [INF] Request finished in 1.2496ms 404  (791a596a)
+2018-04-14T15:32:54.8992726+07:00 0HLD1S96BK6ON:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/brand4.png   (ca22a1cb)
+2018-04-14T15:32:54.9001994+07:00 0HLD1S96BK6ON:00000005 [INF] Request finished in 0.8502ms 404  (791a596a)
+2018-04-14T15:32:54.9008368+07:00 0HLD1S96BK6OL:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/brand5.png   (ca22a1cb)
+2018-04-14T15:32:54.9008921+07:00 0HLD1S96BK6OO:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/brand6.png   (ca22a1cb)
+2018-04-14T15:32:54.9015888+07:00 0HLD1S96BK6OO:00000006 [INF] Request finished in 0.6602ms 404  (791a596a)
+2018-04-14T15:32:54.9015888+07:00 0HLD1S96BK6OL:00000006 [INF] Request finished in 0.691ms 404  (791a596a)
+2018-04-14T15:32:54.9026844+07:00 0HLD1S96BK6OM:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/footer-logo.png   (ca22a1cb)
+2018-04-14T15:32:54.9035164+07:00 0HLD1S96BK6OM:00000005 [INF] Request finished in 0.8188ms 404  (791a596a)
+2018-04-14T15:32:54.9044257+07:00 0HLD1S96BK6ON:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/brand3.png   (ca22a1cb)
+2018-04-14T15:32:54.9051215+07:00 0HLD1S96BK6ON:00000006 [INF] Request finished in 0.8642ms 404  (791a596a)
+2018-04-14T15:32:54.9055640+07:00 0HLD1S96BK6OP:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/payment-2.png   (ca22a1cb)
+2018-04-14T15:32:54.9068022+07:00 0HLD1S96BK6OP:00000005 [INF] Request finished in 1.1662ms 404  (791a596a)
+2018-04-14T15:32:54.9072923+07:00 0HLD1S96BK6OO:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/payment-1.png   (ca22a1cb)
+2018-04-14T15:32:54.9087267+07:00 0HLD1S96BK6OO:00000007 [INF] Request finished in 1.4654ms 404  (791a596a)
+2018-04-14T15:32:54.9204573+07:00 0HLD1S96BK6OL:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/payment-3.png   (ca22a1cb)
+2018-04-14T15:32:54.9215529+07:00 0HLD1S96BK6OO:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/payment-4.png   (ca22a1cb)
+2018-04-14T15:32:54.9214385+07:00 0HLD1S96BK6OL:00000007 [INF] Request finished in 0.8614ms 404  (791a596a)
+2018-04-14T15:32:54.9225506+07:00 0HLD1S96BK6OO:00000008 [INF] Request finished in 0.7719ms 404  (791a596a)
+2018-04-14T15:32:56.2012889+07:00 0HLD1S96BK6OP:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/slider/slide-img1.jpg   (ca22a1cb)
+2018-04-14T15:32:56.2021295+07:00 0HLD1S96BK6OP:00000006 [INF] Request finished in 0.868ms 404  (791a596a)
+2018-04-14T15:32:56.2058110+07:00 0HLD1S96BK6OM:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44352/images/slider/slide-img2.jpg   (ca22a1cb)
+2018-04-14T15:32:56.2070702+07:00 0HLD1S96BK6OM:00000006 [INF] Request finished in 2.0557ms 404  (791a596a)

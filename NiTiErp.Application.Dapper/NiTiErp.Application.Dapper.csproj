@@ -9,4 +9,8 @@
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NiTiErp.Data\NiTiErp.Data.csproj" />
+  </ItemGroup>
+
 </Project>
