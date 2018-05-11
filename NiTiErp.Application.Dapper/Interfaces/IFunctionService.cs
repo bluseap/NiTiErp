@@ -9,7 +9,7 @@ namespace NiTiErp.Application.Dapper.Interfaces
 {
     public interface IFunctionService
     {
-        Task<IEnumerable<FunctionViewModel>> GetListFunctionCanParameters(bool canRead, bool canCreate, 
+        Task<List<FunctionViewModel>> GetListFunctionCanParameters(bool canRead, bool canCreate, 
             bool canUpdate, bool canDelete, string roleId, string notes, string parameters);
     }
 }

@@ -21,7 +21,7 @@ namespace NiTiErp.Application.Dapper.Implementation
             _configuration = configuration;
         }
 
-        public async Task<IEnumerable<FunctionViewModel>> GetListFunctionCanParameters(bool canRead, 
+        public async Task<List<FunctionViewModel>> GetListFunctionCanParameters(bool canRead, 
             bool canCreate, bool canUpdate, bool canDelete, string roleId, string notes, string parameters)
         {
             using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
@@ -39,8 +39,14 @@ namespace NiTiErp.Application.Dapper.Implementation
 
                 try
                 {
-                    return await sqlConnection.QueryAsync<FunctionViewModel>(
+                    var query = await sqlConnection.QueryAsync<FunctionViewModel>(
                         "GetListFunctionCanParameters", dynamicParameters, commandType: CommandType.StoredProcedure);
+
+                    return query.AsList();
+
+
+                    //return await sqlConnection.QueryAsync<FunctionViewModel>(
+                    //    "GetListFunctionCanParameters", dynamicParameters, commandType: CommandType.StoredProcedure);
                 }
                 catch (Exception ex)
                 {
