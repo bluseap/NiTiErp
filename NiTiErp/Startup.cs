@@ -163,7 +163,7 @@ namespace NiTiErp
 
             //Serrvices
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
-            services.AddTransient<IFunctionService, FunctionService>();
+            services.AddTransient<Application.Interfaces.IFunctionService, Application.Implementation.FunctionService>();
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRoleService, RoleService>();
@@ -176,6 +176,9 @@ namespace NiTiErp
             services.AddTransient<ICorporationServiceService, Application.Implementation.CorporationServiceService>();
 
             services.AddTransient<IPageService, PageService>();
+
+            services.AddTransient<NiTiErp.Application.Dapper.Interfaces.IFunctionService,
+                NiTiErp.Application.Dapper.Implementation.FunctionService>();
             services.AddTransient<IReportService, ReportService>();
 
             services.AddTransient<IAppUserRolesService, AppUserRolesService>();
