@@ -1,6 +1,7 @@
 ﻿var productCategoryController = function () {
     this.initialize = function () {
         loadData();
+        loadCorporation();
         registerEvents();
     }
     function registerEvents() {
@@ -300,4 +301,22 @@
             }
         });
     }
+
+    function loadCorporation() {
+        return $.ajax({
+            type: "GET",
+            url: "/admin/corporation/GetAllCorporations",
+            dataType: "json",
+            success: function (response) {
+                //cachedObj.paymentMethods = response;
+                var render = "";
+                $.each(response, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.Name + "</option>";
+                });
+                $('#ddlCorporation').html(render);
+            }
+        });
+    }
+
+
 }

@@ -9,16 +9,18 @@ namespace NiTiErp.Controllers.Components
 {
     public class MobileNewsMenuViewComponent : ViewComponent
     {
-        
 
-        public MobileNewsMenuViewComponent()
+        private IProductCategoryService _productCategoryService;
+
+        public MobileNewsMenuViewComponent(IProductCategoryService productCategoryService)
         {
-            
+            _productCategoryService = productCategoryService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View();
-        }
+            return View(_productCategoryService.GetAll());
+        }   
+       
     }
 }
