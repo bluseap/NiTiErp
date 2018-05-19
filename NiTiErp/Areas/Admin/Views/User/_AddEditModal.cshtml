@@ -3,32 +3,32 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Add/edit user</h4>
+                <h4 class="modal-title">Thêm/Sửa người dùng</h4>
             </div>
             <div class="modal-body">
                 <div id="horizontal-form">
                     <form class="form-horizontal" role="form" id="frmMaintainance">
                         <div class="form-group">
                             <input type="hidden" id="hidId" value="" />
-                            <label for="txtFullName" class="col-sm-2 control-label">Full name</label>
+                            <label for="txtFullName" class="col-sm-2 control-label">Tên đầy đủ</label>
                             <div class="col-sm-10">
                                 <input type="text" name="txtFullName" class="form-control" id="txtFullName">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="txtUserName" class="col-sm-2 control-label">Username</label>
+                            <label for="txtUserName" class="col-sm-2 control-label">Tên đăng nhập</label>
                             <div class="col-sm-10">
                                 <input type="text" name="txtUserName" class="form-control" id="txtUserName" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="txtPassword" class="col-sm-2 control-label">Password</label>
+                            <label for="txtPassword" class="col-sm-2 control-label">Mật mã</label>
                             <div class="col-sm-10">
                                 <input type="password" name="txtPassword" class="form-control" id="txtPassword" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="txtConfirmPassword" class="col-sm-2 control-label">Confirm password</label>
+                            <label for="txtConfirmPassword" class="col-sm-2 control-label">Nhập lại mật mã trên</label>
                             <div class="col-sm-10">
                                 <input type="password" name="txtConfirmPassword" class="form-control" id="txtConfirmPassword">
                             </div>
@@ -40,19 +40,19 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="txtPhoneNumber" class="col-sm-2 control-label">Mobile phone</label>
+                            <label for="txtPhoneNumber" class="col-sm-2 control-label">Số điện thoại di dộng</label>
                             <div class="col-sm-10">
                                 <input type="text" name="txtPhoneNumber" class="form-control" id="txtPhoneNumber">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label ">Corporation</label>
+                            <label class="col-sm-2 control-label ">Tên Công ty</label>
                             <div class="col-sm-10">
                                 <select id="ddlCorporation" class="form-control" disabled="disabled"></select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Roles</label>
+                            <label class="col-sm-2 control-label">Phân quyền</label>
                             <div class="col-sm-10" id="list-roles">
                             </div>
                         </div>
@@ -61,19 +61,20 @@
                                 <div class="checkbox">
                                     <label>
                                         <input type="checkbox" checked="checked" id="ckStatus">
-                                        <span class="text">Active.</span>
+                                        <span class="text">Hoạt động </span>
                                     </label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="button" id="btnSave" class="btn btn-success">Save</button>
-                                <button type="button" id="btnCancel" data-dismiss="modal" class="btn btn-default">Close</button>
+                                <button type="button" id="btnSave" class="btn btn-success">Lưu</button>
+                                <button type="button" id="btnCancel" data-dismiss="modal" class="btn btn-default">Đóng</button>
                             </div>
                         </div>
                     </form>
                 </div>
+               
             </div>
         </div>
     </div>
