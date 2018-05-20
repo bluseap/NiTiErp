@@ -1,6 +1,7 @@
 ﻿@{
     Layout = null;
 }
+@*@Html.ActionLink("Shown Details", "Details", "Vendors", new { area = "Admin" })*@
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +11,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/admin-side/images/powaco.ico" />
 
     <title>Login </title>
 
@@ -39,7 +42,7 @@
                     <form id="frmLogin">
                         @Html.AntiForgeryToken()
                         <div>
-                            <img src="/admin-side/images/powacmo57.png" alt="...">
+                            <img src="/admin-side/images/powaco148.png" alt="...">
                         </div>
                         <br />
                         <div>
@@ -54,12 +57,12 @@
                         </div>
 
 
-
-                        <div class="separator">
+                        <br />
+                        <div>
 
                             <div class="clearfix"></div>
                             <br />
-                            <p>©2018  Công Ty Cổ Phần Điện Nước An Giang - AN GIANG POWER AND WATER SUPPLY JOINT STOCK COMPANY - POWACO</p>
+                            <p>©2018  Công Ty Cổ Phần Điện Nước An Giang - POWACO</p>
 
                         </div>
                     </form>
@@ -69,6 +72,7 @@
         </div>
     </div>
     <script src="~/lib/jquery/dist/jquery.js"></script>
+
     <script src="~/lib/notifyjs/dist/notify.js"></script>
     <script src="~/lib/notifyjs/dist/styles/metro/notify-metro.js"></script>
 
@@ -76,7 +80,12 @@
     <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 
-    <script src="~/bundled/site-admin.min.js"></script>
+    @*<script src="~/bundled/site-admin.min.js"></script>*@
+
+
+    <script src="~/app/shared/tedu.js"></script>
+    <script src="~/app/controllers/login/index.js"></script>
+
     <script>
         var login = new loginController();
         login.initialize();

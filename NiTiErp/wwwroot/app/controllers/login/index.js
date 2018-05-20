@@ -17,6 +17,19 @@
                 }
             }
         });
+
+       
+        $('#txtPassword').keypress(function (e) {
+            if (e.which === 13) {
+                if ($('#frmLogin').valid()) {
+                    e.preventDefault();
+                    var user = $('#txtUserName').val();
+                    var password = $('#txtPassword').val();
+                    login(user, password);
+                }
+            }
+        });
+
         $('#btnLogin').on('click', function (e) {
             if ($('#frmLogin').valid()) {
                 e.preventDefault();
@@ -24,7 +37,6 @@
                 var password = $('#txtPassword').val();
                 login(user, password);
             }
-           
         });
     }
 

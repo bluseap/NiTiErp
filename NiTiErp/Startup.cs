@@ -193,6 +193,7 @@ namespace NiTiErp
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddFile("Logs/tedu-{Date}.txt");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -203,26 +204,40 @@ namespace NiTiErp
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
             app.UseImageResizer();
             app.UseStaticFiles();
             app.UseMinResponse();
             app.UseAuthentication();
             app.UseSession();
+            
+
             app.UseMvc(routes =>
             {
                 //routes.MapRoute(
                 //    name: "default",
                 //    template: "{controller=Home}/{action=Index}/{id?}");
 
+                //routes.MapRoute(
+                //    name: "default",
+                //    template: "{controller=HomeNews}/{action=Index}/{id?}");               
+
                 routes.MapRoute(
+                   name: "areaRoute",
+                   template: "{area:exists}/{controller=Login}/{action=Index}/{id?}");
+
+                routes.MapAreaRoute(
                     name: "default",
-                    template: "{controller=HomeNews}/{action=Index}/{id?}");
+                    areaName: "Admin",
+                    template: "{controller=Login}/{action=Index}/{id?}");
 
-                routes.MapRoute(name: "areaRoute",
-                    template: "{area:exists}/{controller=Login}/{action=Index}/{id?}");
+                //routes.MapRoute(
+                //    name: "areaRoute",
+                //    template: "{area:exists}/{controller=Login}/{action=Index}/{id?}");
 
-                routes.MapRoute(name: "areaClientRoute",
-                    template: "{area:exists}/{controller=CorporationClient}/{action=Index}/{id?}");
+                //routes.MapRoute(
+                //    name: "areaClientRoute",
+                //    template: "{area:exists}/{controller=CorporationClient}/{action=Index}/{id?}");
 
             });
 
