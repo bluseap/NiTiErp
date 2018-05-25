@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+}
+@section Scripts{
+
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
+    <script src="~/app/controllers/hoso/index.js" asp-append-version="true"></script>
+    <script>
+        var hoso = new hosoController();
+        hoso.initialize();
+    </script>
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Hồ sơ nhân viên</h3>
+        </div>
+
+        <div class="title_right">
+            <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right top_search">
+                <button class="btn btn-success" id="btn-create" type="button">Tạo mới</button>
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <input type="text" id="txt-search-keyword" class="form-control" placeholder="Tìm....">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" id="btn-search" type="button">Tìm kiếm!</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+    <div class="x_content">
+        <div class="" role="tabpanel" id="" data-example-id="togglable-tabs">
+            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#tab_lylich" role="tab" id="tabLyLich" data-toggle="tab" aria-expanded="true">Lý lịch</a>
+                </li>
+                <li role="presentation" class="">
+                    <a href="#tab_trinhdo" role="tab" id="tabTrinhDo" data-toggle="tab" aria-expanded="false">Trình độ</a>
+                </li>
+                <li role="presentation" class="">
+                    <a href="#tab_congviec" role="tab" id="tabCongViec" data-toggle="tab" aria-expanded="false">Công việc</a>
+                </li>
+                <li role="presentation" class="">
+                    <a href="#tab_hopdong" role="tab" id="tabHopDong" data-toggle="tab" aria-expanded="false">Hợp đồng</a>
+                </li>
+                <li role="presentation" class="">
+                    <a href="#tab_dangdoan" role="tab" id="tabDangDoan" data-toggle="tab" aria-expanded="false">Đảng, đoàn..</a>
+                </li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div role="tabpanel" class="tab-pane fade active in" id="tab_lylich" aria-labelledby="home-tab">
+                    @Html.Partial("_tabLyLich.cshtml")
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="tab_trinhdo" aria-labelledby="profile-tab">
+                    <p>
+                        trinh do
+                    </p>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="tab_congviec" aria-labelledby="profile-tab">
+                    <p>
+                        cong viec
+                    </p>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="tab_hopdong" aria-labelledby="profile-tab">
+                    <p>
+                        hop dong
+                    </p>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="tab_dangdoan" aria-labelledby="profile-tab">
+                    <p>
+                        dang doan
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

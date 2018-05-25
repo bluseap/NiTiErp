@@ -177,6 +177,7 @@ namespace NiTiErp
 
             services.AddTransient<IPageService, PageService>();
 
+            //dung Dapper
             services.AddTransient<NiTiErp.Application.Dapper.Interfaces.IFunctionService,
                 NiTiErp.Application.Dapper.Implementation.FunctionService>();
             services.AddTransient<IReportService, ReportService>();

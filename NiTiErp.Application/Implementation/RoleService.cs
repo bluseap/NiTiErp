@@ -114,7 +114,7 @@ namespace NiTiErp.Application.Implementation
                             CanDelete = p != null ? p.CanDelete : false,
                             CanRead = p != null ? p.CanRead : false,
                             CanUpdate = p != null ? p.CanUpdate : false
-                        };
+                        };            
             return query.ToList();
         }
 
