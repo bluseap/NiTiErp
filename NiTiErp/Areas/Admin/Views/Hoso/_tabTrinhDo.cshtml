@@ -1,0 +1,106 @@
+﻿
+    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainTrinhDo">
+        <input type="hidden" id="hidTrinhDoId" value="" />
+
+        <div class="form-group">
+            <label for="lbLoaiBang" class="control-label col-md-2 col-sm-2 col-xs-12 ">Loại bằng</label>
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                <select id="ddlLoaiBang" class="form-control"></select>
+            </div>
+            <label for="lbChuyenNganh" class="control-label col-md-2 col-sm-2 col-xs-12 ">Chuyên ngành</label>
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                <input type="text" class="form-control has-feedback-right" id="txtChuyenNganh" placeholder="Chuyên ngành">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lbLoaiHinh" class="control-label col-md-2 col-sm-2 col-xs-12 ">Loại hình</label>
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                <select id="ddlLoaiHinh" class="form-control"></select>
+            </div>
+            <label for="lbXepLoai" class="control-label col-md-2 col-sm-2 col-xs-12 ">Xếp loại</label>
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                <select id="ddlXepLoai" class="form-control"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lbNamCapBang" class="control-label col-md-2 col-sm-2 col-xs-12 ">Năm cấp bằng</label>
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                <input type="text" class="form-control has-feedback-right" id="txtNamCapBang" placeholder="Ngày hoặc năm cấp bằng">
+            </div>
+            <label for="lbTenTruongCapBang" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tên trường</label>
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                <input type="text" class="form-control has-feedback-right" id="txtTenTruongCapBang" placeholder="Tên trường cấp bằng">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lbGhiChuTrinhDo" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ghi chú</label>
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                <input type="text" class="form-control has-feedback-right" id="txtGhiChuTrinhDo" placeholder="Ghi chú">
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                <input type="hidden" id="hidHinhBangCapId" value="" />
+                <div id="image-list">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lbChonAnh" class="control-label col-md-2 col-sm-2 col-xs-12">Chọn hình bằng, cấp</label>
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                <div class="input-group">
+                    <input type="file" id="fileHinhBangCap" />
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_content">
+                    <table id="tbl-trinhdo" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Tên bằng cấp</th>
+                                <th>Loại đào tạo</th>
+                                <th>Hình bằng</th>                                
+                                <th>Trạng thái</th>
+                                <th>    </th>                                
+                            </tr>
+                        </thead>
+                        <tbody id="tbl-contentTrinhDo"></tbody>
+                    </table>
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="dataTables_info" id="datatable-checkbox_info" role="status" aria-live="polite">
+                                <select id="ddl-show-page">
+                                    <option value="10" selected="selected">10</option>
+                                    <option value="20">20</option>
+                                    <option value="30">30</option>
+                                    <option value="50">50</option>
+                                </select>
+                                <span class="item-per-page">
+                                    dòng/trang.
+                                </span>
+                                Tổng cộng: <strong id="lbl-total-records"></strong>
+                            </div>
+                        </div><div class="col-sm-7">
+                            <div class="dataTables_paginate" id="datatable-checkbox_paginate">
+                                <ul id="paginationUL"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script id="table-TrinhDo" type="x-tmpl-mustache">
+        <tr>
+            <td>{{UserName}}</td>
+            <td>{{FullName}}</td>
+            <td>{{{Avatar}}}</td>
+            <td>{{{DateCreated}}}</td>            
+            <td>     </td>            
+        </tr>
+    </script>

@@ -1,0 +1,106 @@
+﻿<div id="modal-add-edit-HopDong" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Tạ mới / Sửa Hợp đồng</h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainTrinhDo">
+                        <input type="hidden" id="hidHopDongId" value="" />
+
+                        <div class="form-group">
+                            <label for="lbSoHopDong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Số hợp đồng</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtSoHopDong" placeholder="Số hợp đồng">
+                            </div>
+                            <label for="lbLoaiHopDong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Loại hợp đồng</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlLoaiHopDong" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbNgayKyHopDong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày ký</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgayKyHopDong" placeholder="Ngày ký hợp đồng">
+                            </div>
+                            <label for="lbNgayHopDong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày hợp đồng</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgayHopDong" placeholder="Ngày hợp đồng">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbNgayHieuLuc" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày hiệu lực</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgayHieuLuc" placeholder="Ngày hiệu lực">
+                            </div>
+                            <label for="lbNgayHetHan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày hết hạn</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgayHetHan" placeholder="Ngày hết hạn">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbHeSoLuongCoBan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Hệ số</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtHeSoLuongCoBan" placeholder="Hệ số lương cơ bản">
+                            </div>
+                            <label for="lbLuongCoBan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Lương cơ bản</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtLuongCoBan" placeholder="Lương cơ bản">
+                            </div>
+                        </div>
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <label for="lbSoHopDongMoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Số hợp đồng mới</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtSoHopDongMoi" placeholder="Số hợp đồng mới">
+                            </div>
+                            <label for="lbLoaiHopDongMoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Loại hợp đồng mới</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlLoaiHopDongMoi" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbNgayKyHopDongMoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày ký mới</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgayKyHopDongMoi" placeholder="Ngày ký hợp đồng mới">
+                            </div>
+                            <label for="lbNgayHopDongMoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày hợp đồng mới</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgayHopDongMoi" placeholder="Ngày hợp đồng mới">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbNgayHieuLucMoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày hiệu lực mới</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgayHieuLucMoi" placeholder="Ngày hiệu lực mới">
+                            </div>
+                            <label for="lbNgayHetHanMoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày hết hạn mới</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgayHetHanMoi" placeholder="Ngày hết hạn mới">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbHeSoLuongCoBanMoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Hệ số mới</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtHeSoLuongCoBanMoi" placeholder="Hệ số lương cơ bản mới">
+                            </div>
+                            <label for="lbLuongCoBanMoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Lương cơ bản mới</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtLuongCoBanMoi" placeholder="Lương cơ bản mới">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnSave" class="btn btn-success">Lưu</button>
+                                <button type="button" id="btnCancel" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

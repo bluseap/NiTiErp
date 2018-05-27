@@ -8,17 +8,17 @@
 @section Scripts{
 
     <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
-    <script src="~/app/controllers/hoso/index.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/hopdong/index.js" asp-append-version="true"></script>
     <script>
-        var hoso = new hosoController();
-        hoso.initialize();
+        var hopdong = new hopdongController();
+        hopdong.initialize();
     </script>
 }
 
 <div class="">
     <div class="page-title">
         <div class="title_left">
-            <h3>Hồ sơ nhân viên</h3>
+            <h3>Hộp đồng </h3>
         </div>
         <div class="title_right">
             <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right top_search">
@@ -26,7 +26,6 @@
             </div>
             <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                 <div class="input-group">
-
                 </div>
             </div>
         </div>
@@ -38,7 +37,7 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>  <small>Danh sách nhân viên</small></h3>
+                    <h3>  <small>Danh sách Hợp đồng</small></h3>
                 </div>
                 <div class="title_right">
                     <div class="col-md-4 col-sm-4 col-xs-12 form-group pull-right top_search">
@@ -67,19 +66,19 @@
             <div class="row">
                 <div class="x_panel">
                     <div class="table-responsive">
-                        <table id="tbl-HoSoNhanVien" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                        <table id="tbl-HopDong" class="table table-striped jambo_table bulk_action" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>Họ và tên</th>
-                                    <th>Hình thẻ</th>
-                                    <th>Khu vực</th>
-                                    <th>Phòng, tổ</th>
-                                    <th>Chức vụ</th>
-                                    <th></th>
-
+                                    <th>Số hợp đồng</th>
+                                    <th>Loại hợp đồng</th>
+                                    <th>Hệ số</th>
+                                    <th>Lương cơ bản</th>
+                                    <th>Ngày hiệu lực</th>
+                                    <th>Ngày hết hạn</th>
+                                    <th>    </th>
                                 </tr>
                             </thead>
-                            <tbody id="tbl-contentHoSoNhanVien"></tbody>
+                            <tbody id="tbl-contentHopDong"></tbody>
                         </table>
                         <div class="row">
                             <div class="col-sm-5">
@@ -107,17 +106,17 @@
         </div>
     </div>
 
-    <script id="table-HoSoNhanVien" type="x-tmpl-mustache">
+    <script id="table-HopDong" type="x-tmpl-mustache">
         <tr>
             <td>{{UserName}}</td>
+            <td>{{FullName}}</td>
             <td>{{{Avatar}}}</td>
-            <td>{{{XiNghiep}}}</td>
-            <td>{{{PhongTo}}}</td>
-            <td>{{{ChucVu}}}</td>
-            <td></td>
+            <td>{{{DateCreated}}}</td>
+            <td>{{{DateCreated}}}</td>
+            <td>{{{DateCreated}}}</td>
+            <td>     </td>
         </tr>
     </script>
-
 </div>
 
 @Html.Partial("_AddEditModel.cshtml")

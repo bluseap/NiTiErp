@@ -1,0 +1,50 @@
+﻿<div id="modal-add-edit-HoSo" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Tạ mới / Sửa hồ sơ nhân viên</h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <div class="" role="tabpanel" id="tabpanelHoSo" data-example-id="togglable-tabs">
+                        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#tab_lylich" role="tab" id="tabLyLich" data-toggle="tab" aria-expanded="true">Lý lịch</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#tab_trinhdo" role="tab" id="tabTrinhDo" data-toggle="tab" aria-expanded="false">Trình độ</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#tab_hopdong" role="tab" id="tabHopDong" data-toggle="tab" aria-expanded="false">Hợp đồng</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#tab_dangdoan" role="tab" id="tabDangDoan" data-toggle="tab" aria-expanded="false">Đảng, đoàn..</a>
+                            </li>
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade active in" id="tab_lylich" aria-labelledby="home-tab">
+                                @Html.Partial("_tabLyLich.cshtml")
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="tab_trinhdo" aria-labelledby="profile-tab">
+                                @Html.Partial("_tabTrinhDo.cshtml")
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="tab_hopdong" aria-labelledby="profile-tab">
+                                @Html.Partial("_tabHopDong.cshtml")
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="tab_dangdoan" aria-labelledby="profile-tab">
+                                @Html.Partial("_tabDangDoan.cshtml")
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" id="btnSave" class="btn btn-success">Lưu</button>
+                            <button type="button" id="btnCancel" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
