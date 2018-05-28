@@ -20,9 +20,10 @@
     }
 
     function registerEvents() {
-        $('#txtFromDate, #txtToDate').datepicker({
+        $('#txtFromDate, #txtToDate').datepicker({            
             autoclose: true,
-            format: 'dd/mm/yyyy'
+            format: 'dd/mm/yyyy',
+            language: 'vi'
         });
         //Init validation
         $('#frmMaintainance').validate({

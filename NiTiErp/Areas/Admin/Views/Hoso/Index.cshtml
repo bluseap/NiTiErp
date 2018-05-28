@@ -4,10 +4,13 @@
 @section Styles{
     <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
     <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
 }
 @section Scripts{
 
     <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8"></script>
     <script src="~/app/controllers/hoso/index.js" asp-append-version="true"></script>
     <script>
         var hoso = new hosoController();
@@ -22,7 +25,7 @@
         </div>
         <div class="title_right">
             <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right top_search">
-                <button class="btn btn-success" id="btn-create" type="button">Tạo mới</button>
+                <button class="btn btn-round btn-warning" id="btn-create" type="button">Tạo mới</button>
             </div>
             <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                 <div class="input-group">
@@ -41,14 +44,15 @@
                     <h3>  <small>Danh sách nhân viên</small></h3>
                 </div>
                 <div class="title_right">
-                    <div class="col-md-4 col-sm-4 col-xs-12 form-group pull-right top_search">
+                    <div class="col-md-4 col-sm-4 col-xs-12 form-group pull-right">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Từ khóa...">
+                            <input type="text" id="txtTimNhanVien" class="form-control" placeholder="Tìm kiếm...">
                             <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">Tìm!</button>
+                                <button class="btn btn-primary" id="btnTimNhanVien" type="button">Go!</button>
                             </span>
                         </div>
                     </div>
+
                     <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right top_search">
                         <div class="input-group">
                             <select id="ddlKhuVuc" class="form-control"></select>
