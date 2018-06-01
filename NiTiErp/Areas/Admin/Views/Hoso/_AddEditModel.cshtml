@@ -21,6 +21,9 @@
                             <li role="presentation" class="">
                                 <a href="#tab_dangdoan" role="tab" id="tabDangDoan" data-toggle="tab" aria-expanded="false">Đảng, đoàn..</a>
                             </li>
+                            <li role="presentation" class="">
+                                <a href="#tab_congviec" role="tab" id="tabCongViec" data-toggle="tab" aria-expanded="false">Công việc</a>
+                            </li>
                         </ul>
                         <div id="myTabContent" class="tab-content">
                             <div role="tabpanel" class="tab-pane fade active in" id="tab_lylich" aria-labelledby="home-tab">
@@ -34,6 +37,9 @@
                             </div>
                             <div role="tabpanel" class="tab-pane fade" id="tab_dangdoan" aria-labelledby="profile-tab">
                                 @Html.Partial("_tabDangDoan.cshtml")
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="tab_congviec" aria-labelledby="profile-tab">
+                                @Html.Partial("_tabCongViec.cshtml")
                             </div>
                         </div>
                     </div>

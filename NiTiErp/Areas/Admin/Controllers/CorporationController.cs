@@ -18,10 +18,10 @@ namespace NiTiErp.Areas.Admin.Controllers
 {    
     public class CorporationController : BaseController
     {        
-        private ICorporationService _corporationService;
+        private Application.Interfaces.ICorporationService _corporationService;
         private readonly IHostingEnvironment _hostingEnvironment;
 
-        public CorporationController(ICorporationService corporationService,
+        public CorporationController(Application.Interfaces.ICorporationService corporationService,
             IHostingEnvironment hostingEnvironment)
         {
             _corporationService = corporationService;

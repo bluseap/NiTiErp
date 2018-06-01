@@ -172,7 +172,7 @@ namespace NiTiErp
             services.AddTransient<ICommonService, CommonService>();
             services.AddTransient<IFeedbackService, FeedbackService>();
             services.AddTransient<IContactService, ContactService>();
-            services.AddTransient<ICorporationService, Application.Implementation.CorporationService>();
+            services.AddTransient<Application.Interfaces.ICorporationService, Application.Implementation.CorporationService>();
             services.AddTransient<ICorporationServiceService, Application.Implementation.CorporationServiceService>();
 
             services.AddTransient<IPageService, PageService>();
@@ -181,9 +181,26 @@ namespace NiTiErp
             services.AddTransient<NiTiErp.Application.Dapper.Interfaces.IFunctionService,
                 NiTiErp.Application.Dapper.Implementation.FunctionService>();
             services.AddTransient<IReportService, ReportService>();
-
             services.AddTransient<IAppUserRolesService, AppUserRolesService>();
             services.AddTransient<IProductsImagesService, ProductsImagesService>();
+
+            services.AddTransient<Application.Dapper.Interfaces.ICorporationService, Application.Dapper.Implementation.CorporationService>();
+            services.AddTransient<IPhongDanhMucService, PhongDanhMucService>();
+            services.AddTransient<IHonNhanService, HonNhanService>();
+
+            services.AddTransient<IDanTocService, DanTocService>();
+            services.AddTransient<ITonGiaoService, TonGiaoService>();
+            services.AddTransient<IXuatThanService, XuatThanService>();
+            services.AddTransient<ILoaiBangService, LoaiBangService>();
+            services.AddTransient<ILoaiDaoTaoService, LoaiDaoTaoService>();
+            services.AddTransient<IXepLoaiService, XepLoaiService>();
+            services.AddTransient<ILoaiHopDongService, LoaiHopDongService>();
+            services.AddTransient<IChucVuDangService, ChucVuDangService>();
+            services.AddTransient<IChucVuDoanService, ChucVuDoanService>();
+            services.AddTransient<IChucVuCongDoanService, ChucVuCongDoanService>();
+            services.AddTransient<IChucVuQuanDoiService, ChucVuQuanDoiService>();
+            services.AddTransient<ICapBacQuanDoiService, CapBacQuanDoiService>();
+            services.AddTransient<IChucVuNhanVienService, ChucVuNhanVienService>();
 
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 

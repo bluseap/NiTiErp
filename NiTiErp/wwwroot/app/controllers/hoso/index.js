@@ -1,15 +1,20 @@
 ﻿var hosoController = function () {
 
+    var userCorporationId = $("#hidUserCorporationId").val();
+
     //var images = [];
 
-    this.initialize = function () {
+    this.initialize = function () {               
+        registerEvents();
 
         loadData();
 
-        registerEvents();        
+        loadKhuVuc();
+         
     }
 
-    function registerEvents() {
+    function registerEvents() {        
+
         $('#txtNgaySinh, #txtNgayKyHopDong').datepicker({            
             autoclose: true,
             format: 'dd/mm/yyyy',
@@ -25,7 +30,7 @@
 
         $('#btnSave').on('click', function (e) {
             var isMainValidate = isFormMainValidate();
-            if (isMainValidate == true) {
+            if (isMainValidate === true) {
 
                 tedu.notify("test ok nhe gdshdg", "success");
             }
@@ -37,10 +42,7 @@
     {        
         if ($('#frmMainLyLich').valid() && $('#frmMainHopDong').valid()) {
             return true;
-        }
-        //else if ($('#frmMainHopDong').valid()) {          
-        //    return true;
-        //}
+        }        
         else 
         {
             return false;
@@ -155,6 +157,15 @@
                 txtLuongCoBan: { required: "Chỉ nhập số!" }
             }
         });
+
+        $('#ddlKhuVuc').on('change', function () {    
+            var corporationId = $('#ddlKhuVuc').val();
+            loadPhongKhuVuc(corporationId);
+
+            tedu.notify('Danh mục phòng theo khu vực.', 'success');
+        });
+
+
     }
 
     function resetFormMaintainance() {
@@ -173,17 +184,74 @@
     }
 
     function loadData() {
-
         var gioitinh = [{ value:"1", ten:"Nam" }, { value:"0", ten:"Nữ" } ];        
         var render = "";
         for (var i = 0; i < gioitinh.length ; i++) {
             render += "<option value='" + gioitinh[i].value + "'>" + gioitinh[i].ten + "</option>";            
         }
-        $('#ddlGioiTinh').html(render);     
-
-
+        $('#ddlGioiTinh').html(render);
+        
     }
 
+    function loadKhuVuc() {
+        return $.ajax({
+            type: 'GET',
+            url: '/admin/hoso/GetListCorNhanSu',
+            dataType: 'json',
+            success: function (response) {              
+                var render = "<option value='%' >-- Lựa chọn --</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.Name + "</option>";
+                });
+                $('#ddlKhuVuc').html(render);
+
+                var userCorporationId = $("#hidUserCorporationId").val();
+                if (userCorporationId !== "PO") {
+                    $('#ddlKhuVuc').prop('disabled', true);
+                }
+                else
+                {
+                    $('#ddlKhuVuc').prop('disabled', false);
+                }
+                //alert($("#ddlKhuVuc")[0].selectedIndex);
+                $("#ddlKhuVuc")[0].selectedIndex = 1;
+
+                loadPhongKhuVuc($("#ddlKhuVuc").val());
+                
+                //var userCorporationId = $("#hidUserCorporationId").val();
+                //alert(userCorporationId);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh mục Công Ty.', 'error');
+            }
+        });
+    }
+
+    function loadPhongKhuVuc(makhuvuc) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/hoso/GetListPhongKhuVuc',
+            data: { makv: makhuvuc },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >-- Lựa chọn --</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.TenPhong + "</option>";
+                });
+                $('#ddlPhongBan').html(render);
+
+                $("#ddlPhongBan")[0].selectedIndex = 1;
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh mục Phòng.', 'error');
+            }
+        });
+    }
   
 
 }

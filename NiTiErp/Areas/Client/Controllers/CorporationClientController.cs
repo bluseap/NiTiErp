@@ -24,10 +24,10 @@ namespace NiTiErp.Areas.Client.Controllers
     {
         private readonly IUserService _userService;
         private ICorporationServiceService _corserService;
-        private ICorporationService _corporationService;
+        private Application.Interfaces.ICorporationService _corporationService;
         private readonly IHostingEnvironment _hostingEnvironment;
 
-        public CorporationClientController(ICorporationService corporationService, 
+        public CorporationClientController(Application.Interfaces.ICorporationService corporationService, 
             ICorporationServiceService corserService,
             IUserService userService,
             IHostingEnvironment hostingEnvironment)

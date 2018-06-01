@@ -1,0 +1,104 @@
+﻿
+<form class="form-horizontal form-label-left input_mask" role="form" id="frmMainCongViec">
+    <input type="hidden" id="hidCongViecId" value="0" />
+
+    <div class="form-group">
+        <label for="lbCongTyXiNghiep" class="control-label col-md-2 col-sm-2 col-xs-12 ">Công ty, Xí nghiệp</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <select id="ddlCongTyXiNghiep" class="form-control"></select>
+        </div>
+        <label for="lbPhongBan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Phòng, ban</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <select id="ddlPhongBan" class="form-control"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lbChucVu" class="control-label col-md-2 col-sm-2 col-xs-12">Chức vụ</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <select id="ddlChucVuNhanVien" class="form-control"></select>
+        </div>
+        <label for="lbCongTacChinh" class="control-label col-md-2 col-sm-2 col-xs-12 ">Công tác chính</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" class="form-control has-feedback-right" id="txtCongTacChinh" placeholder="Công tác chính">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lbSoQuyetDinhCongViec" class="control-label col-md-2 col-sm-2 col-xs-12">Số quyết định</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" class="form-control has-feedback-right" id="txtSoQuyetDinhCongViec" placeholder="Số quyết định">
+        </div>
+        <label for="lbTenQuyetDinhCongViec" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tên quyết định</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" class="form-control has-feedback-right" id="txtTenQuyetDinhCongViec" placeholder="Tên quyết định">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lbNgayKyCongViec" class="control-label col-md-2 col-sm-2 col-xs-12">Ngày ký</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" class="form-control has-feedback-right" id="txtNgayKyCongViec" placeholder="Ngày ký">
+        </div>
+        <label for="lbNgayHieuLucCongViec" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày hiệu lực</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" class="form-control has-feedback-right" id="txtNgayHieuLucCongViec" placeholder="Ngày hiệu lực">
+        </div>
+    </div>
+</form>
+
+<div class="clearfix"></div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <table id="tbl-hopdong" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Số hợp đồng</th>
+                            <th>Loại hợp đồng</th>
+                            <th>Hệ số</th>
+                            <th>Lương cơ bản</th>
+                            <th>Ngày hiệu lực</th>
+                            <th>Ngày hết hạn</th>
+                            <th>    </th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbl-contentHopDong"></tbody>
+                </table>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="dataTables_info" id="datatable-checkbox_info" role="status" aria-live="polite">
+                            <select id="ddl-show-page">
+                                <option value="10" selected="selected">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                            </select>
+                            <span class="item-per-page">
+                                dòng/trang.
+                            </span>
+                            Tổng cộng: <strong id="lbl-total-records"></strong>
+                        </div>
+                    </div><div class="col-sm-7">
+                        <div class="dataTables_paginate" id="datatable-checkbox_paginate">
+                            <ul id="paginationUL"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="table-TrinhDo" type="x-tmpl-mustache">
+    <tr>
+        <td>{{UserName}}</td>
+        <td>{{FullName}}</td>
+        <td>{{{Avatar}}}</td>
+        <td>{{{DateCreated}}}</td>
+        <td>{{{DateCreated}}}</td>
+        <td>{{{DateCreated}}}</td>
+        <td>     </td>
+    </tr>
+</script>
+
+
+

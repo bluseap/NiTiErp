@@ -53,6 +53,7 @@
                             <img src="/admin-side/images/img.jpg" alt="..." class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
+                            <input type="hidden" id="hidUserCorporationId" value=@User.GetSpecificClaim("CorporationId") />
                             <span>Welcome,</span>
                             <h2>@User.GetSpecificClaim("FullName")</h2>
                         </div>
@@ -215,7 +216,8 @@
     <script src="~/admin-side/js/custom.min.js"></script>
 
 
-    <script src="~/app/shared/tedu.js"></script>
+    <script src="~/app/shared/tedu.js" asp-append-version="true" ></script>
+
     @*<environment names="Development">
             <script src="~/app/shared/tedu.js"></script>
         </environment>
