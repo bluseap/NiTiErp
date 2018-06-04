@@ -106,10 +106,17 @@
             mm = "0" + mm;
         return day + "/" + month + "/" + year;
 
-        var str = newdate.getFullYear() + "-" + (newdate.getMonth() + 1) + "-" + newdate.getDate() +
-            " " + newdate.getHours() + ":" + newdate.getMinutes() + ":" + newdate.getSeconds();
+        //var str = newdate.getFullYear() + "-" + (newdate.getMonth() + 1) + "-" + newdate.getDate() +
+        //    " " + newdate.getHours() + ":" + newdate.getMinutes() + ":" + newdate.getSeconds();
 
-        return day + "/" + month + "/" + year;
+        //return day + "/" + month + "/" + year;
+    },
+
+    getFormatDateYYMMDD: function (datetime) {    
+        var ngaysinh = datetime.split("/");
+        var f = new Date(ngaysinh[2], ngaysinh[1] - 1, ngaysinh[0]).toDateString("yyyy/MM/dd");
+
+        return f;
     },
 
     dateFormatJson: function (datetime) {

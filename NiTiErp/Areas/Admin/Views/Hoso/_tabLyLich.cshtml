@@ -1,18 +1,28 @@
 ﻿
 <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainLyLich">
+    <input type="hidden" id="hidLyLichIdInsert" value="0" />
     <input type="hidden" id="hidLyLichId" value="0" />
 
+    <div class="form-group">
+        <label for="lbnonono" class="control-label col-md-2 col-sm-2 col-xs-12 "></label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+        </div>
+        <label for="lbHinhThe" class="control-label col-md-2 col-sm-2 col-xs-12 ">Hình thẻ</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="hidden" id="hidHinhTheId" value="" />
+            <div id="imagelistHinhThe" class="col-md-12">
+            </div>
+            <input type="file" id="fileInputHinhNhanVien" />
+        </div>
+    </div>
     <div class="form-group">
         <label for="lbSoTheNhanVien" class="control-label col-md-2 col-sm-2 col-xs-12 ">Số thẻ</label>
         <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
             <input type="text" class="form-control has-feedback-right" id="txtSoTheNhanVien" placeholder="Số thẻ nhân viên">
         </div>
-        <label for="lbHinhThe" class="control-label col-md-2 col-sm-2 col-xs-12 ">Hình thẻ</label>
+        <label for="lbSoDienThoai" class="control-label col-md-2 col-sm-2 col-xs-12 ">Số điện thoại</label>
         <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-            <input type="hidden" id="hidHinhTheId" value="" />
-            <div id="image-listHinhThe">
-            </div>
-            <input type="file" id="fileInputHinhThe" />
+            <input type="text" class="form-control has-feedback-right" id="txtSoDienThoai" placeholder="Số điện thoại">
         </div>
     </div>
     <div class="form-group">
@@ -62,29 +72,29 @@
         </div>
         <label for="lbNoiOHienNay" class="control-label col-md-2 col-sm-2 col-xs-12">Nơi ở hiện nay *</label>
         <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-            <input type="text" class="form-control has-feedback-right" id="txtNoiOHienNay" placeholder="Nơi ở hiện nay">
+            <input type="text" name="txtNoiOHienNay" class="form-control has-feedback-right" id="txtNoiOHienNay" placeholder="Nơi ở hiện nay">
         </div>
     </div>
     <div class="form-group">
         <label for="lbHonNhan" class="control-label col-md-2 col-sm-2 col-xs-12">Hôn nhân *</label>
         <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-            <select id="ddlHonNhan" class="form-control"></select>
+            <select id="ddlHonNhan" name="ddlHonNhan" class="form-control"></select>
         </div>
         <label for="lbDanToc" class="control-label col-md-2 col-sm-2 col-xs-12">Dân tộc *</label>
         <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-            <select id="ddlDanToc" class="form-control"></select>
+            <select id="ddlDanToc" name="ddlDanToc" class="form-control"></select>
         </div>
     </div>
     <div class="form-group">
         <label for="lbTonGiao" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tôn giáo *</label>
         <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-            <select id="ddlTonGiao" class="form-control"></select>
+            <select id="ddlTonGiao" name="ddlTonGiao" class="form-control"></select>
         </div>
         <label for="lbXuatThan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Xuất thân *</label>
         <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-            <select id="ddlXuatThan" class="form-control"></select>
+            <select id="ddlXuatThan" name="ddlXuatThan" class="form-control"></select>
         </div>
-    </div>    
+    </div>
 
 </form>
 

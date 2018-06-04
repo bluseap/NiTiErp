@@ -43,7 +43,7 @@ namespace NiTiErp.Application.Dapper.Implementation
                 }
                 catch (Exception ex)
                 {
-                    throw;
+                    throw ex;
                 }
             }
         }

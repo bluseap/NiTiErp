@@ -15,6 +15,15 @@ namespace NiTiErp.Application.Dapper.ViewModels
         [StringLength(500)]
         public string TenChucVu { get; set; }
 
+        [StringLength(20)]
+        public string CreateBy { get; set; }
+
+        public DateTime CreateDate { get; set; }
+        [StringLength(20)]
+        public string UpdareBy { get; set; }
+
+        public DateTime UpdateDate { get; set; }
+
         public bool Active { get; set; }
         public int Stt { get; set; }
     }

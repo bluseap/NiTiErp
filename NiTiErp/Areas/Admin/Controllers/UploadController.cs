@@ -53,11 +53,8 @@ namespace NiTiErp.Areas.Admin.Controllers
                 }
                 await HttpContext.Response.WriteAsync("<script>window.parent.CKEDITOR.tools.callFunction(" + CKEditorFuncNum + ", '" + Path.Combine(imageFolder, filename).Replace(@"\", @"/") + "');</script>");
             }
-        }
-        /// <summary>
-        /// Upload image for form
-        /// </summary>
-        /// <returns></returns>
+        }        
+
         [HttpPost]
         public IActionResult UploadImage()
         {
@@ -95,5 +92,45 @@ namespace NiTiErp.Areas.Admin.Controllers
                 return new OkObjectResult(Path.Combine(imageFolder, datetimeFilename).Replace(@"\", @"/"));
             }
         }
+
+        [HttpPost]
+        public IActionResult UploadImageNhanVien()
+        {
+            DateTime now = DateTime.Now;
+            var files = Request.Form.Files;
+            if (files.Count == 0)
+            {
+                return new BadRequestObjectResult(files);
+            }
+            else
+            {
+                var file = files[0];
+                var filename = ContentDispositionHeaderValue
+                                    .Parse(file.ContentDisposition)
+                                    .FileName
+                                    .Trim('"');
+
+                //var imageFolder = $@"\uploaded\images\{now.ToString("yyyyMMdd")}";
+                var imageFolder = $@"\uploaded\hinhnhanvien\{now.ToString("yyyyMMdd")}";
+
+                string folder = _hostingEnvironment.WebRootPath + imageFolder;
+
+                if (!Directory.Exists(folder))
+                {
+                    Directory.CreateDirectory(folder);
+                }
+
+                var datetimeFilename = TextHelper.ConvertStringDatetime(now) + filename;
+                string filePath = Path.Combine(folder, datetimeFilename);
+                using (FileStream fs = System.IO.File.Create(filePath))
+                {
+                    file.CopyTo(fs);
+                    fs.Flush();
+                }
+
+                return new OkObjectResult(Path.Combine(imageFolder, datetimeFilename).Replace(@"\", @"/"));
+            }
+        }
+
     }
 }

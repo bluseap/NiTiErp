@@ -201,6 +201,7 @@ namespace NiTiErp
             services.AddTransient<IChucVuQuanDoiService, ChucVuQuanDoiService>();
             services.AddTransient<ICapBacQuanDoiService, CapBacQuanDoiService>();
             services.AddTransient<IChucVuNhanVienService, ChucVuNhanVienService>();
+            services.AddTransient<IHoSoNhanVienService, HoSoNhanVienService>();
 
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 
