@@ -81,25 +81,45 @@ namespace NiTiErp.Areas.Admin.Controllers
             }
             else
             {
-                var username = User.GetSpecificClaim("UserName");
+                var username = User.GetSpecificClaim("UserName");                
+
+                hosoVm.CreateBy = username;
+                hosoVm.CreateDate = DateTime.Now;
+                hosoVm.UpdateBy = username;
+                hosoVm.UpdateDate = DateTime.Now;
 
                 if (hosoVm.InsertUpdateId == 0)
-                {
-                    hosoVm.CreateBy = username;
-                    hosoVm.CreateDate = DateTime.Now;                    
-
+                {       
                     var hosonhanvien = _hosonhanvienService.HoSoNhanVienAUD(hosoVm, "InHoSoNhanVien");
                     return new OkObjectResult(hosonhanvien);
                 }
                 else
                 {
-                    hosoVm.UpdateBy = username;
-                    hosoVm.UpdateDate = DateTime.Now;
-
                     var hosonhanvien = _hosonhanvienService.HoSoNhanVienAUD(hosoVm, "UpHoSoNhanVien");
                     return new OkObjectResult(hosonhanvien);
                 }  
             }            
+        }
+
+        [HttpGet]
+        public IActionResult GetAllPaging(string corporationId, string phongId, string keyword, int page, int pageSize)
+        {
+            var phong = !string.IsNullOrEmpty(phongId) ? phongId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+
+            var model = _hosonhanvienService.GetAllHoSoNhanVienPaging(corporationId, phong, tukhoa, page, pageSize, 
+                "", "", "", "GetAllHoSoNhanVien");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetHoSoId(string hosoId)
+        {       
+            var model = _hosonhanvienService.GetAllHoSoNhanVienPaging("", "", "", 1, 10,
+                hosoId, "", "", "GetHoSoNhanVienId");
+
+            return new OkObjectResult(model);
         }
 
         [HttpGet]
