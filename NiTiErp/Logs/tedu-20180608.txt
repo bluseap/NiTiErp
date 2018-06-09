@@ -1,0 +1,1238 @@
+2018-06-08T08:35:58.7877811+07:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-06-08T08:36:12.5749242+07:00  [INF] Executed DbCommand ("590"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-06-08T08:36:16.1767946+07:00  [INF] Executed DbCommand ("314"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [CorporationServices] AS [c]" (0723d8ff)
+2018-06-08T08:36:16.3004212+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Corporations] AS [c]" (0723d8ff)
+2018-06-08T08:36:16.3652067+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-06-08T08:36:16.3737799+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ContactDetails] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-06-08T08:36:16.3819008+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Functions] AS [f]" (0723d8ff)
+2018-06-08T08:36:16.9433079+07:00  [INF] Executed DbCommand ("93"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Footers] AS [x]
+WHERE [x].[Id] = 'DefaultFooterId'" (0723d8ff)
+2018-06-08T08:36:16.9589170+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Colors] AS [c]" (0723d8ff)
+2018-06-08T08:36:16.9719888+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AdvertistmentPages] AS [a]" (0723d8ff)
+2018-06-08T08:36:16.9867104+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Slides] AS [s]" (0723d8ff)
+2018-06-08T08:36:16.9963285+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Sizes] AS [s]" (0723d8ff)
+2018-06-08T08:36:17.0037522+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2018-06-08T08:36:17.1277393+07:00  [INF] Executed DbCommand ("115"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeTitle')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-06-08T08:36:17.1368325+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaKeyword')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-06-08T08:36:17.1461705+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaDescription')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-06-08T08:36:20.4859885+07:00 0HLECS0TV9J8R:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/   (ca22a1cb)
+2018-06-08T08:36:25.3524069+07:00 0HLECS0TV9J8R:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.LoginController.Index (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:36:45.1634596+07:00 0HLECS0TV9J8R:00000001 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Login/Index.cshtml". (9707eebe)
+2018-06-08T08:36:45.4559630+07:00 0HLECS0TV9J8R:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.LoginController.Index (NiTiErp)" in 20147.2105ms (afa2e885)
+2018-06-08T08:36:46.3291648+07:00 0HLECS0TV9J8R:00000001 [INF] Request finished in 26149.7701ms 200 text/html; charset=utf-8 (791a596a)
+2018-06-08T08:36:47.9451854+07:00 0HLECS0TV9J8S:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/app/shared/tedu.js   (ca22a1cb)
+2018-06-08T08:36:47.9461968+07:00 0HLECS0TV9J8R:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/jquery-validation/dist/jquery.validate.js   (ca22a1cb)
+2018-06-08T08:36:48.1279066+07:00 0HLECS0TV9J8S:00000001 [INF] The file "/app/shared/tedu.js" was not modified (f1f8d725)
+2018-06-08T08:36:48.1308642+07:00 0HLECS0TV9J8R:00000002 [INF] The file "/lib/jquery-validation/dist/jquery.validate.js" was not modified (f1f8d725)
+2018-06-08T08:36:48.1853806+07:00 0HLECS0TV9J8S:00000001 [INF] Request finished in 221.6231ms 304 application/javascript (791a596a)
+2018-06-08T08:36:48.1869018+07:00 0HLECS0TV9J8R:00000002 [INF] Request finished in 248.2061ms 304 application/javascript (791a596a)
+2018-06-08T08:37:09.1637141+07:00 0HLECS0TV9J8S:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:44352/admin/login/authen application/x-www-form-urlencoded; charset=UTF-8 30 (ca22a1cb)
+2018-06-08T08:37:09.7639156+07:00 0HLECS0TV9J8S:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.LoginController.Authen (NiTiErp)" with arguments (["NiTiErp.Models.AccountViewModels.LoginViewModel"]) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:37:09.8441829+07:00 0HLECS0TV9J8S:00000002 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-06-08T08:37:10.5851215+07:00 0HLECS0TV9J8S:00000002 [INF] Executed DbCommand ("445"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[CorporationId], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserCreated], [u].[UserModified], [u].[UserName]
+FROM [AppUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2018-06-08T08:37:11.3917212+07:00 0HLECS0TV9J8S:00000002 [INF] Executed DbCommand ("29"ms) [Parameters=["@__user_Id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-06-08T08:37:11.6097949+07:00 0HLECS0TV9J8S:00000002 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-06-08T08:37:11.6352601+07:00 0HLECS0TV9J8S:00000002 [INF] Executed DbCommand ("3"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CorporationId], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-06-08T08:37:11.6757755+07:00 0HLECS0TV9J8S:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=["@__role_Id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2018-06-08T08:37:11.6885264+07:00 0HLECS0TV9J8S:00000002 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-06-08T08:37:11.7218835+07:00 0HLECS0TV9J8S:00000002 [INF] AuthenticationScheme: "Identity.Application" signed in. (c66dd7e7)
+2018-06-08T08:37:11.7266741+07:00 0HLECS0TV9J8S:00000002 [INF] User logged in. (fdce0db4)
+2018-06-08T08:37:11.7784916+07:00 0HLECS0TV9J8S:00000002 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:37:12.1184446+07:00 0HLECS0TV9J8S:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.LoginController.Authen (NiTiErp)" in 2637.865ms (afa2e885)
+2018-06-08T08:37:12.1616281+07:00 0HLECS0TV9J8S:00000002 [INF] Request finished in 3002.2165ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:37:12.4574390+07:00 0HLECS0TV9J8R:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/Admin/Home/Index   (ca22a1cb)
+2018-06-08T08:37:12.4714194+07:00 0HLECS0TV9J8R:00000003 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:37:12.5813120+07:00 0HLECS0TV9J8R:00000003 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:37:12.6147467+07:00 0HLECS0TV9J8R:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HomeController.Index (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:37:13.2930131+07:00 0HLECS0TV9J8R:00000003 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Home/Index.cshtml". (9707eebe)
+2018-06-08T08:37:20.4881233+07:00 0HLECS0TV9J8R:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HomeController.Index (NiTiErp)" in 7970.0124ms (afa2e885)
+2018-06-08T08:37:20.7244751+07:00 0HLECS0TV9J8R:00000003 [INF] Request finished in 8246.8585ms 200 text/html; charset=utf-8 (791a596a)
+2018-06-08T08:37:21.1635094+07:00 0HLECS0TV9J8S:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/app/shared/tedu.js?v=jqGW2bmvBJhKfTb5uQioYxL9FDr2gjeQEzc7R4gd1Fc   (ca22a1cb)
+2018-06-08T08:37:21.1710883+07:00 0HLECS0TV9J8S:00000003 [INF] The file "/app/shared/tedu.js" was not modified (f1f8d725)
+2018-06-08T08:37:21.1758841+07:00 0HLECS0TV9J8S:00000003 [INF] Request finished in 11.6661ms 304 application/javascript (791a596a)
+2018-06-08T08:37:24.6082013+07:00 0HLECS0TV9J8R:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/Admin/Home/GetRevenue   (ca22a1cb)
+2018-06-08T08:37:24.6133080+07:00 0HLECS0TV9J8R:00000004 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:37:24.6242085+07:00 0HLECS0TV9J8R:00000004 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:37:24.6304569+07:00 0HLECS0TV9J8R:00000004 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HomeController.GetRevenue (NiTiErp)" with arguments (["", ""]) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:37:24.8149891+07:00 0HLECS0TV9J8R:00000004 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:37:24.9069646+07:00 0HLECS0TV9J8R:00000004 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HomeController.GetRevenue (NiTiErp)" in 281.4573ms (afa2e885)
+2018-06-08T08:37:24.9207157+07:00 0HLECS0TV9J8R:00000004 [INF] Request finished in 304.9647ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:37:31.3376923+07:00 0HLECS0TV9J8S:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/index   (ca22a1cb)
+2018-06-08T08:37:31.3431582+07:00 0HLECS0TV9J8S:00000004 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:37:31.3500078+07:00 0HLECS0TV9J8S:00000004 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:37:31.3582976+07:00 0HLECS0TV9J8S:00000004 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.Index (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:37:31.7086495+07:00 0HLECS0TV9J8S:00000004 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Hoso/Index.cshtml". (9707eebe)
+2018-06-08T08:37:36.3208261+07:00 0HLECS0TV9J8S:00000004 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.Index (NiTiErp)" in 4967.9557ms (afa2e885)
+2018-06-08T08:37:36.3672988+07:00 0HLECS0TV9J8S:00000004 [INF] Request finished in 5019.9551ms 200 text/html; charset=utf-8 (791a596a)
+2018-06-08T08:37:36.4230816+07:00 0HLECS0TV9J8R:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44352/app/controllers/hoso/index.js?v=y0oFjl_90WF-pEl-FvtBvZjRqOe0L6mAKbPWE5wYSRI   (ca22a1cb)
+2018-06-08T08:37:36.4283509+07:00 0HLECS0TV9J8R:00000005 [INF] Sending file. Request path: '"/app/controllers/hoso/index.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\app\controllers\hoso\index.js"' (27b0a520)
+2018-06-08T08:37:36.4774265+07:00 0HLECS0TV9J8R:00000005 [INF] Request finished in 53.8871ms 200 application/javascript (791a596a)
+2018-06-08T08:37:38.1740395+07:00 0HLECS0TV9J8S:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/HonNhanGetList   (ca22a1cb)
+2018-06-08T08:37:38.1820146+07:00 0HLECS0TV9J8S:00000005 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:37:38.1969395+07:00 0HLECS0TV9J8S:00000005 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:37:38.2208702+07:00 0HLECS0TV9J8S:00000005 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.HonNhanGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:37:38.2522982+07:00 0HLECS0TV9J8S:00000005 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:37:38.4573970+07:00 0HLECS0TV9J8R:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/GetListCorNhanSu   (ca22a1cb)
+2018-06-08T08:37:38.4921019+07:00 0HLECS0TV9J97:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/ChucVuCongDoanGetList   (ca22a1cb)
+2018-06-08T08:37:38.6565052+07:00 0HLECS0TV9J8R:00000006 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:37:38.6604305+07:00 0HLECS0TV9J91:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/XepLoaiGetList   (ca22a1cb)
+2018-06-08T08:37:38.6644104+07:00 0HLECS0TV9J93:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/CapBacQuanDoiGetList   (ca22a1cb)
+2018-06-08T08:37:38.6700577+07:00 0HLECS0TV9J95:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/DanTocGetList   (ca22a1cb)
+2018-06-08T08:37:38.6780888+07:00 0HLECS0TV9J8S:00000005 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.HonNhanGetList (NiTiErp)" in 334.4307ms (afa2e885)
+2018-06-08T08:37:38.6993190+07:00 0HLECS0TV9J8U:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/LoaiHopDongGetList   (ca22a1cb)
+2018-06-08T08:37:38.7091651+07:00 0HLECS0TV9J90:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/LoaiDaoTaoGetList   (ca22a1cb)
+2018-06-08T08:37:38.7118870+07:00 0HLECS0TV9J8T:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/LoaiBangGetList   (ca22a1cb)
+2018-06-08T08:37:38.7170203+07:00 0HLECS0TV9J8R:00000006 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:37:38.7247229+07:00 0HLECS0TV9J91:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:37:38.7304771+07:00 0HLECS0TV9J93:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:37:38.7408181+07:00 0HLECS0TV9J97:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:37:38.7506338+07:00 0HLECS0TV9J8S:00000005 [INF] Request finished in 512.4321ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:37:38.7853042+07:00 0HLECS0TV9J95:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:37:38.7916499+07:00 0HLECS0TV9J8R:00000006 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetListCorNhanSu (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:37:38.7940142+07:00 0HLECS0TV9J8U:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:37:38.7963997+07:00 0HLECS0TV9J91:00000001 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:37:38.7985704+07:00 0HLECS0TV9J93:00000001 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:37:38.8000769+07:00 0HLECS0TV9J97:00000001 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:37:38.8115385+07:00 0HLECS0TV9J8T:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:37:38.8141764+07:00 0HLECS0TV9J90:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:37:38.8312031+07:00 0HLECS0TV9J8V:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/TonGiaoGetList   (ca22a1cb)
+2018-06-08T08:37:38.8336134+07:00 0HLECS0TV9J91:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.XepLoaiGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:37:38.8373464+07:00 0HLECS0TV9J93:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.CapBacQuanDoiGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:37:38.8480817+07:00 0HLECS0TV9J95:00000001 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:37:38.8515556+07:00 0HLECS0TV9J97:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.ChucVuCongDoanGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:37:38.8670743+07:00 0HLECS0TV9J92:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/XuatThanGetList   (ca22a1cb)
+2018-06-08T08:37:38.8888994+07:00 0HLECS0TV9J8U:00000001 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:37:38.8936669+07:00 0HLECS0TV9J95:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.DanTocGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:37:38.8988283+07:00 0HLECS0TV9J91:00000001 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:37:38.9032639+07:00 0HLECS0TV9J8V:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:37:38.9086291+07:00 0HLECS0TV9J8R:00000006 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:37:38.9154600+07:00 0HLECS0TV9J93:00000001 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:37:38.9313829+07:00 0HLECS0TV9J90:00000001 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:37:38.9594725+07:00 0HLECS0TV9J8T:00000001 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:37:38.9618301+07:00 0HLECS0TV9J97:00000001 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:37:38.9712195+07:00 0HLECS0TV9J95:00000001 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:37:39.0201432+07:00 0HLECS0TV9J94:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/ChucVuDangGetList   (ca22a1cb)
+2018-06-08T08:37:39.0275215+07:00 0HLECS0TV9J8V:00000001 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:37:39.0304885+07:00 0HLECS0TV9J92:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:37:39.0434012+07:00 0HLECS0TV9J8U:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.LoaiHopDongGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:37:39.0641441+07:00 0HLECS0TV9J94:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:37:39.0746175+07:00 0HLECS0TV9J8V:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.TonGiaoGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:37:39.0773236+07:00 0HLECS0TV9J92:00000001 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:37:39.0816376+07:00 0HLECS0TV9J90:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.LoaiDaoTaoGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:37:39.0870531+07:00 0HLECS0TV9J98:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/ChucVuQuanDoiGetList   (ca22a1cb)
+2018-06-08T08:37:39.0892827+07:00 0HLECS0TV9J99:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/ChucVuDoanGetList   (ca22a1cb)
+2018-06-08T08:37:39.1003938+07:00 0HLECS0TV9J8T:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.LoaiBangGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:37:39.1645553+07:00 0HLECS0TV9J94:00000001 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:37:39.1672515+07:00 0HLECS0TV9J92:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.XuatThanGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:37:39.1696437+07:00 0HLECS0TV9J8V:00000001 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:37:39.1781662+07:00 0HLECS0TV9J98:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:37:39.2326439+07:00 0HLECS0TV9J8U:00000001 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:37:39.2363257+07:00 0HLECS0TV9J94:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.ChucVuDangGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:37:39.2502988+07:00 0HLECS0TV9J98:00000001 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:37:39.2549823+07:00 0HLECS0TV9J99:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:37:39.2685247+07:00 0HLECS0TV9J96:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/ChucVuNhanVienGetList   (ca22a1cb)
+2018-06-08T08:37:39.2729671+07:00 0HLECS0TV9J92:00000001 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:37:39.2840268+07:00 0HLECS0TV9J90:00000001 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:37:39.2972101+07:00 0HLECS0TV9J94:00000001 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:37:39.3060514+07:00 0HLECS0TV9J98:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.ChucVuQuanDoiGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:37:39.3092417+07:00 0HLECS0TV9J8T:00000001 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:37:39.3149624+07:00 0HLECS0TV9J99:00000001 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:37:39.3434374+07:00 0HLECS0TV9J96:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:37:39.3578396+07:00 0HLECS0TV9J99:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.ChucVuDoanGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:37:39.3626604+07:00 0HLECS0TV9J96:00000001 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:37:39.4000416+07:00 0HLECS0TV9J96:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.ChucVuNhanVienGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:37:39.4010316+07:00 0HLECS0TV9J98:00000001 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:37:39.4142253+07:00 0HLECS0TV9J99:00000001 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:37:39.4436002+07:00 0HLECS0TV9J96:00000001 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:37:39.6101814+07:00 0HLECS0TV9J91:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.XepLoaiGetList (NiTiErp)" in 746.781ms (afa2e885)
+2018-06-08T08:37:39.6492124+07:00 0HLECS0TV9J93:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.CapBacQuanDoiGetList (NiTiErp)" in 743.6567ms (afa2e885)
+2018-06-08T08:37:39.6567095+07:00 0HLECS0TV9J95:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.DanTocGetList (NiTiErp)" in 687.0395ms (afa2e885)
+2018-06-08T08:37:39.6615298+07:00 0HLECS0TV9J97:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.ChucVuCongDoanGetList (NiTiErp)" in 834.7293ms (afa2e885)
+2018-06-08T08:37:39.6687032+07:00 0HLECS0TV9J8V:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.TonGiaoGetList (NiTiErp)" in 587.0901ms (afa2e885)
+2018-06-08T08:37:39.6712096+07:00 0HLECS0TV9J91:00000001 [INF] Request finished in 1173.7179ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:37:39.6864305+07:00 0HLECS0TV9J8R:00000006 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.GetListCorNhanSu (NiTiErp)" in 975.4808ms (afa2e885)
+2018-06-08T08:37:39.6920420+07:00 0HLECS0TV9J8U:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.LoaiHopDongGetList (NiTiErp)" in 799.148ms (afa2e885)
+2018-06-08T08:37:39.6969404+07:00 0HLECS0TV9J93:00000001 [INF] Request finished in 1199.6088ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:37:39.7003845+07:00 0HLECS0TV9J95:00000001 [INF] Request finished in 1205.8806ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:37:39.7033923+07:00 0HLECS0TV9J97:00000001 [INF] Request finished in 1207.8679ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:37:39.7062660+07:00 0HLECS0TV9J92:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.XuatThanGetList (NiTiErp)" in 459.0724ms (afa2e885)
+2018-06-08T08:37:39.7119851+07:00 0HLECS0TV9J8V:00000001 [INF] Request finished in 1157.9545ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:37:39.7292990+07:00 0HLECS0TV9J94:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.ChucVuDangGetList (NiTiErp)" in 546.2332ms (afa2e885)
+2018-06-08T08:37:39.7364301+07:00 0HLECS0TV9J90:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.LoaiDaoTaoGetList (NiTiErp)" in 821.5243ms (afa2e885)
+2018-06-08T08:37:39.7510714+07:00 0HLECS0TV9J8R:00000006 [INF] Request finished in 1350.0659ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:37:39.7542657+07:00 0HLECS0TV9J8T:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.LoaiBangGetList (NiTiErp)" in 786.2415ms (afa2e885)
+2018-06-08T08:37:39.8049896+07:00 0HLECS0TV9J92:00000001 [INF] Request finished in 1195.5157ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:37:39.8184832+07:00 0HLECS0TV9J8U:00000001 [INF] Request finished in 1207.0406ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:37:39.8236687+07:00 0HLECS0TV9J94:00000001 [INF] Request finished in 1208.1948ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:37:39.8297893+07:00 0HLECS0TV9J98:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.ChucVuQuanDoiGetList (NiTiErp)" in 410.0989ms (afa2e885)
+2018-06-08T08:37:39.8332505+07:00 0HLECS0TV9J99:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.ChucVuDoanGetList (NiTiErp)" in 237.4683ms (afa2e885)
+2018-06-08T08:37:39.8390016+07:00 0HLECS0TV9J8S:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/GetListPhongKhuVuc?makv=PO   (ca22a1cb)
+2018-06-08T08:37:39.8494486+07:00 0HLECS0TV9J90:00000001 [INF] Request finished in 1288.3486ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:37:39.8534214+07:00 0HLECS0TV9J96:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.ChucVuNhanVienGetList (NiTiErp)" in 274.8764ms (afa2e885)
+2018-06-08T08:37:39.8597435+07:00 0HLECS0TV9J8S:00000006 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:37:39.8645579+07:00 0HLECS0TV9J91:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/GetAllPaging?corporationId=PO&phongId=&keyword=&page=1&pageSize=10   (ca22a1cb)
+2018-06-08T08:37:39.8667766+07:00 0HLECS0TV9J98:00000001 [INF] Request finished in 1291.2649ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:37:39.8698313+07:00 0HLECS0TV9J99:00000001 [INF] Request finished in 1294.6325ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:37:39.8753834+07:00 0HLECS0TV9J96:00000001 [INF] Request finished in 1325.6958ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:37:39.8804348+07:00 0HLECS0TV9J8T:00000001 [INF] Request finished in 1318.3137ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:37:39.9769842+07:00 0HLECS0TV9J91:00000002 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:37:39.9830905+07:00 0HLECS0TV9J93:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/ChucVuNhanVienGetList   (ca22a1cb)
+2018-06-08T08:37:39.9932262+07:00 0HLECS0TV9J8S:00000006 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:37:40.0217184+07:00 0HLECS0TV9J8S:00000006 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)" with arguments (["PO"]) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:37:40.0246646+07:00 0HLECS0TV9J91:00000002 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:37:40.0326310+07:00 0HLECS0TV9J93:00000002 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:37:40.0463582+07:00 0HLECS0TV9J8S:00000006 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:37:40.0498748+07:00 0HLECS0TV9J91:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetAllPaging (NiTiErp)" with arguments (["PO", "", "", "1", "10"]) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:37:40.0554916+07:00 0HLECS0TV9J93:00000002 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:37:40.0607548+07:00 0HLECS0TV9J93:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.ChucVuNhanVienGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:37:40.0702208+07:00 0HLECS0TV9J93:00000002 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:37:40.1620213+07:00 0HLECS0TV9J93:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.ChucVuNhanVienGetList (NiTiErp)" in 35.5293ms (afa2e885)
+2018-06-08T08:37:40.2053428+07:00 0HLECS0TV9J8S:00000006 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)" in 256.6521ms (afa2e885)
+2018-06-08T08:37:40.2215488+07:00 0HLECS0TV9J93:00000002 [INF] Request finished in 188.2114ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:37:40.2300613+07:00 0HLECS0TV9J91:00000002 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:37:40.2367912+07:00 0HLECS0TV9J8S:00000006 [INF] Request finished in 428.8177ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:37:40.2447841+07:00 0HLECS0TV9J95:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/GetListPhongKhuVuc?makv=PO   (ca22a1cb)
+2018-06-08T08:37:40.2538950+07:00 0HLECS0TV9J95:00000002 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:37:40.2592947+07:00 0HLECS0TV9J95:00000002 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:37:40.2644975+07:00 0HLECS0TV9J95:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)" with arguments (["PO"]) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:37:40.2697402+07:00 0HLECS0TV9J95:00000002 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:37:40.2741403+07:00 0HLECS0TV9J95:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)" in 15.4498ms (afa2e885)
+2018-06-08T08:37:40.2810985+07:00 0HLECS0TV9J95:00000002 [INF] Request finished in 55.2589ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:37:40.8857322+07:00 0HLECS0TV9J91:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.GetAllPaging (NiTiErp)" in 888.6335ms (afa2e885)
+2018-06-08T08:37:40.8906302+07:00 0HLECS0TV9J91:00000002 [INF] Request finished in 1062.3396ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:37:41.0272254+07:00 0HLECS0TV9J97:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/uploaded/hinhnhanvien/20180604/20186422585download.jpg   (ca22a1cb)
+2018-06-08T08:37:41.0296774+07:00 0HLECS0TV9J8R:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44352/uploaded/hinhnhanvien/20180607/201867164055download%20(1).jpg   (ca22a1cb)
+2018-06-08T08:37:41.1218280+07:00 0HLECS0TV9J8V:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/GetAllPaging?corporationId=PO&phongId=%25&keyword=&page=1&pageSize=10   (ca22a1cb)
+2018-06-08T08:37:41.1569176+07:00 0HLECS0TV9J92:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/uploaded/hinhnhanvien/20180607/20186715139t%E1%BA%A3i%20xu%E1%BB%91ng.jpg   (ca22a1cb)
+2018-06-08T08:37:41.1828306+07:00 0HLECS0TV9J94:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/uploaded/hinhnhanvien/20180607/201867164049t%E1%BA%A3i%20xu%E1%BB%91ng.jpg   (ca22a1cb)
+2018-06-08T08:37:41.1846643+07:00 0HLECS0TV9J8U:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/uploaded/hinhnhanvien/20180607/201867164043t%E1%BA%A3i%20xu%E1%BB%91ng%20(1).jpg   (ca22a1cb)
+2018-06-08T08:37:41.6049799+07:00 0HLECS0TV9J8R:00000007 [INF] The file "/uploaded/hinhnhanvien/20180607/201867164055download (1).jpg" was not modified (f1f8d725)
+2018-06-08T08:37:41.6207890+07:00 0HLECS0TV9J92:00000002 [INF] The file "/uploaded/hinhnhanvien/20180607/20186715139tải xuống.jpg" was not modified (f1f8d725)
+2018-06-08T08:37:41.6239423+07:00 0HLECS0TV9J8V:00000002 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:37:41.6321077+07:00 0HLECS0TV9J97:00000002 [INF] The file "/uploaded/hinhnhanvien/20180604/20186422585download.jpg" was not modified (f1f8d725)
+2018-06-08T08:37:41.6456925+07:00 0HLECS0TV9J8U:00000002 [INF] The file "/uploaded/hinhnhanvien/20180607/201867164043tải xuống (1).jpg" was not modified (f1f8d725)
+2018-06-08T08:37:41.6488134+07:00 0HLECS0TV9J94:00000002 [INF] The file "/uploaded/hinhnhanvien/20180607/201867164049tải xuống.jpg" was not modified (f1f8d725)
+2018-06-08T08:37:41.6521254+07:00 0HLECS0TV9J8R:00000007 [INF] Request finished in 604.652ms 304 image/jpeg (791a596a)
+2018-06-08T08:37:41.6550193+07:00 0HLECS0TV9J92:00000002 [INF] Request finished in 561.8529ms 304 image/jpeg (791a596a)
+2018-06-08T08:37:41.7655646+07:00 0HLECS0TV9J8V:00000002 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:37:41.8076848+07:00 0HLECS0TV9J94:00000002 [INF] Request finished in 589.9912ms 304 image/jpeg (791a596a)
+2018-06-08T08:37:41.8109386+07:00 0HLECS0TV9J8U:00000002 [INF] Request finished in 586.8556ms 304 image/jpeg (791a596a)
+2018-06-08T08:37:41.8173390+07:00 0HLECS0TV9J97:00000002 [INF] Request finished in 632.6286ms 304 image/jpeg (791a596a)
+2018-06-08T08:37:41.8265165+07:00 0HLECS0TV9J8V:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetAllPaging (NiTiErp)" with arguments (["PO", "%", "", "1", "10"]) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:37:41.8382082+07:00 0HLECS0TV9J8V:00000002 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:37:41.8468191+07:00 0HLECS0TV9J8V:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.GetAllPaging (NiTiErp)" in 215.974ms (afa2e885)
+2018-06-08T08:37:41.8526510+07:00 0HLECS0TV9J8V:00000002 [INF] Request finished in 847.6979ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:37:46.8814882+07:00 0HLECS0TV9J90:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/GetHoSoNhanVienId   (ca22a1cb)
+2018-06-08T08:37:46.8943352+07:00 0HLECS0TV9J90:00000002 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:37:46.9047064+07:00 0HLECS0TV9J90:00000002 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:37:46.9094520+07:00 0HLECS0TV9J90:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetHoSoNhanVienId (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:37:46.9141746+07:00 0HLECS0TV9J90:00000002 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:37:46.9202026+07:00 0HLECS0TV9J90:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.GetHoSoNhanVienId (NiTiErp)" in 15.9735ms (afa2e885)
+2018-06-08T08:37:46.9284828+07:00 0HLECS0TV9J90:00000002 [INF] Request finished in 43.3085ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:38:33.5306745+07:00 0HLECS0TV9J8T:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/   (ca22a1cb)
+2018-06-08T08:38:33.5353987+07:00 0HLECS0TV9J8T:00000002 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:38:33.5395370+07:00 0HLECS0TV9J8T:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.LoginController.Index (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:38:33.5439657+07:00 0HLECS0TV9J8T:00000002 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Login/Index.cshtml". (9707eebe)
+2018-06-08T08:38:33.5649745+07:00 0HLECS0TV9J8T:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.LoginController.Index (NiTiErp)" in 11.0127ms (afa2e885)
+2018-06-08T08:38:33.5794795+07:00 0HLECS0TV9J8T:00000002 [INF] Request finished in 42.0387ms 200 text/html; charset=utf-8 (791a596a)
+2018-06-08T08:38:34.9943822+07:00 0HLECS0TV9J98:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:44352/admin/login/authen application/x-www-form-urlencoded; charset=UTF-8 30 (ca22a1cb)
+2018-06-08T08:38:34.9987612+07:00 0HLECS0TV9J98:00000002 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:38:35.0038446+07:00 0HLECS0TV9J98:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.LoginController.Authen (NiTiErp)" with arguments (["NiTiErp.Models.AccountViewModels.LoginViewModel"]) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:38:35.0082659+07:00 0HLECS0TV9J98:00000002 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-06-08T08:38:35.0163754+07:00 0HLECS0TV9J98:00000002 [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[CorporationId], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserCreated], [u].[UserModified], [u].[UserName]
+FROM [AppUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2018-06-08T08:38:35.0330357+07:00 0HLECS0TV9J98:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-06-08T08:38:35.0402532+07:00 0HLECS0TV9J98:00000002 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-06-08T08:38:35.0465981+07:00 0HLECS0TV9J98:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CorporationId], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-06-08T08:38:35.0532567+07:00 0HLECS0TV9J98:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=["@__role_Id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2018-06-08T08:38:35.0584067+07:00 0HLECS0TV9J98:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__userId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-06-08T08:38:35.0627691+07:00 0HLECS0TV9J98:00000002 [INF] AuthenticationScheme: "Identity.Application" signed in. (c66dd7e7)
+2018-06-08T08:38:35.0662745+07:00 0HLECS0TV9J98:00000002 [INF] User logged in. (fdce0db4)
+2018-06-08T08:38:35.0698974+07:00 0HLECS0TV9J98:00000002 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:38:35.0732849+07:00 0HLECS0TV9J98:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.LoginController.Authen (NiTiErp)" in 70.9809ms (afa2e885)
+2018-06-08T08:38:35.0829136+07:00 0HLECS0TV9J98:00000002 [INF] Request finished in 83.1774ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:38:35.0963939+07:00 0HLECS0TV9J99:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/Admin/Home/Index   (ca22a1cb)
+2018-06-08T08:38:35.1005604+07:00 0HLECS0TV9J99:00000002 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:38:35.1041401+07:00 0HLECS0TV9J99:00000002 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:38:35.1075799+07:00 0HLECS0TV9J99:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HomeController.Index (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:38:35.1117054+07:00 0HLECS0TV9J99:00000002 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Home/Index.cshtml". (9707eebe)
+2018-06-08T08:38:35.1645448+07:00 0HLECS0TV9J99:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HomeController.Index (NiTiErp)" in 59.7004ms (afa2e885)
+2018-06-08T08:38:35.2082492+07:00 0HLECS0TV9J99:00000002 [INF] Request finished in 98.3958ms 200 text/html; charset=utf-8 (791a596a)
+2018-06-08T08:38:35.5683548+07:00 0HLECS0TV9J96:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/Admin/Home/GetRevenue   (ca22a1cb)
+2018-06-08T08:38:35.5738957+07:00 0HLECS0TV9J96:00000002 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:38:35.5793735+07:00 0HLECS0TV9J96:00000002 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:38:35.5863867+07:00 0HLECS0TV9J96:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HomeController.GetRevenue (NiTiErp)" with arguments (["", ""]) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:38:35.5972601+07:00 0HLECS0TV9J96:00000002 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:38:35.6018717+07:00 0HLECS0TV9J96:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HomeController.GetRevenue (NiTiErp)" in 23.1522ms (afa2e885)
+2018-06-08T08:38:35.6155199+07:00 0HLECS0TV9J96:00000002 [INF] Request finished in 40.1851ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:38:37.4602085+07:00 0HLECS0TV9J93:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/index   (ca22a1cb)
+2018-06-08T08:38:37.4646221+07:00 0HLECS0TV9J93:00000003 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:38:37.4684574+07:00 0HLECS0TV9J93:00000003 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:38:37.4721558+07:00 0HLECS0TV9J93:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.Index (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:38:37.4757044+07:00 0HLECS0TV9J93:00000003 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Hoso/Index.cshtml". (9707eebe)
+2018-06-08T08:38:37.4861119+07:00 0HLECS0TV9J93:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.Index (NiTiErp)" in 16.618ms (afa2e885)
+2018-06-08T08:38:37.5124315+07:00 0HLECS0TV9J93:00000003 [INF] Request finished in 50.4197ms 200 text/html; charset=utf-8 (791a596a)
+2018-06-08T08:38:37.8889806+07:00 0HLECS0TV9J8S:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/GetListCorNhanSu   (ca22a1cb)
+2018-06-08T08:38:37.8977081+07:00 0HLECS0TV9J95:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/HonNhanGetList   (ca22a1cb)
+2018-06-08T08:38:37.9165529+07:00 0HLECS0TV9J97:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/LoaiBangGetList   (ca22a1cb)
+2018-06-08T08:38:37.9810043+07:00 0HLECS0TV9J91:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/DanTocGetList   (ca22a1cb)
+2018-06-08T08:38:37.9832917+07:00 0HLECS0TV9J95:00000003 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:38:38.0007996+07:00 0HLECS0TV9J92:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/XuatThanGetList   (ca22a1cb)
+2018-06-08T08:38:38.0118083+07:00 0HLECS0TV9J8R:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/TonGiaoGetList   (ca22a1cb)
+2018-06-08T08:38:38.0201780+07:00 0HLECS0TV9J97:00000003 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:38:38.0279464+07:00 0HLECS0TV9J8S:00000007 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:38:38.0403192+07:00 0HLECS0TV9J90:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/ChucVuNhanVienGetList   (ca22a1cb)
+2018-06-08T08:38:38.1440307+07:00 0HLECS0TV9J92:00000003 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:38:38.1477305+07:00 0HLECS0TV9J8R:00000008 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:38:38.1519104+07:00 0HLECS0TV9J95:00000003 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:38:38.1551325+07:00 0HLECS0TV9J97:00000003 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:38:38.1681766+07:00 0HLECS0TV9J94:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/LoaiDaoTaoGetList   (ca22a1cb)
+2018-06-08T08:38:38.1915208+07:00 0HLECS0TV9J91:00000003 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:38:38.1987430+07:00 0HLECS0TV9J8R:00000008 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:38:38.2010457+07:00 0HLECS0TV9J92:00000003 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:38:38.2078542+07:00 0HLECS0TV9J8S:00000007 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:38:38.2098108+07:00 0HLECS0TV9J95:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.HonNhanGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:38:38.2182984+07:00 0HLECS0TV9J97:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.LoaiBangGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:38:38.2673043+07:00 0HLECS0TV9J90:00000003 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:38:38.2694164+07:00 0HLECS0TV9J94:00000003 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:38:38.3114611+07:00 0HLECS0TV9J8R:00000008 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.TonGiaoGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:38:38.3192110+07:00 0HLECS0TV9J92:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.XuatThanGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:38:38.3283593+07:00 0HLECS0TV9J95:00000003 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:38:38.3309285+07:00 0HLECS0TV9J97:00000003 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:38:38.3362769+07:00 0HLECS0TV9J91:00000003 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:38:38.3488785+07:00 0HLECS0TV9J8S:00000007 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetListCorNhanSu (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:38:38.3505869+07:00 0HLECS0TV9J94:00000003 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:38:38.3626436+07:00 0HLECS0TV9J92:00000003 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:38:38.3654757+07:00 0HLECS0TV9J8R:00000008 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:38:38.3779825+07:00 0HLECS0TV9J90:00000003 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:38:38.3846626+07:00 0HLECS0TV9J95:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.HonNhanGetList (NiTiErp)" in 344.9791ms (afa2e885)
+2018-06-08T08:38:38.3875904+07:00 0HLECS0TV9J97:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.LoaiBangGetList (NiTiErp)" in 310.5995ms (afa2e885)
+2018-06-08T08:38:38.4034990+07:00 0HLECS0TV9J94:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.LoaiDaoTaoGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:38:38.4074603+07:00 0HLECS0TV9J8U:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/XepLoaiGetList   (ca22a1cb)
+2018-06-08T08:38:38.4217588+07:00 0HLECS0TV9J8R:00000008 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.TonGiaoGetList (NiTiErp)" in 218.5892ms (afa2e885)
+2018-06-08T08:38:38.4261219+07:00 0HLECS0TV9J91:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.DanTocGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:38:38.4315334+07:00 0HLECS0TV9J92:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.XuatThanGetList (NiTiErp)" in 219.3929ms (afa2e885)
+2018-06-08T08:38:38.4431801+07:00 0HLECS0TV9J95:00000003 [INF] Request finished in 529.6768ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:38:38.4485704+07:00 0HLECS0TV9J8S:00000007 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:38:38.4525724+07:00 0HLECS0TV9J97:00000003 [INF] Request finished in 520.3936ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:38:38.4641273+07:00 0HLECS0TV9J94:00000003 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:38:38.4821917+07:00 0HLECS0TV9J8R:00000008 [INF] Request finished in 524.3642ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:38:38.5016392+07:00 0HLECS0TV9J90:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.ChucVuNhanVienGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:38:38.5125024+07:00 0HLECS0TV9J92:00000003 [INF] Request finished in 534.1239ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:38:38.5174919+07:00 0HLECS0TV9J8U:00000003 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:38:38.5198826+07:00 0HLECS0TV9J8V:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/LoaiHopDongGetList   (ca22a1cb)
+2018-06-08T08:38:38.5331317+07:00 0HLECS0TV9J91:00000003 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:38:38.5363370+07:00 0HLECS0TV9J8S:00000007 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.GetListCorNhanSu (NiTiErp)" in 420.6358ms (afa2e885)
+2018-06-08T08:38:38.5453761+07:00 0HLECS0TV9J94:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.LoaiDaoTaoGetList (NiTiErp)" in 193.5971ms (afa2e885)
+2018-06-08T08:38:38.5641609+07:00 0HLECS0TV9J98:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/ChucVuDoanGetList   (ca22a1cb)
+2018-06-08T08:38:38.5711567+07:00 0HLECS0TV9J8U:00000003 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:38:38.5835431+07:00 0HLECS0TV9J8V:00000003 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:38:38.5889515+07:00 0HLECS0TV9J94:00000003 [INF] Request finished in 633.6742ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:38:38.5944212+07:00 0HLECS0TV9J97:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/GetAllPaging?corporationId=PO&phongId=&keyword=&page=1&pageSize=10   (ca22a1cb)
+2018-06-08T08:38:38.5972753+07:00 0HLECS0TV9J90:00000003 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:38:38.6000427+07:00 0HLECS0TV9J95:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/GetListPhongKhuVuc?makv=PO   (ca22a1cb)
+2018-06-08T08:38:38.6048026+07:00 0HLECS0TV9J98:00000003 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:38:38.6108871+07:00 0HLECS0TV9J8S:00000007 [INF] Request finished in 685.96ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:38:38.6138218+07:00 0HLECS0TV9J91:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.DanTocGetList (NiTiErp)" in 341.3864ms (afa2e885)
+2018-06-08T08:38:38.6193515+07:00 0HLECS0TV9J8U:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.XepLoaiGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:38:38.6266334+07:00 0HLECS0TV9J8V:00000003 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:38:38.6356087+07:00 0HLECS0TV9J8T:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/ChucVuDangGetList   (ca22a1cb)
+2018-06-08T08:38:38.6389501+07:00 0HLECS0TV9J96:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/CapBacQuanDoiGetList   (ca22a1cb)
+2018-06-08T08:38:38.6683406+07:00 0HLECS0TV9J97:00000004 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:38:38.6718686+07:00 0HLECS0TV9J95:00000004 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:38:38.6860604+07:00 0HLECS0TV9J98:00000003 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:38:38.6982494+07:00 0HLECS0TV9J90:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.ChucVuNhanVienGetList (NiTiErp)" in 329.8813ms (afa2e885)
+2018-06-08T08:38:38.7060445+07:00 0HLECS0TV9J8U:00000003 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:38:38.7091278+07:00 0HLECS0TV9J8V:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.LoaiHopDongGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:38:38.7149159+07:00 0HLECS0TV9J95:00000004 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:38:38.7217080+07:00 0HLECS0TV9J97:00000004 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:38:38.7250958+07:00 0HLECS0TV9J91:00000003 [INF] Request finished in 759.6408ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:38:38.7307704+07:00 0HLECS0TV9J98:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.ChucVuDoanGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:38:38.7390423+07:00 0HLECS0TV9J8T:00000003 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:38:38.7487090+07:00 0HLECS0TV9J8U:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.XepLoaiGetList (NiTiErp)" in 188.4981ms (afa2e885)
+2018-06-08T08:38:38.7536791+07:00 0HLECS0TV9J95:00000004 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)" with arguments (["PO"]) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:38:38.7566117+07:00 0HLECS0TV9J8V:00000003 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:38:38.7706688+07:00 0HLECS0TV9J97:00000004 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetAllPaging (NiTiErp)" with arguments (["PO", "", "", "1", "10"]) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:38:38.7728570+07:00 0HLECS0TV9J8R:00000009 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/ChucVuNhanVienGetList   (ca22a1cb)
+2018-06-08T08:38:38.7838897+07:00 0HLECS0TV9J98:00000003 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:38:38.7875375+07:00 0HLECS0TV9J90:00000003 [INF] Request finished in 825.5195ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:38:38.7910083+07:00 0HLECS0TV9J8U:00000003 [INF] Request finished in 846.8704ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:38:38.7974425+07:00 0HLECS0TV9J95:00000004 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:38:38.8006613+07:00 0HLECS0TV9J8V:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.LoaiHopDongGetList (NiTiErp)" in 173.0175ms (afa2e885)
+2018-06-08T08:38:38.8118134+07:00 0HLECS0TV9J8T:00000003 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:38:38.8252788+07:00 0HLECS0TV9J97:00000004 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:38:38.8317073+07:00 0HLECS0TV9J98:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.ChucVuDoanGetList (NiTiErp)" in 177.95ms (afa2e885)
+2018-06-08T08:38:38.8446417+07:00 0HLECS0TV9J95:00000004 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)" in 125.5116ms (afa2e885)
+2018-06-08T08:38:38.8553603+07:00 0HLECS0TV9J8V:00000003 [INF] Request finished in 871.2607ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:38:38.8626372+07:00 0HLECS0TV9J8T:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.ChucVuDangGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:38:38.8668926+07:00 0HLECS0TV9J8R:00000009 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:38:38.8869439+07:00 0HLECS0TV9J98:00000003 [INF] Request finished in 899.8627ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:38:38.8894863+07:00 0HLECS0TV9J95:00000004 [INF] Request finished in 291.0369ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:38:38.8950437+07:00 0HLECS0TV9J92:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/GetListPhongKhuVuc?makv=PO   (ca22a1cb)
+2018-06-08T08:38:38.8979622+07:00 0HLECS0TV9J97:00000004 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.GetAllPaging (NiTiErp)" in 179.2964ms (afa2e885)
+2018-06-08T08:38:38.9287216+07:00 0HLECS0TV9J8T:00000003 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:38:38.9311493+07:00 0HLECS0TV9J96:00000003 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:38:38.9371160+07:00 0HLECS0TV9J8R:00000009 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:38:38.9444306+07:00 0HLECS0TV9J92:00000004 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:38:38.9508774+07:00 0HLECS0TV9J99:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/ChucVuQuanDoiGetList   (ca22a1cb)
+2018-06-08T08:38:38.9557848+07:00 0HLECS0TV9J97:00000004 [INF] Request finished in 344.5792ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:38:38.9671117+07:00 0HLECS0TV9J8S:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/GetAllPaging?corporationId=PO&phongId=%25&keyword=&page=1&pageSize=10   (ca22a1cb)
+2018-06-08T08:38:38.9729589+07:00 0HLECS0TV9J8T:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.ChucVuDangGetList (NiTiErp)" in 189.6358ms (afa2e885)
+2018-06-08T08:38:38.9859823+07:00 0HLECS0TV9J96:00000003 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:38:38.9901924+07:00 0HLECS0TV9J93:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/ChucVuCongDoanGetList   (ca22a1cb)
+2018-06-08T08:38:38.9946991+07:00 0HLECS0TV9J92:00000004 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:38:39.0066397+07:00 0HLECS0TV9J99:00000003 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:38:39.0093575+07:00 0HLECS0TV9J8S:00000008 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:38:39.0160781+07:00 0HLECS0TV9J8R:00000009 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.ChucVuNhanVienGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:38:39.0186153+07:00 0HLECS0TV9J8T:00000003 [INF] Request finished in 1043.5458ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:38:39.0312577+07:00 0HLECS0TV9J92:00000004 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)" with arguments (["PO"]) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:38:39.0360201+07:00 0HLECS0TV9J96:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.CapBacQuanDoiGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:38:39.0387250+07:00 0HLECS0TV9J99:00000003 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:38:39.0406317+07:00 0HLECS0TV9J93:00000004 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:38:39.0453089+07:00 0HLECS0TV9J8S:00000008 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:38:39.0665330+07:00 0HLECS0TV9J92:00000004 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:38:39.0679365+07:00 0HLECS0TV9J96:00000003 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:38:39.0717286+07:00 0HLECS0TV9J99:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.ChucVuQuanDoiGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:38:39.0737803+07:00 0HLECS0TV9J93:00000004 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:38:39.1005520+07:00 0HLECS0TV9J8R:00000009 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:38:39.1052989+07:00 0HLECS0TV9J8S:00000008 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetAllPaging (NiTiErp)" with arguments (["PO", "%", "", "1", "10"]) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:38:39.1192740+07:00 0HLECS0TV9J92:00000004 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)" in 121.9319ms (afa2e885)
+2018-06-08T08:38:39.1426178+07:00 0HLECS0TV9J96:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.CapBacQuanDoiGetList (NiTiErp)" in 136.3539ms (afa2e885)
+2018-06-08T08:38:39.1497047+07:00 0HLECS0TV9J93:00000004 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.ChucVuCongDoanGetList (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:38:39.1526263+07:00 0HLECS0TV9J99:00000003 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:38:39.1577045+07:00 0HLECS0TV9J8S:00000008 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:38:39.1638699+07:00 0HLECS0TV9J96:00000003 [INF] Request finished in 1205.7714ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:38:39.1881520+07:00 0HLECS0TV9J8R:00000009 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.ChucVuNhanVienGetList (NiTiErp)" in 233.5735ms (afa2e885)
+2018-06-08T08:38:39.1899151+07:00 0HLECS0TV9J92:00000004 [INF] Request finished in 264.1262ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:38:39.2010012+07:00 0HLECS0TV9J93:00000004 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:38:39.2069116+07:00 0HLECS0TV9J99:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.ChucVuQuanDoiGetList (NiTiErp)" in 145.3964ms (afa2e885)
+2018-06-08T08:38:39.2079339+07:00 0HLECS0TV9J8S:00000008 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.GetAllPaging (NiTiErp)" in 148.3914ms (afa2e885)
+2018-06-08T08:38:39.2224258+07:00 0HLECS0TV9J8R:00000009 [INF] Request finished in 484.6975ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:38:39.2247861+07:00 0HLECS0TV9J93:00000004 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.ChucVuCongDoanGetList (NiTiErp)" in 159.5972ms (afa2e885)
+2018-06-08T08:38:39.2749100+07:00 0HLECS0TV9J99:00000003 [INF] Request finished in 1236.8643ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:38:39.3085410+07:00 0HLECS0TV9J8S:00000008 [INF] Request finished in 289.4489ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:38:39.3191460+07:00 0HLECS0TV9J93:00000004 [INF] Request finished in 1254.8632ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:38:56.6548136+07:00 0HLECS0TV9J94:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/GetAllPaging?corporationId=PO&phongId=%25&keyword=&page=1&pageSize=10   (ca22a1cb)
+2018-06-08T08:38:56.6603801+07:00 0HLECS0TV9J94:00000004 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:38:56.6655310+07:00 0HLECS0TV9J94:00000004 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:38:56.6700175+07:00 0HLECS0TV9J94:00000004 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetAllPaging (NiTiErp)" with arguments (["PO", "%", "", "1", "10"]) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:38:56.6767589+07:00 0HLECS0TV9J94:00000004 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:38:56.7347691+07:00 0HLECS0TV9J94:00000004 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.GetAllPaging (NiTiErp)" in 70.0109ms (afa2e885)
+2018-06-08T08:38:56.7533287+07:00 0HLECS0TV9J94:00000004 [INF] Request finished in 85.8405ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T08:39:08.0613609+07:00 0HLECS0TV9J91:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/GetHoSoNhanVienId   (ca22a1cb)
+2018-06-08T08:39:08.0660076+07:00 0HLECS0TV9J91:00000004 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T08:39:08.0710777+07:00 0HLECS0TV9J91:00000004 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T08:39:08.0753798+07:00 0HLECS0TV9J91:00000004 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetHoSoNhanVienId (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T08:39:08.0797405+07:00 0HLECS0TV9J91:00000004 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T08:39:08.0844233+07:00 0HLECS0TV9J91:00000004 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.GetHoSoNhanVienId (NiTiErp)" in 13.5455ms (afa2e885)
+2018-06-08T08:39:08.0914097+07:00 0HLECS0TV9J91:00000004 [INF] Request finished in 27.9874ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T17:27:44.7493882+07:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-06-08T17:27:51.6731873+07:00  [INF] Executed DbCommand ("142"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-06-08T17:27:52.3788430+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [CorporationServices] AS [c]" (0723d8ff)
+2018-06-08T17:27:52.5908132+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Corporations] AS [c]" (0723d8ff)
+2018-06-08T17:27:52.6408171+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-06-08T17:27:52.6505548+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ContactDetails] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-06-08T17:27:52.6593269+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Functions] AS [f]" (0723d8ff)
+2018-06-08T17:27:52.9142209+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Footers] AS [x]
+WHERE [x].[Id] = 'DefaultFooterId'" (0723d8ff)
+2018-06-08T17:27:52.9223218+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Colors] AS [c]" (0723d8ff)
+2018-06-08T17:27:52.9304098+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AdvertistmentPages] AS [a]" (0723d8ff)
+2018-06-08T17:27:52.9354180+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Slides] AS [s]" (0723d8ff)
+2018-06-08T17:27:52.9402407+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Sizes] AS [s]" (0723d8ff)
+2018-06-08T17:27:52.9452470+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2018-06-08T17:27:52.9523438+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeTitle')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-06-08T17:27:52.9583481+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaKeyword')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-06-08T17:27:52.9635671+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaDescription')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-06-08T17:27:59.8272596+07:00 0HLED5A06SLS0:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/index   (ca22a1cb)
+2018-06-08T17:28:01.3080343+07:00 0HLED5A06SLS0:00000001 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-06-08T17:28:01.5332677+07:00 0HLED5A06SLS0:00000001 [INF] Executed DbCommand ("111"ms) [Parameters=["@__get_Item_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[CorporationId], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserCreated], [e].[UserModified], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2018-06-08T17:28:01.9487156+07:00 0HLED5A06SLS0:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-06-08T17:28:02.0198368+07:00 0HLED5A06SLS0:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-06-08T17:28:02.0664950+07:00 0HLED5A06SLS0:00000001 [INF] Executed DbCommand ("23"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CorporationId], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-06-08T17:28:02.0898149+07:00 0HLED5A06SLS0:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__role_Id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2018-06-08T17:28:02.0929669+07:00 0HLED5A06SLS0:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@__userId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-06-08T17:28:02.0943148+07:00 0HLED5A06SLS0:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:28:03.0198338+07:00 0HLED5A06SLS0:00000001 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:28:03.1827909+07:00 0HLED5A06SLS0:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.Index (NiTiErp)" in 202.8744ms (afa2e885)
+2018-06-08T17:28:03.7172868+07:00 0HLED5A06SLS0:00000001 [ERR] An unhandled exception has occurred while executing the request (cf926119)
+System.InvalidOperationException: Unable to resolve service for type 'NiTiErp.Application.Dapper.Interfaces.ITrinhDoService' while attempting to activate 'NiTiErp.Areas.Admin.Controllers.HosoController'.
+   at Microsoft.Extensions.Internal.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeInnerFilterAsync>d__14.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeFilterPipelineAsync>d__17.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.<Invoke>d__9.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Session.SessionMiddleware.<Invoke>d__9.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at WebMarkupMin.AspNetCore2.WebMarkupMinMiddleware.<Invoke>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at NiTiErp.Middleware.ImageResizerMiddleware.<Invoke>d__7.MoveNext() in D:\netCore\NiTiErp\NiTiErp\Middleware\ImageResizerMiddleware.cs:line 70
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.<Invoke>d__7.MoveNext()
+2018-06-08T17:28:03.8193774+07:00 0HLED5A06SLS0:00000001 [INF] Request finished in 5615.7649ms 500 text/html; charset=utf-8 (791a596a)
+2018-06-08T17:30:04.1062211+07:00 0HLED5A06SLS1:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/home   (ca22a1cb)
+2018-06-08T17:30:04.1096456+07:00 0HLED5A06SLS1:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:30:04.1137982+07:00 0HLED5A06SLS1:00000001 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:30:04.1789568+07:00 0HLED5A06SLS1:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HomeController.Index (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:30:11.9693325+07:00 0HLED5A06SLS2:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/index   (ca22a1cb)
+2018-06-08T17:30:11.9702491+07:00 0HLED5A06SLS2:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:30:11.9710437+07:00 0HLED5A06SLS2:00000001 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:30:11.9723462+07:00 0HLED5A06SLS2:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.Index (NiTiErp)" in 1.3808ms (afa2e885)
+2018-06-08T17:30:12.0101382+07:00 0HLED5A06SLS2:00000001 [ERR] An unhandled exception has occurred while executing the request (cf926119)
+System.InvalidOperationException: Unable to resolve service for type 'NiTiErp.Application.Dapper.Interfaces.ITrinhDoService' while attempting to activate 'NiTiErp.Areas.Admin.Controllers.HosoController'.
+   at Microsoft.Extensions.Internal.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeInnerFilterAsync>d__14.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeFilterPipelineAsync>d__17.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.<Invoke>d__9.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Session.SessionMiddleware.<Invoke>d__9.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at WebMarkupMin.AspNetCore2.WebMarkupMinMiddleware.<Invoke>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at NiTiErp.Middleware.ImageResizerMiddleware.<Invoke>d__7.MoveNext() in D:\netCore\NiTiErp\NiTiErp\Middleware\ImageResizerMiddleware.cs:line 70
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.<Invoke>d__7.MoveNext()
+2018-06-08T17:30:12.0740739+07:00 0HLED5A06SLS2:00000001 [INF] Request finished in 104.6909ms 500 text/html; charset=utf-8 (791a596a)
+2018-06-08T17:30:13.3121039+07:00 0HLED5A06SLS1:00000001 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Home/Index.cshtml". (9707eebe)
+2018-06-08T17:30:15.0188961+07:00 0HLED5A06SLS1:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HomeController.Index (NiTiErp)" in 10905.6319ms (afa2e885)
+2018-06-08T17:30:15.6927440+07:00 0HLED5A06SLS1:00000001 [INF] Request finished in 11586.6665ms 200 text/html; charset=utf-8 (791a596a)
+2018-06-08T17:30:34.1593444+07:00 0HLED5A06SLS2:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/role/index   (ca22a1cb)
+2018-06-08T17:30:34.1601903+07:00 0HLED5A06SLS2:00000002 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:30:34.1625468+07:00 0HLED5A06SLS2:00000002 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:30:34.1638067+07:00 0HLED5A06SLS2:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.RoleController.Index (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:30:34.3809719+07:00 0HLED5A06SLS2:00000002 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Role/Index.cshtml". (9707eebe)
+2018-06-08T17:30:34.8032735+07:00 0HLED5A06SLS2:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.RoleController.Index (NiTiErp)" in 640.7524ms (afa2e885)
+2018-06-08T17:30:34.8166029+07:00 0HLED5A06SLS2:00000002 [INF] Request finished in 657.311ms 200 text/html; charset=utf-8 (791a596a)
+2018-06-08T17:30:35.0006021+07:00 0HLED5A06SLS2:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/jquery-treegrid/css/jquery.treegrid.css   (ca22a1cb)
+2018-06-08T17:30:35.0066904+07:00 0HLED5A06SLS3:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/jquery-treegrid/js/jquery.treegrid.js   (ca22a1cb)
+2018-06-08T17:30:35.0103997+07:00 0HLED5A06SLS4:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/notifyjs/dist/notify.js   (ca22a1cb)
+2018-06-08T17:30:35.0104056+07:00 0HLED5A06SLS5:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/app/controllers/role/index.js?v=fMqZ4oMaykXXFE2yBX2DM7Cts86vlbPkXEIBEylO3_o   (ca22a1cb)
+2018-06-08T17:30:35.0178219+07:00 0HLED5A06SLS4:00000001 [INF] The file "/lib/notifyjs/dist/notify.js" was not modified (f1f8d725)
+2018-06-08T17:30:35.0204897+07:00 0HLED5A06SLS2:00000003 [INF] The file "/lib/jquery-treegrid/css/jquery.treegrid.css" was not modified (f1f8d725)
+2018-06-08T17:30:35.0217599+07:00 0HLED5A06SLS4:00000001 [INF] Request finished in 11.3169ms 304 application/javascript (791a596a)
+2018-06-08T17:30:35.0218084+07:00 0HLED5A06SLS2:00000003 [INF] Request finished in 21.5238ms 304 text/css (791a596a)
+2018-06-08T17:30:35.0222382+07:00 0HLED5A06SLS3:00000001 [INF] The file "/lib/jquery-treegrid/js/jquery.treegrid.js" was not modified (f1f8d725)
+2018-06-08T17:30:35.0224959+07:00 0HLED5A06SLS3:00000001 [INF] Request finished in 16.3623ms 304 application/javascript (791a596a)
+2018-06-08T17:30:35.0286014+07:00 0HLED5A06SLS5:00000001 [INF] The file "/app/controllers/role/index.js" was not modified (f1f8d725)
+2018-06-08T17:30:35.0288073+07:00 0HLED5A06SLS5:00000001 [INF] Request finished in 18.4893ms 304 application/javascript (791a596a)
+2018-06-08T17:30:35.2464003+07:00 0HLED5A06SLS4:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/role/GetAllPaging?keyword=&page=1&pageSize=10   (ca22a1cb)
+2018-06-08T17:30:35.2474260+07:00 0HLED5A06SLS4:00000002 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:30:35.2647883+07:00 0HLED5A06SLS2:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/Function/GetAll   (ca22a1cb)
+2018-06-08T17:30:35.2658293+07:00 0HLED5A06SLS2:00000004 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:30:35.2937334+07:00 0HLED5A06SLS2:00000004 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:30:35.2952566+07:00 0HLED5A06SLS2:00000004 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.FunctionController.GetAll (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:30:35.3034623+07:00 0HLED5A06SLS2:00000004 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-06-08T17:30:35.3178055+07:00 0HLED5A06SLS4:00000002 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:30:35.4615027+07:00 0HLED5A06SLS2:00000004 [INF] Executed DbCommand ("56"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[URL], [x].[ParentId], [x].[IconCss], [x].[SortOrder], [x].[Status]
+FROM [Functions] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[ParentId]" (0723d8ff)
+2018-06-08T17:30:35.4726746+07:00 0HLED5A06SLS2:00000004 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T17:30:35.4890037+07:00 0HLED5A06SLS4:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.RoleController.GetAllPaging (NiTiErp)" with arguments (["", "1", "10"]) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:30:35.4912231+07:00 0HLED5A06SLS4:00000002 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-06-08T17:30:35.5087946+07:00 0HLED5A06SLS4:00000002 [INF] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AppRoles] AS [a]" (0723d8ff)
+2018-06-08T17:30:35.5509055+07:00 0HLED5A06SLS4:00000002 [WRN] Query: '"(from AppRole dto in DbSet<AppRole> select new AppRoleViewModel{ { 
+    Id = (Nullable<Guid>)[dto]...."' uses a row limiting operation (Skip/Take) without OrderBy which may lead to unpredictable results. (32148ccc)
+2018-06-08T17:30:35.6121218+07:00 0HLED5A06SLS4:00000002 [INF] Executed DbCommand ("50"ms) [Parameters=["@__p_0='?', @__p_1='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[Description]
+FROM [AppRoles] AS [dto]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2018-06-08T17:30:35.6130210+07:00 0HLED5A06SLS2:00000004 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.FunctionController.GetAll (NiTiErp)" in 319.29ms (afa2e885)
+2018-06-08T17:30:35.6150416+07:00 0HLED5A06SLS2:00000004 [INF] Request finished in 350.3057ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T17:30:35.6304118+07:00 0HLED5A06SLS4:00000002 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T17:30:35.6625447+07:00 0HLED5A06SLS4:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.RoleController.GetAllPaging (NiTiErp)" in 344.7972ms (afa2e885)
+2018-06-08T17:30:35.6633020+07:00 0HLED5A06SLS4:00000002 [INF] Request finished in 416.9308ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T17:30:35.7114069+07:00 0HLED5A06SLS3:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/role/GetAllPaging?keyword=&page=1&pageSize=10   (ca22a1cb)
+2018-06-08T17:30:35.7121996+07:00 0HLED5A06SLS3:00000002 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:30:35.7130051+07:00 0HLED5A06SLS3:00000002 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:30:35.7140856+07:00 0HLED5A06SLS3:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.RoleController.GetAllPaging (NiTiErp)" with arguments (["", "1", "10"]) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:30:35.7148263+07:00 0HLED5A06SLS3:00000002 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-06-08T17:30:35.7157675+07:00 0HLED5A06SLS3:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AppRoles] AS [a]" (0723d8ff)
+2018-06-08T17:30:35.7178954+07:00 0HLED5A06SLS3:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?', @__p_1='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[Description]
+FROM [AppRoles] AS [dto]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2018-06-08T17:30:35.7182608+07:00 0HLED5A06SLS3:00000002 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T17:30:35.7184788+07:00 0HLED5A06SLS3:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.RoleController.GetAllPaging (NiTiErp)" in 5.7635ms (afa2e885)
+2018-06-08T17:30:35.7189217+07:00 0HLED5A06SLS3:00000002 [INF] Request finished in 7.5655ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T17:30:37.6646778+07:00 0HLED5A06SLS5:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/user/index   (ca22a1cb)
+2018-06-08T17:30:37.6654653+07:00 0HLED5A06SLS5:00000002 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:30:37.6713179+07:00 0HLED5A06SLS5:00000002 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:30:37.6725693+07:00 0HLED5A06SLS5:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.UserController.Index (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:30:37.6858870+07:00 0HLED5A06SLS5:00000002 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-06-08T17:30:37.7932417+07:00 0HLED5A06SLS5:00000002 [INF] Executed DbCommand ("7"ms) [Parameters=["@__functionId_1='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]
+        INNER JOIN [Permissions] AS [p] ON [f].[Id] = [p].[FunctionId]
+        INNER JOIN [AppRoles] AS [r] ON [p].[RoleId] = [r].[Id]
+        WHERE ([r].[Name] IN (N'Admin') AND ([f].[Id] = @__functionId_1)) AND ([p].[CanRead] = 1))
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-06-08T17:30:37.8130528+07:00 0HLED5A06SLS5:00000002 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:30:38.0704731+07:00 0HLED5A06SLS5:00000002 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/User/Index.cshtml". (9707eebe)
+2018-06-08T17:30:38.0980581+07:00 0HLED5A06SLS5:00000002 [INF] Executed DbCommand ("8"ms) [Parameters=["@__functionId_1='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]
+        INNER JOIN [Permissions] AS [p] ON [f].[Id] = [p].[FunctionId]
+        INNER JOIN [AppRoles] AS [r] ON [p].[RoleId] = [r].[Id]
+        WHERE ([r].[Name] IN (N'Admin') AND ([f].[Id] = @__functionId_1)) AND ([p].[CanCreate] = 1))
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-06-08T17:30:38.0996940+07:00 0HLED5A06SLS5:00000002 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:30:38.1408041+07:00 0HLED5A06SLS5:00000002 [INF] Executed DbCommand ("28"ms) [Parameters=["@__functionId_1='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]
+        INNER JOIN [Permissions] AS [p] ON [f].[Id] = [p].[FunctionId]
+        INNER JOIN [AppRoles] AS [r] ON [p].[RoleId] = [r].[Id]
+        WHERE ([r].[Name] IN (N'Admin') AND ([f].[Id] = @__functionId_1)) AND ([p].[CanUpdate] = 1))
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-06-08T17:30:38.1411340+07:00 0HLED5A06SLS5:00000002 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:30:38.1461527+07:00 0HLED5A06SLS5:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__functionId_1='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]
+        INNER JOIN [Permissions] AS [p] ON [f].[Id] = [p].[FunctionId]
+        INNER JOIN [AppRoles] AS [r] ON [p].[RoleId] = [r].[Id]
+        WHERE ([r].[Name] IN (N'Admin') AND ([f].[Id] = @__functionId_1)) AND ([p].[CanUpdate] = 1))
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-06-08T17:30:38.1465250+07:00 0HLED5A06SLS5:00000002 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:30:38.1675120+07:00 0HLED5A06SLS5:00000002 [INF] Executed DbCommand ("7"ms) [Parameters=["@__functionId_1='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]
+        INNER JOIN [Permissions] AS [p] ON [f].[Id] = [p].[FunctionId]
+        INNER JOIN [AppRoles] AS [r] ON [p].[RoleId] = [r].[Id]
+        WHERE ([r].[Name] IN (N'Admin') AND ([f].[Id] = @__functionId_1)) AND ([p].[CanDelete] = 1))
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-06-08T17:30:38.1678821+07:00 0HLED5A06SLS5:00000002 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:30:38.5923764+07:00 0HLED5A06SLS5:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.UserController.Index (NiTiErp)" in 921.0902ms (afa2e885)
+2018-06-08T17:30:38.6028034+07:00 0HLED5A06SLS5:00000002 [INF] Request finished in 938.1286ms 200 text/html; charset=utf-8 (791a596a)
+2018-06-08T17:30:38.6521623+07:00 0HLED5A06SLS2:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44352/app/controllers/user/index.js?v=0V1UBCZfOAT8iOOdW6BwFfcuUHF0aUgSdou186Spr2Q   (ca22a1cb)
+2018-06-08T17:30:38.6526042+07:00 0HLED5A06SLS2:00000005 [INF] The file "/app/controllers/user/index.js" was not modified (f1f8d725)
+2018-06-08T17:30:38.6527831+07:00 0HLED5A06SLS2:00000005 [INF] Request finished in 0.728ms 304 application/javascript (791a596a)
+2018-06-08T17:30:38.8268307+07:00 0HLED5A06SLS4:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/user/GetAllPagingCor?keyword=&page=1&pageSize=10   (ca22a1cb)
+2018-06-08T17:30:38.8276605+07:00 0HLED5A06SLS4:00000003 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:30:38.8313857+07:00 0HLED5A06SLS4:00000003 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:30:38.8317573+07:00 0HLED5A06SLS4:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.UserController.GetAllPagingCor (NiTiErp)" with arguments (["", "1", "10"]) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:30:38.8393620+07:00 0HLED5A06SLS4:00000003 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-06-08T17:30:38.8424491+07:00 0HLED5A06SLS3:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/corporation/GetAllCorporations   (ca22a1cb)
+2018-06-08T17:30:38.8436169+07:00 0HLED5A06SLS3:00000003 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:30:38.8445060+07:00 0HLED5A06SLS4:00000003 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AppUsers] AS [a]" (0723d8ff)
+2018-06-08T17:30:38.8474215+07:00 0HLED5A06SLS3:00000003 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:30:38.8489013+07:00 0HLED5A06SLS3:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.CorporationController.GetAllCorporations (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:30:38.8499462+07:00 0HLED5A06SLS4:00000003 [WRN] Query: '"(from AppUser x in DbSet<AppUser> select new AppUserViewModel{ { 
+    UserName = [x].UserName, , 
+..."' uses a row limiting operation (Skip/Take) without OrderBy which may lead to unpredictable results. (32148ccc)
+2018-06-08T17:30:38.8519895+07:00 0HLED5A06SLS3:00000003 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-06-08T17:30:39.0114316+07:00 0HLED5A06SLS4:00000003 [INF] Executed DbCommand ("150"ms) [Parameters=["@__p_0='?', @__p_1='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[UserName], [x].[Avatar], CONVERT(VARCHAR(100), [x].[BirthDay]) AS [BirthDay], [x].[Email], [x].[FullName], [x].[Id], [x].[PhoneNumber], [x].[Status], [x].[DateCreated]
+FROM [AppUsers] AS [x]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2018-06-08T17:30:39.0154731+07:00 0HLED5A06SLS3:00000003 [INF] Executed DbCommand ("138"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[Address], [dto].[PhoneNumber1], [dto].[PhoneNumber2], [dto].[TaxNumber], [dto].[Email], [dto].[WebName], [dto].[Image], [dto].[ImageLogo], [dto].[CorporationServiceId], [dto].[DateCreated], [dto].[DateModified], [dto].[UserIdCreated], [dto].[UserIdModified]
+FROM [Corporations] AS [dto]
+ORDER BY [dto].[DateCreated] DESC" (0723d8ff)
+2018-06-08T17:30:39.0154710+07:00 0HLED5A06SLS4:00000003 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T17:30:39.0191412+07:00 0HLED5A06SLS3:00000003 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T17:30:39.0386502+07:00 0HLED5A06SLS3:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.CorporationController.GetAllCorporations (NiTiErp)" in 191.3488ms (afa2e885)
+2018-06-08T17:30:39.0393805+07:00 0HLED5A06SLS3:00000003 [INF] Request finished in 197.0943ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T17:30:39.0441937+07:00 0HLED5A06SLS4:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.UserController.GetAllPagingCor (NiTiErp)" in 212.4052ms (afa2e885)
+2018-06-08T17:30:39.0460544+07:00 0HLED5A06SLS4:00000003 [INF] Request finished in 218.9743ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T17:30:39.0727910+07:00 0HLED5A06SLS5:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/user/GetAllPagingCor?keyword=&page=1&pageSize=10   (ca22a1cb)
+2018-06-08T17:30:39.0735978+07:00 0HLED5A06SLS5:00000003 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:30:39.0739946+07:00 0HLED5A06SLS5:00000003 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:30:39.0743323+07:00 0HLED5A06SLS5:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.UserController.GetAllPagingCor (NiTiErp)" with arguments (["", "1", "10"]) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:30:39.0748769+07:00 0HLED5A06SLS5:00000003 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-06-08T17:30:39.0812989+07:00 0HLED5A06SLS5:00000003 [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AppUsers] AS [a]" (0723d8ff)
+2018-06-08T17:30:39.0832563+07:00 0HLED5A06SLS5:00000003 [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?', @__p_1='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[UserName], [x].[Avatar], CONVERT(VARCHAR(100), [x].[BirthDay]) AS [BirthDay], [x].[Email], [x].[FullName], [x].[Id], [x].[PhoneNumber], [x].[Status], [x].[DateCreated]
+FROM [AppUsers] AS [x]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2018-06-08T17:30:39.0835972+07:00 0HLED5A06SLS5:00000003 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T17:30:39.0839020+07:00 0HLED5A06SLS5:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.UserController.GetAllPagingCor (NiTiErp)" in 9.9593ms (afa2e885)
+2018-06-08T17:30:39.0843505+07:00 0HLED5A06SLS5:00000003 [INF] Request finished in 11.8524ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T17:30:39.0902416+07:00 0HLED5A06SLS2:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/user/null   (ca22a1cb)
+2018-06-08T17:30:39.0910683+07:00 0HLED5A06SLS2:00000006 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:30:39.0921402+07:00 0HLED5A06SLS2:00000006 [INF] Request finished in 1.9621ms 404  (791a596a)
+2018-06-08T17:30:46.8913558+07:00 0HLED5A06SLS3:00000004 [INF] Request starting HTTP/1.1 POST http://localhost:44352/Admin/Account/Logout application/x-www-form-urlencoded 0 (ca22a1cb)
+2018-06-08T17:30:46.8924126+07:00 0HLED5A06SLS3:00000004 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:30:46.9021838+07:00 0HLED5A06SLS3:00000004 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:30:46.9028167+07:00 0HLED5A06SLS3:00000004 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.AccountController.Logout (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:30:46.9086371+07:00 0HLED5A06SLS3:00000004 [INF] AuthenticationScheme: "Identity.Application" signed out. (d3f50c8d)
+2018-06-08T17:30:46.9097668+07:00 0HLED5A06SLS3:00000004 [INF] AuthenticationScheme: "Identity.External" signed out. (d3f50c8d)
+2018-06-08T17:30:46.9101866+07:00 0HLED5A06SLS3:00000004 [INF] AuthenticationScheme: "Identity.TwoFactorUserId" signed out. (d3f50c8d)
+2018-06-08T17:30:46.9111190+07:00 0HLED5A06SLS3:00000004 [INF] Executing RedirectResult, redirecting to "/Admin/Login/Index". (d98d540e)
+2018-06-08T17:30:46.9114017+07:00 0HLED5A06SLS3:00000004 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.AccountController.Logout (NiTiErp)" in 9.2953ms (afa2e885)
+2018-06-08T17:30:46.9116486+07:00 0HLED5A06SLS3:00000004 [INF] Request finished in 20.4038ms 302  (791a596a)
+2018-06-08T17:30:46.9487440+07:00 0HLED5A06SLS4:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/Admin/Login/Index   (ca22a1cb)
+2018-06-08T17:30:46.9521367+07:00 0HLED5A06SLS4:00000004 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.LoginController.Index (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:30:47.1709626+07:00 0HLED5A06SLS4:00000004 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Login/Index.cshtml". (9707eebe)
+2018-06-08T17:30:47.2087975+07:00 0HLED5A06SLS4:00000004 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.LoginController.Index (NiTiErp)" in 257.2455ms (afa2e885)
+2018-06-08T17:30:47.2123862+07:00 0HLED5A06SLS4:00000004 [INF] Request finished in 263.6556ms 200 text/html; charset=utf-8 (791a596a)
+2018-06-08T17:30:48.8944801+07:00 0HLED5A06SLS5:00000004 [INF] Request starting HTTP/1.1 POST http://localhost:44352/admin/login/authen application/x-www-form-urlencoded; charset=UTF-8 30 (ca22a1cb)
+2018-06-08T17:30:49.0828456+07:00 0HLED5A06SLS5:00000004 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.LoginController.Authen (NiTiErp)" with arguments (["NiTiErp.Models.AccountViewModels.LoginViewModel"]) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:30:49.0898616+07:00 0HLED5A06SLS5:00000004 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-06-08T17:30:49.1003888+07:00 0HLED5A06SLS5:00000004 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[CorporationId], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserCreated], [u].[UserModified], [u].[UserName]
+FROM [AppUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2018-06-08T17:30:49.1549841+07:00 0HLED5A06SLS5:00000004 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-06-08T17:30:49.1595108+07:00 0HLED5A06SLS5:00000004 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-06-08T17:30:49.1621938+07:00 0HLED5A06SLS5:00000004 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CorporationId], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-06-08T17:30:49.1656047+07:00 0HLED5A06SLS5:00000004 [INF] Executed DbCommand ("1"ms) [Parameters=["@__role_Id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2018-06-08T17:30:49.1673067+07:00 0HLED5A06SLS5:00000004 [INF] Executed DbCommand ("0"ms) [Parameters=["@__userId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-06-08T17:30:49.1706669+07:00 0HLED5A06SLS5:00000004 [INF] AuthenticationScheme: "Identity.Application" signed in. (c66dd7e7)
+2018-06-08T17:30:49.1710964+07:00 0HLED5A06SLS5:00000004 [INF] User logged in. (fdce0db4)
+2018-06-08T17:30:49.1719461+07:00 0HLED5A06SLS5:00000004 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T17:30:49.1769023+07:00 0HLED5A06SLS5:00000004 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.LoginController.Authen (NiTiErp)" in 223.5678ms (afa2e885)
+2018-06-08T17:30:49.1797228+07:00 0HLED5A06SLS5:00000004 [INF] Request finished in 284.5126ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T17:30:49.1878892+07:00 0HLED5A06SLS2:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44352/Admin/Home/Index   (ca22a1cb)
+2018-06-08T17:30:49.1888256+07:00 0HLED5A06SLS2:00000007 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:30:49.1894296+07:00 0HLED5A06SLS2:00000007 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:30:49.1897571+07:00 0HLED5A06SLS2:00000007 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HomeController.Index (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:30:49.1901589+07:00 0HLED5A06SLS2:00000007 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Home/Index.cshtml". (9707eebe)
+2018-06-08T17:30:49.1940692+07:00 0HLED5A06SLS2:00000007 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HomeController.Index (NiTiErp)" in 4.7618ms (afa2e885)
+2018-06-08T17:30:49.2087863+07:00 0HLED5A06SLS2:00000007 [INF] Request finished in 20.8679ms 200 text/html; charset=utf-8 (791a596a)
+2018-06-08T17:30:49.4978472+07:00 0HLED5A06SLS3:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44352/Admin/Home/GetRevenue   (ca22a1cb)
+2018-06-08T17:30:49.4987671+07:00 0HLED5A06SLS3:00000005 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:30:49.5071839+07:00 0HLED5A06SLS3:00000005 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:30:49.5075110+07:00 0HLED5A06SLS3:00000005 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HomeController.GetRevenue (NiTiErp)" with arguments (["", ""]) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:30:49.5597125+07:00 0HLED5A06SLS3:00000005 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T17:30:49.5640539+07:00 0HLED5A06SLS3:00000005 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HomeController.GetRevenue (NiTiErp)" in 56.9191ms (afa2e885)
+2018-06-08T17:30:49.5644700+07:00 0HLED5A06SLS3:00000005 [INF] Request finished in 66.7282ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T17:31:22.7601596+07:00 0HLED5A06SLS4:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/user/index   (ca22a1cb)
+2018-06-08T17:31:22.7610973+07:00 0HLED5A06SLS4:00000005 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:31:22.7615659+07:00 0HLED5A06SLS4:00000005 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:31:22.7617438+07:00 0HLED5A06SLS4:00000005 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.UserController.Index (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:31:22.7624847+07:00 0HLED5A06SLS4:00000005 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-06-08T17:31:22.7736548+07:00 0HLED5A06SLS4:00000005 [INF] Executed DbCommand ("5"ms) [Parameters=["@__functionId_1='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]
+        INNER JOIN [Permissions] AS [p] ON [f].[Id] = [p].[FunctionId]
+        INNER JOIN [AppRoles] AS [r] ON [p].[RoleId] = [r].[Id]
+        WHERE ([r].[Name] IN (N'Admin') AND ([f].[Id] = @__functionId_1)) AND ([p].[CanRead] = 1))
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-06-08T17:31:22.7738753+07:00 0HLED5A06SLS4:00000005 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:31:22.7740924+07:00 0HLED5A06SLS4:00000005 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/User/Index.cshtml". (9707eebe)
+2018-06-08T17:31:22.7849892+07:00 0HLED5A06SLS4:00000005 [INF] Executed DbCommand ("5"ms) [Parameters=["@__functionId_1='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]
+        INNER JOIN [Permissions] AS [p] ON [f].[Id] = [p].[FunctionId]
+        INNER JOIN [AppRoles] AS [r] ON [p].[RoleId] = [r].[Id]
+        WHERE ([r].[Name] IN (N'Admin') AND ([f].[Id] = @__functionId_1)) AND ([p].[CanCreate] = 1))
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-06-08T17:31:22.7852874+07:00 0HLED5A06SLS4:00000005 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:31:22.7956560+07:00 0HLED5A06SLS4:00000005 [INF] Executed DbCommand ("5"ms) [Parameters=["@__functionId_1='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]
+        INNER JOIN [Permissions] AS [p] ON [f].[Id] = [p].[FunctionId]
+        INNER JOIN [AppRoles] AS [r] ON [p].[RoleId] = [r].[Id]
+        WHERE ([r].[Name] IN (N'Admin') AND ([f].[Id] = @__functionId_1)) AND ([p].[CanUpdate] = 1))
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-06-08T17:31:22.7958700+07:00 0HLED5A06SLS4:00000005 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:31:22.8012619+07:00 0HLED5A06SLS4:00000005 [INF] Executed DbCommand ("0"ms) [Parameters=["@__functionId_1='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]
+        INNER JOIN [Permissions] AS [p] ON [f].[Id] = [p].[FunctionId]
+        INNER JOIN [AppRoles] AS [r] ON [p].[RoleId] = [r].[Id]
+        WHERE ([r].[Name] IN (N'Admin') AND ([f].[Id] = @__functionId_1)) AND ([p].[CanUpdate] = 1))
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-06-08T17:31:22.8014777+07:00 0HLED5A06SLS4:00000005 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:31:22.8109342+07:00 0HLED5A06SLS4:00000005 [INF] Executed DbCommand ("5"ms) [Parameters=["@__functionId_1='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]
+        INNER JOIN [Permissions] AS [p] ON [f].[Id] = [p].[FunctionId]
+        INNER JOIN [AppRoles] AS [r] ON [p].[RoleId] = [r].[Id]
+        WHERE ([r].[Name] IN (N'Admin') AND ([f].[Id] = @__functionId_1)) AND ([p].[CanDelete] = 1))
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-06-08T17:31:22.8111621+07:00 0HLED5A06SLS4:00000005 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:31:22.8558998+07:00 0HLED5A06SLS4:00000005 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.UserController.Index (NiTiErp)" in 94.387ms (afa2e885)
+2018-06-08T17:31:22.8674804+07:00 0HLED5A06SLS4:00000005 [INF] Request finished in 107.2978ms 200 text/html; charset=utf-8 (791a596a)
+2018-06-08T17:31:23.3680648+07:00 0HLED5A06SLS5:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/user/GetAllPagingCor?keyword=&page=1&pageSize=10   (ca22a1cb)
+2018-06-08T17:31:23.3689446+07:00 0HLED5A06SLS5:00000005 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:31:23.3687338+07:00 0HLED5A06SLS2:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/corporation/GetAllCorporations   (ca22a1cb)
+2018-06-08T17:31:23.3693735+07:00 0HLED5A06SLS5:00000005 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:31:23.3696833+07:00 0HLED5A06SLS5:00000005 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.UserController.GetAllPagingCor (NiTiErp)" with arguments (["", "1", "10"]) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:31:23.3699492+07:00 0HLED5A06SLS2:00000008 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:31:23.3700948+07:00 0HLED5A06SLS5:00000005 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-06-08T17:31:23.3702895+07:00 0HLED5A06SLS2:00000008 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:31:23.3704546+07:00 0HLED5A06SLS2:00000008 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.CorporationController.GetAllCorporations (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:31:23.3709936+07:00 0HLED5A06SLS2:00000008 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-06-08T17:31:23.3738356+07:00 0HLED5A06SLS5:00000005 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AppUsers] AS [a]" (0723d8ff)
+2018-06-08T17:31:23.3751716+07:00 0HLED5A06SLS2:00000008 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[Address], [dto].[PhoneNumber1], [dto].[PhoneNumber2], [dto].[TaxNumber], [dto].[Email], [dto].[WebName], [dto].[Image], [dto].[ImageLogo], [dto].[CorporationServiceId], [dto].[DateCreated], [dto].[DateModified], [dto].[UserIdCreated], [dto].[UserIdModified]
+FROM [Corporations] AS [dto]
+ORDER BY [dto].[DateCreated] DESC" (0723d8ff)
+2018-06-08T17:31:23.3757246+07:00 0HLED5A06SLS2:00000008 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T17:31:23.3761793+07:00 0HLED5A06SLS2:00000008 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.CorporationController.GetAllCorporations (NiTiErp)" in 5.8652ms (afa2e885)
+2018-06-08T17:31:23.3768187+07:00 0HLED5A06SLS2:00000008 [INF] Request finished in 8.1337ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T17:31:23.3798330+07:00 0HLED5A06SLS5:00000005 [INF] Executed DbCommand ("5"ms) [Parameters=["@__p_0='?', @__p_1='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[UserName], [x].[Avatar], CONVERT(VARCHAR(100), [x].[BirthDay]) AS [BirthDay], [x].[Email], [x].[FullName], [x].[Id], [x].[PhoneNumber], [x].[Status], [x].[DateCreated]
+FROM [AppUsers] AS [x]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2018-06-08T17:31:23.3803150+07:00 0HLED5A06SLS5:00000005 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T17:31:23.3806447+07:00 0HLED5A06SLS5:00000005 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.UserController.GetAllPagingCor (NiTiErp)" in 11.3361ms (afa2e885)
+2018-06-08T17:31:23.3811249+07:00 0HLED5A06SLS5:00000005 [INF] Request finished in 13.1552ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T17:31:23.4640737+07:00 0HLED5A06SLS4:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/user/GetAllPagingCor?keyword=&page=1&pageSize=10   (ca22a1cb)
+2018-06-08T17:31:23.4643322+07:00 0HLED5A06SLS3:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/user/null   (ca22a1cb)
+2018-06-08T17:31:23.4650236+07:00 0HLED5A06SLS4:00000006 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:31:23.4650292+07:00 0HLED5A06SLS3:00000006 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:31:23.4655090+07:00 0HLED5A06SLS3:00000006 [INF] Request finished in 1.6617ms 404  (791a596a)
+2018-06-08T17:31:23.4655940+07:00 0HLED5A06SLS4:00000006 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:31:23.4659476+07:00 0HLED5A06SLS4:00000006 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.UserController.GetAllPagingCor (NiTiErp)" with arguments (["", "1", "10"]) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:31:23.4667180+07:00 0HLED5A06SLS4:00000006 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-06-08T17:31:23.4705358+07:00 0HLED5A06SLS4:00000006 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AppUsers] AS [a]" (0723d8ff)
+2018-06-08T17:31:23.4727123+07:00 0HLED5A06SLS4:00000006 [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?', @__p_1='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[UserName], [x].[Avatar], CONVERT(VARCHAR(100), [x].[BirthDay]) AS [BirthDay], [x].[Email], [x].[FullName], [x].[Id], [x].[PhoneNumber], [x].[Status], [x].[DateCreated]
+FROM [AppUsers] AS [x]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2018-06-08T17:31:23.4730833+07:00 0HLED5A06SLS4:00000006 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T17:31:23.4734695+07:00 0HLED5A06SLS4:00000006 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.UserController.GetAllPagingCor (NiTiErp)" in 8.0298ms (afa2e885)
+2018-06-08T17:31:23.4739551+07:00 0HLED5A06SLS4:00000006 [INF] Request finished in 10.1089ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T17:31:23.5059402+07:00 0HLED5A06SLS2:00000009 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/user/null   (ca22a1cb)
+2018-06-08T17:31:23.5069357+07:00 0HLED5A06SLS2:00000009 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:31:23.5073425+07:00 0HLED5A06SLS2:00000009 [INF] Request finished in 1.4803ms 404  (791a596a)
+2018-06-08T17:31:25.7830811+07:00 0HLED5A06SLS5:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/role/index   (ca22a1cb)
+2018-06-08T17:31:25.7839111+07:00 0HLED5A06SLS5:00000006 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:31:25.7843444+07:00 0HLED5A06SLS5:00000006 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:31:25.7845052+07:00 0HLED5A06SLS5:00000006 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.RoleController.Index (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:31:25.7846697+07:00 0HLED5A06SLS5:00000006 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Role/Index.cshtml". (9707eebe)
+2018-06-08T17:31:25.8968208+07:00 0HLED5A06SLS5:00000006 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.RoleController.Index (NiTiErp)" in 112.4141ms (afa2e885)
+2018-06-08T17:31:25.9166941+07:00 0HLED5A06SLS5:00000006 [INF] Request finished in 133.5623ms 200 text/html; charset=utf-8 (791a596a)
+2018-06-08T17:31:26.1560437+07:00 0HLED5A06SLS3:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/role/GetAllPaging?keyword=&page=1&pageSize=10   (ca22a1cb)
+2018-06-08T17:31:26.1569471+07:00 0HLED5A06SLS3:00000007 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:31:26.1574472+07:00 0HLED5A06SLS3:00000007 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:31:26.1577750+07:00 0HLED5A06SLS3:00000007 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.RoleController.GetAllPaging (NiTiErp)" with arguments (["", "1", "10"]) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:31:26.1582705+07:00 0HLED5A06SLS3:00000007 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-06-08T17:31:26.1604699+07:00 0HLED5A06SLS4:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/Function/GetAll   (ca22a1cb)
+2018-06-08T17:31:26.1606261+07:00 0HLED5A06SLS3:00000007 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AppRoles] AS [a]" (0723d8ff)
+2018-06-08T17:31:26.1613118+07:00 0HLED5A06SLS4:00000007 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:31:26.1617108+07:00 0HLED5A06SLS4:00000007 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:31:26.1619649+07:00 0HLED5A06SLS4:00000007 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.FunctionController.GetAll (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:31:26.1627689+07:00 0HLED5A06SLS4:00000007 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-06-08T17:31:26.1651823+07:00 0HLED5A06SLS3:00000007 [INF] Executed DbCommand ("3"ms) [Parameters=["@__p_0='?', @__p_1='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[Description]
+FROM [AppRoles] AS [dto]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2018-06-08T17:31:26.1654843+07:00 0HLED5A06SLS3:00000007 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T17:31:26.1657201+07:00 0HLED5A06SLS3:00000007 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.RoleController.GetAllPaging (NiTiErp)" in 8.3853ms (afa2e885)
+2018-06-08T17:31:26.1661237+07:00 0HLED5A06SLS3:00000007 [INF] Request finished in 10.1692ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T17:31:26.1698495+07:00 0HLED5A06SLS4:00000007 [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[URL], [x].[ParentId], [x].[IconCss], [x].[SortOrder], [x].[Status]
+FROM [Functions] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[ParentId]" (0723d8ff)
+2018-06-08T17:31:26.1706986+07:00 0HLED5A06SLS4:00000007 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T17:31:26.1716105+07:00 0HLED5A06SLS4:00000007 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.FunctionController.GetAll (NiTiErp)" in 9.5715ms (afa2e885)
+2018-06-08T17:31:26.1725192+07:00 0HLED5A06SLS4:00000007 [INF] Request finished in 12.0654ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T17:31:26.2204000+07:00 0HLED5A06SLS2:0000000A [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/role/GetAllPaging?keyword=&page=1&pageSize=10   (ca22a1cb)
+2018-06-08T17:31:26.2213083+07:00 0HLED5A06SLS2:0000000A [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:31:26.2217189+07:00 0HLED5A06SLS2:0000000A [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:31:26.2220171+07:00 0HLED5A06SLS2:0000000A [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.RoleController.GetAllPaging (NiTiErp)" with arguments (["", "1", "10"]) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:31:26.2224942+07:00 0HLED5A06SLS2:0000000A [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-06-08T17:31:26.2235535+07:00 0HLED5A06SLS2:0000000A [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AppRoles] AS [a]" (0723d8ff)
+2018-06-08T17:31:26.2249114+07:00 0HLED5A06SLS2:0000000A [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?', @__p_1='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[Description]
+FROM [AppRoles] AS [dto]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2018-06-08T17:31:26.2253051+07:00 0HLED5A06SLS2:0000000A [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T17:31:26.2258204+07:00 0HLED5A06SLS2:0000000A [INF] Executed action "NiTiErp.Areas.Admin.Controllers.RoleController.GetAllPaging (NiTiErp)" in 4.1472ms (afa2e885)
+2018-06-08T17:31:26.2263351+07:00 0HLED5A06SLS2:0000000A [INF] Request finished in 5.9604ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T17:31:36.0485658+07:00 0HLED5A06SLS5:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44352/   (ca22a1cb)
+2018-06-08T17:31:36.0496888+07:00 0HLED5A06SLS5:00000007 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:31:36.0503080+07:00 0HLED5A06SLS5:00000007 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.LoginController.Index (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:31:36.0505282+07:00 0HLED5A06SLS5:00000007 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Login/Index.cshtml". (9707eebe)
+2018-06-08T17:31:36.0526912+07:00 0HLED5A06SLS5:00000007 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.LoginController.Index (NiTiErp)" in 2.413ms (afa2e885)
+2018-06-08T17:31:36.0557299+07:00 0HLED5A06SLS5:00000007 [INF] Request finished in 7.4787ms 200 text/html; charset=utf-8 (791a596a)
+2018-06-08T17:31:38.4540472+07:00 0HLED5A06SLS3:00000008 [INF] Request starting HTTP/1.1 POST http://localhost:44352/admin/login/authen application/x-www-form-urlencoded; charset=UTF-8 30 (ca22a1cb)
+2018-06-08T17:31:38.4549090+07:00 0HLED5A06SLS3:00000008 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:31:38.4569085+07:00 0HLED5A06SLS3:00000008 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.LoginController.Authen (NiTiErp)" with arguments (["NiTiErp.Models.AccountViewModels.LoginViewModel"]) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:31:38.4574142+07:00 0HLED5A06SLS3:00000008 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-06-08T17:31:38.4608455+07:00 0HLED5A06SLS3:00000008 [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[CorporationId], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserCreated], [u].[UserModified], [u].[UserName]
+FROM [AppUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2018-06-08T17:31:38.4755312+07:00 0HLED5A06SLS3:00000008 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-06-08T17:31:38.5069739+07:00 0HLED5A06SLS3:00000008 [INF] Executed DbCommand ("30"ms) [Parameters=["@__userId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-06-08T17:31:38.5091831+07:00 0HLED5A06SLS3:00000008 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CorporationId], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-06-08T17:31:38.5115299+07:00 0HLED5A06SLS3:00000008 [INF] Executed DbCommand ("1"ms) [Parameters=["@__role_Id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2018-06-08T17:31:38.5128896+07:00 0HLED5A06SLS3:00000008 [INF] Executed DbCommand ("0"ms) [Parameters=["@__userId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-06-08T17:31:38.5135844+07:00 0HLED5A06SLS3:00000008 [INF] AuthenticationScheme: "Identity.Application" signed in. (c66dd7e7)
+2018-06-08T17:31:38.5137589+07:00 0HLED5A06SLS3:00000008 [INF] User logged in. (fdce0db4)
+2018-06-08T17:31:38.5139280+07:00 0HLED5A06SLS3:00000008 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T17:31:38.5141122+07:00 0HLED5A06SLS3:00000008 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.LoginController.Authen (NiTiErp)" in 58.8337ms (afa2e885)
+2018-06-08T17:31:38.5144117+07:00 0HLED5A06SLS3:00000008 [INF] Request finished in 60.4723ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T17:31:38.5414668+07:00 0HLED5A06SLS4:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44352/Admin/Home/Index   (ca22a1cb)
+2018-06-08T17:31:38.5432491+07:00 0HLED5A06SLS4:00000008 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:31:38.5438960+07:00 0HLED5A06SLS4:00000008 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:31:38.5440764+07:00 0HLED5A06SLS4:00000008 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HomeController.Index (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:31:38.5442558+07:00 0HLED5A06SLS4:00000008 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Home/Index.cshtml". (9707eebe)
+2018-06-08T17:31:38.5839531+07:00 0HLED5A06SLS4:00000008 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HomeController.Index (NiTiErp)" in 40.1487ms (afa2e885)
+2018-06-08T17:31:38.5969795+07:00 0HLED5A06SLS4:00000008 [INF] Request finished in 55.5659ms 200 text/html; charset=utf-8 (791a596a)
+2018-06-08T17:31:38.8884522+07:00 0HLED5A06SLS2:0000000B [INF] Request starting HTTP/1.1 GET http://localhost:44352/Admin/Home/GetRevenue   (ca22a1cb)
+2018-06-08T17:31:38.8893498+07:00 0HLED5A06SLS2:0000000B [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:31:38.8898779+07:00 0HLED5A06SLS2:0000000B [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:31:38.8902999+07:00 0HLED5A06SLS2:0000000B [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HomeController.GetRevenue (NiTiErp)" with arguments (["", ""]) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:31:38.9556953+07:00 0HLED5A06SLS2:0000000B [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-06-08T17:31:38.9559522+07:00 0HLED5A06SLS2:0000000B [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HomeController.GetRevenue (NiTiErp)" in 66.2011ms (afa2e885)
+2018-06-08T17:31:38.9563406+07:00 0HLED5A06SLS2:0000000B [INF] Request finished in 67.9657ms 200 application/json; charset=utf-8 (791a596a)
+2018-06-08T17:32:14.6484809+07:00 0HLED5A06SLS5:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hopdong/index   (ca22a1cb)
+2018-06-08T17:32:14.6494737+07:00 0HLED5A06SLS5:00000008 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-06-08T17:32:14.6520516+07:00 0HLED5A06SLS5:00000008 [INF] Authorization was successful for user: "lenguyen". (d7eb274a)
+2018-06-08T17:32:14.6526547+07:00 0HLED5A06SLS5:00000008 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HopdongController.Index (NiTiErp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-06-08T17:32:14.8563278+07:00 0HLED5A06SLS5:00000008 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Hopdong/Index.cshtml". (9707eebe)
+2018-06-08T17:32:15.1825221+07:00 0HLED5A06SLS5:00000008 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HopdongController.Index (NiTiErp)" in 530.5103ms (afa2e885)
+2018-06-08T17:32:15.1923117+07:00 0HLED5A06SLS5:00000008 [INF] Request finished in 543.8826ms 200 text/html; charset=utf-8 (791a596a)
+2018-06-08T17:32:15.2634105+07:00 0HLED5A06SLS3:00000009 [INF] Request starting HTTP/1.1 GET http://localhost:44352/app/controllers/hopdong/index.js?v=M5AOYZG_tc43QUx6OdzouQ8aSU0MPbX5eKSBZO-ezzw   (ca22a1cb)
+2018-06-08T17:32:15.2634083+07:00 0HLED5A06SLS4:00000009 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/jQuery-EasyUI/jquery.easyui.min.js   (ca22a1cb)
+2018-06-08T17:32:15.2637837+07:00 0HLED5A06SLS3:00000009 [INF] The file "/app/controllers/hopdong/index.js" was not modified (f1f8d725)
+2018-06-08T17:32:15.2638031+07:00 0HLED5A06SLS4:00000009 [INF] The file "/lib/jQuery-EasyUI/jquery.easyui.min.js" was not modified (f1f8d725)
+2018-06-08T17:32:15.2639318+07:00 0HLED5A06SLS3:00000009 [INF] Request finished in 0.6148ms 304 application/javascript (791a596a)
+2018-06-08T17:32:15.2639334+07:00 0HLED5A06SLS4:00000009 [INF] Request finished in 0.6164ms 304 application/javascript (791a596a)

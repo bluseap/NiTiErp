@@ -1,36 +1,34 @@
 ﻿var hosoController = function () {
-
     var userCorporationId = $("#hidUserCorporationId").val();
 
     var imageNhanVien = [];
+    var imageBang1 = [];
+    var imageBang2 = [];
 
-    this.initialize = function () {              
-
+    this.initialize = function () {
         loadKhuVuc();
 
         loadData();
 
         registerEvents();
-
     }
 
-    function registerEvents() {                
-
+    function registerEvents() {
         $('#txtNgaySinh, #txtNgayCapCMND, #txtNgayKyHopDong').datepicker({
             autoclose: true,
             format: 'dd/mm/yyyy',
             language: 'vi'
         });
 
-        formMainValidate();        
+        formMainValidate();
 
         $('#btnTimNhanVien').on('click', function () {
-            LoadTableHoSoNhanVien();           
+            LoadTableHoSoNhanVien();
         });
 
         $('#txtTimNhanVien').on('keypress', function (e) {
             if (e.which === 13) {
-                LoadTableHoSoNhanVien();               
+                LoadTableHoSoNhanVien();
             }
         });
 
@@ -39,19 +37,34 @@
 
             NhanVienId();// ho so nhan vien id new guid
 
+            LoadTableTrinhDo(true);
+
             $('#modal-add-edit-HoSo').modal('show');
         });
 
         $('#btnSave').on('click', function (e) {
-            var hosoInserId = $('#hidLyLichIdInsert').val();
+            var hosoInserId = $('#hidLyLichIdInsert').val(); // sua la bang = 1
 
-            if (hosoInserId == 1) {
-                UpdateHoSoNhanVien(e);
+            if ($('#frmMainTrinhDo').valid()) {
+                if (hosoInserId == 1) { // add trinh do
+                    $('#hidTrinhDoId').val(0);
+
+                    SaveTrinhDoNhanVien(e);
+                }
+                else { // tao moi
+                    SaveHoSoNhanVienTrinhDo(e);
+
+                    SaveTrinhDoNhanVien(e);
+                }
             }
-            else
-            {
-                SaveHoSoNhanVien(e);
-            }                   
+            else {
+                if (hosoInserId == 1) {
+                    UpdateHoSoNhanVien(e);
+                }
+                else { // tao moi
+                    SaveHoSoNhanVien(e);
+                }
+            }
         });
 
         $('body').on('click', '.btn-edit', function (e) {
@@ -60,8 +73,8 @@
             $('#hidLyLichIdInsert').val(1);
 
             var hosoId = $(this).data('id');
-            loadHoSoNhanVien(hosoId);           
-           
+            loadHoSoNhanVien(hosoId);            
+            
         });
 
         $("#fileInputHinhNhanVien").on('change', function () {
@@ -91,8 +104,64 @@
                 }
             });
         });
-        
-    }    
+
+        $("#fileHinhBangCap1").on('change', function () {
+            var fileUpload = $(this).get(0);
+            var files = fileUpload.files;
+
+            var data = new FormData();
+
+            for (var i = 0; i < files.length; i++) {
+                data.append(files[i].name, files[i]);
+            }
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Upload/UploadImageNhanVien",
+                contentType: false,
+                processData: false,
+                data: data,
+                success: function (path) {
+                    clearFileBang1Input($("#fileHinhBangCap1"));
+                    imageBang1.push(path);
+
+                    $('#imagelistBang1').append('<div class="col-md-3"><img width="100"  data-path="' + path + '" src="' + path + '"></div>');
+                    tedu.notify('Đã tải ảnh lên thành công!', 'success');
+                },
+                error: function () {
+                    tedu.notify('There was error uploading files!', 'error');
+                }
+            });
+        });
+
+        $("#fileHinhBangCap2").on('change', function () {
+            var fileUpload = $(this).get(0);
+            var files = fileUpload.files;
+
+            var data = new FormData();
+
+            for (var i = 0; i < files.length; i++) {
+                data.append(files[i].name, files[i]);
+            }
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Upload/UploadImageNhanVien",
+                contentType: false,
+                processData: false,
+                data: data,
+                success: function (path) {
+                    clearFileBang2Input($("#fileHinhBangCap2"));
+                    imageBang2.push(path);
+
+                    $('#imagelistBang2').append('<div class="col-md-3"><img width="100"  data-path="' + path + '" src="' + path + '"></div>');
+                    tedu.notify('Đã tải ảnh lên thành công!', 'success');
+                },
+                error: function () {
+                    tedu.notify('There was error uploading files!', 'error');
+                }
+            });
+        });
+
+    }
 
     function clearFileHinhNhanVienInput(ctrl) {
         try {
@@ -102,15 +171,31 @@
         }
         catch (ex) { }
     }
-    
+    function clearFileBang1Input(ctrl) {
+        try {
+            imageBang1 = [];
+            ctrl.value = null;
+            ctrl.value('');
+        }
+        catch (ex) { }
+    }
+    function clearFileBang2Input(ctrl) {
+        try {
+            imageBang2 = [];
+            ctrl.value = null;
+            ctrl.value('');
+        }
+        catch (ex) { }
+    }
+
     function isFormMainValidate()
-    {        
-        if ($('#frmMainLyLich').valid() && $('#frmMainHopDong').valid() && $('#frmMainCongViec').valid()) {
+    {
+        if ($('#frmMainLyLich').valid() && $('#frmMainCongViec').valid()) {
             return true;
-        }        
+        }
         else {
             return false;
-        }       
+        }
     }
 
     function formMainValidate()
@@ -125,8 +210,8 @@
         );
 
         jQuery.validator.addMethod("isDateVietNam", function (value, element) {
-               return this.optional(element) || moment(value, "DD/MM/YYYY").isValid();
-           },
+            return this.optional(element) || moment(value, "DD/MM/YYYY").isValid();
+        },
            "Nhập theo định dạng ngày, tháng, năm."
         );
 
@@ -168,7 +253,6 @@
                     required: true,
                     number: true
                 }
-                
             },
             messages: {
                 txtHoVaTen: { required: "Nhập họ và tên.." },
@@ -191,8 +275,25 @@
             ignore: [],
             language: 'vi',
             rules: {
-                txtHoVaTen: { required: true },
-                ddlGioiTinh: { required: true },
+                ddlLoaiBang: { required: true, isDanhMuc: true },
+                txtChuyenNganh: { required: true },
+                ddlLoaiHinh: { required: true, isDanhMuc: true },
+                ddlXepLoai: { required: true, isDanhMuc: true },
+                txtNamCapBang: { required: true },
+                txtTenTruongCapBang: { required: true }
+            },
+            messages: {
+                ddlLoaiBang: { required: "Nhập loại bằng!" },
+                ddlLoaiHinh: { required: "Nhập loại hình đào tạo!" },
+                ddlXepLoai: { required: "Nhập xếp loại bằng!" }
+            }
+        });
+
+        $('#frmMainHopDong').validate({
+            errorClass: 'red',
+            ignore: [],
+            lang: 'vi',
+            rules: {
                 txtHeSoLuongCoBan: {
                     required: true,
                     number: true
@@ -203,27 +304,6 @@
                 }
             },
             messages: {
-                txtHoVaTen: { required: "Nhập họ và tên!" },
-                txtHeSoLuongCoBan: { required: "Chỉ nhập số!" },
-                txtLuongCoBan: { required: "Chỉ nhập số!" }
-            }
-        });
-
-        $('#frmMainHopDong').validate({
-            errorClass: 'red',
-            ignore: [],
-            lang: 'vi',
-            rules: {                
-                txtHeSoLuongCoBan: {
-                    required: true,
-                    number: true
-                },
-                txtLuongCoBan: {
-                    required: true,
-                    number: true
-                }
-            },
-            messages: {               
                 txtHeSoLuongCoBan: { required: "Chỉ nhập số!" },
                 txtLuongCoBan: { required: "Chỉ nhập số!" }
             }
@@ -263,11 +343,11 @@
                 }
             },
             messages: {
-                ddlPhongtabCongViec: { required: "Chọn phòng!" }              
+                ddlPhongtabCongViec: { required: "Chọn phòng!" }
             }
         });
 
-        $('#ddlKhuVuc').on('change', function () {    
+        $('#ddlKhuVuc').on('change', function () {
             var corporationId = $('#ddlKhuVuc').val();
             loadPhongKhuVuc(corporationId);
 
@@ -280,7 +360,6 @@
 
             tedu.notify('Danh mục phòng theo khu vực.', 'success');
         });
-
     }
 
     function resetFormMaintainance() {
@@ -288,16 +367,16 @@
 
         resetFormTabLyLich();
         resetFormTabTrinhDo();
-        resetFormTabHopDong();                  
+        resetFormTabHopDong();
         resetFormTabDangDoan();
         resetFormTabCongViec();
 
-        //$('#txtPriceM').val('0');        
+        //$('#txtPriceM').val('0');
         //CKEDITOR.instances.txtContentM.setData('');
         //$('#ckStatusM').prop('checked', true);
     }
 
-    function resetFormTabLyLich() {       
+    function resetFormTabLyLich() {
         $('#hidLyLichId').val(0);
 
         clearFileHinhNhanVienInput($("#fileInputHinhNhanVien"));
@@ -327,16 +406,24 @@
         $('#ddlLoaiBang')[0].selectedIndex = 0;
         $('#ddlLoaiHinh')[0].selectedIndex = 0;
         $('#ddlXepLoai')[0].selectedIndex = 0;
-        $('#txtChuyenNganh').val('');  
-        $('#txtNamCapBang').val('');  
+        $('#txtChuyenNganh').val('');
+        $('#txtNamCapBang').val('');
         $('#txtTenTruongCapBang').val('');
         $('#txtGhiChuTrinhDo').val('');
+
+        clearFileBang1Input($("#fileHinhBangCap1"));
+        $('#imagelistBang1').html('');
+        imageBang1 = [];
+
+        clearFileBang2Input($("#fileHinhBangCap2"));
+        $('#imagelistBang2').html('');
+        imageBang2 = [];
     }
     function resetFormTabHopDong() {
         $('#hidHopDongId').val(0);
-        
+
         $('#ddlLoaiHopDong')[0].selectedIndex = 0;
-        $('#ddlChucVuKyHopDong')[0].selectedIndex = 0;          
+        $('#ddlChucVuKyHopDong')[0].selectedIndex = 0;
         $('#txtSoHopDong').val('');
         $('#txtNgayKyHopDong').val('');
         $('#txtNgayHopDong').val('');
@@ -350,10 +437,10 @@
         $('#hidDangDoanId').val(0);
 
         $('#ddlChucVuDang')[0].selectedIndex = 0;
-        $('#ddlChucVuDoan')[0].selectedIndex = 0; 
+        $('#ddlChucVuDoan')[0].selectedIndex = 0;
         $('#ddlChucVuCongDoan')[0].selectedIndex = 0;
         $('#ddlChucVuQuanDoi')[0].selectedIndex = 0;
-        $('#ddlCapBacQuanDoi')[0].selectedIndex = 0;                     
+        $('#ddlCapBacQuanDoi')[0].selectedIndex = 0;
         $('#txtNgayVaoDang').val('');
         $('#txtMaTheDang').val('');
         $('#txtNoiSinhHoatDang').val('');
@@ -368,23 +455,22 @@
         $('#txtDacDiemBanThanCu').val('');
         $('#txtNgayNhapNgu').val('');
         $('#txtNgayXuatNgu').val('');
-        $('#txtDonViQuanDoi').val('');   
+        $('#txtDonViQuanDoi').val('');
     }
     function resetFormTabCongViec() {
         $('#hidCongViecId').val(0);
 
-        $('#ddlCongTyXiNghiep')[0].selectedIndex = 0;
+        $('#ddlCongTyXiNghiep')[0].selectedIndex = 1;
         $('#ddlPhongtabCongViec')[0].selectedIndex = 0;
-        $('#ddlChucVuNhanVien')[0].selectedIndex = 1;     
-        $('#txtCongTacChinh').val('');   
-        $('#txtSoQuyetDinhCongViec').val('');   
-        $('#txtTenQuyetDinhCongViec').val('');   
+        $('#ddlChucVuNhanVien')[0].selectedIndex = 1;
+        $('#txtCongTacChinh').val('');
+        $('#txtSoQuyetDinhCongViec').val('');
+        $('#txtTenQuyetDinhCongViec').val('');
         $('#txtNgayKyCongViec').val('');
-        $('#txtNgayHieuLucCongViec').val('');  
-    } 
+        $('#txtNgayHieuLucCongViec').val('');
+    }
 
     function loadData() {
-
         //LoadTableHoSoNhanVien();
 
         LoadTabDanhMucLyLich();
@@ -396,15 +482,14 @@
         $('#txtHeSoLuongCoBan').val('0.00');
         $('#txtLuongCoBan').val('0');
 
-        var gioitinh = [{ value:"1", ten:"Nam" }, { value:"0", ten:"Nữ" } ];        
+        var gioitinh = [{ value:"1", ten:"Nam" }, { value:"0", ten:"Nữ" } ];
         var render = "";
         for (var i = 0; i < gioitinh.length ; i++) {
-            render += "<option value='" + gioitinh[i].value + "'>" + gioitinh[i].ten + "</option>";            
+            render += "<option value='" + gioitinh[i].value + "'>" + gioitinh[i].ten + "</option>";
         }
-        $('#ddlGioiTinh').html(render);        
-        
+        $('#ddlGioiTinh').html(render);
     }
-   
+
     function LoadTableHoSoNhanVien(isPageChanged) {
         var template = $('#table-HoSoNhanVien').html();
         var render = "";
@@ -441,10 +526,9 @@
                             TenChucVu: item.TenChucVu,
                             NgaySinh: tedu.getFormattedDate(item.NgaySinh),
                             CreateDate: tedu.getFormattedDate(item.CreateDate)
-                            // Price: tedu.formatNumber(item.Price, 0),                        
+                            // Price: tedu.formatNumber(item.Price, 0),
                             //Status: tedu.getStatus(item.Status)
                         });
-
                     });
                 }
 
@@ -464,8 +548,8 @@
                 tedu.notify('Không thể lấy dữ liệu về.', 'error');
             }
         });
-
     }
+
     function wrapPaging(recordCount, callBack, changePageSize) {
         var totalsize = Math.ceil(recordCount / tedu.configs.pageSize);
         //Unbind pagination if it existed or click change pagesize
@@ -772,7 +856,6 @@
                 tedu.notify('Không có danh Cấp bậc Quân Đội.', 'error');
             }
         });
-
     }
     function LoadTabDanhMucCongViec() {
         $.ajax({
@@ -795,7 +878,6 @@
                 tedu.notify('Không có danh Chức vụ Nhân viên.', 'error');
             }
         });
-
     }
 
     function loadKhuVuc() {
@@ -803,7 +885,7 @@
             type: 'GET',
             url: '/admin/hoso/GetListCorNhanSu',
             dataType: 'json',
-            success: function (response) {              
+            success: function (response) {
                 var render = "<option value='%' >-- Lựa chọn --</option>";
                 $.each(response.Result, function (i, item) {
                     render += "<option value='" + item.Id + "'>" + item.Name + "</option>";
@@ -820,16 +902,16 @@
                 {
                     $('#ddlKhuVuc').prop('disabled', false);
                     $('#ddlCongTyXiNghiep').prop('disabled', false);
-                }                
+                }
 
                 //alert($("#ddlKhuVuc")[0].selectedIndex);
                 $("#ddlKhuVuc")[0].selectedIndex = 1;
                 $("#ddlCongTyXiNghiep")[0].selectedIndex = 1;
 
                 loadPhongKhuVuc($("#ddlKhuVuc").val());
-                loadPhongKhuVucTabCongViec($("#ddlCongTyXiNghiep").val());                      
+                loadPhongKhuVucTabCongViec($("#ddlCongTyXiNghiep").val());
 
-                LoadTableHoSoNhanVien();
+                LoadTableHoSoNhanVien(true);
                 //var userCorporationId = $("#hidUserCorporationId").val();
                 //alert(userCorporationId);
             },
@@ -858,7 +940,7 @@
                 //$("#ddlPhongBan")[0].selectedIndex = 1;
 
                 //$('#ddlPhongtabCongViec').html(render);
-                //$("#ddlPhongtabCongViec")[0].selectedIndex = 1;                
+                //$("#ddlPhongtabCongViec")[0].selectedIndex = 1;
             },
             error: function (status) {
                 console.log(status);
@@ -885,7 +967,7 @@
                 //$("#ddlPhongBan")[0].selectedIndex = 1;
 
                 $('#ddlPhongtabCongViec').html(render);
-                //$("#ddlPhongtabCongViec")[0].selectedIndex = 1;                
+                //$("#ddlPhongtabCongViec")[0].selectedIndex = 1;
             },
             error: function (status) {
                 console.log(status);
@@ -894,7 +976,7 @@
         });
     }
 
-    function NhanVienId() {       
+    function NhanVienId() {
         $.ajax({
             type: 'GET',
             url: '/admin/hoso/GetHoSoNhanVienId',
@@ -922,15 +1004,15 @@
 
         //var ngaysinh2 = $('#txtNgaySinh').val();
         //var f2=$('#txtNgaySinh').text($.datepicker.formatDate('yy/m/d', $.datepicker.parseDate('dd/mm/yy', ngaysinh2))).toString();
-              
+
         //tedu.notify(f2, 'error');
         //return false;
 
         var isMainValidate = isFormMainValidate();
-        if (isMainValidate === true) {           
+        if (isMainValidate === true) {
             e.preventDefault();
 
-            var hosoid = $('#hidLyLichId').val();   // set Guid Id
+            var hosoid = $('#hidLyLichId').val();   // set new Guid Id
             var hosoidinup = $('#hidLyLichIdInsert').val(); // Id = 0
 
             var sodienthoai = $('#txtSoDienThoai').val();
@@ -970,152 +1052,7 @@
                     SoDienThoai: sodienthoai,
                     SoTheNhanVien: sothenhanvien,
 
-                    HinhNhanVien: imageNhanVien,                 
-
-                    TenGoiKhac: tengoikhac,
-                    GioiTinh: gioitinh,
-                    NgaySinh: ngaysinh,
-                    SoCMND: socmnd,
-                    NgayCapCMND: ngaycap,
-                    NoiCapCMND: noicap,
-                    NoiSinh: noisinh,
-                    QueQuan: quequan,
-                    NoiOHienNay: noiohiennay,
-                    HonNhanDanhMucId: honnhan,
-                    DanTocDanhMucId: dantoc,
-                    TonGiaoDanhMucId: tocgiao,
-                    XuatThanDanhMucId: xuatthan
-                },
-                dataType: "json",
-                beforeSend: function () {
-                    tedu.startLoading();
-                },
-                success: function (response) {
-                    tedu.notify('Tạo hồ sơ nhân viên.', 'success');
-
-                    LoadTableHoSoNhanVien(true);
-
-                    $('#modal-add-edit-HoSo').modal('hide');
-
-                    resetFormMaintainance();                    
-
-                    tedu.stopLoading();                    
-                },
-                error: function () {
-                    tedu.notify('Có lỗi! Không thể lưu Hồ sơ nhân viên', 'error');
-                    tedu.stopLoading();
-                }
-            });
-
-            return false;
-        }
-    }   
-
-    function loadHoSoNhanVien(hosoid) {
-        $.ajax({
-            type: "GET",
-            url: "/Admin/Hoso/GetHoSoId",
-            data: { hosoId: hosoid },
-            dataType: "json",
-            beforeSend: function () {
-                tedu.startLoading();
-            },
-            success: function (response) {
-                var hoso = response.Result.Results[0];
-
-                $('#hidLyLichId').val(hoso.Id);               
-
-                $('#imagelistHinhThe').html('');
-                imagelistHinhThe = [];
-                $('#imagelistHinhThe').append('<div class="col-md-3"><img width="100"  data-path="' + hoso.HinhNhanVien + '" src="' + hoso.HinhNhanVien + '"></div>');
-                imageNhanVien.push(hoso.HinhNhanVien);
-
-                $('#txtTenGoiKhac').val(hoso.TenGoiKhac);
-                $('#txtHoVaTen').val(hoso.Ten);
-                $('#txtSoDienThoai').val(hoso.SoDienThoai);
-                $('#txtSoTheNhanVien').val(hoso.SoTheNhanVien);
-                $('#ddlGioiTinh').val(hoso.GioiTinh);
-                $('#txtNgaySinh').val(tedu.getFormattedDate(hoso.NgaySinh));
-                 
-                $('#txtSoCMND').val(hoso.SoCMND);
-                $('#txtNgayCapCMND').val(tedu.getFormattedDate(hoso.NgayCapCMND));
-                $('#txtNoiCapCMND').val(hoso.NoiCapCMND);
-                $('#txtNoiSinh').val(hoso.NoiSinh);
-                $('#txtQueQuan').val(hoso.QueQuan);
-                $('#txtNoiOHienNay').val(hoso.NoiOHienNay);
-                $('#ddlHonNhan').val(hoso.HonNhanDanhMucId);
-                $('#ddlDanToc').val(hoso.DanTocDanhMucId);
-                $('#ddlTonGiao').val(hoso.TonGiaoDanhMucId);
-                $('#ddlXuatThan').val(hoso.XuatThanDanhMucId);                       
-
-                // tab cong viec
-                $('#ddlCongTyXiNghiep').val(hoso.CorporationId);
-                $('#ddlPhongtabCongViec').val(hoso.PhongBanDanhMucId);
-
-                //$('#ckStatusM').prop('checked', data.Status === 1);
-
-                $('#modal-add-edit-HoSo').modal('show');
-
-                tedu.stopLoading();               
-
-            },
-            error: function (status) {
-                tedu.notify('Có lỗi xảy ra', 'error');
-                tedu.stopLoading();
-            }
-        });
-    }
-    
-    function UpdateHoSoNhanVien(e) {
-        var isMainValidate = isFormMainValidate();      
-
-        //tedu.notify("3423423423", 'error');
-        //return false;
-        
-        if (isMainValidate === true) {
-            e.preventDefault();
-
-            var hosoid = $('#hidLyLichId').val();
-            var hosoidinup = $('#hidLyLichIdInsert').val();
-
-            var sodienthoai = $('#txtSoDienThoai').val();
-            var sothenhanvien = $('#txtSoTheNhanVien').val();
-            var hovaten = $('#txtHoVaTen').val();
-
-            var corporationid = $('#ddlCongTyXiNghiep').val();
-            var phongid = $('#ddlPhongtabCongViec').val();
-            var chucvuid = $("#ddlChucVuNhanVien").val();
-
-            var tengoikhac = $('#txtTenGoiKhac').val();
-            var gioitinh = $('#ddlGioiTinh').val();
-            var ngaysinh = tedu.getFormatDateYYMMDD($('#txtNgaySinh').val());
-            var socmnd = $('#txtSoCMND').val();
-            var ngaycap = tedu.getFormatDateYYMMDD($('#txtNgayCapCMND').val());
-            var noicap = $('#txtNoiCapCMND').val();
-            var noisinh = $('#txtNoiSinh').val();
-            var quequan = $('#txtQueQuan').val();
-            var noiohiennay = $('#txtNoiOHienNay').val();
-            var honnhan = $('#ddlHonNhan').val();
-            var dantoc = $('#ddlDanToc').val();
-            var tocgiao = $('#ddlTonGiao').val();
-            var xuatthan = $('#ddlXuatThan').val();
-
-            $.ajax({
-                type: "POST",
-                url: "/Admin/Hoso/AddUpdateHosoNhanVien",
-                data: {
-                    Id: hosoid,
-                    InsertUpdateId: hosoidinup,
-
-                    Ten: hovaten,
-                    CorporationId: corporationid,
-                    PhongBanDanhMucId: phongid,
-                    ChucVuNhanVienId: chucvuid,
-
-                    SoDienThoai: sodienthoai,
-                    SoTheNhanVien: sothenhanvien,
-
-                    HinhNhanVien: imageNhanVien,                   
+                    HinhNhanVien: imageNhanVien,
 
                     TenGoiKhac: tengoikhac,
                     GioiTinh: gioitinh,
@@ -1155,7 +1092,359 @@
             return false;
         }
     }
-  
+
+    function loadHoSoNhanVien(hosoid) {
+        $.ajax({
+            type: "GET",
+            url: "/Admin/Hoso/GetHoSoId",
+            data: { hosoId: hosoid },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var hoso = response.Result.Results[0];
+
+                $('#hidLyLichId').val(hoso.Id);
+
+                $('#imagelistHinhThe').html('');
+                imagelistHinhThe = [];
+                $('#imagelistHinhThe').append('<div class="col-md-3"><img width="100"  data-path="' + hoso.HinhNhanVien + '" src="' + hoso.HinhNhanVien + '"></div>');
+                imageNhanVien.push(hoso.HinhNhanVien);
+
+                $('#txtTenGoiKhac').val(hoso.TenGoiKhac);
+                $('#txtHoVaTen').val(hoso.Ten);
+                $('#txtSoDienThoai').val(hoso.SoDienThoai);
+                $('#txtSoTheNhanVien').val(hoso.SoTheNhanVien);
+                $('#ddlGioiTinh').val(hoso.GioiTinh);
+                $('#txtNgaySinh').val(tedu.getFormattedDate(hoso.NgaySinh));
+
+                $('#txtSoCMND').val(hoso.SoCMND);
+                $('#txtNgayCapCMND').val(tedu.getFormattedDate(hoso.NgayCapCMND));
+                $('#txtNoiCapCMND').val(hoso.NoiCapCMND);
+                $('#txtNoiSinh').val(hoso.NoiSinh);
+                $('#txtQueQuan').val(hoso.QueQuan);
+                $('#txtNoiOHienNay').val(hoso.NoiOHienNay);
+                $('#ddlHonNhan').val(hoso.HonNhanDanhMucId);
+                $('#ddlDanToc').val(hoso.DanTocDanhMucId);
+                $('#ddlTonGiao').val(hoso.TonGiaoDanhMucId);
+                $('#ddlXuatThan').val(hoso.XuatThanDanhMucId);
+
+                // tab cong viec
+                $('#ddlCongTyXiNghiep').val(hoso.CorporationId);
+                $('#ddlPhongtabCongViec').val(hoso.PhongBanDanhMucId);
+
+                //$('#ckStatusM').prop('checked', data.Status === 1);                
+
+                $('#modal-add-edit-HoSo').modal('show');
+
+                LoadTableTrinhDo();
+
+                tedu.stopLoading();
+            },
+            error: function (status) {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function UpdateHoSoNhanVien(e) {
+        var isMainValidate = isFormMainValidate();
+
+        //tedu.notify("3423423423", 'error');
+        //return false;
+
+        if (isMainValidate === true) {
+            e.preventDefault();
+
+            var hosoid = $('#hidLyLichId').val();
+            var hosoidinup = $('#hidLyLichIdInsert').val(); // Id = 1
+
+            var sodienthoai = $('#txtSoDienThoai').val();
+            var sothenhanvien = $('#txtSoTheNhanVien').val();
+            var hovaten = $('#txtHoVaTen').val();
+
+            var corporationid = $('#ddlCongTyXiNghiep').val();
+            var phongid = $('#ddlPhongtabCongViec').val();
+            var chucvuid = $("#ddlChucVuNhanVien").val();
+
+            var tengoikhac = $('#txtTenGoiKhac').val();
+            var gioitinh = $('#ddlGioiTinh').val();
+            var ngaysinh = tedu.getFormatDateYYMMDD($('#txtNgaySinh').val());
+            var socmnd = $('#txtSoCMND').val();
+            var ngaycap = tedu.getFormatDateYYMMDD($('#txtNgayCapCMND').val());
+            var noicap = $('#txtNoiCapCMND').val();
+            var noisinh = $('#txtNoiSinh').val();
+            var quequan = $('#txtQueQuan').val();
+            var noiohiennay = $('#txtNoiOHienNay').val();
+            var honnhan = $('#ddlHonNhan').val();
+            var dantoc = $('#ddlDanToc').val();
+            var tocgiao = $('#ddlTonGiao').val();
+            var xuatthan = $('#ddlXuatThan').val();
+
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Hoso/AddUpdateHosoNhanVien",
+                data: {
+                    Id: hosoid,
+                    InsertUpdateId: hosoidinup,
+
+                    Ten: hovaten,
+                    CorporationId: corporationid,
+                    PhongBanDanhMucId: phongid,
+                    ChucVuNhanVienId: chucvuid,
+
+                    SoDienThoai: sodienthoai,
+                    SoTheNhanVien: sothenhanvien,
+
+                    HinhNhanVien: imageNhanVien,
+
+                    TenGoiKhac: tengoikhac,
+                    GioiTinh: gioitinh,
+                    NgaySinh: ngaysinh,
+                    SoCMND: socmnd,
+                    NgayCapCMND: ngaycap,
+                    NoiCapCMND: noicap,
+                    NoiSinh: noisinh,
+                    QueQuan: quequan,
+                    NoiOHienNay: noiohiennay,
+                    HonNhanDanhMucId: honnhan,
+                    DanTocDanhMucId: dantoc,
+                    TonGiaoDanhMucId: tocgiao,
+                    XuatThanDanhMucId: xuatthan
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    tedu.notify('Tạo hồ sơ nhân viên.', 'success');
+
+                    LoadTableHoSoNhanVien(true);
+
+                    $('#modal-add-edit-HoSo').modal('hide');
+
+                    resetFormMaintainance();
+
+                    tedu.stopLoading();
+                },
+                error: function () {
+                    tedu.notify('Có lỗi! Không thể lưu Hồ sơ nhân viên', 'error');
+                    tedu.stopLoading();
+                }
+            });
+
+            return false;
+        }
+    }
+
+    function SaveHoSoNhanVienTrinhDo(e) {
+        
+        var isMainValidate = isFormMainValidate();
+        if (isMainValidate === true) {
+            e.preventDefault();
+
+            var hosoid = $('#hidLyLichId').val();   // set new Guid Id
+            var hosoidinup = $('#hidLyLichIdInsert').val(); // Id = 0
+
+            var sodienthoai = $('#txtSoDienThoai').val();
+            var sothenhanvien = $('#txtSoTheNhanVien').val();
+            var hovaten = $('#txtHoVaTen').val();
+
+            var corporationid = $('#ddlCongTyXiNghiep').val();
+            var phongid = $('#ddlPhongtabCongViec').val();
+            var chucvuid = $("#ddlChucVuNhanVien").val();
+
+            var tengoikhac = $('#txtTenGoiKhac').val();
+            var gioitinh = $('#ddlGioiTinh').val();
+            var ngaysinh = tedu.getFormatDateYYMMDD($('#txtNgaySinh').val());
+            var socmnd = $('#txtSoCMND').val();
+            var ngaycap = tedu.getFormatDateYYMMDD($('#txtNgayCapCMND').val());
+            var noicap = $('#txtNoiCapCMND').val();
+            var noisinh = $('#txtNoiSinh').val();
+            var quequan = $('#txtQueQuan').val();
+            var noiohiennay = $('#txtNoiOHienNay').val();
+            var honnhan = $('#ddlHonNhan').val();
+            var dantoc = $('#ddlDanToc').val();
+            var tocgiao = $('#ddlTonGiao').val();
+            var xuatthan = $('#ddlXuatThan').val();
+
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Hoso/AddUpdateHosoNhanVien",
+                data: {
+                    Id: hosoid,
+                    InsertUpdateId: hosoidinup,
+
+                    Ten: hovaten,
+                    CorporationId: corporationid,
+                    PhongBanDanhMucId: phongid,
+                    ChucVuNhanVienId: chucvuid,
+
+                    SoDienThoai: sodienthoai,
+                    SoTheNhanVien: sothenhanvien,
+
+                    HinhNhanVien: imageNhanVien,
+
+                    TenGoiKhac: tengoikhac,
+                    GioiTinh: gioitinh,
+                    NgaySinh: ngaysinh,
+                    SoCMND: socmnd,
+                    NgayCapCMND: ngaycap,
+                    NoiCapCMND: noicap,
+                    NoiSinh: noisinh,
+                    QueQuan: quequan,
+                    NoiOHienNay: noiohiennay,
+                    HonNhanDanhMucId: honnhan,
+                    DanTocDanhMucId: dantoc,
+                    TonGiaoDanhMucId: tocgiao,
+                    XuatThanDanhMucId: xuatthan
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    tedu.notify('Tạo hồ sơ nhân viên.', 'success');                    
+
+                    LoadTableHoSoNhanVien(true);
+
+                    $('#modal-add-edit-HoSo').modal('hide');
+
+                    //resetFormMaintainance();
+
+                    tedu.stopLoading();
+                },
+                error: function () {
+                    tedu.notify('Có lỗi! Không thể lưu Hồ sơ nhân viên', 'error');
+                    tedu.stopLoading();
+                }
+            });
+
+            return false;
+        }
+    }
+
+    function SaveTrinhDoNhanVien(e) {
+        e.preventDefault();
+        
+        var hosoid = $('#hidLyLichId').val(); // new guid Id
+        var hosoidinup = $('#hidLyLichIdInsert').val(); // Id = 0        
+        var tringdoid = $('#hidTrinhDoId').val(); // tringdoId = 0
+
+        var loaibang = $('#ddlLoaiBang').val();
+        var chuyennganh = $('#txtChuyenNganh').val();
+        var loaihinh = $('#ddlLoaiHinh').val();
+        var xeploai = $('#ddlXepLoai').val();
+        var namcapbang = $('#txtNamCapBang').val();
+        var tentruong = $('#txtTenTruongCapBang').val();
+        var ghichutrinhdo = $('#txtGhiChuTrinhDo').val();
+
+        $.ajax({
+            type: "POST",
+            url: "/Admin/Hoso/AddUpdateTrinhDo",
+            data: {
+                HoSoNhanVienId: hosoid,
+                InsertUpdateId: hosoidinup, // = 0
+                InsertUpdateTrinhDoId: tringdoid, // = 0
+                
+                LoaiBangDanhMucId: loaibang,   
+                ChuyenNganh: chuyennganh,
+                LoaiDaoTaoDanhMucId: loaihinh,
+                XepLoaiDanhMucId: xeploai,
+                NamCapBang: namcapbang,
+                TenTruong: tentruong,  
+                GhiChu: ghichutrinhdo, 
+                HinhBangMatPath1: imageBang1,
+                HinhBangMatPath2: imageBang2              
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                tedu.notify('Trình độ nhân viên.', 'success');
+
+                LoadTableTrinhDo(true);                
+
+                resetFormTabTrinhDo();
+
+                tedu.stopLoading();
+            },
+            error: function () {
+                tedu.notify('Có lỗi! Không thể lưu Trình độ nhân viên', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function LoadTableTrinhDo(isPageChanged) {
+        var template = $('#table-TrinhDo').html();
+        var render = "";
+
+        var makhuvuc = "";
+        var phongId = "";
+        var timnhanvien = "";
+        var hosoid = $('#hidLyLichId').val();
+        var trinhdoid = "";
+
+        tedu.notify(timnhanvien, "success");
+
+        $.ajax({
+            type: 'GET',
+            data: {
+                corporationId: makhuvuc,
+                phongId: phongId,
+                keyword: timnhanvien,
+                page: tedu.configs.pageIndex,
+                pageSize: tedu.configs.pageSize,
+                hosoId: hosoid,
+                rinhdoId: trinhdoid
+            },
+            url: '/admin/hoso/GetAllTrinhDoPaging',
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                }
+                else {
+                    $.each(response.Result.Results, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+                            TenLoaiBang: item.TenLoaiBang,
+                            ChuyenNganh: item.ChuyenNganh,
+                            TenLoaiHinhDaoTao: item.TenLoaiHinhDaoTao,
+                            HinhBangMatPath1: item.HinhBangMatPath1 === null ? '<img src="/admin-side/images/user.png" width=70' : '<img src="' + item.HinhBangMatPath1 + '" width=80 />',
+                            HinhBangMatPath2: item.HinhBangMatPath2 === null ? '<img src="/admin-side/images/user.png" width=70' : '<img src="' + item.HinhBangMatPath2 + '" width=80 />'
+                                                        
+                        });
+                    });
+                }
+
+                $('#lbl-totalTrinhDo-records').text(response.Result.RowCount);
+
+                if (render !== '') {
+                    $('#tbl-contentTrinhDo').html(render);
+                }
+
+                wrapPaging(response.Result.RowCount, function () {
+                    LoadTableTrinhDo();
+                },
+                isPageChanged);
+            },
+            error: function (status) {
+                render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                $('#tbl-contentTrinhDo').html(render);
+
+                console.log(status);
+                //tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+
+    
+
 
 
 }
