@@ -13,6 +13,7 @@ namespace NiTiErp.Application.Dapper.Interfaces
             string hosoId, string hosoId2, string hosoId3, string trinhdoId, string parameters);       
 
         Task<Boolean> TrinhDoAUD(TrinhDoViewModel trinhdo, string parameters);
+        
 
     }
 }

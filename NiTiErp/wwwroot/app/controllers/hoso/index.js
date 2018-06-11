@@ -46,10 +46,8 @@
             var hosoInserId = $('#hidLyLichIdInsert').val(); // sua la bang = 1
 
             if ($('#frmMainTrinhDo').valid()) {
-                if (hosoInserId == 1) { // add trinh do
-                    $('#hidTrinhDoId').val(0);
-
-                    SaveTrinhDoNhanVien(e);
+                if (hosoInserId == 1) { // add trinh do    
+                    UpdateTrinhDo(e);
                 }
                 else { // tao moi
                     SaveHoSoNhanVienTrinhDo(e);
@@ -75,6 +73,30 @@
             var hosoId = $(this).data('id');
             loadHoSoNhanVien(hosoId);            
             
+        });
+
+        $('body').on('click', '.btn-editTrinhDo', function (e) {
+            e.preventDefault();
+
+            $('#hidLyLichIdInsert').val(1);
+            $('#hidTrinhDoId').val(1);
+                        
+            var trinhdoId = $(this).data('id');
+            loadTrinhDo(trinhdoId);
+
+            //tedu.notify(trinhdoId, "success");
+
+        });
+        $('body').on('click', '.btn-deleteTrinhDo', function (e) {
+            e.preventDefault();
+
+            $('#hidLyLichIdInsert').val(1);
+            $('#hidTrinhDoId').val(1);
+            
+            var trinhdoId = $(this).data('id');
+            loadDeleteTrinhDo(trinhdoId);
+
+            //tedu.notify(trinhdoId, "success");
         });
 
         $("#fileInputHinhNhanVien").on('change', function () {
@@ -402,6 +424,7 @@
     }
     function resetFormTabTrinhDo() {
         $('#hidTrinhDoId').val(0);
+        $('#hidtrinhdoEditId').val('');        
 
         $('#ddlLoaiBang')[0].selectedIndex = 0;
         $('#ddlLoaiHinh')[0].selectedIndex = 0;
@@ -520,7 +543,7 @@
                         render += Mustache.render(template, {
                             Id: item.Id,
                             Ten: item.Ten,
-                            HinhNhanVien: item.Image === null ? '<img src="/admin-side/images/user.png" width=70' : '<img src="' + item.HinhNhanVien + '" width=80 />',
+                            HinhNhanVien: item.Image === null ? '<img src="/admin-side/images/user.png?w=90"' : '<img src="' + item.HinhNhanVien + '?w=90" />',
                             TenKhuVuc: item.CorporationName,
                             TenPhong: item.TenPhong,
                             TenChucVu: item.TenChucVu,
@@ -1073,15 +1096,20 @@
                     tedu.startLoading();
                 },
                 success: function (response) {
-                    tedu.notify('Tạo hồ sơ nhân viên.', 'success');
+                    if (response.Success == false) {
+                        tedu.notify(response.Message, "error");
+                    }
+                    else {
+                        tedu.notify('Tạo hồ sơ nhân viên.', 'success');
 
-                    LoadTableHoSoNhanVien(true);
+                        LoadTableHoSoNhanVien(true);
 
-                    $('#modal-add-edit-HoSo').modal('hide');
+                        $('#modal-add-edit-HoSo').modal('hide');
 
-                    resetFormMaintainance();
+                        resetFormMaintainance();
 
-                    tedu.stopLoading();
+                        tedu.stopLoading();
+                    }
                 },
                 error: function () {
                     tedu.notify('Có lỗi! Không thể lưu Hồ sơ nhân viên', 'error');
@@ -1219,15 +1247,20 @@
                     tedu.startLoading();
                 },
                 success: function (response) {
-                    tedu.notify('Tạo hồ sơ nhân viên.', 'success');
+                    if (response.Success == false) {
+                        tedu.notify(response.Message, "error");
+                    }
+                    else {
+                        tedu.notify('Tạo hồ sơ nhân viên.', 'success');
 
-                    LoadTableHoSoNhanVien(true);
+                        LoadTableHoSoNhanVien(true);
 
-                    $('#modal-add-edit-HoSo').modal('hide');
+                        $('#modal-add-edit-HoSo').modal('hide');
 
-                    resetFormMaintainance();
+                        resetFormMaintainance();
 
-                    tedu.stopLoading();
+                        tedu.stopLoading();
+                    }
                 },
                 error: function () {
                     tedu.notify('Có lỗi! Không thể lưu Hồ sơ nhân viên', 'error');
@@ -1306,15 +1339,20 @@
                     tedu.startLoading();
                 },
                 success: function (response) {
-                    tedu.notify('Tạo hồ sơ nhân viên.', 'success');                    
+                    if (response.Success == false) {
+                        tedu.notify(response.Message, "error");
+                    }
+                    else {
+                        tedu.notify('Tạo hồ sơ nhân viên.', 'success');
 
-                    LoadTableHoSoNhanVien(true);
+                        LoadTableHoSoNhanVien(true);
 
-                    $('#modal-add-edit-HoSo').modal('hide');
+                        $('#modal-add-edit-HoSo').modal('hide');
 
-                    //resetFormMaintainance();
+                        //resetFormMaintainance();
 
-                    tedu.stopLoading();
+                        tedu.stopLoading();
+                    }
                 },
                 error: function () {
                     tedu.notify('Có lỗi! Không thể lưu Hồ sơ nhân viên', 'error');
@@ -1364,13 +1402,18 @@
                 tedu.startLoading();
             },
             success: function (response) {
-                tedu.notify('Trình độ nhân viên.', 'success');
+                if (response.Success == false) {
+                    tedu.notify(response.Message, "error");
+                }
+                else {
+                    tedu.notify('Trình độ nhân viên.', 'success');
 
-                LoadTableTrinhDo(true);                
+                    LoadTableTrinhDo(true);
 
-                resetFormTabTrinhDo();
+                    resetFormTabTrinhDo();
 
-                tedu.stopLoading();
+                    tedu.stopLoading();
+                }
             },
             error: function () {
                 tedu.notify('Có lỗi! Không thể lưu Trình độ nhân viên', 'error');
@@ -1415,8 +1458,8 @@
                             TenLoaiBang: item.TenLoaiBang,
                             ChuyenNganh: item.ChuyenNganh,
                             TenLoaiHinhDaoTao: item.TenLoaiHinhDaoTao,
-                            HinhBangMatPath1: item.HinhBangMatPath1 === null ? '<img src="/admin-side/images/user.png" width=70' : '<img src="' + item.HinhBangMatPath1 + '" width=80 />',
-                            HinhBangMatPath2: item.HinhBangMatPath2 === null ? '<img src="/admin-side/images/user.png" width=70' : '<img src="' + item.HinhBangMatPath2 + '" width=80 />'
+                            HinhBangMatPath1: item.HinhBangMatPath1 === null ? '<img src="/admin-side/images/user.png?w=90" ' : '<img src="' + item.HinhBangMatPath1 + '?w=90" />',
+                            HinhBangMatPath2: item.HinhBangMatPath2 === null ? '<img src="/admin-side/images/user.png?w=90" ' : '<img src="' + item.HinhBangMatPath2 + '?w=90" />'
                                                         
                         });
                     });
@@ -1443,8 +1486,141 @@
         });
     }
 
+    function loadTrinhDo(trinhdoid) {
+        $.ajax({
+            type: "GET",
+            url: "/Admin/Hoso/GetTrinhDoId",
+            data: { trinhdoId: trinhdoid },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var trinhdo = response.Result.Results[0];             
+                
+                $('#hidtrinhdoEditId').val(trinhdo.Id);
+
+                $('#ddlLoaiBang').val(trinhdo.LoaiBangDanhMucId);
+                $('#txtChuyenNganh').val(trinhdo.ChuyenNganh);
+                $('#ddlLoaiHinh').val(trinhdo.LoaiDaoTaoDanhMucId);
+                $('#ddlXepLoai').val(trinhdo.XepLoaiDanhMucId);
+                $('#txtNamCapBang').val(trinhdo.NamCapBang);
+                $('#txtTenTruongCapBang').val(trinhdo.TenTruong);
+                $('#txtGhiChuTrinhDo').val(trinhdo.GhiChu);    
+
+                $('#imagelistBang1').html('');
+                imageBang1 = [];
+                $('#imagelistBang1').append('<div class="col-md-3"><img width="100"  data-path="' + trinhdo.HinhBangMatPath1 + '" src="' + trinhdo.HinhBangMatPath1 + '"></div>');
+                imageBang1.push(trinhdo.HinhBangMatPath1);
+
+                $('#imagelistBang2').html('');
+                imageBang2 = [];
+                $('#imagelistBang2').append('<div class="col-md-3"><img width="100"  data-path="' + trinhdo.HinhBangMatPath2 + '" src="' + trinhdo.HinhBangMatPath2 + '"></div>');
+                imageBang2.push(trinhdo.HinhBangMatPath2);
+
+                //LoadTableTrinhDo();
+
+                tedu.stopLoading();
+            },
+            error: function (status) {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
     
+    function UpdateTrinhDo(e) {
+        e.preventDefault();
 
+        var trinhdoid = $('#hidtrinhdoEditId').val();
 
+        var hosoid = $('#hidLyLichId').val(); // new guid Id
+        var hosoidinup = $('#hidLyLichIdInsert').val(); // Id = 1      
+        var tringdoid = $('#hidTrinhDoId').val(); // tringdoId =1
+
+        var loaibang = $('#ddlLoaiBang').val();
+        var chuyennganh = $('#txtChuyenNganh').val();
+        var loaihinh = $('#ddlLoaiHinh').val();
+        var xeploai = $('#ddlXepLoai').val();
+        var namcapbang = $('#txtNamCapBang').val();
+        var tentruong = $('#txtTenTruongCapBang').val();
+        var ghichutrinhdo = $('#txtGhiChuTrinhDo').val();
+
+        $.ajax({
+            type: "POST",
+            url: "/Admin/Hoso/AddUpdateTrinhDo",
+            data: {
+                Id: trinhdoid,
+                HoSoNhanVienId: hosoid,
+                InsertUpdateId: hosoidinup, // = 1
+                InsertUpdateTrinhDoId: tringdoid, // = 1
+
+                LoaiBangDanhMucId: loaibang,
+                ChuyenNganh: chuyennganh,
+                LoaiDaoTaoDanhMucId: loaihinh,
+                XepLoaiDanhMucId: xeploai,
+                NamCapBang: namcapbang,
+                TenTruong: tentruong,
+                GhiChu: ghichutrinhdo,
+                HinhBangMatPath1: imageBang1,
+                HinhBangMatPath2: imageBang2
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Success == false) {
+                    tedu.notify(response.Message, "error");
+                }
+                else {
+                    tedu.notify('Trình độ nhân viên.', 'success');
+
+                    LoadTableTrinhDo(true);
+
+                    resetFormTabTrinhDo();
+
+                    tedu.stopLoading();
+                }
+            },
+            error: function () {
+                tedu.notify('Có lỗi! Không thể lưu Trình độ nhân viên', 'error');
+                tedu.stopLoading();
+            }
+        });
+    } 
+
+    function loadDeleteTrinhDo(trinhdoid) {
+        var hosoidinup = $('#hidLyLichIdInsert').val(); // Id = 1      
+        var tringdoid = $('#hidTrinhDoId').val(); // tringdoId =1
+
+        tedu.confirm('Bạn có chắc chắn xóa bằng này?', function () {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Hoso/DeleteTrinhDo",
+                data: { Id: trinhdoid, 
+                    InsertUpdateId: hosoidinup, // = 1
+                    InsertUpdateTrinhDoId: tringdoid // = 1 },
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    tedu.notify('Xóa thành công', 'success');
+                    tedu.stopLoading();
+
+                    $('#hidLyLichIdInsert').val(1);
+                    $('#hidTrinhDoId').val(0);
+
+                    LoadTableTrinhDo(true);
+                },
+                error: function (status) {
+                    tedu.notify('Xóa trình độ lỗi! Kiểm tra lại.', 'error');
+                    tedu.stopLoading();
+                }
+            });
+        });
+    }
 
 }

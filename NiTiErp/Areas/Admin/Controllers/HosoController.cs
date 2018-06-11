@@ -11,6 +11,8 @@ using NiTiErp.Application.Dapper;
 using NiTiErp.Application.Dapper.Interfaces;
 using NiTiErp.Application.Dapper.ViewModels;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using NiTiErp.Utilities.Dtos;
+
 
 namespace NiTiErp.Areas.Admin.Controllers
 {
@@ -35,7 +37,11 @@ namespace NiTiErp.Areas.Admin.Controllers
         IPhongDanhMucService _phongdanhmucService;
         ICorporationService _corporationService;
 
-        public HosoController(ICorporationService corporationService, IPhongDanhMucService phongdanhmucService,
+        private readonly NiTiErp.Application.Interfaces.IUserService _userService;
+        private readonly IAuthorizationService _authorizationService;
+
+        public HosoController(NiTiErp.Application.Interfaces.IUserService userService, IAuthorizationService authorizationService, 
+            ICorporationService corporationService, IPhongDanhMucService phongdanhmucService,
             ITrinhDoService trinhdoService,
             IHoSoNhanVienService hosonhanvienService,
             IChucVuNhanVienService chucvunhanvienService, ICapBacQuanDoiService capbacquandoiService,
@@ -46,7 +52,9 @@ namespace NiTiErp.Areas.Admin.Controllers
             ILoaiBangService loaibangdanhmucService,
             IXuatThanService xuatthandanhmucService, ITonGiaoService tongiaodanhmucService,
             IDanTocService dantocdanhmucService, IHonNhanService honnhandanhmucService)
-        {            
+        {
+            _userService = userService;
+            _authorizationService = authorizationService;
             _phongdanhmucService = phongdanhmucService;
             _corporationService = corporationService;
             _trinhdoService = trinhdoService;
@@ -95,15 +103,58 @@ namespace NiTiErp.Areas.Admin.Controllers
                 if ((trinhdoVm.InsertUpdateId == 0 && trinhdoVm.InsertUpdateTrinhDoId == 0) ||
                     (trinhdoVm.InsertUpdateId == 1 && trinhdoVm.InsertUpdateTrinhDoId == 0))
                 {
+                    var result = _authorizationService.AuthorizeAsync(User, "NLLNV", Operations.Create); // nhap nhan vien
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
+                    }
+
                     trinhdoVm.Id = "1";
 
                     var trinhdo = _trinhdoService.TrinhDoAUD(trinhdoVm, "InTrinhDo");
                     return new OkObjectResult(trinhdo);
                 }
                 else if (trinhdoVm.InsertUpdateId == 1 && trinhdoVm.InsertUpdateTrinhDoId == 1)
-                {           
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "NLLNV", Operations.Update); // nhap nhan vien
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền sửa."));
+                    }
+
                     var trinhdo = _trinhdoService.TrinhDoAUD(trinhdoVm, "UpTrinhDo");
                     return new OkObjectResult(trinhdo);                   
+                }
+                else
+                {
+                    return new OkObjectResult(trinhdoVm);
+                }
+            }
+        }
+
+        [HttpPost]
+        public IActionResult DeleteTrinhDo(TrinhDoViewModel trinhdoVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                if (trinhdoVm.InsertUpdateId == 1 && trinhdoVm.InsertUpdateTrinhDoId == 1)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "NLLNV", Operations.Delete); // nhap nhan vien
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền xóa."));
+                    }
+                    
+                    trinhdoVm.CreateDate = DateTime.Now;                    
+                    trinhdoVm.UpdateDate = DateTime.Now;
+
+                    var trinhdo = _trinhdoService.TrinhDoAUD(trinhdoVm, "DelTrinhDo");
+                    return new OkObjectResult(trinhdo);
                 }
                 else
                 {
@@ -155,12 +206,24 @@ namespace NiTiErp.Areas.Admin.Controllers
                 hosoVm.UpdateDate = DateTime.Now;
 
                 if (hosoVm.InsertUpdateId == 0)
-                {       
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "NLLNV", Operations.Create); // nhap nhan vien
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
+                    }
+
                     var hosonhanvien = _hosonhanvienService.HoSoNhanVienAUD(hosoVm, "InHoSoNhanVien");
                     return new OkObjectResult(hosonhanvien);
                 }
                 else
                 {
+                    var result = _authorizationService.AuthorizeAsync(User, "NLLNV", Operations.Update); // nhap nhan vien
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền sửa."));
+                    }                    
+
                     var hosonhanvien = _hosonhanvienService.HoSoNhanVienAUD(hosoVm, "UpHoSoNhanVien");
                     return new OkObjectResult(hosonhanvien);
                 }  
