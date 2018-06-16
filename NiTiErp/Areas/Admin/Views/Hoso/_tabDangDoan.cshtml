@@ -1,113 +1,125 @@
 ﻿
-    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainDangDoan">
-        <input type="hidden" id="hidDangDoanId" value="" />
+<form class="form-horizontal form-label-left input_mask" role="form" id="frmMainDangDoan">
+    <input type="hidden" id="hidDangDoanId" value="" />
 
-        <div class="form-group">
-            <label for="lbNgayVaoDang" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày vào Đảng</label>
-            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-right" id="txtNgayVaoDang" placeholder="Ngày vào Đảng">
-            </div>
-            <label for="lbMaTheDang" class="control-label col-md-2 col-sm-2 col-xs-12 ">Mã thẻ đảng</label>
-            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-right" id="txtMaTheDang" placeholder="Mã thẻ Đảng">
-            </div>
+    <input type="hidden" id="hidInsertDangId" value="" />
+    <input type="hidden" id="hidInsertDoanId" value="" />
+    <input type="hidden" id="hidInsertCongDoanId" value="" />
+    <input type="hidden" id="hidInsertCachMangId" value="" />
+    <input type="hidden" id="hidInsertNhapNguId" value="" />
+
+    <input type="hidden" id="hidUpdateDangId" value="" />
+    <input type="hidden" id="hidUpdateDoanId" value="" />
+    <input type="hidden" id="hidUpdateCongDoanId" value="" />
+    <input type="hidden" id="hidUpdateCachMangId" value="" />
+    <input type="hidden" id="hidUpdateNhapNguId" value="" />
+
+    <div class="form-group">
+        <label for="lbNgayVaoDang" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày vào Đảng</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" name="txtNgayVaoDang" class="form-control has-feedback-right" id="txtNgayVaoDang" placeholder="Ngày vào Đảng">
         </div>
-        <div class="form-group">
-            <label for="lbChucVuDang" class="control-label col-md-2 col-sm-2 col-xs-12 ">Chức vụ Đảng</label>
-            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                <select id="ddlChucVuDang" class="form-control"></select>
-            </div>
-            <label for="lbNoiSinhHoatDang" class="control-label col-md-2 col-sm-2 col-xs-12 ">Nơi sinh họat Đảng</label>
-            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-right" id="txtNoiSinhHoatDang" placeholder="Nơi sinh họat Đảng">
-            </div>
+        <label for="lbMaTheDang" class="control-label col-md-2 col-sm-2 col-xs-12 ">Mã thẻ đảng</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" class="form-control has-feedback-right" id="txtMaTheDang" placeholder="Mã thẻ Đảng">
         </div>
-        <div class="ln_solid"></div>
-        <div class="form-group">
-            <label for="lbNgayVaoDoan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày vào Đoàn</label>
-            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-right" id="txtNgayVaoDoan" placeholder="Ngày vào Đoàn">
-            </div>
-            <label for="lbMaTheDoan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Mã thẻ Đoàn</label>
-            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-right" id="txtMaTheDoan" placeholder="Mã thẻ Đoàn">
-            </div>
+    </div>
+    <div class="form-group">
+        <label for="lbChucVuDang" class="control-label col-md-2 col-sm-2 col-xs-12 ">Chức vụ Đảng</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <select id="ddlChucVuDang" name="ddlChucVuDang" class="form-control"></select>
         </div>
-        <div class="form-group">
-            <label for="lbChucVuDoan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Chức vụ Đoàn</label>
-            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                <select id="ddlChucVuDoan" class="form-control"></select>
-            </div>
-            <label for="lbNoiSinhHoatDoan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Nơi sinh họat Đoàn</label>
-            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-right" id="txtNoiSinhHoatDoan" placeholder="Nơi sinh họat Đoàn">
-            </div>
+        <label for="lbNoiSinhHoatDang" class="control-label col-md-2 col-sm-2 col-xs-12 ">Nơi sinh họat Đảng</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" class="form-control has-feedback-right" id="txtNoiSinhHoatDang" placeholder="Nơi sinh họat Đảng">
         </div>
-        <div class="ln_solid"></div>
-        <div class="form-group">
-            <label for="lbNgayVaoCongDoan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày vào công Đoàn</label>
-            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-right" id="txtNgayVaoCongDoan" placeholder="Ngày vào công Đoàn">
-            </div>
-            <label for="lbMaTheCongDoan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Mã thẻ công Đoàn</label>
-            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-right" id="txtMaTheCongDoan" placeholder="Mã thẻ công Đoàn">
-            </div>
+    </div>
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <label for="lbNgayVaoDoan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày vào Đoàn</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" name="txtNgayVaoDoan" class="form-control has-feedback-right" id="txtNgayVaoDoan" placeholder="Ngày vào Đoàn">
         </div>
-        <div class="form-group">
-            <label for="lbChucVuCongDoan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Chức vụ công Đoàn</label>
-            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                <select id="ddlChucVuCongDoan" class="form-control"></select>
-            </div>
-            <label for="lbNoiSinhHoatCongDoan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Nơi sinh họat công Đoàn</label>
-            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-right" id="txtNoiSinhHoatCongDoan" placeholder="Nơi sinh họat công Đoàn">
-            </div>
-        </div>        
-        <div class="ln_solid"></div>
-        <div class="form-group">
-            <label for="lbNgayThamGiaCachMang" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày tham gia cách mạng</label>
-            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-right" id="txtNgayThamGiaCachMang" placeholder="Ngày tham gia cách mạng">
-            </div>
+        <label for="lbMaTheDoan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Mã thẻ Đoàn</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" class="form-control has-feedback-right" id="txtMaTheDoan" placeholder="Mã thẻ Đoàn">
         </div>
-        <div class="form-group">
-            <label for="lbDacDiemBanThanCu" class="control-label col-md-2 col-sm-2 col-xs-12 ">Đặc điểm bản thân cũ</label>
-            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-right" id="txtDacDiemBanThanCu" placeholder="Đặc điểm bản thân cũ">
-            </div>
-            <label for="lbDacDiemBanThanMoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Đặc điểm bản thân mới</label>
-            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-right" id="txtDacDiemBanThanCu" placeholder="Đặc điểm bản thân mới">
-            </div>
+    </div>
+    <div class="form-group">
+        <label for="lbChucVuDoan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Chức vụ Đoàn</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <select id="ddlChucVuDoan" name="ddlChucVuDoan" class="form-control"></select>
         </div>
-        <div class="ln_solid"></div>
-        <div class="form-group">
-            <label for="lbNgayNhapNgu" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày nhập ngũ</label>
-            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-right" id="txtNgayNhapNgu" placeholder="Ngày nhập ngũ">
-            </div>
-            <label for="lbNgayXuartNgu" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày xuất ngũ</label>
-            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-right" id="txtNgayXuatNgu" placeholder="Ngày xuất ngũ">
-            </div>
+        <label for="lbNoiSinhHoatDoan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Nơi sinh họat Đoàn</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" class="form-control has-feedback-right" id="txtNoiSinhHoatDoan" placeholder="Nơi sinh họat Đoàn">
         </div>
-        <div class="form-group">
-            <label for="lbChucVuQuanDoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Chức vụ quân đội</label>
-            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                <select id="ddlChucVuQuanDoi" class="form-control"></select>
-            </div>
-            <label for="lbCapBacQuanDoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Cấp bậc quân đội</label>
-            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                <select id="ddlCapBacQuanDoi" class="form-control"></select>
-            </div>
+    </div>
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <label for="lbNgayVaoCongDoan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày vào công Đoàn</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" name="txtNgayVaoCongDoan" class="form-control has-feedback-right" id="txtNgayVaoCongDoan" placeholder="Ngày vào công Đoàn">
         </div>
-        <div class="form-group">
-            <label for="lbDonViQuanDoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Đơn vị quân đội</label>
-            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-right" id="txtDonViQuanDoi" placeholder="Đơn vị quân đội">
-            </div>           
+        <label for="lbMaTheCongDoan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Mã thẻ công Đoàn</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" class="form-control has-feedback-right" id="txtMaTheCongDoan" placeholder="Mã thẻ công Đoàn">
         </div>
-    </form>
+    </div>
+    <div class="form-group">
+        <label for="lbChucVuCongDoan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Chức vụ công Đoàn</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <select id="ddlChucVuCongDoan" name="ddlChucVuCongDoan" class="form-control"></select>
+        </div>
+        <label for="lbNoiSinhHoatCongDoan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Nơi sinh họat công Đoàn</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" class="form-control has-feedback-right" id="txtNoiSinhHoatCongDoan" placeholder="Nơi sinh họat công Đoàn">
+        </div>
+    </div>
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <label for="lbNgayThamGiaCachMang" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày tham gia cách mạng</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" name="txtNgayThamGiaCachMang" class="form-control has-feedback-right" id="txtNgayThamGiaCachMang" placeholder="Ngày tham gia cách mạng">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lbDacDiemBanThanCu" class="control-label col-md-2 col-sm-2 col-xs-12 ">Đặc điểm bản thân cũ</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" class="form-control has-feedback-right" id="txtDacDiemBanThanCu" placeholder="Đặc điểm bản thân cũ">
+        </div>
+        <label for="lbDacDiemBanThanMoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Đặc điểm bản thân mới</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" class="form-control has-feedback-right" id="txtDacDiemBanThanCu" placeholder="Đặc điểm bản thân mới">
+        </div>
+    </div>
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <label for="lbNgayNhapNgu" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày nhập ngũ</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" name="txtNgayNhapNgu" class="form-control has-feedback-right" id="txtNgayNhapNgu" placeholder="Ngày nhập ngũ">
+        </div>
+        <label for="lbNgayXuartNgu" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày xuất ngũ</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" name="txtNgayXuatNgu" class="form-control has-feedback-right" id="txtNgayXuatNgu" placeholder="Ngày xuất ngũ">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lbChucVuQuanDoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Chức vụ quân đội</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <select id="ddlChucVuQuanDoi" name="ddlChucVuQuanDoi" class="form-control"></select>
+        </div>
+        <label for="lbCapBacQuanDoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Cấp bậc quân đội</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <select id="ddlCapBacQuanDoi" class="form-control"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lbDonViQuanDoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Đơn vị quân đội</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" class="form-control has-feedback-right" id="txtDonViQuanDoi" placeholder="Đơn vị quân đội">
+        </div>
+    </div>
+</form>
 
     

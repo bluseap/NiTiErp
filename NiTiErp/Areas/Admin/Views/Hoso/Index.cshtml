@@ -72,26 +72,33 @@
 
             <div class="row">
                 <div class="x_panel">
-                    <div class="table-responsive">
-                        <table id="tblHoSoNhanVien" class="table table-striped jambo_table bulk_action" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th width="=20%">#</th>
-                                    <th>Họ và tên</th>
-                                    <th>Hình </th>
-                                    <th>Khu vực</th>
-                                    <th>Phòng, tổ</th>
-                                    <th>Chức vụ</th>
-                                    <th>Ngày sinh</th>
-                                    <th>Ngày tạo</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tblContentHoSoNhanVien"></tbody>
+                    <div class="row no-print">
+                        <div class="col-xs-12">
+                            <button class="btn btn-default" id="btnInHoSo"><i class="fa fa-print"></i> Print</button>
+                            <button class="btn btn-success pull-right" id="btnXuatPDF"><i class="fa fa-file-pdf-o"></i> Xuất PDF</button>
+                            <button class="btn btn-info pull-right" id="btnXuatExcel" style="margin-right: 5px;"><i class="fa fa-download"></i> Xuất Excel</button>
+                        </div>
+                    </div>
+                    <div class="table-responsive" id="table-responsiveHoSo">
+                        <table id="tblHoSoNhanVien" class="table table-striped jambo_table bulk_action" cellspacing="0">                       
+                        <thead>
+                            <tr>
+                                <th width="=20%">#</th>
+                                <th>Họ và tên</th>
+                                <th>Hình </th>
+                                <th>Khu vực</th>
+                                <th>Phòng, tổ</th>
+                                <th>Chức vụ</th>
+                                <th>Ngày sinh</th>
+                                <th>Ngày tạo</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tblContentHoSoNhanVien"></tbody>
                         </table>
                         <div class="row">
                             <div class="col-sm-5">
-                                <div class="dataTables_info" id="datatable-checkbox_info" role="status" aria-live="polite">
-                                    <select id="ddl-show-page">
+                                <div class="dataTables_info" id="datatable-checkbox_infoHoSo" role="status" aria-live="polite">
+                                    <select id="ddl-show-pageHoSoNhanVien">
                                         <option value="10" selected="selected">10</option>
                                         <option value="20">20</option>
                                         <option value="30">30</option>
@@ -103,8 +110,8 @@
                                     Tổng cộng: <strong id="lblHoSoNhanVienTotalRecords"></strong>
                                 </div>
                             </div><div class="col-sm-7">
-                                <div class="dataTables_paginate" id="datatable-checkbox_paginate">
-                                    <ul id="paginationUL"></ul>
+                                <div class="dataTables_paginate" id="datatable-checkbox_paginateHoSoNhanVien">
+                                    <ul id="paginationULHoSoNhanVien"></ul>
                                 </div>
                             </div>
                         </div>
@@ -133,3 +140,4 @@
 </div>
 
 @Html.Partial("_AddEditModel.cshtml")
+@Html.Partial("_InHoSoNhanVien.cshtml")

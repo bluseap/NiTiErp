@@ -1,0 +1,176 @@
+﻿<div id="modal-In-HoSoNhanVien" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content" id="divInHoSoNhanVien">
+            <div class="modal-header">
+                <div>
+                    <table cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td width=340 valign=top style='width:290.2pt;padding:0cm 5.4pt 0cm 5.4pt'>
+                                <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;  text-align:center;line-height:normal'>
+                                    <b>
+                                        <span style='font-family:"Times New Roman","serif"'>
+                                            CÔNG TY CỔ PHẦN ĐIỆN NƯỚC AN GIANG
+                                        </span>
+                                    </b>
+                                </p>
+                            </td>
+                            <td width=387 valign=top style='width:290.5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+                                <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;  text-align:center;line-height:normal'>
+                                    <b>
+                                        <span style='font-family:"Times New Roman","serif"'>
+                                           CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+                                        </span>
+                                    </b>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width=340 valign=top style='width:255.2pt;padding:0cm 5.4pt 0cm 5.4pt'>
+                                <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;  text-align:center;line-height:normal'>
+                                    <span style='font-family:"Times New Roman","serif"'>
+                                        PHÒNG CÔNG NGHỆ TT
+                                    </span>
+                                </p>
+                            </td>
+                            <td width=387 valign=top style='width:290.5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+                                <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;  text-align:center;line-height:normal'>
+                                    <span style='font-family:"Times New Roman","serif"'>
+                                        Độc lập - Tự do - Hạnh phúc
+                                    </span>
+                                </p>                                
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+                <div align="center">
+                    <h1>Danh sách hồ sơ nhân viên</h1>
+                </div>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <tr valign="top" align="left">
+                        <td>
+                            <table cellspacing="0" cellpadding="0" border="1">
+                                @*<tr valign="middle">
+                                    <td colspan="6">
+                                        <div align="center">
+                                            <strong>Danh sách hồ sơ nhân viên </strong>
+                                        </div>
+                                    </td>
+                                </tr>*@
+                                <tr>
+                                    <td>
+                                        <div style="width: 585px;">
+                                            <table cellspacing="0" cellpadding="2" border="1" id="header">
+                                                <tr>
+                                                    <th width="20">
+                                                        <input type="checkbox"
+                                                               onclick="TF_check_uncheck_all_rows(dataTable,this.checked,0,0);" />
+                                                    </th>
+                                                    <th width="80">Name</th>
+                                                    <th width="100">Group</th>
+                                                    <th width="100">Salary</th>
+                                                    <th width="180">Zone</th>
+                                                    <th width="80">Status</th>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div style="border: 1px solid gray; padding: 0px; margin: 0px; width: 585px;height: 132px;">
+                                            <table cellspacing="0" cellpadding="2" border="1" id="dataTable">
+                                                <tr id="dataRow">
+                                                    <td width="20" valign="top" tf_colkey="ckbox">
+                                                        <input type="checkbox" />
+                                                    </td>
+                                                    <td width="80" valign="top" tf_colkey="name">Joe</td>
+                                                    <td width="100" valign="top" tf_colkey="group">Alpha</td>
+                                                    <td width="100" valign="top" tf_colkey="salary">
+                                                        400
+                                                        USD
+                                                    </td>
+                                                    <td width="180" valign="top" tf_colkey="zone">
+                                                        North,South
+                                                    </td>
+                                                    <td width="80" valign="top" tf_colkey="status">
+                                                        Off-Site
+                                                    </td>
+                                                </tr>
+                                                <tr id="dataRow">
+                                                    <td width="20" valign="top" tf_colkey="ckbox">
+                                                        <input type="checkbox" />
+                                                    </td>
+                                                    <td width="80" valign="top" tf_colkey="name">Celest</td>
+                                                    <td width="100" valign="top" tf_colkey="group">Beta</td>
+                                                    <td width="100" valign="top" tf_colkey="salary">
+                                                        50000 YEN
+                                                    </td>
+                                                    <td width="180" valign="top" tf_colkey="zone">North</td>
+                                                    <td width="80" valign="top" tf_colkey="status">OK</td>
+                                                </tr>
+                                                <tr id="dataRow">
+                                                    <td width="20" valign="top" tf_colkey="ckbox">
+                                                        <input type="checkbox" />
+                                                    </td>
+                                                    <td width="80" valign="top" tf_colkey="name">Brian</td>
+                                                    <td width="100" valign="top" tf_colkey="group">Alpha</td>
+                                                    <td width="100" valign="top" tf_colkey="salary">
+                                                        4000
+                                                        SGD
+                                                    </td>
+                                                    <td width="180" valign="top" tf_colkey="zone">
+                                                        North,East,South
+                                                    </td>
+                                                    <td width="80" valign="top" tf_colkey="status">
+                                                        Off-Site
+                                                    </td>
+                                                </tr>
+                                                <tr id="dataRow">
+                                                    <td width="20" valign="top" tf_colkey="ckbox">
+                                                        <input type="checkbox" />
+                                                    </td>
+                                                    <td width="80" valign="top" tf_colkey="name">David</td>
+                                                    <td width="100" valign="top" tf_colkey="group">Alpha</td>
+                                                    <td width="100" valign="top" tf_colkey="salary">
+                                                        7000
+                                                        SGD
+                                                    </td>
+                                                    <td width="180" valign="top" tf_colkey="zone">
+                                                        West,South
+                                                    </td>
+                                                    <td width="80" valign="top" tf_colkey="status">
+                                                        On
+                                                        Leave
+                                                    </td>
+                                                </tr>
+                                                <tr id="dataRow">
+                                                    <td width="20" valign="top" tf_colkey="ckbox">
+                                                        <input type="checkbox" />
+                                                    </td>
+                                                    <td width="80" valign="top" tf_colkey="name">Pauline</td>
+                                                    <td width="100" valign="top" tf_colkey="group">Gamma</td>
+                                                    <td width="100" valign="top" tf_colkey="salary">
+                                                        450
+                                                        USD
+                                                    </td>
+                                                    <td width="180" valign="top" tf_colkey="zone">West</td>
+                                                    <td width="80" valign="top" tf_colkey="status">
+                                                        On
+                                                        Leave
+                                                    </td>
+                                                </tr>
+                                                
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                 
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
