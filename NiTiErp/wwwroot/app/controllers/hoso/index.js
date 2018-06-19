@@ -19,7 +19,7 @@
 
         $('#txtLuongCoBan').prop('disabled', true);
 
-        $('#txtNgaySinh, #txtNgayCapCMND, #txtNgayKyHopDong, #txtNgayHopDong, #txtNgayHieuLuc, #txtNgayHetHan, #txtNgayVaoDang, #txtNgayVaoDoan, #txtNgayVaoCongDoan, #txtNgayThamGiaCachMang, #txtNgayNhapNgu, #txtNgayXuatNgu    ').datepicker({
+        $('#txtNgaySinh, #txtNgayCapCMND, #txtNgayKyHopDong, #txtNgayHopDong, #txtNgayHieuLuc, #txtNgayHetHan, #txtNgayVaoDang, #txtNgayVaoDoan, #txtNgayVaoCongDoan, #txtNgayThamGiaCachMang, #txtNgayNhapNgu, #txtNgayXuatNgu, #txtNgayKyCongViec, #txtNgayHieuLucCongViec    ').datepicker({
             autoclose: true,
             format: 'dd/mm/yyyy',
             language: 'vi'
@@ -173,6 +173,19 @@
                 }
             }
 
+            var phongbancongviec = $('#ddlPhongtabCongViec').val();
+            var chucvucongviec = $('#ddlChucVuNhanVien').val();
+            if (phongbancongviec != "%" && chucvucongviec != "%") {
+                var inscongviecId = $('#hidInsertCongViecId').val();
+
+                if ((hosoInserId == 0 && inscongviecId == 0) || (hosoInserId == 1 && inscongviecId == 0)) { // add cong viec
+                    SaveCongViec(e);
+                }
+                else {
+                    UpdateCongViec(e);
+                }
+            }
+
         });
 
         $('body').on('click', '.btn-edit', function (e) {
@@ -189,6 +202,8 @@
             loadHopDong(hosoId);   
 
             loadDangDoan(hosoId);
+
+            loadCongViec(hosoId);
             
         });
 
@@ -725,6 +740,9 @@
     }
     function resetFormTabCongViec() {
         $('#hidCongViecId').val(0);
+
+        $('#hidInsertCongViecId').val(0);
+        $('#hidUpdateCongViecId').val(0);        
 
         $('#ddlCongTyXiNghiep')[0].selectedIndex = 1;
         $('#ddlPhongtabCongViec')[0].selectedIndex = 0;
@@ -2170,7 +2188,7 @@
 
         LoadCachMangParameter(hosoid, "GetCachMangId");
         LoadQuanDoiParameter(hosoid, "GetQuanDoiId");
-    }
+    }  
 
     function LoadDangParameter(hosoid, para) {
         $.ajax({
@@ -3003,5 +3021,213 @@
             }
         });
     }
+        
+    function SaveCongViec(e) {
+        e.preventDefault();
+
+        var hosoid = $('#hidLyLichId').val(); // new guid Id
+        var hosoidinup = $('#hidLyLichIdInsert').val(); // Id = 0        
+        var congviecid = 0; // tringdoId = 0
+
+        var congtyxinghiep = $('#ddlCongTyXiNghiep').val();
+        var phongcongviec = $('#ddlPhongtabCongViec').val();
+        var chucvucongviec = $('#ddlChucVuNhanVien').val();
+        var congtacchinh = $('#txtCongTacChinh').val();
+        var soquyetdinhcongviec = $('#txtSoQuyetDinhCongViec').val();
+        var tenquyetdinhcongviec = $('#txtTenQuyetDinhCongViec').val();
+
+        var ngaykycongviec = tedu.getFormatDateYYMMDD($('#txtNgayKyCongViec').val());
+        var ngayhieuluccongviec = tedu.getFormatDateYYMMDD($('#txtNgayHieuLucCongViec').val());   
+        var ngayketthucid = tedu.getFormatDateYYMMDD('01/01/2111');
+
+        if (ngaykycongviec) {
+            ngaykycongviec = tedu.getFormatDateYYMMDD($('#txtNgayKyCongViec').val());            
+        }
+        else {
+            ngaykycongviec = tedu.getFormatDateYYMMDD('01/01/2111');
+        }
+
+        if ( ngayhieuluccongviec) {           
+            ngayhieuluccongviec = tedu.getFormatDateYYMMDD($('#txtNgayHieuLucCongViec').val());
+        }
+        else {            
+            ngayhieuluccongviec = tedu.getFormatDateYYMMDD('01/01/2111');
+        }
+
+                
+
+        $.ajax({
+            type: "POST",
+            url: "/Admin/Hoso/AddUpdateCongViec",
+            data: {
+                HoSoNhanVienId: hosoid,
+                InsertUpdateId: hosoidinup, // = 0
+                InsertUpdateTrinhDoId: congviecid, // = 0
+
+                CorporationId: congtyxinghiep,
+                PhongDanhMucId: phongcongviec,
+                ChucVuCongTyId: chucvucongviec,
+                CongTacChinh: congtacchinh,
+                SoQuyetDinh: soquyetdinhcongviec,
+                TenQuyetDinh: tenquyetdinhcongviec,
+                NgayKy: ngaykycongviec,  
+                NgayHieuLuc: ngayhieuluccongviec,
+                NgayKetThuc: ngayketthucid
+                
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Success == false) {
+                    tedu.notify(response.Message, "error");
+                }
+                else {
+                    tedu.notify('Công việc nhân viên.', 'success');                    
+
+                    resetFormTabCongViec();
+
+                    tedu.stopLoading();
+                }
+            },
+            error: function () {
+                tedu.notify('Có lỗi! Không thể lưu Công việc nhân viên', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function loadCongViec(hosoid) {
+        var parameterId = "GetCongViecId";
+
+        $('#hidCongViecId').val(1);        
+        
+        $.ajax({
+            type: "GET",
+            url: "/Admin/Hoso/GetCongViecId",
+            data: { hosoId: hosoid, parameter: parameterId },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var congviec = response.Result.Results[0];
+
+                if (congviec.KETQUA == 'SAI') {
+                    $('#hidInsertCongViecId').val(0);
+                    $('#hidUpdateCongViecId').val(0);
+
+                    $('#ddlCongTyXiNghiep')[0].selectedIndex = 1;
+                    $('#ddlPhongtabCongViec')[0].selectedIndex = 0;
+                    $('#ddlChucVuNhanVien')[0].selectedIndex = 1;
+                    $('#txtCongTacChinh').val('');
+                    $('#txtSoQuyetDinhCongViec').val('');
+                    $('#txtTenQuyetDinhCongViec').val('');
+                    $('#txtNgayKyCongViec').val('01/11/2011');
+                    $('#txtNgayHieuLucCongViec').val('01/11/2011');
+                }
+                else {
+                    $('#hidInsertCongViecId').val(1);
+                    $('#hidUpdateCongViecId').val(congviec.Id);
+
+                    $('#ddlCongTyXiNghiep').val(congviec.CorporationId);
+                    $('#ddlPhongtabCongViec').val(congviec.PhongDanhMucId);
+                    $('#ddlChucVuNhanVien').val(congviec.ChucVuCongTyId);
+                    $('#txtCongTacChinh').val(congviec.CongTacChinh);
+                    $('#txtSoQuyetDinhCongViec').val(congviec.SoQuyetDinh);
+                    $('#txtTenQuyetDinhCongViec').val(congviec.TenQuyetDinh);                          
+                          
+                    $('#txtNgayKyCongViec').val(tedu.getFormattedDate(congviec.NgayKy));
+                    $('#txtNgayHieuLucCongViec').val(tedu.getFormattedDate(congviec.NgayHieuLuc));
+                  
+                }
+                tedu.stopLoading();
+            },
+            error: function (status) {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
+        });
+        
+    }
+
+    function UpdateCongViec(e) {
+        e.preventDefault();
+
+        var hosoid = $('#hidLyLichId').val(); // get new guid Id
+        var congviecid = $('#hidCongViecId').val(); // Id = 0    
+
+        var incongviecid = $('#hidInsertCongViecId').val();  
+        var upcongviecid = $('#hidUpdateCongViecId').val();
+        
+        var congtycongviec = $('#ddlCongTyXiNghiep').val();
+        var phongcongviec = $('#ddlPhongtabCongViec').val();
+        var chucvucongviec = $('#ddlChucVuNhanVien').val();
+        var congtacchinh = $('#txtCongTacChinh').val();
+        var soquyetdinhcongviec = $('#txtSoQuyetDinhCongViec').val();
+        var tenquyetdinhcongviec = $('#txtTenQuyetDinhCongViec').val(); 
+
+        var ngaykycongviec = tedu.getFormatDateYYMMDD($('#txtNgayKyCongViec').val());    
+        var ngayhieuluccongviec = tedu.getFormatDateYYMMDD($('#txtNgayHieuLucCongViec').val());            
+        var ngayketthucid = tedu.getFormatDateYYMMDD('01/01/2111');
+
+        if (ngaykycongviec) {
+            ngaykycongviec = tedu.getFormatDateYYMMDD($('#txtNgayKyCongViec').val());
+        }
+        else {
+            ngaykycongviec = tedu.getFormatDateYYMMDD('01/01/2111');
+        }
+
+        if (ngayhieuluccongviec) {
+            ngayhieuluccongviec = tedu.getFormatDateYYMMDD($('#txtNgayHieuLucCongViec').val());
+        }
+        else {
+            ngayhieuluccongviec = tedu.getFormatDateYYMMDD('01/01/2111');
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/Admin/Hoso/AddUpdateCongViec",
+            data: {   
+                Id: upcongviecid,
+                HoSoNhanVienId: hosoid,
+               
+                InsertUpdateId: congviecid,                
+                InsertUpdateCongViecId: incongviecid,   
+              
+                CorporationId: congtycongviec,
+                PhongDanhMucId: phongcongviec,
+                ChucVuCongTyId: chucvucongviec,
+                CongTacChinh: congtacchinh,
+                SoQuyetDinh: soquyetdinhcongviec,
+                TenQuyetDinh: tenquyetdinhcongviec,
+
+                NgayKy: ngaykycongviec,
+                NgayHieuLuc: ngayhieuluccongviec,
+                NgayKetThuc: ngayketthucid
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Success == false) {
+                    tedu.notify(response.Message, "error");
+                }
+                else {
+                    tedu.notify('Công việc nhân viên.', 'success');
+                    tedu.stopLoading();
+
+                    $('#modal-add-edit-HoSo').modal('hide');
+                }
+            },
+            error: function () {
+                tedu.notify('Có lỗi! Không thể lưu Công việc nhân viên', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
+
 
 }

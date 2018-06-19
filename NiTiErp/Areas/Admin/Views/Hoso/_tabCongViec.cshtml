@@ -2,6 +2,9 @@
 <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainCongViec">
     <input type="hidden" id="hidCongViecId" value="0" />
 
+    <input type="hidden" id="hidInsertCongViecId" value="" />
+    <input type="hidden" id="hidUpdateCongViecId" value="" />
+
     <div class="form-group">
         <label for="lbCongTyXiNghiep" class="control-label col-md-2 col-sm-2 col-xs-12 ">Công ty, Xí nghiệp</label>
         <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
@@ -35,16 +38,16 @@
     <div class="form-group">
         <label for="lbNgayKyCongViec" class="control-label col-md-2 col-sm-2 col-xs-12">Ngày ký</label>
         <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-            <input type="text" class="form-control has-feedback-right" id="txtNgayKyCongViec" placeholder="Ngày ký">
+            <input type="text" name="txtNgayKyCongViec" class="form-control has-feedback-right" id="txtNgayKyCongViec" placeholder="Ngày ký">
         </div>
         <label for="lbNgayHieuLucCongViec" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày hiệu lực</label>
         <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-            <input type="text" class="form-control has-feedback-right" id="txtNgayHieuLucCongViec" placeholder="Ngày hiệu lực">
+            <input type="text" name="txtNgayHieuLucCongViec" class="form-control has-feedback-right" id="txtNgayHieuLucCongViec" placeholder="Ngày hiệu lực">
         </div>
     </div>
 </form>
 
-<div class="clearfix"></div>
+@*<div class="clearfix"></div>
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
@@ -98,7 +101,7 @@
         <td>{{{DateCreated}}}</td>
         <td>     </td>
     </tr>
-</script>
+</script>*@
 
 
 

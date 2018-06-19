@@ -22,6 +22,7 @@ namespace NiTiErp.Areas.Admin.Controllers
 {
     public class HosoController : BaseController
     {
+        ICongViecService _congviecService;
         IDangDoanService _dangdoanService;
         IHopDongService _hopdongService;
         ITrinhDoService _trinhdoService;
@@ -51,6 +52,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             NiTiErp.Application.Interfaces.IUserService userService, 
             IAuthorizationService authorizationService,
 
+            ICongViecService congviecService,
             IDangDoanService dangdoanService,
             IHopDongService hopdongService,
             ICorporationService corporationService, IPhongDanhMucService phongdanhmucService,
@@ -69,6 +71,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             _userService = userService;
             _authorizationService = authorizationService;
 
+            _congviecService = congviecService;
             _dangdoanService = dangdoanService;
             _hopdongService = hopdongService;
             _phongdanhmucService = phongdanhmucService;
@@ -97,6 +100,98 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         #region AJAX API
+
+        #region Cong viec 
+        [HttpPost]
+        public IActionResult AddUpdateCongViec(CongViecViewModel congviecVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+
+                congviecVm.CreateBy = username;
+                congviecVm.CreateDate = DateTime.Now;
+                congviecVm.UpdateBy = username;
+                congviecVm.UpdateDate = DateTime.Now;
+
+                if ((congviecVm.InsertUpdateId == 0 && congviecVm.InsertUpdateCongViecId == 0) ||
+                    (congviecVm.InsertUpdateId == 1 && congviecVm.InsertUpdateCongViecId == 0))
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "NLLNV", Operations.Create); // nhap nhan vien
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
+                    }
+
+                    congviecVm.Id = "1";
+
+                    var congviec = _congviecService.CongViecAUD(congviecVm, "InCongViec");
+                    return new OkObjectResult(congviec);
+                }
+                else if (congviecVm.InsertUpdateId == 1 && congviecVm.InsertUpdateCongViecId == 1)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "NLLNV", Operations.Update); 
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền sửa."));
+                    }
+
+                    var congviec = _congviecService.CongViecAUD(congviecVm, "UpCongViec");
+                    return new OkObjectResult(congviec);
+                }
+                else
+                {
+                    return new OkObjectResult(congviecVm);
+                }
+            }
+        }
+
+        [HttpPost]
+        public IActionResult DeleteCongViec(CongViecViewModel congviecVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                if (congviecVm.InsertUpdateId == 1 && congviecVm.InsertUpdateCongViecId == 1)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "NLLNV", Operations.Delete); 
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền xóa."));
+                    }
+
+                    congviecVm.CreateDate = DateTime.Now;
+                    congviecVm.UpdateDate = DateTime.Now;
+
+                    var congviec = _congviecService.CongViecAUD(congviecVm, "DelCongViec");
+                    return new OkObjectResult(congviec);
+                }
+                else
+                {
+                    return new OkObjectResult(congviecVm);
+                }
+            }
+        }
+
+        [HttpGet]
+        public IActionResult GetCongViecId(string hosoId, string parameter)
+        {
+            var model = _congviecService.GetAllCongViecPaging("", "", "", 1, 10,
+                hosoId, "", "", "", parameter);
+
+            return new OkObjectResult(model);
+        }
+
+        #endregion
 
         #region Dang doan
         [HttpPost]
