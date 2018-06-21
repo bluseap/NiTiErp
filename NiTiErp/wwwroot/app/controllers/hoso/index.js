@@ -2001,21 +2001,27 @@
     }
 
     function XuatExcel() {
-        tedu.notify("Excel ho so", "success");
+        //tedu.notify("Excel ho so", "success");
+        var makhuvuc = $('#ddlKhuVuc').val();
+        var phongId = $('#ddlPhongBan').val();
+        var timnhanvien = '';
 
         var that = $('#hidId').val();
         $.ajax({
             type: "POST",
             url: "/Admin/Hoso/ExportExcel",
-            data: { billId: that },
+            data: {
+                billId: that,
+                corporationId: makhuvuc,
+                phongId: phongId,
+                keyword: timnhanvien
+            },
             beforeSend: function () {
                 tedu.startLoading();
             },
             success: function (response) {
                 window.location.href = response;
-
                 tedu.stopLoading();
-
             }
         });
     }

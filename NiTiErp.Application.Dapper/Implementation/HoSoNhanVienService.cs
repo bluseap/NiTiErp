@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using NiTiErp.Application.Dapper.Interfaces;
 using NiTiErp.Application.Dapper.ViewModels;
 using NiTiErp.Utilities.Dtos;
+using NiTiErp.Utilities.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -21,7 +22,7 @@ namespace NiTiErp.Application.Dapper.Implementation
             _configuration = configuration;
         }
 
-        public async Task<PagedResult<HoSoNhanVienViewModel>> GetAllHoSoNhanVienPaging(string corporationId, string phongId, string keyword, int page, int pageSize, 
+        public async Task<PagedResult<HoSoNhanVienViewModel>> GetAllHoSoNhanVienPaging(string corporationId, string phongId, string keyword, int page, int pageSize,
             string hosoId, string hosoId2, string hosoId3, string parameters)
         {
             using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
@@ -67,16 +68,21 @@ namespace NiTiErp.Application.Dapper.Implementation
             }
         }
 
-        public async Task<List<HoSoNhanVienViewModel>> HoSoNhanVienGetList(string bangId, string id2, string id3, string parameters)
+        public async Task<List<HoSoNhanVienViewModel>> HoSoNhanVienGetList(string corporationId, string phongId, string keyword,
+            string hosoId, string hosoId2, string hosoId3, string parameters)
         {
             using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
                 await sqlConnection.OpenAsync();
                 var dynamicParameters = new DynamicParameters();
 
-                dynamicParameters.Add("@bangId", bangId);
-                dynamicParameters.Add("@id2", id2);
-                dynamicParameters.Add("@id3", id3);
+                dynamicParameters.Add("@corporationId", corporationId);
+                dynamicParameters.Add("@phongId", phongId);
+                dynamicParameters.Add("@keyword", keyword);
+                dynamicParameters.Add("@hosoId", hosoId);
+                dynamicParameters.Add("@hosoId2", hosoId2);
+                dynamicParameters.Add("@hosoId3", hosoId3);
+
                 dynamicParameters.Add("@parameters", parameters);
 
                 try
@@ -85,6 +91,38 @@ namespace NiTiErp.Application.Dapper.Implementation
                         "HoSoNhanVienGetList", dynamicParameters, commandType: CommandType.StoredProcedure);
 
                     return query.AsList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<IEnumerable<dynamic>> HoSoDataTable(string corporationId, string phongId, string keyword,
+            string hosoId, string hosoId2, string hosoId3, string parameters)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@corporationId", corporationId);
+                dynamicParameters.Add("@phongId", phongId);
+                dynamicParameters.Add("@keyword", keyword);
+                dynamicParameters.Add("@hosoId", hosoId);
+                dynamicParameters.Add("@hosoId2", hosoId2);
+                dynamicParameters.Add("@hosoId3", hosoId3);
+
+                dynamicParameters.Add("@parameters", parameters);
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<dynamic>(
+                        "HoSoNhanVienGetList", dynamicParameters, commandType: CommandType.StoredProcedure);
+
+                    return query.AsList();
+
                 }
                 catch (Exception ex)
                 {
@@ -147,8 +185,5 @@ namespace NiTiErp.Application.Dapper.Implementation
                 }
             }
         }
-        
-
-
     }
 }

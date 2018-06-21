@@ -1,35 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
-using NiTiErp.Infrastructure.Interfaces;
-using Microsoft.AspNetCore.Authorization;
-using AutoMapper;
-using PaulMiami.AspNetCore.Mvc.Recaptcha;
-using Microsoft.AspNetCore.Mvc;
-
-using NiTiErp.Data;
-using NiTiErp.Models;
-using NiTiErp.Services;
-using NiTiErp.Data.EF;
-using NiTiErp.Data.Entities;
-using NiTiErp.Data.EF.Repositories;
-using NiTiErp.Data.IRepositories;
-using NiTiErp.Application.Interfaces;
-using NiTiErp.Application.Implementation;
-using NiTiErp.Helpers;
-using NiTiErp.Authorization;
-using NiTiErp.Extensions;
-using NiTiErp.Application.Dapper.Interfaces;
 using NiTiErp.Application.Dapper.Implementation;
+using NiTiErp.Application.Dapper.Interfaces;
+using NiTiErp.Application.Implementation;
+using NiTiErp.Application.Interfaces;
+using NiTiErp.Authorization;
+using NiTiErp.Data.EF;
+using NiTiErp.Data.EF.Repositories;
+using NiTiErp.Data.Entities;
+using NiTiErp.Data.IRepositories;
+using NiTiErp.Extensions;
+using NiTiErp.Helpers;
+using NiTiErp.Infrastructure.Interfaces;
+using NiTiErp.Services;
+using PaulMiami.AspNetCore.Mvc.Recaptcha;
+using System;
 
 namespace NiTiErp
 {
@@ -48,8 +42,6 @@ namespace NiTiErp
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
                 o => o.MigrationsAssembly("NiTiErp.Data.EF")));
-
-            
 
             services.AddIdentity<AppUser, AppRole>()
                 .AddEntityFrameworkStores<AppDbContext>()
@@ -96,7 +88,8 @@ namespace NiTiErp
                     facebookOpts.AppId = Configuration["Authentication:Facebook:AppId"];
                     facebookOpts.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
                 })
-                .AddGoogle(googleOpts => {
+                .AddGoogle(googleOpts =>
+                {
                     googleOpts.ClientId = Configuration["Authentication:Google:ClientId"];
                     googleOpts.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
                 });
@@ -209,7 +202,11 @@ namespace NiTiErp
 
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 
+            //dung DAO
+            //Orm.DatabaseConnection.ConnectionString = Configuration["ConnectionStrings:ConnectionString"];
 
+            //services.AddTransient<Database>();
+            //services.AddTransient<IHoSoNhanVienDao, HoSoNhanVienDao>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -233,7 +230,6 @@ namespace NiTiErp
             app.UseMinResponse();
             app.UseAuthentication();
             app.UseSession();
-            
 
             app.UseMvc(routes =>
             {
@@ -243,7 +239,7 @@ namespace NiTiErp
 
                 //routes.MapRoute(
                 //    name: "default",
-                //    template: "{controller=HomeNews}/{action=Index}/{id?}");               
+                //    template: "{controller=HomeNews}/{action=Index}/{id?}");
 
                 routes.MapRoute(
                    name: "areaRoute",
@@ -261,9 +257,7 @@ namespace NiTiErp
                 //routes.MapRoute(
                 //    name: "areaClientRoute",
                 //    template: "{area:exists}/{controller=CorporationClient}/{action=Index}/{id?}");
-
             });
-
         }
     }
 }

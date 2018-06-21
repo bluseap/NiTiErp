@@ -1,57 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-
-using NiTiErp.Authorization;
-using NiTiErp.Extensions;
-using NiTiErp.Application.Dapper;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using NiTiErp.Application.Dapper.Interfaces;
 using NiTiErp.Application.Dapper.ViewModels;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
+using NiTiErp.Authorization;
+using NiTiErp.Extensions;
 using NiTiErp.Utilities.Dtos;
-
-using System.IO;
-using OfficeOpenXml;
 using NiTiErp.Utilities.Helpers;
-using Microsoft.AspNetCore.Hosting;
+using OfficeOpenXml;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Globalization;
+using System.IO;
+using System.Linq;
 
 namespace NiTiErp.Areas.Admin.Controllers
 {
     public class HosoController : BaseController
     {
-        ICongViecService _congviecService;
-        IDangDoanService _dangdoanService;
-        IHopDongService _hopdongService;
-        ITrinhDoService _trinhdoService;
-        IHoSoNhanVienService _hosonhanvienService;
-        IChucVuNhanVienService _chucvunhanvienService;
-        ICapBacQuanDoiService _capbacquandoiService;
-        IChucVuQuanDoiService _chucvuquandoiService;
-        IChucVuCongDoanService _chucvucongdoanService;
-        IChucVuDoanService _chucvudoanService;
-        IChucVuDangService _chucvudangService;
-        ILoaiHopDongService _hopdongdanhmuc;
-        IXepLoaiService _xeploaidanhmucService;
-        ILoaiDaoTaoService _loaidaotaodanhmucService;
-        ILoaiBangService _loaibangdanhmucService;
-        IXuatThanService _xuatthandanhmucService;
-        ITonGiaoService _tongiaodanhmucService;
-        IDanTocService _dantocdanhmucService;
-        IHonNhanService _honnhandanhmucService;
-        IPhongDanhMucService _phongdanhmucService;
-        ICorporationService _corporationService;
+        private ICongViecService _congviecService;
+        private IDangDoanService _dangdoanService;
+        private IHopDongService _hopdongService;
+        private ITrinhDoService _trinhdoService;
+        private IHoSoNhanVienService _hosonhanvienService;
+        private IChucVuNhanVienService _chucvunhanvienService;
+        private ICapBacQuanDoiService _capbacquandoiService;
+        private IChucVuQuanDoiService _chucvuquandoiService;
+        private IChucVuCongDoanService _chucvucongdoanService;
+        private IChucVuDoanService _chucvudoanService;
+        private IChucVuDangService _chucvudangService;
+        private ILoaiHopDongService _hopdongdanhmuc;
+        private IXepLoaiService _xeploaidanhmucService;
+        private ILoaiDaoTaoService _loaidaotaodanhmucService;
+        private ILoaiBangService _loaibangdanhmucService;
+        private IXuatThanService _xuatthandanhmucService;
+        private ITonGiaoService _tongiaodanhmucService;
+        private IDanTocService _dantocdanhmucService;
+        private IHonNhanService _honnhandanhmucService;
+        private IPhongDanhMucService _phongdanhmucService;
+        private ICorporationService _corporationService;
 
         private readonly IHostingEnvironment _hostingEnvironment;
         private readonly NiTiErp.Application.Interfaces.IUserService _userService;
         private readonly IAuthorizationService _authorizationService;
 
+
         public HosoController(IHostingEnvironment hostingEnvironment,
-            NiTiErp.Application.Interfaces.IUserService userService, 
+            NiTiErp.Application.Interfaces.IUserService userService,
             IAuthorizationService authorizationService,
 
+          
             ICongViecService congviecService,
             IDangDoanService dangdoanService,
             IHopDongService hopdongService,
@@ -70,6 +71,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             _hostingEnvironment = hostingEnvironment;
             _userService = userService;
             _authorizationService = authorizationService;
+          
 
             _congviecService = congviecService;
             _dangdoanService = dangdoanService;
@@ -101,7 +103,8 @@ namespace NiTiErp.Areas.Admin.Controllers
 
         #region AJAX API
 
-        #region Cong viec 
+        #region Cong viec
+
         [HttpPost]
         public IActionResult AddUpdateCongViec(CongViecViewModel congviecVm)
         {
@@ -135,7 +138,7 @@ namespace NiTiErp.Areas.Admin.Controllers
                 }
                 else if (congviecVm.InsertUpdateId == 1 && congviecVm.InsertUpdateCongViecId == 1)
                 {
-                    var result = _authorizationService.AuthorizeAsync(User, "NLLNV", Operations.Update); 
+                    var result = _authorizationService.AuthorizeAsync(User, "NLLNV", Operations.Update);
                     if (result.Result.Succeeded == false)
                     {
                         return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền sửa."));
@@ -163,7 +166,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             {
                 if (congviecVm.InsertUpdateId == 1 && congviecVm.InsertUpdateCongViecId == 1)
                 {
-                    var result = _authorizationService.AuthorizeAsync(User, "NLLNV", Operations.Delete); 
+                    var result = _authorizationService.AuthorizeAsync(User, "NLLNV", Operations.Delete);
                     if (result.Result.Succeeded == false)
                     {
                         return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền xóa."));
@@ -191,9 +194,10 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
-        #endregion
+        #endregion Cong viec
 
         #region Dang doan
+
         [HttpPost]
         public IActionResult AddUpdateDangDoan(DangDoanViewModel dangdoanVm)
         {
@@ -213,7 +217,7 @@ namespace NiTiErp.Areas.Admin.Controllers
 
                 if (dangdoanVm.InsertUpdateDangDoanId == 0 && dangdoanVm.InsertUpdateDangId == 0
                         && dangdoanVm.InsertUpdateDoanId == 0 && dangdoanVm.InsertUpdateCongDoanId == 0
-                        && dangdoanVm.InsertUpdateCachMangId == 0 && dangdoanVm.InsertUpdateNhapNguId == 0) 
+                        && dangdoanVm.InsertUpdateCachMangId == 0 && dangdoanVm.InsertUpdateNhapNguId == 0)
                 {
                     var result = _authorizationService.AuthorizeAsync(User, "NLLNV", Operations.Create); // nhap nhan vien
                     if (result.Result.Succeeded == false)
@@ -233,22 +237,22 @@ namespace NiTiErp.Areas.Admin.Controllers
                 else if (dangdoanVm.InsertUpdateDangDoanId == 1 && (dangdoanVm.InsertUpdateDangId == 1
                         || dangdoanVm.InsertUpdateDoanId == 1 || dangdoanVm.InsertUpdateCongDoanId == 1
                         || dangdoanVm.InsertUpdateCachMangId == 1 || dangdoanVm.InsertUpdateNhapNguId == 1))
-                {  
+                {
                     var result = _authorizationService.AuthorizeAsync(User, "NLLNV", Operations.Update); // nhap nhan vien
                     if (result.Result.Succeeded == false)
                     {
                         return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
-                    }                      
+                    }
 
                     var dangdoan = _dangdoanService.DangDoanAUD(dangdoanVm, dangdoanVm.Parameters);
-                    return new OkObjectResult(dangdoan);                      
+                    return new OkObjectResult(dangdoan);
                 }
                 else
                 {
                     return new OkObjectResult(dangdoanVm);
                 }
             }
-        }       
+        }
 
         [HttpGet]
         public IActionResult GetDangDoanId(string hosoId, string dangId, string doanId, string congdoanId,
@@ -259,9 +263,11 @@ namespace NiTiErp.Areas.Admin.Controllers
 
             return new OkObjectResult(model);
         }
-        #endregion
+
+        #endregion Dang doan
 
         #region Hop Dong
+
         [HttpPost]
         public IActionResult AddUpdateHopDong(HopDongViewModel hopdongVm)
         {
@@ -270,7 +276,7 @@ namespace NiTiErp.Areas.Admin.Controllers
                 IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
                 return new BadRequestObjectResult(allErrors);
             }
-            else 
+            else
             {
                 var username = User.GetSpecificClaim("UserName");
 
@@ -309,10 +315,10 @@ namespace NiTiErp.Areas.Admin.Controllers
                     return new OkObjectResult(hopdongVm);
                 }
             }
-        }       
+        }
 
         [HttpGet]
-        public IActionResult GetAllHopDongPaging(string corporationId, string phongId, string keyword, int page, 
+        public IActionResult GetAllHopDongPaging(string corporationId, string phongId, string keyword, int page,
             int pageSize, string hosoId, string hopdongId)
         {
             var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
@@ -341,7 +347,7 @@ namespace NiTiErp.Areas.Admin.Controllers
                 hosoId, "", "", "", "GetMaxHoSoHopDongId");
 
             return new OkObjectResult(model);
-        }        
+        }
 
         [HttpGet]
         public IActionResult GetHopDongChucVuLuongId(string corporationId, string chucvuId)
@@ -352,9 +358,10 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
-        #endregion
+        #endregion Hop Dong
 
         #region Trinh Do
+
         [HttpPost]
         public IActionResult AddUpdateTrinhDo(TrinhDoViewModel trinhdoVm)
         {
@@ -395,7 +402,7 @@ namespace NiTiErp.Areas.Admin.Controllers
                     }
 
                     var trinhdo = _trinhdoService.TrinhDoAUD(trinhdoVm, "UpTrinhDo");
-                    return new OkObjectResult(trinhdo);                   
+                    return new OkObjectResult(trinhdo);
                 }
                 else
                 {
@@ -421,8 +428,8 @@ namespace NiTiErp.Areas.Admin.Controllers
                     {
                         return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền xóa."));
                     }
-                    
-                    trinhdoVm.CreateDate = DateTime.Now;                    
+
+                    trinhdoVm.CreateDate = DateTime.Now;
                     trinhdoVm.UpdateDate = DateTime.Now;
 
                     var trinhdo = _trinhdoService.TrinhDoAUD(trinhdoVm, "DelTrinhDo");
@@ -457,9 +464,10 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
-        #endregion
+        #endregion Trinh Do
 
         #region HoSoNhanVien
+
         [HttpPost]
         public IActionResult AddUpdateHosoNhanVien(HoSoNhanVienViewModel hosoVm)
         {
@@ -470,7 +478,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             }
             else
             {
-                var username = User.GetSpecificClaim("UserName");                
+                var username = User.GetSpecificClaim("UserName");
 
                 hosoVm.CreateBy = username;
                 hosoVm.CreateDate = DateTime.Now;
@@ -494,70 +502,159 @@ namespace NiTiErp.Areas.Admin.Controllers
                     if (result.Result.Succeeded == false)
                     {
                         return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền sửa."));
-                    }                    
+                    }
 
                     var hosonhanvien = _hosonhanvienService.HoSoNhanVienAUD(hosoVm, "UpHoSoNhanVien");
                     return new OkObjectResult(hosonhanvien);
-                }  
-            }            
+                }
+            }
         }
 
         [HttpPost]
-        public IActionResult ExportExcel(int billId)
+        public IActionResult ExportExcel(int billId, string corporationId, string phongId, string keyword)
         {
             string sWebRootFolder = _hostingEnvironment.WebRootPath;
-            string sFileName = $"Bill_{billId}.xlsx";
+            string sFileName = $"HoSo.xlsx";
             // Template File
-            string templateDocument = Path.Combine(sWebRootFolder, "templates", "BillTemplate.xlsx");
+            string templateDocument = Path.Combine(sWebRootFolder, "templates", "HoSoExcel.xlsx");
 
             string url = $"{Request.Scheme}://{Request.Host}/{"export-files"}/{sFileName}";
+
             FileInfo file = new FileInfo(Path.Combine(sWebRootFolder, "export-files", sFileName));
+
             if (file.Exists)
             {
                 file.Delete();
-                file = new FileInfo(Path.Combine(sWebRootFolder, sFileName));
+                file = new FileInfo(Path.Combine(sWebRootFolder, "export-files", sFileName));
             }
+
             using (FileStream templateDocumentStream = System.IO.File.OpenRead(templateDocument))
             {
                 using (ExcelPackage package = new ExcelPackage(templateDocumentStream))
                 {
                     // add a new worksheet to the empty workbook
-                    ExcelWorksheet worksheet = package.Workbook.Worksheets["TEDUOrder"];
-                    // Data Acces, load order header data.                    
-                    
-                    var billDetail = _hosonhanvienService.GetAllHoSoNhanVienPaging("%", "%", "%",  1, 1,
-                        "", "1", "", "GetAllHoSoNhanVien");
-                    //var billDetail = _billService.GetDetail(billId);
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets["HoSo"];
 
-                    // Insert customer data into template
-                    worksheet.Cells[4, 1].Value = "Customer Name: ";// + billDetail.CustomerName;
-                    worksheet.Cells[5, 1].Value = "Address: ";// + billDetail.CustomerAddress;
-                    worksheet.Cells[6, 1].Value = "Phone: ";// + billDetail.CustomerMobile;
+                    // Data Acces, load order header data.
+                    var hosoDetail = _hosonhanvienService.HoSoNhanVienGetList(corporationId, phongId, "%", "", "", "", 
+                        "GetAllHoSoNhanVien");
 
-                    // Start Row for Detail Rows
-                    int rowIndex = 9;
+                    //worksheet.Cells[2, 1].Value = "";
 
-                    // load order details
-                    var orderDetails = _hosonhanvienService.GetAllHoSoNhanVienPaging("%", "%", "%", 1, 1,
-                        "", "1", "", "GetAllHoSoNhanVien");
-
-                    //var orderDetails = _billService.GetBillDetails(billId);
+                    int rowIndex = 4;
                     int count = 1;
-                    foreach (var orderDetail in orderDetails.Result.Results)
+                    foreach (var orderDetail in hosoDetail.Result)
                     {
                         // Cell 1, Carton Count
                         worksheet.Cells[rowIndex, 1].Value = count.ToString();
-                        // Cell 2, Order Number (Outline around columns 2-7 make it look like 1 column)
-                        worksheet.Cells[rowIndex, 2].Value = orderDetail.Ten.ToString();
-                        // Cell 8, Weight in LBS (convert KG to LBS, and rounding to whole number)
-                        worksheet.Cells[rowIndex, 3].Value = orderDetail.NgaySinh.ToString();
+                        
+                        worksheet.Cells[rowIndex, 2].Value = orderDetail.Ten != null ? orderDetail.Ten.ToString() : "";
 
-                        worksheet.Cells[rowIndex, 4].Value = orderDetail.SoDienThoai.ToString();
+                        worksheet.Cells[rowIndex, 3].Value = orderDetail.CorporationName != null ? orderDetail.CorporationName.ToString() : "";
 
-                        // Increment Row Counter
+                        worksheet.Cells[rowIndex, 4].Value = orderDetail.TenPhong != null ? orderDetail.TenPhong.ToString() : "";                        
+                        
+                        worksheet.Cells[rowIndex, 5].Value = orderDetail.NgaySinh != null ? orderDetail.NgaySinh.Date.ToString("dd/M/yyyy", CultureInfo.InvariantCulture) : "";
+
+                        worksheet.Cells[rowIndex, 6].Value = orderDetail.SoDienThoai != null ? orderDetail.SoDienThoai.ToString() : "";
+                                              
                         rowIndex++;
                         count++;
                     }
+
+                    package.SaveAs(file); //Save the workbook.
+
+                    //DataTable dt = TextHelper.ToDataTable2(hosoDetail.Result);
+                    //worksheet.Cells[1, 1].LoadFromDataTable(dt, true);
+
+                    //var hosoDetail3 = _hosonhanvienService.HoSoDataTable("%", "%", "%", "", "", "", "GetAllHoSoNhanVien");
+                    //DataTable dt = TextHelper.ListToDataTable(hosoDetail3.Result.ToList());
+                    //worksheet.Cells[1, 1].LoadFromDataTable(dt, true);
+
+                    //var hosoDetail3 = _hosonhanvienService.HoSoDataTable("%", "%", "%", "", "", "", "GetAllHoSoNhanVien");
+
+                    //worksheet.Cells[1, 1].LoadFromDataTable(hosoDetail3.Result.ToList(), true);
+
+
+                    //var hosoDetail = _hosonhanvienService.HoSoNhanVienGetList("%", "%", "%", "", "", "", "GetAllHoSoNhanVien");
+
+                    //DataTable dt1;
+                    //dt1 = hosoDetail.Result.ToDataTable();
+                    //List<HoSoNhanVienViewModel> list = new List<HoSoNhanVienViewModel>();
+                    //var hoso = hosoDetail.Result.ToList();
+
+                    //DataTable dt = TextHelper.ToDataTable(hosoDetail.Result.ToList());
+
+                    //DataTable dt3 = TextHelper.ToDataTable3(hosoDetail.Result.ToList());
+
+                    //int colend2 =  dt.Columns.Count;
+
+                    //foreach (var dt2 in hosoDetail.Result)
+                    //{
+                    //    ExcelWorksheet ws = package.Workbook.Worksheets.Add("hoso");
+
+                    //    int rowstart = 2;
+                    //    int colstart = 2;
+                    //    int rowend = rowstart;
+                    //    int colend = colstart + dt.Columns.Count;
+
+                    //    ws.Cells[rowstart, colstart, rowend, colend].Merge = true;
+                    //    ws.Cells[rowstart, colstart, rowend, colend].Value = "DANH SÁCH HỒ SƠ NHÂN VIÊN";
+                    //    ws.Cells[rowstart, colstart, rowend, colend].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                    //    ws.Cells[rowstart, colstart, rowend, colend].Style.Font.Bold = true;
+                    //    ws.Cells[rowstart, colstart, rowend, colend].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                    //    ws.Cells[rowstart, colstart, rowend, colend].Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightGray);
+
+                    //    rowstart += 2;
+                    //    rowend = rowstart + dt.Columns.Count;
+                    //    ws.Cells[rowstart, colstart].LoadFromDataTable(dt, true);
+                    //    int i = 1;
+
+                    //    ws.Cells[ws.Dimension.Address].AutoFitColumns();
+
+                    //    ws.Cells[rowstart, colstart, rowend, colend].Style.Border.Top.Style =
+                    //       ws.Cells[rowstart, colstart, rowend, colend].Style.Border.Bottom.Style =
+                    //       ws.Cells[rowstart, colstart, rowend, colend].Style.Border.Left.Style =
+                    //       ws.Cells[rowstart, colstart, rowend, colend].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+
+                    //}
+
+                    //DataTable dt3 = TextHelper.ToDataTable2(hosoDetail3.Result.ElementAt(1).ToList());
+                    //worksheet.Cells[1, 1].LoadFromDataTable(dt3, true);
+
+                    // Insert customer data into template
+                    //worksheet.Cells[4, 1].Value = "Customer Name: ";// + billDetail.CustomerName;
+                    //worksheet.Cells[5, 1].Value = "Address: ";// + billDetail.CustomerAddress;
+                    //worksheet.Cells[6, 1].Value = "Phone: ";// + billDetail.CustomerMobile;
+
+                    //worksheet.Cells[2, 1].Value = "DANH SÁCH HỒ SƠ NHÂN VIÊN ";// + billDetail.CustomerName;
+
+                    // Start Row for Detail Rows
+                    //int rowIndex = 9;
+
+                    //int rowIndex = 4;
+
+                    // load order details
+                    //var orderDetails = _hosonhanvienService.HoSoNhanVienGetList("%", "%", "%", "", "", "", "GetAllHoSoNhanVien");
+
+                    ////var orderDetails = _billService.GetBillDetails(billId);
+                    //int count = 1;
+                    //foreach (var orderDetail in orderDetails.Result)
+                    //{
+                    //    // Cell 1, Carton Count
+                    //    worksheet.Cells[rowIndex, 1].Value = count.ToString();
+                    //    // Cell 2, Order Number (Outline around columns 2-7 make it look like 1 column)
+                    //    worksheet.Cells[rowIndex, 2].Value = orderDetail.Ten.ToString();
+                    //    // Cell 8, Weight in LBS (convert KG to LBS, and rounding to whole number)
+                    //    worksheet.Cells[rowIndex, 3].Value = orderDetail.NgaySinh.ToString();
+
+                    //    worksheet.Cells[rowIndex, 4].Value = orderDetail.SoDienThoai.ToString();
+
+                    //    // Increment Row Counter
+                    //    rowIndex++;
+                    //    count++;
+                    //}
+
                     //decimal total = (decimal)(orderDetails.Sum(x => x.Quantity * x.Price));
                     //worksheet.Cells[24, 5].Value = total.ToString("N0");
 
@@ -566,8 +663,7 @@ namespace NiTiErp.Areas.Admin.Controllers
                     //var billDate = billDetail.DateCreated;
                     //worksheet.Cells[28, 3].Value = billDate.Day + ", " + billDate.Month + ", " + billDate.Year;
 
-
-                    package.SaveAs(file); //Save the workbook.
+                    //package.SaveAs(file); //Save the workbook.
                 }
             }
             return new OkObjectResult(url);
@@ -579,7 +675,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             var phong = !string.IsNullOrEmpty(phongId) ? phongId : "%";
             var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
 
-            var model = _hosonhanvienService.GetAllHoSoNhanVienPaging(corporationId, phong, tukhoa, page, pageSize, 
+            var model = _hosonhanvienService.GetAllHoSoNhanVienPaging(corporationId, phong, tukhoa, page, pageSize,
                 "", "1", "", "GetAllHoSoNhanVien");
 
             return new OkObjectResult(model);
@@ -587,7 +683,7 @@ namespace NiTiErp.Areas.Admin.Controllers
 
         [HttpGet]
         public IActionResult GetHoSoId(string hosoId)
-        {       
+        {
             var model = _hosonhanvienService.GetAllHoSoNhanVienPaging("", "", "", 1, 10,
                 hosoId, "1", "", "GetHoSoNhanVienId");
 
@@ -622,11 +718,12 @@ namespace NiTiErp.Areas.Admin.Controllers
                 return new OkObjectResult(model);
             }
         }
-        #endregion
+
+        #endregion HoSoNhanVien
 
         [HttpGet]
         public IActionResult GetListPhongKhuVuc(string makv)
-        {            
+        {
             var model = _phongdanhmucService.PhongDanhMucGetList(makv, "", "", "GetListPhongMaKV");
             return new OkObjectResult(model);
         }
@@ -689,7 +786,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         {
             var model = _xeploaidanhmucService.XepLoaiGetList("", "", "", "XepLoaiGetList");
             return new OkObjectResult(model);
-        }        
+        }
 
         [HttpGet]
         public IActionResult LoaiDaoTaoGetList()
@@ -732,9 +829,9 @@ namespace NiTiErp.Areas.Admin.Controllers
             var model = _honnhandanhmucService.HonNhanGetList("", "", "", "HonNhanGetList");
             return new OkObjectResult(model);
         }
-        #endregion
 
-        #endregion
+        #endregion Danh muc tab Ho so nhan vien
 
+        #endregion AJAX API
     }
 }
