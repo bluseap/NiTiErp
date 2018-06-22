@@ -13,7 +13,7 @@ namespace NiTiErp.Data.EF.Configurations
         public override void Configure(EntityTypeBuilder<Corporation> entity)
         {
             entity.Property(c => c.Id).HasMaxLength(50)
-                .IsRequired().HasColumnType("varchar(50)");
+                .IsRequired().IsUnicode(false).HasMaxLength(50);
         }
     }
 }

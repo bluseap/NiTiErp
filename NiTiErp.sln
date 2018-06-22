@@ -56,8 +56,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiTiErp.WebApi", "NiTiErp.W
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiTiErp.Application.Dapper", "NiTiErp.Application.Dapper\NiTiErp.Application.Dapper.csproj", "{BA30C762-46F7-463B-B559-2C23328DAD67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NiTiErp.Application.Dao", "NiTiErp.Application.Dao\NiTiErp.Application.Dao.csproj", "{766CB226-71F7-4F17-965B-41FC077FB7F5}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -96,10 +94,6 @@ Global
 		{BA30C762-46F7-463B-B559-2C23328DAD67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA30C762-46F7-463B-B559-2C23328DAD67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA30C762-46F7-463B-B559-2C23328DAD67}.Release|Any CPU.Build.0 = Release|Any CPU
-		{766CB226-71F7-4F17-965B-41FC077FB7F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{766CB226-71F7-4F17-965B-41FC077FB7F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{766CB226-71F7-4F17-965B-41FC077FB7F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{766CB226-71F7-4F17-965B-41FC077FB7F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -113,7 +107,6 @@ Global
 		{C540CEB2-3058-42EF-B0A8-7BDD0DAA3FB2} = {0C9FF5A2-ED49-4384-87C4-CB683CCE9CAA}
 		{C451DC2D-1640-4462-9D0D-644F5C7A1916} = {5D68087A-0EDF-43F9-B1A3-02D324EE3FC3}
 		{BA30C762-46F7-463B-B559-2C23328DAD67} = {B9A97666-8377-45CB-A950-E1E3AB07B147}
-		{766CB226-71F7-4F17-965B-41FC077FB7F5} = {B9A97666-8377-45CB-A950-E1E3AB07B147}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B330B1D3-E537-4DE2-92E3-AFF4FCFB5559}

@@ -682,6 +682,18 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetAllHoSoIn(string corporationId, string phongId, string keyword, int page, int pageSize)
+        {
+            var phong = !string.IsNullOrEmpty(phongId) ? phongId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+
+            var model = _hosonhanvienService.HoSoNhanVienGetList(corporationId, phong, tukhoa, 
+                "", "1", "", "GetAllHoSoNhanVien");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
         public IActionResult GetHoSoId(string hosoId)
         {
             var model = _hosonhanvienService.GetAllHoSoNhanVienPaging("", "", "", 1, 10,

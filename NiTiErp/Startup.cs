@@ -75,6 +75,11 @@ namespace NiTiErp
                 SecretKey = Configuration["Recaptcha:SecretKey"]
             });
 
+            services.Configure<MvcJsonOptions>(config =>
+            {
+                config.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            });
+
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromHours(2);
@@ -217,7 +222,7 @@ namespace NiTiErp
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
+                //app.UseBrowserLink();
                 app.UseDatabaseErrorPage();
             }
             else
