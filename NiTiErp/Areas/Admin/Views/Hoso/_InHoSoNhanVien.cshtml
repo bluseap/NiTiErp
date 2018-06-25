@@ -2,110 +2,117 @@
     <div class="modal-dialog  modal-lg">
         <div class="modal-content" id="divInHoSoNhanVien">
             <div class="modal-header">
-                <div>
-                    <table cellspacing="0" cellpadding="0">
-                        <tr>
-                            <td width=340 valign=top style='width:290.2pt;padding:0cm 5.4pt 0cm 5.4pt'>
-                                <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;  text-align:center;line-height:normal'>
-                                    <b>
-                                        <span style='font-family:"Times New Roman","serif"'>
-                                            CÔNG TY CỔ PHẦN ĐIỆN NƯỚC AN GIANG
-                                        </span>
-                                    </b>
-                                </p>
-                            </td>
-                            <td width=387 valign=top style='width:290.5pt;padding:0cm 5.4pt 0cm 5.4pt'>
-                                <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;  text-align:center;line-height:normal'>
-                                    <b>
-                                        <span style='font-family:"Times New Roman","serif"'>
-                                            CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
-                                        </span>
-                                    </b>
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width=340 valign=top style='width:255.2pt;padding:0cm 5.4pt 0cm 5.4pt'>
-                                <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;  text-align:center;line-height:normal'>
-                                    <span style='font-family:"Times New Roman","serif"'>
-                                        PHÒNG CÔNG NGHỆ TT
-                                    </span>
-                                </p>
-                            </td>
-                            <td width=387 valign=top style='width:290.5pt;padding:0cm 5.4pt 0cm 5.4pt'>
-                                <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;  text-align:center;line-height:normal'>
-                                    <span style='font-family:"Times New Roman","serif"'>
-                                        Độc lập - Tự do - Hạnh phúc
-                                    </span>
-                                </p>
-                            </td>
-                        </tr>
 
-                    </table>
-                </div>
-                <div align="center">
-                    <h1>Danh sách hồ sơ nhân viên</h1>
-                </div>
             </div>
             <div class="modal-body">
-                <table>
-                    <tr valign="top" align="left">
-                        <td>
-                            <table cellspacing="0" cellpadding="0" border="1">
-                                @*<tr valign="middle">
-                                <td colspan="6">
-                                    <div align="center">
-                                        <strong>Danh sách hồ sơ nhân viên </strong>
-                                    </div>
+
+                <div class="x_panel">
+                    <div class="table-responsive" id="table-responsiveHoSo">
+                        <table id="tbl-InHoSoTieuDe" class="table table-striped table-bordered" cellspacing="0">
+                            <tr>
+                                <td width=340 valign=top style='width:290.2pt;padding:0cm 5.4pt 0cm 5.4pt'>
+                                    <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;  text-align:center;line-height:normal'>
+                                        <b>
+                                            <span style='font-family:"Times New Roman","serif"'>
+                                                CÔNG TY CỔ PHẦN ĐIỆN NƯỚC AN GIANG
+                                            </span>
+                                        </b>
+                                    </p>
                                 </td>
-                            </tr>*@
+                                <td width=387 valign=top style='width:290.5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+                                    <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;  text-align:center;line-height:normal'>
+                                        <b>
+                                            <span style='font-family:"Times New Roman","serif"'>
+                                                CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+                                            </span>
+                                        </b>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width=340 valign=top style='width:255.2pt;padding:0cm 5.4pt 0cm 5.4pt'>
+                                    <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;  text-align:center;line-height:normal'>
+                                        <span style='font-family:"Times New Roman","serif"'>
+                                            PHÒNG CÔNG NGHỆ TT
+                                        </span>
+                                    </p>
+                                </td>
+                                <td width=387 valign=top style='width:290.5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+                                    <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;  text-align:center;line-height:normal'>
+                                        <span style='font-family:"Times New Roman","serif"'>
+                                            Độc lập - Tự do - Hạnh phúc
+                                        </span>
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                        <div align="center">
+                            <h1>Danh sách hồ sơ nhân viên</h1>
+                        </div>
+                        <table id="tblHoSoNhanVienIn" class="table table-striped table-bordered" border="1">
+                            <thead>
                                 <tr>
-                                    <td>
-                                        <div style="width: auto;">
-                                            <table cellspacing="0" cellpadding="2" border="1" id="header">
-                                                <tr>
-                                                    <th width="80">Stt</th>
-                                                    <th width="2800">Họ và tên</th>
-                                                    <th width="1800">Hình</th>
-                                                    <th width="1000">Khu vực</th>
-                                                    <th width="1000">Phòng</th>
-                                                    <th width="1000">Sđt</th>                                                  
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div style=" padding: 0px; margin: 0px; width: auto;height: auto;">
-                                            <table cellspacing="0" cellpadding="2" border="1" id="dataTable">
-                                                <tbody id="tblContenIntHoSoNhanVien"></tbody>
-
-                                            </table>
-                                        </div>
-                                    </td>
+                                    <th>#</th>
+                                    <th>Họ và tên</th>
+                                    <th>Hình </th>
+                                    <th>Khu vực</th>
+                                    <th>Phòng, tổ</th>
+                                    <th>Số điện thoại</th>
                                 </tr>
-                            </table>
-                        </td>
-                    </tr>
-
-                </table>
+                            </thead>
+                            <tbody id="tblContenIntHoSoNhanVien"></tbody>
+                        </table>
+                        <table id="tbl-InHoSoNguoiLap" class="table table-striped table-bordered" cellspacing="0">
+                            <tr>
+                                <td width=340 valign=top style='width:290.2pt;padding:0cm 5.4pt 0cm 5.4pt'>
+                                    <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;  text-align:center;line-height:normal'>
+                                        <b>
+                                            <span style='font-family:"Times New Roman","serif"'>
+                                            </span>
+                                        </b>
+                                    </p>
+                                </td>
+                                <td width=387 valign=top style='width:290.5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+                                    <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;  text-align:center;line-height:normal'>
+                                        <b>
+                                            <span style='font-family:"Times New Roman","serif"'>
+                                                An Giang, ngày ........ tháng ........ năm ......
+                                            </span>
+                                        </b>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width=340 valign=top style='width:255.2pt;padding:0cm 5.4pt 0cm 5.4pt'>
+                                    <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;  text-align:center;line-height:normal'>
+                                        <span style='font-family:"Times New Roman","serif"'>
+                                        </span>
+                                    </p>
+                                </td>
+                                <td width=387 valign=top style='width:290.5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+                                    <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;  text-align:center;line-height:normal'>
+                                        <span style='font-family:"Times New Roman","serif"'>
+                                            Người lập
+                                        </span>
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
 
             <script id="table-InHoSoNhanVien" type="x-tmpl-mustache">
                 <tr id="dataRow">
-                    <td width="30" valign="middle">11 </td>
+                    <td width="30" valign="middle"> 11 </td>
                     <td width="300" valign="middle">{{Ten}}</td>
-                    <td width="60" valign="middle">{{{HinhNhanVien}}}</td>                  
+                    <td width="60" valign="middle">{{{HinhNhanVien}}}</td>
                     <td width="100" valign="middle">{{TenKhuVuc}}</td>
                     <td width="100" valign="middle">{{TenPhong}}</td>
                     <td width="100" valign="middle">{{SoDienThoai}}</td>
-                    
                 </tr>
-               
-
-                
-
-
             </script>
-
         </div>
+        <div class="modal-content" id="editorPDF"></div>
     </div>
 </div>
-

@@ -4,14 +4,12 @@
     var imageNhanVien = [];
     var imageBang1 = [];
     var imageBang2 = [];
+   
 
     this.initialize = function () {
         loadKhuVuc();
-
-        loadData();        
-
-        registerEvents();  
-        
+        //loadData(); 
+        registerEvents();          
     }
 
     function registerEvents() {
@@ -53,6 +51,8 @@
         });
 
         $("#btn-create").on('click', function () {
+            loadData();     
+
             resetFormMaintainance();
 
             NhanVienId();// ho so nhan vien id new guid
@@ -240,10 +240,10 @@
             InHoSo(e);
         });
 
-        $('#btnXuatPDF').on('click', function (e) {
-            e.preventDefault();
-            XuatPDF();
-        });
+        //$('#btnXuatPDF').on('click', function (e) {
+        //    e.preventDefault();
+        //    XuatPDF();
+        //});
 
         $('#btnXuatExcel').on('click', function (e) {
             e.preventDefault();
@@ -2030,9 +2030,9 @@
         });
     }
 
-    function XuatPDF() {
-        tedu.notify("PDF ho so", "success");
-    }
+    //function XuatPDF() {
+    //    tedu.notify("PDF ho so", "success");               
+    //}
 
     function InHoSo() {       
         //tedu.notify("In ho so", "success");     

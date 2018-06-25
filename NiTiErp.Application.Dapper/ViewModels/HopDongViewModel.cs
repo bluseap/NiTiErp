@@ -54,6 +54,8 @@ namespace NiTiErp.Application.Dapper.ViewModels
         [StringLength(1000)]
         public string GhiChu { get; set; }
 
+        public int Status { get; set; }
+
         public DateTime CreateDate { get; set; }
 
         [StringLength(20)]
