@@ -87,6 +87,8 @@ namespace NiTiErp.Application.Dapper.ViewModels
         [StringLength(500)]
         public string HinhNhanVien { get; set; }
 
+        public int Status { get; set; }
+
         public bool Active { get; set; }
         public int Stt { get; set; }
 

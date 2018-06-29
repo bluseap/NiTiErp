@@ -2,11 +2,11 @@
 
    
     this.initialize = function () {
-        loadDataChiTiet();
+        loadDataChiTiet();        
 
-        LoadAddEditDataHopDong();
+        disabledHopDongChiTiet(true);
 
-        LoadAddEditTableHopDong();
+        resetFormHopDongChiTiet();
 
         registerEvents();
     }
@@ -26,15 +26,32 @@
         $('#hidHopDongId').val(0);
         $('#hidInsertHopDongId').val(0);
 
+        $('#txtSoHopDongMoi').val('');
+        $('#ddlLoaiHopDongChiTietMoi')[0].selectedIndex = 1;        
+        $('#txtNgayKyHopDongMoi').val('');
+        $('#txtNgayHopDongMoi').val('');
+        $('#txtNgayHieuLucMoi').val('');
+        $('#txtNgayHetHanMoi').val('');
+        $('#ddlChucVuKyHopDongChiTietMoi')[0].selectedIndex = 1;
+        $('#txtTenKyHopDongMoi').val('');
+        $('#txtHeSoLuongCoBanMoi').val('');
+        $('#txtLuongCoBanMoi').val('');
     }
 
-    function LoadAddEditDataHopDong() {
-
-    }
-
-    function LoadAddEditTableHopDong() {
-
-    }
+    function disabledHopDongChiTiet(para) {
+        $('#txtHoTenChiTiet').prop('disabled', para);
+        $('#txtTenPhongChiTiet').prop('disabled', para);
+        $('#txtSoHopDong').prop('disabled', para);
+        $('#ddlLoaiHopDongChiTietCu').prop('disabled', para);
+        $('#txtNgayKyHopDong').prop('disabled', para);
+        $('#txtNgayHopDong').prop('disabled', para);
+        $('#txtNgayHieuLuc').prop('disabled', para);
+        $('#txtNgayHetHan').prop('disabled', para);
+        $('#ddlChucVuKyHopDongChiTietCu').prop('disabled', para);
+        $('#txtTenKyHopDongCu').prop('disabled', para);
+        $('#txtHeSoLuongCoBan').prop('disabled', para);
+        $('#txtLuongCoBan').prop('disabled', para);
+    }       
 
     function loadDataChiTiet() {
         loadLoaiHopDongChiTiet();

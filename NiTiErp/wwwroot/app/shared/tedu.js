@@ -175,6 +175,17 @@
         else
             return '<span class="badge bg-red">Khoá</span>';
     },
+    getHoSoNhanVienStatus: function (status) {
+        if (status == 1)
+            return '<span class="badge bg-green">Làm việc</span>';
+        else if (status == 2)
+            return '<span class="badge bg-red">Nghĩ việc</span>';
+        else if (status == 3)
+            return '<span class="badge bg-red">Về hưu</span>';
+        else 
+            return '<span class="badge bg-green">Chưa biết</span>';
+
+    },
     formatNumber: function (number, precision) {
         if (!isFinite(number)) {
             return number.toString();

@@ -78,9 +78,11 @@ namespace NiTiErp.Application.Dapper.Implementation
 
                 dynamicParameters.Add("@Id", hopdong.Id);
                 dynamicParameters.Add("@HoSoNhanVienId", hopdong.HoSoNhanVienId);
+                dynamicParameters.Add("@CorporationId", hopdong.CorporationId);
+                dynamicParameters.Add("@ChucVuNhanVienId", hopdong.ChucVuNhanVienId);
+
                 dynamicParameters.Add("@SoHopDong", hopdong.SoHopDong);
                 dynamicParameters.Add("@HopDongDanhMucId", hopdong.HopDongDanhMucId);
-
                 dynamicParameters.Add("@NgayKyHopDong", hopdong.NgayKyHopDong);
                 dynamicParameters.Add("@NgayHopDong", hopdong.NgayHopDong);
                 dynamicParameters.Add("@NgayHieuLuc", hopdong.NgayHieuLuc);

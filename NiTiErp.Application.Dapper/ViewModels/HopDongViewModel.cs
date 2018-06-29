@@ -15,6 +15,21 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
         public Guid HoSoNhanVienId { get; set; }
 
+        [StringLength(1000)]
+        public string Ten { get; set; }
+
+        [StringLength(50)]
+        public string CorporationId { get; set; }
+
+        [StringLength(20)]
+        public string ChucVuNhanVienId { get; set; }
+
+        [StringLength(1000)]
+        public string TenPhong { get; set; }
+
+        [StringLength(500)]
+        public string TenChucVu { get; set; }
+
         [StringLength(50)]
         public string SoHopDong { get; set; }
 
@@ -55,6 +70,9 @@ namespace NiTiErp.Application.Dapper.ViewModels
         public string GhiChu { get; set; }
 
         public int Status { get; set; }
+
+        public bool Active { get; set; }
+        public int Stt { get; set; }
 
         public DateTime CreateDate { get; set; }
 

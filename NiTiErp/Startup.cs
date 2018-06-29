@@ -205,6 +205,7 @@ namespace NiTiErp
             services.AddTransient<IDangDoanService, DangDoanService>();
             services.AddTransient<ICongViecService, CongViecService>();
             services.AddTransient<IDieuKienTimService, DieuKienTimService>();
+            services.AddTransient<ILockService, LockService>();
 
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 

@@ -21,160 +21,161 @@
     </script>
 }
 
-<div class="">
-    <div class="page-title">
-        <div class="title_left">
-            <h3>Hợp đồng nhân viên </h3>
-        </div>
-        <div class="title_right">
-            <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right top_search">
-                <button class="btn btn-round btn-warning" id="btn-create" type="button">Tạo mới</button>
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Hợp đồng nhân viên </h3>
             </div>
-            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                <div class="input-group">
+            <div class="title_right">
+                <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right top_search">
+                    @*<button class="btn btn-round btn-warning" id="btn-create" type="button">Tạo mới</button>*@
+                </div>
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="clearfix"></div>
+        <div class="clearfix"></div>
 
-    <div class="x_content">
-        <div class="">
-            <div class="page-title">
-                <div class="title_left">
-                    <h3>  <small>Tra cứu hợp đồng nhân viên</small></h3>
+        <div class="x_content">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>  <small>Tra cứu hợp đồng nhân viên</small></h3>
+                    </div>
+                    <div class="title_right">
+                        <div class="col-md-5 col-sm-2 col-xs-12 form-group pull-right">
+                            <div class="input-group">
+                                <input type="text" id="txtTimNhanVien" class="form-control" placeholder="Từ khóa...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" id="btnTimNhanVien" type="button">Tìm !</button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-2 col-xs-12 form-group pull-right top_search">
+                            <div class="input-group">
+                                <select id="ddlPhongBan" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
+                            <div class="input-group">
+                                <select id="ddlKhuVuc" class="form-control"></select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="title_right">
-                    <div class="col-md-5 col-sm-2 col-xs-12 form-group pull-right">
-                        <div class="input-group">
-                            <input type="text" id="txtTimNhanVien" class="form-control" placeholder="Từ khóa...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-primary" id="btnTimNhanVien" type="button">Tìm !</button>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-2 col-xs-12 form-group pull-right top_search">
-                        <div class="input-group">
-                            <select id="ddlPhongBan" class="form-control"></select>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
-                        <div class="input-group">
-                            <select id="ddlKhuVuc" class="form-control"></select>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="clearfix"></div>
+                <div class="clearfix"></div>
 
-            <div class="row">
-                <div class="x_panel">
-                    <div class="row">
-                        <div class="col-md-2 col-sm-12 col-xs-12 form-group">
-                            <label class="control-label pull-right">Từ ngày hiệu lực</label>
-                        </div>
-                        <div class="col-md-2 col-sm-12 col-xs-12 form-group">
-                            <input type="text" name="txtTuNgayHieuLuc" id="txtTuNgayHieuLuc" placeholder="Từ ngày hiệu lực" class="form-control">
-                        </div>
-                        <div class="col-md-2 col-sm-12 col-xs-12 form-group">
-                            <label class="control-label pull-right">đến ngày hiệu lực</label>
-                        </div>
-                        <div class="col-md-2 col-sm-12 col-xs-12 form-group">
-                            <input type="text" name="txtDenNgayHieuLuc" id="txtDenNgayHieuLuc"  placeholder="Đến ngày hiệu lực" class="form-control">
-                        </div>
-                        <div class="col-md-2 col-sm-12 col-xs-12 form-group">
-                            <label>
-                                <input type="checkbox" id="checkTuNgayDenNgay" />
-                                Chọn khi tìm theo ngày
-                            </label>
-                        </div>
-                       
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2 col-sm-12 col-xs-12 form-group">
-                            <label class="control-label pull-right">Loại hợp đồng</label>
-                        </div>
-                        <div class="col-md-2 col-sm-12 col-xs-12 form-group">
-                            <select id="ddlLoaiHopDong" class="form-control"></select>
-                        </div>
-                        <div class="col-md-2 col-sm-12 col-xs-12 form-group">
-                            <label class="control-label pull-right">Điều kiện khác</label>
-                        </div>
-                        <div class="col-md-2 col-sm-12 col-xs-12 form-group">
-                            <select id="ddlDieuKienKhac" class="form-control"></select>
-                        </div>
-                        <div class="col-md-2 col-sm-12 col-xs-12 form-group">
-                            <button class="btn btn-round btn-warning pull-right" id="btnTimHopDong" type="button">Tìm hợp đồng</button>
-                        </div>
-
-                    </div>                   
-                    <br /> <br/>
-                           <div class="row">
-                               <div class="col-md-6 col-sm-12 col-xs-12 form-group">
-                                   <a class="btn btn-app pull-right">
-                                       <span class="badge bg-red ">6</span>
-                                       <i class="fa fa-bullhorn"></i> Danh sách hết hạn hợp đồng
-                                   </a>
-                               </div>
-                               <div class="col-md-6 col-sm-12 col-xs-12 form-group">
-                                   <a class="btn btn-app pullquote-left ">
-                                       <span class="badge bg-green">211</span>
-                                       <i class="fa fa-bullhorn"></i> Danh sách gần hết hạn hợp đồng (Trước 1 tháng)
-                                   </a>
-                               </div>
-
-                           </div>
-                    <br/>
-                    <div class="row no-print">
-                        <div class="col-xs-12">
-                            <button class="btn btn-info pull-right" id="btnXuatExcelHopDong" style="margin-right: 5px;">
-                                <i class="fa fa-download"></i>
-                                Xuất Excel
-                            </button>
-                            <button class="btn btn-default pull-right" id="btnInHopDong">
-                                <i class="fa fa-print"></i>
-                                Print
-                            </button>
-                        </div>
-                    </div>
-                    <div class="table-responsive">
-                        <table id="tbl-HopDong" class="table table-striped jambo_table bulk_action" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th width="=20%">#</th>
-                                    <th>Tên nhân viên</th>
-                                    <th>Phòng, tổ</th>
-                                    <th>Chức vụ</th>
-                                    <th>Số hợp đồng</th>
-                                    <th>Loại hợp đồng</th>
-                                    <th>Hệ số</th>
-                                    <th>Lương cơ bản</th>
-                                    <th>Ngày hiệu lực</th>
-                                    <th>Ngày hết hạn</th>
-                                    <th>Trạng thái</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbl-contentHopDong"></tbody>
-                        </table>
+                <div class="row">
+                    <div class="x_panel">
                         <div class="row">
-                            <div class="col-sm-5">
-                                <div class="dataTables_info" id="datatable-checkbox_info" role="status" aria-live="polite">
-                                    <select id="ddl-show-pageHopDong">
-                                        <option value="10" selected="selected">10</option>
-                                        <option value="20">20</option>
-                                        <option value="30">30</option>
-                                        <option value="50">50</option>
-                                    </select>
-                                    <span class="item-per-page">
-                                        dòng/trang.
-                                    </span>
-                                    Tổng cộng: <strong id="lbl-total-recordsHopDong"></strong>
-                                </div>
-                            </div><div class="col-sm-7">
-                                <div class="dataTables_paginate" id="datatable-checkbox_paginateHopDong">
-                                    <ul id="paginationULHopDong"></ul>
+                            <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                                <label class="control-label pull-right">Từ ngày hiệu lực</label>
+                            </div>
+                            <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                                <input type="text" name="txtTuNgayHieuLuc" id="txtTuNgayHieuLuc" placeholder="Từ ngày hiệu lực" class="form-control">
+                            </div>
+                            <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                                <label class="control-label pull-right">đến ngày hiệu lực</label>
+                            </div>
+                            <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                                <input type="text" name="txtDenNgayHieuLuc" id="txtDenNgayHieuLuc" placeholder="Đến ngày hiệu lực" class="form-control">
+                            </div>
+                            <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                                <label>
+                                    <input type="checkbox" id="checkTuNgayDenNgay" />
+                                    Chọn khi tìm theo ngày
+                                </label>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                                <label class="control-label pull-right">Loại hợp đồng</label>
+                            </div>
+                            <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                                <select id="ddlLoaiHopDong" class="form-control"></select>
+                            </div>
+                            <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                                <label class="control-label pull-right">Điều kiện khác</label>
+                            </div>
+                            <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                                <select id="ddlDieuKienKhac" class="form-control"></select>
+                            </div>
+                            <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                                <button class="btn btn-round btn-warning pull-right" id="btnTimHopDong" type="button">Tìm hợp đồng</button>
+                            </div>
+
+                        </div>
+                        <br /> <br />
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 col-xs-12 form-group">
+                                <a class="btn btn-app pull-right">
+                                    <span class="badge bg-red ">6</span>
+                                    <i class="fa fa-bullhorn"></i> Danh sách hết hạn hợp đồng
+                                </a>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12 form-group">
+                                <a class="btn btn-app pullquote-left ">
+                                    <span class="badge bg-green">211</span>
+                                    <i class="fa fa-bullhorn"></i> Danh sách gần hết hạn hợp đồng (Trước 1 tháng)
+                                </a>
+                            </div>
+
+                        </div>
+                        <br />
+                        <div class="row no-print">
+                            <div class="col-xs-12">
+                                <button class="btn btn-info pull-right" id="btnXuatExcelHopDong" style="margin-right: 5px;">
+                                    <i class="fa fa-download"></i>
+                                    Xuất Excel
+                                </button>
+                                <button class="btn btn-default pull-right" id="btnInHopDong">
+                                    <i class="fa fa-print"></i>
+                                    Print
+                                </button>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table id="tbl-HopDong" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th width="=20%">#</th>
+                                        <th>Tên nhân viên</th>
+                                        <th>Phòng, tổ</th>
+                                        <th>Chức vụ</th>
+                                        <th>Số hợp đồng</th>
+                                        <th>Loại hợp đồng</th>
+                                        <th>Hệ số</th>
+                                        <th>Lương cơ bản</th>
+                                        <th>Ngày hiệu lực</th>
+                                        <th>Ngày hết hạn</th>
+                                        <th>Trạng thái</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbl-contentHopDong"></tbody>
+                            </table>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <div class="dataTables_info" id="datatable-checkbox_infoHopDong" role="status" aria-live="polite">
+                                        <select id="ddl-show-pageHopDong">
+                                            <option value="10" selected="selected">10</option>
+                                            <option value="20">20</option>
+                                            <option value="30">30</option>
+                                            <option value="50">50</option>
+                                        </select>
+                                        <span class="item-per-page">
+                                            dòng/trang.
+                                        </span>
+                                        Tổng cộng: <strong id="lbl-total-recordsHopDong"></strong>
+                                    </div>
+                                </div><div class="col-sm-7">
+                                    <div class="dataTables_paginate" id="datatable-checkbox_paginateHopDong">
+                                        <ul id="paginationULHopDong"></ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -182,27 +183,43 @@
                 </div>
             </div>
         </div>
+
+        <script id="table-HopDong" type="x-tmpl-mustache">
+            <tr>
+                <th scope="row">
+                    <a class="btn btn-lg btn-editHopDong" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa hợp đồng"><i class="fa fa-pencil"></i> </a>
+                </th>
+                <td>{{Ten}}</td>
+                <td>{{TenPhong}}</td>
+                <td>{{TenChucVu}}</td>
+                <td>{{SoHopDong}}</td>
+                <td>{{TenLoaiHopDong}}</td>
+                <td>{{HeSoLuong}}</td>
+                <td>{{LuongCoBan}}</td>
+                <td>{{NgayHieuLuc}}</td>
+                <td>{{NgayHetHan}}</td>
+                <td>{{{Status}}}</td>
+            </tr>
+        </script>
+        <script id="table-HoSo" type="x-tmpl-mustache">
+            <tr>
+                <th scope="row">
+                    <a class="btn btn-lg btn-editHoSo" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa hồ sơ"><i class="fa fa-pencil"></i> </a>
+                </th>
+                <td>{{Ten}}</td>
+                <td>{{TenPhong}}</td>
+                <td>{{TenChucVu}}</td>
+                <td>{{SoHopDong}}</td>
+                <td>{{TenLoaiHopDong}}</td>
+                <td>{{HeSoLuong}}</td>
+                <td>{{LuongCoBan}}</td>
+                <td>{{NgayHieuLuc}}</td>
+                <td>{{NgayHetHan}}</td>
+                <td>{{{Status}}}</td>
+
+
+            </tr>
+        </script>
     </div>
-
-    <script id="table-HopDong" type="x-tmpl-mustache">
-        <tr>
-            <th scope="row">
-                <a class="btn btn-lg btn-edit" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa hồ sơ"><i class="fa fa-pencil"></i> </a>
-            </th>
-            <td>{{Ten}}</td>
-            <td>{{TenPhong}}</td>
-            <td>{{TenChucVu}}</td>
-            <td>{{SoHopDong}}</td>
-            <td>{{HopDongDanhMucId}}</td>
-            <td>{{HeSoLuong}}</td>
-            <td>{{LuongCoBan}}</td>
-            <td>{{NgayHieuLuc}}</td>
-            <td>{{NgayHetHan}}</td>
-            <td>{{{Status}}}</td>
-
-
-        </tr>
-    </script>
-</div>
 
 @Html.Partial("_AddEditModel.cshtml")

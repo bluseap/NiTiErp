@@ -7,7 +7,6 @@ using NiTiErp.Application.Dapper.ViewModels;
 using NiTiErp.Authorization;
 using NiTiErp.Extensions;
 using NiTiErp.Utilities.Dtos;
-using NiTiErp.Utilities.Helpers;
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
@@ -21,6 +20,7 @@ namespace NiTiErp.Areas.Admin.Controllers
 {
     public class HosoController : BaseController
     {
+        private ILockService _lockService;
         private ICongViecService _congviecService;
         private IDangDoanService _dangdoanService;
         private IHopDongService _hopdongService;
@@ -52,7 +52,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             NiTiErp.Application.Interfaces.IUserService userService,
             IAuthorizationService authorizationService,
 
-          
+            ILockService lockService,
             ICongViecService congviecService,
             IDangDoanService dangdoanService,
             IHopDongService hopdongService,
@@ -71,8 +71,8 @@ namespace NiTiErp.Areas.Admin.Controllers
             _hostingEnvironment = hostingEnvironment;
             _userService = userService;
             _authorizationService = authorizationService;
-          
 
+            _lockService = lockService;
             _congviecService = congviecService;
             _dangdoanService = dangdoanService;
             _hopdongService = hopdongService;
@@ -682,6 +682,18 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetHoSoNoHopDong(string corporationId, string phongId, string keyword, int page, int pageSize)
+        {
+            var phong = !string.IsNullOrEmpty(phongId) ? phongId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+
+            var model = _hosonhanvienService.GetAllHoSoNhanVienPaging(corporationId, phong, tukhoa, page, pageSize,
+                "", "1", "", "GetAllHoSoNoHopDong");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
         public IActionResult GetAllHoSoIn(string corporationId, string phongId, string keyword, int page, int pageSize)
         {
             var phong = !string.IsNullOrEmpty(phongId) ? phongId : "%";
@@ -729,6 +741,16 @@ namespace NiTiErp.Areas.Admin.Controllers
                 var model = _corporationService.CorporationGetList("NT006", "", "", "GetListCorNhanSu");
                 return new OkObjectResult(model);
             }
+        }
+
+        [HttpGet]
+        public IActionResult IsLockHoSo(string hosoId)
+        {
+            var corporationId = User.GetSpecificClaim("CorporationId");
+
+            var model = _lockService.LockGetList(corporationId, hosoId, "", "IsLockHoSo");
+
+            return new OkObjectResult(model);        
         }
 
         #endregion HoSoNhanVien

@@ -23,7 +23,7 @@
         });
 
         disabledHopDong(true);
-
+   
         //formMainValidate();
 
         $("#checkTuNgayDenNgay").change(function () {
@@ -39,6 +39,12 @@
             }   
         }).change();
 
+        $("#ddl-show-pageHopDong").on('change', function () {
+            tedu.configs.pageSize = $(this).val();
+            tedu.configs.pageIndex = 1;
+            LoadTableHopDong(true);
+        });
+
         $('#btnTimNhanVien').on('click', function () {
             LoadTableHopDong();
             LoadTableInHopDong();
@@ -51,11 +57,57 @@
             }
         });
 
-        $("#btn-create").on('click', function () {
-            resetFormHopDong();
+        $("#btnTimHopDong").on('click', function () {
+            var dieukien = $("#ddlDieuKienKhac").val();
 
-            $('#modal-add-edit-HopDong').modal('show');            
+            tedu.notify(dieukien, "success");
+
+            if (dieukien === "3") { // Chua nhap hop dong
+                LoadTableHoSo();
+            } 
+            else if(dieukien === "%") { // Chua nhap hop dong
+                LoadTableHopDong(true);
+            }
+            
         });
+
+        $('body').on('click', '.btn-editHopDong', function (e) {
+            e.preventDefault();           
+           
+            $('#hidHopDongId').val(1);
+            $('#hidInsertHopDongId').val(0);
+
+            var hopdongId = $(this).data('id');
+
+            tedu.notify(hopdongId, "success");
+
+            LoadAddEditHopDong(hopdongId);                  
+
+            $('#modal-add-edit-HopDong').modal('show');  
+        });
+
+        $('body').on('click', '.btn-editHoSo', function (e) {
+            e.preventDefault();         
+
+            $('#hidHopDongId').val(1);
+            $('#hidInsertHopDongId').val(0);
+
+            var hosoId = $(this).data('id');
+
+            $('#hidHoSoId').val(hosoId);
+
+            tedu.notify(hosoId, "success");
+
+            LoadAddEditHoSoNoHopDong(hosoId);      
+
+            $('#modal-add-edit-HopDong').modal('show');
+        });
+
+        //$("#btn-create").on('click', function () {
+        //    resetFormHopDong();
+
+        //    $('#modal-add-edit-HopDong').modal('show');            
+        //});
 
     }
 
@@ -192,9 +244,248 @@
         });
     }
 
-    function LoadTableHopDong() {
+    function LoadTableHopDong(isPageChanged) {
+        var template = $('#table-HopDong').html();
+        var render = "";
 
+        var makhuvuc = $('#ddlKhuVuc').val();
+        var phongId = $('#ddlPhongBan').val();
+        var timnhanvien = $('#txtTimNhanVien').val();
+
+        tedu.notify(timnhanvien, "success");
+
+        $.ajax({
+            type: 'GET',
+            data: {
+                corporationId: makhuvuc,
+                phongId: phongId,
+                keyword: timnhanvien,
+                page: tedu.configs.pageIndex,
+                pageSize: tedu.configs.pageSize
+            },
+            url: '/admin/hopdong/GetListHopDong',
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                }
+                else {
+                    $.each(response.Result.Results, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+                            Ten: item.Ten,                            
+                            TenPhong: item.TenPhong,        
+                            TenChucVu: item.TenChucVu,
+
+                            SoHopDong: item.SoHopDong,
+                            TenLoaiHopDong: item.TenLoaiHopDong,
+                            HeSoLuong: item.HeSoLuong,
+                            LuongCoBan: item.LuongCoBan,
+                            NgayHieuLuc: tedu.getFormattedDate(item.LuongCoBan),
+                            NgayHetHan: tedu.getFormattedDate(item.NgayHetHan),
+                            Status: tedu.getHoSoNhanVienStatus(item.Status)                           
+                            //HinhNhanVien: item.Image === null ? '<img src="/admin-side/images/user.png?h=90"' : '<img src="' + item.HinhNhanVien + '?h=90" />',                         
+                            // Price: tedu.formatNumber(item.Price, 0),
+                            
+                        });
+                    });
+                }
+
+                $('#lbl-total-recordsHopDong').text(response.Result.RowCount);
+
+                if (render !== '') {
+                    $('#tbl-contentHopDong').html(render);
+                }
+
+                if (response.Result.RowCount !== 0) {
+                    wrapPaging(response.Result.RowCount, function () {
+                        LoadTableHopDong();
+                    },
+                        isPageChanged);
+                }
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
     }
+    function wrapPaging(recordCount, callBack, changePageSize) {
+        var totalsize = Math.ceil(recordCount / tedu.configs.pageSize);
+        //Unbind pagination if it existed or click change pagesize
+        if ($('#paginationULHopDong a').length === 0 || changePageSize === true) {
+            $('#paginationULHopDong').empty();
+            $('#paginationULHopDong').removeData("twbs-pagination");
+            $('#paginationULHopDong').unbind("page");
+        }
+        //Bind Pagination Event
+        $('#paginationULHopDong').twbsPagination({
+            totalPages: totalsize,
+            visiblePages: 7,
+            first: 'Đầu',
+            prev: 'Trước',
+            next: 'Tiếp',
+            last: 'Cuối',
+            onPageClick: function (event, p) {
+                //tedu.configs.pageIndex = p;
+                //setTimeout(callBack(), 200);
+                if (tedu.configs.pageIndex !== p) {
+                    tedu.configs.pageIndex = p;
+                    setTimeout(callBack(), 200);
+                }
+            }
+        });
+    }
+
+    function LoadTableHoSo() {
+        var template = $('#table-HoSo').html();
+        var render = "";
+
+        var makhuvuc = $('#ddlKhuVuc').val();
+        var phongId = $('#ddlPhongBan').val();
+        var timnhanvien = $('#txtTimNhanVien').val();
+
+        tedu.notify(timnhanvien, "success");
+
+        $.ajax({
+            type: 'GET',
+            data: {
+                corporationId: makhuvuc,
+                phongId: phongId,
+                keyword: timnhanvien,
+                page: 1,
+                pageSize: 1000
+            },
+            url: '/admin/hoso/GetHoSoNoHopDong',
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                }
+                else {
+                    $.each(response.Result.Results, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+                            Ten: item.Ten,
+                            TenPhong: item.TenPhong,
+                            TenChucVu: item.TenChucVu,
+
+                            //SoHopDong: item.SoHopDong,
+                            //TenLoaiHopDong: item.TenLoaiHopDong,
+                            //HeSoLuong: item.HeSoLuong,
+                            //LuongCoBan: item.LuongCoBan,
+                            //NgayHieuLuc: tedu.getFormattedDate(item.LuongCoBan),
+                            //NgayHetHan: tedu.getFormattedDate(item.NgayHetHan),
+
+                            Status: tedu.getHoSoNhanVienStatus(item.Status)
+                            
+                        });
+                    });
+                }
+
+                $('#lbl-total-recordsHopDong').text(response.Result.RowCount);
+
+                if (render !== '') {
+                    $('#tbl-contentHopDong').html(render);
+                }
+               
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+
+    function LoadAddEditHopDong(hopdongid) {
+        resetHopDongChiTiet();
+
+        LoadHopDongCu(hopdongid);        
+    }
+
+    function LoadAddEditHoSoNoHopDong(hosoid) {
+        resetHopDongChiTiet();
+    }
+
+    function LoadHopDongCu(hopdongid) {
+        $.ajax({
+            type: "GET",
+            url: "/Admin/hopdong/GetMaxHopDongId",
+            data: { hopdongId: hopdongid },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    resetHopDongChiTiet();
+                }
+                else {
+                    var hopdong = response.Result.Results[0];
+
+                    $('#txtHoTenChiTiet').val(hopdong.Ten);
+                    $('#txtTenPhongChiTiet').val(hopdong.TenPhong);
+
+                    $('#txtSoHopDong').val(hopdong.SoHopDong);
+                    $('#ddlLoaiHopDongChiTietCu').val(hopdong.HopDongDanhMucId);
+                    $('#txtNgayKyHopDong').val(tedu.getFormattedDate(hopdong.NgayKyHopDong));
+                    $('#txtNgayHopDong').val(tedu.getFormattedDate(hopdong.NgayHopDong));
+                    $('#txtNgayHieuLuc').val(tedu.getFormattedDate(hopdong.NgayHieuLuc));
+                    $('#txtNgayHetHan').val(tedu.getFormattedDate(hopdong.NgayHetHan));
+                    $('#ddlChucVuKyHopDongChiTietCu').val(hopdong.);
+                    $('#txtTenKyHopDongCu').val(hopdong.);
+                    $('#txtHeSoLuongCoBan').val(hopdong.);
+                    $('#txtLuongCoBan').val(hopdong.);
+
+
+                    //$('#txtSoHopDong').val(hopdong.SoHopDong); 
+                    //$('#txtNgayKyHopDong').val(tedu.getFormattedDate(hopdong.NgayKyHopDong));                  
+                    
+
+
+                    var hosoId;
+                    LoadAddEditTableHopDong(hosoId);
+                }               
+
+
+                //$('#ckStatusM').prop('checked', data.Status === 1);     
+                tedu.stopLoading();
+            },
+            error: function (status) {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
+        });
+        
+    }
+
+    function resetHopDongChiTiet() {
+        $('#txtSoHopDong').val('');
+        $('#ddlLoaiHopDongChiTietCu')[0].selectedIndex = 1;
+        $('#txtNgayKyHopDong').val('');
+        $('#txtNgayHopDong').val('');
+        $('#txtNgayHieuLuc').val('');
+        $('#txtNgayHetHan').val('');
+        $('#ddlChucVuKyHopDongChiTietCu')[0].selectedIndex = 1;
+        $('#txtTenKyHopDongCu').val('');
+        $('#txtHeSoLuongCoBan').val('');
+        $('#txtLuongCoBan').val('');
+
+        $('#txtSoHopDongMoi').val('');
+        $('#ddlLoaiHopDongChiTietMoi')[0].selectedIndex = 1;
+        $('#txtNgayKyHopDongMoi').val('');
+        $('#txtNgayHopDongMoi').val('');
+        $('#txtNgayHieuLucMoi').val('');
+        $('#txtNgayHetHanMoi').val('');
+        $('#ddlChucVuKyHopDongChiTietMoi')[0].selectedIndex = 1;
+        $('#txtTenKyHopDongMoi').val('');
+        $('#txtHeSoLuongCoBanMoi').val('');
+        $('#txtLuongCoBanMoi').val('');
+    }
+
+    function LoadAddEditTableHopDong(hosoid) {
+
+    } 
 
     function LoadTableInHopDong() {
 

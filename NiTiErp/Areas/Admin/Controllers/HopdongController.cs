@@ -26,23 +26,42 @@ namespace NiTiErp.Areas.Admin.Controllers
         private readonly IAuthorizationService _authorizationService;
 
         private IDieuKienTimService _dieukientimService;
+        private IHopDongService _hopdongService;
 
         public HopdongController(IHostingEnvironment hostingEnvironment,
             NiTiErp.Application.Interfaces.IUserService userService,
             IAuthorizationService authorizationService,
 
+            IHopDongService hopdongService,
             IDieuKienTimService dieukientimService        )
         {
             _hostingEnvironment = hostingEnvironment;
             _userService = userService;
             _authorizationService = authorizationService;
 
+            _hopdongService = hopdongService;
             _dieukientimService = dieukientimService;
         }
 
         public IActionResult Index()
         {
             return View();
+        }
+
+        #region AJAX API
+
+        [HttpGet]
+        public IActionResult GetListHopDong(string corporationId, string phongId, string keyword, int page,
+            int pageSize, string hosoId, string hopdongId)
+        {
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var phong = !string.IsNullOrEmpty(phongId) ? phongId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+
+            var model = _hopdongService.GetAllHopDongPaging(khuvuc, phong, tukhoa, page, pageSize,
+                hosoId, "", "", hopdongId, "GetAllHopDongTim");
+
+            return new OkObjectResult(model);
         }
 
         #region Danh muc Hop dong nhan vien
@@ -55,6 +74,7 @@ namespace NiTiErp.Areas.Admin.Controllers
 
         #endregion
 
+        #endregion
 
     }
 }

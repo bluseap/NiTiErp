@@ -207,6 +207,8 @@
             loadDangDoan(hosoId);
 
             loadCongViec(hosoId);
+
+            loadIsLockHoSo(hosoId);
             
         });
 
@@ -813,9 +815,9 @@
                             TenPhong: item.TenPhong,
                             TenChucVu: item.TenChucVu,
                             NgaySinh: tedu.getFormattedDate(item.NgaySinh),
-                            CreateDate: tedu.getFormattedDate(item.CreateDate)
-                            // Price: tedu.formatNumber(item.Price, 0),
-                            //Status: tedu.getStatus(item.Status)
+                            CreateDate: tedu.getFormattedDate(item.CreateDate),
+                            Status: tedu.getHoSoNhanVienStatus(item.Status)
+                            // Price: tedu.formatNumber(item.Price, 0),                          
                         });
                     });
                 }
@@ -1951,6 +1953,9 @@
         var hosoidinup = $('#hidLyLichIdInsert').val(); // Id = 0
         var hesoluongdanhmuc = $('#hidHeSoLuongDanhMucId').val();         
 
+        var corporationid = $('#ddlCongTyXiNghiep').val();
+        var chucvuid = $('#ddlChucVuKyHopDong').val();
+
         var sohopdong = $('#txtSoHopDong').val();
         var loaihopdong = $('#ddlLoaiHopDong').val();
         var ngaykyhopdong = tedu.getFormatDateYYMMDD($('#txtNgayKyHopDong').val()); 
@@ -1970,6 +1975,9 @@
                 InsertUpdateId: hosoidinup, // = 0
                 InsertUpdateHopDongId: 0, // = 0
                 HeSoLuongDanhMucId: hesoluongdanhmuc,
+
+                CorporationId: corporationid,
+                ChucVuNhanVienId: chucvuid,
 
                 SoHopDong: sohopdong,
                 HopDongDanhMucId: loaihopdong,
@@ -3289,5 +3297,33 @@
         });
     }
 
+    function loadIsLockHoSo(hosoid) {      
+        $.ajax({
+            type: "GET",
+            url: "/Admin/Hoso/IsLockHoSo",
+            data: { hosoId: hosoid },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var islockhoso = response.Result;
+
+                if (islockhoso.KETQUA == 'DUNG') {
+                    $('#btnSave').hide();
+                }
+                else {                    
+                    $('#btnSave').show();
+                }
+                tedu.stopLoading();
+            },
+            error: function (status) {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
+
+   
 
 }
