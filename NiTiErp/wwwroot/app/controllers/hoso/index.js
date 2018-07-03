@@ -27,13 +27,14 @@
         formMainValidate();
 
         $('#btnTimNhanVien').on('click', function () {
+            loadData(); 
             LoadTableHoSoNhanVien();
-
             LoadTableInHoSo();
         });
 
         $('#txtTimNhanVien').on('keypress', function (e) {
             if (e.which === 13) {
+                loadData(); 
                 LoadTableHoSoNhanVien();
             }
         });
@@ -86,6 +87,11 @@
                     }
                     else {  // add bang moi
                         SaveTrinhDoNhanVien(e);
+                    }
+                }
+                else {
+                    if (hosoInserId == 1) {
+                        SaveHoSoNhanVienTrinhDo(e);
                     }
                 }
             }
@@ -195,6 +201,8 @@
             e.preventDefault();
 
             resetFormMaintainance();
+
+            //loadPhongKhuVucTabCongViec($("#ddlCongTyXiNghiep").val());
 
             $('#hidLyLichIdInsert').val(1);           
 
@@ -1464,7 +1472,7 @@
 
                 // tab cong viec
                 $('#ddlCongTyXiNghiep').val(hoso.CorporationId);
-                $('#ddlPhongtabCongViec').val(hoso.ChucVuNhanVienId);
+                //$('#ddlPhongtabCongViec').val(hoso.ChucVuNhanVienId);
 
                 //$('#ckStatusM').prop('checked', data.Status === 1);                
 

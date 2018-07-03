@@ -76,6 +76,7 @@
            
             $('#hidHopDongId').val(1);
             $('#hidInsertHopDongId').val(0);
+            $('#hidHeSoLuongDanhMucId').val(0);
 
             var hopdongId = $(this).data('id');
 
@@ -89,7 +90,7 @@
         $('body').on('click', '.btn-editHoSo', function (e) {
             e.preventDefault();         
 
-            $('#hidHopDongId').val(1);
+            $('#hidHopDongId').val(1); // para update inserst
             $('#hidInsertHopDongId').val(0);
 
             var hosoId = $(this).data('id');
@@ -410,7 +411,7 @@
     function LoadHopDongCu(hopdongid) {
         $.ajax({
             type: "GET",
-            url: "/Admin/hopdong/GetMaxHopDongId",
+            url: "/Admin/hopdong/GetAllHopDongId",
             data: { hopdongId: hopdongid },
             dataType: "json",
             beforeSend: function () {
@@ -421,7 +422,7 @@
                     resetHopDongChiTiet();
                 }
                 else {
-                    var hopdong = response.Result.Results[0];
+                    var hopdong = response.Result.Results[0];                    
 
                     $('#txtHoTenChiTiet').val(hopdong.Ten);
                     $('#txtTenPhongChiTiet').val(hopdong.TenPhong);
@@ -432,21 +433,23 @@
                     $('#txtNgayHopDong').val(tedu.getFormattedDate(hopdong.NgayHopDong));
                     $('#txtNgayHieuLuc').val(tedu.getFormattedDate(hopdong.NgayHieuLuc));
                     $('#txtNgayHetHan').val(tedu.getFormattedDate(hopdong.NgayHetHan));
-                    $('#ddlChucVuKyHopDongChiTietCu').val(hopdong.);
-                    $('#txtTenKyHopDongCu').val(hopdong.);
-                    $('#txtHeSoLuongCoBan').val(hopdong.);
-                    $('#txtLuongCoBan').val(hopdong.);
+                    $('#ddlChucVuKyHopDongChiTietCu').val(hopdong.ChucVuNhanVienId); // chuc vu nhan vien lay he so luong can ban bac 1
 
+                    $('#txtTenKyHopDongCu').val(hopdong.TenNguoiKyHopDong);
+
+                    $('#hidHeSoLuongDanhMucCuId').val(hopdong.HeSoLuongDanhMucId);
+                    $('#txtHeSoLuongCoBan').val(hopdong.HeSoLuong);
+                    $('#txtLuongCoBan').val(hopdong.LuongCoBan);
 
                     //$('#txtSoHopDong').val(hopdong.SoHopDong); 
-                    //$('#txtNgayKyHopDong').val(tedu.getFormattedDate(hopdong.NgayKyHopDong));                  
-                    
+                    //$('#txtNgayKyHopDong').val(tedu.getFormattedDate(hopdong.NgayKyHopDong)); 
 
+                    var hosoId = hopdong.HoSoNhanVienId;
+                    LoadTableHopDongChiTiet(hosoId);
 
-                    var hosoId;
-                    LoadAddEditTableHopDong(hosoId);
-                }               
-
+                    $('#hidHopDongNhanVienCuId').val(hopdong.Id);
+                    $('#hidHoSoId').val(hosoId);
+                } 
 
                 //$('#ckStatusM').prop('checked', data.Status === 1);     
                 tedu.stopLoading();
@@ -483,8 +486,58 @@
         $('#txtLuongCoBanMoi').val('');
     }
 
-    function LoadAddEditTableHopDong(hosoid) {
+    function LoadTableHopDongChiTiet(hosoid) {
+        var template = $('#table-HopDongChiTiet').html();
+        var render = "";   
 
+        $.ajax({
+            type: 'GET',
+            data: {
+                hosoId: hosoid
+            },
+            url: '/admin/hopdong/GetAllHoSoHopDongId',
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                }
+                else {
+                    $.each(response.Result.Results, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+                            Ten: item.Ten,
+                            TenPhong: item.TenPhong,
+                            TenChucVu: item.TenChucVu,
+
+                            SoHopDong: item.SoHopDong,
+                            TenLoaiHopDong: item.TenLoaiHopDong,
+                            HeSoLuong: item.HeSoLuong,
+                            LuongCoBan: item.LuongCoBan,
+                            NgayHieuLuc: tedu.getFormattedDate(item.LuongCoBan),
+                            NgayHetHan: tedu.getFormattedDate(item.NgayHetHan),
+                            Status: tedu.getHoSoNhanVienStatus(item.Status)    
+                        });
+                    });
+                }
+
+                $('#lbl-total-recordsHopDongChiTiet').text(response.Result.RowCount);
+
+                if (render !== '') {
+                    $('#tbl-contentHopDongChiTiet').html(render);
+                }
+
+                //if (response.Result.RowCount !== 0) {
+                //    wrapPaging(response.Result.RowCount, function () {
+                //        LoadTableHopDongChiTiet();
+                //    },
+                //        isPageChanged);
+                //}
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
     } 
 
     function LoadTableInHopDong() {

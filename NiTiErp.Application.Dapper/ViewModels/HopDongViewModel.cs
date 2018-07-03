@@ -9,6 +9,9 @@ namespace NiTiErp.Application.Dapper.ViewModels
     {
         public string Id { set; get; }
 
+        [StringLength(20)]
+        public string HopDongNhanVienCuId { set; get; }
+
         public int InsertUpdateId { set; get; }
 
         public int InsertUpdateHopDongId { set; get; }
@@ -59,6 +62,9 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
         [StringLength(100)]
         public string TenBacLuong { get; set; }
+
+        [StringLength(20)]
+        public string ChucVuNguoiKyId { get; set; }
 
         [StringLength(1000)]
         public string TenNguoiKyHopDong { get; set; }

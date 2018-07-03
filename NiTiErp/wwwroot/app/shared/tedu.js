@@ -163,11 +163,11 @@
     startLoading: function () {
         if ($('.dv-loading').length > 0)
             $('.dv-loading').removeClass('hide');
+        //$('#loading-always').loading();
     },
     stopLoading: function () {
         if ($('.dv-loading').length > 0)
-            $('.dv-loading')
-                .addClass('hide');
+            $('.dv-loading').addClass('hide');
     },
     getStatus: function (status) {
         if (status == 1)
@@ -181,9 +181,11 @@
         else if (status == 2)
             return '<span class="badge bg-red">Nghĩ việc</span>';
         else if (status == 3)
-            return '<span class="badge bg-red">Về hưu</span>';
+            return '<span class="badge bg-blue">Về hưu</span>';
+        else if (status == 4)
+            return '<span class="badge bg-orange">Hết hạn</span>';
         else 
-            return '<span class="badge bg-green">Chưa biết</span>';
+            return '<span class="badge bg-purple">Chưa biết</span>';
 
     },
     formatNumber: function (number, precision) {

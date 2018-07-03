@@ -31,7 +31,6 @@
     "jquery-treegrid": "~0.3.0",
     "bootstrap-datepicker": "~1.7.1",
     "jQuery.print": "~1.5.1"
-
   },
   "compilerOptions": {
     "module": "commonjs",
