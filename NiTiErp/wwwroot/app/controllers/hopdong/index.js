@@ -104,11 +104,22 @@
             $('#modal-add-edit-HopDong').modal('show');
         });
 
-        //$("#btn-create").on('click', function () {
-        //    resetFormHopDong();
+        $('#btnSaveHopDong').on('click', function (e) {
+            SaveHopDongNhanVien(e);
+        });
 
-        //    $('#modal-add-edit-HopDong').modal('show');            
-        //});
+        $('body').on('click', '.btn-editHopDongChiTiet', function (e) {
+            e.preventDefault();
+
+            $('#hidHopDongId').val(1);
+            $('#hidInsertHopDongId').val(1);
+
+            var hopdongId = $(this).data('id');
+            //tedu.notify(hopdongId, "success");
+
+            LoadHopDongChiTietMoi(hopdongId);
+
+        });
 
     }
 
@@ -480,7 +491,20 @@
         $('#txtNgayHopDongMoi').val('');
         $('#txtNgayHieuLucMoi').val('');
         $('#txtNgayHetHanMoi').val('');
-        $('#ddlChucVuKyHopDongChiTietMoi')[0].selectedIndex = 1;
+        $('#ddlChucVuKyHopDongChiTietMoi')[0].selectedIndex = 0;
+        $('#txtTenKyHopDongMoi').val('');
+        $('#txtHeSoLuongCoBanMoi').val('');
+        $('#txtLuongCoBanMoi').val('');
+    }
+
+    function resetHopDongChiTietMoi() {
+        $('#txtSoHopDongMoi').val('');
+        $('#ddlLoaiHopDongChiTietMoi')[0].selectedIndex = 1;
+        $('#txtNgayKyHopDongMoi').val('');
+        $('#txtNgayHopDongMoi').val('');
+        $('#txtNgayHieuLucMoi').val('');
+        $('#txtNgayHetHanMoi').val('');
+        $('#ddlChucVuKyHopDongChiTietMoi')[0].selectedIndex = 0;
         $('#txtTenKyHopDongMoi').val('');
         $('#txtHeSoLuongCoBanMoi').val('');
         $('#txtLuongCoBanMoi').val('');
@@ -539,6 +563,149 @@
             }
         });
     } 
+
+    function SaveHopDongNhanVien(e) {
+        e.preventDefault();
+        tedu.notify("vao hop dong", "success");
+
+        var hopdongnhanvienidcu = $('#hidHopDongNhanVienCuId').val();
+        var hosoid = $('#hidHoSoId').val();
+        var hesoluongcu = $('#hidHeSoLuongDanhMucCuId').val();
+
+        var hopdongid = $('#hidHopDongId').val(); //  id = 1 ; para update insert
+        var inshopdongid = $('#hidInsertHopDongId').val(); // Id = 0
+        var hesoluongid = $('#hidHeSoLuongDanhMucId').val(); // id = 0
+
+        var corporationid = $('#ddlKhuVuc').val();
+        var chucvuid = $('#ddlChucVuKyHopDongChiTietMoi').val();
+
+        var sohopdong = $('#txtSoHopDongMoi').val();
+        var loaihopdong = $('#ddlLoaiHopDongChiTietMoi').val();
+        var ngaykyhopdong = tedu.getFormatDateYYMMDD($('#txtNgayKyHopDongMoi').val());
+        var ngayhopdong = tedu.getFormatDateYYMMDD($('#txtNgayHopDongMoi').val());
+        var ngayhieuluc = tedu.getFormatDateYYMMDD($('#txtNgayHieuLucMoi').val());
+        var ngayhethan = tedu.getFormatDateYYMMDD($('#txtNgayHetHanMoi').val());
+
+        var tenkyhopdong = $('#txtTenKyHopDongMoi').val();
+        var hesoluongcoban = $('#txtHeSoLuongCoBanMoi').val();
+        var luongcoban = $('#txtLuongCoBanMoi').val();
+
+        $.ajax({
+            type: "POST",
+            url: "/Admin/hopdong/AddUpdateHopDong",
+            data: {
+                Id: hopdongnhanvienidcu,
+                HopDongNhanVienCuId: hopdongnhanvienidcu,
+
+                HoSoNhanVienId: hosoid,
+                InsertUpdateId: hopdongid, // = 0
+                InsertUpdateHopDongId: inshopdongid, // = 0
+                HeSoLuongDanhMucId: hesoluongid,
+
+                CorporationId: corporationid,
+                ChucVuNhanVienId: chucvuid,
+
+                SoHopDong: sohopdong,
+                HopDongDanhMucId: loaihopdong,
+                NgayKyHopDong: ngaykyhopdong,
+                NgayHopDong: ngayhopdong,
+                NgayHieuLuc: ngayhieuluc,
+                NgayHetHan: ngayhethan,
+                TenNguoiKyHopDong: tenkyhopdong,
+                HeSoLuong: hesoluongcoban,
+                LuongCoBan: luongcoban
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Success == false) {
+                    tedu.notify(response.Message, "error");
+                }
+                else {
+                    tedu.notify('Hợp đồng nhân viên.', 'success');
+                    LoadTableHopDongChiTiet(hosoid);
+                    LoadTableHopDong(true);
+                    $('#modal-add-edit-HopDong').modal('hide');
+                    resetFormHopDongChiTiet2();
+                    tedu.stopLoading();
+                }
+            },
+            error: function () {
+                tedu.notify('Có lỗi! Không thể lưu Hợp đồng nhân viên', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function resetHopDongChiTiet2() {
+        $('#hidHopDongId').val(0);
+        $('#hidInsertHopDongId').val(0);
+        $('#hidHeSoLuongDanhMucId').val(0);
+
+        $('#hidHopDongNhanVienCuId').val(0);
+        $('#hidHopDongNhanVienMoiId').val(0);
+        $('#hidHeSoLuongDanhMucCuId').val(0);
+    }
+
+    function LoadHopDongChiTietMoi(hopdongid) {
+
+        $.ajax({
+            type: "GET",
+            url: "/Admin/hopdong/GetAllHopDongId",
+            data: { hopdongId: hopdongid },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    resetHopDongChiTietMoi();
+                }
+                else {
+                    var hopdong = response.Result.Results[0];
+
+                    //$('#txtHoTenChiTiet').val(hopdong.Ten);
+                    //$('#txtTenPhongChiTiet').val(hopdong.TenPhong);
+
+                    $('#txtSoHopDongMoi').val(hopdong.SoHopDong);
+                    $('#ddlLoaiHopDongChiTietMoi').val(hopdong.HopDongDanhMucId);
+                    $('#txtNgayKyHopDongMoi').val(tedu.getFormattedDate(hopdong.NgayKyHopDong));
+                    $('#txtNgayHopDongMoi').val(tedu.getFormattedDate(hopdong.NgayHopDong));
+                    $('#txtNgayHieuLucMoi').val(tedu.getFormattedDate(hopdong.NgayHieuLuc));
+                    $('#txtNgayHetHanMoi').val(tedu.getFormattedDate(hopdong.NgayHetHan));
+                    $('#ddlChucVuKyHopDongChiTietMoi').val(hopdong.ChucVuNhanVienId); // chuc vu nhan vien lay he so luong can ban bac 1
+
+                    $('#txtTenKyHopDongMoi').val(hopdong.TenNguoiKyHopDong);
+
+                    $('#hidHeSoLuongDanhMucId').val(hopdong.HeSoLuongDanhMucId);
+                    $('#txtHeSoLuongCoBanMoi').val(hopdong.HeSoLuong);
+                    $('#txtLuongCoBanMoi').val(hopdong.LuongCoBan);
+
+                    //$('#txtSoHopDong').val(hopdong.SoHopDong); 
+                    //$('#txtNgayKyHopDong').val(tedu.getFormattedDate(hopdong.NgayKyHopDong)); 
+
+                    var hosoId = hopdong.HoSoNhanVienId;
+                    LoadTableHopDongChiTiet(hosoId);
+
+                    $('#hidHopDongNhanVienCuId').val(hopdong.Id);
+                    $('#hidHoSoId').val(hosoId);
+
+                    $('#hidHopDongId').val(1);
+                    $('#hidInsertHopDongId').val(1);
+                }
+
+                //$('#ckStatusM').prop('checked', data.Status === 1);     
+                tedu.stopLoading();
+            },
+            error: function (status) {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
+        });
+
+    }
 
     function LoadTableInHopDong() {
 

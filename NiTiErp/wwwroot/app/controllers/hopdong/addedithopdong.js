@@ -1,6 +1,7 @@
 ﻿var AddEditHopDong = function () {
 
-   
+    //var hopdongController = new hopdongController();
+
     this.initialize = function () {
         loadDataChiTiet();        
 
@@ -12,9 +13,11 @@
     }
 
     function registerEvents() {
-        $('#btnSaveHopDong').on('click', function (e) {            
-            SaveHopDongNhanVien(e);            
-        });
+        $('#txtNgayKyHopDongMoi, #txtNgayHopDongMoi, #txtNgayHieuLucMoi, #txtNgayHetHanMoi').datepicker({
+            autoclose: true,
+            format: 'dd/mm/yyyy',
+            language: 'vi'
+        });        
 
         $("#ddlChucVuKyHopDongChiTietMoi").on('change', function () {
             //tedu.notify("chuc vu hop dong", "success");
@@ -53,79 +56,8 @@
             });
 
         });
-    }
-
-    function SaveHopDongNhanVien(e) {
-        e.preventDefault();
-        tedu.notify("vao hop dong", "success");
-
-        var hopdongnhanvienidcu = $('#hidHopDongNhanVienCuId').val();
-        var hosoid = $('#hidHoSoId').val();
-        var hesoluongcu = $('#hidHeSoLuongDanhMucCuId').val();
-
-        var hopdongid = $('#hidHopDongId').val(); //  id = 1 ; para update insert
-        var inshopdongid = $('#hidInsertHopDongId').val(); // Id = 0
-        var hesoluongid = $('#hidHeSoLuongDanhMucId').val(); // id = 0
-
-        var corporationid = $('#ddlKhuVuc').val();
-        var chucvuid = $('#ddlChucVuKyHopDongChiTietMoi').val();
-
-        var sohopdong = $('#txtSoHopDongMoi').val();
-        var loaihopdong = $('#ddlLoaiHopDongChiTietMoi').val();
-        var ngaykyhopdong = tedu.getFormatDateYYMMDD($('#txtNgayKyHopDongMoi').val());
-        var ngayhopdong = tedu.getFormatDateYYMMDD($('#txtNgayHopDongMoi').val());
-        var ngayhieuluc = tedu.getFormatDateYYMMDD($('#txtNgayHieuLucMoi').val());
-        var ngayhethan = tedu.getFormatDateYYMMDD($('#txtNgayHetHanMoi').val());
-       
-        var tenkyhopdong = $('#txtTenKyHopDongMoi').val();
-        var hesoluongcoban = $('#txtHeSoLuongCoBanMoi').val();
-        var luongcoban = $('#txtLuongCoBanMoi').val();
-
-        $.ajax({
-            type: "POST",
-            url: "/Admin/hopdong/AddUpdateHopDong",
-            data: {
-                HopDongNhanVienCuId: hopdongnhanvienidcu,
-
-                HoSoNhanVienId: hosoid,
-                InsertUpdateId: hosoidinup, // = 0
-                InsertUpdateHopDongId: 0, // = 0
-                HeSoLuongDanhMucId: hesoluongdanhmuc,
-
-                CorporationId: corporationid,
-                ChucVuNhanVienId: chucvuid,
-
-                SoHopDong: sohopdong,
-                HopDongDanhMucId: loaihopdong,
-                NgayKyHopDong: ngaykyhopdong,
-                NgayHopDong: ngayhopdong,
-                NgayHieuLuc: ngayhieuluc,
-                NgayHetHan: ngayhethan,
-                TenNguoiKyHopDong: tenkyhopdong,
-                HeSoLuong: hesoluongcoban,
-                LuongCoBan: luongcoban
-            },
-            dataType: "json",
-            beforeSend: function () {
-                tedu.startLoading();
-            },
-            success: function (response) {
-                if (response.Success == false) {
-                    tedu.notify(response.Message, "error");
-                }
-                else {
-                    tedu.notify('Hợp đồng nhân viên.', 'success');
-                    $('#modal-add-edit-HopDong').modal('hide');  
-                    resetFormHopDongChiTiet();
-                    tedu.stopLoading();
-                }
-            },
-            error: function () {
-                tedu.notify('Có lỗi! Không thể lưu Hợp đồng nhân viên', 'error');
-                tedu.stopLoading();
-            }
-        });
-    }
+                
+    }    
 
     function resetFormHopDongChiTiet() {
         resetHopDongChiTiet();

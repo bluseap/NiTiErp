@@ -91,8 +91,8 @@ namespace NiTiErp.Areas.Admin.Controllers
                         return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền sửa."));
                     }
 
-                    var trinhdo = _hopdongService.HopDongAUD(hopdongVm, "UpHopDong");
-                    return new OkObjectResult(trinhdo);
+                    var hopdong = _hopdongService.HopDongAUD(hopdongVm, "UpHopDong");
+                    return new OkObjectResult(hopdong);
                 }
                 else
                 {
