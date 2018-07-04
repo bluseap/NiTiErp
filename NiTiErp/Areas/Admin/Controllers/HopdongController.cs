@@ -116,6 +116,20 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetListHopDongDieuKien(string corporationId, string phongId, string keyword, int page,
+            int pageSize, string hosoId, string hopdongId)
+        {
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var phong = !string.IsNullOrEmpty(phongId) ? phongId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+
+            var model = _hopdongService.GetAllHopDongPaging(khuvuc, phong, tukhoa, 1, 1000,
+                hosoId, "", "", hopdongId, "GetAllHopDongDieuKien");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
         public IActionResult GetAllHopDongId(string hopdongId)
         {
             var model = _hopdongService.GetAllHopDongPaging("", "", "", 1, 10,
@@ -136,7 +150,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult GetAllHopDongDate(string hosoId, DateTime tungay, DateTime denngay)
         {
-            var model = _hopdongService.GetAllHopDongDatePaging("", "", "", 1, 10, "", "", "", 
+            var model = _hopdongService.GetAllHopDongDatePaging("", "", "", 1, 10000, "", "", "", 
                 tungay, denngay, denngay, "", "", "GetListHopDongHetHan");
 
             return new OkObjectResult(model);
@@ -145,10 +159,41 @@ namespace NiTiErp.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult GetAllHopDongGanDate(string hosoId, DateTime tungay, DateTime denngay)
         {
-            var model = _hopdongService.GetAllHopDongDatePaging("", "", "", 1, 10, "", "", "",
+            var model = _hopdongService.GetAllHopDongDatePaging("", "", "", 1, 10000, "", "", "",
                 tungay, denngay, denngay, "", "", "GetListGanHopDongHetHan");
 
             return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetListHopDongDieuKienDate(string corporationId, string phongId, string keyword, int page,
+            int pageSize, string hosoId, DateTime tungay, DateTime denngay, string dieukien, string hopdongId)
+        {
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var phong = !string.IsNullOrEmpty(phongId) ? phongId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+
+            if (dieukien == "4") // Het han hop dong theo ngay
+            {
+                var model = _hopdongService.GetAllHopDongDatePaging(khuvuc, phong, tukhoa, 1, 1000, "", "", "",
+                    tungay, denngay, denngay, dieukien, "", "GetListDieuKienDate");
+
+                return new OkObjectResult(model);
+            }
+            else if (hopdongId != "%")
+            {
+                var model = _hopdongService.GetAllHopDongDatePaging(khuvuc, phong, tukhoa, 1, 1000, "", "", "",
+                    tungay, denngay, denngay, dieukien, hopdongId, "GetListLoaiHopDong");
+
+                return new OkObjectResult(model);
+            }
+            else 
+            {
+                var model = _hopdongService.GetAllHopDongDatePaging(khuvuc, phong, tukhoa, 1, 1000, "", "", "",
+                    tungay, denngay, denngay, dieukien, "", "GetListDieuKienDate");
+
+                return new OkObjectResult(model);
+            }
         }
 
         #endregion

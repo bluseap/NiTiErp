@@ -40,8 +40,8 @@
             else {               
                 disabledHopDong(false); // show
             }   
-        }).change();
-
+        }).change();       
+          
         $("#ddl-show-pageHopDong").on('change', function () {
             tedu.configs.pageSize = $(this).val();
             tedu.configs.pageIndex = 1;
@@ -61,17 +61,7 @@
         });
 
         $("#btnTimHopDong").on('click', function () {
-            var dieukien = $("#ddlDieuKienKhac").val();
-
-            tedu.notify(dieukien, "success");
-
-            if (dieukien === "3") { // Chua nhap hop dong
-                LoadTableHoSo();
-            } 
-            else if(dieukien === "%") { // Chua nhap hop dong
-                LoadTableHopDong(true);
-            }
-            
+            TimHopDong();           
         });
 
         $('body').on('click', '.btn-editHopDong', function (e) {
@@ -105,6 +95,16 @@
             LoadAddEditHoSoNoHopDong(hosoId);      
 
             $('#modal-add-edit-HopDong').modal('show');
+        });
+
+        $("#ddlLoaiHopDong").on('change', function () {
+
+            $("#ddlDieuKienKhac")[0].selectedIndex = 0;
+        });
+
+        $("#ddlDieuKienKhac").on('change', function () {
+
+            $("#ddlLoaiHopDong")[0].selectedIndex = 0;
         });
 
         $('#btnSaveHopDong').on('click', function (e) {
@@ -322,6 +322,9 @@
                     });
                 }
 
+                $('#ddl-show-pageHopDong').show();
+                $('#item-per-pageHopDong').show();
+
                 $('#lbl-total-recordsHopDong').text(response.Result.RowCount);
 
                 if (render !== '') {
@@ -413,6 +416,9 @@
                         });
                     });
                 }
+
+                $('#ddl-show-pageHopDong').hide();
+                $('#item-per-pageHopDong').hide();
 
                 $('#lbl-total-recordsHopDong').text(response.Result.RowCount);
 
@@ -814,17 +820,13 @@
                     });
                 }
 
+                $('#ddl-show-pageHopDong').hide();
+                $('#item-per-pageHopDong').hide();
+
                 $('#lbl-total-recordsHopDong').text(response.Result.RowCount);
 
                 if (render !== '') {
                     $('#tbl-contentHopDong').html(render);
-                }
-
-                if (response.Result.RowCount !== 0) {
-                    wrapPaging(response.Result.RowCount, function () {
-                        loadTableDanhSachHetHanHopDong();
-                    },
-                        isPageChanged);
                 }
             },
             error: function (status) {
@@ -833,7 +835,7 @@
             }
         });
        
-    }
+    }    
 
     function loadBtnGanDanhSachHetHanHopDong() {
         var date = new Date();
@@ -924,18 +926,14 @@
                     });
                 }
 
+                $('#ddl-show-pageHopDong').hide();
+                $('#item-per-pageHopDong').hide();
+
                 $('#lbl-total-recordsHopDong').text(response.Result.RowCount);
 
                 if (render !== '') {
                     $('#tbl-contentHopDong').html(render);
-                }
-
-                if (response.Result.RowCount !== 0) {
-                    wrapPaging(response.Result.RowCount, function () {
-                        loadTableGanDanhSachHetHanHopDong();
-                    },
-                        isPageChanged);
-                }
+                }               
             },
             error: function (status) {
                 console.log(status);
@@ -943,6 +941,175 @@
             }
         });
 
+    }
+
+    function LoadTableHopDongDieuKien(dieukien) {
+        var template = $('#table-HopDong').html();
+        var render = "";
+
+        var makhuvuc = $('#ddlKhuVuc').val();
+        var phongId = $('#ddlPhongBan').val();
+        var timnhanvien = $('#txtTimNhanVien').val();
+
+        //tedu.notify(timnhanvien, "success");
+
+        $.ajax({
+            type: 'GET',
+            data: {
+                corporationId: makhuvuc,
+                phongId: phongId,
+                keyword: dieukien,
+                page: tedu.configs.pageIndex,
+                pageSize: tedu.configs.pageSize
+            },
+            url: '/admin/hopdong/GetListHopDongDieuKien',
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                }
+                else {
+                    $.each(response.Result.Results, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+                            Ten: item.Ten,
+                            TenPhong: item.TenPhong,
+                            TenChucVu: item.TenChucVu,
+
+                            SoHopDong: item.SoHopDong,
+                            TenLoaiHopDong: item.TenLoaiHopDong,
+                            HeSoLuong: item.HeSoLuong,
+                            LuongCoBan: item.LuongCoBan,
+                            NgayHieuLuc: tedu.getFormattedDate(item.LuongCoBan),
+                            NgayHetHan: tedu.getFormattedDate(item.NgayHetHan),
+                            Status: tedu.getHoSoNhanVienStatus(item.Status)
+                        });
+                    });
+                }
+
+                $('#ddl-show-pageHopDong').hide();
+                $('#item-per-pageHopDong').hide();
+
+                $('#lbl-total-recordsHopDong').text(response.Result.RowCount);
+
+                if (render !== '') {
+                    $('#tbl-contentHopDong').html(render);
+                }
+               
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+
+    function TimHopDong() {
+
+        //$('#ckCheckAllEdit').prop('checked', true);
+        var ischecedFalse = $("#checkTuNgayDenNgay").is(":checked");
+
+        var dieukien = $("#ddlDieuKienKhac").val(); // load tu table DieuKienTim
+        var loaihopdong = $("#ddlLoaiHopDong").val(); // Loai hop dong
+
+        var tungayid = $('#txtTuNgayHieuLuc').val();
+        var denngayid = $('#txtDenNgayHieuLuc').val();
+        
+        if (ischecedFalse === false) {  // hiden
+            tedu.notify("check false", "success");            
+            //tedu.notify(dieukien, "success");
+
+            if (dieukien === "3") { // Chua nhap hop dong
+                LoadTableHoSo();
+            }
+            else if (dieukien === "2") { // Nghi huu status=3
+                LoadTableHopDongDieuKien("3");
+            }
+            else if (dieukien === "1") { // Thoi viec status=2
+                LoadTableHopDongDieuKien("2");
+            }
+            else if (loaihopdong != "%") { // Tim theo loai hop dong
+                LoadTableHopDongDieuKienDate(loaihopdong, "0", tungayid, denngayid);
+            }
+        }
+        else { // show
+            tedu.notify("check true", "success");           
+
+            if (dieukien === "4") { // Het han hop dong thao ngay
+                LoadTableHopDongDieuKienDate("0", "4", tungayid, denngayid);
+            }
+
+        }        
+    }
+
+    function LoadTableHopDongDieuKienDate(loaihopdongid, dieukienid, tungayid, denngayid) {
+        var template = $('#table-HopDong').html();
+        var render = "";
+
+        var makhuvuc = $('#ddlKhuVuc').val();
+        var phongId = $('#ddlPhongBan').val();
+        var timnhanvien = $('#txtTimNhanVien').val();
+
+        var date = new Date();
+        var hosoid = "1";
+        var tungayId = tedu.getFormatDateYYMMDD(tungayid);
+        var denngayId = tedu.getFormatDateYYMMDD(denngayid);
+
+        $.ajax({
+            type: 'GET',
+            data: {
+                corporationId: makhuvuc,
+                phongId: phongId,
+                keyword: timnhanvien,
+                page: tedu.configs.pageIndex,
+                pageSize: tedu.configs.pageSize,
+                hosoId: hosoid,              
+                
+                tungay: tungayId,
+                denngay: denngayId,      
+                dieukien: dieukienid,
+                hopdongId: loaihopdongid
+            },
+            url: '/admin/hopdong/GetListHopDongDieuKienDate',
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                }
+                else {
+                    $.each(response.Result.Results, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+                            Ten: item.Ten,
+                            TenPhong: item.TenPhong,
+                            TenChucVu: item.TenChucVu,
+
+                            SoHopDong: item.SoHopDong,
+                            TenLoaiHopDong: item.TenLoaiHopDong,
+                            HeSoLuong: item.HeSoLuong,
+                            LuongCoBan: item.LuongCoBan,
+                            NgayHieuLuc: tedu.getFormattedDate(item.LuongCoBan),
+                            NgayHetHan: tedu.getFormattedDate(item.NgayHetHan),
+                            Status: tedu.getHoSoNhanVienStatus(item.Status)
+                        });
+                    });
+                }
+
+                $('#ddl-show-pageHopDong').hide();
+                $('#item-per-pageHopDong').hide();
+
+                $('#lbl-total-recordsHopDong').text(response.Result.RowCount);
+
+                if (render !== '') {
+                    $('#tbl-contentHopDong').html(render);
+                }
+
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
     }
 
     function LoadTableInHopDong() {

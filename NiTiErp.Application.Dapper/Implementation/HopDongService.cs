@@ -36,14 +36,14 @@ namespace NiTiErp.Application.Dapper.Implementation
                 dynamicParameters.Add("@keyword", keyword);
                 dynamicParameters.Add("@hosoId", hosoId);
                 dynamicParameters.Add("@hosoId2", hosoId2);
-                dynamicParameters.Add("@hosoId3", hosoId3);
-                dynamicParameters.Add("@hopdongId", hopdongId);
+                dynamicParameters.Add("@hosoId3", hosoId3);                
 
                 dynamicParameters.Add("@tungay", tungay);
                 dynamicParameters.Add("@denngay", denngay);
                 dynamicParameters.Add("@ngaynhap", ngaynhap);
                 dynamicParameters.Add("@dieukien", dieukien);
 
+                dynamicParameters.Add("@hopdongId", hopdongId);
                 dynamicParameters.Add("@parameters", parameters);
                 try
                 {
