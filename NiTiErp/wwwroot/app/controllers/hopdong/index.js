@@ -12,7 +12,10 @@
 
         registerEvents();
 
-        addeditHopDong.initialize();
+        addeditHopDong.initialize(); 
+
+        loadBtnDanhSachHetHanHopDong();
+        loadBtnGanDanhSachHetHanHopDong();
     }
 
     function registerEvents() {    
@@ -121,6 +124,18 @@
 
         });
 
+        $('body').on('click', '.btn-DSHetHanHopDong', function (e) {
+            e.preventDefault();           
+            //tedu.notify("Het han hop dong", "success"); 
+            loadTableDanhSachHetHanHopDong(true);
+        });
+
+        $('body').on('click', '.btn-DSGanHetHanHopDong', function (e) {
+            e.preventDefault();
+            //tedu.notify("Het het han hop dong", "success");
+            loadTableGanDanhSachHetHanHopDong(true);
+        });
+
     }
 
     function resetFormHopDong() {
@@ -152,7 +167,11 @@
         );  
     }
 
-    function loadData() {
+    function loadData() {       
+        var date = new Date();
+        $('#txtTuNgayHieuLuc').val(tedu.getFormattedDate(date));
+        $('#txtDenNgayHieuLuc').val(tedu.getFormattedDate(date));
+
         loadLoaiHopDong();
         loadDieuKienTim();
     }
@@ -702,6 +721,225 @@
             error: function (status) {
                 tedu.notify('Có lỗi xảy ra', 'error');
                 tedu.stopLoading();
+            }
+        });
+
+    }
+
+    function loadBtnDanhSachHetHanHopDong() {       
+        var date = new Date();
+
+        var hosoid = "1";
+        var tungayId = tedu.getFormatDateYYMMDD(tedu.getFormattedDate(date));
+        var denngayId = tedu.getFormatDateYYMMDD(tedu.getFormattedDate(date));
+
+        $.ajax({
+            type: 'GET',
+            data: {
+                hosoId: hosoid,
+                tungay: tungayId,
+                denngay: denngayId                
+            },
+            url: '/admin/hopdong/GetAllHopDongDate',
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    $('#lbl-total-HetHanHopDong').text("0");
+                }
+                else {
+                    var coutHopDong = response.Result.RowCount;
+
+                    $('#lbl-total-HetHanHopDong').text(coutHopDong);
+                }               
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });                
+    }
+
+    function loadTableDanhSachHetHanHopDong(isPageChanged) {
+        var template = $('#table-HopDong').html();
+        var render = "";
+
+        var makhuvuc = $('#ddlKhuVuc').val();
+        var phongId = $('#ddlPhongBan').val();
+        var timnhanvien = $('#txtTimNhanVien').val();
+
+        //tedu.notify(timnhanvien, "success");
+
+        var date = new Date();
+
+        var hosoid = "1";
+        var tungayId = tedu.getFormatDateYYMMDD(tedu.getFormattedDate(date));
+        var denngayId = tedu.getFormatDateYYMMDD(tedu.getFormattedDate(date));
+
+        $.ajax({
+            type: 'GET',
+            data: {
+                hosoId: hosoid,
+                tungay: tungayId,
+                denngay: denngayId,
+
+                corporationId: makhuvuc,
+                phongId: phongId,
+                keyword: timnhanvien,
+                page: tedu.configs.pageIndex,
+                pageSize: tedu.configs.pageSize
+            },
+            url: '/admin/hopdong/GetAllHopDongDate',
+            dataType: 'json',
+            success: function (response) { 
+                if (response.Result.Results.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                }
+                else {
+                    $.each(response.Result.Results, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+                            Ten: item.Ten,
+                            TenPhong: item.TenPhong,
+                            TenChucVu: item.TenChucVu,
+
+                            SoHopDong: item.SoHopDong,
+                            TenLoaiHopDong: item.TenLoaiHopDong,
+                            HeSoLuong: item.HeSoLuong,
+                            LuongCoBan: item.LuongCoBan,
+                            NgayHieuLuc: tedu.getFormattedDate(item.LuongCoBan),
+                            NgayHetHan: tedu.getFormattedDate(item.NgayHetHan),
+                            Status: tedu.getHoSoNhanVienStatus(item.Status)
+
+                        });
+                    });
+                }
+
+                $('#lbl-total-recordsHopDong').text(response.Result.RowCount);
+
+                if (render !== '') {
+                    $('#tbl-contentHopDong').html(render);
+                }
+
+                if (response.Result.RowCount !== 0) {
+                    wrapPaging(response.Result.RowCount, function () {
+                        loadTableDanhSachHetHanHopDong();
+                    },
+                        isPageChanged);
+                }
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+       
+    }
+
+    function loadBtnGanDanhSachHetHanHopDong() {
+        var date = new Date();
+
+        var hosoid = "1";
+        var tungayId = tedu.getFormatDateYYMMDD(tedu.getFormattedDate(date));
+        var denngayId = tedu.getFormatDateYYMMDD(tedu.getFormattedDate(date));
+
+        $.ajax({
+            type: 'GET',
+            data: {
+                hosoId: hosoid,
+                tungay: tungayId,
+                denngay: denngayId
+            },
+            url: '/admin/hopdong/GetAllHopDongGanDate',
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    $('#lbl-total-GanHetHanHopDong').text("0");
+                }
+                else {
+                    var coutHopDong = response.Result.RowCount;
+
+                    $('#lbl-total-GanHetHanHopDong').text(coutHopDong);
+                }
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+        //$('#lbl-total-GanHetHanHopDong').text("88");
+    }
+
+    function loadTableGanDanhSachHetHanHopDong(isPageChanged) {
+        var template = $('#table-HopDong').html();
+        var render = "";
+
+        var makhuvuc = $('#ddlKhuVuc').val();
+        var phongId = $('#ddlPhongBan').val();
+        var timnhanvien = $('#txtTimNhanVien').val();
+
+        //tedu.notify(timnhanvien, "success");
+
+        var date = new Date();
+
+        var hosoid = "1";
+        var tungayId = tedu.getFormatDateYYMMDD(tedu.getFormattedDate(date));
+        var denngayId = tedu.getFormatDateYYMMDD(tedu.getFormattedDate(date));
+
+        $.ajax({
+            type: 'GET',
+            data: {
+                hosoId: hosoid,
+                tungay: tungayId,
+                denngay: denngayId,
+
+                corporationId: makhuvuc,
+                phongId: phongId,
+                keyword: timnhanvien,
+                page: tedu.configs.pageIndex,
+                pageSize: tedu.configs.pageSize
+            },
+            url: '/admin/hopdong/GetAllHopDongGanDate',
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                }
+                else {
+                    $.each(response.Result.Results, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+                            Ten: item.Ten,
+                            TenPhong: item.TenPhong,
+                            TenChucVu: item.TenChucVu,
+
+                            SoHopDong: item.SoHopDong,
+                            TenLoaiHopDong: item.TenLoaiHopDong,
+                            HeSoLuong: item.HeSoLuong,
+                            LuongCoBan: item.LuongCoBan,
+                            NgayHieuLuc: tedu.getFormattedDate(item.LuongCoBan),
+                            NgayHetHan: tedu.getFormattedDate(item.NgayHetHan),
+                            Status: tedu.getHoSoNhanVienStatus(item.Status)
+
+                        });
+                    });
+                }
+
+                $('#lbl-total-recordsHopDong').text(response.Result.RowCount);
+
+                if (render !== '') {
+                    $('#tbl-contentHopDong').html(render);
+                }
+
+                if (response.Result.RowCount !== 0) {
+                    wrapPaging(response.Result.RowCount, function () {
+                        loadTableGanDanhSachHetHanHopDong();
+                    },
+                        isPageChanged);
+                }
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
             }
         });
 

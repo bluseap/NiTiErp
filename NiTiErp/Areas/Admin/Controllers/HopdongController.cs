@@ -133,6 +133,24 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        [HttpGet]
+        public IActionResult GetAllHopDongDate(string hosoId, DateTime tungay, DateTime denngay)
+        {
+            var model = _hopdongService.GetAllHopDongDatePaging("", "", "", 1, 10, "", "", "", 
+                tungay, denngay, denngay, "", "", "GetListHopDongHetHan");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetAllHopDongGanDate(string hosoId, DateTime tungay, DateTime denngay)
+        {
+            var model = _hopdongService.GetAllHopDongDatePaging("", "", "", 1, 10, "", "", "",
+                tungay, denngay, denngay, "", "", "GetListGanHopDongHetHan");
+
+            return new OkObjectResult(model);
+        }
+
         #endregion
 
         #region Danh muc Hop dong nhan vien
