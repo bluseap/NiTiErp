@@ -8,7 +8,7 @@
 
     this.initialize = function () {
         loadKhuVuc();
-        //loadData(); 
+        loadData(); 
         registerEvents();          
     }
 
@@ -27,14 +27,16 @@
         formMainValidate();
 
         $('#btnTimNhanVien').on('click', function () {
-            loadData(); 
+            //loadData(); 
+            LoadHopDongDangCongViec();
             LoadTableHoSoNhanVien();
             LoadTableInHoSo();
         });
 
         $('#txtTimNhanVien').on('keypress', function (e) {
             if (e.which === 13) {
-                loadData(); 
+                //loadData(); 
+                LoadHopDongDangCongViec();
                 LoadTableHoSoNhanVien();
             }
         });
@@ -773,9 +775,9 @@
 
         LoadTabDanhMucLyLich();
         LoadTabDanhMucTrinhDo();
-        LoadTabDanhMucHopDong();
-        LoadTabDanhMucDangDoan();
-        LoadTabDanhMucCongViec();
+        //LoadTabDanhMucHopDong();
+        //LoadTabDanhMucDangDoan();
+        //LoadTabDanhMucCongViec();
 
         $('#txtHeSoLuongCoBan').val('0.00');
         $('#txtLuongCoBan').val('0');
@@ -786,6 +788,12 @@
             render += "<option value='" + gioitinh[i].value + "'>" + gioitinh[i].ten + "</option>";
         }
         $('#ddlGioiTinh').html(render);
+    }
+
+    function LoadHopDongDangCongViec() {
+        LoadTabDanhMucHopDong();
+        LoadTabDanhMucDangDoan();
+        LoadTabDanhMucCongViec();
     }
 
     function LoadTableHoSoNhanVien(isPageChanged) {

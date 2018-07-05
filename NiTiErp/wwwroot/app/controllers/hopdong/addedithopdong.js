@@ -56,8 +56,47 @@
             });
 
         });
+
+        $('#btnXuatExcelHopDongChiTiet').on('click', function (e) {
+            tedu.notify("in hop dong ct", "success");
+            XuatExcelHopDongChiTiet();
+        });
+
+        $('#btnInHopDongChiTiet').on('click', function (e) {
+            tedu.notify("in hop dong ct", "success");
+        });
                 
     }    
+
+    function XuatExcelHopDongChiTiet() {
+        var hopdongid = $('#hidHopDongNhanVienCuId').val();
+        var hosoid = $('#hidHoSoId').val();
+
+        var makhuvuc = $('#ddlKhuVuc').val();
+        var phongId = $('#ddlPhongBan').val();
+        var timnhanvien = "";
+
+        var that = $('#hidId').val();
+        $.ajax({
+            type: "POST",
+            url: "/Admin/hopdong/ExportExcelHopDongChiTiet",
+            data: {
+                hopdongId: hopdongid,
+                hosoId: hosoid,
+
+                corporationId: makhuvuc,
+                phongId: phongId,
+                timdieukien: timnhanvien
+            },
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                window.location.href = response;
+                tedu.stopLoading();
+            }
+        });
+    }
 
     function resetFormHopDongChiTiet() {
         resetHopDongChiTiet();

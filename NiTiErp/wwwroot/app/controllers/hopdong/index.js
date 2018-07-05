@@ -117,26 +117,30 @@
             $('#hidHopDongId').val(1);
             $('#hidInsertHopDongId').val(1);
 
-            var hopdongId = $(this).data('id');
-            //tedu.notify(hopdongId, "success");
+            var hopdongId = $(this).data('id');        
 
             LoadHopDongChiTietMoi(hopdongId);
-
         });
 
         $('body').on('click', '.btn-DSHetHanHopDong', function (e) {
-            e.preventDefault();           
-            //tedu.notify("Het han hop dong", "success"); 
+            e.preventDefault();  
             loadTableDanhSachHetHanHopDong(true);
         });
 
         $('body').on('click', '.btn-DSGanHetHanHopDong', function (e) {
-            e.preventDefault();
-            //tedu.notify("Het het han hop dong", "success");
+            e.preventDefault();           
             loadTableGanDanhSachHetHanHopDong(true);
         });
 
-    }
+        $('#btnXuatExcelHopDong').on('click', function (e) {            
+            XuatExcel();
+        });
+
+        $('#btnInHopDong').on('click', function (e) {
+            tedu.notify("in hop dong","success");
+        });        
+
+    }    
 
     function resetFormHopDong() {
         resetHopDong();       
@@ -167,7 +171,10 @@
         );  
     }
 
-    function loadData() {       
+    function loadData() {
+        $('#btnInHopDong').hide();
+        $('#btnInHopDongChiTiet').hide();
+
         var date = new Date();
         $('#txtTuNgayHieuLuc').val(tedu.getFormattedDate(date));
         $('#txtDenNgayHieuLuc').val(tedu.getFormattedDate(date));
@@ -330,6 +337,9 @@
                 if (render !== '') {
                     $('#tbl-contentHopDong').html(render);
                 }
+
+                $('#hidExcelHopDong').val('');
+                $('#hidExcelHopDong').val('TimTableHopDong');
 
                 if (response.Result.RowCount !== 0) {
                     wrapPaging(response.Result.RowCount, function () {
@@ -825,6 +835,9 @@
 
                 $('#lbl-total-recordsHopDong').text(response.Result.RowCount);
 
+                $('#hidExcelHopDong').val('');
+                $('#hidExcelHopDong').val('TimTableHetHanHopDong');
+
                 if (render !== '') {
                     $('#tbl-contentHopDong').html(render);
                 }
@@ -931,6 +944,9 @@
 
                 $('#lbl-total-recordsHopDong').text(response.Result.RowCount);
 
+                $('#hidExcelHopDong').val('');
+                $('#hidExcelHopDong').val('TimTableGanHetHanHopDong');                
+
                 if (render !== '') {
                     $('#tbl-contentHopDong').html(render);
                 }               
@@ -991,6 +1007,9 @@
                 $('#item-per-pageHopDong').hide();
 
                 $('#lbl-total-recordsHopDong').text(response.Result.RowCount);
+
+                $('#hidExcelHopDong').val('');
+                $('#hidExcelHopDong').val('TimTableHopDongDieuKien');
 
                 if (render !== '') {
                     $('#tbl-contentHopDong').html(render);
@@ -1100,6 +1119,9 @@
 
                 $('#lbl-total-recordsHopDong').text(response.Result.RowCount);
 
+                $('#hidExcelHopDong').val('');
+                $('#hidExcelHopDong').val('TimTableHopDongDieuKienDate');
+
                 if (render !== '') {
                     $('#tbl-contentHopDong').html(render);
                 }
@@ -1108,6 +1130,206 @@
             error: function (status) {
                 console.log(status);
                 tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+
+    function XuatExcel() {
+        //$('#hidExcelHopDong').val('TimTableHopDong');
+        var excelHopDong = $('#hidExcelHopDong').val();
+
+        if (excelHopDong === "TimTableHopDong") {
+            ExcelHopDongTim();
+        }
+        else if (excelHopDong === "TimTableHetHanHopDong") {
+            ExcelHetHanHopDongTim();
+        }   
+        else if (excelHopDong === "TimTableGanHetHanHopDong") {
+            ExcelGanHetHanHopDongTim();
+        } 
+        else if (excelHopDong === "TimTableHopDongDieuKien") {
+            ExcelHopDongTimDieuKien();
+        } 
+        else if (excelHopDong === "TimTableHopDongDieuKienDate") {
+            ExcelHopDongTimDieuKienDate();
+        } 
+        
+    }
+
+    function ExcelHopDongTimDieuKienDate() {
+        var loaihopdong = $("#ddlLoaiHopDong").val(); // Loai hop dong
+        var tungayid = $('#txtTuNgayHieuLuc').val();
+        var denngayid = $('#txtDenNgayHieuLuc').val();
+
+        var template = $('#table-HopDong').html();
+        var render = "";
+
+        var makhuvuc = $('#ddlKhuVuc').val();
+        var phongId = $('#ddlPhongBan').val();
+        var timnhanvien = $('#txtTimNhanVien').val();
+
+        var date = new Date();
+        var hosoid = "1";
+        var tungayId = tedu.getFormatDateYYMMDD(tungayid);
+        var denngayId = tedu.getFormatDateYYMMDD(denngayid);  
+
+        $.ajax({
+            type: 'POST',
+            url: '/admin/hopdong/ExportExcelHopDongDieuKienDate',
+            data: {
+                corporationId: makhuvuc,
+                phongId: phongId,
+                keyword: timnhanvien,
+                page: tedu.configs.pageIndex,
+                pageSize: tedu.configs.pageSize,
+                hosoId: hosoid,
+
+                tungay: tungayId,
+                denngay: denngayId,
+                dieukien: "1",
+                hopdongId: loaihopdong
+            },
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                window.location.href = response;
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function ExcelHopDongTimDieuKien() {
+        var dieukien = $("#ddlDieuKienKhac").val(); // load tu table DieuKienTim
+        var loaihopdong = $("#ddlLoaiHopDong").val(); // Loai hop dong        
+
+        var template = $('#table-HopDong').html();
+        var render = "";
+
+        var makhuvuc = $('#ddlKhuVuc').val();
+        var phongId = $('#ddlPhongBan').val();
+        var timnhanvien = $('#txtTimNhanVien').val();       
+
+        $.ajax({
+            type: 'POST',
+            url: '/admin/hopdong/ExportExcelHopDongDieuKien',
+            data: {
+                corporationId: makhuvuc,
+                phongId: phongId,
+                keyword: dieukien,
+                page: tedu.configs.pageIndex,
+                pageSize: tedu.configs.pageSize
+            },
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                window.location.href = response;
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function ExcelGanHetHanHopDongTim() {
+        var template = $('#table-HopDong').html();
+        var render = "";
+
+        var makhuvuc = $('#ddlKhuVuc').val();
+        var phongId = $('#ddlPhongBan').val();
+        var timnhanvien = $('#txtTimNhanVien').val();    
+
+        var date = new Date();
+
+        var hosoid = "1";
+        var tungayId = tedu.getFormatDateYYMMDD(tedu.getFormattedDate(date));
+        var denngayId = tedu.getFormatDateYYMMDD(tedu.getFormattedDate(date));
+
+        $.ajax({
+            type: 'POST',
+            url: '/admin/hopdong/ExportExcelGanHetHanHopDong',
+            data: {
+                hosoId: hosoid,
+                tungay: tungayId,
+                denngay: denngayId,
+
+                corporationId: makhuvuc,
+                phongId: phongId,
+                keyword: timnhanvien,
+                page: tedu.configs.pageIndex,
+                pageSize: tedu.configs.pageSize
+            },
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                window.location.href = response;
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function ExcelHetHanHopDongTim() {
+        var template = $('#table-HopDong').html();
+        var render = "";
+
+        var makhuvuc = $('#ddlKhuVuc').val();
+        var phongId = $('#ddlPhongBan').val();
+        var timnhanvien = $('#txtTimNhanVien').val();
+
+        var date = new Date();
+
+        var hosoid = "1";
+        var tungayId = tedu.getFormatDateYYMMDD(tedu.getFormattedDate(date));
+        var denngayId = tedu.getFormatDateYYMMDD(tedu.getFormattedDate(date));
+
+        $.ajax({
+            type: 'POST',
+            url: '/admin/hopdong/ExportExcelHetHanHopDong',
+            data: {
+                hosoId: hosoid,
+                tungay: tungayId,
+                denngay: denngayId,
+
+                corporationId: makhuvuc,
+                phongId: phongId,
+                keyword: timnhanvien,
+                page: tedu.configs.pageIndex,
+                pageSize: tedu.configs.pageSize
+            },
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                window.location.href = response;
+                tedu.stopLoading();
+            }
+        });          
+    }
+
+    function ExcelHopDongTim() {
+        var template = $('#table-HopDong').html();
+        var render = "";
+
+        var makhuvuc = $('#ddlKhuVuc').val();
+        var phongId = $('#ddlPhongBan').val();
+        var timnhanvien = $('#txtTimNhanVien').val();        
+
+        $.ajax({
+            type: 'POST',
+            url: '/admin/hopdong/ExportExcelHopDong',
+            data: {
+                corporationId: makhuvuc,
+                phongId: phongId,
+                keyword: timnhanvien,
+                page: tedu.configs.pageIndex,
+                pageSize: tedu.configs.pageSize
+            },
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                window.location.href = response;
+                tedu.stopLoading();
             }
         });
     }

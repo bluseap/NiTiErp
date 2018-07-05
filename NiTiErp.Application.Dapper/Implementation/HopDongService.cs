@@ -123,6 +123,76 @@ namespace NiTiErp.Application.Dapper.Implementation
             }
         }
 
+        public async Task<List<HopDongViewModel>> GetAllHopDongPagingExcel(string corporationId, string phongId,
+            string keyword, int page, int pageSize, string hosoId, string hosoId2, string hosoId3,
+            string hopdongId, string parameters)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@corporationId", corporationId);
+                dynamicParameters.Add("@phongId", phongId);
+                dynamicParameters.Add("@keyword", keyword);
+                dynamicParameters.Add("@hosoId", hosoId);
+                dynamicParameters.Add("@hosoId2", hosoId2);
+                dynamicParameters.Add("@hosoId3", hosoId3);
+                dynamicParameters.Add("@hopdongId", hopdongId);
+
+                dynamicParameters.Add("@parameters", parameters);
+                try
+                {
+                    var hopdong = await sqlConnection.QueryAsync<HopDongViewModel>(
+                        "HopDongGetList", dynamicParameters, commandType: CommandType.StoredProcedure);
+
+                    return hopdong.AsList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<List<HopDongViewModel>> GetAllHopDongDatePagingExcel(string corporationId, string phongId,
+            string keyword, int page, int pageSize, string hosoId, string hosoId2, string hosoId3,
+            DateTime tungay, DateTime denngay, DateTime ngaynhap, string dieukien,
+            string hopdongId, string parameters)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@corporationId", corporationId);
+                dynamicParameters.Add("@phongId", phongId);
+                dynamicParameters.Add("@keyword", keyword);
+                dynamicParameters.Add("@hosoId", hosoId);
+                dynamicParameters.Add("@hosoId2", hosoId2);
+                dynamicParameters.Add("@hosoId3", hosoId3);
+
+                dynamicParameters.Add("@tungay", tungay);
+                dynamicParameters.Add("@denngay", denngay);
+                dynamicParameters.Add("@ngaynhap", ngaynhap);
+                dynamicParameters.Add("@dieukien", dieukien);
+
+                dynamicParameters.Add("@hopdongId", hopdongId);
+                dynamicParameters.Add("@parameters", parameters);
+                try
+                {
+                    var hopdong = await sqlConnection.QueryAsync<HopDongViewModel>(
+                        "HopDongGetListDate", dynamicParameters, commandType: CommandType.StoredProcedure);
+
+                    return hopdong.AsList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         public async Task<Boolean> HopDongAUD(HopDongViewModel hopdong, string parameters)
         {
             using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
