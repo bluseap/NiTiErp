@@ -8,11 +8,16 @@ namespace NiTiErp.Application.Dapper.ViewModels
     public class QDKhenThuongViewModel
     {
         public string Id { set; get; }
+       
+        public int InsertqdktId { set; get; }
 
         [StringLength(50)]
         public string KETQUA { get; set; }
 
         public Guid HoSoNhanVienId { get; set; }
+
+        [StringLength(1000)]
+        public string Ten { get; set; }
 
         [StringLength(50)]
         public string CorporationId { get; set; }
@@ -85,7 +90,7 @@ namespace NiTiErp.Application.Dapper.ViewModels
         public DateTime UpdateDate { get; set; }
 
         [StringLength(50)]
-        public string UpdareBy { get; set; }
+        public string UpdateBy { get; set; }
 
     }
 }

@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Index";
 }
 
@@ -13,6 +12,7 @@
     <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
 
+    <script src="~/app/controllers/qdkhenthuong/addeditkhenthuong.js" asp-append-version="true"></script>
     <script src="~/app/controllers/qdkhenthuong/index.js" asp-append-version="true"></script>
     <script>
         var qdkhenthuong = new qdkhenthuongController();
@@ -28,7 +28,7 @@
         </div>
         <div class="title_right">
             <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
-                <button class="btn btn-round btn-warning" id="btn-create" type="button">Tạo mới QĐ</button>
+                <button class="btn btn-round btn-warning " id="btn-create" type="button">Tạo mới</button>
             </div>
             <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                 <div class="input-group">
@@ -77,7 +77,7 @@
                     <div class="row no-print">
                         <div class="col-xs-12">
                             <button class="btn btn-info pull-right" id="btnXuatExcel" style="margin-right: 5px;"><i class="fa fa-download"></i> Xuất Excel</button>
-               
+
                         </div>
                     </div>
                     <div class="table-responsive" id="table-responsiveQDKT">
@@ -85,7 +85,7 @@
                             <thead>
                                 <tr>
                                     <th width="=20%">#</th>
-                                    <th>Họ và tên</th>                                 
+                                    <th>Họ và tên</th>
                                     <th>Khu vực</th>
                                     <th>Phòng, tổ</th>
                                     <th>Chức vụ</th>
@@ -125,9 +125,9 @@
     <script id="table-QDKT" type="x-tmpl-mustache">
         <tr>
             <th scope="row">
-                <a class="btn btn-lg btn-edit" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa hồ sơ"><i class="fa fa-pencil"></i> </a>
+                <a class="btn btn-lg btn-editQDKT" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa hồ sơ"><i class="fa fa-pencil"></i> </a>
             </th>
-            <td>{{Ten}}</td>            
+            <td>{{Ten}}</td>
             <td>{{TenKhuVuc}}</td>
             <td>{{TenPhong}}</td>
             <td>{{TenChucVu}}</td>

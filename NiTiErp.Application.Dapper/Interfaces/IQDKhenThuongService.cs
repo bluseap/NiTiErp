@@ -9,9 +9,12 @@ namespace NiTiErp.Application.Dapper.Interfaces
 {
     public interface IQDKhenThuongService
     {
-        Task<PagedResult<QDKhenThuongViewModel>> GetAllNghiHuuPaging(string corporationId, string phongId, string keyword, int page, int pageSize,
+        Task<PagedResult<QDKhenThuongViewModel>> GetAllKhenThuongPaging(string corporationId, string phongId, string keyword, int page, int pageSize,
             string hosoId, string hosoId2, string hosoId3, string khenthuongId, string parameters);
 
-        //Task<Boolean> NghiHuuAUD(QDNghiHuuViewModel nghihuu, string parameters);
+        Task<List<QDKhenThuongViewModel>> GetListKhenThuongPaging(string corporationId, string phongId, string keyword, int page, int pageSize,
+            string hosoId, string hosoId2, string hosoId3, string khenthuongId, string parameters);
+
+        Task<Boolean> QDKhenThuongAUD(QDKhenThuongViewModel khenthuong, string parameters);
     }
 }

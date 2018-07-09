@@ -206,6 +206,9 @@ namespace NiTiErp
             services.AddTransient<ICongViecService, CongViecService>();
             services.AddTransient<IDieuKienTimService, DieuKienTimService>();
             services.AddTransient<ILockService, LockService>();
+            services.AddTransient<ILoaiQuyetDinhService, LoaiQuyetDinhService>();
+            services.AddTransient<IHinhThucKhenThuongService, HinhThucKhenThuongService>();
+
             services.AddTransient<IQDKhenThuongService, QDKhenThuongService>();
 
             services.AddTransient<IQDNghiHuuService, QDNghiHuuService>();

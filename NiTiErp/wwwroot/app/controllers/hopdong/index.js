@@ -73,7 +73,7 @@
 
             var hopdongId = $(this).data('id');
 
-            tedu.notify(hopdongId, "success");
+            //tedu.notify(hopdongId, "success");
 
             LoadAddEditHopDong(hopdongId);                  
 
@@ -222,7 +222,7 @@
             },
             error: function (status) {
                 console.log(status);
-                tedu.notify('Không có danh Loại hợp đồng.', 'error');
+                tedu.notify('Không có Loại hợp đồng.', 'error');
             }
         });
     }    
