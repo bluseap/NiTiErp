@@ -208,8 +208,10 @@ namespace NiTiErp
             services.AddTransient<ILockService, LockService>();
             services.AddTransient<ILoaiQuyetDinhService, LoaiQuyetDinhService>();
             services.AddTransient<IHinhThucKhenThuongService, HinhThucKhenThuongService>();
+            services.AddTransient<IHinhThucKyLuatService, HinhThucKyLuatService>();
 
             services.AddTransient<IQDKhenThuongService, QDKhenThuongService>();
+            services.AddTransient<IQDKyLuatService, QDKyLuatService>();
 
             services.AddTransient<IQDNghiHuuService, QDNghiHuuService>();
             services.AddTransient<IQDThoiViecService, QDThoiViecService>();

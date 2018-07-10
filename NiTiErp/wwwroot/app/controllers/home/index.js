@@ -1,7 +1,8 @@
 ﻿var HomeController = function () {
     this.initialize = function () {
-        initDateRangePicker();
+        //initDateRangePicker();
         loadData();
+       
     }
 
     function loadData(from, to) {
@@ -18,9 +19,24 @@
                 tedu.startLoading();
             },
             success: function (response) {
-                initChart(response);
+              //  initChart(response);
 
-                tedu.stopLoading();
+                $(document).ready(function () {
+                    Morris.Bar({
+                        element: 'graph_bar2',
+                        data: 
+                            response,
+                        xkey: 'device',
+                        ykeys: ['geekbench'],
+                        labels: ['Geekbench'],
+                        barRatio: 0.4,
+                        barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
+                        xLabelAngle: 35,
+                        hideHover: 'auto',
+                        resize: true
+                    });
+                   
+                });
 
             },
             error: function (status) {
@@ -130,7 +146,6 @@
 
         }
     }
-
     function initDateRangePicker() {
 
         if (typeof ($.fn.daterangepicker) === 'undefined') { return; }
@@ -206,6 +221,45 @@
         $('#destroy').click(function () {
             $('#reportrange').data('daterangepicker').remove();
         });
-
     }
+
+    function loadChartPhongTo() {
+        var date = new Date();        
+        var tungayId = tedu.getFormatDateYYMMDD(tedu.getFormattedDate(date));
+        var denngayId = tedu.getFormatDateYYMMDD(tedu.getFormattedDate(date));
+
+        var datachart = loadData(tungayId, tungayId);
+
+        //$(document).ready(function () {
+        //    Morris.Bar({
+        //        element: 'graph_bar2',
+        //        data: //[
+        //            //{ device: 'iPhone 4', geekbench: 380 },
+        //            //{ device: 'iPhone 4S', geekbench: 655 },
+        //            //{ device: 'iPhone 3GS', geekbench: 275 },
+        //            //{ device: 'iPhone 5', geekbench: 1571 },
+        //            //{ device: 'iPhone 5S', geekbench: 655 },
+        //            //{ device: 'iPhone 6', geekbench: 2154 },
+        //            //{ device: 'iPhone 6 Plus', geekbench: 1144 },
+        //            //{ device: 'iPhone 6S', geekbench: 2371 },
+        //            //{ device: 'iPhone 6S Plus', geekbench: 1471 },
+        //            //{ device: 'Other', geekbench: 1371 }
+        //            //]
+        //            datachart,
+        //        xkey: 'device',
+        //        ykeys: ['geekbench'],
+        //        labels: ['Geekbench'],
+        //        barRatio: 0.4,
+        //        barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
+        //        xLabelAngle: 35,
+        //        hideHover: 'auto',
+        //        resize: true
+        //    });
+            
+        //    //$MENU_TOGGLE.on('click', function () {
+        //    //    $(window).resize();
+        //    //});
+        //});
+    }
+
 }

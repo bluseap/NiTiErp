@@ -150,6 +150,7 @@
         $('#txtTienKhenThuong').val('0');
         $('#txtGhiChuQuyetDinh').val('');
         $('#txtSoQuyetDinh').val('');
+        $('#txtNgaKyQuyetDinh').val('');
         $('#txtTenNguoiKyQuyetDinh').val('');
         $('#txtNgayHieuLuc').val('');
         $('#txtNgayHetHan').val('');

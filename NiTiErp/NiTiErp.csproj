@@ -31,4 +31,8 @@
     <ProjectReference Include="..\NiTiErp.Utilities\NiTiErp.Utilities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\lib\Chart.js\dist\" />
+  </ItemGroup>
+
 </Project>
