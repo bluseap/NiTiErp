@@ -1,4 +1,6 @@
 ﻿var HomeController = function () {
+    var userCorporationId = $("#hidUserCorporationId").val();
+
     this.initialize = function () {
         //initDateRangePicker();
         loadData();
@@ -6,13 +8,16 @@
     }
 
     function loadData(from, to) {
+        var khuvuc = userCorporationId;
 
         $.ajax({
             type: "GET",
-            url: "/Admin/Home/GetRevenue",
+            url: "/Admin/Home/TKSLNhanVien",
             data: {
-                fromDate: from,
-                toDate: to
+                corporationId: khuvuc,
+                phongId: "",
+                chucvuId: "",
+                trinhdoId: ""
             },
             dataType: "json",
             beforeSend: function () {
@@ -26,9 +31,9 @@
                         element: 'graph_bar2',
                         data: 
                             response,
-                        xkey: 'device',
-                        ykeys: ['geekbench'],
-                        labels: ['Geekbench'],
+                        xkey: 'TenPhong',
+                        ykeys: ['SoNguoi'],
+                        labels: ['Nhân viên: '],
                         barRatio: 0.4,
                         barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
                         xLabelAngle: 35,

@@ -16,6 +16,34 @@
     </script>
 }
 
+<div class="page-title">
+    <div class="title_left">
+        <h3>  <small>Danh sách nhân viên</small></h3>
+    </div>
+    <div class="title_right">
+
+        <div class="col-md-5 col-sm-2 col-xs-12 form-group pull-right">
+            <div class="input-group">
+                <input type="text" id="txtTimNhanVien" class="form-control" placeholder="Từ khóa...">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" id="btnTimNhanVien" type="button">Tìm !</button>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-2 col-xs-12 form-group pull-right top_search">
+            <div class="input-group">
+                <select id="ddlPhongBan" class="form-control"></select>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
+            <div class="input-group">
+                <select id="ddlKhuVuc" class="form-control"></select>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <div class="row">
     <div class="col-md-12">
         <div class="x_panel">
@@ -28,6 +56,27 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-sm-5">
+        <div class="dataTables_info" id="datatable-checkbox_infoHoSo" role="status" aria-live="polite">
+            <select id="ddl-show-pageHoSo">
+                <option value="10" selected="selected">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+            </select>
+            <span class="item-per-page" id="item-per-pageHoSo">
+                dòng/trang.
+            </span>
+            Tổng cộng: <strong id="lbl-total-recordsHoSo"></strong>
+        </div>
+    </div><div class="col-sm-7">
+        <div class="dataTables_paginate" id="datatable-checkbox_paginateHoSo">
+            <ul id="paginationULHoSo"></ul>
+        </div>
+    </div>
+</div>
+
 
 <script id="table-HoSo" type="x-tmpl-mustache">
     <div class="col-md-4 col-sm-4 col-xs-12 profile_details">

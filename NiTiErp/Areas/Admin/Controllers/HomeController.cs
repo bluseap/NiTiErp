@@ -29,5 +29,12 @@ namespace NiTiErp.Areas.Admin.Controllers
         {
             return new OkObjectResult(await _reportService.GetReportAsync(fromDate, toDate));
         }
+
+        public async Task<IActionResult> TKSLNhanVien(string corporationId, string phongId, string chucvuId, string trinhdoId   )
+        {
+            return new OkObjectResult(await _reportService.SumHoSoNhanVienPara(corporationId, phongId, chucvuId, trinhdoId,
+                "", "", "", "", "", "TKNhanVienKhuVuc"));
+        }
+
     }
 }

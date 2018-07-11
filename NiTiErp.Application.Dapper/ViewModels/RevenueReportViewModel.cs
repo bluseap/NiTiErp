@@ -15,5 +15,13 @@ namespace NiTiErp.Application.Dapper.ViewModels
         public string device { get; set; }
         public int geekbench { get; set; }
 
+        [StringLength(50)]
+        public string Id { get; set; }
+
+        [StringLength(500)]
+        public string TenPhong { get; set; }
+
+        public int SoNguoi { get; set; }
+
     }
 }
