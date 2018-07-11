@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Index";
 }
+
 @section Styles{
     <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
     <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
@@ -15,4 +16,50 @@
     </script>
 }
 
-<h1>Tra cứu hồ sơ</h1>
+<div class="row">
+    <div class="col-md-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <div class="clearfix"></div>
+                <div class="row" id="tblContentHoSo">
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="table-HoSo" type="x-tmpl-mustache">
+    <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
+        <div class="well profile_view">
+            <div class="col-sm-12">
+                <h4 class="brief"><i>{{TenPhong}}</i></h4>
+                <div class="left col-xs-7">
+                    <h2>{{Ten}}</h2>
+                    <p><strong>Chức vụ: </strong> {{TenChucVu}} </p>
+                    <ul class="list-unstyled">                        
+                        <li><i class="fa fa-phone"></i> Số điện thoại : {{SoDienThoai}}</li>
+                    </ul>
+                </div>
+                <div class="right col-xs-5 text-center">
+                    @*<img src={{{HinhNhanVien}}} alt="" class="img-circle img-responsive">*@
+                    {{{HinhNhanVien}}}
+                </div>
+            </div>
+            <div class="col-xs-12 bottom text-center">
+                <div class="col-xs-12 col-sm-6 emphasis">
+                    
+                </div>
+                <div class="col-xs-12 col-sm-6 emphasis">
+                    <button type="button" class="btn btn-success btn-xs">
+                        <i class="fa fa-user">
+                        </i> <i class="fa fa-comments-o"></i>
+                    </button>
+                    <button type="button" class="btn btn-primary btn-xs">
+                        <i class="fa fa-user"> </i> Xem thông tin
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

@@ -53,6 +53,7 @@ namespace NiTiErp.Controllers
             model.Carts = session;
             return View(model);
         }
+
         [Route("checkout.html", Name = "Checkout")]
         [ValidateAntiForgeryToken]
         [HttpPost]
