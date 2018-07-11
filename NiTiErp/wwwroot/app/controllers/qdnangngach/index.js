@@ -22,7 +22,7 @@
 
             $('#row-AddEditQDNN').show();
             $('#tblHoSoNhanVienQDNN').show();
-            $('#row-AddEditQDKT-infoHoSoQDNN').show();
+            $('#row-AddEditQDNN-infoHoSoQDNN').show();
 
         });
 
@@ -365,7 +365,7 @@
             data: {
                 Id: nangngachId,
                 HoSoNhanVienId: hosoId,
-                InsertqdktId: insertqdnnId,
+                InsertqdnnId: insertqdnnId,
 
                 LoaiQuyetDinhId: loaiquyetdinh,
                 LyDoQuyetDinh: lydoqd,
@@ -413,7 +413,7 @@
         var that = $('#hidId').val();
         $.ajax({
             type: "POST",
-            url: "/Admin/qdnagnngach/ExportExcel",
+            url: "/Admin/qdnangngach/ExportExcel",
             data: {
                 corporationId: makhuvuc,
                 phongId: phongId,

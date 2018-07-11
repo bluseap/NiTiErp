@@ -1,4 +1,4 @@
-﻿var addeditnangngachController = function () {
+﻿var addeditbonhiemController = function () {
 
     this.initialize = function () {
         loadKhuVucAddEdit();
@@ -29,23 +29,23 @@
             }
         });
 
-        $("#ddl-show-pageHoSoQDNN").on('change', function () {
+        $("#ddl-show-pageHoSoQDBN").on('change', function () {
             tedu.configs.pageSize = $(this).val();
             tedu.configs.pageIndex = 1;
             LoadTableHoSo(true);
         });
 
-        $('body').on('click', '.btn-editHoSoQDNN', function (e) {
+        $('body').on('click', '.btn-editHoSoQDBN', function (e) {
             e.preventDefault();
 
             //$('#hidInsertQDKTIdId').val(1); // insert
 
             var hosoId = $(this).data('id');
 
-            $('#hidQDNNId').val('0');
-            $('#hidHoSoNangNgachId').val(hosoId);
+            $('#hidQDBNId').val('0');
+            $('#hidHoSoBoNhiemId').val(hosoId);
 
-            loadQDNangNgach(hosoId);
+            loadQDBoNhiem(hosoId);
 
         });
 
@@ -68,7 +68,7 @@
         );
 
         //Init validation
-        $('#frmMainQDNN').validate({
+        $('#frmMainQDBN').validate({
             errorClass: 'red',
             ignore: [],
             language: 'vi',
@@ -76,14 +76,14 @@
                 ddlLoaiQuyetDinh: {
                     required: true,
                     isDanhMuc: true
-                },                
+                },
                 txtSoQuyetDinh: {
                     required: true
                 }
             },
             messages: {
                 txtSoQuyetDinh: {
-                    required: "Nhập số quyết định nâng ngạch..."
+                    required: "Nhập số quyết định bổ nhiệm..."
                 }
             }
         });
@@ -154,7 +154,7 @@
 
     function loadDataAddEdit() {
         loadLoaiQuyetDinh();
-       
+
     }
 
     function loadLoaiQuyetDinh() {
@@ -172,7 +172,7 @@
                 });
                 $('#ddlLoaiQuyetDinh').html(render);
 
-                $('#ddlLoaiQuyetDinh').val("NN05"); //Quyet dinh nang ngach
+                $('#ddlLoaiQuyetDinh').val("BN01"); //Quyet dinh bo nhiem
             },
             error: function (status) {
                 console.log(status);
@@ -182,7 +182,7 @@
     }
 
     function LoadTableHoSo(isPageChanged) {
-        var template = $('#table-HoSoQDNN').html();
+        var template = $('#table-HoSoQDBN').html();
         var render = "";
 
         var makhuvuc = $('#ddlKhuVucAddEdit').val();
@@ -223,10 +223,10 @@
                     });
                 }
 
-                $('#lblHoSoQDNNTotalRecords').text(response.Result.RowCount);
+                $('#lblHoSoQDBNTotalRecords').text(response.Result.RowCount);
 
                 if (render !== '') {
-                    $('#tblContentHoSoQDNN').html(render);
+                    $('#tblContentHoSoQDBN').html(render);
                 }
 
                 if (response.Result.RowCount !== 0) {
@@ -245,13 +245,13 @@
     function wrapPagingHoSo(recordCount, callBack, changePageSize) {
         var totalsize = Math.ceil(recordCount / tedu.configs.pageSize);
         //Unbind pagination if it existed or click change pagesize
-        if ($('#paginationULHoSoQDNN a').length === 0 || changePageSize === true) {
-            $('#paginationULHoSoQDNN').empty();
-            $('#paginationULHoSoQDNN').removeData("twbs-pagination");
-            $('#paginationULHoSoQDNN').unbind("page");
+        if ($('#paginationULHoSoQDBN a').length === 0 || changePageSize === true) {
+            $('#paginationULHoSoQDBN').empty();
+            $('#paginationULHoSoQDBN').removeData("twbs-pagination");
+            $('#paginationULHoSoQDBN').unbind("page");
         }
         //Bind Pagination Event
-        $('#paginationULHoSoQDNN').twbsPagination({
+        $('#paginationULHoSoQDBN').twbsPagination({
             totalPages: totalsize,
             visiblePages: 7,
             first: 'Đầu',
@@ -269,7 +269,7 @@
         });
     }
 
-    function loadQDNangNgach(hosoid) {
+    function loadQDDieuDong(hosoid) {
         //tedu.notify(hosoid, "success");
 
         $.ajax({

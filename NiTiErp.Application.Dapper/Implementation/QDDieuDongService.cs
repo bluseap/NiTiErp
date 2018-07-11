@@ -12,17 +12,17 @@ using System.Threading.Tasks;
 
 namespace NiTiErp.Application.Dapper.Implementation
 {
-    public class QDNangNgachService : IQDNangNgachService
+    public class QDDieuDongService : IQDDieuDongService
     {
         private readonly IConfiguration _configuration;
 
-        public QDNangNgachService(IConfiguration configuration)
+        public QDDieuDongService(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
-        public async Task<PagedResult<QDNangNgachViewModel>> GetAllNangNgachPaging(string corporationId, string phongId, string keyword, int page, int pageSize,
-            string hosoId, string hosoId2, string hosoId3, string nangngachId, string parameters)
+        public async Task<PagedResult<QDDieuDongViewModel>> GetAllDieuDongPaging(string corporationId, string phongId, string keyword, int page, int pageSize,
+            string hosoId, string hosoId2, string hosoId3, string dieudongId, string parameters)
         {
             using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
@@ -35,13 +35,13 @@ namespace NiTiErp.Application.Dapper.Implementation
                 dynamicParameters.Add("@hosoId", hosoId);
                 dynamicParameters.Add("@hosoId2", hosoId2);
                 dynamicParameters.Add("@hosoId3", hosoId3);
-                dynamicParameters.Add("@nangngachId", nangngachId);
+                dynamicParameters.Add("@dieudongId", dieudongId);
 
                 dynamicParameters.Add("@parameters", parameters);
                 try
                 {
-                    var hoso = await sqlConnection.QueryAsync<QDNangNgachViewModel>(
-                        "QDNangNgachGetList", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    var hoso = await sqlConnection.QueryAsync<QDDieuDongViewModel>(
+                        "QDDieuDongGetList", dynamicParameters, commandType: CommandType.StoredProcedure);
 
                     var query = hoso.AsQueryable();
 
@@ -52,7 +52,7 @@ namespace NiTiErp.Application.Dapper.Implementation
 
                     var data = query.ToList();
 
-                    var paginationSet = new PagedResult<QDNangNgachViewModel>()
+                    var paginationSet = new PagedResult<QDDieuDongViewModel>()
                     {
                         Results = data,
                         CurrentPage = page,
@@ -68,8 +68,8 @@ namespace NiTiErp.Application.Dapper.Implementation
             }
         }
 
-        public async Task<List<QDNangNgachViewModel>> GetListNangNgachPaging(string corporationId, string phongId, string keyword, int page, int pageSize,
-            string hosoId, string hosoId2, string hosoId3, string nangngachId, string parameters)
+        public async Task<List<QDDieuDongViewModel>> GetListDieuDongPaging(string corporationId, string phongId, string keyword, int page, int pageSize,
+            string hosoId, string hosoId2, string hosoId3, string dieudongId, string parameters)
         {
             using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
@@ -82,15 +82,15 @@ namespace NiTiErp.Application.Dapper.Implementation
                 dynamicParameters.Add("@hosoId", hosoId);
                 dynamicParameters.Add("@hosoId2", hosoId2);
                 dynamicParameters.Add("@hosoId3", hosoId3);
-                dynamicParameters.Add("@nangngachId", nangngachId);
+                dynamicParameters.Add("@dieudongId", dieudongId);
 
                 dynamicParameters.Add("@parameters", parameters);
                 try
                 {
-                    var nangngach = await sqlConnection.QueryAsync<QDNangNgachViewModel>(
-                        "QDNangNgachGetList", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    var dieudong = await sqlConnection.QueryAsync<QDDieuDongViewModel>(
+                        "QDDieuDongGetList", dynamicParameters, commandType: CommandType.StoredProcedure);
 
-                    return nangngach.AsList();
+                    return dieudong.AsList();
 
                 }
                 catch (Exception ex)
@@ -100,37 +100,37 @@ namespace NiTiErp.Application.Dapper.Implementation
             }
         }
 
-        public async Task<Boolean> QDNangNgachAUD(QDNangNgachViewModel nangngach, string parameters)
+        public async Task<Boolean> QDDieuDongAUD(QDDieuDongViewModel dieudong, string parameters)
         {
             using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
                 await sqlConnection.OpenAsync();
                 var dynamicParameters = new DynamicParameters();
 
-                dynamicParameters.Add("@Id", nangngach.Id);
-                dynamicParameters.Add("@HoSoNhanVienId", nangngach.HoSoNhanVienId);
+                dynamicParameters.Add("@Id", dieudong.Id);
+                dynamicParameters.Add("@HoSoNhanVienId", dieudong.HoSoNhanVienId);
 
-                dynamicParameters.Add("@LoaiQuyetDinhId", nangngach.LoaiQuyetDinhId);
-                dynamicParameters.Add("@LyDoQuyetDinh", nangngach.LyDoQuyetDinh);
+                dynamicParameters.Add("@LoaiQuyetDinhId", dieudong.LoaiQuyetDinhId);
+                dynamicParameters.Add("@LyDoQuyetDinh", dieudong.LyDoQuyetDinh);
                 //dynamicParameters.Add("@TienKhenThuong", khenthuong.TienKhenThuong);
                 //dynamicParameters.Add("@HinhThucKhenThuongId", khenthuong.HinhThucKhenThuongId);
-                dynamicParameters.Add("@GhiChuQuyetDinh", nangngach.GhiChuQuyetDinh);
-                dynamicParameters.Add("@SoQuyetDinh", nangngach.SoQuyetDinh);
-                dynamicParameters.Add("@NgayKyQuyetDinh", nangngach.NgayKyQuyetDinh);
-                dynamicParameters.Add("@TenNguoiKyQuyetDinh", nangngach.TenNguoiKyQuyetDinh);
-                dynamicParameters.Add("@NgayHieuLuc", nangngach.NgayHieuLuc);
-                dynamicParameters.Add("@NgayKetThuc", nangngach.NgayKetThuc);
+                dynamicParameters.Add("@GhiChuQuyetDinh", dieudong.GhiChuQuyetDinh);
+                dynamicParameters.Add("@SoQuyetDinh", dieudong.SoQuyetDinh);
+                dynamicParameters.Add("@NgayKyQuyetDinh", dieudong.NgayKyQuyetDinh);
+                dynamicParameters.Add("@TenNguoiKyQuyetDinh", dieudong.TenNguoiKyQuyetDinh);
+                dynamicParameters.Add("@NgayHieuLuc", dieudong.NgayHieuLuc);
+                dynamicParameters.Add("@NgayKetThuc", dieudong.NgayKetThuc);
 
-                dynamicParameters.Add("@CreateDate", nangngach.CreateDate);
-                dynamicParameters.Add("@CreateBy", nangngach.CreateBy);
-                dynamicParameters.Add("@UpdateDate", nangngach.UpdateDate);
-                dynamicParameters.Add("@UpdateBy", nangngach.UpdateBy);
+                dynamicParameters.Add("@CreateDate", dieudong.CreateDate);
+                dynamicParameters.Add("@CreateBy", dieudong.CreateBy);
+                dynamicParameters.Add("@UpdateDate", dieudong.UpdateDate);
+                dynamicParameters.Add("@UpdateBy", dieudong.UpdateBy);
 
                 dynamicParameters.Add("@parameters", parameters);
                 try
                 {
-                    var query = await sqlConnection.QueryAsync<QDNangNgachViewModel>(
-                        "QDNangNgachAUD", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    var query = await sqlConnection.QueryAsync<QDDieuDongViewModel>(
+                        "QDDieuDongAUD", dynamicParameters, commandType: CommandType.StoredProcedure);
 
                     return true;
                 }

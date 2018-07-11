@@ -212,6 +212,7 @@ namespace NiTiErp
 
             services.AddTransient<IQDKhenThuongService, QDKhenThuongService>();
             services.AddTransient<IQDKyLuatService, QDKyLuatService>();
+            services.AddTransient<IQDNangNgachService, QDNangNgachService>();
 
             services.AddTransient<IQDNghiHuuService, QDNghiHuuService>();
             services.AddTransient<IQDThoiViecService, QDThoiViecService>();
