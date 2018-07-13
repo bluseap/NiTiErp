@@ -8,6 +8,8 @@
         registerEvents();
 
         addeditNangNgach.initialize();
+
+        loadData();
     }
 
     function registerEvents() {
@@ -59,7 +61,7 @@
 
             $('#row-AddEditQDNN').hide();
             $('#tblHoSoNhanVienQDNN').hide();
-            $('#row-AddEditQDKT-infoHoSoQDNN').hide();
+            $('#row-AddEditQDNN-infoHoSoQDNN').hide();
 
         });
 
@@ -142,16 +144,19 @@
 
         $('#txtAddEditHoTen').val('');
         $('#txtAddEditPhongTo').val('');
-        $('#txtLyDoQuyetDinh').val('');
-       
-       
+        $('#txtLyDoQuyetDinh').val('');       
+
+        $('#txtHeSoCu').val('0');
+        $('#txtMucLuongCu').val('0');
+        $('#txtHeSoMoi').val('0'); 
+        $('#txtMucLuongMoi').val('0');
+
         $('#txtGhiChuQuyetDinh').val('');
         $('#txtSoQuyetDinh').val('');
         $('#txtNgaKyQuyetDinh').val('');
         $('#txtTenNguoiKyQuyetDinh').val('');
         $('#txtNgayHieuLuc').val('');
         $('#txtNgayHetHan').val('');
-
     }
 
     function SaveQDNN(e) {
@@ -425,6 +430,57 @@
             success: function (response) {
                 window.location.href = response;
                 tedu.stopLoading();
+            }
+        });
+    }
+
+    function loadData() {
+        loadDataAddEditChucVu();
+        loadDataAddEditBac();
+    }
+
+    function loadDataAddEditChucVu() {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/hoso/ChucVuNhanVienGetList',
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >--- Lựa chọn ---</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.TenChucVu + "</option>";
+                });
+                $('#ddlChucVuCu').html(render);
+                $('#ddlChucVuMoi').html(render);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh Chức vụ hợp đồng.', 'error');
+            }
+        });
+    }
+
+    function loadDataAddEditBac() {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/qdnangngach/BacLuongGetList',
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >--- Lựa chọn ---</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.TenBacLuong + "</option>";
+                });
+                $('#ddlBacLuongCu').html(render);
+                $('#ddlBacLuongMoi').html(render);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có Bậc lương nhân viên.', 'error');
             }
         });
     }

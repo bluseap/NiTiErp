@@ -745,7 +745,7 @@
     function loadBtnDanhSachHetHanHopDong() {       
         var date = new Date();
 
-        var hosoid = "1";
+        var hosoid = userCorporationId;
         var tungayId = tedu.getFormatDateYYMMDD(tedu.getFormattedDate(date));
         var denngayId = tedu.getFormatDateYYMMDD(tedu.getFormattedDate(date));
 
@@ -853,7 +853,7 @@
     function loadBtnGanDanhSachHetHanHopDong() {
         var date = new Date();
 
-        var hosoid = "1";
+        var hosoid = userCorporationId;
         var tungayId = tedu.getFormatDateYYMMDD(tedu.getFormattedDate(date));
         var denngayId = tedu.getFormatDateYYMMDD(tedu.getFormattedDate(date));
 

@@ -38,7 +38,7 @@
         $('body').on('click', '.btn-editHoSoQDNN', function (e) {
             e.preventDefault();
 
-            //$('#hidInsertQDKTIdId').val(1); // insert
+            $('#hidInsertQDNNIdId').val(1); // = 1 : insert quyet dinh nang ngach
 
             var hosoId = $(this).data('id');
 
@@ -47,6 +47,14 @@
 
             loadQDNangNgach(hosoId);
 
+        });
+
+        $("#ddlChucVuMoi").on('change', function () {
+            ddlChucVuMoiChange();    
+        });
+
+        $("#ddlBacLuongMoi").on('change', function () {
+            ddlChucVuMoiChange();
         });
 
     }
@@ -150,11 +158,15 @@
         $('#txtAddEditPhongTo').prop('disabled', para);
 
         $('#ddlLoaiQuyetDinh').prop('disabled', para);
+        $('#ddlChucVuCu').prop('disabled', para);
+
+        $('#ddlBacLuongCu').prop('disabled', para);
+        $('#txtHeSoCu').prop('disabled', para);
+        $('#txtMucLuongCu').prop('disabled', para);
     }
 
     function loadDataAddEdit() {
-        loadLoaiQuyetDinh();
-       
+        loadLoaiQuyetDinh();       
     }
 
     function loadLoaiQuyetDinh() {
@@ -258,9 +270,7 @@
             prev: 'Trước',
             next: 'Tiếp',
             last: 'Cuối',
-            onPageClick: function (event, p) {
-                //tedu.configs.pageIndex = p;
-                //setTimeout(callBack(), 200);
+            onPageClick: function (event, p) {                
                 if (tedu.configs.pageIndex !== p) {
                     tedu.configs.pageIndex = p;
                     setTimeout(callBack(), 200);
@@ -269,9 +279,7 @@
         });
     }
 
-    function loadQDNangNgach(hosoid) {
-        //tedu.notify(hosoid, "success");
-
+    function loadQDNangNgach(hosoid) {       
         $.ajax({
             type: "GET",
             url: "/Admin/Hoso/GetHoSoId",
@@ -282,8 +290,11 @@
             },
             success: function (response) {
                 var hoso = response.Result.Results[0];
+
                 $('#txtAddEditHoTen').val(hoso.Ten);
                 $('#txtAddEditPhongTo').val(hoso.TenPhong);
+
+
                 tedu.stopLoading();
             },
             error: function (status) {
@@ -293,6 +304,43 @@
         });
     }
 
+    function ddlChucVuMoiChange() {        
+        var makhuvuc = $('#ddlKhuVuc').val();
+        var chucvu = $("#ddlChucVuMoi").val();
+        var bacluong = $("#ddlBacLuongMoi").val();
+
+        $.ajax({
+            type: 'GET',
+            url: '/admin/qdnangngach/GetChucVuBac',
+            data: {
+                corporationId: makhuvuc,
+                chucvuId: chucvu,
+                bacluongId: bacluong
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    $('#hidHeSoLuongDanhMucId').val(0);
+                    $('#txtHeSoMoi').val(0);
+                    $('#txtMucLuongMoi').val(0);
+                }
+                else {
+                    var hesoluongdanhmuc = response.Result.Results[0];
+
+                    $('#hidHeSoLuongDanhMucId').val(hesoluongdanhmuc.Id);
+                    $('#txtHeSoMoi').val(hesoluongdanhmuc.HeSo);
+                    $('#txtMucLuongMoi').val(hesoluongdanhmuc.MucLuong);
+                }
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có hệ số lương phù hợp.', 'error');
+            }
+        });
+    }
 
 
 }

@@ -14,9 +14,9 @@
 
     function registerEvents() {
 
-        $('#txtHeSoLuongCoBan').prop('disabled', true);
+        $('#txtHeSoLuongCoBan').prop('disabled', false);
 
-        $('#txtLuongCoBan').prop('disabled', true);
+        $('#txtLuongCoBan').prop('disabled', false);
 
         $('#txtNgaySinh, #txtNgayCapCMND, #txtNgayKyHopDong, #txtNgayHopDong, #txtNgayHieuLuc, #txtNgayHetHan, #txtNgayVaoDang, #txtNgayVaoDoan, #txtNgayVaoCongDoan, #txtNgayThamGiaCachMang, #txtNgayNhapNgu, #txtNgayXuatNgu, #txtNgayKyCongViec, #txtNgayHieuLucCongViec    ').datepicker({
             autoclose: true,
@@ -27,7 +27,8 @@
         formMainValidate();
 
         $('#btnTimNhanVien').on('click', function () {
-            //loadData(); 
+            //loadData();  
+
             LoadHopDongDangCongViec();
             LoadTableHoSoNhanVien();
             LoadTableInHoSo();
@@ -35,7 +36,8 @@
 
         $('#txtTimNhanVien').on('keypress', function (e) {
             if (e.which === 13) {
-                //loadData(); 
+                //loadData();                 
+
                 LoadHopDongDangCongViec();
                 LoadTableHoSoNhanVien();
             }
@@ -54,7 +56,7 @@
         });
 
         $("#btn-create").on('click', function () {
-            loadData();     
+            LoadHopDongDangCongViec();
 
             resetFormMaintainance();
 

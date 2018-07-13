@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Tạo mới / Sửa Quyết định nâng ngạch</h4>
+                <h4 class="modal-title">Tạo mới / Sửa Quyết định nâng lương</h4>
             </div>
             <div class="modal-body">
                 <div id="horizontal-form">
@@ -11,6 +11,8 @@
                         <input type="hidden" id="hidQDNNId" value="" />
                         <input type="hidden" id="hidHoSoNangNgachId" value="" />
                         <input type="hidden" id="hidInsertQDNNIdId" value="" />
+
+                        <input type="hidden" id="hidHeSoLuongDanhMucId" value="" />
 
                         <div class="form-group">
                             <label for="lbAddEditHoTen" class="control-label col-md-2 col-sm-2 col-xs-12 ">Họ và tên</label>
@@ -23,37 +25,75 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="lbTenQuyetDinh" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tên quyết định nâng ngạch</label>
+                            <label for="lbTenQuyetDinh" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tên quyết định nâng lương</label>
                             <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
                                 <select id="ddlLoaiQuyetDinh" class="form-control"></select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="lbLyDoQuyetDinh" class="control-label col-md-2 col-sm-2 col-xs-12 ">Lý do nâng ngạch</label>
+                            <label for="lbChucVuCu" class="control-label col-md-2 col-sm-2 col-xs-12 ">Chức vụ hiện tại</label>
                             <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                                <input type="text" class="form-control has-feedback-right" id="txtLyDoQuyetDinh" placeholder="Lý do nâng ngạch">
-                            </div>                            
-                        </div>
-                        <div class="form-group">                            
-                            <label for="lbGhiChuQuyetDinh" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ghi chú quyết định nâng ngạch</label>
+                                <select id="ddlChucVuCu" class="form-control"></select>
+                            </div>
+                            <label for="lbBacLuongCu" class="control-label col-md-2 col-sm-2 col-xs-12 ">Bậc lương hiện tại</label>
                             <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                                <input type="text" class="form-control has-feedback-right" id="txtGhiChuQuyetDinh" placeholder="Ghi chú quyết định nâng ngạch">
+                                <select id="ddlBacLuongCu" class="form-control"></select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="lbSoQuyetDinh" class="control-label col-md-2 col-sm-2 col-xs-12 ">Số quyết định nâng ngạch</label>
+                            <label for="lbHeSoCu" class="control-label col-md-2 col-sm-2 col-xs-12 ">Hệ số hiện tại</label>
                             <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                                <input type="text" name="txtSoQuyetDinh" class="form-control has-feedback-right" id="txtSoQuyetDinh" placeholder="Số quyết định nâng ngạch">
+                                <input type="text" class="form-control has-feedback-right" id="txtHeSoCu" placeholder="Hệ số lương hiện tại">
+                            </div>
+                            <label for="lbMucLuongCu" class="control-label col-md-2 col-sm-2 col-xs-12 ">Mức lương hiện tại</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtMucLuongCu" placeholder="Mức lương hiện tại">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="lbNgaKyQuyetDinh" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày ký quyết định nâng ngạch</label>
+                            <label for="lbChucVuMoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Chức vụ mới</label>
                             <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                                <input type="text" class="form-control has-feedback-right" id="txtNgaKyQuyetDinh" placeholder="Ngày ký quyết định nâng ngạch" />
+                                <select id="ddlChucVuMoi" class="form-control"></select>
                             </div>
-                            <label for="lbTenNguoiKyQuyetDinh" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tên người ký nâng ngạch</label>
+                            <label for="lbBacLuongMoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Bậc lương mới</label>
                             <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                                <input type="text" class="form-control has-feedback-right" id="txtTenNguoiKyQuyetDinh" placeholder="Tên người ký Qđ nâng ngạch">
+                                <select id="ddlBacLuongMoi" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbHeSoMoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Hệ số mới</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtHeSoMoi" placeholder="Hệ số lương mới">
+                            </div>
+                            <label for="lbMucLuongMoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Mức lương hiện tại</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtMucLuongMoi" placeholder="Mức lương mới">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbLyDoQuyetDinh" class="control-label col-md-2 col-sm-2 col-xs-12 ">Lý do nâng lương</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtLyDoQuyetDinh" placeholder="Lý do nâng lương">
+                            </div>
+                            <label for="lbGhiChuQuyetDinh" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ghi chú quyết định nâng lương</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtGhiChuQuyetDinh" placeholder="Ghi chú quyết định nâng lương">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbSoQuyetDinh" class="control-label col-md-2 col-sm-2 col-xs-12 ">Số quyết định nâng lương</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" name="txtSoQuyetDinh" class="form-control has-feedback-right" id="txtSoQuyetDinh" placeholder="Số quyết định nâng lương">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbNgaKyQuyetDinh" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày ký quyết định nâng lương</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgaKyQuyetDinh" placeholder="Ngày ký quyết định nâng lương" />
+                            </div>
+                            <label for="lbTenNguoiKyQuyetDinh" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tên người ký nâng lương</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtTenNguoiKyQuyetDinh" placeholder="Tên người ký Qđ nâng lương">
                             </div>
                         </div>
                         <div class="form-group">

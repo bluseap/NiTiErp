@@ -150,7 +150,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult GetAllHopDongDate(string hosoId, DateTime tungay, DateTime denngay)
         {
-            var model = _hopdongService.GetAllHopDongDatePaging("", "", "", 1, 10000, "", "", "", 
+            var model = _hopdongService.GetAllHopDongDatePaging(hosoId, "", "", 1, 10000, "", "", "", 
                 tungay, denngay, denngay, "", "", "GetListHopDongHetHan");
 
             return new OkObjectResult(model);
@@ -159,7 +159,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult GetAllHopDongGanDate(string hosoId, DateTime tungay, DateTime denngay)
         {
-            var model = _hopdongService.GetAllHopDongDatePaging("", "", "", 1, 10000, "", "", "",
+            var model = _hopdongService.GetAllHopDongDatePaging(hosoId, "", "", 1, 10000, "", "", "",
                 tungay, denngay, denngay, "", "", "GetListGanHopDongHetHan");
 
             return new OkObjectResult(model);
