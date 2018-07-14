@@ -45,7 +45,7 @@
             $('#hidQDNNId').val('0');
             $('#hidHoSoNangNgachId').val(hosoId);
 
-            loadQDNangNgach(hosoId);
+            loadHoSoNangNgach(hosoId);
 
         });
 
@@ -279,21 +279,26 @@
         });
     }
 
-    function loadQDNangNgach(hosoid) {       
+    function loadHoSoNangNgach(hosoid) {       
         $.ajax({
             type: "GET",
-            url: "/Admin/Hoso/GetHoSoId",
+            url: "/Admin/qdnangngach/GetHeSoNVChucVuBac",
             data: { hosoId: hosoid },
             dataType: "json",
             beforeSend: function () {
                 tedu.startLoading();
             },
             success: function (response) {
-                var hoso = response.Result.Results[0];
+                var hesonhanvien = response.Result[0];
 
-                $('#txtAddEditHoTen').val(hoso.Ten);
-                $('#txtAddEditPhongTo').val(hoso.TenPhong);
+                $('#txtAddEditHoTen').val(hesonhanvien.Ten);
+                $('#txtAddEditPhongTo').val(hesonhanvien.TenPhong);
 
+                $('#hidHeSoLuongDanhMucCuId').val(hesonhanvien.HeSoLuongDanhMucId);
+                $('#ddlChucVuCu').val(hesonhanvien.ChucVuNhanVienId); 
+                $('#ddlBacLuongCu').val(hesonhanvien.BacLuongId); 
+                $('#txtHeSoCu').val(hesonhanvien.HeSo); 
+                $('#txtMucLuongCu').val(hesonhanvien.MucLuong);
 
                 tedu.stopLoading();
             },
@@ -322,13 +327,13 @@
                 tedu.startLoading();
             },
             success: function (response) {
-                if (response.Result.Results.length === 0) {
+                if (response.Result.length === 0) {
                     $('#hidHeSoLuongDanhMucId').val(0);
                     $('#txtHeSoMoi').val(0);
                     $('#txtMucLuongMoi').val(0);
                 }
                 else {
-                    var hesoluongdanhmuc = response.Result.Results[0];
+                    var hesoluongdanhmuc = response.Result[0];
 
                     $('#hidHeSoLuongDanhMucId').val(hesoluongdanhmuc.Id);
                     $('#txtHeSoMoi').val(hesoluongdanhmuc.HeSo);

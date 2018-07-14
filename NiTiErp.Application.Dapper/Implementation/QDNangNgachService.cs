@@ -121,6 +121,18 @@ namespace NiTiErp.Application.Dapper.Implementation
                 dynamicParameters.Add("@NgayHieuLuc", nangngach.NgayHieuLuc);
                 dynamicParameters.Add("@NgayKetThuc", nangngach.NgayKetThuc);
 
+                dynamicParameters.Add("@HeSoLuongDanhMucCuId", nangngach.HeSoLuongDanhMucCuId);
+                dynamicParameters.Add("@ChucVuNhanVienCuId", nangngach.ChucVuNhanVienCuId);
+                dynamicParameters.Add("@HeSoCu", nangngach.HeSoCu);
+                dynamicParameters.Add("@MucLuongCu", nangngach.MucLuongCu);
+                dynamicParameters.Add("@BacLuongCuId", nangngach.BacLuongCuId);
+
+                dynamicParameters.Add("@HeSoLuongDanhMucMoiId", nangngach.HeSoLuongDanhMucMoiId);
+                dynamicParameters.Add("@ChucVuNhanVienMoiId", nangngach.ChucVuNhanVienMoiId);
+                dynamicParameters.Add("@HeSoMoi", nangngach.HeSoMoi);
+                dynamicParameters.Add("@MucLuongMoi", nangngach.MucLuongMoi);
+                dynamicParameters.Add("@BacLuongMoiId", nangngach.BacLuongMoiId);
+
                 dynamicParameters.Add("@CreateDate", nangngach.CreateDate);
                 dynamicParameters.Add("@CreateBy", nangngach.CreateBy);
                 dynamicParameters.Add("@UpdateDate", nangngach.UpdateDate);

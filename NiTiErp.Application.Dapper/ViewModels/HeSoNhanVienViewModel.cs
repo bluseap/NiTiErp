@@ -33,6 +33,9 @@ namespace NiTiErp.Application.Dapper.ViewModels
         [StringLength(1000)]
         public string TenPhong { get; set; }
 
+        [StringLength(20)]
+        public string HeSoLuongDanhMucId { get; set; }
+
         public decimal HeSo { get; set; }
 
         public decimal MucLuong { get; set; }

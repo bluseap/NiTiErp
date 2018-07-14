@@ -66,12 +66,12 @@
         });
 
         $('#btnTimNhanVien').on('click', function () {
-            loadTableKhenThuong();
+            loadTableNangNgach();
         });
 
         $('#txtTimNhanVien').on('keypress', function (e) {
             if (e.which === 13) {
-                loadTableKhenThuong();
+                loadTableNangNgach();
             }
         });
 
@@ -168,8 +168,7 @@
 
         var loaiquyetdinh = $('#ddlLoaiQuyetDinh').val();
         var lydoqd = $('#txtLyDoQuyetDinh').val();
-        //var loaihinhthuckt = $('#ddlLoaiHinhThucKhenThuong').val();
-        //var tienkhenthuong = $('#txtTienKhenThuong').val();
+
         var ghichuqd = $('#txtGhiChuQuyetDinh').val();
         var soquyetdinh = $('#txtSoQuyetDinh').val();
         var ngaykyquyetdinh = tedu.getFormatDateYYMMDD($('#txtNgaKyQuyetDinh').val());
@@ -177,24 +176,48 @@
         var ngayhieuluc = tedu.getFormatDateYYMMDD($('#txtNgayHieuLuc').val());
         var ngayhethan = tedu.getFormatDateYYMMDD($('#txtNgayHetHan').val());
 
+
+        var hesoluongdanhmuccuId = $('#hidHeSoLuongDanhMucCuId').val(); 
+        var chucvucu = $('#ddlChucVuCu').val(); 
+        var bacluongcu = $('#ddlBacLuongCu').val(); 
+        var hesocu = $('#txtHeSoCu').val(); 
+        var mucluongcu = $('#txtMucLuongCu').val(); 
+
+        var hesoluongdanhmucmoiId = $('#hidHeSoLuongDanhMucId').val(); 
+        var chucvumoi = $('#ddlChucVuMoi').val(); 
+        var bacluongmoi = $('#ddlBacLuongMoi').val(); 
+        var hesomoi = $('#txtHeSoMoi').val(); 
+        var mucluongmoi = $('#txtMucLuongMoi').val();
+
+
         $.ajax({
             type: "POST",
-            url: "/Admin/qdnanggach/AddUpdateQDNangNgach",
+            url: "/Admin/qdnangngach/AddUpdateQDNangNgach",
             data: {
                 Id: nangngachId,
                 HoSoNhanVienId: hosoId,
                 InsertqdnnId: insertqdnnId,
 
                 LoaiQuyetDinhId: loaiquyetdinh,
-                LyDoQuyetDinh: lydoqd,
-                //TienKhenThuong: tienkhenthuong,
-                //HinhThucKhenThuongId: loaihinhthuckt,
+                LyDoQuyetDinh: lydoqd,                
                 GhiChuQuyetDinh: ghichuqd,
                 SoQuyetDinh: soquyetdinh,
                 NgayKyQuyetDinh: ngaykyquyetdinh,
                 TenNguoiKyQuyetDinh: tennguoikyquyetdinh,
                 NgayHieuLuc: ngayhieuluc,
-                NgayKetThuc: ngayhethan
+                NgayKetThuc: ngayhethan,
+
+                HeSoLuongDanhMucCuId: hesoluongdanhmuccuId,
+                ChucVuNhanVienCuId: chucvucu,
+                BacLuongCuId: bacluongcu,
+                HeSoCu: hesocu,
+                MucLuongCu: mucluongcu,
+
+                HeSoLuongDanhMucMoiId: hesoluongdanhmucmoiId,
+                ChucVuNhanVienMoiId: chucvumoi,
+                BacLuongMoiId: bacluongmoi,
+                HeSoMoi: hesomoi,
+                MucLuongMoi: mucluongmoi
 
             },
             dataType: "json",
@@ -251,7 +274,7 @@
                             Id: item.Id,
                             Ten: item.Ten,
                             //HinhNhanVien: item.Image === null ? '<img src="/admin-side/images/user.png?h=90"' : '<img src="' + item.HinhNhanVien + '?h=90" />',
-                            TenKhuVuc: item.CorporationName,
+                            TenKhuVuc: item.TenKhuVuc,
                             TenPhong: item.TenPhong,
                             TenChucVu: item.TenChucVu,
                             LyDoQuyetDinh: item.LyDoQuyetDinh,
@@ -311,7 +334,7 @@
     function loadNangNgach(nangngachid) {
         $.ajax({
             type: "GET",
-            url: "/Admin/qdnangngach/GetNangNgachId",
+            url: "/Admin/qdnangngach/GetListNangNgachId",
             data: { nangngachId: nangngachid },
             dataType: "json",
             beforeSend: function () {
@@ -327,8 +350,7 @@
                 $('#txtAddEditPhongTo').val(nangngach.TenPhong);
 
                 $('#ddlLoaiQuyetDinh').val(nangngach.LoaiQuyetDinhId);
-                $('#txtLyDoQuyetDinh').val(nangngach.LyDoQuyetDinh);
-               
+                $('#txtLyDoQuyetDinh').val(nangngach.LyDoQuyetDinh);               
              
                 $('#txtGhiChuQuyetDinh').val(nangngach.GhiChuQuyetDinh);
                 $('#txtSoQuyetDinh').val(nangngach.SoQuyetDinh);
@@ -336,6 +358,20 @@
                 $('#txtTenNguoiKyQuyetDinh').val(nangngach.TenNguoiKyQuyetDinh);
                 $('#txtNgayHieuLuc').val(tedu.getFormattedDate(nangngach.NgayHieuLuc));
                 $('#txtNgayHetHan').val(tedu.getFormattedDate(nangngach.NgayKetThuc));
+
+
+                $('#hidHeSoLuongDanhMucCuId').val(nangngach.HeSoLuongDanhMucCuId);
+                $('#ddlChucVuCu').val(nangngach.ChucVuNhanVienCuId);
+                $('#ddlBacLuongCu').val(nangngach.BacLuongCuId);
+                $('#txtHeSoCu').val(nangngach.HeSoCu);
+                $('#txtMucLuongCu').val(nangngach.MucLuongCu);
+
+                $('#hidHeSoLuongDanhMucId').val(nangngach.HeSoLuongDanhMucMoiId);
+                $('#ddlChucVuMoi').val(nangngach.ChucVuNhanVienMoiId);
+                $('#ddlBacLuongMoi').val(nangngach.BacLuongMoiId);
+                $('#txtHeSoMoi').val(nangngach.HeSoMoi);
+                $('#txtMucLuongMoi').val(nangngach.MucLuongMoi);
+
 
                 tedu.stopLoading();
             },
@@ -364,6 +400,18 @@
         var ngayhieuluc = tedu.getFormatDateYYMMDD($('#txtNgayHieuLuc').val());
         var ngayhethan = tedu.getFormatDateYYMMDD($('#txtNgayHetHan').val());
 
+        var hesoluongdanhmuccuId = $('#hidHeSoLuongDanhMucCuId').val();
+        var chucvucu = $('#ddlChucVuCu').val();
+        var bacluongcu = $('#ddlBacLuongCu').val();
+        var hesocu = $('#txtHeSoCu').val();
+        var mucluongcu = $('#txtMucLuongCu').val();
+
+        var hesoluongdanhmucmoiId = $('#hidHeSoLuongDanhMucId').val();
+        var chucvumoi = $('#ddlChucVuMoi').val();
+        var bacluongmoi = $('#ddlBacLuongMoi').val();
+        var hesomoi = $('#txtHeSoMoi').val();
+        var mucluongmoi = $('#txtMucLuongMoi').val();
+
         $.ajax({
             type: "POST",
             url: "/Admin/qdnangngach/AddUpdateQDNangNgach",
@@ -381,7 +429,19 @@
                 NgayKyQuyetDinh: ngaykyquyetdinh,
                 TenNguoiKyQuyetDinh: tennguoikyquyetdinh,
                 NgayHieuLuc: ngayhieuluc,
-                NgayKetThuc: ngayhethan
+                NgayKetThuc: ngayhethan,
+
+                HeSoLuongDanhMucCuId: hesoluongdanhmuccuId,
+                ChucVuNhanVienCuId: chucvucu,
+                BacLuongCuId: bacluongcu,
+                HeSoCu: hesocu,
+                MucLuongCu: mucluongcu,
+
+                HeSoLuongDanhMucMoiId: hesoluongdanhmucmoiId,
+                ChucVuNhanVienMoiId: chucvumoi,
+                BacLuongMoiId: bacluongmoi,
+                HeSoMoi: hesomoi,
+                MucLuongMoi: mucluongmoi
 
             },
             dataType: "json",
