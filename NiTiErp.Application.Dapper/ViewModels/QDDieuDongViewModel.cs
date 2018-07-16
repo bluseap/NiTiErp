@@ -9,7 +9,7 @@ namespace NiTiErp.Application.Dapper.ViewModels
     {
         public string Id { set; get; }
 
-        public int InsertqdnnId { set; get; }
+        public int InsertqdddId { set; get; }
 
         [StringLength(50)]
         public string KETQUA { get; set; }
@@ -70,7 +70,18 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
 
 
-       
+
+
+        [StringLength(50)]
+        public string CorporationCuId { get; set; }
+
+        [StringLength(500)]
+        public string TenKhuVucCu { get; set; }
+        [StringLength(20)]
+        public string PhongBanDanhMucCuId { get; set; }
+
+        [StringLength(1000)]
+        public string TenPhongCu { get; set; }
 
         [StringLength(20)]
         public string ChucVuNhanVienCuId { get; set; }
@@ -78,12 +89,22 @@ namespace NiTiErp.Application.Dapper.ViewModels
         [StringLength(500)]
         public string TenChucVuCu { get; set; }
 
+
+        [StringLength(50)]
+        public string CorporationMoiId { get; set; }
+
+        [StringLength(500)]
+        public string TenKhuVucMoi { get; set; }
+        [StringLength(20)]
+        public string PhongBanDanhMucMoiId { get; set; }
+
+        [StringLength(1000)]
+        public string TenPhongMoi { get; set; }
         [StringLength(20)]
         public string ChucVuNhanVienMoiId { get; set; }
 
         [StringLength(500)]
         public string TenChucVuMoi { get; set; }
-
 
 
 
