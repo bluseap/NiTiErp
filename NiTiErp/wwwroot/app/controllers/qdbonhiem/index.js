@@ -217,7 +217,7 @@
         e.preventDefault();
 
         var bonhiemId = $('#hidQDBNId').val();
-        var hosoId = $('#hidHoSoboNhiemId').val();
+        var hosoId = $('#hidHoSoBoNhiemId').val();
         var insertqdbnId = $('#hidInsertQDBNIdId').val();
 
         var loaiquyetdinh = $('#ddlLoaiQuyetDinh').val();
@@ -245,7 +245,7 @@
             data: {
                 Id: bonhiemId,
                 HoSoNhanVienId: hosoId,
-                InsertqdddId: insertqdbnId,
+                InsertqdbnId: insertqdbnId,
 
                 LoaiQuyetDinhId: loaiquyetdinh,
                 LyDoQuyetDinh: lydoqd,
@@ -407,13 +407,13 @@
                 $('#txtNgayHieuLuc').val(tedu.getFormattedDate(bonhiem.NgayHieuLuc));
                 $('#txtNgayHetHan').val(tedu.getFormattedDate(bonhiem.NgayKetThuc));
 
-                $('#ddlXiNghiepCu').val(dieudong.CorporationCuId);
-                $('#ddlPhongToCu').val(dieudong.PhongBanDanhMucCuId);
-                $('#ddlChucVuCu').val(dieudong.ChucVuNhanVienCuId);
+                $('#ddlXiNghiepCu').val(bonhiem.CorporationCuId);
+                $('#ddlPhongToCu').val(bonhiem.PhongBanDanhMucCuId);
+                $('#ddlChucVuCu').val(bonhiem.ChucVuNhanVienCuId);
 
-                $('#ddlXiNghiepMoi').val(dieudong.CorporationMoiId);
-                $('#ddlPhongToMoi').val(dieudong.PhongBanDanhMucMoiId);
-                $('#ddlChucVuMoi').val(dieudong.ChucVuNhanVienMoiId);
+                $('#ddlXiNghiepMoi').val(bonhiem.CorporationMoiId);
+                $('#ddlPhongToMoi').val(bonhiem.PhongBanDanhMucMoiId);
+                $('#ddlChucVuMoi').val(bonhiem.ChucVuNhanVienMoiId);
 
                 tedu.stopLoading();
             },
@@ -454,8 +454,8 @@
             type: "POST",
             url: "/Admin/qdbonhiem/AddUpdateQDBoNhiem",
             data: {
-                Id: dieudongId,
-                HoSoNhanVienId: bonhiemId,
+                Id: bonhiemId,
+                HoSoNhanVienId: hosoId,
                 InsertqdbnId: insertqdbnId,
 
                 LoaiQuyetDinhId: loaiquyetdinh,

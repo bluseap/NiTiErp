@@ -71,7 +71,7 @@ namespace NiTiErp.Areas.Admin.Controllers
                 qdbonhiemVm.UpdateBy = username;
                 qdbonhiemVm.UpdateDate = DateTime.Now;
 
-                if (qdbonhiemVm.InsertqdnnId == 1)
+                if (qdbonhiemVm.InsertqdbnId == 1)
                 {
                     var result = _authorizationService.AuthorizeAsync(User, "QDNVBN", Operations.Create); // nhap qd bo nhiem
                     if (result.Result.Succeeded == false)
@@ -109,9 +109,9 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetBoNhiemId(string dieudongId)
+        public IActionResult GetBoNhiemId(string bonhiemId)
         {
-            var model = _qdbonhiemService.GetAllBoNhiemPaging("", "", "", 1, 1000, "", "", "", dieudongId, "GetAllBoNhiemId");
+            var model = _qdbonhiemService.GetAllBoNhiemPaging("", "", "", 1, 1000, "", "", "", bonhiemId, "GetAllBoNhiemId");
 
             return new OkObjectResult(model);
         }

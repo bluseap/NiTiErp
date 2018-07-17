@@ -9,7 +9,7 @@ namespace NiTiErp.Application.Dapper.ViewModels
     {
         public string Id { set; get; }
 
-        public int InsertqdnnId { set; get; }
+        public int InsertqdbnId { set; get; }
 
         [StringLength(50)]
         public string KETQUA { get; set; }
