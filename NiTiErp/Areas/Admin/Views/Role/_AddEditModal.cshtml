@@ -3,29 +3,35 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Add/edit role</h4>
+                <h4 class="modal-title">Thêm mới/sửa nhóm phân quyền</h4>
             </div>
             <div class="modal-body">
                 <div id="horizontal-form">
                     <form class="form-horizontal" role="form" id="frmMaintainance">
+                        <div class="form-group">                            
+                            <label for="lbCongTyXiNghiep" class="col-sm-2 control-label no-padding-right">Công ty, xí nghiệp</label>
+                            <div class="col-sm-10">
+                                <select id="ddlCongTyXiNghiep" class="form-control"></select>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <input type="hidden" id="hidId" value="" />
-                            <label for="txtName" class="col-sm-2 control-label no-padding-right">Role name</label>
+                            <label for="txtName" class="col-sm-2 control-label no-padding-right">Mã nhóm (dính liền)</label>
                             <div class="col-sm-10">
-                                <input type="text" name="txtName" class="form-control" id="txtName">
+                                <input type="text" name="txtName" class="form-control" id="txtName" placeholder="Mã nhóm nhập dính liền không dấu">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="txtDescription" class="col-sm-2 control-label no-padding-right">Description</label>
+                            <label for="txtDescription" class="col-sm-2 control-label no-padding-right">Tên nhóm phân quyền</label>
                             <div class="col-sm-10">
-                                <textarea rows="4" name="txtDescription" class="form-control" id="txtDescription"></textarea>
+                                <textarea rows="4" name="txtDescription" class="form-control" id="txtDescription" placeholder="Tên nhóm phân quyền"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="button" id="btnSave" class="btn btn-success">Save</button>
-                                <button type="button" id="btnCancel" data-dismiss="modal" class="btn btn-danger">Close</button>
+                                <button type="button" id="btnSave" class="btn btn-success">Lưu</button>
+                                <button type="button" id="btnCancel" data-dismiss="modal" class="btn btn-danger">Đóng</button>
                             </div>
                         </div>
                     </form>

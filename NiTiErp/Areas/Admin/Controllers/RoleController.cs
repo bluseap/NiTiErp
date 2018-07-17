@@ -38,9 +38,10 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllPaging(string keyword, int page, int pageSize)
+        public IActionResult GetAllPaging(string corporationId, string keyword, int page, int pageSize)
         {
-            var model = _roleService.GetAllPagingAsync(keyword, page, pageSize);
+            //var model = _roleService.GetAllPagingAsync(keyword, page, pageSize);//GetAllKhuVucPagingAsync
+            var model = _roleService.GetAllKhuVucPagingAsync(corporationId, keyword, page, pageSize);
             return new OkObjectResult(model);
         }
 

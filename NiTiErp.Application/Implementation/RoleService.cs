@@ -35,7 +35,8 @@ namespace NiTiErp.Application.Implementation
             var role = new AppRole()
             {
                 Name = roleVm.Name,
-                Description = roleVm.Description
+                Description = roleVm.Description,
+                CorporationId = roleVm.CorporationId
             };
             var result = await _roleManager.CreateAsync(role);
             return result.Succeeded;
@@ -91,6 +92,52 @@ namespace NiTiErp.Application.Implementation
             return paginationSet;
         }
 
+        public PagedResult<AppRoleViewModel> GetAllKhuVucPagingAsync(string corporationId, string keyword, int page, int pageSize)
+        {
+            if (corporationId == "%")
+            {
+                var query = _roleManager.Roles;
+                if (!string.IsNullOrEmpty(keyword))
+                    query = query.Where(x => x.Name.Contains(keyword)
+                    || x.Description.Contains(keyword));
+
+                int totalRow = query.Count();
+                query = query.Skip((page - 1) * pageSize)
+                   .Take(pageSize);
+
+                var data = query.ProjectTo<AppRoleViewModel>().ToList();
+                var paginationSet = new PagedResult<AppRoleViewModel>()
+                {
+                    Results = data,
+                    CurrentPage = page,
+                    RowCount = totalRow,
+                    PageSize = pageSize
+                };
+                return paginationSet;
+            }
+            else
+            {
+                var query = _roleManager.Roles.Where(x => x.CorporationId.Equals(corporationId));
+                if (!string.IsNullOrEmpty(keyword))
+                    query = query.Where(x => x.Name.Contains(keyword)
+                    || x.Description.Contains(keyword));
+
+                int totalRow = query.Count();
+                query = query.Skip((page - 1) * pageSize)
+                   .Take(pageSize);
+
+                var data = query.ProjectTo<AppRoleViewModel>().ToList();
+                var paginationSet = new PagedResult<AppRoleViewModel>()
+                {
+                    Results = data,
+                    CurrentPage = page,
+                    RowCount = totalRow,
+                    PageSize = pageSize
+                };
+                return paginationSet;
+            }            
+        }
+
         public async Task<AppRoleViewModel> GetById(Guid id)
         {
             var role = await _roleManager.FindByIdAsync(id.ToString());
@@ -138,6 +185,9 @@ namespace NiTiErp.Application.Implementation
             var role = await _roleManager.FindByIdAsync(roleVm.Id.ToString());
             role.Description = roleVm.Description;
             role.Name = roleVm.Name;
+
+            role.CorporationId = roleVm.CorporationId;
+
             await _roleManager.UpdateAsync(role);
         }
     }

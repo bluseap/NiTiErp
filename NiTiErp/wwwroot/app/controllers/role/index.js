@@ -1,8 +1,13 @@
 ﻿var RoleController = function () {
     var self = this;
 
+    var userCorporationId = $("#hidUserCorporationId").val();
+
     this.initialize = function () {
+        loadKhuVuc();  
+
         loadData();
+
         registerEvents();
 
         loadFunctionList();
@@ -20,7 +25,7 @@
         });
 
         $('#txt-search-keyword').keypress(function (e) {
-            if (e.which == 13) {
+            if (e.which === 13) {
                 e.preventDefault();
                 loadData();
             }
@@ -84,6 +89,7 @@
                 var id = $('#hidId').val();
                 var name = $('#txtName').val();
                 var description = $('#txtDescription').val();
+                var xinghiep = $('#ddlCongTyXiNghiep').val();
 
                 $.ajax({
                     type: "POST",
@@ -92,6 +98,7 @@
                         Id: id,
                         Name: name,
                         Description: description,
+                        CorporationId: xinghiep
                     },
                     dataType: "json",
                     beforeSend: function () {
@@ -188,7 +195,7 @@
                 $.each(response, function (i, item) {
                     render += Mustache.render(template, {
                         Name: item.Name,
-                        treegridparent: item.ParentId != null ? "treegrid-parent-" + item.ParentId : "",
+                        treegridparent: item.ParentId !== null ? "treegrid-parent-" + item.ParentId : "",
                         Id: item.Id,
                         AllowCreate: item.AllowCreate ? "checked" : "",
                         AllowEdit: item.AllowEdit ? "checked" : "",
@@ -197,7 +204,7 @@
                         Status: tedu.getStatus(item.Status),
                     });
                 });
-                if (render != undefined) {
+                if (render !== undefined) {
                     $('#lst-data-function').html(render);
                 }
                 $('.tree').treegrid();
@@ -217,34 +224,34 @@
                 });
 
                 $('.ckView').on('click', function () {
-                    if ($('.ckView:checked').length == response.length) {
+                    if ($('.ckView:checked').length === response.length) {
                         $('#ckCheckAllView').prop('checked', true);
                     } else {
                         $('#ckCheckAllView').prop('checked', false);
                     }
                 });
                 $('.ckAdd').on('click', function () {
-                    if ($('.ckAdd:checked').length == response.length) {
+                    if ($('.ckAdd:checked').length === response.length) {
                         $('#ckCheckAllCreate').prop('checked', true);
                     } else {
                         $('#ckCheckAllCreate').prop('checked', false);
                     }
                 });
                 $('.ckEdit').on('click', function () {
-                    if ($('.ckEdit:checked').length == response.length) {
+                    if ($('.ckEdit:checked').length === response.length) {
                         $('#ckCheckAllEdit').prop('checked', true);
                     } else {
                         $('#ckCheckAllEdit').prop('checked', false);
                     }
                 });
                 $('.ckDelete').on('click', function () {
-                    if ($('.ckDelete:checked').length == response.length) {
+                    if ($('.ckDelete:checked').length === response.length) {
                         $('#ckCheckAllDelete').prop('checked', true);
                     } else {
                         $('#ckCheckAllDelete').prop('checked', false);
                     }
                 });
-                if (callback != undefined) {
+                if (callback !== undefined) {
                     callback();
                 }
                 tedu.stopLoading();
@@ -271,7 +278,7 @@
                 var litsPermission = response;
                 $.each($('#tblFunction tbody tr'), function (i, item) {
                     $.each(litsPermission, function (j, jitem) {
-                        if (jitem.FunctionId == $(item).data('id')) {
+                        if (jitem.FunctionId === $(item).data('id')) {
                             $(item).find('.ckView').first().prop('checked', jitem.CanRead);
                             $(item).find('.ckAdd').first().prop('checked', jitem.CanCreate);
                             $(item).find('.ckEdit').first().prop('checked', jitem.CanUpdate);
@@ -280,28 +287,28 @@
                     });
                 });
 
-                if ($('.ckView:checked').length == $('#tblFunction tbody tr .ckView').length) {
+                if ($('.ckView:checked').length === $('#tblFunction tbody tr .ckView').length) {
                     $('#ckCheckAllView').prop('checked', true);
                 }
                 else {
                     $('#ckCheckAllView').prop('checked', false);
                 }
 
-                if ($('.ckAdd:checked').length == $('#tblFunction tbody tr .ckAdd').length) {
+                if ($('.ckAdd:checked').length === $('#tblFunction tbody tr .ckAdd').length) {
                     $('#ckCheckAllCreate').prop('checked', true);
                 }
                 else {
                     $('#ckCheckAllCreate').prop('checked', false);
                 }
 
-                if ($('.ckEdit:checked').length == $('#tblFunction tbody tr .ckEdit').length) {
+                if ($('.ckEdit:checked').length === $('#tblFunction tbody tr .ckEdit').length) {
                     $('#ckCheckAllEdit').prop('checked', true);
                 }
                 else {
                     $('#ckCheckAllEdit').prop('checked', false);
                 }
 
-                if ($('.ckDelete:checked').length == $('#tblFunction tbody tr .ckDelete').length) {
+                if ($('.ckDelete:checked').length === $('#tblFunction tbody tr .ckDelete').length) {
                     $('#ckCheckAllDelete').prop('checked', true);
                 }
                 else {
@@ -323,10 +330,13 @@
     }
 
     function loadData(isPageChanged) {
+        var xinghiep = $('#ddlCongTyXiNghiep').val()
+
         $.ajax({
             type: "GET",
             url: "/admin/role/GetAllPaging",
             data: {
+                corporationId: xinghiep,
                 keyword: $('#txt-search-keyword').val(),
                 page: tedu.configs.pageIndex,
                 pageSize: tedu.configs.pageSize
@@ -347,7 +357,7 @@
                         });
                     });
                     $("#lbl-total-records").text(response.RowCount);
-                    if (render != undefined) {
+                    if (render !== undefined) {
                         $('#tbl-content').html(render);
 
                     }
@@ -387,6 +397,42 @@
             onPageClick: function (event, p) {
                 tedu.configs.pageIndex = p;
                 setTimeout(callBack(), 200);
+            }
+        });
+    }
+
+    function loadKhuVuc() {
+        return $.ajax({
+            type: 'GET',
+            url: '/admin/hoso/GetListCorNhanSu',
+            dataType: 'json',
+            success: function (response) {
+                var render = "<option value='%' >-- Lựa chọn --</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.Name + "</option>";
+                });
+                $('#ddlKhuVuc').html(render);
+                $('#ddlCongTyXiNghiep').html(render);
+
+                var userCorporationId = $("#hidUserCorporationId").val();
+                if (userCorporationId !== "PO") {
+                    $('#ddlKhuVuc').prop('disabled', true);
+                    $('#ddlCongTyXiNghiep').prop('disabled', true);
+                }
+                else {
+                    $('#ddlKhuVuc').prop('disabled', false);
+                    $('#ddlCongTyXiNghiep').prop('disabled', false);
+                }
+
+                $("#ddlKhuVuc")[0].selectedIndex = 1;
+                $("#ddlCongTyXiNghiep")[0].selectedIndex = 1;
+
+                //loadPhongKhuVuc($("#ddlKhuVuc").val());
+
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh mục Công Ty.', 'error');
             }
         });
     }

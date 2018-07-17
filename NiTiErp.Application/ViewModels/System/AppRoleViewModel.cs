@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace NiTiErp.Application.ViewModels.System
@@ -16,6 +17,9 @@ namespace NiTiErp.Application.ViewModels.System
         public string Name { set; get; }
 
         public string Description { set; get; }
+
+        [StringLength(50)]
+        public string CorporationId { get; set; }
 
         public bool Active { set; get; }
 
