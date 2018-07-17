@@ -67,6 +67,20 @@
             $('#modal-add-edit-HoSo').modal('show');
         });
 
+        $("#btnSaveTrinhDo").on('click', function (e) {
+            var hosoInserId = $('#hidLyLichIdInsert').val(); // sua la bang = 1     
+            var trinhdoId = $('#hidTrinhDoId').val(); // sua la bang = 1     
+
+            //tedu.notify("Chưa lưu được Save Trình độ. Kiểm tra và vào Hợp đồng nhập mới.", "error");
+            if (hosoInserId == 1) {  // tao moi ho so, trinh do
+                SaveHoSoNhanVienTrinhDo2(e);
+                SaveTrinhDoNhanVien(e);
+            }
+            else if (hosoInserId == 1 && trinhdoId == 1) {// add trinh do    
+                UpdateTrinhDo(e);
+            }
+        });
+
         $('#btnSave').on('click', function (e) {           
             var hosoInserId = $('#hidLyLichIdInsert').val(); // sua la bang = 1     
             var trinhdoId = $('#hidTrinhDoId').val(); // sua la bang = 1     
@@ -1670,6 +1684,98 @@
                         LoadTableHoSoNhanVien(true);
 
                         $('#modal-add-edit-HoSo').modal('hide');
+
+                        //resetFormMaintainance();
+
+                        tedu.stopLoading();
+                    }
+                },
+                error: function () {
+                    tedu.notify('Có lỗi! Không thể lưu Hồ sơ nhân viên', 'error');
+                    tedu.stopLoading();
+                }
+            });
+
+            return false;
+        }
+    }
+
+    function SaveHoSoNhanVienTrinhDo2(e) {
+
+        var isMainValidate = isFormMainValidate();
+        if (isMainValidate === true) {
+            e.preventDefault();
+
+            var hosoid = $('#hidLyLichId').val();   // set new Guid Id
+            var hosoidinup = $('#hidLyLichIdInsert').val(); // Id = 0
+
+            var sodienthoai = $('#txtSoDienThoai').val();
+            var sothenhanvien = $('#txtSoTheNhanVien').val();
+            var hovaten = $('#txtHoVaTen').val();
+
+            var corporationid = $('#ddlCongTyXiNghiep').val();
+            var phongid = $('#ddlPhongtabCongViec').val();
+            var chucvuid = $("#ddlChucVuNhanVien").val();
+
+            var tengoikhac = $('#txtTenGoiKhac').val();
+            var gioitinh = $('#ddlGioiTinh').val();
+            var ngaysinh = tedu.getFormatDateYYMMDD($('#txtNgaySinh').val());
+            var socmnd = $('#txtSoCMND').val();
+            var ngaycap = tedu.getFormatDateYYMMDD($('#txtNgayCapCMND').val());
+            var noicap = $('#txtNoiCapCMND').val();
+            var noisinh = $('#txtNoiSinh').val();
+            var quequan = $('#txtQueQuan').val();
+            var noiohiennay = $('#txtNoiOHienNay').val();
+            var honnhan = $('#ddlHonNhan').val();
+            var dantoc = $('#ddlDanToc').val();
+            var tocgiao = $('#ddlTonGiao').val();
+            var xuatthan = $('#ddlXuatThan').val();
+
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Hoso/AddUpdateHosoNhanVien",
+                data: {
+                    Id: hosoid,
+                    InsertUpdateId: hosoidinup,
+
+                    Ten: hovaten,
+                    CorporationId: corporationid,
+                    PhongBanDanhMucId: phongid,
+                    ChucVuNhanVienId: chucvuid,
+
+                    SoDienThoai: sodienthoai,
+                    SoTheNhanVien: sothenhanvien,
+
+                    HinhNhanVien: imageNhanVien,
+
+                    TenGoiKhac: tengoikhac,
+                    GioiTinh: gioitinh,
+                    NgaySinh: ngaysinh,
+                    SoCMND: socmnd,
+                    NgayCapCMND: ngaycap,
+                    NoiCapCMND: noicap,
+                    NoiSinh: noisinh,
+                    QueQuan: quequan,
+                    NoiOHienNay: noiohiennay,
+                    HonNhanDanhMucId: honnhan,
+                    DanTocDanhMucId: dantoc,
+                    TonGiaoDanhMucId: tocgiao,
+                    XuatThanDanhMucId: xuatthan
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    if (response.Success == false) {
+                        tedu.notify(response.Message, "error");
+                    }
+                    else {
+                        tedu.notify('Tạo hồ sơ nhân viên.', 'success');
+
+                        LoadTableHoSoNhanVien(true);
+
+                        //$('#modal-add-edit-HoSo').modal('hide');
 
                         //resetFormMaintainance();
 

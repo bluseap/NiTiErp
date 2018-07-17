@@ -9,6 +9,9 @@
         registerEvents();
 
         addeditBoNhiem.initialize();
+
+        loadPhongTo();
+        loadChucVu();
     }
 
     function registerEvents() {
@@ -79,6 +82,24 @@
             XuatExcelQDBN();
         });
 
+        $('#ddlKhuVuc').on('change', function () {
+            var corporationId = $('#ddlKhuVuc').val();
+
+            loadPhongKhuVuc(corporationId);
+
+            tedu.notify('Danh mục phòng theo khu vực.', 'success');
+        });
+
+        $('#ddlXiNghiepMoi').on('change', function () {
+            var corporationId = $('#ddlXiNghiepMoi').val();
+
+            loadAddEditPhongKhuVuc(corporationId);
+
+            loadAddEditChucVuKhuVuc(corporationId);
+
+            tedu.notify('Danh mục phòng theo khu vực.', 'success');
+        });
+
     }
 
     function loadKhuVuc() {
@@ -93,17 +114,24 @@
                 });
                 $('#ddlKhuVuc').html(render);
 
+                $('#ddlXiNghiepCu').html(render);
+                $('#ddlXiNghiepMoi').html(render);
+
                 var userCorporationId = $("#hidUserCorporationId").val();
                 if (userCorporationId !== "PO") {
                     $('#ddlKhuVuc').prop('disabled', true);
+                    $('#ddlXiNghiepMoi').prop('disabled', true);
                 }
                 else {
                     $('#ddlKhuVuc').prop('disabled', false);
+                    $('#ddlXiNghiepMoi').prop('disabled', false);
                 }
 
                 $("#ddlKhuVuc")[0].selectedIndex = 1;
+                $("#ddlXiNghiepMoi")[0].selectedIndex = 0;
 
                 loadPhongKhuVuc($("#ddlKhuVuc").val());
+                loadAddEditChucVuKhuVuc($("#ddlKhuVuc").val());
 
             },
             error: function (status) {
@@ -136,6 +164,29 @@
         });
     }
 
+    function loadAddEditPhongKhuVuc(makhuvuc) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/hoso/GetListPhongKhuVuc',
+            data: { makv: makhuvuc },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >-- Lựa chọn --</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.TenPhong + "</option>";
+                });
+                $('#ddlPhongToMoi').html(render);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh mục Phòng.', 'error');
+            }
+        });
+    }
+
     function resetFormAddEditQDBN() {
         $('#hidQDBNId').val('0');
         $('#hidHoSoBoNhiemId').val('0');
@@ -145,6 +196,13 @@
         $('#txtAddEditPhongTo').val('');
         $('#txtLyDoQuyetDinh').val('');
 
+        $('#ddlXiNghiepCu')[0].selectedIndex = 1;
+        $('#ddlPhongToCu')[0].selectedIndex = 0;
+        $('#ddlChucVuCu')[0].selectedIndex = 0;
+
+        $('#ddlXiNghiepMoi')[0].selectIndex = 1;
+        $('#ddlPhongToMoi')[0].selectedIndex = 0;
+        $('#ddlChucVuMoi')[0].selectedIndex = 0;
 
         $('#txtGhiChuQuyetDinh').val('');
         $('#txtSoQuyetDinh').val('');
@@ -173,6 +231,14 @@
         var ngayhieuluc = tedu.getFormatDateYYMMDD($('#txtNgayHieuLuc').val());
         var ngayhethan = tedu.getFormatDateYYMMDD($('#txtNgayHetHan').val());
 
+        var khuvuccu = $('#ddlXiNghiepCu').val();
+        var phongcu = $('#ddlPhongToCu').val();
+        var chucvucu = $('#ddlChucVuCu').val();
+
+        var khuvucmoi = $('#ddlXiNghiepMoi').val();
+        var phongmoi = $('#ddlPhongToMoi').val();
+        var chucvumoi = $('#ddlChucVuMoi').val();
+
         $.ajax({
             type: "POST",
             url: "/Admin/qdbonhiem/AddUpdateQDBoNhiem",
@@ -190,7 +256,15 @@
                 NgayKyQuyetDinh: ngaykyquyetdinh,
                 TenNguoiKyQuyetDinh: tennguoikyquyetdinh,
                 NgayHieuLuc: ngayhieuluc,
-                NgayKetThuc: ngayhethan
+                NgayKetThuc: ngayhethan,
+
+                CorporationCuId: khuvuccu,
+                PhongBanDanhMucCuId: phongcu,
+                ChucVuNhanVienCuId: chucvucu,
+
+                CorporationMoiId: khuvucmoi,
+                PhongBanDanhMucMoiId: phongmoi,
+                ChucVuNhanVienMoiId: chucvumoi
 
             },
             dataType: "json",
@@ -333,6 +407,14 @@
                 $('#txtNgayHieuLuc').val(tedu.getFormattedDate(bonhiem.NgayHieuLuc));
                 $('#txtNgayHetHan').val(tedu.getFormattedDate(bonhiem.NgayKetThuc));
 
+                $('#ddlXiNghiepCu').val(dieudong.CorporationCuId);
+                $('#ddlPhongToCu').val(dieudong.PhongBanDanhMucCuId);
+                $('#ddlChucVuCu').val(dieudong.ChucVuNhanVienCuId);
+
+                $('#ddlXiNghiepMoi').val(dieudong.CorporationMoiId);
+                $('#ddlPhongToMoi').val(dieudong.PhongBanDanhMucMoiId);
+                $('#ddlChucVuMoi').val(dieudong.ChucVuNhanVienMoiId);
+
                 tedu.stopLoading();
             },
             error: function (status) {
@@ -360,6 +442,14 @@
         var ngayhieuluc = tedu.getFormatDateYYMMDD($('#txtNgayHieuLuc').val());
         var ngayhethan = tedu.getFormatDateYYMMDD($('#txtNgayHetHan').val());
 
+        var khuvuccu = $('#ddlXiNghiepCu').val();
+        var phongcu = $('#ddlPhongToCu').val();
+        var chucvucu = $('#ddlChucVuCu').val();
+
+        var khuvucmoi = $('#ddlXiNghiepMoi').val();
+        var phongmoi = $('#ddlPhongToMoi').val();
+        var chucvumoi = $('#ddlChucVuMoi').val();
+
         $.ajax({
             type: "POST",
             url: "/Admin/qdbonhiem/AddUpdateQDBoNhiem",
@@ -377,7 +467,15 @@
                 NgayKyQuyetDinh: ngaykyquyetdinh,
                 TenNguoiKyQuyetDinh: tennguoikyquyetdinh,
                 NgayHieuLuc: ngayhieuluc,
-                NgayKetThuc: ngayhethan
+                NgayKetThuc: ngayhethan,
+
+                CorporationCuId: khuvuccu,
+                PhongBanDanhMucCuId: phongcu,
+                ChucVuNhanVienCuId: chucvucu,
+
+                CorporationMoiId: khuvucmoi,
+                PhongBanDanhMucMoiId: phongmoi,
+                ChucVuNhanVienMoiId: chucvumoi
 
             },
             dataType: "json",
@@ -430,5 +528,74 @@
         });
     }
 
+    function loadPhongTo() {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/qdbonhiem/GetListPhong',
+            //data: { makv: makhuvuc },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >-- Lựa chọn --</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.TenPhong + "</option>";
+                });
+                $('#ddlPhongToCu').html(render);
+                $('#ddlPhongToMoi').html(render);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh mục Phòng.', 'error');
+            }
+        });
+    }
+
+    function loadChucVu() {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/qdbonhiem/ChucVuNhanVienGetList',
+            //data: { makv: makhuvuc },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >-- Lựa chọn --</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.TenChucVu + "</option>";
+                });
+                $('#ddlChucVuCu').html(render);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh mục Chức vụ.', 'error');
+            }
+        });
+    }
+
+    function loadAddEditChucVuKhuVuc(makhuvuc) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/qdbonhiem/ChucVuKhuVucGetList',
+            data: { makv: makhuvuc },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >-- Lựa chọn --</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.TenChucVu + "</option>";
+                });
+                $('#ddlChucVuMoi').html(render);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh mục Chức vụ.', 'error');
+            }
+        });
+    }
 
 }

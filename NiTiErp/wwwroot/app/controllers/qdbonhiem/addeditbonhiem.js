@@ -38,7 +38,7 @@
         $('body').on('click', '.btn-editHoSoQDBN', function (e) {
             e.preventDefault();
 
-            //$('#hidInsertQDKTIdId').val(1); // insert
+            $('#hidInsertQDBNIdId').val(1); // insert
 
             var hosoId = $(this).data('id');
 
@@ -148,6 +148,10 @@
     function disabledAddEdit(para) {
         $('#txtAddEditHoTen').prop('disabled', para);
         $('#txtAddEditPhongTo').prop('disabled', para);
+
+        $('#ddlXiNghiepCu').prop('disabled', para);
+        $('#ddlPhongToCu').prop('disabled', para);
+        $('#ddlChucVuCu').prop('disabled', para);       
 
         $('#ddlLoaiQuyetDinh').prop('disabled', para);
     }
@@ -269,7 +273,7 @@
         });
     }
 
-    function loadQDDieuDong(hosoid) {
+    function loadQDBoNhiem(hosoid) {
         //tedu.notify(hosoid, "success");
 
         $.ajax({
@@ -284,6 +288,11 @@
                 var hoso = response.Result.Results[0];
                 $('#txtAddEditHoTen').val(hoso.Ten);
                 $('#txtAddEditPhongTo').val(hoso.TenPhong);
+
+                $('#ddlXiNghiepCu').val(hoso.CorporationId);
+                $('#ddlPhongToCu').val(hoso.PhongBanDanhMucId);
+                $('#ddlChucVuCu').val(hoso.ChucVuNhanVienId);
+
                 tedu.stopLoading();
             },
             error: function (status) {
