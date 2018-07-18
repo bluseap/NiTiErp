@@ -15,6 +15,8 @@ namespace NiTiErp.Application.Interfaces
 
         Task<List<AppRoleViewModel>> GetAllAsync();
 
+        Task<List<AppRoleViewModel>> GetAllKhuVucAsync(string corporationId);
+
         PagedResult<AppRoleViewModel> GetAllPagingAsync(string keyword, int page, int pageSize);
 
         PagedResult<AppRoleViewModel> GetAllKhuVucPagingAsync(string corporationId, string keyword, int page, int pageSize);

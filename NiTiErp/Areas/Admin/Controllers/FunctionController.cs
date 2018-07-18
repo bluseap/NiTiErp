@@ -141,8 +141,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         #region Private Functions
-        private void GetByParentId(IEnumerable<FunctionViewModel> allFunctions,
-            FunctionViewModel parent, IList<FunctionViewModel> items)
+        private void GetByParentId(IEnumerable<FunctionViewModel> allFunctions,  FunctionViewModel parent, IList<FunctionViewModel> items)
         {
             var functionsEntities = allFunctions as FunctionViewModel[] ?? allFunctions.ToArray();
             var subFunctions = functionsEntities.Where(c => c.ParentId == parent.Id);

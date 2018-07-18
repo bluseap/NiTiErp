@@ -80,6 +80,12 @@ namespace NiTiErp.Data.Entities
         [StringLength(20)]
         public string UserIdModified { set; get; }
 
+        public bool Active { get; set; }
+        public int Stt { get; set; }
+
+        [StringLength(50)]
+        public string ParentId { set; get; }
+
         public virtual ICollection<ProductCategory> ProductCategories { set; get; }
         public virtual ICollection<Product> Products { set; get; }
         public virtual ICollection<Color> Colors { set; get; }

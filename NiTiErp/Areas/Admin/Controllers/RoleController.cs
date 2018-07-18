@@ -29,6 +29,13 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        public async Task<IActionResult> GetAllKhuVuc(string corporationId)
+        {
+            var model = await _roleService.GetAllKhuVucAsync(corporationId);
+
+            return new OkObjectResult(model);
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetById(Guid id)
         {

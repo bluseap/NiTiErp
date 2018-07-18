@@ -45,5 +45,12 @@ namespace NiTiErp.Application.ViewModels.Corporation
         public string UserIdCreated { set; get; }
         [StringLength(20)]
         public string UserIdModified { set; get; }
+
+        public bool Active { get; set; }
+        public int Stt { get; set; }
+
+        [StringLength(50)]
+        public string ParentId { set; get; }
+
     }
 }

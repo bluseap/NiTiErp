@@ -69,6 +69,18 @@ namespace NiTiErp.Application.Implementation
             return await _roleManager.Roles.ProjectTo<AppRoleViewModel>().ToListAsync();
         }
 
+        public async Task<List<AppRoleViewModel>> GetAllKhuVucAsync(string corporationId)
+        {
+            if (corporationId == "%")
+            {
+                return await _roleManager.Roles.ProjectTo<AppRoleViewModel>().ToListAsync();
+            }
+            else
+            {
+                return await _roleManager.Roles.Where(p => p.CorporationId.Equals(corporationId)).ProjectTo<AppRoleViewModel>().ToListAsync();
+            }
+        }
+
         public PagedResult<AppRoleViewModel> GetAllPagingAsync(string keyword, int page, int pageSize)
         {
             var query = _roleManager.Roles;

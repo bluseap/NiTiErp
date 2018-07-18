@@ -52,7 +52,7 @@ namespace NiTiErp.Application.Implementation
 
         public List<CorporationViewModel> GetAll()
         {
-            return _corporationRepository.FindAll().ProjectTo<CorporationViewModel>()
+            return _corporationRepository.FindAll().Where(p => p.Active).ProjectTo<CorporationViewModel>()
                 .OrderByDescending(p => p.DateCreated).ToList();
         }
 

@@ -69,9 +69,12 @@
                 },
                 success: function (response) {
                     var data = response;
+
                     $('#hidId').val(data.Id);
                     $('#txtName').val(data.Name);
                     $('#txtDescription').val(data.Description);
+                    $('#ddlCongTyXiNghiep').val(data.CorporationId);
+
                     $('#modal-add-edit').modal('show');
                     tedu.stopLoading();
 
@@ -330,7 +333,7 @@
     }
 
     function loadData(isPageChanged) {
-        var xinghiep = $('#ddlCongTyXiNghiep').val()
+        var xinghiep = $('#ddlKhuVuc').val();
 
         $.ajax({
             type: "GET",

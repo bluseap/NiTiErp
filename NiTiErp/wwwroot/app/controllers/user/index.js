@@ -1,5 +1,9 @@
 ﻿var UserController = function () {
-    this.initialize = function () {        
+    var userCorporationId = $("#hidUserCorporationId").val();
+
+    this.initialize = function () {
+        loadKhuVuc();  
+
         loadData();
         loadCorporation();
         registerEvents();
@@ -23,7 +27,7 @@
                         dataType: "json",
                         success: function (response) {
                             var username = $("#txtUserName").val();
-                            if (response.UserName == username) {
+                            if (response.UserName === username) {
                                 tedu.notify('Trùng User name.', 'error');
                             }
                         }
@@ -46,6 +50,10 @@
         $('#txt-search-keyword').keypress(function (e) {
             if (e.which === 13) {
                 e.preventDefault();
+
+                tedu.startLoading();
+                tedu.notify("asdas", "success");
+
                 loadData();
             }
         });
@@ -272,9 +280,12 @@
     }
 
     function initRoleList(selectedRoles) {
+        var makv = userCorporationId;
+
         $.ajax({
-            url: "/Admin/Role/GetAll",
             type: 'GET',
+            url: "/Admin/Role/GetAllKhuVuc",
+            data: { corporationId: makv },
             dataType: 'json',
             async: false,
             success: function (response) {
@@ -295,6 +306,30 @@
                 $('#list-roles').html(render);
             }
         });
+
+        //$.ajax({
+        //    url: "/Admin/Role/GetAll",
+        //    type: 'GET',
+        //    dataType: 'json',
+        //    async: false,
+        //    success: function (response) {
+        //        var template = $('#role-template').html();
+        //        var data = response;
+        //        var render = '';
+        //        $.each(data, function (i, item) {
+        //            var checked = '';
+        //            if (selectedRoles !== undefined && selectedRoles.indexOf(item.Name) !== -1)
+        //                checked = 'checked';
+        //            render += Mustache.render(template,
+        //                {
+        //                    Name: item.Name,
+        //                    Description: item.Description,
+        //                    Checked: checked
+        //                });
+        //        });
+        //        $('#list-roles').html(render);
+        //    }
+        //});
     }
 
     function loadData(isPageChanged) {
@@ -382,7 +417,45 @@
                 $.each(response, function (i, item) {
                     render += "<option value='" + item.Id + "'>" + item.Name + "</option>";
                 });
-                $('#ddlCorporation').html(render);
+
+                $('#ddlCorporation').html(render);                
+
+            }
+        });
+    }
+
+    function loadKhuVuc() {
+        return $.ajax({
+            type: 'GET',
+            url: '/admin/hoso/GetListCorNhanSu',
+            dataType: 'json',
+            success: function (response) {
+                var render = "<option value='%' >-- Lựa chọn --</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.Name + "</option>";
+                });
+                $('#ddlKhuVuc').html(render);
+                //$('#ddlCongTyXiNghiep').html(render);
+
+                var userCorporationId = $("#hidUserCorporationId").val();
+                if (userCorporationId !== "PO") {
+                    $('#ddlKhuVuc').prop('disabled', true);
+                    //$('#ddlCongTyXiNghiep').prop('disabled', true);
+                }
+                else {
+                    $('#ddlKhuVuc').prop('disabled', false);
+                    //$('#ddlCongTyXiNghiep').prop('disabled', false);
+                }
+
+                $("#ddlKhuVuc")[0].selectedIndex = 1;
+                //$("#ddlCongTyXiNghiep")[0].selectedIndex = 1;
+
+                //loadPhongKhuVuc($("#ddlKhuVuc").val());
+
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh mục Công Ty.', 'error');
             }
         });
     }
