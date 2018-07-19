@@ -13,6 +13,9 @@ namespace NiTiErp.Application.Dapper.ViewModels
         public string CorporationId { get; set; }
 
         [StringLength(500)]
+        public string CorporationName { get; set; }
+
+        [StringLength(500)]
         public string TenChucVu { get; set; }
 
         [StringLength(50)]
@@ -21,16 +24,26 @@ namespace NiTiErp.Application.Dapper.ViewModels
         [StringLength(500)]
         public string TenChucDanh { get; set; }
 
+
+
+        public int Status { get; set; }
+
+        public int Stt { get; set; }
+
+        public bool Active { get; set; }
+        
+
+
         [StringLength(20)]
         public string CreateBy { get; set; }
 
         public DateTime CreateDate { get; set; }
+
         [StringLength(20)]
-        public string UpdareBy { get; set; }
+        public string UpdateBy { get; set; }
 
         public DateTime UpdateDate { get; set; }
 
-        public bool Active { get; set; }
-        public int Stt { get; set; }
+        
     }
 }

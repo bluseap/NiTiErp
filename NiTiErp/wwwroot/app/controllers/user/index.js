@@ -333,11 +333,13 @@
     }
 
     function loadData(isPageChanged) {
+        var makv = $('#ddlKhuVuc').val();
+
         $.ajax({
             type: "GET",
-            url: "/admin/user/GetAllPagingCor",
+            url: "/admin/user/GetAllPagingKhuVucCor",
             data: {
-                categoryId: $('#ddl-category-search').val(),
+                corporationId: makv,
                 keyword: $('#txt-search-keyword').val(),
                 page: tedu.configs.pageIndex,
                 pageSize: tedu.configs.pageSize

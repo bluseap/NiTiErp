@@ -134,6 +134,7 @@
                             TenPhong: item.TenPhong,
                             TenChucVu: item.TenChucVu,
                             SoDienThoai: item.SoDienThoai,
+                            TenBacLuong: item.TenBacLuong,
                             NgaySinh: tedu.getFormattedDate(item.NgaySinh),
                             CreateDate: tedu.getFormattedDate(item.CreateDate),
                             Status: tedu.getHoSoNhanVienStatus(item.Status)

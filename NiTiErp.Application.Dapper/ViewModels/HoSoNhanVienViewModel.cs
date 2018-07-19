@@ -87,6 +87,14 @@ namespace NiTiErp.Application.Dapper.ViewModels
         [StringLength(500)]
         public string HinhNhanVien { get; set; }
 
+
+        [StringLength(20)]
+        public string BacLuongId { get; set; }
+
+        [StringLength(100)]
+        public string TenBacLuong { get; set; }
+
+
         public int Status { get; set; }
 
         public bool Active { get; set; }

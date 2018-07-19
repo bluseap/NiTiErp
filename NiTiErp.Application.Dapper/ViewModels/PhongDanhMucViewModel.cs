@@ -23,6 +23,14 @@ namespace NiTiErp.Application.Dapper.ViewModels
         public string Email { get; set; }
 
 
+        public int Status { get; set; }
+
+        public int Stt { get; set; }
+
+        public bool Active { get; set; }
+
+
+
         [StringLength(20)]
         public string CreateBy { get; set; }
         
@@ -32,8 +40,7 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
         public DateTime UpdateDate { get; set; }
 
-        public bool Active { get; set; }
-        public int Stt { get; set; }
+        
 
     }
 }

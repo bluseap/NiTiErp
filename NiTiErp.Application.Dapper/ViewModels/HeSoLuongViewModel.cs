@@ -19,6 +19,10 @@ namespace NiTiErp.Application.Dapper.ViewModels
         [StringLength(20)]
         public string BacLuongId { get; set; }
 
+        [StringLength(100)]
+        public string TenBacLuong { get; set; }
+
+
         public decimal HeSo02 { get; set; }
 
         public decimal MucLuong02 { get; set; }

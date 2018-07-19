@@ -107,8 +107,7 @@ namespace NiTiErp.Application.Implementation
             return paginationSet;
         }
 
-        public PagedResult<AppUserViewModel> GetAllPagingAsyncCor(string keyword, int page, int pageSize, 
-            string corporationId)
+        public PagedResult<AppUserViewModel> GetAllPagingAsyncCor(string keyword, int page, int pageSize, string corporationId)
         {
             /*var query = _userManager.Users.Where(x => !x.Email.Equals("khoinguyenaglx@gmail.com")
                     && !x.CorporationId.Substring(0, 2).Equals("NT"));*/
