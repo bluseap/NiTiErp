@@ -13,19 +13,37 @@ using NiTiErp.Application.Interfaces;
 using NiTiErp.Application.ViewModels.Corporation;
 using NiTiErp.Utilities.Helpers;
 using NiTiErp.Application.Dapper.Interfaces;
+using NiTiErp.Extensions;
+using Microsoft.AspNetCore.Authorization;
+using NiTiErp.Authorization;
+using NiTiErp.Utilities.Dtos;
 
 namespace NiTiErp.Areas.Admin.Controllers
 {    
     public class CorporationController : BaseController
-    {        
+    {
+        
+        private readonly NiTiErp.Application.Interfaces.IUserService _userService;
+        private readonly IAuthorizationService _authorizationService;
+
         private Application.Interfaces.ICorporationService _corporationService;
         private readonly IHostingEnvironment _hostingEnvironment;
 
-        public CorporationController(Application.Interfaces.ICorporationService corporationService,
-            IHostingEnvironment hostingEnvironment)
+        private readonly Application.Dapper.Interfaces.ICorporationService _corporationsService;
+
+        public CorporationController(NiTiErp.Application.Interfaces.IUserService userService,
+            IAuthorizationService authorizationService,
+            Application.Interfaces.ICorporationService corporationService,
+            IHostingEnvironment hostingEnvironment,
+            Application.Dapper.Interfaces.ICorporationService corporationsService
+            )
         {
+            _userService = userService;
+            _authorizationService = authorizationService;
             _corporationService = corporationService;
             _hostingEnvironment = hostingEnvironment;
+
+            _corporationsService = corporationsService;
         }
 
         public IActionResult Index()
@@ -33,7 +51,66 @@ namespace NiTiErp.Areas.Admin.Controllers
             return View();
         }
 
-        #region AJAX API
+        #region AJAX API Dapper
+
+        public IActionResult AddUpdateDMCT(Application.Dapper.ViewModels.CorporationViewModel corpoVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+
+                corpoVm.UserIdCreated = username;
+                corpoVm.DateCreated = DateTime.Now;
+                corpoVm.UserIdModified = username;
+                corpoVm.DateModified = DateTime.Now;
+
+                if (corpoVm.InsertdmctId == "1")
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "DMXINGHIEP", Operations.Create); // nhap danh muc cong ty
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
+                    }
+
+                    var danhmuccongty = _corporationsService.CorporationAUD(corpoVm, "InCorporation");
+                    return new OkObjectResult(danhmuccongty);
+                }
+                else
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "DMXINGHIEP", Operations.Update); // qd dieu dong
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền sửa."));
+                    }
+
+                    var danhmuccongty = _corporationsService.CorporationAUD(corpoVm, "UpCorporation");
+                    return new OkObjectResult(danhmuccongty);
+                }
+            }
+        }
+
+        [HttpGet]
+        public IActionResult GetAllCorPaging(string corporationId, string phongId, string keyword, int page,
+            int pageSize, string hosoId)
+        {
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var phong = !string.IsNullOrEmpty(phongId) ? phongId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+
+            var model = _corporationsService.GetAllCorPaging(khuvuc, phong, tukhoa, page, pageSize,
+                hosoId, "", "", "GetListCongTy");
+
+            return new OkObjectResult(model);
+        }
+
+        #endregion
+
+        #region AJAX API Enity
         [HttpGet]
         public IActionResult GetAll()
         {
