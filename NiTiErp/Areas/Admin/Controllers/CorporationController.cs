@@ -64,10 +64,14 @@ namespace NiTiErp.Areas.Admin.Controllers
             {
                 var username = User.GetSpecificClaim("UserName");
 
+                corpoVm.CorporationServiceId = "NT006";
+
                 corpoVm.UserIdCreated = username;
                 corpoVm.DateCreated = DateTime.Now;
                 corpoVm.UserIdModified = username;
                 corpoVm.DateModified = DateTime.Now;
+
+                corpoVm.ParentId = "PO";
 
                 if (corpoVm.InsertdmctId == "1")
                 {
@@ -75,7 +79,7 @@ namespace NiTiErp.Areas.Admin.Controllers
                     if (result.Result.Succeeded == false)
                     {
                         return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
-                    }
+                    }     
 
                     var danhmuccongty = _corporationsService.CorporationAUD(corpoVm, "InCorporation");
                     return new OkObjectResult(danhmuccongty);
@@ -104,6 +108,15 @@ namespace NiTiErp.Areas.Admin.Controllers
 
             var model = _corporationsService.GetAllCorPaging(khuvuc, phong, tukhoa, page, pageSize,
                 hosoId, "", "", "GetListCongTy");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetAllCorpoId(string corpoId)
+        {
+            var model = _corporationsService.GetAllCorPaging(corpoId, "", "", 1, 10,
+                "", "", corpoId, "GetCorporationId");
 
             return new OkObjectResult(model);
         }

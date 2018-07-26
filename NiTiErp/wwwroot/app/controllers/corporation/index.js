@@ -41,11 +41,35 @@
             }
         });
 
+        $('#btnTimCongTy').on('click', function () {
+            loadTableDanhMucCongTy();            
+        });
+
+        $('#txtTimCongTy').on('keypress', function (e) {
+            if (e.which === 13) {
+                loadTableDanhMucCongTy();                
+            }
+        });
+
+        $('body').on('click', '.btn-editDMCT', function (e) {
+            e.preventDefault();            
+            
+            $('#hidInsertDMCTId').val(2);
+
+            var corpoId = $(this).data('id');
+
+            $('#hidDMCTId').val(corpoId);
+
+            loadAddEditDMCT(corpoId);
+
+            $('#modal-add-edit-DMCT').modal('show');
+        });
+
     }
 
     function resetFormAddEditDMCT() {
-        $('#hidDMCTId').val('');
-        $('#hidInsertDMCTId').val('');
+        $('#hidDMCTId').val('0');
+        $('#hidInsertDMCTId').val('0');
 
         $('#txtAddEditTenCongTy').val('');
         $('#txtAddEditSoDienThoai').val(''); 
@@ -56,7 +80,6 @@
 
     function loadData() {
         loadTableDanhMucCongTy();
-
     }
 
     function loadTableDanhMucCongTy(isPageChanged) {
@@ -141,13 +164,141 @@
     }
     
     function SaveDMCT(e) {
-        e.preventDefault();
+        e.preventDefault();      
 
+        var corpoid = $('#hidDMCTId').val(); //  
+        var inscorpoid = $('#hidInsertDMCTId').val(); // id = 1 ; para update insert        
+
+        var tencor = $('#txtAddEditTenCongTy').val();
+        var sodienthoai = $('#txtAddEditSoDienThoai').val();
+        var diachi = $('#txtAddEditDiaChi').val();
+        var masothue = $('#txtAddEditMaSoThue').val();
+        var email = $('#txtAddEditEmail').val();
+
+        $.ajax({
+            type: "POST",
+            url: "/Admin/corporation/AddUpdateDMCT",
+            data: {
+                Id: corpoid,
+                InsertdmctId: inscorpoid,
+                
+                Name: tencor,
+                PhoneNumber1: sodienthoai,
+                Address: diachi,
+                TaxNumber: masothue,
+                Email: email
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Success === false) {
+                    tedu.notify(response.Message, "error");
+                }
+                else {
+                    tedu.notify('Công ty, xí nghiệp.', 'success');
+                   
+                    loadTableDanhMucCongTy(true);
+
+                    $('#modal-add-edit-DMCT').modal('hide');
+
+                    resetFormAddEditDMCT();
+
+                    tedu.stopLoading();
+                }
+            },
+            error: function () {
+                tedu.notify('Có lỗi! Không thể lưu Công ty, xí nghiệp', 'error');
+                tedu.stopLoading();
+            }
+        });
     }
 
     function UpdateDMCT(e) {
         e.preventDefault();
 
+        var corpoid = $('#hidDMCTId').val(); //  
+        var inscorpoid = $('#hidInsertDMCTId').val(); // id = 1 ; para update insert        
+
+        var tencor = $('#txtAddEditTenCongTy').val();
+        var sodienthoai = $('#txtAddEditSoDienThoai').val();
+        var diachi = $('#txtAddEditDiaChi').val();
+        var masothue = $('#txtAddEditMaSoThue').val();
+        var email = $('#txtAddEditEmail').val();
+
+        $.ajax({
+            type: "POST",
+            url: "/Admin/corporation/AddUpdateDMCT",
+            data: {
+                Id: corpoid,
+                InsertdmctId: inscorpoid,
+
+                Name: tencor,
+                PhoneNumber1: sodienthoai,
+                Address: diachi,
+                TaxNumber: masothue,
+                Email: email
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Success === false) {
+                    tedu.notify(response.Message, "error");
+                }
+                else {
+                    tedu.notify('Công ty, xí nghiệp.', 'success');
+
+                    loadTableDanhMucCongTy(true);
+
+                    $('#modal-add-edit-DMCT').modal('hide');
+
+                    resetFormAddEditDMCT();
+
+                    tedu.stopLoading();
+                }
+            },
+            error: function () {
+                tedu.notify('Có lỗi! Không thể lưu Công ty, xí nghiệp', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function loadAddEditDMCT(corpoid) {
+        $.ajax({
+            type: "GET",
+            url: "/Admin/corporation/GetAllCorpoId",
+            data: { corpoId: corpoid },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    resetFormAddEditDMCT();
+                }
+                else {
+                    var corpo = response.Result.Results[0];
+
+                    $('#txtAddEditTenCongTy').val(corpo.Name);
+                    $('#txtAddEditSoDienThoai').val(corpo.PhoneNumber1);
+                    $('#txtAddEditDiaChi').val(corpo.Address);
+                    $('#txtAddEditMaSoThue').val(corpo.TaxNumber);
+                    $('#txtAddEditEmail').val(corpo.Email);
+
+                    //$('#ddlLoaiHopDongChiTietCu').val(hopdong.HopDongDanhMucId);
+                    //$('#txtNgayKyHopDong').val(tedu.getFormattedDate(hopdong.NgayKyHopDong));                        
+                }               
+                tedu.stopLoading();
+            },
+            error: function (status) {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
+        });
     }
 
 }
