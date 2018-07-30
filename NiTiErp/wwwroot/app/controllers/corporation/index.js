@@ -12,7 +12,9 @@
         addeditCorpotation.initialize();
     }
 
-    function registerEvents() {
+    function registerEvents() {        
+
+        //formMainValidate();
 
         $("#btn-create").on('click', function () {
 
@@ -164,107 +166,113 @@
     }
     
     function SaveDMCT(e) {
-        e.preventDefault();      
+        var isMainValidate = isFormMainValidate();
+        if (isMainValidate === true) {
+            e.preventDefault();
 
-        var corpoid = $('#hidDMCTId').val(); //  
-        var inscorpoid = $('#hidInsertDMCTId').val(); // id = 1 ; para update insert        
+            var corpoid = $('#hidDMCTId').val(); //  
+            var inscorpoid = $('#hidInsertDMCTId').val(); // id = 1 ; para update insert        
 
-        var tencor = $('#txtAddEditTenCongTy').val();
-        var sodienthoai = $('#txtAddEditSoDienThoai').val();
-        var diachi = $('#txtAddEditDiaChi').val();
-        var masothue = $('#txtAddEditMaSoThue').val();
-        var email = $('#txtAddEditEmail').val();
+            var tencor = $('#txtAddEditTenCongTy').val();
+            var sodienthoai = $('#txtAddEditSoDienThoai').val();
+            var diachi = $('#txtAddEditDiaChi').val();
+            var masothue = $('#txtAddEditMaSoThue').val();
+            var email = $('#txtAddEditEmail').val();
 
-        $.ajax({
-            type: "POST",
-            url: "/Admin/corporation/AddUpdateDMCT",
-            data: {
-                Id: corpoid,
-                InsertdmctId: inscorpoid,
-                
-                Name: tencor,
-                PhoneNumber1: sodienthoai,
-                Address: diachi,
-                TaxNumber: masothue,
-                Email: email
-            },
-            dataType: "json",
-            beforeSend: function () {
-                tedu.startLoading();
-            },
-            success: function (response) {
-                if (response.Success === false) {
-                    tedu.notify(response.Message, "error");
-                }
-                else {
-                    tedu.notify('Công ty, xí nghiệp.', 'success');
-                   
-                    loadTableDanhMucCongTy(true);
+            $.ajax({
+                type: "POST",
+                url: "/Admin/corporation/AddUpdateDMCT",
+                data: {
+                    Id: corpoid,
+                    InsertdmctId: inscorpoid,
 
-                    $('#modal-add-edit-DMCT').modal('hide');
+                    Name: tencor,
+                    PhoneNumber1: sodienthoai,
+                    Address: diachi,
+                    TaxNumber: masothue,
+                    Email: email
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    if (response.Success === false) {
+                        tedu.notify(response.Message, "error");
+                    }
+                    else {
+                        tedu.notify('Công ty, xí nghiệp.', 'success');
 
-                    resetFormAddEditDMCT();
+                        loadTableDanhMucCongTy(true);
 
+                        $('#modal-add-edit-DMCT').modal('hide');
+
+                        resetFormAddEditDMCT();
+
+                        tedu.stopLoading();
+                    }
+                },
+                error: function () {
+                    tedu.notify('Có lỗi! Không thể lưu Công ty, xí nghiệp', 'error');
                     tedu.stopLoading();
                 }
-            },
-            error: function () {
-                tedu.notify('Có lỗi! Không thể lưu Công ty, xí nghiệp', 'error');
-                tedu.stopLoading();
-            }
-        });
+            });
+        }
     }
 
     function UpdateDMCT(e) {
-        e.preventDefault();
+        var isMainValidate = isFormMainValidate();
+        if (isMainValidate === true) {
+            e.preventDefault();
 
-        var corpoid = $('#hidDMCTId').val(); //  
-        var inscorpoid = $('#hidInsertDMCTId').val(); // id = 1 ; para update insert        
+            var corpoid = $('#hidDMCTId').val(); //  
+            var inscorpoid = $('#hidInsertDMCTId').val(); // id = 1 ; para update insert        
 
-        var tencor = $('#txtAddEditTenCongTy').val();
-        var sodienthoai = $('#txtAddEditSoDienThoai').val();
-        var diachi = $('#txtAddEditDiaChi').val();
-        var masothue = $('#txtAddEditMaSoThue').val();
-        var email = $('#txtAddEditEmail').val();
+            var tencor = $('#txtAddEditTenCongTy').val();
+            var sodienthoai = $('#txtAddEditSoDienThoai').val();
+            var diachi = $('#txtAddEditDiaChi').val();
+            var masothue = $('#txtAddEditMaSoThue').val();
+            var email = $('#txtAddEditEmail').val();
 
-        $.ajax({
-            type: "POST",
-            url: "/Admin/corporation/AddUpdateDMCT",
-            data: {
-                Id: corpoid,
-                InsertdmctId: inscorpoid,
+            $.ajax({
+                type: "POST",
+                url: "/Admin/corporation/AddUpdateDMCT",
+                data: {
+                    Id: corpoid,
+                    InsertdmctId: inscorpoid,
 
-                Name: tencor,
-                PhoneNumber1: sodienthoai,
-                Address: diachi,
-                TaxNumber: masothue,
-                Email: email
-            },
-            dataType: "json",
-            beforeSend: function () {
-                tedu.startLoading();
-            },
-            success: function (response) {
-                if (response.Success === false) {
-                    tedu.notify(response.Message, "error");
-                }
-                else {
-                    tedu.notify('Công ty, xí nghiệp.', 'success');
+                    Name: tencor,
+                    PhoneNumber1: sodienthoai,
+                    Address: diachi,
+                    TaxNumber: masothue,
+                    Email: email
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    if (response.Success === false) {
+                        tedu.notify(response.Message, "error");
+                    }
+                    else {
+                        tedu.notify('Công ty, xí nghiệp.', 'success');
 
-                    loadTableDanhMucCongTy(true);
+                        loadTableDanhMucCongTy(true);
 
-                    $('#modal-add-edit-DMCT').modal('hide');
+                        $('#modal-add-edit-DMCT').modal('hide');
 
-                    resetFormAddEditDMCT();
+                        resetFormAddEditDMCT();
 
+                        tedu.stopLoading();
+                    }
+                },
+                error: function () {
+                    tedu.notify('Có lỗi! Không thể lưu Công ty, xí nghiệp', 'error');
                     tedu.stopLoading();
                 }
-            },
-            error: function () {
-                tedu.notify('Có lỗi! Không thể lưu Công ty, xí nghiệp', 'error');
-                tedu.stopLoading();
-            }
-        });
+            });
+        }
     }
 
     function loadAddEditDMCT(corpoid) {
@@ -297,6 +305,29 @@
             error: function (status) {
                 tedu.notify('Có lỗi xảy ra', 'error');
                 tedu.stopLoading();
+            }
+        });
+    }
+
+    function isFormMainValidate() {
+        if ($('#frmMainDMCT').valid()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    function formMainValidate() {        
+        $('#frmMainDMCT').validate({
+            errorClass: 'red',
+            ignore: [],
+            language: 'vi',
+            rules: {
+                txtAddEditEmail: {
+                    required: true,
+                    email: true
+                }
             }
         });
     }

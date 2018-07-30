@@ -58,7 +58,7 @@
     },
 
     getFormattedDateTimeHour: function (datetime) {
-        if (datetime == null || datetime == '')
+        if (datetime === null || datetime === '')
             return '';
 
         var newdate = new Date(datetime);
@@ -86,7 +86,7 @@
     },
 
     getFormattedDate: function (datetime) {
-        if (datetime == null || datetime == '')
+        if (datetime === null || datetime === '')
             return '';
 
         var newdate = new Date(datetime);
@@ -120,7 +120,7 @@
     },
 
     dateFormatJson: function (datetime) {
-        if (datetime == null || datetime == '')
+        if (datetime === null || datetime === '')
             return '';
         var newdate = new Date(parseInt(datetime.substr(6)));
         var month = newdate.getMonth() + 1;
@@ -139,7 +139,7 @@
         return day + "/" + month + "/" + year;
     },
     dateTimeFormatJson: function (datetime) {
-        if (datetime == null || datetime == '')
+        if (datetime === null || datetime === '')
             return '';
         var newdate = new Date(parseInt(datetime.substr(6)));
         var month = newdate.getMonth() + 1;
@@ -170,20 +170,22 @@
             $('.dv-loading').addClass('hide');
     },
     getStatus: function (status) {
-        if (status == 1)
+        if (status === 1)
             return '<span class="badge bg-green">Kích hoạt</span>';
         else
             return '<span class="badge bg-red">Khoá</span>';
     },
     getHoSoNhanVienStatus: function (status) {
-        if (status == 1)
+        if (status === 1)
             return '<span class="badge bg-green">Làm việc</span>';
-        else if (status == 2)
+        else if (status === 2)
             return '<span class="badge bg-red">Nghĩ việc</span>';
-        else if (status == 3)
+        else if (status === 3)
             return '<span class="badge bg-blue">Về hưu</span>';
-        else if (status == 4)
+        else if (status === 4)
             return '<span class="badge bg-orange">Hết hạn</span>';
+        if (status === 71)
+            return '<span class="badge bg-green">Hoạt động</span>';
         else 
             return '<span class="badge bg-purple">Chưa biết</span>';
 
@@ -215,7 +217,7 @@
 }
 
 $(document).ajaxSend(function(e, xhr, options) {
-    if (options.type.toUpperCase() == "POST" || options.type.toUpperCase() == "PUT") {
+    if (options.type.toUpperCase() === "POST" || options.type.toUpperCase() === "PUT") {
         var token = $('form').find("input[name='__RequestVerificationToken']").val();
         xhr.setRequestHeader("RequestVerificationToken", token);
     }

@@ -9,15 +9,25 @@ namespace NiTiErp.Application.Dapper.ViewModels
     {
         public string Id { set; get; }
 
+        
+        public int InsertphongdmId { get; set; }
+
+
         [StringLength(50)]
         [Required]
         public string CorporationId { get; set; }
 
+        [StringLength(500)]       
+        public string TenKhuVuc { get; set; }
+
         [StringLength(1000)]
         public string TenPhong { get; set; }
-       
-        public int SoDienThoai1 { get; set; }
-        public int SoDienThoai2 { get; set; }
+
+        [StringLength(50)]
+        public string SoDienThoai1 { get; set; }
+
+        [StringLength(50)]
+        public string SoDienThoai2 { get; set; }
 
         [StringLength(100)]
         public string Email { get; set; }
