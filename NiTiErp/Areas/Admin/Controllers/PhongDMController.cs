@@ -4,23 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using NiTiErp.Application.Dapper.Interfaces;
 using NiTiErp.Application.Dapper.ViewModels;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using NiTiErp.Application.Dapper.Interfaces;
-using NiTiErp.Application.Dapper.ViewModels;
 using NiTiErp.Authorization;
 using NiTiErp.Extensions;
 using NiTiErp.Utilities.Dtos;
-using NiTiErp.Utilities.Helpers;
-using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Globalization;
-using System.IO;
 using System.Linq;
 
 namespace NiTiErp.Areas.Admin.Controllers
@@ -36,7 +24,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         public PhongDMController(IHostingEnvironment hostingEnvironment,
             NiTiErp.Application.Interfaces.IUserService userService,
             IAuthorizationService authorizationService,
-            
+
             IPhongDanhMucService phongdanhmucService
             )
         {
@@ -83,7 +71,7 @@ namespace NiTiErp.Areas.Admin.Controllers
                 }
                 else
                 {
-                    var result = _authorizationService.AuthorizeAsync(User, "DMPHONG", Operations.Update); // 
+                    var result = _authorizationService.AuthorizeAsync(User, "DMPHONG", Operations.Update); //
                     if (result.Result.Succeeded == false)
                     {
                         return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền sửa."));
@@ -118,7 +106,6 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
-        #endregion
-
+        #endregion AJAX API
     }
 }

@@ -9,6 +9,8 @@ namespace NiTiErp.Application.Dapper.ViewModels
     {
         public string Id { set; get; }
 
+        public int InsertchucvunvId { set; get; }
+
         [StringLength(50)]
         public string CorporationId { get; set; }
 

@@ -212,6 +212,8 @@ namespace NiTiErp
             services.AddTransient<IBacLuongService, BacLuongService>();
             services.AddTransient<IHeSoLuongService, HeSoLuongService>();
             services.AddTransient<IHeSoNhanVienService, HeSoNhanVienService>();
+            services.AddTransient<IChucDanhService, ChucDanhService>();
+            services.AddTransient<IThongBaoService, ThongBaoService>();
 
             services.AddTransient<IQDKhenThuongService, QDKhenThuongService>();
             services.AddTransient<IQDKyLuatService, QDKyLuatService>();
