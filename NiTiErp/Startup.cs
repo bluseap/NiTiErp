@@ -20,10 +20,12 @@ using NiTiErp.Data.Entities;
 using NiTiErp.Data.IRepositories;
 using NiTiErp.Extensions;
 using NiTiErp.Helpers;
+using NiTiErp.Hubs;
 using NiTiErp.Infrastructure.Interfaces;
 using NiTiErp.Services;
 using PaulMiami.AspNetCore.Mvc.Recaptcha;
 using System;
+
 
 namespace NiTiErp
 {
@@ -127,6 +129,8 @@ namespace NiTiErp
                     });
             })
                 .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+
+            services.AddSignalR();
 
             services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
             services.AddTransient(typeof(IRepository<,>), typeof(EFRepository<,>));
@@ -254,6 +258,14 @@ namespace NiTiErp
             app.UseMinResponse();
             app.UseAuthentication();
             app.UseSession();
+
+
+            app.UseFileServer();
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<ChatHub>("/chat");
+            });
+
 
             app.UseMvc(routes =>
             {

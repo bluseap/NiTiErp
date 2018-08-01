@@ -34,6 +34,9 @@
 </head>
 
 <body class="login">
+    @*<a href="#" id="allownoti">Cho phép thông báo</a>
+    <a href="#" id="shownoti">Hiển thị thông báo</a>*@
+
     <div>
 
         <div class="login_wrapper">
@@ -82,9 +85,11 @@
 
     @*<script src="~/bundled/site-admin.min.js"></script>*@
 
+    @*<script src="~/app/shared/thongbao.js" asp-append-version="true"></script>*@
 
-    <script src="~/app/shared/tedu.js"></script>
-    <script src="~/app/controllers/login/index.js"></script>
+    <script src="~/app/shared/tedu.js" asp-append-version="true"></script>
+
+    <script src="~/app/controllers/login/index.js" asp-append-version="true"></script>
 
     <script>
         var login = new loginController();

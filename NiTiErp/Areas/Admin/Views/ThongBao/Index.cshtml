@@ -13,6 +13,10 @@
     <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
 
+
+    @*<script src="~/lib/signalr/lib/signalr.js" asp-append-version="true"></script>*@
+    @*<script src="~/lib/signalr/lib/signalr.min.js" asp-append-version="true"></script>*@
+
     <script src="~/app/controllers/thongbao/index.js" asp-append-version="true"></script>
     <script>
         var thongbao = new thongbaoController();
@@ -50,7 +54,7 @@
                                 <button class="btn btn-primary" id="btnTimNhanVien" type="button">Tìm !</button>
                             </span>
                         </div>
-                    </div>                    
+                    </div>
                     <div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
                         <div class="input-group">
                             <select id="ddlKhuVuc" class="form-control"></select>
@@ -73,7 +77,7 @@
                                     <th width="=20%">#</th>
                                     <th>Tiêu đề</th>
                                     <th>Nội dung</th>
-                                    <th>Khu vực</th>    
+                                    <th>Khu vực</th>
                                     <th>Dữ liệu</th>
                                     <th>Ngày tạo</th>
                                     <th>Trạng thái</th>
@@ -117,7 +121,7 @@
             <td>{{TieuDe}}</td>
             <td>{{NoiDung}}</td>
             <td>{{TenKhuVuc}}</td>
-            <td>{{UploadFile1}}</td>    
+            <td>{{UploadFile1}}</td>
             <td>{{CreateDate}}</td>
             <td>{{{Status}}}</td>
         </tr>

@@ -274,7 +274,7 @@
                 InsertThongbaoId: insthongbaoid,
                 CorporationId: makv,
 
-                ChucDanhDanhMucId: tieude,
+                TieuDe: tieude,
                 UploadFile1: fileUpload1,
                 NoiDung: noidung
             },
@@ -292,6 +292,8 @@
                     loadTableThongBao(true);
 
                     $('#modal-add-edit-ThongBao').modal('hide');
+
+                    ThongBaoSent(tieude, noidung, fileUpload1);
 
                     resetFormAddEditThongBao();
 
@@ -325,7 +327,7 @@
                 InsertThongbaoId: insthongbaoid,
                 CorporationId: makv,
 
-                ChucDanhDanhMucId: tieude,
+                TieuDe: tieude,
                 UploadFile1: fileUpload1,
                 NoiDung: noidung
             },
@@ -343,6 +345,8 @@
                     loadTableThongBao(true);
 
                     $('#modal-add-edit-ThongBao').modal('hide');
+
+                    ThongBaoSent(tieude, noidung, fileUpload1);
 
                     resetFormAddEditThongBao();
 
@@ -422,7 +426,58 @@
                 tedu.stopLoading();
             }
         });        
-    }    
+    }
+
+    function ThongBaoSent(tieude, noidung, fileupload) {        
+        //var notify;
+        //notify = new Notification(
+        //    'Bạn có một thông báo mới từ POWACO', // Tiêu đề thông báo
+        //    {
+        //        //body: 'qqqqFreetuts vừa đăng một bài viết mới.', // Nội dung thông báo
+        //        body: tieude,
+        //        icon: 'http://powaco.com.vn/content/images/powacmo.png', // Hình ảnh
+        //        tag: 'http://powaco.com.vn/' // Đường dẫn 
+        //    }
+        //);
+        //// Thực hiện khi nhấp vào thông báo
+        //notify.onclick = function () {
+        //    window.location.href = this.tag; // Di chuyển đến trang cho url = tag
+        //}
+
+        // Start the connection.
+        var connection = new signalR.HubConnectionBuilder()
+            .withUrl('/chat')
+            .build();
+
+        var name = "name1";
+        var message = "message1";
+        // Create a function that the hub can call to broadcast messages.
+        connection.on('broadcastMessage', function (name, message) {            
+            var notify;
+            notify = new Notification(
+                'Bạn có một thông báo mới từ POWACO', // Tiêu đề thông báo
+                {
+                    //body: 'qqqqFreetuts vừa đăng một bài viết mới.', // Nội dung thông báo
+                    body: tieude,
+                    icon: 'http://powaco.com.vn/content/images/powacmo.png', // Hình ảnh
+                    tag: 'http://powaco.com.vn/' // Đường dẫn 
+                }
+            );
+            // Thực hiện khi nhấp vào thông báo
+            notify.onclick = function () {
+                window.location.href = this.tag; // Di chuyển đến trang cho url = tag
+            }
+        });
+
+        // Transport fallback functionality is now built into start.
+        connection.start().then(function () {
+            console.log('connection started');       
+            connection.invoke('send', name, tieude);
+        }).catch(error => {
+                console.error(error.message);
+        });
+
+    }
 
     function XuatExcelThongBao() {
 
