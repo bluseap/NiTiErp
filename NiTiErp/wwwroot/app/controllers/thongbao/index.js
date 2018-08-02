@@ -128,7 +128,7 @@
             url: '/admin/hoso/GetListCorNhanSu',
             dataType: 'json',
             success: function (response) {
-                var render = "<option value='%' >-- Lựa chọn --</option>";
+                var render = "<option value='%' >-- Tất cả --</option>";
                 $.each(response.Result, function (i, item) {
                     render += "<option value='" + item.Id + "'>" + item.Name + "</option>";
                 });
@@ -428,21 +428,7 @@
         });        
     }
 
-    function ThongBaoSent(tieude, noidung, fileupload) {        
-        //var notify;
-        //notify = new Notification(
-        //    'Bạn có một thông báo mới từ POWACO', // Tiêu đề thông báo
-        //    {
-        //        //body: 'qqqqFreetuts vừa đăng một bài viết mới.', // Nội dung thông báo
-        //        body: tieude,
-        //        icon: 'http://powaco.com.vn/content/images/powacmo.png', // Hình ảnh
-        //        tag: 'http://powaco.com.vn/' // Đường dẫn 
-        //    }
-        //);
-        //// Thực hiện khi nhấp vào thông báo
-        //notify.onclick = function () {
-        //    window.location.href = this.tag; // Di chuyển đến trang cho url = tag
-        //}
+    function ThongBaoSent(tieude, noidung, fileupload) {    
 
         // Start the connection.
         var connection = new signalR.HubConnectionBuilder()
@@ -460,19 +446,21 @@
                     //body: 'qqqqFreetuts vừa đăng một bài viết mới.', // Nội dung thông báo
                     body: tieude,
                     icon: 'http://powaco.com.vn/content/images/powacmo.png', // Hình ảnh
-                    tag: 'http://powaco.com.vn/' // Đường dẫn 
+                    tag: fileupload // Đường dẫn 
                 }
             );
             // Thực hiện khi nhấp vào thông báo
             notify.onclick = function () {
-                window.location.href = this.tag; // Di chuyển đến trang cho url = tag
+                //window.location.href = this.tag; // Di chuyển đến trang cho url = tag
+                var win = window.open(this.tag, '_blank');
+                win.focus();
             }
         });
 
         // Transport fallback functionality is now built into start.
         connection.start().then(function () {
             console.log('connection started');       
-            connection.invoke('send', name, tieude);
+            connection.invoke('send', '', '');
         }).catch(error => {
                 console.error(error.message);
         });

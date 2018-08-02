@@ -1,6 +1,4 @@
-﻿
-
-@section Scripts{
+﻿@section Scripts{
     <!-- Flot -->
     <script src="~/lib/flot/jquery.flot.js"></script>
     <script src="~/lib/flot/jquery.flot.pie.js"></script>
@@ -13,11 +11,7 @@
     <script src="~/lib/flot-spline/js/jquery.flot.spline.min.js"></script>
     <script src="~/lib/flot.curvedlines/curvedLines.js"></script>
     <!-- DateJS -->
-    <script src="~/lib/DateJS/build/date.js"></script>
-
-
-    <script src="~/lib/gentelella/vendors/raphael/raphael.js" asp-append-version="true"></script>
-    <script src="~/lib/gentelella/vendors/morris.js/morris.js" asp-append-version="true"></script>
+    <script src="~/lib/DateJS/build/date.js"></script> 
 
     <script src="~/app/controllers/home/index.js" asp-append-version="true"></script>
     <script>
@@ -61,6 +55,27 @@
 <!-- /top tiles -->
 
 <div class="row">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>  <small>Nhân sự</small></h3>
+        </div>
+        <div class="title_right">
+            <div class="col-md-5 col-sm-2 col-xs-12 form-group pull-right">
+                <div class="input-group">
+                    <input type="text" id="txtTimNhanVien" class="form-control" placeholder="Từ khóa...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" id="btnTimNhanVien" type="button">Tìm !</button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <select id="ddlKhuVuc" class="form-control"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="col-md-9 col-sm-12 col-xs-12">
         <div class="x_panel">
             <div class="x_title">
@@ -71,7 +86,6 @@
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-
                     </li>
                     <li>
                         <a class="close-link"><i class="fa fa-close"></i></a>
@@ -80,7 +94,9 @@
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
-                <div id="graph_bar2" style="width:100%; height:280px;"></div>
+                <div id="graphBar">
+                    <div id="graph_bar2" style="width:100%; height:280px;"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -102,24 +118,29 @@
                 </ul>
                 <div class="clearfix"></div>
             </div>
-            <ul class="list-unstyled top_profiles scroll-view">
-                <li class="media event">                   
-                    <div class="media-body">
-                        <a class="title" href="#">
-                            Hồ sơ nâng lương 
-                            <small>
-                                <span class="badge bg-green" id="lblHoSoMoi">Mới</span>
-                            </small>
-                        </a>
-                        <p><strong>$2300. </strong> Agent Avarage Sales </p>
-                        <p>
-                            <small>12 Sales Today</small>
-                        </p>
+            <div class="x_content">
+                <ul class="list-unstyled top_profiles scroll-view">
+                    <div class="row" id="tblContentThongBao">
                     </div>
-                </li>
-                
-            </ul>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
 
+<script id="table-ThongBao" type="x-tmpl-mustache">
+    <li class="media event">
+        <div class="media-body">
+            <a class="title" href={{UploadFile1}}>
+                {{TieuDe}}
+                <small>
+                    {{{Status}}}
+                </small>
+            </a>
+            <p>@*<strong>$2300. rtyr </strong>*@ {{NoiDung}} </p>
+            <p>
+                <small>{{CreateDate}}</small>
+            </p>
+        </div>
+    </li>
+</script>
