@@ -36,5 +36,11 @@ namespace NiTiErp.Areas.Admin.Controllers
                 "", "", "", "", "", "TKNhanVienKhuVuc"));
         }
 
+        public async Task<IActionResult> TKSLChucVu(string corporationId, string phongId, string chucvuId, string trinhdoId)
+        {
+            return new OkObjectResult(await _reportService.SumHoSoNhanVienPara(corporationId, phongId, chucvuId, trinhdoId,
+                "", "", "", "", "", "TKChucVuKhuVuc"));
+        }
+
     }
 }

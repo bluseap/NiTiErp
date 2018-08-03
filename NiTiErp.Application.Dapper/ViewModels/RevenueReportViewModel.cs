@@ -21,7 +21,16 @@ namespace NiTiErp.Application.Dapper.ViewModels
         [StringLength(500)]
         public string TenPhong { get; set; }
 
+        [StringLength(500)]
+        public string TenChucVu { get; set; }
+
         public int SoNguoi { get; set; }
+
+        [StringLength(500)]
+        public string label { get; set; }
+
+        [StringLength(500)]
+        public string value { get; set; }
 
     }
 }

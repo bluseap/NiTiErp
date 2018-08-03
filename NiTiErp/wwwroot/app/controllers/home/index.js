@@ -10,28 +10,31 @@
     }
 
     function registerEvents() {
-
         $('#btnTimNhanVien').on('click', function () {
-            chartThongKeNhanVienMakv("", "");
+            loadChart();
         });
 
         $('#txtTimNhanVien').on('keypress', function (e) {
             if (e.which === 13) {
-                chartThongKeNhanVienMakv("", "");
+                loadChart();
             }
         });
-
     }
 
     function loadData() {       
-
         chartThongKeNhanVien("", "");
+
+        chartThongKeChucVu("", "");
 
         thongbao();
     }
 
-    function chartThongKeNhanVienMakv(formDate, toDate) {        
+    function loadChart() {
+        chartThongKeNhanVienMakv("", "");
+        chartThongKeChucVuMakv("", "");
+    }
 
+    function chartThongKeNhanVienMakv(formDate, toDate) {       
         var khuvuc = $('#ddlKhuVuc').val();
 
         $.ajax({
@@ -79,21 +82,7 @@
                         resize: true
                     });
                 }
-                //$(document).ready(function () {
-                //    Morris.Bar({
-                //        element: 'graph_bar2',
-                //        data:
-                //            response,
-                //        xkey: 'TenPhong',
-                //        ykeys: ['SoNguoi'],
-                //        labels: ['Nhân viên: '],
-                //        barRatio: 0.4,
-                //        barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
-                //        xLabelAngle: 35,
-                //        hideHover: 'auto',
-                //        resize: true
-                //    });
-                //});
+                
             },
             error: function (status) {
                 tedu.notify('Có lỗi xảy ra', 'error');
@@ -331,10 +320,7 @@
             beforeSend: function () {
                 tedu.startLoading();
             },
-            success: function (response) {
-                
-                $('#graph_bar2').empty();
-
+            success: function (response) {        
                 $(document).ready(function () {
                     Morris.Bar({
                         element: 'graph_bar2',
@@ -352,6 +338,96 @@
 
                 });
 
+            },
+            error: function (status) {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function chartThongKeChucVu(form, to) {
+        var khuvuc = userCorporationId;
+
+        $.ajax({
+            type: "GET",
+            url: "/Admin/Home/TKSLChucVu",
+            data: {
+                corporationId: khuvuc,
+                phongId: "",
+                chucvuId: "",
+                trinhdoId: ""
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {  
+                Morris.Donut({
+                    element: 'graph_donut2',
+                    data: response,
+                    colors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
+                    formatter: function (y) {                       
+                        return y;
+                        //return y + "%";
+                    },
+                    resize: true
+                });
+
+                //$(document).ready(function () {
+                //    Morris.Donut({
+                //        element: 'graph_donut2',
+                //        data: [
+                //            { label: 'Jam', value: 25 },
+                //            { label: 'Frosted', value: 40 },
+                //            { label: 'Custard', value: 25 },
+                //            { label: 'Sugar', value: 10 }
+                //        ],
+                //        colors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
+                //        formatter: function (y) {
+                //            return y + "%";
+                //        },
+                //        resize: true
+                //    });
+                //});
+            },
+            error: function (status) {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function chartThongKeChucVuMakv(form, to) {
+        var khuvuc = $('#ddlKhuVuc').val();
+
+        $.ajax({
+            type: "GET",
+            url: "/Admin/Home/TKSLChucVu",
+            data: {
+                corporationId: khuvuc,
+                phongId: "",
+                chucvuId: "",
+                trinhdoId: ""
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                $('#graphDonut').empty();
+                $("#graphDonut").append('<div id="graph_donut2" style="width:100%; height:300px;"></div>');
+
+                Morris.Donut({
+                    element: 'graph_donut2',
+                    data: response,
+                    colors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
+                    formatter: function (y) {
+                        return y;
+                        //return y + "%";
+                    },
+                    resize: true
+                });               
             },
             error: function (status) {
                 tedu.notify('Có lỗi xảy ra', 'error');
