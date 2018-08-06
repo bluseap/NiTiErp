@@ -14,8 +14,8 @@
 
         addeditHopDong.initialize(); 
 
-        loadBtnDanhSachHetHanHopDong();
-        loadBtnGanDanhSachHetHanHopDong();
+        //loadBtnDanhSachHetHanHopDong();
+        //loadBtnGanDanhSachHetHanHopDong();
     }
 
     function registerEvents() {    
@@ -250,7 +250,9 @@
                 $("#ddlKhuVuc")[0].selectedIndex = 1;         
 
                 loadPhongKhuVuc($("#ddlKhuVuc").val());
-                       
+
+                loadBtnDanhSachHetHanHopDong();
+                loadBtnGanDanhSachHetHanHopDong();
             },
             error: function (status) {
                 console.log(status);
@@ -745,14 +747,15 @@
     function loadBtnDanhSachHetHanHopDong() {       
         var date = new Date();
 
-        var hosoid = userCorporationId;
+        var makhuvuc = $('#ddlKhuVuc').val();
+
         var tungayId = tedu.getFormatDateYYMMDD(tedu.getFormattedDate(date));
         var denngayId = tedu.getFormatDateYYMMDD(tedu.getFormattedDate(date));
 
         $.ajax({
             type: 'GET',
             data: {
-                hosoId: hosoid,
+                corporationId: makhuvuc,
                 tungay: tungayId,
                 denngay: denngayId                
             },
@@ -853,6 +856,7 @@
     function loadBtnGanDanhSachHetHanHopDong() {
         var date = new Date();
 
+        var makhuvuc = $('#ddlKhuVuc').val();
         var hosoid = userCorporationId;
         var tungayId = tedu.getFormatDateYYMMDD(tedu.getFormattedDate(date));
         var denngayId = tedu.getFormatDateYYMMDD(tedu.getFormattedDate(date));
@@ -860,7 +864,7 @@
         $.ajax({
             type: 'GET',
             data: {
-                hosoId: hosoid,
+                corporationId: makhuvuc,
                 tungay: tungayId,
                 denngay: denngayId
             },

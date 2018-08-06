@@ -41,17 +41,10 @@ namespace NiTiErp.Areas.Admin.Controllers
             return View();
         }
 
-
-        //public async Task<IActionResult> Index()
-        //{           
-
-        //    var phong = "%";
-        //    var tukhoa =  "%";
-
-        //    var model = _hosonhanvienService.HoSoNhanVienGetList("PO", phong, tukhoa,
-        //        "", "1", "", "GetAllHoSoNhanVien");
-
-        //    return View(model.Result);
+        //public async Task<IActionResult> HisQuyetDinh(string corporationId, string phongId, string chucvuId, string trinhdoId)
+        //{
+        //    return new OkObjectResult(await _reportService.SumHoSoNhanVienPara(corporationId, phongId, chucvuId, trinhdoId,
+        //        "", "", "", "", "", "TKNhanVienKhuVuc"));
         //}
 
     }

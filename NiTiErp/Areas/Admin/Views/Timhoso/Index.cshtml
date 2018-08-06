@@ -50,8 +50,7 @@
             <div class="x_content">
                 <div class="clearfix"></div>
                 <div class="row" id="tblContentHoSo">
-                </div>
-                
+                </div>                
             </div>
         </div>
     </div>
@@ -70,13 +69,13 @@
             </span>
             Tổng cộng: <strong id="lbl-total-recordsHoSo"></strong>
         </div>
-    </div><div class="col-sm-7">
+    </div>
+    <div class="col-sm-7">
         <div class="dataTables_paginate" id="datatable-checkbox_paginateHoSo">
             <ul id="paginationULHoSo"></ul>
         </div>
     </div>
 </div>
-
 
 <script id="table-HoSo" type="x-tmpl-mustache">
     <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
@@ -98,28 +97,31 @@
             </div>
             <div class="col-xs-12 bottom text-center">
                 <div class="col-xs-12 col-sm-6 emphasis">
-                    <button type="button" class="btn btn-success btn-xs">
+                    <a class="btn btn-link btnLuong" >
                         </i> <i class="fa fa-usd"></i> Lương
-                    </button>
-                    <button type="button" class="btn btn-primary btn-xs">
+                    </a>
+                    <a class="btn btn-link  btnQuyetDinh" >
                         <i class="fa fa-file-text"> </i> Quyết định
-                    </button>
-                    
+                    </a>                    
                 </div>
                 <div class="col-xs-12 col-sm-6 emphasis">
-                    <button type="button" class="btn btn-success btn-xs">
+                    <a  class="btn btn-link btnSucKhoe" >
                         <i class="fa fa-medkit"></i> Sức khỏe
-                    </button>
-                    <button type="button" class="btn btn-primary btn-xs">
+                    </a>
+                    <a  class="btn btn-link btnXemThongTin" >
                         <i class="fa fa-info-circle"> </i> Xem thông tin
-                    </button>
-                    <button type="button" class="btn btn-info btn-xs">
+                    </a>
+                    <a  class="btn btn-link btnDaoTao" >
                         <i class="fa fa-graduation-cap"> </i> Đào tạo
-                    </button>
+                    </a>
                 </div>
-
             </div>
-
         </div>
     </div>
 </script>
+
+<partial name="_HisDaoTao.cshtml" />
+<partial name="_HisLuong.cshtml" />
+<partial name="_HisQuyetDinh.cshtml" />
+<partial name="_HisSucKhoe.cshtml" />
+<partial name="_HisThongTin.cshtml" />
