@@ -12,6 +12,14 @@
 
     function registerEvents() {
 
+        $('body').on('click', '.btnTimHoSoNhanVien', function (e) {
+            e.preventDefault();
+            var url = window.location.href;       // Hiển thị đường dẫn url
+            //var tieude = window.document.title;    // Hiển thị tiêu đề trang  
+            var win = window.open(url, '_blank');
+            win.focus();
+        });
+
         $('body').on('click', '.btnLuong', function (e) {       
             e.preventDefault();            
 

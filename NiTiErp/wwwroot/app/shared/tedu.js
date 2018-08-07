@@ -251,3 +251,10 @@ $(document).ajaxSend(function(e, xhr, options) {
         xhr.setRequestHeader("RequestVerificationToken", token);
     }
 });
+
+//$('body').on('click', '.btnfunctionId', function (e) {
+//    e.preventDefault();
+
+//    tedu.notify("sider bar", "success");
+
+//});

@@ -9,10 +9,20 @@
     this.initialize = function () {
         loadKhuVuc();
         loadData(); 
-        registerEvents();          
+        registerEvents();      
+
+        loadTieuDe();
     }
 
-    function registerEvents() {
+    function registerEvents() {   
+
+        $('body').on('click', '.btnNhapHoSoNhanVien', function (e) {
+            e.preventDefault();
+            var url = window.location.href;       // Hiển thị đường dẫn url
+            //var tieude = window.document.title;    // Hiển thị tiêu đề trang  
+            var win = window.open(url, '_blank');
+            win.focus();
+        });
 
         $('#txtHeSoLuongCoBan').prop('disabled', false);
 
@@ -3448,6 +3458,10 @@
         });
     }
 
-   
+    function loadTieuDe() {
+        $('#lbTieuDe1').text("dasd AS");     
+
+    }
+
 
 }
