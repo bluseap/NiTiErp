@@ -8,13 +8,35 @@
 
     this.initialize = function () {
         loadKhuVuc();
+
         loadData(); 
+
         registerEvents();      
 
         loadTieuDe();
     }
 
     function registerEvents() {   
+
+        $("#ddlThanhPhoTinhQueQuan").on('change', function () {
+            var matinh = $('#ddlThanhPhoTinhQueQuan').val();
+            loadQuanHuyenMaTinhQueQuan(matinh);
+        });
+
+        $("#ddlQuanHuyenQueQuan").on('change', function () {
+            var mahuyen = $('#ddlQuanHuyenQueQuan').val();
+            loadPhuongXaMaTinhQueQuan(mahuyen);
+        });
+
+        $("#ddlThanhPhoTinh").on('change', function () {
+            var matinh = $('#ddlThanhPhoTinh').val();
+            loadQuanHuyenMaTinh(matinh);
+        });
+
+        $("#ddlQuanHuyen").on('change', function () {
+            var mahuyen = $('#ddlQuanHuyen').val();
+            loadPhuongXaMaTinh(mahuyen);
+        });
 
         $('body').on('click', '.btnNhapHoSoNhanVien', function (e) {
             e.preventDefault();
@@ -476,7 +498,7 @@
                     required: true,
                     isDateVietNam: true
                 },
-                txtNoiOHienNay: { required: true },
+                //txtNoiOHienNay: { required: true },
                 ddlHonNhan: {
                     required: true,
                     isDanhMuc : true
@@ -506,7 +528,7 @@
             messages: {
                 txtHoVaTen: { required: "Nhập họ và tên.." },
                 txtNgaySinh: { required: "Nhập ngày sinh cho đúng.." },
-                txtNoiOHienNay: { required: "Nhập nơi ở hiện nay." },
+                //txtNoiOHienNay: { required: "Nhập nơi ở hiện nay." },
 
                 txtHeSoLuongCoBan: {
                     required: "Nhập hệ số..",
@@ -698,8 +720,8 @@
         $('#txtNgayCapCMND').val('');
         $('#txtNoiCapCMND').val('');
         $('#txtNoiSinh').val('');
-        $('#txtQueQuan').val('');
-        $('#txtNoiOHienNay').val('');
+        //$('#txtQueQuan').val('');
+        //$('#txtNoiOHienNay').val('');
         $('#ddlHonNhan')[0].selectedIndex = 0;
         $('#ddlDanToc')[0].selectedIndex = 0;
         $('#ddlTonGiao')[0].selectedIndex = 0;
@@ -937,7 +959,153 @@
         });
     }
 
+    function loadPhuongXaMaTinh(huyenid) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/hoso/PhuongXaGetListMaHuyen',
+            data: { huyenId: huyenid },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >--- Lựa chọn ---</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.TenPhuongXa + "</option>";
+                });
+                $('#ddlPhuongXa').html(render);
+
+                //var tinhid = $('#ddlThanhPhoTinh').val();
+                //loadQuanHuyenMaTinh(tinhid);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh mục Thành phố, tỉnh.', 'error');
+            }
+        });
+    }
+
+    function loadQuanHuyenMaTinh(tinhid) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/hoso/QuanHuyenGetListMaTinh',
+            data: { tinhId: tinhid },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >--- Lựa chọn ---</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.TenQuanHuyen + "</option>";
+                });
+                $('#ddlQuanHuyen').html(render);
+               
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh mục Thành phố, tỉnh.', 'error');
+            }
+        });
+    }
+
+    function loadPhuongXaMaTinhQueQuan(huyenid) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/hoso/PhuongXaGetListMaHuyen',
+            data: { huyenId: huyenid },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >--- Lựa chọn ---</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.TenPhuongXa + "</option>";
+                });
+                $('#ddlPhuongXaQueQuan').html(render);
+                
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh mục Thành phố, tỉnh.', 'error');
+            }
+        });
+    }
+
+    function loadQuanHuyenMaTinhQueQuan(tinhid) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/hoso/QuanHuyenGetListMaTinh',
+            data: { tinhId: tinhid },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >--- Lựa chọn ---</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.TenQuanHuyen + "</option>";
+                });
+                $('#ddlQuanHuyenQueQuan').html(render);
+               
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh mục Thành phố, tỉnh.', 'error');
+            }
+        });
+    }
+
     function LoadTabDanhMucLyLich() {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/hoso/ThanhPhoTinhGetList',
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >--- Lựa chọn ---</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.TenTinh + "</option>";
+                });
+                $('#ddlThanhPhoTinhQueQuan').html(render);
+                $('#ddlThanhPhoTinhQueQuan')[0].selectedIndex = 1;
+
+                var tinhid = $('#ddlThanhPhoTinhQueQuan').val();
+                loadQuanHuyenMaTinhQueQuan(tinhid);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh mục Thành phố, tỉnh.', 'error');
+            }
+        });
+
+        $.ajax({
+            type: 'GET',
+            url: '/admin/hoso/ThanhPhoTinhGetList',
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >--- Lựa chọn ---</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.TenTinh + "</option>";
+                });
+                $('#ddlThanhPhoTinh').html(render);
+                $('#ddlThanhPhoTinh')[0].selectedIndex = 1;
+
+                var tinhid = $('#ddlThanhPhoTinh').val();
+                loadQuanHuyenMaTinh(tinhid);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh mục Thành phố, tỉnh.', 'error');
+            }
+        });
+
         $.ajax({
             type: 'GET',
             url: '/admin/hoso/HonNhanGetList',
@@ -1272,7 +1440,7 @@
                 $("#ddlKhuVuc")[0].selectedIndex = 1;
                 $("#ddlCongTyXiNghiep")[0].selectedIndex = 1;
 
-                //LoadTableHoSoNhanVien(true);
+                LoadTableHoSoNhanVien(true);
 
                 loadPhongKhuVuc($("#ddlKhuVuc").val());
                 loadPhongKhuVucTabCongViec($("#ddlCongTyXiNghiep").val());
@@ -1396,8 +1564,8 @@
             var ngaycap = tedu.getFormatDateYYMMDD($('#txtNgayCapCMND').val());
             var noicap = $('#txtNoiCapCMND').val();
             var noisinh = $('#txtNoiSinh').val();
-            var quequan = $('#txtQueQuan').val();
-            var noiohiennay = $('#txtNoiOHienNay').val();
+            //var quequan = $('#txtQueQuan').val();
+            //var noiohiennay = $('#txtNoiOHienNay').val();
             var honnhan = $('#ddlHonNhan').val();
             var dantoc = $('#ddlDanToc').val();
             var tocgiao = $('#ddlTonGiao').val();
@@ -1427,8 +1595,8 @@
                     NgayCapCMND: ngaycap,
                     NoiCapCMND: noicap,
                     NoiSinh: noisinh,
-                    QueQuan: quequan,
-                    NoiOHienNay: noiohiennay,
+                    //QueQuan: quequan,
+                    //NoiOHienNay: noiohiennay,
                     HonNhanDanhMucId: honnhan,
                     DanTocDanhMucId: dantoc,
                     TonGiaoDanhMucId: tocgiao,
@@ -1494,8 +1662,8 @@
                 $('#txtNgayCapCMND').val(tedu.getFormattedDate(hoso.NgayCapCMND));
                 $('#txtNoiCapCMND').val(hoso.NoiCapCMND);
                 $('#txtNoiSinh').val(hoso.NoiSinh);
-                $('#txtQueQuan').val(hoso.QueQuan);
-                $('#txtNoiOHienNay').val(hoso.NoiOHienNay);
+                //$('#txtQueQuan').val(hoso.QueQuan);
+                //$('#txtNoiOHienNay').val(hoso.NoiOHienNay);
                 $('#ddlHonNhan').val(hoso.HonNhanDanhMucId);
                 $('#ddlDanToc').val(hoso.DanTocDanhMucId);
                 $('#ddlTonGiao').val(hoso.TonGiaoDanhMucId);
@@ -1550,8 +1718,8 @@
             var ngaycap = tedu.getFormatDateYYMMDD($('#txtNgayCapCMND').val());
             var noicap = $('#txtNoiCapCMND').val();
             var noisinh = $('#txtNoiSinh').val();
-            var quequan = $('#txtQueQuan').val();
-            var noiohiennay = $('#txtNoiOHienNay').val();
+            //var quequan = $('#txtQueQuan').val();
+            //var noiohiennay = $('#txtNoiOHienNay').val();
             var honnhan = $('#ddlHonNhan').val();
             var dantoc = $('#ddlDanToc').val();
             var tocgiao = $('#ddlTonGiao').val();
@@ -1581,8 +1749,8 @@
                     NgayCapCMND: ngaycap,
                     NoiCapCMND: noicap,
                     NoiSinh: noisinh,
-                    QueQuan: quequan,
-                    NoiOHienNay: noiohiennay,
+                    //QueQuan: quequan,
+                    //NoiOHienNay: noiohiennay,
                     HonNhanDanhMucId: honnhan,
                     DanTocDanhMucId: dantoc,
                     TonGiaoDanhMucId: tocgiao,
@@ -1642,8 +1810,8 @@
             var ngaycap = tedu.getFormatDateYYMMDD($('#txtNgayCapCMND').val());
             var noicap = $('#txtNoiCapCMND').val();
             var noisinh = $('#txtNoiSinh').val();
-            var quequan = $('#txtQueQuan').val();
-            var noiohiennay = $('#txtNoiOHienNay').val();
+            //var quequan = $('#txtQueQuan').val();
+            //var noiohiennay = $('#txtNoiOHienNay').val();
             var honnhan = $('#ddlHonNhan').val();
             var dantoc = $('#ddlDanToc').val();
             var tocgiao = $('#ddlTonGiao').val();
@@ -1674,7 +1842,7 @@
                     NoiCapCMND: noicap,
                     NoiSinh: noisinh,
                     QueQuan: quequan,
-                    NoiOHienNay: noiohiennay,
+                    //NoiOHienNay: noiohiennay,
                     HonNhanDanhMucId: honnhan,
                     DanTocDanhMucId: dantoc,
                     TonGiaoDanhMucId: tocgiao,
@@ -1734,8 +1902,8 @@
             var ngaycap = tedu.getFormatDateYYMMDD($('#txtNgayCapCMND').val());
             var noicap = $('#txtNoiCapCMND').val();
             var noisinh = $('#txtNoiSinh').val();
-            var quequan = $('#txtQueQuan').val();
-            var noiohiennay = $('#txtNoiOHienNay').val();
+            //var quequan = $('#txtQueQuan').val();
+            //var noiohiennay = $('#txtNoiOHienNay').val();
             var honnhan = $('#ddlHonNhan').val();
             var dantoc = $('#ddlDanToc').val();
             var tocgiao = $('#ddlTonGiao').val();
@@ -1765,8 +1933,8 @@
                     NgayCapCMND: ngaycap,
                     NoiCapCMND: noicap,
                     NoiSinh: noisinh,
-                    QueQuan: quequan,
-                    NoiOHienNay: noiohiennay,
+                    //QueQuan: quequan,
+                    //NoiOHienNay: noiohiennay,
                     HonNhanDanhMucId: honnhan,
                     DanTocDanhMucId: dantoc,
                     TonGiaoDanhMucId: tocgiao,

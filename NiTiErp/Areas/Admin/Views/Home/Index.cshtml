@@ -11,7 +11,7 @@
     <script src="~/lib/flot-spline/js/jquery.flot.spline.min.js"></script>
     <script src="~/lib/flot.curvedlines/curvedLines.js"></script>
     <!-- DateJS -->
-    <script src="~/lib/DateJS/build/date.js"></script> 
+    <script src="~/lib/DateJS/build/date.js"></script>
 
     <script src="~/app/controllers/home/index.js" asp-append-version="true"></script>
     <script>
@@ -60,7 +60,7 @@
             <small>
                 <a class="btn btn-link btnTrangChu">
                     Trang chủ
-                </a>                
+                </a>
             </small>
         </div>
         <div class="title_right">
@@ -89,11 +89,11 @@
                         <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
                     @*<li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                    </li>
-                    <li>
-                        <a class="close-link"><i class="fa fa-close"></i></a>
-                    </li>*@
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        </li>
+                        <li>
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>*@
                 </ul>
                 <div class="clearfix"></div>
             </div>
@@ -111,11 +111,11 @@
                         <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
                     @*<li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                    </li>
-                    <li>
-                        <a class="close-link"><i class="fa fa-close"></i></a>
-                    </li>*@
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        </li>
+                        <li>
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>*@
                 </ul>
                 <div class="clearfix"></div>
             </div>
@@ -136,25 +136,53 @@
                         <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
                     @*<li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                    </li>
-                    <li>
-                        <a class="close-link"><i class="fa fa-close"></i></a>
-                    </li>*@
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        </li>
+                        <li>
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>*@
                 </ul>
                 <div class="clearfix"></div>
             </div>
-            <div class="x_content">
+            <div class="x_content">                
                 <ul class="list-unstyled top_profiles scroll-view">
                     <div class="row" id="tblContentThongBao">
                     </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="dataTables_paginate" id="datatable-checkbox_paginateThongBaoHome">
+                                <ul id="paginationULThongBaoHome"></ul>
+                            </div>
+                        </div>
+                        @*<div class="col-sm-5">
+            <div class="dataTables_info" id="datatable-checkbox_infoThongBaoHome" role="status" aria-live="polite">
+                <select id="ddl-show-pageThongBaoHome">
+                    <option value="10" selected="selected">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="50">50</option>
+                </select>
+                <span class="item-per-page" id="item-per-pageThongBaoHome">
+                    dòng/trang.
+                </span>
+                Tổng cộng: <strong id="lbl-total-recordsThongBaoHome"></strong>
+            </div>
+        </div>
+        <div class="col-sm-7">
+            <div class="dataTables_paginate" id="datatable-checkbox_paginateThongBaoHome">
+                <ul id="paginationULThongBaoHome"></ul>
+            </div>
+        </div>*@
+                    </div>
                 </ul>
+          
             </div>
         </div>
     </div>
 </div>
 
 <script id="table-ThongBao" type="x-tmpl-mustache">
+    @*<ul class="list-unstyled top_profiles scroll-view">*@
     <li class="media event">
         <div class="media-body">
             <a class="title" href={{UploadFile1}}>
@@ -169,4 +197,5 @@
             </p>
         </div>
     </li>
+    @*   </ul>*@
 </script>

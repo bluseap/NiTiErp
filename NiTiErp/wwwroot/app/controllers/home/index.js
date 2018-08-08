@@ -35,7 +35,7 @@
 
         chartThongKeChucVu("", "");
 
-        thongbao();
+        //thongbao();
     }
 
     function loadChart() {
@@ -119,6 +119,9 @@
                     $('#ddlKhuVuc').prop('disabled', false);                   
                 }
                 $("#ddlKhuVuc")[0].selectedIndex = 1;   
+
+                var makv = $('#ddlKhuVuc').val();
+                thongbao();
             },
             error: function (status) {
                 console.log(status);
@@ -445,25 +448,30 @@
         });
     }
 
-    function thongbao() {
+    function thongbao(isPageChanged) {
         var template = $('#table-ThongBao').html();
         var render = "";
 
-        var makhuvuc = $('#ddlKhuVuc').val();
-        var phongId = ""; //$('#ddlPhongBan').val();
-        var timnhanvien = $('#btnTimNhanVien').val();
+        var makhuvuc = $('#ddlKhuVuc').val(); 
+        var phongid = ""; //$('#ddlPhongBan').val();
+        //var timnhanvien = $('#btnTimNhanVien').val();
+        var timnhanvien = "";
 
         $.ajax({
             type: 'GET',
+            url: '/admin/thongbao/GetListThongBaoPaging',            
             data: {
                 corporationId: makhuvuc,
-                phongId: phongId,
+                phongId: phongid,
                 keyword: timnhanvien,
                 page: tedu.configs.pageIndex,
-                pageSize: tedu.configs.pageSize
-            },
-            url: '/admin/thongbao/GetListThongBaoPaging',
+                pageSize: tedu.configs.pageSize,
+                hosoId: ""
+            },            
             dataType: 'json',
+            beforeSend: function () {
+                tedu.startLoading();
+            },
             success: function (response) {
                 if (response.Result.Results.length === 0) {
                     render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
@@ -490,19 +498,43 @@
                     $('#tblContentThongBao').html(render);
                 }
 
-                //if (response.Result.RowCount !== 0) {
-                //    wrapPagingThongBao(response.Result.RowCount, function () {
-                //        loadTableThongBao();
-                //    },
-                //        isPageChanged);
-                //}
+                if (response.Result.RowCount !== 0) {
+                    wrapPagingThongBao(response.Result.RowCount, function () {                       
+                        thongbao(userCorporationId);
+                    },
+                        isPageChanged);
+                }
             },
             error: function (status) {
                 console.log(status);
                 tedu.notify('Không thể lấy dữ liệu về.', 'error');
             }
         });
-
     }
+    function wrapPagingThongBao(recordCount, callBack, changePageSize) {
+        var totalsize = Math.ceil(recordCount / tedu.configs.pageSize);
+        //Unbind pagination if it existed or click change pagesize
+        if ($('#paginationULThongBaoHome a').length === 0 || changePageSize === true) {
+            $('#paginationULThongBaoHome').empty();
+            $('#paginationULThongBaoHome').removeData("twbs-pagination");
+            $('#paginationULThongBaoHome').unbind("page");
+        }
+        //Bind Pagination Event
+        $('#paginationULThongBaoHome').twbsPagination({
+            totalPages: totalsize,
+            visiblePages: 0,
+            first: '',
+            prev: '<',
+            next: '>',
+            last: '',
+            onPageClick: function (event, p) {                
+                if (tedu.configs.pageIndex !== p) {
+                    tedu.configs.pageIndex = p;
+                    setTimeout(callBack(), 200);
+                }
+            }
+        });
+    }
+
 
 }

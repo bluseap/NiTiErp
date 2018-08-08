@@ -43,6 +43,10 @@ namespace NiTiErp.Areas.Admin.Controllers
         private IPhongDanhMucService _phongdanhmucService;
         private ICorporationService _corporationService;
 
+        private IThanhPhoTinhService _thanhphotinhService;
+        private IQuanHuyenService _quanhuyenService;
+        private IPhuongXaService _phuongxaService;
+
         private readonly IHostingEnvironment _hostingEnvironment;
         private readonly NiTiErp.Application.Interfaces.IUserService _userService;
         private readonly IAuthorizationService _authorizationService;
@@ -51,6 +55,10 @@ namespace NiTiErp.Areas.Admin.Controllers
         public HosoController(IHostingEnvironment hostingEnvironment,
             NiTiErp.Application.Interfaces.IUserService userService,
             IAuthorizationService authorizationService,
+
+            IThanhPhoTinhService thanhphotinhService,
+            IQuanHuyenService quanhuyenService,
+            IPhuongXaService phuongxaService,
 
             ILockService lockService,
             ICongViecService congviecService,
@@ -71,6 +79,10 @@ namespace NiTiErp.Areas.Admin.Controllers
             _hostingEnvironment = hostingEnvironment;
             _userService = userService;
             _authorizationService = authorizationService;
+
+            _thanhphotinhService = thanhphotinhService;
+            _quanhuyenService = quanhuyenService;
+            _phuongxaService = phuongxaService;
 
             _lockService = lockService;
             _congviecService = congviecService;
@@ -861,6 +873,27 @@ namespace NiTiErp.Areas.Admin.Controllers
         public IActionResult HonNhanGetList()
         {
             var model = _honnhandanhmucService.HonNhanGetList("", "", "", "HonNhanGetList");
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult ThanhPhoTinhGetList()
+        {
+            var model = _thanhphotinhService.ThanhPhoTinhGetList("", "", "", "ThanhPhoGetList");
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult QuanHuyenGetListMaTinh(string tinhId)
+        {
+            var model = _quanhuyenService.QuanHuyenGetList("", tinhId, "", "QuanHuyenGetListMaTP");
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult PhuongXaGetListMaHuyen(string huyenId)
+        {
+            var model = _phuongxaService.PhuongXaGetList("", huyenId, "", "PhuongXaGetListMaQuanHuyen");
             return new OkObjectResult(model);
         }
 

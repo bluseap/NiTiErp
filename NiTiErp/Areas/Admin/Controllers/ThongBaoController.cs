@@ -87,8 +87,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetListThongBaoPaging(string corporationId, string phongId, string keyword, int page,
-            int pageSize, string hosoId)
+        public IActionResult GetListThongBaoPaging(string corporationId, string phongId, string keyword, int page, int pageSize, string hosoId)
         {
             var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
             var phong = !string.IsNullOrEmpty(phongId) ? phongId : "%";
