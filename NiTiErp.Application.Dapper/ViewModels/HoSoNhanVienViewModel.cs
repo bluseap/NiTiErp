@@ -95,6 +95,27 @@ namespace NiTiErp.Application.Dapper.ViewModels
         public string TenBacLuong { get; set; }
 
 
+
+        [StringLength(100)]
+        public string SoNhaDuong { get; set; }
+
+        public int ThanhPhoTinhId { get; set; }
+
+        public int QuanHuyenId { get; set; }
+
+        public int PhuongXaId { get; set; }
+
+        [StringLength(100)]
+        public string SoNhaDuongQueQuan { get; set; }
+
+        public int ThanhPhoTinhQueQuanId { get; set; }
+
+        public int QuanHuyenQueQuanId { get; set; }
+
+        public int PhuongXaQueQuanId { get; set; }
+
+
+
         public int Status { get; set; }
 
         public bool Active { get; set; }

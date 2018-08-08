@@ -153,8 +153,8 @@ namespace NiTiErp.Application.Dapper.Implementation
                 dynamicParameters.Add("@NgayCapCMND", hoso.NgayCapCMND);
                 dynamicParameters.Add("@NoiCapCMND", hoso.NoiCapCMND);
                 dynamicParameters.Add("@NoiSinh", hoso.NoiSinh);
-                dynamicParameters.Add("@QueQuan", hoso.QueQuan);
-                dynamicParameters.Add("@NoiOHienNay", hoso.NoiOHienNay);
+                //dynamicParameters.Add("@QueQuan", hoso.QueQuan);
+                //dynamicParameters.Add("@NoiOHienNay", hoso.NoiOHienNay);
                 dynamicParameters.Add("@HonNhanDanhMucId", hoso.HonNhanDanhMucId);
                 dynamicParameters.Add("@DanTocDanhMucId", hoso.DanTocDanhMucId);
                 dynamicParameters.Add("@TonGiaoDanhMucId", hoso.TonGiaoDanhMucId);
@@ -163,6 +163,17 @@ namespace NiTiErp.Application.Dapper.Implementation
                 //dynamicParameters.Add("@HoSoNhanVienXoaId", hoso.HoSoNhanVienXoaId);
                 //dynamicParameters.Add("@NgayXoa", hoso.NgayXoa);
                 dynamicParameters.Add("@HinhNhanVien", hoso.HinhNhanVien);
+
+                dynamicParameters.Add("@SoNhaDuong", hoso.SoNhaDuong);
+                dynamicParameters.Add("@ThanhPhoTinhId", hoso.ThanhPhoTinhId);
+                dynamicParameters.Add("@QuanHuyenId", hoso.QuanHuyenId);
+                dynamicParameters.Add("@PhuongXaId", hoso.PhuongXaId);
+
+                dynamicParameters.Add("@SoNhaDuongQueQuan", hoso.SoNhaDuongQueQuan);
+                dynamicParameters.Add("@ThanhPhoTinhQueQuanId", hoso.ThanhPhoTinhQueQuanId);
+                dynamicParameters.Add("@QuanHuyenQueQuanId", hoso.QuanHuyenQueQuanId);
+                dynamicParameters.Add("@PhuongXaQueQuanId", hoso.PhuongXaQueQuanId);
+
                 dynamicParameters.Add("@Active", hoso.Active);
                 dynamicParameters.Add("@Stt", hoso.Stt);
                 dynamicParameters.Add("@CreateDate", hoso.CreateDate);

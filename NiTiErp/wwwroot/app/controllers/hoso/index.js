@@ -498,7 +498,21 @@
                     required: true,
                     isDateVietNam: true
                 },
-                //txtNoiOHienNay: { required: true },
+                //txtNoiOHienNay: { required: true },               
+                txtSoNhaTenDuongQueQuan: { required: true },
+                ddlThanhPhoTinhQueQuan: {
+                    required: true,
+                    isDanhMuc: true
+                },
+                ddlQuanHuyenQueQuan: {
+                    required: true,
+                    isDanhMuc: true
+                },
+                ddlPhuongXaQueQuan: {
+                    required: true,
+                    isDanhMuc: true
+                },
+
                 ddlHonNhan: {
                     required: true,
                     isDanhMuc : true
@@ -726,6 +740,16 @@
         $('#ddlDanToc')[0].selectedIndex = 0;
         $('#ddlTonGiao')[0].selectedIndex = 0;
         $('#ddlXuatThan')[0].selectedIndex = 0;
+
+        $('#txtSoNhaTenDuong').val('');
+        $('#ddlThanhPhoTinh')[0].selectedIndex = 1;
+        $('#ddlQuanHuyen')[0].selectedIndex = 0;
+        $('#ddlPhuongXa')[0].selectedIndex = 0;
+
+        $('#txtSoNhaTenDuongQueQuan').val('');
+        $('#ddlThanhPhoTinhQueQuan')[0].selectedIndex = 1;
+        $('#ddlQuanHuyenQueQuan')[0].selectedIndex = 0;
+        $('#ddlPhuongXaQueQuan')[0].selectedIndex = 0;
     }
     function resetFormTabTrinhDo() {
         $('#hidTrinhDoId').val(0);
@@ -1566,6 +1590,17 @@
             var noisinh = $('#txtNoiSinh').val();
             //var quequan = $('#txtQueQuan').val();
             //var noiohiennay = $('#txtNoiOHienNay').val();
+
+            var sonha = $('#txtSoNhaTenDuong').val();
+            var tinhid = $('#ddlThanhPhoTinh').val();
+            var huyenid = $('#ddlQuanHuyen').val();
+            var phuongid = $('#ddlPhuongXa').val();
+
+            var sonhaquequan = $('#txtSoNhaTenDuongQueQuan').val();
+            var tinhquequanid = $('#ddlThanhPhoTinhQueQuan').val();
+            var huyenquequanid = $('#ddlQuanHuyenQueQuan').val();
+            var phuongquequanid = $('#ddlPhuongXaQueQuan').val();
+
             var honnhan = $('#ddlHonNhan').val();
             var dantoc = $('#ddlDanToc').val();
             var tocgiao = $('#ddlTonGiao').val();
@@ -1597,6 +1632,15 @@
                     NoiSinh: noisinh,
                     //QueQuan: quequan,
                     //NoiOHienNay: noiohiennay,
+                    SoNhaDuong: sonha,
+                    ThanhPhoTinhId: tinhid,
+                    QuanHuyenId: huyenid,
+                    PhuongXaId: phuongid, 
+                    SoNhaDuongQueQuan: sonhaquequan,
+                    ThanhPhoTinhQueQuanId: tinhquequanid,
+                    QuanHuyenQueQuanId: huyenquequanid,
+                    PhuongXaQueQuanId: phuongquequanid,
+
                     HonNhanDanhMucId: honnhan,
                     DanTocDanhMucId: dantoc,
                     TonGiaoDanhMucId: tocgiao,
@@ -1664,6 +1708,17 @@
                 $('#txtNoiSinh').val(hoso.NoiSinh);
                 //$('#txtQueQuan').val(hoso.QueQuan);
                 //$('#txtNoiOHienNay').val(hoso.NoiOHienNay);
+
+                $('#txtSoNhaTenDuong').val(hoso.SoNhaDuong);
+                $('#ddlThanhPhoTinh').val(hoso.ThanhPhoTinhId);
+                $('#ddlQuanHuyen').val(hoso.QuanHuyenId);
+                $('#ddlPhuongXa').val(hoso.PhuongXaId);
+
+                $('#txtSoNhaTenDuongQueQuan').val(hoso.SoNhaDuongQueQuan);
+                $('#ddlThanhPhoTinhQueQuan').val(hoso.ThanhPhoTinhQueQuanId);
+                $('#ddlQuanHuyenQueQuan').val(hoso.QuanHuyenQueQuanId);
+                $('#ddlPhuongXaQueQuan').val(hoso.PhuongXaQueQuanId);
+
                 $('#ddlHonNhan').val(hoso.HonNhanDanhMucId);
                 $('#ddlDanToc').val(hoso.DanTocDanhMucId);
                 $('#ddlTonGiao').val(hoso.TonGiaoDanhMucId);
@@ -1812,6 +1867,16 @@
             var noisinh = $('#txtNoiSinh').val();
             //var quequan = $('#txtQueQuan').val();
             //var noiohiennay = $('#txtNoiOHienNay').val();
+            var sonha = $('#txtSoNhaTenDuong').val();
+            var tinhid = $('#ddlThanhPhoTinh').val();
+            var huyenid = $('#ddlQuanHuyen').val();
+            var phuongid = $('#ddlPhuongXa').val();
+
+            var sonhaquequan = $('#txtSoNhaTenDuongQueQuan').val();
+            var tinhquequanid = $('#ddlThanhPhoTinhQueQuan').val();
+            var huyenquequanid = $('#ddlQuanHuyenQueQuan').val();
+            var phuongquequanid = $('#ddlPhuongXaQueQuan').val();
+
             var honnhan = $('#ddlHonNhan').val();
             var dantoc = $('#ddlDanToc').val();
             var tocgiao = $('#ddlTonGiao').val();
@@ -1841,8 +1906,17 @@
                     NgayCapCMND: ngaycap,
                     NoiCapCMND: noicap,
                     NoiSinh: noisinh,
-                    QueQuan: quequan,
+                    //QueQuan: quequan,
                     //NoiOHienNay: noiohiennay,
+                    SoNhaDuong: sonha,
+                    ThanhPhoTinhId: tinhid,
+                    QuanHuyenId: huyenid,
+                    PhuongXaId: phuongid,
+                    SoNhaDuongQueQuan: sonhaquequan,
+                    ThanhPhoTinhQueQuanId: tinhquequanid,
+                    QuanHuyenQueQuanId: huyenquequanid,
+                    PhuongXaQueQuanId: phuongquequanid,
+
                     HonNhanDanhMucId: honnhan,
                     DanTocDanhMucId: dantoc,
                     TonGiaoDanhMucId: tocgiao,
@@ -1904,6 +1978,16 @@
             var noisinh = $('#txtNoiSinh').val();
             //var quequan = $('#txtQueQuan').val();
             //var noiohiennay = $('#txtNoiOHienNay').val();
+            var sonha = $('#txtSoNhaTenDuong').val();
+            var tinhid = $('#ddlThanhPhoTinh').val();
+            var huyenid = $('#ddlQuanHuyen').val();
+            var phuongid = $('#ddlPhuongXa').val();
+
+            var sonhaquequan = $('#txtSoNhaTenDuongQueQuan').val();
+            var tinhquequanid = $('#ddlThanhPhoTinhQueQuan').val();
+            var huyenquequanid = $('#ddlQuanHuyenQueQuan').val();
+            var phuongquequanid = $('#ddlPhuongXaQueQuan').val();
+
             var honnhan = $('#ddlHonNhan').val();
             var dantoc = $('#ddlDanToc').val();
             var tocgiao = $('#ddlTonGiao').val();
@@ -1920,12 +2004,9 @@
                     CorporationId: corporationid,
                     PhongBanDanhMucId: phongid,
                     ChucVuNhanVienId: chucvuid,
-
                     SoDienThoai: sodienthoai,
                     SoTheNhanVien: sothenhanvien,
-
                     HinhNhanVien: imageNhanVien,
-
                     TenGoiKhac: tengoikhac,
                     GioiTinh: gioitinh,
                     NgaySinh: ngaysinh,
@@ -1935,6 +2016,15 @@
                     NoiSinh: noisinh,
                     //QueQuan: quequan,
                     //NoiOHienNay: noiohiennay,
+                    SoNhaDuong: sonha,
+                    ThanhPhoTinhId: tinhid,
+                    QuanHuyenId: huyenid,
+                    PhuongXaId: phuongid,
+                    SoNhaDuongQueQuan: sonhaquequan,
+                    ThanhPhoTinhQueQuanId: tinhquequanid,
+                    QuanHuyenQueQuanId: huyenquequanid,
+                    PhuongXaQueQuanId: phuongquequanid,
+
                     HonNhanDanhMucId: honnhan,
                     DanTocDanhMucId: dantoc,
                     TonGiaoDanhMucId: tocgiao,
@@ -2458,6 +2548,62 @@
             error: function (status) {
                 tedu.notify('Có lỗi xảy ra', 'error');
                 tedu.stopLoading();
+            }
+        });
+
+        loadTableTabHopDong(hosoid);
+    }
+
+    function loadTableTabHopDong(hosoid) {
+        var template = $('#table-HopDongChiTiet').html();
+        var render = "";
+
+        $.ajax({
+            type: 'GET',
+            data: {
+                hosoId: hosoid
+            },
+            url: '/admin/hopdong/GetAllHoSoHopDongId',
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                }
+                else {
+                    $.each(response.Result.Results, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+                            Ten: item.Ten,
+                            TenPhong: item.TenPhong,
+                            TenChucVu: item.TenChucVu,
+
+                            SoHopDong: item.SoHopDong,
+                            TenLoaiHopDong: item.TenLoaiHopDong,
+                            HeSoLuong: item.HeSoLuong,
+                            LuongCoBan: item.LuongCoBan,
+                            NgayHieuLuc: tedu.getFormattedDate(item.LuongCoBan),
+                            NgayHetHan: tedu.getFormattedDate(item.NgayHetHan),
+                            Status: tedu.getHoSoNhanVienStatus(item.Status)
+                        });
+                    });
+                }
+
+                $('#lbl-total-recordsHopDongChiTiet').text(response.Result.RowCount);
+
+                if (render !== '') {
+                    $('#tbl-contentHopDongChiTiet').html(render);
+                }
+
+                //if (response.Result.RowCount !== 0) {
+                //    wrapPaging(response.Result.RowCount, function () {
+                //        LoadTableHopDongChiTiet();
+                //    },
+                //        isPageChanged);
+                //}
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
             }
         });
     }
@@ -3422,9 +3568,7 @@
         }
         else {            
             ngayhieuluccongviec = tedu.getFormatDateYYMMDD('01/01/2111');
-        }
-
-                
+        }                
 
         $.ajax({
             type: "POST",
