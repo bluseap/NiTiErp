@@ -11,6 +11,7 @@ using NiTiErp.Extensions;
 using NiTiErp.Utilities.Constants;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Authorization;
+using System;
 
 namespace NiTiErp.Areas.Admin.Controllers
 {
@@ -20,12 +21,14 @@ namespace NiTiErp.Areas.Admin.Controllers
         private readonly NiTiErp.Application.Interfaces.IUserService _userService;
         private readonly IAuthorizationService _authorizationService;
 
+        private IHisQuyetDinhService _hisquyetdinhService;
         private IHoSoNhanVienService _hosonhanvienService;
 
         public TimhosoController(IHostingEnvironment hostingEnvironment,
             NiTiErp.Application.Interfaces.IUserService userService,
             IAuthorizationService authorizationService,
 
+            IHisQuyetDinhService hisquyetdinhService,
             IHoSoNhanVienService hosonhanvienService
             )
         {
@@ -33,6 +36,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             _userService = userService;
             _authorizationService = authorizationService;
 
+            _hisquyetdinhService = hisquyetdinhService;
             _hosonhanvienService = hosonhanvienService;
         }
 
@@ -41,11 +45,19 @@ namespace NiTiErp.Areas.Admin.Controllers
             return View();
         }
 
-        //public async Task<IActionResult> HisQuyetDinh(string corporationId, string phongId, string chucvuId, string trinhdoId)
-        //{
-        //    return new OkObjectResult(await _reportService.SumHoSoNhanVienPara(corporationId, phongId, chucvuId, trinhdoId,
-        //        "", "", "", "", "", "TKNhanVienKhuVuc"));
-        //}
+        [HttpGet]
+        public IActionResult HisQuyetDinhGetAll(string corporationId, string phongId, string keyword, string hosoId, int page, int pageSize)
+        {
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var phong = !string.IsNullOrEmpty(phongId) ? phongId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+
+            var model = _hisquyetdinhService.GetAllHisQuyetDinhPaging(khuvuc, phong, tukhoa, page, pageSize, hosoId, "", "",
+                "", "", DateTime.Now, DateTime.Now, 1,
+                "HisQuyetDinhTimHoSoId");
+
+            return new OkObjectResult(model);
+        }
 
     }
 }

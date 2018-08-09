@@ -665,7 +665,7 @@
                     LoadTableHopDongChiTiet(hosoid);
                     LoadTableHopDong(true);
                     $('#modal-add-edit-HopDong').modal('hide');
-                    resetFormHopDongChiTiet2();
+                    resetHopDongChiTiet2();
                     tedu.stopLoading();
                 }
             },

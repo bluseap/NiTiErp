@@ -5,10 +5,16 @@
 @section Styles{
     <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
     <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
 }
-@section Scripts{
 
-    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
+@section Scripts{
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+
+    <script src="~/app/controllers/timhoso/hisaddbonhiem.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/timhoso/hisquyetdinh.js" asp-append-version="true"></script>
     <script src="~/app/controllers/timhoso/index.js" asp-append-version="true"></script>
     <script>
         var timhoso = new timhosoController();
@@ -16,41 +22,41 @@
     </script>
 }
 
-    <div class="page-title">
-        <div class="title_left">
-            <small>
-                <a class="btn btn-link ">
-                    Hồ sơ nhân viên
-                </a>
-                >>
-                <a class="btn btn-link btnTimHoSoNhanVien">
-                    Tra cứu hồ sơ nhân viên
-                </a>
-            </small>
-        </div>
-        <div class="title_right">
-
-            <div class="col-md-5 col-sm-2 col-xs-12 form-group pull-right">
-                <div class="input-group">
-                    <input type="text" id="txtTimNhanVien" class="form-control" placeholder="Từ khóa...">
-                    <span class="input-group-btn">
-                        <button class="btn btn-primary" id="btnTimNhanVien" type="button">Tìm !</button>
-                    </span>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-2 col-xs-12 form-group pull-right top_search">
-                <div class="input-group">
-                    <select id="ddlPhongBan" class="form-control"></select>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
-                <div class="input-group">
-                    <select id="ddlKhuVuc" class="form-control"></select>
-                </div>
-            </div>
-
-        </div>
+<div class="page-title">
+    <div class="title_left">
+        <small>
+            <a class="btn btn-link ">
+                Hồ sơ nhân viên
+            </a>
+            >>
+            <a class="btn btn-link btnTimHoSoNhanVien">
+                Tra cứu hồ sơ nhân viên
+            </a>
+        </small>
     </div>
+    <div class="title_right">
+
+        <div class="col-md-5 col-sm-2 col-xs-12 form-group pull-right">
+            <div class="input-group">
+                <input type="text" id="txtTimNhanVien" class="form-control" placeholder="Từ khóa...">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" id="btnTimNhanVien" type="button">Tìm !</button>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-2 col-xs-12 form-group pull-right top_search">
+            <div class="input-group">
+                <select id="ddlPhongBan" class="form-control"></select>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
+            <div class="input-group">
+                <select id="ddlKhuVuc" class="form-control"></select>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 <div class="row">
     <div class="col-md-12">
@@ -58,7 +64,7 @@
             <div class="x_content">
                 <div class="clearfix"></div>
                 <div class="row" id="tblContentHoSo">
-                </div>                
+                </div>
             </div>
         </div>
     </div>
@@ -94,7 +100,7 @@
                     <h2>{{Ten}}</h2>
                     <p><strong>Chức vụ: </strong> {{TenChucVu}} </p>
                     <p><strong>Bậc lương: </strong> {{TenBacLuong}} </p>
-                    <ul class="list-unstyled">                        
+                    <ul class="list-unstyled">
                         <li><i class="fa fa-phone"></i> Số điện thoại : {{SoDienThoai}}</li>
                     </ul>
                 </div>
@@ -105,21 +111,21 @@
             </div>
             <div class="col-xs-12 bottom text-center">
                 <div class="col-xs-12 col-sm-6 emphasis">
-                    <a class="btn btn-link btnLuong" >
+                    <a class="btn btn-link btnLuong" data-id="{{Id}}">
                         </i> <i class="fa fa-usd"></i> Lương
                     </a>
-                    <a class="btn btn-link  btnQuyetDinh" >
+                    <a class="btn btn-link  btnQuyetDinh" data-id="{{Id}}">
                         <i class="fa fa-file-text"> </i> Quyết định
-                    </a>                    
+                    </a>
                 </div>
                 <div class="col-xs-12 col-sm-6 emphasis">
-                    <a  class="btn btn-link btnSucKhoe" >
+                    <a class="btn btn-link btnSucKhoe" data-id="{{Id}}">
                         <i class="fa fa-medkit"></i> Sức khỏe
                     </a>
-                    <a  class="btn btn-link btnXemThongTin" >
+                    <a class="btn btn-link btnXemThongTin" data-id="{{Id}}">
                         <i class="fa fa-info-circle"> </i> Xem thông tin
                     </a>
-                    <a  class="btn btn-link btnDaoTao" >
+                    <a class="btn btn-link btnDaoTao" data-id="{{Id}}">
                         <i class="fa fa-graduation-cap"> </i> Đào tạo
                     </a>
                 </div>

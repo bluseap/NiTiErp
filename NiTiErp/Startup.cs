@@ -218,11 +218,11 @@ namespace NiTiErp
             services.AddTransient<IHeSoNhanVienService, HeSoNhanVienService>();
             services.AddTransient<IChucDanhService, ChucDanhService>();
             services.AddTransient<IThongBaoService, ThongBaoService>();
+            services.AddTransient<IHisQuyetDinhService, HisQuyetDinhService>();
 
             services.AddTransient<IThanhPhoTinhService, ThanhPhoTinhService>();
             services.AddTransient<IQuanHuyenService, QuanHuyenService>();
             services.AddTransient<IPhuongXaService, PhuongXaService>();
-
 
             services.AddTransient<IQDKhenThuongService, QDKhenThuongService>();
             services.AddTransient<IQDKyLuatService, QDKyLuatService>();

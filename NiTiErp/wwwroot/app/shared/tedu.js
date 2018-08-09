@@ -213,6 +213,8 @@
             return '<span class="badge bg-green">Hoạt động</span>';
         else if (status === 61)
             return '<span class="badge bg-green">Mới</span>';
+        else if (status === 62)
+            return '<span class="badge bg-red">Cũ</span>';
         else if (status === 60)
             return '';
         else 
