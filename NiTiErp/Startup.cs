@@ -232,6 +232,7 @@ namespace NiTiErp
 
             services.AddTransient<IQDNghiHuuService, QDNghiHuuService>();
             services.AddTransient<IQDThoiViecService, QDThoiViecService>();
+            services.AddTransient<IQDThuTuyenService, QDThuTuyenService>();
 
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 

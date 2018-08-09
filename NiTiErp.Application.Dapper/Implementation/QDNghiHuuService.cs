@@ -67,42 +67,45 @@ namespace NiTiErp.Application.Dapper.Implementation
             }
         }
 
-        //public async Task<Boolean> ThoiViecAUD(QDThoiViecViewModel trinhdo, string parameters)
-        //{
-        //    using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
-        //    {
-        //        await sqlConnection.OpenAsync();
-        //        var dynamicParameters = new DynamicParameters();
+        public async Task<Boolean> QDNghiHuuAUD(QDNghiHuuViewModel nghihuu, string parameters)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
 
-        //        dynamicParameters.Add("@Id", trinhdo.Id);
-        //        dynamicParameters.Add("@HoSoNhanVienId", trinhdo.HoSoNhanVienId);
-        //        dynamicParameters.Add("@LoaiBangDanhMucId", trinhdo.LoaiBangDanhMucId);
-        //        dynamicParameters.Add("@ChuyenNganh", trinhdo.ChuyenNganh);
-        //        dynamicParameters.Add("@LoaiDaoTaoDanhMucId", trinhdo.LoaiDaoTaoDanhMucId);
-        //        dynamicParameters.Add("@XepLoaiDanhMucId", trinhdo.XepLoaiDanhMucId);
-        //        dynamicParameters.Add("@NamCapBang", trinhdo.NamCapBang);
-        //        dynamicParameters.Add("@TenTruong", trinhdo.TenTruong);
-        //        dynamicParameters.Add("@GhiChu", trinhdo.GhiChu);
-        //        dynamicParameters.Add("@HinhBangMatPath1", trinhdo.HinhBangMatPath1);
-        //        dynamicParameters.Add("@HinhBangMatPath2", trinhdo.HinhBangMatPath2);
-        //        dynamicParameters.Add("@CreateDate", trinhdo.CreateDate);
-        //        dynamicParameters.Add("@CreateBy", trinhdo.CreateBy);
-        //        dynamicParameters.Add("@UpdateDate", trinhdo.UpdateDate);
-        //        dynamicParameters.Add("@UpdareBy", trinhdo.UpdateBy);
+                dynamicParameters.Add("@Id", nghihuu.Id);
+                dynamicParameters.Add("@HoSoNhanVienId", nghihuu.HoSoNhanVienId);
 
-        //        dynamicParameters.Add("@parameters", parameters);
-        //        try
-        //        {
-        //            var query = await sqlConnection.QueryAsync<TrinhDoViewModel>(
-        //                "TrinhDoAUD", dynamicParameters, commandType: CommandType.StoredProcedure);
+                dynamicParameters.Add("@LoaiQuyetDinhId", nghihuu.LoaiQuyetDinhId);
+                dynamicParameters.Add("@LyDoQuyetDinh", nghihuu.LyDoQuyetDinh);
 
-        //            return true;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            throw ex;
-        //        }
-        //    }
-        //}
+                dynamicParameters.Add("@GhiChuQuyetDinh", nghihuu.GhiChuQuyetDinh);
+                dynamicParameters.Add("@SoQuyetDinh", nghihuu.SoQuyetDinh);
+                dynamicParameters.Add("@NgayKyQuyetDinh", nghihuu.NgayKyQuyetDinh);
+                dynamicParameters.Add("@TenNguoiKyQuyetDinh", nghihuu.TenNguoiKyQuyetDinh);
+                dynamicParameters.Add("@NgayHieuLuc", nghihuu.NgayHieuLuc);
+                dynamicParameters.Add("@NgayKetThuc", nghihuu.NgayKetThuc);
+
+                dynamicParameters.Add("@CreateDate", nghihuu.CreateDate);
+                dynamicParameters.Add("@CreateBy", nghihuu.CreateBy);
+                dynamicParameters.Add("@UpdateDate", nghihuu.UpdateDate);
+                dynamicParameters.Add("@UpdateBy", nghihuu.UpdateBy);
+
+                dynamicParameters.Add("@parameters", parameters);
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<QDNghiHuuViewModel>(
+                        "QDNghiHuuAUD", dynamicParameters, commandType: CommandType.StoredProcedure);
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
     }
 }

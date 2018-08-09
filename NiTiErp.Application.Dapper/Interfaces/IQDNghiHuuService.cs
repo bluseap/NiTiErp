@@ -12,6 +12,6 @@ namespace NiTiErp.Application.Dapper.Interfaces
         Task<PagedResult<QDNghiHuuViewModel>> GetAllNghiHuuPaging(string corporationId, string phongId, string keyword, int page, int pageSize,
             string hosoId, string hosoId2, string hosoId3, string nghihuuId, string parameters);
 
-        //Task<Boolean> NghiHuuAUD(QDNghiHuuViewModel nghihuu, string parameters);
+        Task<Boolean> QDNghiHuuAUD(QDNghiHuuViewModel nghihuu, string parameters);
     }
 }

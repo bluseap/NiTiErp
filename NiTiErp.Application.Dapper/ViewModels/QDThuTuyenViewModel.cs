@@ -5,11 +5,9 @@ using System.Text;
 
 namespace NiTiErp.Application.Dapper.ViewModels
 {
-    public class QDNghiHuuViewModel
+    public class QDThuTuyenViewModel
     {
         public string Id { set; get; }
-
-        public int InsertqdvhId { set; get; }
 
         [StringLength(50)]
         public string KETQUA { get; set; }
@@ -62,8 +60,7 @@ namespace NiTiErp.Application.Dapper.ViewModels
         public DateTime UpdateDate { get; set; }
 
         [StringLength(50)]
-        public string UpdateBy { get; set; }
-
+        public string UpdareBy { get; set; }
 
 
 

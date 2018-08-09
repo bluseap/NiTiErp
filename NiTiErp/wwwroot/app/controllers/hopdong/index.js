@@ -19,6 +19,14 @@
     }
 
     function registerEvents() {    
+
+        $('#ddlKhuVuc').on('change', function () {
+            var corporationId = $('#ddlKhuVuc').val();
+            loadPhongKhuVuc(corporationId);
+
+            tedu.notify('Danh mục phòng theo khu vực.', 'success');
+        });
+
         $('#txtTuNgayHieuLuc, #txtDenNgayHieuLuc').datepicker({
             autoclose: true,
             format: 'dd/mm/yyyy',
@@ -28,6 +36,14 @@
         disabledHopDong(true);
    
         //formMainValidate();
+
+        $('body').on('click', '.btnNhapHopDongNhanVien', function (e) {
+            e.preventDefault();
+            var url = window.location.href;       // Hiển thị đường dẫn url
+            //var tieude = window.document.title;    // Hiển thị tiêu đề trang  
+            var win = window.open(url, '_blank');
+            win.focus();
+        });
 
         $("#checkTuNgayDenNgay").change(function () {
             var $input = $(this);  
@@ -90,7 +106,7 @@
 
             $('#hidHoSoId').val(hosoId);
 
-            tedu.notify(hosoId, "success");
+            //tedu.notify(hosoId, "success");
 
             LoadAddEditHoSoNoHopDong(hosoId);      
 
@@ -454,6 +470,11 @@
 
     function LoadAddEditHoSoNoHopDong(hosoid) {
         resetHopDongChiTiet();
+
+        var template = $('#table-HopDongChiTiet').html();
+        var render = "";        
+        render = "<tr><th><a>Không có dữ liệu hợp đồng</a></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+        $('#tbl-contentHopDongChiTiet').html(render);
     }
 
     function LoadHopDongCu(hopdongid) {
@@ -511,6 +532,7 @@
     }
 
     function resetHopDongChiTiet() {
+        $('#txtHoTenChiTiet').val('');
         $('#txtSoHopDong').val('');
         $('#ddlLoaiHopDongChiTietCu')[0].selectedIndex = 1;
         $('#txtNgayKyHopDong').val('');

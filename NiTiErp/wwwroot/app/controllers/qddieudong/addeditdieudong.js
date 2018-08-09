@@ -11,6 +11,13 @@
     }
 
     function registerEvents() {
+        $('#ddlKhuVucAddEdit').on('change', function () {
+            var corporationId = $('#ddlKhuVucAddEdit').val();
+            loadPhongKhuVucAddEdit(corporationId);
+
+            tedu.notify('Danh mục phòng theo khu vực.', 'success');
+        });
+
         $('#txtNgaKyQuyetDinh, #txtNgayHieuLuc, #txtNgayHetHan').datepicker({
             autoclose: true,
             format: 'dd/mm/yyyy',

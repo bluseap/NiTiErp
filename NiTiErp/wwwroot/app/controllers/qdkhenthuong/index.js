@@ -14,6 +14,21 @@
 
     function registerEvents() {
 
+        $('#ddlKhuVuc').on('change', function () {
+            var corporationId = $('#ddlKhuVuc').val();
+            loadPhongKhuVuc(corporationId);
+
+            tedu.notify('Danh mục phòng theo khu vực.', 'success');
+        });
+
+        $('body').on('click', '.btnQDKhenThuong', function (e) {
+            e.preventDefault();
+            var url = window.location.href;       // Hiển thị đường dẫn url
+            //var tieude = window.document.title;    // Hiển thị tiêu đề trang  
+            var win = window.open(url, '_blank');
+            win.focus();
+        });
+
         $("#btn-create").on('click', function () {
           
             resetFormAddEditQDKT();

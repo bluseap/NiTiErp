@@ -1,9 +1,11 @@
-﻿var addeditkhenthuongController = function () {   
+﻿var addeditvehuuController = function () {
+
+    //var images = [];
 
     this.initialize = function () {
         loadKhuVucAddEdit();
 
-        loadDataAddEdit();      
+        loadDataAddEdit();
 
         disabledAddEdit(true);
 
@@ -11,7 +13,6 @@
     }
 
     function registerEvents() {
-
         $('#ddlKhuVucAddEdit').on('change', function () {
             var corporationId = $('#ddlKhuVucAddEdit').val();
             loadPhongKhuVucAddEdit(corporationId);
@@ -33,31 +34,31 @@
 
         $('#txtTimNhanVienAddEdit').on('keypress', function (e) {
             if (e.which === 13) {
-                LoadTableHoSo(); 
+                LoadTableHoSo();
             }
         });
 
-        $("#ddl-show-pageHoSoQDKT").on('change', function () {
+        $("#ddl-show-pageHoSoQDVH").on('change', function () {
             tedu.configs.pageSize = $(this).val();
             tedu.configs.pageIndex = 1;
             LoadTableHoSo(true);
         });
 
-        $('body').on('click', '.btn-editHoSoQDKT', function (e) {
-            e.preventDefault();          
+        $('body').on('click', '.btn-editHoSoQDVH', function (e) {
+            e.preventDefault();
 
             //$('#hidInsertQDKTIdId').val(1); // insert
 
             var hosoId = $(this).data('id');
 
-            $('#hidQDKTId').val('0');
-            $('#hidHoSoKhenThuongId').val(hosoId);
+            $('#hidQDVHId').val('0');
+            $('#hidHoSoVeHuuId').val(hosoId);
 
-            loadQDKhenThuong(hosoId);
+            loadQDVeHuu(hosoId);
 
-        });        
+        });
 
-    }    
+    }
 
     function forAddEditValidate() {
         jQuery.validator.addMethod("isDanhMuc", function (value, element) {
@@ -76,7 +77,7 @@
         );
 
         //Init validation
-        $('#frmMainQDKT').validate({
+        $('#frmMainQDVH').validate({
             errorClass: 'red',
             ignore: [],
             language: 'vi',
@@ -84,26 +85,14 @@
                 ddlLoaiQuyetDinh: {
                     required: true,
                     isDanhMuc: true
-                },
-                ddlLoaiHinhThucKhenThuong: {
-                    required: true,
-                    isDanhMuc: true
-                },                
+                },               
                 txtSoQuyetDinh: {
                     required: true
-                },                
-                txtTienKhenThuong: {
-                    required: true,
-                    number: true
-                }
+                }               
             },
-            messages: {                
+            messages: {
                 txtSoQuyetDinh: {
-                    required: "Nhập số quyết định khen thưởng..."
-                },
-                txtTienKhenThuong: {
-                    required: "Nhập tiền khen thưởng..",
-                    number: "Chỉ nhập số.."
+                    required: "Nhập số quyết định về hưu..."
                 }
             }
         });
@@ -163,18 +152,17 @@
                 tedu.notify('Không có danh mục Phòng.', 'error');
             }
         });
-    }    
+    }
 
     function disabledAddEdit(para) {
         $('#txtAddEditHoTen').prop('disabled', para);
         $('#txtAddEditPhongTo').prop('disabled', para);
 
         $('#ddlLoaiQuyetDinh').prop('disabled', para);
-    } 
+    }
 
     function loadDataAddEdit() {
-        loadLoaiQuyetDinh();
-        loadHinhThucKhenThuong();
+        loadLoaiQuyetDinh();        
     }
 
     function loadLoaiQuyetDinh() {
@@ -192,39 +180,17 @@
                 });
                 $('#ddlLoaiQuyetDinh').html(render);
 
-                $('#ddlLoaiQuyetDinh').val("KT04"); //Quyet dinh khen thuong
+                $('#ddlLoaiQuyetDinh').val("NH08"); //Quyet dinh nghĩ hưu
             },
             error: function (status) {
                 console.log(status);
                 tedu.notify('Không có Loại quyết định.', 'error');
             }
         });
-    }  
-
-    function loadHinhThucKhenThuong() {
-        $.ajax({
-            type: 'GET',
-            url: '/admin/qdkhenthuong/HinhThucKhenThuong',
-            dataType: "json",
-            beforeSend: function () {
-                tedu.startLoading();
-            },
-            success: function (response) {
-                var render = "<option value='%' >--- Lựa chọn ---</option>";
-                $.each(response.Result, function (i, item) {
-                    render += "<option value='" + item.Id + "'>" + item.TenHinhThucKhenThuong + "</option>";
-                });
-                $('#ddlLoaiHinhThucKhenThuong').html(render);
-            },
-            error: function (status) {
-                console.log(status);
-                tedu.notify('Không có hình thức khen thưởng.', 'error');
-            }
-        });
-    }  
+    }   
 
     function LoadTableHoSo(isPageChanged) {
-        var template = $('#table-HoSoQDKT').html();
+        var template = $('#table-HoSoQDVH').html();
         var render = "";
 
         var makhuvuc = $('#ddlKhuVucAddEdit').val();
@@ -265,10 +231,10 @@
                     });
                 }
 
-                $('#lblHoSoQDKTTotalRecords').text(response.Result.RowCount);
+                $('#lblHoSoQDVHTotalRecords').text(response.Result.RowCount);
 
                 if (render !== '') {
-                    $('#tblContentHoSoQDKT').html(render);
+                    $('#tblContentHoSoQDVH').html(render);
                 }
 
                 if (response.Result.RowCount !== 0) {
@@ -287,22 +253,20 @@
     function wrapPagingHoSo(recordCount, callBack, changePageSize) {
         var totalsize = Math.ceil(recordCount / tedu.configs.pageSize);
         //Unbind pagination if it existed or click change pagesize
-        if ($('#paginationULHoSoQDKT a').length === 0 || changePageSize === true) {
-            $('#paginationULHoSoQDKT').empty();
-            $('#paginationULHoSoQDKT').removeData("twbs-pagination");
-            $('#paginationULHoSoQDKT').unbind("page");
+        if ($('#paginationULHoSoQDVH a').length === 0 || changePageSize === true) {
+            $('#paginationULHoSoQDVH').empty();
+            $('#paginationULHoSoQDVH').removeData("twbs-pagination");
+            $('#paginationULHoSoQDVH').unbind("page");
         }
         //Bind Pagination Event
-        $('#paginationULHoSoQDKT').twbsPagination({
+        $('#paginationULHoSoQDVH').twbsPagination({
             totalPages: totalsize,
             visiblePages: 7,
             first: 'Đầu',
             prev: 'Trước',
             next: 'Tiếp',
             last: 'Cuối',
-            onPageClick: function (event, p) {
-                //tedu.configs.pageIndex = p;
-                //setTimeout(callBack(), 200);
+            onPageClick: function (event, p) {               
                 if (tedu.configs.pageIndex !== p) {
                     tedu.configs.pageIndex = p;
                     setTimeout(callBack(), 200);
@@ -311,7 +275,7 @@
         });
     }
 
-    function loadQDKhenThuong(hosoid) {
+    function loadQDVeHuu(hosoid) {
         //tedu.notify(hosoid, "success");
 
         $.ajax({
@@ -323,9 +287,9 @@
                 tedu.startLoading();
             },
             success: function (response) {
-                var hoso = response.Result.Results[0];                
+                var hoso = response.Result.Results[0];
                 $('#txtAddEditHoTen').val(hoso.Ten);
-                $('#txtAddEditPhongTo').val(hoso.TenPhong);                
+                $('#txtAddEditPhongTo').val(hoso.TenPhong);
                 tedu.stopLoading();
             },
             error: function (status) {
@@ -335,6 +299,4 @@
         });
     }
 
-    
-    
 }
