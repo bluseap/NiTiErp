@@ -18,7 +18,20 @@ namespace NiTiErp.Application.Dapper.ViewModels
         [StringLength(50)]
         public string CorporationId { get; set; }
 
+        [StringLength(500)]
+        public string TenKhuVuc { get; set; }
+
         public Guid HoSoNhanVienId { get; set; }
+
+        [StringLength(1000)]
+        public string Ten { get; set; }
+
+        [StringLength(1000)]
+        public string TenPhong { get; set; }
+
+        [StringLength(1000)]
+        public string TenChucVu { get; set; }
+
 
         [StringLength(20)]
         public string HopDongId { get; set; }

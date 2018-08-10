@@ -4,6 +4,7 @@ using NiTiErp.Application.Dapper.Interfaces;
 using NiTiErp.Application.Dapper.ViewModels;
 using NiTiErp.Utilities.Dtos;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -59,6 +60,38 @@ namespace NiTiErp.Application.Dapper.Implementation
                         PageSize = pageSize
                     };
                     return paginationSet;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<List<QDNghiHuuViewModel>> GetListNghiHuuPaging(string corporationId, string phongId, string keyword, int page, int pageSize,
+            string hosoId, string hosoId2, string hosoId3, string nghihuuId, string parameters)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@corporationId", corporationId);
+                dynamicParameters.Add("@phongId", phongId);
+                dynamicParameters.Add("@keyword", keyword);
+                dynamicParameters.Add("@hosoId", hosoId);
+                dynamicParameters.Add("@hosoId2", hosoId2);
+                dynamicParameters.Add("@hosoId3", hosoId3);
+                dynamicParameters.Add("@nghihuuId", nghihuuId);
+
+                dynamicParameters.Add("@parameters", parameters);
+                try
+                {
+                    var nghihuu = await sqlConnection.QueryAsync<QDNghiHuuViewModel>(
+                        "QDNghiHuuGetList", dynamicParameters, commandType: CommandType.StoredProcedure);
+
+                    return nghihuu.AsList();
+
                 }
                 catch (Exception ex)
                 {

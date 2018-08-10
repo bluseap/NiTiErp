@@ -276,7 +276,7 @@
     }
 
     function loadQDVeHuu(hosoid) {
-        //tedu.notify(hosoid, "success");
+        tedu.notify(hosoid, "success");
 
         $.ajax({
             type: "GET",

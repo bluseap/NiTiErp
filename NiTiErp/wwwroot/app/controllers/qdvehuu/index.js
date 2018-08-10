@@ -13,9 +13,7 @@
     function registerEvents() {
         $('#ddlKhuVuc').on('change', function () {
             var corporationId = $('#ddlKhuVuc').val();
-            loadPhongKhuVuc(corporationId);
-
-            tedu.notify('Danh mục phòng theo khu vực.', 'success');
+            loadPhongKhuVuc(corporationId);            
         });
 
         $('body').on('click', '.btnQDVeHuu', function (e) {
@@ -54,6 +52,7 @@
         $("#ddl-show-pageQDVH").on('change', function () {
             tedu.configs.pageSize = $(this).val();
             tedu.configs.pageIndex = 1;
+            
             loadTableVeHuu(true);
         });
 
@@ -123,6 +122,8 @@
                 $("#ddlKhuVuc")[0].selectedIndex = 1;
 
                 loadPhongKhuVuc($("#ddlKhuVuc").val());
+
+                loadTableVeHuu(true);
 
             },
             error: function (status) {
@@ -323,7 +324,7 @@
                             Id: item.Id,
                             Ten: item.Ten,
                             //HinhNhanVien: item.Image === null ? '<img src="/admin-side/images/user.png?h=90"' : '<img src="' + item.HinhNhanVien + '?h=90" />',
-                            TenKhuVuc: item.CorporationName,
+                            TenKhuVuc: item.TenKhuVuc,
                             TenPhong: item.TenPhong,
                             TenChucVu: item.TenChucVu,
                             LyDoQuyetDinh: item.LyDoQuyetDinh,
@@ -415,5 +416,28 @@
         });
     }
 
+    function XuatExcelQDVH() {
+        //tedu.notify("Excel ho so", "success");
+        var makhuvuc = $('#ddlKhuVuc').val();
+        var phongId = $('#ddlPhongBan').val();
+        var timnhanvien = '';
+        
+        $.ajax({
+            type: "POST",
+            url: "/Admin/qdvehuu/ExportExcel",
+            data: {
+                corporationId: makhuvuc,
+                phongId: phongId,
+                keyword: timnhanvien
+            },
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                window.location.href = response;
+                tedu.stopLoading();
+            }
+        });
+    }
 
 }
