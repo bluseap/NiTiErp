@@ -4,6 +4,7 @@ using NiTiErp.Application.Dapper.Interfaces;
 using NiTiErp.Application.Dapper.ViewModels;
 using NiTiErp.Utilities.Dtos;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -67,43 +68,77 @@ namespace NiTiErp.Application.Dapper.Implementation
             }
         }
 
-        //public async Task<Boolean> ThoiViecAUD(QDThoiViecViewModel trinhdo, string parameters)
-        //{
-        //    using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
-        //    {
-        //        await sqlConnection.OpenAsync();
-        //        var dynamicParameters = new DynamicParameters();
+        public async Task<List<QDThoiViecViewModel>> GetListThoiViecPaging(string corporationId, string phongId, string keyword, int page, int pageSize,
+            string hosoId, string hosoId2, string hosoId3, string thoiviecId, string parameters)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
 
-        //        dynamicParameters.Add("@Id", trinhdo.Id);
-        //        dynamicParameters.Add("@HoSoNhanVienId", trinhdo.HoSoNhanVienId);
-        //        dynamicParameters.Add("@LoaiBangDanhMucId", trinhdo.LoaiBangDanhMucId);
-        //        dynamicParameters.Add("@ChuyenNganh", trinhdo.ChuyenNganh);
-        //        dynamicParameters.Add("@LoaiDaoTaoDanhMucId", trinhdo.LoaiDaoTaoDanhMucId);
-        //        dynamicParameters.Add("@XepLoaiDanhMucId", trinhdo.XepLoaiDanhMucId);
-        //        dynamicParameters.Add("@NamCapBang", trinhdo.NamCapBang);
-        //        dynamicParameters.Add("@TenTruong", trinhdo.TenTruong);
-        //        dynamicParameters.Add("@GhiChu", trinhdo.GhiChu);
-        //        dynamicParameters.Add("@HinhBangMatPath1", trinhdo.HinhBangMatPath1);
-        //        dynamicParameters.Add("@HinhBangMatPath2", trinhdo.HinhBangMatPath2);
-        //        dynamicParameters.Add("@CreateDate", trinhdo.CreateDate);
-        //        dynamicParameters.Add("@CreateBy", trinhdo.CreateBy);
-        //        dynamicParameters.Add("@UpdateDate", trinhdo.UpdateDate);
-        //        dynamicParameters.Add("@UpdareBy", trinhdo.UpdateBy);
+                dynamicParameters.Add("@corporationId", corporationId);
+                dynamicParameters.Add("@phongId", phongId);
+                dynamicParameters.Add("@keyword", keyword);
+                dynamicParameters.Add("@hosoId", hosoId);
+                dynamicParameters.Add("@hosoId2", hosoId2);
+                dynamicParameters.Add("@hosoId3", hosoId3);
+                dynamicParameters.Add("@thoiviecId", thoiviecId);
 
-        //        dynamicParameters.Add("@parameters", parameters);
-        //        try
-        //        {
-        //            var query = await sqlConnection.QueryAsync<TrinhDoViewModel>(
-        //                "TrinhDoAUD", dynamicParameters, commandType: CommandType.StoredProcedure);
+                dynamicParameters.Add("@parameters", parameters);
+                try
+                {
+                    var thoiviec = await sqlConnection.QueryAsync<QDThoiViecViewModel>(
+                        "QDThoiViecGetList", dynamicParameters, commandType: CommandType.StoredProcedure);
 
-        //            return true;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            throw ex;
-        //        }
-        //    }
-        //}
+                    return thoiviec.AsList();
+
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<Boolean> QDThoiViecAUD(QDThoiViecViewModel thoiviec, string parameters)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@Id", thoiviec.Id);
+                dynamicParameters.Add("@HoSoNhanVienId", thoiviec.HoSoNhanVienId);
+
+                dynamicParameters.Add("@LoaiQuyetDinhId", thoiviec.LoaiQuyetDinhId);
+                dynamicParameters.Add("@LyDoQuyetDinh", thoiviec.LyDoQuyetDinh);
+
+                dynamicParameters.Add("@GhiChuQuyetDinh", thoiviec.GhiChuQuyetDinh);
+                dynamicParameters.Add("@SoQuyetDinh", thoiviec.SoQuyetDinh);
+                dynamicParameters.Add("@NgayKyQuyetDinh", thoiviec.NgayKyQuyetDinh);
+                dynamicParameters.Add("@TenNguoiKyQuyetDinh", thoiviec.TenNguoiKyQuyetDinh);
+                dynamicParameters.Add("@NgayHieuLuc", thoiviec.NgayHieuLuc);
+                dynamicParameters.Add("@NgayKetThuc", thoiviec.NgayKetThuc);
+
+                dynamicParameters.Add("@CreateDate", thoiviec.CreateDate);
+                dynamicParameters.Add("@CreateBy", thoiviec.CreateBy);
+                dynamicParameters.Add("@UpdateDate", thoiviec.UpdateDate);
+                dynamicParameters.Add("@UpdateBy", thoiviec.UpdateBy);
+
+                dynamicParameters.Add("@parameters", parameters);
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<QDThoiViecViewModel>(
+                        "QDThoiViecAUD", dynamicParameters, commandType: CommandType.StoredProcedure);
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
 
     }
 }

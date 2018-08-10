@@ -9,6 +9,8 @@ namespace NiTiErp.Application.Dapper.ViewModels
     {
         public string Id { set; get; }
 
+        public int InsertqdtvId { set; get; }
+
         [StringLength(50)]
         public string KETQUA { get; set; }
 
@@ -16,7 +18,20 @@ namespace NiTiErp.Application.Dapper.ViewModels
         [StringLength(50)]
         public string CorporationId { get; set; }
 
+        [StringLength(500)]
+        public string TenKhuVuc { get; set; }
+
         public Guid HoSoNhanVienId { get; set; }
+
+        [StringLength(1000)]
+        public string Ten { get; set; }
+
+        [StringLength(1000)]
+        public string TenPhong { get; set; }
+
+        [StringLength(1000)]
+        public string TenChucVu { get; set; }
+
 
         [StringLength(20)]
         public string HopDongId { get; set; }
@@ -60,7 +75,7 @@ namespace NiTiErp.Application.Dapper.ViewModels
         public DateTime UpdateDate { get; set; }
 
         [StringLength(50)]
-        public string UpdareBy { get; set; }
+        public string UpdateBy { get; set; }
         
 
 
