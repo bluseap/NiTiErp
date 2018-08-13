@@ -392,7 +392,7 @@
             success: function (response) {
                 var vehuu = response.Result.Results[0];
 
-                $('#hidQDTVId').val(thoiviecid.Id);
+                $('#hidQDTVId').val(thoiviecid);
                 $('#hidHoSoThoiViecId').val(vehuu.HoSoNhanVienId);
 
                 $('#txtAddEditHoTen').val(vehuu.Ten);

@@ -67,46 +67,46 @@
     }
 
     function loadDataAddBoNhiem() {
-        loadKhuVucQDBoNhiem();
+        //loadKhuVucQDBoNhiem();
 
         loadLoaiQuyetDinhAddBoNhiem();
     }
 
-    function loadKhuVucQDBoNhiem() {
-        return $.ajax({
-            type: 'GET',
-            url: '/admin/hoso/GetListCorNhanSu',
-            dataType: 'json',
-            success: function (response) {
-                var render = "<option value='%' >-- Lựa chọn --</option>";
-                $.each(response.Result, function (i, item) {
-                    render += "<option value='" + item.Id + "'>" + item.Name + "</option>";
-                });
-                $('#ddlKhuVucAddEdit').html(render);
+    //function loadKhuVucQDBoNhiem() {
+    //    return $.ajax({
+    //        type: 'GET',
+    //        url: '/admin/hoso/GetListCorNhanSu',
+    //        dataType: 'json',
+    //        success: function (response) {
+    //            var render = "<option value='%' >-- Lựa chọn --</option>";
+    //            $.each(response.Result, function (i, item) {
+    //                render += "<option value='" + item.Id + "'>" + item.Name + "</option>";
+    //            });
+    //            $('#ddlKhuVucAddEdit').html(render);
 
-                $('#ddlXiNghiepCu').html(render);
-                $('#ddlXiNghiepMoi').html(render);
-                //$('#ddlXiNghiepMoi')[0].selectedIndex = 1;
+    //            $('#ddlXiNghiepCu').html(render);
+    //            $('#ddlXiNghiepMoi').html(render);
+    //            //$('#ddlXiNghiepMoi')[0].selectedIndex = 1;
 
-                var userCorporationId = $("#hidUserCorporationId").val();
-                if (userCorporationId !== "PO") {
-                    $('#ddlKhuVucAddEdit').prop('disabled', true);
-                }
-                else {
-                    $('#ddlKhuVucAddEdit').prop('disabled', false);
-                }
+    //            var userCorporationId = $("#hidUserCorporationId").val();
+    //            if (userCorporationId !== "PO") {
+    //                $('#ddlKhuVucAddEdit').prop('disabled', true);
+    //            }
+    //            else {
+    //                $('#ddlKhuVucAddEdit').prop('disabled', false);
+    //            }
 
-                $("#ddlKhuVucAddEdit")[0].selectedIndex = 1;
+    //            $("#ddlKhuVucAddEdit")[0].selectedIndex = 1;
 
-                loadPhongKhuVucQDBoNhiem($("#ddlKhuVucAddEdit").val());
+    //            loadPhongKhuVucQDBoNhiem($("#ddlKhuVucAddEdit").val());
 
-            },
-            error: function (status) {
-                console.log(status);
-                tedu.notify('Không có danh mục Công Ty.', 'error');
-            }
-        });
-    }
+    //        },
+    //        error: function (status) {
+    //            console.log(status);
+    //            tedu.notify('Không có danh mục Công Ty.', 'error');
+    //        }
+    //    });
+    //}
 
     function loadPhongKhuVucQDBoNhiem(makhuvuc) {
         $.ajax({

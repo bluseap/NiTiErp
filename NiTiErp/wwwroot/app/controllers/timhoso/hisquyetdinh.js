@@ -60,6 +60,8 @@
 
         loadQDBoNhiem(hosoId);        
 
+        loadKhuVucQDBoNhiem();
+
         $('#modal-add-edit-QDBN').modal('show');
     }    
 
@@ -243,33 +245,33 @@
     }
 
     function loadDataHisQuyetDinh() {
-        loadLoaiQuyetDinh();       
+        //loadLoaiQuyetDinh();       
 
         loadPhongToQDBoNhiem();
         loadChucVuQDBoNhiem();
     }      
 
-    function loadLoaiQuyetDinh() {
-        $.ajax({
-            type: 'GET',
-            url: '/admin/qdkhenthuong/LoaiQuyetDinh',
-            dataType: "json",
-            beforeSend: function () {
-                tedu.startLoading();
-            },
-            success: function (response) {
-                var render = "<option value='%' >--- Lựa chọn ---</option>";
-                $.each(response.Result, function (i, item) {
-                    render += "<option value='" + item.Id + "'>" + item.TenLoaiQuyetDinh + "</option>";
-                });
-                $('#ddlQuyetDinh').html(render);  
-            },
-            error: function (status) {
-                console.log(status);
-                tedu.notify('Không có Loại quyết định.', 'error');
-            }
-        });
-    }
+    //function loadLoaiQuyetDinh() {
+    //    $.ajax({
+    //        type: 'GET',
+    //        url: '/admin/qdkhenthuong/LoaiQuyetDinh',
+    //        dataType: "json",
+    //        beforeSend: function () {
+    //            tedu.startLoading();
+    //        },
+    //        success: function (response) {
+    //            var render = "<option value='%' >--- Lựa chọn ---</option>";
+    //            $.each(response.Result, function (i, item) {
+    //                render += "<option value='" + item.Id + "'>" + item.TenLoaiQuyetDinh + "</option>";
+    //            });
+    //            $('#ddlQuyetDinh').html(render);  
+    //        },
+    //        error: function (status) {
+    //            console.log(status);
+    //            tedu.notify('Không có Loại quyết định.', 'error');
+    //        }
+    //    });
+    //}
 
     function loadTableHisQuyetDinh2(isPageChanged) {        
         var template = $('#table-HisQuyetDinh').html();
@@ -357,7 +359,41 @@
         });
     }
 
-    
+    function loadKhuVucQDBoNhiem() {
+        return $.ajax({
+            type: 'GET',
+            url: '/admin/hoso/GetListCorNhanSu',
+            dataType: 'json',
+            success: function (response) {
+                var render = "<option value='%' >-- Lựa chọn --</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.Name + "</option>";
+                });
+                $('#ddlKhuVucAddEdit').html(render);
+
+                $('#ddlXiNghiepCu').html(render);
+                $('#ddlXiNghiepMoi').html(render);
+                //$('#ddlXiNghiepMoi')[0].selectedIndex = 1;
+
+                var userCorporationId = $("#hidUserCorporationId").val();
+                if (userCorporationId !== "PO") {
+                    $('#ddlKhuVucAddEdit').prop('disabled', true);
+                }
+                else {
+                    $('#ddlKhuVucAddEdit').prop('disabled', false);
+                }
+
+                $("#ddlKhuVucAddEdit")[0].selectedIndex = 1;
+
+                loadPhongKhuVucQDBoNhiem($("#ddlKhuVucAddEdit").val());
+
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh mục Công Ty.', 'error');
+            }
+        });
+    }
 
     
 

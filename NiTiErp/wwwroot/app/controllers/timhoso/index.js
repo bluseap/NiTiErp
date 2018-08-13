@@ -44,7 +44,9 @@
 
             $('#hidHisHoSoQuyetDinhId').val(hosoId);
 
-            loadHisHoSoQuyetDinh(hosoId);           
+            loadHisHoSoQuyetDinh(hosoId);
+
+            loadLoaiQuyetDinh();  
 
             $('#modal-His-QuyetDinh').modal('show');
         });
@@ -372,6 +374,27 @@
         });
     }
 
+    function loadLoaiQuyetDinh() {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/qdkhenthuong/LoaiQuyetDinh',
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >--- Lựa chọn ---</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.TenLoaiQuyetDinh + "</option>";
+                });
+                $('#ddlQuyetDinh').html(render);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có Loại quyết định.', 'error');
+            }
+        });
+    }
 
     function resetFormMaintainance() {
 

@@ -13,6 +13,7 @@
     <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
 
+    <script src="~/app/controllers/qdthutuyen/addeditthutuyen.js" asp-append-version="true"></script>
     <script src="~/app/controllers/qdthutuyen/index.js" asp-append-version="true"></script>
     <script>
         var qdthutuyen = new qdthutuyenController();
@@ -20,4 +21,133 @@
     </script>
 }
 
-<h2>Thu tuyển</h2>
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link ">
+                    Quyết định
+                </a>
+                >>
+                <a class="btn btn-link btnQDThuTuyen">
+                    Quyết định thu tuyển
+                </a>
+            </small>
+        </div>
+        <div class="title_right">
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <button class="btn btn-round btn-warning " id="btn-create" type="button">Tạo mới</button>
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="x_content">
+        <div class="">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>  <small>Danh sách quyết định thu tuyển</small></h3>
+                </div>
+                <div class="title_right">
+
+                    <div class="col-md-5 col-sm-2 col-xs-12 form-group pull-right">
+                        <div class="input-group">
+                            <input type="text" id="txtTimNhanVien" class="form-control" placeholder="Từ khóa...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" id="btnTimNhanVien" type="button">Tìm !</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-2 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                            <select id="ddlPhongBan" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                            <select id="ddlKhuVuc" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="x_panel">
+                    <div class="row no-print">
+                        <div class="col-xs-12">
+                            <button class="btn btn-info pull-right" id="btnXuatExcel" style="margin-right: 5px;">
+                                <i class="fa fa-download"></i> Xuất Excel
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-responsive" id="table-responsiveQDTT">
+                        <table id="tblQDTT" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th width="=20%">#</th>
+                                    <th>Họ và tên</th>
+                                    <th>Khu vực</th>
+                                    <th>Phòng, tổ</th>
+                                    <th>Chức vụ</th>
+                                    <th>Lý do</th>
+                                    <th>Ngày tạo</th>
+                                    <th>Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblContentQDTT"></tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <div class="dataTables_info" id="datatable-checkbox_infoQDTT" role="status" aria-live="polite">
+                                    <select id="ddl-show-pageQDTT">
+                                        <option value="10" selected="selected">10</option>
+                                        <option value="20">20</option>
+                                        <option value="30">30</option>
+                                        <option value="50">50</option>
+                                    </select>
+                                    <span class="item-per-page">
+                                        dòng/trang.
+                                    </span>
+                                    Tổng cộng: <strong id="lblQDTTTotalRecords"></strong>
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <div class="dataTables_paginate" id="datatable-checkbox_paginateQDTT">
+                                    <ul id="paginationULQDTT"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script id="table-QDTT" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row">
+                <a class="btn btn-lg btn-editQDTT" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa hồ sơ"><i class="fa fa-pencil"></i> </a>
+            </th>
+            <td>{{Ten}}</td>
+            <td>{{TenKhuVuc}}</td>
+            <td>{{TenPhong}}</td>
+            <td>{{TenChucVu}}</td>
+            <td>{{LyDoQuyetDinh}}</td>
+            <td>{{CreateDate}}</td>
+            <td>{{{Status}}}</td>
+
+        </tr>
+    </script>
+
+</div>
+
+<partial name="_AddEditModel.cshtml" />
+
