@@ -174,7 +174,6 @@
 
     function SaveQDKT(e) {
         e.preventDefault();   
-
         
         var khenthuongId = $('#hidQDKTId').val();
         var hosoId = $('#hidHoSoKhenThuongId').val();

@@ -1,0 +1,79 @@
+﻿<div id="modal-add-edit-QDVH" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Tạo mới / Sửa Quyết định nghĩ hưu</h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainQDVH">
+                        <input type="hidden" id="hidQDVHId" value="" />
+                        <input type="hidden" id="hidHoSoVeHuuId" value="" />
+                        <input type="hidden" id="hidInsertQDVHIdId" value="" />
+
+                        <div class="form-group">
+                            <label for="lbAddEditHoTenQDVH" class="control-label col-md-2 col-sm-2 col-xs-12 ">Họ và tên</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditHoTenQDVH" placeholder="Họ và tên nhân viên">
+                            </div>
+                            <label for="lbAddEditPhongToQDVH" class="control-label col-md-2 col-sm-2 col-xs-12 ">Phòng, tổ</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditPhongToQDVH" placeholder="Phòng, tổ, nhà máy">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbTenQuyetDinhQDVH" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tên quyết định </label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlLoaiQuyetDinhQDVH" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbLyDoQuyetDinhQDVH" class="control-label col-md-2 col-sm-2 col-xs-12 ">Lý do </label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtLyDoQuyetDinhQDVH" placeholder="Lý do ">
+                            </div>
+                            <label for="lbGhiChuQuyetDinhQDVH" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ghi chú quyết định về hưu</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtGhiChuQuyetDinhQDVH" placeholder="Ghi chú quyết định về hưu">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbSoQuyetDinhQDVH" class="control-label col-md-2 col-sm-2 col-xs-12 ">Số quyết định về hưu</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" name="txtSoQuyetDinhQDVH" class="form-control has-feedback-right" id="txtSoQuyetDinhQDVH" placeholder="Số quyết định về hưu">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbNgaKyQuyetDinhQDVH" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày ký quyết định về hưu</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgaKyQuyetDinhQDVH" placeholder="Ngày ký quyết định về hưu" />
+                            </div>
+                            <label for="lbTenNguoiKyQuyetDinhQDVH" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tên người ký quyết định</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtTenNguoiKyQuyetDinhQDVH" placeholder="Tên người ký Qđ về hưu">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbNgayHieuLucQDVH" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày hiệu lực</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgayHieuLucQDVH" placeholder="Ngày hiệu lực">
+                            </div>
+                            <label for="lbNgayHetHanQDVH" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày hết hạn</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgayHetHanQDVH" placeholder="Ngày hết hạn">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnSaveQDVH" class="btn btn-success">Lưu</button>
+                                <button type="button" id="btnCancelQDVH" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
