@@ -1,1 +1,61 @@
-﻿
+﻿<div id="modal-add-edit-HeSoLuong" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Tạo mới / Sửa danh mục hệ số lương</h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainHeSoLuong">
+                        <input type="hidden" id="hidHeSoLuongId" value="" />
+                        <input type="hidden" id="hidInsertHeSoLuongId" value="" />
+
+                        <div class="form-group">
+                            <label for="lbAddEditKhuVuc" class="control-label col-md-2 col-sm-2 col-xs-12 ">Khu vực</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlAddEditKhuVuc" class="form-control"></select>
+                            </div>
+                            <label for="lbAddEditMucLuongToiThieuVung" class="control-label col-md-2 col-sm-2 col-xs-12 ">Mức lương tối thiểu vùng</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditMucLuongToiThieuVung" placeholder="Mức lương tối thiểu vùng ">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbAddEditChucVu" class="control-label col-md-2 col-sm-2 col-xs-12 ">Chức vụ</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlAddEditChucVu" class="form-control"></select>
+                            </div>
+                            <label for="lbAddEditBacLuong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Bậc lương</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlAddEditBacLuong" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbAddEditHeSo" class="control-label col-md-2 col-sm-2 col-xs-12 ">Hệ số </label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditHeSo" placeholder="Hệ số lương ">
+                            </div>
+                            <label for="lbAddEditMucLuong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Mức lương </label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditMucLuong" placeholder="Mức lương ">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbAddEditSoThuTu" class="control-label col-md-2 col-sm-2 col-xs-12 ">Số thứ tự </label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditSoThuTu" placeholder="Số thứ tự ">
+                            </div>                            
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnSaveHeSoLuong" class="btn btn-success">Lưu</button>
+                                <button type="button" id="btnCanceHeSoLuong" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

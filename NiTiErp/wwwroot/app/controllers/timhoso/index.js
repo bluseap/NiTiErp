@@ -257,9 +257,7 @@
         });
     }
 
-    function loadHisHoSoQuyetDinh(hosoid) {
-        //tedu.notify(hosoid, 'error');
-
+    function loadHisHoSoQuyetDinh(hosoid) {     
         $.ajax({
             type: "GET",
             url: "/Admin/Hoso/GetHoSoId",

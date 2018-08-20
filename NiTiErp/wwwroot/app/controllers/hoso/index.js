@@ -267,6 +267,8 @@
             loadCongViec(hosoId);
 
             loadIsLockHoSo(hosoId);
+
+            loadTableTabCongViec(hosoId);
             
         });
 
@@ -3771,9 +3773,102 @@
     }
 
     function loadTieuDe() {
-        $('#lbTieuDe1').text("dasd AS");     
-
+        $('#lbTieuDe1').text("dasd AS"); 
     }
 
+    
+    function loadTableTabCongViec(hosoid) {
+        $('#hidTabCongViecHoSoId').val('');
+        $('#hidTabCongViecHoSoId').val(hosoid);
+        loadTableHisQuyetDinh();
+    }
+
+    function loadTableHisQuyetDinh(isPageChanged) {
+        var template = $('#table-CongViecChiTiet').html();
+        var render = "";
+
+        var makhuvuc = "";
+        var phongId = "";
+        var timnhanvien = "";
+        var hosoid = $('#hidTabCongViecHoSoId').val();
+       
+        tedu.notify(hosoid, "success");
+
+        $.ajax({
+            type: 'GET',
+            data: {
+                corporationId: makhuvuc,
+                phongId: phongId,
+                keyword: timnhanvien,
+                hosoId: hosoid,
+                page: tedu.configs.pageIndex,
+                pageSize: tedu.configs.pageSize
+            },
+            url: '/admin/timhoso/HisQDCongViecGetAll',
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                }
+                else {
+                    $.each(response.Result.Results, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+                            TempTenLoaiQuyeDinh: item.TempTenLoaiQuyeDinh,
+                            TempNoiDung: item.TempNoiDung,
+                            //HinhNhanVien: item.Image === null ? '<img src="/admin-side/images/user.png?h=90"' : '<img src="' + item.HinhNhanVien + '?h=90" />',
+                            TempNgayKyQuyetDinh: tedu.getFormattedDate(item.TempNgayKyQuyetDinh),
+                            TempNgayHieuLuc: tedu.getFormattedDate(item.TempNgayHieuLuc)
+                            // Price: tedu.formatNumber(item.Price, 0),                          
+                        });
+                    });
+                }
+
+                $('#lbl-total-recordsCongViecChiTiet').text(response.Result.RowCount);
+
+                if (render !== '') {
+                    $('#tbl-contentCongViecChiTiet').html(render);
+                }
+
+                if (response.Result.RowCount !== 0) {
+                    wrapPagingHisQDBoNhiem(response.Result.RowCount, function () {
+                        loadTableHisQuyetDinh();
+                    },
+                        isPageChanged);
+                }
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+
+    }
+    function wrapPagingHisQDBoNhiem(recordCount, callBack, changePageSize) {
+        var totalsize = Math.ceil(recordCount / tedu.configs.pageSize);
+        //Unbind pagination if it existed or click change pagesize
+        if ($('#paginationULCongViecChiTiet a').length === 0 || changePageSize === true) {
+            $('#paginationULCongViecChiTiet').empty();
+            $('#paginationULCongViecChiTiet').removeData("twbs-pagination");
+            $('#paginationULCongViecChiTiet').unbind("page");
+        }
+        //Bind Pagination Event
+        $('#paginationULCongViecChiTiet').twbsPagination({
+            totalPages: totalsize,
+            visiblePages: 7,
+            first: 'Đầu',
+            prev: 'Trước',
+            next: 'Tiếp',
+            last: 'Cuối',
+            onPageClick: function (event, p) {
+                //tedu.configs.pageIndex = p;
+                //setTimeout(callBack(), 200);
+                if (tedu.configs.pageIndex !== p) {
+                    tedu.configs.pageIndex = p;
+                    setTimeout(callBack(), 200);
+                }
+            }
+        });
+    }
 
 }

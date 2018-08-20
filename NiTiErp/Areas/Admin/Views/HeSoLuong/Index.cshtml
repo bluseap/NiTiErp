@@ -6,6 +6,8 @@
 @section Styles{
     <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
     <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    @*<link href="~/lib/jQuery-EasyUI/themes/color.css" rel="stylesheet" />*@
+    @*<link href="~/lib/jQuery-EasyUI/demo1.css" rel="stylesheet" />*@
     <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
 }
 @section Scripts{
@@ -13,12 +15,247 @@
     <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
 
+    <script src="~/lib/jQuery-EasyUI/datagrid-groupview.js" asp-append-version="true"></script>
+
+    @*<script src="~/lib/jQuery-EasyUI/jquery.edatagrid.js" asp-append-version="true"></script>
+        <script src="~/lib/jQuery-EasyUI/datagrid-detailview.js" asp-append-version="true"></script>
+        <script src="~/lib/jQuery-EasyUI/datagrid-groupview.js" asp-append-version="true"></script>
+        <script src="~/lib/jQuery-EasyUI/datagrid-bufferview.js" asp-append-version="true"></script>
+        <script src="~/lib/jQuery-EasyUI/datagrid-scrollview.js" asp-append-version="true"></script>*@
+    @*<script src="~/lib/jQuery-EasyUI/datagrid-cellediting.js" asp-append-version="true"></script>*@
+
     <script src="~/app/controllers/hesodm/addedithesoluong.js" asp-append-version="true"></script>
     <script src="~/app/controllers/hesodm/index.js" asp-append-version="true"></script>
     <script>
         var hesoluong = new hesoluongController();
         hesoluong.initialize();
+
+        var datamoi = new hesoluong.loadDataData();
+        var data = datamoi.datatablehesoluongmoi;
+
+        var clickDataGrid = new hesoluong.clickDataGrid();
+
+
+        function formatPrice(val, row) {
+            if (val < 30) {
+                return '<span style="color:red;">(' + val + ')</span>';
+            } else {
+                return val;
+            }
+        }
+                    //var dataa = [{ "ChucVuNhanVienId": "dd", "productname": "Koi", "unitcost": "10" }, { "ChucVuNhanVienId": "dd", "productname": "Koi", "unitcost": "10" }];
+                    //var data = dataa;
+                    //alert(datamoi.datatablehesoluongmoi);
+
+                    //$(function () {
+                    //    var lastIndex;
+                    //    $('#dg').datagrid({
+                    //        onDblClickRow: function (rowIndex) {
+                    //            if (lastIndex != rowIndex) {
+                    //                $(this).datagrid('endEdit', lastIndex);
+                    //                $(this).datagrid('beginEdit', rowIndex);
+                    //            }
+                    //            lastIndex = rowIndex;
+                    //        },
+                    //        onBeginEdit: function (rowIndex) {
+
+                    //            var row = $('#dg').datagrid('getSelected');
+                    //            if (row) {
+                    //                alert('Item ID:' + row.Id + "\nPrice:" + row.TenBacLuong);
+                    //            }
+
+                    //        }
+                    //    });
+                    //});
+
+                    //$(function () {
+                    //    var dg = $('#dg').datagrid({
+                    //        data: data
+                    //    });
+                    //    dg.datagrid('enableCellEditing').datagrid('gotoCell', {
+                    //        index: 0,
+                    //        field: 'Id'
+                    //    });
+                    //});
+
     </script>
 }
 
-<h1>Hệ số lương nhan viên</h1>
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link ">
+                    Danh mục
+                </a>
+                >>
+                <a class="btn btn-link btnDMHeSoLuong">
+                    Danh mục hệ số lương
+                </a>
+            </small>
+        </div>
+        <div class="title_right">
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <button class="btn btn-round btn-warning " id="btn-create" type="button">Tạo mới</button>
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="x_content">
+        <div class="">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>  <small>Danh sách hệ số lương</small></h3>
+                </div>
+                <div class="title_right">
+                    <div class="col-md-5 col-sm-2 col-xs-12 form-group pull-right">
+                        <div class="input-group">
+                            <input type="text" id="txtTimNhanVien" class="form-control" placeholder="Từ khóa...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" id="btnTimNhanVien" type="button">Tìm !</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-2 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                            <select id="ddlChucVu" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                            <select id="ddlKhuVuc" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <input type="hidden" id="hidMucLuongToiThieuId" value="" />
+
+            <div class="row">
+                <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+                    <label for="lbMucLuongToiThieuVungMain" class="control-label pull-right">Mức lương tối thiểu vùng</label>
+                </div>
+                <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+                    <input type="text" class="form-control has-feedback-right" id="txtMucLuongToiThieuVungMain" placeholder="Mức lương tối thiểu vùng ">
+                </div>
+                <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+                    <button class="btn btn-round btn-danger" id="btnUpLuongToiThieu" style="margin-right: 5px;"><i class="fa fa-money"></i> Cập nhật mức lương tối thiểu vùng</button>
+                </div>
+                <div class="x_panel">
+                    <div class="row no-print">
+                        <div class="col-xs-12">
+                            <button class="btn btn-info pull-right" id="btnXuatExcel" style="margin-right: 5px;"><i class="fa fa-download"></i> Xuất Excel</button>
+                        </div>
+                    </div>
+                    <div class="table-responsive" id="table-responsiveDMHeSoLuong">
+                        @*<table id="tblDMHeSoLuong" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th width="=20%">#</th>
+                                        <th>Tên chức vụ</th>
+                                        <th>Bậc lương</th>
+                                        <th>Mức lương tối thiểu</th>
+                                        <th>Hệ số lương</th>
+                                        <th>Mức lương</th>
+                                        <th>Ngày tạo</th>
+                                        <th>Trạng thái</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblContentDMHeSoLuong"></tbody>
+                            </table>*@
+                        <table id="dg" class="easyui-datagrid" title="Hệ số lương theo Chức vụ" style="width:auto;height:auto" cellspacing="0"
+                               data-options="
+                               singleSelect: true,
+                                       collapsible: true,
+                                       rownumbers: true,
+                                       fitColumns: true,
+                               
+                                       iconCls:'icon-ok',
+                                       data: data,
+
+                                       view: groupview,
+                                       groupField: 'TenChucVu',
+                                       groupFormatter:function(value,rows) {
+                                                return value + ' - ' + rows.length + ' Bậc ';
+                                        }
+                                   ">
+                            <thead>
+                                <tr>
+                                    <th data-options="field:'TenBacLuong',width:80 ">Bậc lương</th>
+                                    <th data-options="field:'MucLuongToiThieu',width:100, editor: {type: 'numberbox'} ">Lương tối thiểu</th>
+                                    <th data-options="field:'HeSo',width:80,align:'right' , editor:{type:'numberbox',options:{precision:2}} ">Hệ số</th>
+                                    <th data-options="field:'MucLuong',width:80,align:'right'">Mức lương </th>
+                                    <th data-options="field:'Status',width:60,align:'center'">Trạng thái</th>
+                                    <th data-options="field:'Id',width:60,align:'center'">Id</th>
+                                </tr>
+                            </thead>
+                            @*<tbody id="tblContentDMHeSoLuong"></tbody>*@
+                        </table>
+
+                        @*<div class="row">
+                                <div class="col-sm-5">
+                                    <div class="dataTables_info" id="datatable-checkbox_infoDMHeSoLuong" role="status" aria-live="polite">
+                                        <select id="ddl-show-pageDMHeSoLuong">
+                                            <option value="10" selected="selected">10</option>
+                                            <option value="20">20</option>
+                                            <option value="30">30</option>
+                                            <option value="50">50</option>
+                                        </select>
+                                        <span class="item-per-page">
+                                            dòng/trang.
+                                        </span>
+                                        Tổng cộng: <strong id="lblDMHeSoLuongTotalRecords"></strong>
+                                    </div>
+                                </div><div class="col-sm-7">
+                                    <div class="dataTables_paginate" id="datatable-checkbox_paginateDMHeSoLuong">
+                                        <ul id="paginationULDMHeSoLuong"></ul>
+                                    </div>
+                                </div>
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div id="tblContentDMHeSoLuong"></div>*@
+    <script id="table-DMHeSoLuong" type="text/javascript">
+                                                                                    //var data = [{ 'Id': 'dd' }, { 'Id': '33' }];
+    </script>
+    @*<script type="text/javascript">
+            var data = [
+                { "productid": "FI-SW-01", "productname": "Koi", "unitcost": 10.00, "status": "P", "listprice": 36.50, "attr1": "Large", "itemid": "EST-1" },
+                { "productid": "K9-DL-01", "productname": "Dalmation", "unitcost": 12.00, "status": "P", "listprice": 18.50, "attr1": "Spotted Adult Female", "itemid": "EST-10" },
+                { "productid": "RP-SN-01", "productname": "Rattlesnake", "unitcost": 12.00, "status": "P", "listprice": 38.50, "attr1": "Venomless", "itemid": "EST-11" },
+                { "productid": "RP-SN-01", "productname": "Rattlesnake", "unitcost": 12.00, "status": "P", "listprice": 26.50, "attr1": "Rattleless", "itemid": "EST-12" },
+                { "productid": "RP-LI-02", "productname": "Iguana", "unitcost": 12.00, "status": "P", "listprice": 35.50, "attr1": "Green Adult", "itemid": "EST-13" },
+                { "productid": "FL-DSH-01", "productname": "Manx", "unitcost": 12.00, "status": "P", "listprice": 158.50, "attr1": "Tailless", "itemid": "EST-14" },
+                { "productid": "FL-DSH-01", "productname": "Manx", "unitcost": 12.00, "status": "P", "listprice": 83.50, "attr1": "With tail", "itemid": "EST-15" },
+                { "productid": "FL-DLH-02", "productname": "Persian", "unitcost": 12.00, "status": "P", "listprice": 23.50, "attr1": "Adult Female", "itemid": "EST-16" },
+                { "productid": "FL-DLH-02", "productname": "Persian", "unitcost": 12.00, "status": "P", "listprice": 89.50, "attr1": "Adult Male", "itemid": "EST-17" },
+                { "productid": "AV-CB-01", "productname": "Amazon Parrot", "unitcost": 92.00, "status": "P", "listprice": 63.50, "attr1": "Adult Male", "itemid": "EST-18" }
+            ];
+        </script>*@
+    @*<script id="table-DMHeSoLuong" type="x-tmpl-mustache">
+            <tr>
+                <th scope="row">
+                    <a class="btn btn-lg btn-editDMHeSoLuong" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa hồ sơ"><i class="fa fa-pencil"></i> </a>
+                </th>
+                <td>{{TenChucVu}}</td>
+                <td>{{TenBacLuong}}</td>
+                <td>{{MucLuongToiThieu}}</td>
+                <td>{{HeSo}}</td>
+                <td>{{MucLuong}}</td>
+                <td>{{CreateDate}}</td>
+                <td>{{{Status}}}</td>
+            </tr>
+        </script>*@
+</div>
+
+<partial name="_MucLuongToiThieuVung.cshtml" />
+<partial name="_AddEditModel.cshtml" />

@@ -59,5 +59,19 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        [HttpGet]
+        public IActionResult HisQDCongViecGetAll(string corporationId, string phongId, string keyword, string hosoId, int page, int pageSize)
+        {
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var phong = !string.IsNullOrEmpty(phongId) ? phongId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+
+            var model = _hisquyetdinhService.GetAllHisQuyetDinhPaging(khuvuc, phong, tukhoa, page, pageSize, hosoId, "", "",
+                "", "", DateTime.Now, DateTime.Now, 1,
+                "HisQDCongViecTimHoSoId");
+
+            return new OkObjectResult(model);
+        }
+
     }
 }

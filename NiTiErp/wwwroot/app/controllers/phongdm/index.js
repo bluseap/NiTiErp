@@ -15,6 +15,14 @@
     }
 
     function registerEvents() {
+        $('body').on('click', '.btnDMPhong', function (e) {
+            e.preventDefault();
+            var url = window.location.href;       // Hiển thị đường dẫn url
+            //var tieude = window.document.title;    // Hiển thị tiêu đề trang  
+            var win = window.open(url, '_blank');
+            win.focus();
+        });
+
         $("#btn-create").on('click', function () {
             resetFormAddEditDMPhong();
 

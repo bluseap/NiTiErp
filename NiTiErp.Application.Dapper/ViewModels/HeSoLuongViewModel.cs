@@ -9,8 +9,19 @@ namespace NiTiErp.Application.Dapper.ViewModels
     {
         public string Id { set; get; }
 
+        public int inserthesoluongId { set; get; }
+
         [StringLength(20)]
         public string ChucVuNhanVienId { get; set; }
+
+        [StringLength(50)]
+        public string MaKhuVuc { get; set; }
+
+        [StringLength(500)]
+        public string TenKhuVuc { get; set; }
+
+        [StringLength(500)]
+        public string TenChucVu { get; set; }
 
         public decimal HeSo { get; set; }
 
@@ -43,7 +54,11 @@ namespace NiTiErp.Application.Dapper.ViewModels
         public string MucLuongToiThieuId { get; set; }
 
         public decimal MucLuongToiThieu { get; set; }
+
+        [StringLength(500)]
+        public string TenMucLuongToiThieu { get; set; }
         
+
         public decimal MucLuongToiThieu2 { get; set; }
         
 
