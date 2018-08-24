@@ -92,64 +92,134 @@
             var n1 = $(editors[0].target);
             var n2 = $(editors[1].target);
             var n3 = $(editors[2].target);
+            var n4 = $(editors[3].target); //  id
+
             n1.numberbox({
                 onChange: function () {
                     var cost = n1.numberbox('getValue') * luongtoithieu;
                     n2.numberbox('setValue', cost);
                     //alert(n1.numberbox('getValue'));
-                    //alert(n2.numberbox('getValue'));
+                    //alert(n3.numberbox('getValue'));
                     //$('#dg').datagrid('acceptChanges');
+
+                    updateHeSoDanhMuc(n4.numberbox('getValue'), n1.numberbox('getValue'));
                 }
-            });
-           
-            
+            }); 
+            n3.numberbox({
+                onChange: function () {                    
+                    //alert(n1.numberbox('getValue'));
+                    //alert(n3.numberbox('getValue'));
+                    //$('#dg').datagrid('acceptChanges');
+                    //alert(n4.numberbox('getValue'));
+                    updateSttHeSoDanhMuc(n4.numberbox('getValue'), n3.numberbox('getValue'));
+                }
+            }); 
         }  
 
+        function updateHeSoDanhMuc(hesoluongid, heso) {
+            //alert(heso);    
+            
+            var hesoluongId = hesoluongid;
+            //var hosoId = $('#hidHoSoBoNhiemId').val();
+            var inserthesoluongId = "6";//$('#hidInsertHeSoLuongId').val();
 
+            var makhuvuc = "PO";
+            //var luongtoithieu = $('#txtAddEditMucLuongToiThieuVung').val();            
+            var chucvu = "PO";
+            var bacluong = "1";
+            var heso = parseFloat(heso);
+            var mucluong = "1";
+            var sothutu = "1";
 
-        
+            //var ngaykyquyetdinh = tedu.getFormatDateYYMMDD($('#txtNgaKyQuyetDinh').val()); 
 
-            //function formatPrice(val, row) {
-            //    if (val < 20) {
-            //        return "<span style='color:red;'>" + val + "</span>";
-            //    } else {
-            //        return val;
-            //    }
-            //}
-            //var dataa = [{ "ChucVuNhanVienId": "dd", "productname": "Koi", "unitcost": "10" }, { "ChucVuNhanVienId": "dd", "productname": "Koi", "unitcost": "10" }];
-            //var data = dataa;
-            //alert(datamoi.datatablehesoluongmoi);
+            $.ajax({
+                type: "POST",
+                url: "/Admin/hesoluong/AddUpdateHeSoLuong",
+                data: {
+                    Id: hesoluongId,
+                    inserthesoluongId: inserthesoluongId,
 
-            //$(function () {
-            //    var lastIndex;
-            //    $('#dg').datagrid({
-            //        onDblClickRow: function (rowIndex) {
-            //            if (lastIndex != rowIndex) {
-            //                $(this).datagrid('endEdit', lastIndex);
-            //                $(this).datagrid('beginEdit', rowIndex);
-            //            }
-            //            lastIndex = rowIndex;
-            //        },
-            //        onBeginEdit: function (rowIndex) {
+                    ChucVuNhanVienId: chucvu,
+                    BacLuongId: bacluong,
+                    HeSo: heso,
+                    MucLuong: mucluong,
+                    Stt: sothutu
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    if (response.Success === false) {
+                        tedu.notify(response.Message, "error");
+                    }
+                    else {
+                        tedu.notify('Tạo hệ số lương.', 'success');
+                        //$('#modal-add-edit-HeSoLuong').modal('hide');
+                        tedu.stopLoading();
+                    }
+                },
+                error: function () {
+                    tedu.notify('Có lỗi! Không thể lưu hế số danh mục.', 'error');
+                    tedu.stopLoading();
+                }
+            });               
+            
+        }
 
-            //            var row = $('#dg').datagrid('getSelected');
-            //            if (row) {
-            //                alert('Item ID:' + row.Id + "\nPrice:" + row.TenBacLuong);
-            //            }
+        function updateSttHeSoDanhMuc(hesoluongid, stt) {
+            var hesoluongId = hesoluongid;
+            //var hosoId = $('#hidHoSoBoNhiemId').val();
+            var inserthesoluongId = "7";//$('#hidInsertHeSoLuongId').val();
 
-            //        }
-            //    });
-            //});
+            var makhuvuc = "PO";
+            //var luongtoithieu = $('#txtAddEditMucLuongToiThieuVung').val();            
+            var chucvu = "PO";
+            var bacluong = "1";
+            var heso = "1";
+            var mucluong = "1";
+            var sothutu = stt
 
-            //$(function () {
-            //    var dg = $('#dg').datagrid({
-            //        data: data
-            //    });
-            //    dg.datagrid('enableCellEditing').datagrid('gotoCell', {
-            //        index: 0,
-            //        field: 'Id'
-            //    });
-            //});
+            //var ngaykyquyetdinh = tedu.getFormatDateYYMMDD($('#txtNgaKyQuyetDinh').val()); 
+
+            $.ajax({
+                type: "POST",
+                url: "/Admin/hesoluong/AddUpdateHeSoLuong",
+                data: {
+                    Id: hesoluongId,
+                    inserthesoluongId: inserthesoluongId,
+
+                    ChucVuNhanVienId: chucvu,
+                    BacLuongId: bacluong,
+                    HeSo: heso,
+                    MucLuong: mucluong,
+                    Stt: sothutu
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    if (response.Success === false) {
+                        tedu.notify(response.Message, "error");
+                    }
+                    else {
+                        tedu.notify('Tạo hệ số lương.', 'success');
+                        //$('#modal-add-edit-HeSoLuong').modal('hide');
+                        tedu.stopLoading();
+                    }
+                },
+                error: function () {
+                    tedu.notify('Có lỗi! Không thể lưu số thứ tự', 'error');
+                    tedu.stopLoading();
+                }
+            });  
+
+        }
+               
+
+           
 
     </script>
 }
@@ -251,7 +321,7 @@
                                     <th data-options="field:'MucLuong', width:80, align:'right', editor:{type:'numberbox',options:{min:0,groupSeparator:','}} ">Mức lương </th>
                                     <th data-options="field:'Stt',width:60,align:'center', editor:{type:'numberbox', options:{min:0}} ">Stt</th>
                                     <th data-options="field:'Status',width:60,align:'center', hidden:'true' ">Trạng thái</th>
-                                    <th data-options="field:'Id',width:60,align:'center', hidden:'true' ">Id</th>
+                                    <th data-options="field:'Id',width:60,align:'center', hidden:'true', editor: 'numberbox' ">Id</th>
                                 </tr>
                             </thead>
                             @*<tbody id="tblContentDMHeSoLuong"></tbody>*@
@@ -262,7 +332,6 @@
                             function formatPrice(val, row) {
                                 return '<span>' + tedu.formatNumber(val) + '</span>';
                             }
-
 
                         </script>
                         @*<div class="row">

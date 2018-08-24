@@ -518,7 +518,7 @@
                     }
                 },
                 error: function () {
-                    tedu.notify('Có lỗi! Không thể lưu Quyết định bổ nhiệm', 'error');
+                    tedu.notify('Có lỗi! Không thể lưu hệ số lương', 'error');
                     tedu.stopLoading();
                 }
             });
@@ -568,9 +568,7 @@
                         tedu.notify(response.Message, "error");
                     }
                     else {
-                        tedu.notify('Tạo hệ số lương.', 'success');
-
-                        
+                        tedu.notify('Tạo hệ số lương.', 'success');                        
 
                         $('#modal-add-edit-HeSoLuong').modal('hide');
 
@@ -578,7 +576,7 @@
                     }
                 },
                 error: function () {
-                    tedu.notify('Có lỗi! Không thể lưu Quyết định bổ nhiệm', 'error');
+                    tedu.notify('Có lỗi! Không thể lưu hệ số lương', 'error');
                     tedu.stopLoading();
                 }
             });

@@ -77,6 +77,28 @@ namespace NiTiErp.Areas.Admin.Controllers
                     var hesodm = _hesoluongService.HeSoLuongDMAUD(hesoluongVm, "InHeSoLuongDM");
                     return new OkObjectResult(hesodm);
                 }
+                else if (hesoluongVm.inserthesoluongId == 6) // update he so, muc luong
+                {                   
+                    var result = _authorizationService.AuthorizeAsync(User, "DMHESOLUONG", Operations.Update); //
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền sửa."));
+                    }
+
+                    var hesodm = _hesoluongService.HeSoLuongDMAUD(hesoluongVm, "UpHeSoMucLuongDM");
+                    return new OkObjectResult(hesodm);
+                }
+                else if (hesoluongVm.inserthesoluongId == 7) // update so thu tu
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "DMHESOLUONG", Operations.Update); //
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền sửa."));
+                    }
+
+                    var hesodm = _hesoluongService.HeSoLuongDMAUD(hesoluongVm, "UpSttHeSoLuongDM");
+                    return new OkObjectResult(hesodm);
+                }
                 else
                 {
                     var result = _authorizationService.AuthorizeAsync(User, "DMHESOLUONG", Operations.Update); //
