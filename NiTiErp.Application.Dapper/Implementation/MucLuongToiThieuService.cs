@@ -23,6 +23,42 @@ namespace NiTiErp.Application.Dapper.Implementation
             _configuration = configuration;
         }
 
+        public async Task<Boolean> MucLuongTTAUD(MucLuongToiThieuViewModel mucluongtt, string parameters)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@Id", mucluongtt.Id);
+
+                dynamicParameters.Add("@MucLuong", mucluongtt.MucLuong);
+                dynamicParameters.Add("@Ten", mucluongtt.Ten);
+                dynamicParameters.Add("@NgayBatDau", mucluongtt.NgayBatDau);
+                dynamicParameters.Add("@NgayKetThuc", mucluongtt.NgayKetThuc);
+                dynamicParameters.Add("@CorporationId", mucluongtt.CorporationId);
+                dynamicParameters.Add("@GhiChu", mucluongtt.GhiChu);
+
+                dynamicParameters.Add("@CreateDate", mucluongtt.CreateDate);
+                dynamicParameters.Add("@CreateBy", mucluongtt.CreateBy);
+                dynamicParameters.Add("@UpdateDate", mucluongtt.UpdateDate);
+                dynamicParameters.Add("@UpdateBy", mucluongtt.UpdateBy);
+
+                dynamicParameters.Add("@parameters", parameters);
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<MucLuongToiThieuViewModel>(
+                        "MucLuongToiThieuAUD", dynamicParameters, commandType: CommandType.StoredProcedure);
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         public async Task<PagedResult<MucLuongToiThieuViewModel>> GetAllMucLuongPaging(string corporationId, string phongId, string keyword, int page, int pageSize,
             string hosoId, string hosoId2, string hosoId3, string mucluongtoithieuId, string parameters)
         {

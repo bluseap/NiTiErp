@@ -24,6 +24,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         private readonly NiTiErp.Application.Interfaces.IUserService _userService;
         private readonly IAuthorizationService _authorizationService;
 
+        private readonly IMucLuongToiThieuService _mucluongtoithieuService;
         private readonly IHeSoLuongService _hesoluongService;
         private readonly IMucLuongToiThieuService _mucluongtoithieu;
 
@@ -31,6 +32,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             NiTiErp.Application.Interfaces.IUserService userService,
             IAuthorizationService authorizationService,
 
+            IMucLuongToiThieuService mucluongtoithieuService,
             IHeSoLuongService hesoluongService,
             IMucLuongToiThieuService mucluongtoithieu
             )
@@ -39,6 +41,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             _userService = userService;
             _authorizationService = authorizationService;
 
+            _mucluongtoithieuService = mucluongtoithieuService;
             _hesoluongService = hesoluongService;
             _mucluongtoithieu = mucluongtoithieu;
         }
@@ -110,6 +113,36 @@ namespace NiTiErp.Areas.Admin.Controllers
                     var hesodm = _hesoluongService.HeSoLuongDMAUD(hesoluongVm, "UpHeSoLuongDM");
                     return new OkObjectResult(hesodm);
                 }
+            }
+        }
+
+        public IActionResult UpdateMucLuongTT(MucLuongToiThieuViewModel mucluongttVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+
+                mucluongttVm.NgayBatDau = DateTime.Now;
+                mucluongttVm.NgayKetThuc = DateTime.Now;
+
+                mucluongttVm.CreateBy = username;
+                mucluongttVm.CreateDate = DateTime.Now;
+                mucluongttVm.UpdateBy = username;
+                mucluongttVm.UpdateDate = DateTime.Now;
+               
+                var result = _authorizationService.AuthorizeAsync(User, "DMHESOLUONG", Operations.Update); //
+                if (result.Result.Succeeded == false)
+                {
+                    return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền sửa."));
+                }
+
+                var mucluongtt = _mucluongtoithieuService.MucLuongTTAUD(mucluongttVm, "UpMucLuongTTToHeSoAll");
+                return new OkObjectResult(mucluongtt);               
             }
         }
 

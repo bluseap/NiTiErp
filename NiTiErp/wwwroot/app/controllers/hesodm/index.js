@@ -140,7 +140,11 @@
             }
         });
        
+        $("#btnSaveMucLuongToiThieuVung").on('click', function () {
+            //tedu.notify("btnSaveMucLuongToiThieuVung", "error");
 
+            updateMucLuongToiTieuVung(); 
+        });
     }   
 
     function loadData() {
@@ -182,7 +186,7 @@
 
                     $('#txtMucLuongToiThieuVungMain').val(tedu.formatNumber(mucluongtoithieuvung));                                       
                     $('#txtAddEditMucLuongToiThieuVung').val(mucluongtoithieuvung);
-
+                    $('#txtMucLuongToiThieuMucLuongToiThieuVung').val(mucluongtoithieuvung);
                 }
                 tedu.stopLoading();
             },
@@ -585,12 +589,81 @@
         }
     }
 
+    function loadMucLuongToiThieuVungKhuVuc() {
+        return $.ajax({
+            type: 'GET',
+            url: '/admin/hoso/GetListCorNhanSu',
+            dataType: 'json',
+            success: function (response) {
+                var render = "<option value='%' >-- Tất cà --</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.Name + "</option>";
+                });
+                $('#ddlMucLuongToiThieuKhuVuc').html(render);               
+
+                var userCorporationId = $("#hidUserCorporationId").val();
+                if (userCorporationId !== "PO") {
+                    $('#ddlMucLuongToiThieuKhuVuc').prop('disabled', true);                   
+                }
+                else {
+                    $('#ddlMucLuongToiThieuKhuVuc').prop('disabled', false);                   
+                }
+
+                $("#ddlMucLuongToiThieuKhuVuc")[0].selectedIndex = 1;                
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh mục Công Ty.', 'error');
+            }
+        });
+    }
+
+    function loadMucLuongToiThieuVung() {
+        loadMucLuongToiThieuVungKhuVuc();
+
+    }
+
+    function updateMucLuongToiTieuVung() {
+        var mucluongtoithieuid = $('#hidMucLuongToiThieuId').val();
+        var makv = $('#ddlMucLuongToiThieuKhuVuc').val();
+        var mucluongtoithieu = $('#txtMucLuongToiThieuMucLuongToiThieuVung').val();       
+
+        $.ajax({
+            type: "POST",
+            url: "/Admin/hesoluong/UpdateMucLuongTT",
+            data: {
+                Id: "1",
+                insertmucluongttId: "2",
+                
+                MucLuong: mucluongtoithieu                
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Success === false) {
+                    tedu.notify(response.Message, "error");
+                }
+                else {
+                    tedu.notify('Tạo mức lương tối thiểu vùng.', 'success');
+                    $('#modal-add-edit-MucLuongToiThieuVung').modal('hide');
+                    tedu.stopLoading();
+                    var url = window.location.href;
+                    window.location.href = url;
+                }
+            },
+            error: function () {
+                tedu.notify('Có lỗi! Không thể lưu mức lương tối thiểu vùng', 'error');
+                tedu.stopLoading();
+            }
+        });
+
+    }
+
     function loadEditHeSoLuong(hesoluongid) {
 
     }
 
-    function loadMucLuongToiThieuVung() {
-
-    }
 
 }

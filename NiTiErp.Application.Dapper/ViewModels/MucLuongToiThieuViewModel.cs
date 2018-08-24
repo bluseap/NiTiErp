@@ -7,7 +7,9 @@ namespace NiTiErp.Application.Dapper.ViewModels
 {
     public class MucLuongToiThieuViewModel
     {
-        public string Id { set; get; }       
+        public string Id { set; get; }
+
+        public int insertmucluongttId { set; get; }
 
         public decimal MucLuong { get; set; }
 
