@@ -31,45 +31,57 @@
         });        
     }    
 
-    this.clickDataGrid = function() {
-        var lastIndex;
-        $('#dg').datagrid({
-            onDblClickRow: function (rowIndex) {
-                if (lastIndex !== rowIndex) {
-                    $(this).datagrid('endEdit', lastIndex);
-                    $(this).datagrid('beginEdit', rowIndex);
-                }
-                lastIndex = rowIndex;
-            },
-            onBeginEdit: function (rowIndex) {
-                var editors = $('#dg').datagrid('getEditors', rowIndex);
-                var n1 = $(editors[0].target);
-                n1.numberbox({
-                    onChange: function () {
-                        //var cost = n1.numberbox('getValue') * n2.numberbox('getValue');
-                        //n3.numberbox('setValue', cost);
+    this.clickDataGrid = function () {              
 
-                        alert(n1.numberbox('getValue'));
+        //var lastIndex;
+        //$('#dg').datagrid({
+        //    onDblClickRow: function (rowIndex) {
+        //        if (lastIndex !== rowIndex) {
+        //            $(this).datagrid('endEdit', lastIndex);
+        //            $(this).datagrid('beginEdit', rowIndex);
+        //        }
+        //        lastIndex = rowIndex;
+        //    },
+        //    onBeginEdit: function (rowIndex) {
+        //        var luongtoithieu = $('#txtAddEditMucLuongToiThieuVung').val();
 
-                    }
-                })
+        //        var editors = $('#dg').datagrid('getEditors', rowIndex);
+        //        var n1 = $(editors[0].target);
+        //        var n2 = $(editors[1].target);
+        //        var n3 = $(editors[2].target);
 
+        //        n1.numberbox({
+        //            onChange: function () {
+        //                var cost = n1.numberbox('getValue') * luongtoithieu;
+        //                n2.numberbox('setValue', cost);
+        //                //alert(n1.numberbox('getValue'));
+        //                //alert(n2.numberbox('getValue'));
 
+        //                //$('#dg').datagrid('acceptChanges');
+        //            }
+        //        })
 
-                var row = $('#dg').datagrid('getSelected');
-                if (row) {
+        //        var row = $('#dg').datagrid('getSelected');
+        //        if (row) {
+        //            //alert('Item ID:' + row.Id + "\nPrice:" + row.TenBacLuong);
+        //            var hesoluongId = row.Id;
+                    
+        //            //$('#hidHeSoLuongId').val(hesoluongId);
+        //            //$('#hidInsertHeSoLuongId').val('2'); // update
 
-                    //alert('Item ID:' + row.Id + "\nPrice:" + row.TenBacLuong);
-                    var hesoluongId = row.Id;
+        //            //loadEditHeSoLuong(hesoluongId);
+        //            //$('#modal-add-edit-HeSoLuong').modal('show');
+        //        } 
+        //    },
+        //    onEndEdit(index, row) {
+        //        var ed = $(this).datagrid('getEditor', {
+        //            index: index,
+        //            field: 'Id'
+        //        });           
+        //        alert('Item ID:');
+        //    }  
 
-                    //$('#hidHeSoLuongId').val(hesoluongId);
-                    //$('#hidInsertHeSoLuongId').val('2'); // update
-
-                    //loadEditHeSoLuong(hesoluongId);
-                    //$('#modal-add-edit-HeSoLuong').modal('show');
-                }
-            }
-        });
+        //});
     }
 
     function registerEvents() {        
@@ -84,10 +96,10 @@
 
         formMainValidate();
 
-        $("#btn-create").on('click', function () {          
-            $('#hidInsertHeSoLuongId').val('1'); // insert
-
+        $("#btn-create").on('click', function () {    
             resetMain();
+
+            $('#hidInsertHeSoLuongId').val('1'); // insert            
 
             $('#modal-add-edit-HeSoLuong').modal('show');
         });
@@ -107,9 +119,18 @@
             loadAddEditChucVu(corporationId);
         });
 
+        $('#txtAddEditHeSo').on('change', function () {
+            var heso = $('#txtAddEditHeSo').val();
+            var luongtoithieu = $('#txtAddEditMucLuongToiThieuVung').val();
+
+            var mucluong = Math.round(parseFloat(heso) * parseFloat(luongtoithieu));
+
+            $('#txtAddEditMucLuong').val(mucluong);
+        });
+
         $("#btnSaveHeSoLuong").on('click', function () {
             //tedu.notify("dasd", "error");
-            var inserthesoluong = $('#hidInsertHeSoLuongId').val(); 
+            var inserthesoluong = $('#hidInsertHeSoLuongId').val();
 
             if (inserthesoluong === "1") { // insert
                 saveHeSoLuong();
@@ -118,6 +139,7 @@
                 updateHeSoLuong();
             }
         });
+       
 
     }   
 
@@ -176,17 +198,17 @@
         $('#hidInsertHeSoLuongId').val('0');
 
         $('#ddlAddEditKhuVuc')[0].selectedIndex = 1;
-        $('#txtAddEditMucLuongToiThieuVung').val('');
+        //$('#txtAddEditMucLuongToiThieuVung').val('');
         $('#ddlAddEditChucVu')[0].selectedIndex = 0;
         $('#ddlAddEditBacLuong')[0].selectedIndex = 0;
         $('#txtAddEditHeSo').val('');
         $('#txtAddEditMucLuong').val('');
-        $('#txtAddEditSoThuTu').val('');
+        $('#txtAddEditSoThuTu').val('1');
 
         disabledData(true);
-        $('#hidMucLuongToiThieuId').val('0');
 
-        $('#txtMucLuongToiThieuVungMain').val('');
+        //$('#hidMucLuongToiThieuId').val('0');
+        //$('#txtMucLuongToiThieuVungMain').val('');
     }
 
     function loadKhuVuc() {
@@ -456,6 +478,7 @@
             var bacluong = $('#ddlAddEditBacLuong').val();
             var heso = $('#txtAddEditHeSo').val();
             var mucluong = $('#txtAddEditMucLuong').val();
+            var luongtoithoiid = $('#hidMucLuongToiThieuId').val();
             var sothutu = $('#txtAddEditSoThuTu').val();                
 
             //var ngaykyquyetdinh = tedu.getFormatDateYYMMDD($('#txtNgaKyQuyetDinh').val());            
@@ -471,6 +494,7 @@
                     BacLuongId: bacluong,
                     HeSo: heso,
                     MucLuong: mucluong,
+                    MucLuongToiThieuId: luongtoithoiid,
                     Stt: sothutu
                 },
                 dataType: "json",
@@ -482,13 +506,15 @@
                         tedu.notify(response.Message, "error");
                     }
                     else {
-                        tedu.notify('Tạo hệ số lương.', 'success');
-
-                        loadTableHeSoLuong("","");
+                        tedu.notify('Tạo hệ số lương.', 'success');                        
 
                         $('#modal-add-edit-HeSoLuong').modal('hide');
 
                         tedu.stopLoading();
+
+                        var url = window.location.href; 
+                        window.location.href = url;
+                       
                     }
                 },
                 error: function () {
@@ -544,7 +570,7 @@
                     else {
                         tedu.notify('Tạo hệ số lương.', 'success');
 
-                        loadTableHeSoLuong("", "");
+                        
 
                         $('#modal-add-edit-HeSoLuong').modal('hide');
 

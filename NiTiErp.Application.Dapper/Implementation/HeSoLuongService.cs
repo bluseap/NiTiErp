@@ -21,6 +21,42 @@ namespace NiTiErp.Application.Dapper.Implementation
             _configuration = configuration;
         }
 
+        public async Task<Boolean> HeSoLuongDMAUD(HeSoLuongViewModel hesoluongdm, string parameters)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@Id", hesoluongdm.Id);
+
+                dynamicParameters.Add("@ChucVuNhanVienId", hesoluongdm.ChucVuNhanVienId);
+                dynamicParameters.Add("@HeSo", hesoluongdm.HeSo);
+                dynamicParameters.Add("@MucLuong", hesoluongdm.MucLuong);
+                dynamicParameters.Add("@BacLuongId", hesoluongdm.@BacLuongId);
+                dynamicParameters.Add("@MucLuongToiThieuId", hesoluongdm.MucLuongToiThieuId);
+                dynamicParameters.Add("@Stt", hesoluongdm.Stt);
+
+                dynamicParameters.Add("@CreateDate", hesoluongdm.CreateDate);
+                dynamicParameters.Add("@CreateBy", hesoluongdm.CreateBy);
+                dynamicParameters.Add("@UpdateDate", hesoluongdm.UpdateDate);
+                dynamicParameters.Add("@UpdateBy", hesoluongdm.UpdateBy);
+
+                dynamicParameters.Add("@parameters", parameters);
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<HeSoLuongViewModel>(
+                        "HeSoLuongAUD", dynamicParameters, commandType: CommandType.StoredProcedure);
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         public async Task<List<HeSoLuongViewModel>> HeSoLuongGetList(string corporationId, string phongId, string keyword, string hosoId,
             string hosoId2, string hesoluongId, string chucVuId, string bacluongId, string luongtoithieuId, string parameters)
         {

@@ -50,6 +50,47 @@ namespace NiTiErp.Areas.Admin.Controllers
 
         #region AJAX API
 
+        public IActionResult AddUpdateHeSoLuong(HeSoLuongViewModel hesoluongVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+
+                hesoluongVm.CreateBy = username;
+                hesoluongVm.CreateDate = DateTime.Now;
+                hesoluongVm.UpdateBy = username;
+                hesoluongVm.UpdateDate = DateTime.Now;
+
+                if (hesoluongVm.inserthesoluongId == 1)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "DMHESOLUONG", Operations.Create); // nhap danh muc he so luong
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
+                    }
+
+                    var hesodm = _hesoluongService.HeSoLuongDMAUD(hesoluongVm, "InHeSoLuongDM");
+                    return new OkObjectResult(hesodm);
+                }
+                else
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "DMHESOLUONG", Operations.Update); //
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền sửa."));
+                    }
+
+                    var hesodm = _hesoluongService.HeSoLuongDMAUD(hesoluongVm, "UpHeSoLuongDM");
+                    return new OkObjectResult(hesodm);
+                }
+            }
+        }
+
         [HttpGet]
         public IActionResult HeSoLuongKhuVuc(string corporationId, string phongId, string keyword, int page,
             int pageSize, string hosoId, string chucVuId)

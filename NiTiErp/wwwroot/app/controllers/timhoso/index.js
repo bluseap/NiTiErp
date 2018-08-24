@@ -1,6 +1,16 @@
 ﻿var timhosoController = function () {
     var userCorporationId = $("#hidUserCorporationId").val();
+
+    var hisaddbonhiem = new hisaddbonhiemController();
+    var hisadddieudong = new hisadddieudongController();
+    var hisaddkyluat = new hisaddkyluatController();
+    var hisaddkhenthuong = new hisaddkhenthuongController();
+    var hisaddvehuu = new hisaddvehuuController();
+    var hisaddnangluong = new hisaddnangluongController();
+    var hisaddthutuyen = new hisaddthutuyenController();
+    var hisaddthoiviec = new hisaddthoiviecController();
     var hisquyetdinh = new hisquyetdinhController();
+
 
     //var images = [];
 
@@ -11,6 +21,15 @@
 
         registerEvents();
 
+        hisaddthoiviec.initialize();
+        hisaddthutuyen.initialize();
+        hisaddnangluong.initialize();
+        hisaddvehuu.initialize();
+        hisaddkhenthuong.initialize();
+        hisaddkyluat.initialize();
+        hisadddieudong.initialize();
+        hisaddbonhiem.initialize();      
+        
         hisquyetdinh.initialize();
         
     }

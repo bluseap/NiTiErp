@@ -1,29 +1,32 @@
 ﻿var hisquyetdinhController = function () {
-    var hisaddbonhiem = new hisaddbonhiemController();
-    var hisadddieudong = new hisadddieudongController();
-    var hisaddkyluat = new hisaddkyluatController();
-    var hisaddkhenthuong = new hisaddkhenthuongController();
-    var hisaddvehuu = new hisaddvehuuController();
-    var hisaddnangluong = new hisaddnangluongController();
-    var hisaddthutuyen = new hisaddthutuyenController();
-    var hisaddthoiviec = new hisaddthoiviecController();
+    //var userCorporationId = $("#hidUserCorporationId").val();
+    //var hosiid = $("#hidHisHoSoQuyetDinhId").val();
+
+    //var hisaddbonhiem = new hisaddbonhiemController();
+    //var hisadddieudong = new hisadddieudongController();
+    //var hisaddkyluat = new hisaddkyluatController();
+    //var hisaddkhenthuong = new hisaddkhenthuongController();
+    //var hisaddvehuu = new hisaddvehuuController();
+    //var hisaddnangluong = new hisaddnangluongController();
+    //var hisaddthutuyen = new hisaddthutuyenController();
+    //var hisaddthoiviec = new hisaddthoiviecController();
 
     this.initialize = function () {        
         loadDataHisQuyetDinh();
 
         registerEvents();
 
-        hisaddthoiviec.initialize();
-        hisaddthutuyen.initialize();
-        hisaddnangluong.initialize();
-        hisaddvehuu.initialize();
-        hisaddkhenthuong.initialize();
-        hisaddkyluat.initialize();
-        hisadddieudong.initialize();
-        hisaddbonhiem.initialize();        
+        //hisaddthoiviec.initialize();
+        //hisaddthutuyen.initialize();
+        //hisaddnangluong.initialize();
+        //hisaddvehuu.initialize();
+        //hisaddkhenthuong.initialize();
+        //hisaddkyluat.initialize();
+        //hisadddieudong.initialize();
+        //hisaddbonhiem.initialize();        
 
-        var hosiid = $("#hidHisHoSoQuyetDinhId").val();
-        tedu.notify(hosiid, 'error');
+        
+        //tedu.notify(hosiid, 'error');
 
         //loadTableHisQuyetDinh();
     }
