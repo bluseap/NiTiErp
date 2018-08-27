@@ -10,6 +10,8 @@ namespace NiTiErp.Application.Dapper.ViewModels
         public string Id { set; get; }
 
         public int inserthesoluongId { set; get; }
+      
+        public string StringXML { get; set; }
 
         [StringLength(20)]
         public string ChucVuNhanVienId { get; set; }

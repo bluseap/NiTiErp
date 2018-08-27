@@ -82,9 +82,15 @@
         //    }  
 
         //});
-    }
+    }    
 
     function registerEvents() {        
+
+        $('body').on('click', '.btnaccept', function (e) {
+            e.preventDefault();
+            accept();
+            
+        });
 
         $('body').on('click', '.btnDMHeSoLuong', function (e) {
             e.preventDefault();
@@ -145,7 +151,88 @@
 
             updateMucLuongToiTieuVung(); 
         });
-    }   
+    }  
+
+    function getRows(target) {
+        var state = $(target).data('datagrid');
+        if (state.filterSource) {
+            return state.filterSource.rows;
+        } else {
+            return state.data.rows;
+        }
+    }
+    function accept() {
+        tedu.notify("acces cho phep", "success");
+        var param = 'DataGrid';
+
+        var title = null;
+        var rows = null;
+        if (typeof param == 'string') {
+            title = param;
+        } else {
+            title = param['title'];
+            rows = param['rows'];
+        }
+        var rows = rows || getRows('#dg');
+        var dg = $('#dg');
+        var fields = dg.datagrid('getColumnFields', true).concat(dg.datagrid('getColumnFields', false));
+        var xml = '';
+        xml = xml + "<tables>";
+        $.map(rows, function (row) {
+            xml += "<items>";
+            for (var i = 0; i < fields.length; i++) {
+
+                var field = fields[i];
+                xml += '<' + field + '>' + row[field] + '</' + field + '>';
+            }
+            xml += "</items>";
+        });
+        xml = xml + '</tables>';        
+
+        //alert(xml);
+
+
+
+        if (endEditing()) {
+            $('#dg').datagrid('acceptChanges');
+
+            //$('#dg').datagrid('toExcel', 'dg.xls');//xuat excel
+            //$('#dg').datagrid('print', 'DataGrid');//in
+
+            //var xml = $('#dg').datagrid('toXML', 'DataGrid');//in               
+
+            var inserthesoluongId = "8";// update string XML bulk sql";//$('#hidInsertHeSoLuongId').val();
+
+            alert(xml);
+
+            $.ajax({
+                type: "POST",
+                url: "/Admin/hesoluong/AddUpdateHeSoLuong",
+                data: {
+                    StringXML: xml,
+                    inserthesoluongId: inserthesoluongId
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    if (response.Success === false) {
+                        tedu.notify(response.Message, "error");
+                    }
+                    else {
+                        tedu.notify('Tạo hệ số lương.', 'success');
+                        tedu.stopLoading();
+                    }
+                },
+                error: function () {
+                    tedu.notify('Có lỗi! Không thể lưu số thứ tự', 'error');
+                    tedu.stopLoading();
+                }
+            });
+
+        }
+    }
 
     function loadData() {
 

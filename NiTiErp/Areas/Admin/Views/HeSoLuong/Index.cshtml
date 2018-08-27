@@ -26,6 +26,9 @@
     @*<script src="~/lib/jQuery-EasyUI/datagrid-cellediting.js" asp-append-version="true"></script>*@
 
     <script src="~/lib/jQuery-EasyUI/datagrid-cellediting.js" asp-append-version="true"></script>
+    <script src="~/lib/jQuery-EasyUI/datagrid-export.js" asp-append-version="true"></script>
+
+   
 
     <script src="~/app/controllers/hesodm/addedithesoluong.js" asp-append-version="true"></script>
     <script src="~/app/controllers/hesodm/index.js" asp-append-version="true"></script>
@@ -44,6 +47,7 @@
                 collapsible: true,
                 rownumbers: true,
                 fitColumns: true,
+                toolbar: '#tb',
                 data: data,
                 view: groupview,
                 groupField: 'TenChucVu',
@@ -56,10 +60,10 @@
             //dg.datagrid('enableCellEditing').datagrid('gotoCell', {
             //    index: 0,
             //    field: 'Id'
-            //});  
+            //});
         });
 
-       
+
         var editIndex = undefined;
         function endEditing() {
             if (editIndex == undefined) { return true }
@@ -67,7 +71,7 @@
                 //var ed = $('#dg').datagrid('getEditor', { index: editIndex, field: 'productid' });
                 //var productname = $(ed.target).combobox('getText');
                 //$('#dg').datagrid('getRows')[editIndex]['productname'] = productname;
-                $('#dg').datagrid('endEdit', editIndex);      
+                $('#dg').datagrid('endEdit', editIndex);
                 editIndex = undefined;
                 return true;
             }
@@ -78,15 +82,15 @@
         function onClickRow(index) {
             if (editIndex != index) {
                 if (endEditing()) {
-                    $('#dg').datagrid('selectRow', index).datagrid('beginEdit', index);  
-                    editIndex = index; 
+                    $('#dg').datagrid('selectRow', index).datagrid('beginEdit', index);
+                    editIndex = index;
                 }
                 else {
                     $('#dg').datagrid('selectRow', editIndex);
                 }
             }
         }
-        function onBeginEdit(index) {                       
+        function onBeginEdit(index) {
             var luongtoithieu = $('#txtAddEditMucLuongToiThieuVung').val();//'3530000';//$('#txtAddEditMucLuongToiThieuVung').val();
             var editors = $('#dg').datagrid('getEditors', index);
             var n1 = $(editors[0].target);
@@ -104,34 +108,34 @@
 
                     updateHeSoDanhMuc(n4.numberbox('getValue'), n1.numberbox('getValue'));
                 }
-            }); 
+            });
             n3.numberbox({
-                onChange: function () {                    
+                onChange: function () {
                     //alert(n1.numberbox('getValue'));
                     //alert(n3.numberbox('getValue'));
                     //$('#dg').datagrid('acceptChanges');
                     //alert(n4.numberbox('getValue'));
                     updateSttHeSoDanhMuc(n4.numberbox('getValue'), n3.numberbox('getValue'));
                 }
-            }); 
-        }  
+            });
+        }
 
         function updateHeSoDanhMuc(hesoluongid, heso) {
-            //alert(heso);    
-            
+            //alert(heso);
+
             var hesoluongId = hesoluongid;
             //var hosoId = $('#hidHoSoBoNhiemId').val();
             var inserthesoluongId = "6";//$('#hidInsertHeSoLuongId').val();
 
             var makhuvuc = "PO";
-            //var luongtoithieu = $('#txtAddEditMucLuongToiThieuVung').val();            
+            //var luongtoithieu = $('#txtAddEditMucLuongToiThieuVung').val();
             var chucvu = "PO";
             var bacluong = "1";
             var heso = parseFloat(heso);
             var mucluong = "1";
             var sothutu = "1";
 
-            //var ngaykyquyetdinh = tedu.getFormatDateYYMMDD($('#txtNgaKyQuyetDinh').val()); 
+            //var ngaykyquyetdinh = tedu.getFormatDateYYMMDD($('#txtNgaKyQuyetDinh').val());
 
             $.ajax({
                 type: "POST",
@@ -164,8 +168,8 @@
                     tedu.notify('Có lỗi! Không thể lưu hế số danh mục.', 'error');
                     tedu.stopLoading();
                 }
-            });               
-            
+            });
+
         }
 
         function updateSttHeSoDanhMuc(hesoluongid, stt) {
@@ -174,14 +178,14 @@
             var inserthesoluongId = "7";//$('#hidInsertHeSoLuongId').val();
 
             var makhuvuc = "PO";
-            //var luongtoithieu = $('#txtAddEditMucLuongToiThieuVung').val();            
+            //var luongtoithieu = $('#txtAddEditMucLuongToiThieuVung').val();
             var chucvu = "PO";
             var bacluong = "1";
             var heso = "1";
             var mucluong = "1";
             var sothutu = stt
 
-            //var ngaykyquyetdinh = tedu.getFormatDateYYMMDD($('#txtNgaKyQuyetDinh').val()); 
+            //var ngaykyquyetdinh = tedu.getFormatDateYYMMDD($('#txtNgaKyQuyetDinh').val());
 
             $.ajax({
                 type: "POST",
@@ -214,12 +218,52 @@
                     tedu.notify('Có lỗi! Không thể lưu số thứ tự', 'error');
                     tedu.stopLoading();
                 }
-            });  
+            });
 
         }
-               
 
-           
+        //function accept() {
+        //    if (endEditing()) {
+        //        $('#dg').datagrid('acceptChanges');
+
+        //        //$('#dg').datagrid('toExcel', 'dg.xls');//xuat excel
+        //        //$('#dg').datagrid('print', 'DataGrid');//in
+                
+        //        var xml = $('#dg').datagrid('toXML', 'DataGrid');//in               
+                
+        //        var inserthesoluongId = "8";// update string XML bulk sql";//$('#hidInsertHeSoLuongId').val();
+
+        //        alert(xml);
+
+        //        $.ajax({
+        //            type: "POST",
+        //            url: "/Admin/hesoluong/AddUpdateHeSoLuong",
+        //            data: {
+        //                StringXML: xml,
+        //                inserthesoluongId: inserthesoluongId                        
+        //            },
+        //            dataType: "json",
+        //            beforeSend: function () {
+        //                tedu.startLoading();
+        //            },
+        //            success: function (response) {
+        //                if (response.Success === false) {
+        //                    tedu.notify(response.Message, "error");
+        //                }
+        //                else {
+        //                    tedu.notify('Tạo hệ số lương.', 'success');                           
+        //                    tedu.stopLoading();
+        //                }
+        //            },
+        //            error: function () {
+        //                tedu.notify('Có lỗi! Không thể lưu số thứ tự', 'error');
+        //                tedu.stopLoading();
+        //            }
+        //        });
+                
+        //    }
+        //}
+
 
     </script>
 }
@@ -326,7 +370,9 @@
                             </thead>
                             @*<tbody id="tblContentDMHeSoLuong"></tbody>*@
                         </table>
-
+                        <div id="tb" style="height:auto">
+                            <a class="easyui-linkbutton btnaccept" data-options="iconCls:'icon-save',plain:true" >Lưu</a>
+                        </div>
                         <script type="text/javascript">
 
                             function formatPrice(val, row) {
@@ -361,7 +407,7 @@
     </div>
     @*<div id="tblContentDMHeSoLuong"></div>*@
     <script id="table-DMHeSoLuong" type="text/javascript">
-                                                                                                    //var data = [{ 'Id': 'dd' }, { 'Id': '33' }];
+                                                                                                            //var data = [{ 'Id': 'dd' }, { 'Id': '33' }];
     </script>
     @*<script type="text/javascript">
             var data = [

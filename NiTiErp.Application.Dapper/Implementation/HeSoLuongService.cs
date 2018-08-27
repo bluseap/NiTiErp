@@ -57,6 +57,30 @@ namespace NiTiErp.Application.Dapper.Implementation
             }
         }
 
+        public async Task<Boolean> HeSoLuongAUDXML(HeSoLuongViewModel hesoluongdm, string parameters)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+                
+                dynamicParameters.Add("@StringXML", hesoluongdm.StringXML);
+
+                dynamicParameters.Add("@parameters", parameters);
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<HeSoLuongViewModel>(
+                        "HeSoLuongAUDXML", dynamicParameters, commandType: CommandType.StoredProcedure);
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         public async Task<List<HeSoLuongViewModel>> HeSoLuongGetList(string corporationId, string phongId, string keyword, string hosoId,
             string hosoId2, string hesoluongId, string chucVuId, string bacluongId, string luongtoithieuId, string parameters)
         {

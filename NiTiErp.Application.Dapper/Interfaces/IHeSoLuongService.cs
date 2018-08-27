@@ -12,5 +12,7 @@ namespace NiTiErp.Application.Dapper.Interfaces
                string hosoId2, string hesoluongId, string chucVuId, string bacluongId, string luongtoithieuId, string parameters);
 
         Task<Boolean> HeSoLuongDMAUD(HeSoLuongViewModel hesoluongdm, string parameters);
+
+        Task<Boolean> HeSoLuongAUDXML(HeSoLuongViewModel hesoluongdm, string parameters);
     }
 }

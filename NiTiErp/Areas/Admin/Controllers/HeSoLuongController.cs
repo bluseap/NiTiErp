@@ -102,6 +102,17 @@ namespace NiTiErp.Areas.Admin.Controllers
                     var hesodm = _hesoluongService.HeSoLuongDMAUD(hesoluongVm, "UpSttHeSoLuongDM");
                     return new OkObjectResult(hesodm);
                 }
+                else if (hesoluongVm.inserthesoluongId == 8) // update string XML bulk sql
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "DMHESOLUONG", Operations.Update); //
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền sửa."));
+                    }
+
+                    var hesodm = _hesoluongService.HeSoLuongAUDXML(hesoluongVm, "UpXMLHeSoLuongDM");
+                    return new OkObjectResult(hesodm);
+                }
                 else
                 {
                     var result = _authorizationService.AuthorizeAsync(User, "DMHESOLUONG", Operations.Update); //
