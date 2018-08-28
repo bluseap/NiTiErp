@@ -123,7 +123,7 @@
 
                 loadPhongKhuVuc($("#ddlKhuVuc").val());
 
-                loadTableVeHuu(true);
+                loadTableVeHuu();
 
             },
             error: function (status) {

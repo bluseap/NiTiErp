@@ -121,6 +121,8 @@
                 $("#ddlKhuVuc")[0].selectedIndex = 1;                 
 
                 loadPhongKhuVuc($("#ddlKhuVuc").val());   
+
+                loadTableKhenThuong();
                
             },
             error: function (status) {

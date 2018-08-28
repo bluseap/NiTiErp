@@ -147,6 +147,8 @@
                 loadPhongKhuVuc($("#ddlKhuVuc").val());
                 loadAddEditChucVuKhuVuc($("#ddlKhuVuc").val());
 
+                loadTableDieuDong();
+
             },
             error: function (status) {
                 console.log(status);

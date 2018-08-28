@@ -121,6 +121,8 @@
 
                 loadPhongKhuVuc($("#ddlKhuVuc").val());
 
+                loadTableKyLuat();
+
             },
             error: function (status) {
                 console.log(status);

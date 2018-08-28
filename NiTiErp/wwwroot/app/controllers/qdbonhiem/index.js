@@ -147,6 +147,8 @@
                 loadPhongKhuVuc($("#ddlKhuVuc").val());
                 loadAddEditChucVuKhuVuc($("#ddlKhuVuc").val());
 
+                loadTableBoNhiem();
+
             },
             error: function (status) {
                 console.log(status);

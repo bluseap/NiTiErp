@@ -124,7 +124,7 @@
 
                 loadPhongKhuVuc($("#ddlKhuVuc").val());
 
-                loadTableThoiViec(true);
+                loadTableThoiViec();
 
             },
             error: function (status) {

@@ -120,6 +120,8 @@
 
                 loadPhongKhuVuc($("#ddlKhuVuc").val());
 
+                loadTableNangNgach();
+
             },
             error: function (status) {
                 console.log(status);
