@@ -166,14 +166,14 @@
         var param = 'DataGrid';
 
         var title = null;
-        var rows = null;
-        if (typeof param == 'string') {
+        var rows2 = null;
+        if (typeof param === 'string') {
             title = param;
         } else {
             title = param['title'];
-            rows = param['rows'];
+            rows2 = param['rows'];
         }
-        var rows = rows || getRows('#dg');
+        var rows = rows2 || getRows('#dg');
         var dg = $('#dg');
         var fields = dg.datagrid('getColumnFields', true).concat(dg.datagrid('getColumnFields', false));
         var xml = '';
@@ -191,8 +191,6 @@
 
         //alert(xml);
 
-
-
         if (endEditing()) {
             $('#dg').datagrid('acceptChanges');
 
@@ -203,7 +201,7 @@
 
             var inserthesoluongId = "8";// update string XML bulk sql";//$('#hidInsertHeSoLuongId').val();
 
-            alert(xml);
+            //alert(xml);
 
             $.ajax({
                 type: "POST",
@@ -223,6 +221,9 @@
                     else {
                         tedu.notify('Tạo hệ số lương.', 'success');
                         tedu.stopLoading();
+
+                        var url = window.location.href;
+                        window.location.href = url;
                     }
                 },
                 error: function () {
@@ -230,8 +231,8 @@
                     tedu.stopLoading();
                 }
             });
-
         }
+
     }
 
     function loadData() {
