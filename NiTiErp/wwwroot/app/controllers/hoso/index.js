@@ -14,6 +14,8 @@
         registerEvents();      
 
         loadTieuDe();
+
+        LoadHopDongDangCongViec();
     }
 
     function registerEvents() {   
@@ -88,7 +90,7 @@
         });
 
         $("#btn-create").on('click', function () {
-            LoadHopDongDangCongViec();
+            //LoadHopDongDangCongViec();
 
             resetFormMaintainance();
 
@@ -104,7 +106,7 @@
             var trinhdoId = $('#hidTrinhDoId').val(); // sua la bang = 1     
 
             //tedu.notify("Chưa lưu được Save Trình độ. Kiểm tra và vào Hợp đồng nhập mới.", "error");
-            if (hosoInserId == 1) {  // tao moi ho so, trinh do
+            if (hosoInserId == 1 && trinhdoId == 0) {  // tao moi ho so, trinh do
                 SaveHoSoNhanVienTrinhDo2(e);
                 SaveTrinhDoNhanVien(e);
             }
@@ -257,7 +259,9 @@
             $('#hidLyLichIdInsert').val(1);           
 
             var hosoId = $(this).data('id');
-            loadHoSoNhanVien(hosoId);
+            loadHoSoNhanVien(hosoId)
+            
+            $('#hidTrinhDoId').val(0); // sua la bang = 1     
 
             HideHopDong(true);
             loadHopDong(hosoId);   
