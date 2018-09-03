@@ -65,7 +65,7 @@
 
     var thongbao = function () {
         if (!window.Notification) {
-            alert('Trình duyệt của bạn không hỗ trợ chức năng này.');
+            //alert('Trình duyệt của bạn không hỗ trợ chức năng này.');
         }
         // Ngược lại trình duyệt có hỗ trợ thông báo
         else {
@@ -73,7 +73,7 @@
             Notification.requestPermission(function (p) {
                 // Nếu không cho phép
                 if (p === 'denied') {
-                    alert('Bạn đã không cho phép thông báo trên trình duyệt.');
+                   // alert('Bạn đã không cho phép thông báo trên trình duyệt.');
                 }
                 // Ngược lại cho phép
                 //else {

@@ -3,7 +3,6 @@ using Microsoft.Extensions.Configuration;
 using NiTiErp.Application.Dapper.Interfaces;
 using NiTiErp.Application.Dapper.ViewModels;
 using NiTiErp.Utilities.Dtos;
-using NiTiErp.Utilities.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -122,7 +121,6 @@ namespace NiTiErp.Application.Dapper.Implementation
                         "HoSoNhanVienGetList", dynamicParameters, commandType: CommandType.StoredProcedure);
 
                     return query.AsList();
-
                 }
                 catch (Exception ex)
                 {

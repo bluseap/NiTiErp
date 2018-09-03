@@ -131,6 +131,10 @@
                     else {
                         SaveHopDongNhanVien(e);
                     }
+
+                    LoadTableHoSoNhanVien();
+                    LoadTableInHoSo();
+                    $('#modal-add-edit-HoSo').modal('hide');
                 }
                 else if ($('#frmMainTrinhDo').valid()) {
                     tedu.notify("Chưa lưu được hợp đồng. Kiểm tra và vào Hợp đồng nhập mới.", "error");

@@ -194,6 +194,14 @@
         if ($('.dv-loading').length > 0)
             $('.dv-loading').addClass('hide');
     },
+    getGoiTinh: function (gioitinh) {
+        if (gioitinh === '1')
+            return '<span class="badge bg-blue">Nam</span>';
+        else if (gioitinh === '0')
+            return '<span class="badge bg-green">Nữ</span>';
+        else 
+            return '<span > </span>';
+    },
     getStatus: function (status) {
         if (status === 1)
             return '<span class="badge bg-green">Kích hoạt</span>';

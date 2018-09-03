@@ -219,18 +219,20 @@ namespace NiTiErp
             services.AddTransient<IChucDanhService, ChucDanhService>();
             services.AddTransient<IThongBaoService, ThongBaoService>();
             services.AddTransient<IHisQuyetDinhService, HisQuyetDinhService>();
+            services.AddTransient<IPhanLoaiSucKhoeService, PhanLoaiSucKhoeService>();
 
             services.AddTransient<IThanhPhoTinhService, ThanhPhoTinhService>();
             services.AddTransient<IQuanHuyenService, QuanHuyenService>();
             services.AddTransient<IPhuongXaService, PhuongXaService>();
             services.AddTransient<IMucLuongToiThieuService, MucLuongToiThieuService>();
+            services.AddTransient<ISucKhoeService, SucKhoeService>();
+
 
             services.AddTransient<IQDKhenThuongService, QDKhenThuongService>();
             services.AddTransient<IQDKyLuatService, QDKyLuatService>();
             services.AddTransient<IQDNangNgachService, QDNangNgachService>();
             services.AddTransient<IQDDieuDongService, QDDieuDongService>();
             services.AddTransient<IQDBoNhiemService, QDBoNhiemService>();
-
             services.AddTransient<IQDNghiHuuService, QDNghiHuuService>();
             services.AddTransient<IQDThoiViecService, QDThoiViecService>();
             services.AddTransient<IQDThuTuyenService, QDThuTuyenService>();
