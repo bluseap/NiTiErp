@@ -37,7 +37,7 @@
 
         $("#ddlQuanHuyen").on('change', function () {
             var mahuyen = $('#ddlQuanHuyen').val();
-            loadPhuongXaMaTinh(mahuyen);
+            loadPhuongXaMaTinh(mahuyen); 
         });
 
         $('body').on('click', '.btnNhapHoSoNhanVien', function (e) {
@@ -853,6 +853,12 @@
     }
 
     function loadData() {
+        loadQuanHuyenMaTinh("%");
+        loadPhuongXaMaTinh("%");
+        loadQuanHuyenMaTinhQueQuan("%");
+        loadPhuongXaMaTinhQueQuan("%");
+
+
         //LoadTableHoSoNhanVien();
 
         LoadTabDanhMucLyLich();
@@ -1066,7 +1072,7 @@
             }
         });
     }
-
+    
     function loadQuanHuyenMaTinhQueQuan(tinhid) {
         $.ajax({
             type: 'GET',
@@ -1686,7 +1692,8 @@
         }
     }
 
-    function loadHoSoNhanVien(hosoid) {
+    function loadHoSoNhanVien(hosoid) {       
+
         $.ajax({
             type: "GET",
             url: "/Admin/Hoso/GetHoSoId",
@@ -1696,7 +1703,7 @@
                 tedu.startLoading();
             },
             success: function (response) {
-                var hoso = response.Result.Results[0];
+                var hoso = response.Result.Results[0];         
 
                 $('#hidLyLichId').val(hoso.Id);
 

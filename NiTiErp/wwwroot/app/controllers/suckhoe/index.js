@@ -29,7 +29,7 @@
 
             $('#frmMainSucKhoe').hide();
 
-            $('#table-responsiveSucKhoe').show();            
+            $('#table-responsiveHoSoSucKhoe').show();            
 
         });
 
@@ -48,7 +48,7 @@
 
             $('#frmMainSucKhoe').show();
 
-            $('#table-responsiveSucKhoe').hide();         
+            $('#table-responsiveHoSoSucKhoe').hide();         
 
         });
 
@@ -98,7 +98,7 @@
             url: '/admin/hoso/GetListCorNhanSu',
             dataType: 'json',
             success: function (response) {
-                var render = "<option value='%' >-- Lựa chọn --</option>";
+                var render = "<option value='%' >-- Tất cả --</option>";
                 $.each(response.Result, function (i, item) {
                     render += "<option value='" + item.Id + "'>" + item.Name + "</option>";
                 });
@@ -141,7 +141,7 @@
                 tedu.startLoading();
             },
             success: function (response) {
-                var render = "<option value='%' >-- Lựa chọn --</option>";
+                var render = "<option value='%' >-- Tất cả --</option>";
                 $.each(response.Result, function (i, item) {
                     render += "<option value='" + item.Id + "'>" + item.TenPhong + "</option>";
                 });
@@ -185,6 +185,7 @@
         $('#txtAddEditNamKham').val(namNow);
 
         loadPhanLoaiSucKhoe();
+        loadDieuKienTim();
     }
 
     function loadPhanLoaiSucKhoe() {
@@ -205,6 +206,28 @@
             error: function (status) {
                 console.log(status);
                 tedu.notify('Không có phân loại sức khỏe.', 'error');
+            }
+        });
+    }
+
+    function loadDieuKienTim() {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/suckhoe/DieuKienSucKhoe',
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >--- Lựa chọn ---</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.TenDieuKien + "</option>";
+                });
+                $('#ddlDieuKienKhac').html(render);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh Loại hợp đồng.', 'error');
             }
         });
     }
@@ -240,6 +263,7 @@
                     $.each(response.Result.Results, function (i, item) {
                         render += Mustache.render(template, {
                             Id: item.Id,
+                            Ten: item.Ten,
                             NamKham: item.NamKham,
                             TenKhuVuc: item.CorporationName,
                             TenPhong: item.TenPhong,                            
@@ -403,9 +427,7 @@
                 Id: suckhoeId,
                 HoSoNhanVienId: hosoId,
                 InsertUpdateSucKhoeId: insertsuckhoeId,
-
-                NamKham: namkham,
-                
+                NamKham: namkham,             
                 CanNang: cannang,
                 ChieuCao: chieucao,
                 HuyetAp: huyetap,
@@ -462,8 +484,10 @@
             success: function (response) {
                 var suckhoe = response.Result.Results[0];
 
-                $('#hidSucKhoeId').val(bonhiem.Id);
+                $('#hidSucKhoeId').val(suckhoe.Id);
                 $('#hidHoSoNhanVienId').val(suckhoe.HoSoNhanVienId);
+
+                loadHoSoSucKhoe(suckhoe.HoSoNhanVienId);
 
                 $('#txtAddEditCanNang').val(suckhoe.CanNang);
                 $('#txtAddEditChieuCao').val(suckhoe.ChieuCao);
@@ -480,7 +504,7 @@
                 $('#txtAddEditTPTNT').val(suckhoe.TPTNT);
                 $('#txtAddEditGlucoDuong').val(suckhoe.GlucoDuong);
                 $('#txtAddEditNhomMau').val(suckhoe.NhomMau);
-                $('#ddlPhanLoaiSucKhoe').val(suckhoe.PhanLoaiSucKhoe);
+                $('#ddlPhanLoaiSucKhoe').val(suckhoe.PhanLoaiSucKhoeId);
                 $('#txtAddEditTenBenh').val(suckhoe.TenBenh);
                 $('#txtAddEditHuongDieuTri').val(suckhoe.HuongDieuTri);
 

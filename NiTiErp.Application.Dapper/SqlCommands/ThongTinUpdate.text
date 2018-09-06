@@ -1,5 +1,11 @@
 ﻿
 
+update table insert table 
+insert into DieuKienTim (  [Id]      ,[TenDieuKien]      ,[BangDieuKien]      ,[Active]      ,[Stt] )
+	values (5 , N'DS Sức khỏe nhân viên', 	'SucKhoeNhanVien' ,	True ,	5)
+insert into DieuKienTim (  [Id]      ,[TenDieuKien]      ,[BangDieuKien]      ,[Active]      ,[Stt] )
+	values (6 ,	N'DS Tổng hợp sức khỏe',	'SucKhoeNhanVien' ,	True ,	6 )
+
 update table SucKhoeNhanVien files NamKham [int] on HoSoNhanVienId	int	Checked  
 
 update table SucKhoeNhanVien files PhanLoaiSucKhoeId [varchar(20)] on PhanLoaiSucKhoe	int	Checked  
@@ -32,7 +38,7 @@ create proc [SucKhoeNhanVienAUD]
 
 create PROC [dbo].[SucKhoeNhanVienGetList]
 
-
+r
 update proc [BangDanhMucGetList]
 
 
@@ -40,9 +46,11 @@ create suckhoe - index.js
 
 create suckhoe - addeditsuckhoe.js
 
-
+r
+update hesodm - index.js
+r
 update app - share - tedu.js
-
+r
 update hoso - index.js
-
+r
 update login - index.js

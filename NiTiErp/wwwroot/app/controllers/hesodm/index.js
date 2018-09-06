@@ -88,10 +88,14 @@
 
         $('body').on('click', '.btnaccept', function (e) {
             e.preventDefault();
-            accept();
-            
+            accept();            
         });
 
+        $("#btnInHeSoDM").on('click', function () {
+            printHTML();
+            //InHoSo();
+        });        
+        
         $('body').on('click', '.btnDMHeSoLuong', function (e) {
             e.preventDefault();
             var url = window.location.href;       // Hiển thị đường dẫn url
@@ -232,6 +236,39 @@
                 }
             });
         }
+
+    }
+    function printHTML() {
+        tedu.notify("in html cho phep", "success");
+       
+        //$('#dg').datagrid('toExcel', 'dg.xls');//xuat excel
+        $('#dg').datagrid('print', 'DataGrid');//in
+
+        //var xml = $('#dg').datagrid('toXML', 'DataGrid');//in       
+          
+    }
+    function InHoSo() {
+        //tedu.notify("In ho so", "success");     
+
+        $("#table-responsiveDMHeSoLuong").print({
+            //Use Global styles
+            globalStyles: false,
+            //Add link with attrbute media=print
+            mediaPrint: true,
+            //Custom stylesheet
+            stylesheet: "http://fonts.googleapis.com/css?family=Inconsolata",
+            //Print in a hidden iframe
+            iframe: false,
+            //Don't print this
+            noPrintSelector: ".avoid-this",
+            //Add this at top
+            //prepend: "Hello World!!!",   //Add this on bottom
+            //append : "Buh Bye!",      //Log to console when printing is done via a deffered callback
+            deferred: $.Deferred().done(function () {
+                console.log('Printing done', arguments);
+            }),
+            doctype: '<!doctype html> '
+        });
 
     }
 

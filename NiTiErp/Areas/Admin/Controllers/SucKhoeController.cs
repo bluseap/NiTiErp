@@ -24,6 +24,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         private readonly NiTiErp.Application.Interfaces.IUserService _userService;
         private readonly IAuthorizationService _authorizationService;
 
+        private readonly IDieuKienTimService _dieukientimService;
         private readonly IPhanLoaiSucKhoeService _phanloaisuckhoeService;
         private readonly ISucKhoeService _suckhoeService;
 
@@ -31,6 +32,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             NiTiErp.Application.Interfaces.IUserService userService,
             IAuthorizationService authorizationService,
 
+            IDieuKienTimService dieukientimService,
             IPhanLoaiSucKhoeService phanloaisuckhoeService,
             ISucKhoeService suckhoeService
             )
@@ -39,6 +41,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             _userService = userService;
             _authorizationService = authorizationService;
 
+            _dieukientimService = dieukientimService;
             _phanloaisuckhoeService = phanloaisuckhoeService;
             _suckhoeService = suckhoeService;
         }
@@ -112,6 +115,13 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         #region Danh mục
+
+        [HttpGet]
+        public IActionResult DieuKienSucKhoe()
+        {
+            var model = _dieukientimService.DieuKienTimGetList("SucKhoeNhanVien", "", "", "BangDieuKienTimGetList");
+            return new OkObjectResult(model);
+        }
 
         [HttpGet]
         public IActionResult PhanLoaiSucKhoe()
