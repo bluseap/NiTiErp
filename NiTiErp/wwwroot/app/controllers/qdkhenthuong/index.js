@@ -14,6 +14,16 @@
 
     function registerEvents() {
 
+        $('body').on('click', '.btn-deleteQDKT', function (e) {
+            e.preventDefault();
+
+            $('#hidInsertQDKTIdId').val(3); // delete          
+
+            var khenthuongId = $(this).data('id');
+            loadDeleteQDKhenThuong(khenthuongId);
+
+        });
+
         $('#ddlKhuVuc').on('change', function () {
             var corporationId = $('#ddlKhuVuc').val();
             loadPhongKhuVuc(corporationId);
@@ -446,6 +456,39 @@
                 window.location.href = response;
                 tedu.stopLoading();
             }
+        });
+    }
+
+    function loadDeleteQDKhenThuong(khenthuongid) {
+        
+        var inserkhenthuong = $('#hidInsertQDKTIdId').val(); // 3
+        //tedu.notify(inserkhenthuong);
+
+        tedu.confirm('Bạn có chắc chắn xóa bằng này?', function () {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/qdkhenthuong/DeleteKhenThuong",
+                data: {
+                    Id: khenthuongid,
+                    InsertqdktId: inserkhenthuong // 3
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    tedu.notify('Xóa thành công', 'success');
+                    tedu.stopLoading();                    
+
+                    $('#hidInsertQDKTIdId').val(0);     
+
+                    loadTableKhenThuong(true);
+                },
+                error: function (status) {
+                    tedu.notify('Xóa Quyết định Khen thưởng lỗi! Kiểm tra lại.', 'error');
+                    tedu.stopLoading();
+                }
+            });
         });
     }
 

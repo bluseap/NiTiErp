@@ -171,6 +171,41 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(url);
         }
 
+        [HttpPost]
+        public IActionResult DeleteKhenThuong(QDKhenThuongViewModel khenthuongVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                if (khenthuongVm.InsertqdktId == 3)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "QDNVKT", Operations.Delete); // xoa qd khen thuong
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền xóa."));
+                    }
+
+                    khenthuongVm.NgayKyQuyetDinh = DateTime.Now;
+                    khenthuongVm.NgayHieuLuc = DateTime.Now;
+                    khenthuongVm.NgayKetThuc = DateTime.Now; 
+                    khenthuongVm.CreateDate = DateTime.Now;
+                    khenthuongVm.UpdateDate = DateTime.Now;
+                   
+                    var khenthuong = _qdkhenthuongService.QDKhenThuongAUD(khenthuongVm, "DelKhenThuong");
+
+                    return new OkObjectResult(khenthuong);
+                }
+                else
+                {
+                    return new OkObjectResult(khenthuongVm);
+                }
+            }
+        }
+
 
         #region Danh muc quyet dinh khen thuong
 

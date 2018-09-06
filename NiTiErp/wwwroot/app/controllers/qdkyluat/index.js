@@ -14,6 +14,16 @@
 
     function registerEvents() {
 
+        $('body').on('click', '.btn-deleteQDKL', function (e) {
+            e.preventDefault();
+
+            $('#hidInsertQDKLIdId').val(3); // delete          
+
+            var kyluatId = $(this).data('id');
+            loadDeleteQDKyLuat(kyluatId);
+
+        });
+
         $('#ddlKhuVuc').on('change', function () {
             var corporationId = $('#ddlKhuVuc').val();
             loadPhongKhuVuc(corporationId);
@@ -445,6 +455,38 @@
                 window.location.href = response;
                 tedu.stopLoading();
             }
+        });
+    }
+
+    function loadDeleteQDKyLuat(kyluatid) {
+        var inserkyluat = $('#hidInsertQDKLIdId').val(); // 3
+        //tedu.notify(inserkhenthuong);
+
+        tedu.confirm('Bạn có chắc chắn xóa bằng này?', function () {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/qdkyluat/DeleteKyLuat",
+                data: {
+                    Id: kyluatid,
+                    InsertqdklId: inserkyluat // 3
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    tedu.notify('Xóa thành công', 'success');
+                    tedu.stopLoading();
+
+                    $('#hidInsertQDKLIdId').val(0);
+
+                    loadTableKyLuat(true);
+                },
+                error: function (status) {
+                    tedu.notify('Xóa Quết định Kỷ luật lỗi! Kiểm tra lại.', 'error');
+                    tedu.stopLoading();
+                }
+            });
         });
     }
 

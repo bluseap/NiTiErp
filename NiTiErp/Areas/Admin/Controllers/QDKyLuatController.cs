@@ -171,6 +171,40 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(url);
         }
 
+        [HttpPost]
+        public IActionResult DeleteKyLuat(QDKyLuatViewModel kyluatVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                if (kyluatVm.InsertqdklId == 3)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "QDNVKL", Operations.Delete); // xoa qd ky luat
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền xóa."));
+                    }
+
+                    kyluatVm.NgayKyQuyetDinh = DateTime.Now;
+                    kyluatVm.NgayHieuLuc = DateTime.Now;
+                    kyluatVm.NgayKetThuc = DateTime.Now;
+                    kyluatVm.CreateDate = DateTime.Now;
+                    kyluatVm.UpdateDate = DateTime.Now;
+                    
+                    var kyluat = _qdkyluatService.QDKyLuatAUD(kyluatVm, "DelKyluat");
+
+                    return new OkObjectResult(kyluat);
+                }
+                else
+                {
+                    return new OkObjectResult(kyluatVm);
+                }
+            }
+        }
 
         #region Danh muc quyet dinh khen thuong
 

@@ -12,6 +12,16 @@
     }
 
     function registerEvents() {
+        $('body').on('click', '.btn-deleteQDTV', function (e) {
+            e.preventDefault();
+
+            $('#hidInsertQDTVIdId').val(3); // delete          
+
+            var thoiviecId = $(this).data('id');
+            //loadDeleteQDThoiViec(thoiviecId);
+
+        });
+
         $('#ddlKhuVuc').on('change', function () {
             var corporationId = $('#ddlKhuVuc').val();
             loadPhongKhuVuc(corporationId);
@@ -441,5 +451,36 @@
         });
     }
 
+    function loadDeleteQDThoiViec(thoiviecid) {
+        var inserthoiviec = $('#hidInsertQDTVIdId').val(); // 3
+        //tedu.notify(inserkhenthuong);
+
+        tedu.confirm('Bạn có chắc chắn xóa bằng này?', function () {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/qdthoiviec/DeleteThoiViec",
+                data: {
+                    Id: thoiviecid,
+                    InsertqdtvId: inserthoiviec // 3
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    tedu.notify('Xóa thành công', 'success');
+                    tedu.stopLoading();
+
+                    $('#hidInsertQDTVIdId').val(0);
+
+                    loadTableThoiViec(true);
+                },
+                error: function (status) {
+                    tedu.notify('Xóa Quết định Thôi việc lỗi! Kiểm tra lại.', 'error');
+                    tedu.stopLoading();
+                }
+            });
+        });
+    }
 
 }

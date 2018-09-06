@@ -86,6 +86,20 @@
 
     function registerEvents() {        
 
+        $('body').on('click', '.btndelete', function (e) {
+            e.preventDefault();
+
+            $('#hidInsertHeSoLuongId').val('3'); // delete            
+
+            var row = $('#dg').datagrid('getSelected');
+            if (row) {
+                //alert('Item ID:' + row.Id);
+                var hesodanhmucId = row.Id;
+                deleteHeSoLuong(hesodanhmucId);
+            }           
+
+        });
+
         $('body').on('click', '.btnaccept', function (e) {
             e.preventDefault();
             accept();            
@@ -784,6 +798,43 @@
             }
         });
 
+    }
+
+    function deleteHeSoLuong(hesodmid) {
+        var indel = $('#hidInsertHeSoLuongId').val(); // delete         
+
+        tedu.confirm('Bạn có chắc chắn xóa bằng này?', function () {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/hesoluong/DeleteHeSoLuongDM",
+                data: {
+                    Id: hesodmid,
+                    inserthesoluongId: indel // = 3                   
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    tedu.notify('Xóa thành công', 'success');
+                    tedu.stopLoading();                   
+
+                    $('#hidInsertHeSoLuongId').val('0');
+
+                    if (editIndex == undefined) { return }
+                    $('#dg').datagrid('cancelEdit', editIndex)
+                        .datagrid('deleteRow', editIndex);
+                    editIndex = undefined;
+
+                    //var url = window.location.href;
+                    //window.location.href = url;
+                },
+                error: function (status) {
+                    tedu.notify('Xóa hệ số lương lỗi! Kiểm tra lại.', 'error');
+                    tedu.stopLoading();
+                }
+            });
+        });
     }
 
     function loadEditHeSoLuong(hesoluongid) {

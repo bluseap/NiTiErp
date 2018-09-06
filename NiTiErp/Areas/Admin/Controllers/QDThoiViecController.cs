@@ -171,6 +171,41 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(url);
         }
 
+        [HttpPost]
+        public IActionResult DeleteThoiViec(QDThoiViecViewModel thoiviecVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                if (thoiviecVm.InsertqdtvId == 3)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "QDNVKL", Operations.Delete); // xoa qd ky luat
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền xóa."));
+                    }
+
+                    thoiviecVm.NgayKyQuyetDinh = DateTime.Now;
+                    thoiviecVm.NgayHieuLuc = DateTime.Now;
+                    thoiviecVm.NgayKetThuc = DateTime.Now;
+                    thoiviecVm.CreateDate = DateTime.Now;
+                    thoiviecVm.UpdateDate = DateTime.Now;
+                  
+                    var thoiviec = _qdthoiviecService.QDThoiViecAUD(thoiviecVm, "DelThoiViec");
+
+                    return new OkObjectResult(thoiviec);
+                }
+                else
+                {
+                    return new OkObjectResult(thoiviecVm);
+                }
+            }
+        }
+
         #endregion
 
 

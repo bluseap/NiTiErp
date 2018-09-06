@@ -192,6 +192,38 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        [HttpPost]
+        public IActionResult DeleteHeSoLuongDM(HeSoLuongViewModel hesoluongVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                if (hesoluongVm.inserthesoluongId == 3)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "DMHESOLUONG", Operations.Delete); // xoa he so luong
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền xóa."));
+                    }
+
+                    hesoluongVm.CreateDate = DateTime.Now;
+                    hesoluongVm.UpdateDate = DateTime.Now;
+                    
+                    var hesoluong = _hesoluongService.HeSoLuongDMAUD(hesoluongVm, "DelHeSoLuongDM");
+                   
+                    return new OkObjectResult(hesoluong);
+                }
+                else
+                {
+                    return new OkObjectResult(hesoluongVm);
+                }
+            }
+        }
+
         #endregion
 
 
