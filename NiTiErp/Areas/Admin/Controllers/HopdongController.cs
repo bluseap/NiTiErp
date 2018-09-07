@@ -548,9 +548,7 @@ namespace NiTiErp.Areas.Admin.Controllers
                     ExcelWorksheet worksheet = package.Workbook.Worksheets["HopDongCT"];                  
 
                     var hopdongDetail = _hopdongService.GetAllHopDongPagingExcel("", "", "", 1, 1000,
-                        hosoId, "", "", hopdongId, "GetHopDongChiTiet");
-                    
-
+                        hosoId, "", "", hopdongId, "GetHopDongChiTiet");     
 
                     int rowIndex = 9;
                     int count = 1;

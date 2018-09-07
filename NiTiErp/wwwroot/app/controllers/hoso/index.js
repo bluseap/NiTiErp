@@ -20,6 +20,14 @@
 
     function registerEvents() {   
 
+        $("#ddlLoaiHopDong").on('change', function () {
+            //tedu.notify("Loai hop dong sjhfjkweh", "success");
+            if ($('#ddlLoaiHopDong').val() == "KX") {
+                $('#txtNgayHetHan').val("01/01/2100");
+            }            
+            
+        });
+
         $("#ddlThanhPhoTinhQueQuan").on('change', function () {
             var matinh = $('#ddlThanhPhoTinhQueQuan').val();
             loadQuanHuyenMaTinhQueQuan(matinh);
@@ -62,7 +70,6 @@
 
         $('#btnTimNhanVien').on('click', function () {
             //loadData();  
-
             LoadHopDongDangCongViec();
             LoadTableHoSoNhanVien();
             LoadTableInHoSo();
@@ -70,8 +77,7 @@
 
         $('#txtTimNhanVien').on('keypress', function (e) {
             if (e.which === 13) {
-                //loadData();                 
-
+                //loadData();  
                 LoadHopDongDangCongViec();
                 LoadTableHoSoNhanVien();
             }
@@ -121,20 +127,29 @@
 
             if ($('#frmMainHopDong').valid()) {
                 if (hosoInserId != 1) { // add hop dong   
-                    SaveHoSoNhanVienTrinhDo(e);
+                    //SaveHoSoNhanVienTrinhDo(e);
 
                     if ($('#frmMainTrinhDo').valid()) {
+                        SaveHoSoNhanVienTrinhDo(e);
+
                         SaveTrinhDoNhanVien(e);
 
                         SaveHopDongNhanVien(e);
+
+                        LoadTableHoSoNhanVien();
+                        LoadTableInHoSo();
+
+                        $('#modal-add-edit-HoSo').modal('hide');
                     }
                     else {
-                        SaveHopDongNhanVien(e);
-                    }
+                        SaveHoSoNhanVienTrinhDo(e);
 
-                    LoadTableHoSoNhanVien();
-                    LoadTableInHoSo();
-                    $('#modal-add-edit-HoSo').modal('hide');
+                        SaveHopDongNhanVien(e);
+
+                        LoadTableHoSoNhanVien();
+                        LoadTableInHoSo();
+                        $('#modal-add-edit-HoSo').modal('hide');
+                    }                    
                 }
                 else if ($('#frmMainTrinhDo').valid()) {
                     tedu.notify("Chưa lưu được hợp đồng. Kiểm tra và vào Hợp đồng nhập mới.", "error");
@@ -509,7 +524,7 @@
                     isDateVietNam: true
                 },
                 //txtNoiOHienNay: { required: true },               
-                txtSoNhaTenDuongQueQuan: { required: true },
+                //txtSoNhaTenDuongQueQuan: { required: true },
                 ddlThanhPhoTinhQueQuan: {
                     required: true,
                     isDanhMuc: true
@@ -589,24 +604,21 @@
             ignore: [],
             lang: 'vi',
             rules: {
-                txtSoHopDong: {
-                    required: true
-                },
+                //txtSoHopDong: {
+                //    required: true
+                //},
                 ddlLoaiHopDong: {
                     required: true,
                     isDanhMuc: true
                 },
                 txtNgayKyHopDong: {
-                    required: true,
-                    isDateVietNam: true
+                    required: true//,    isDateVietNam: true
                 },                
                 txtNgayHieuLuc: {
-                    required: true,
-                    isDateVietNam: true
+                    required: true//,   isDateVietNam: true
                 },
                 txtNgayHetHan: {
-                    required: true,
-                    isDateVietNam: true
+                    required: true//,      isDateVietNam: true
                 },
                 ddlChucVuKyHopDong: {
                     required: true,
@@ -622,7 +634,7 @@
                 }
             },
             messages: {
-                txtSoHopDong: { required: "Nhập số hợp đồng!" },
+               // txtSoHopDong: { required: "Nhập số hợp đồng!" },
                 txtHeSoLuongCoBan: { required: "Chỉ nhập số!" },
                 txtLuongCoBan: { required: "Chỉ nhập số!" }
             }
@@ -2365,7 +2377,14 @@
         var corporationid = $('#ddlCongTyXiNghiep').val();
         var chucvuid = $('#ddlChucVuKyHopDong').val();
 
-        var sohopdong = $('#txtSoHopDong').val();
+        var sohopdong = '';
+        if ($('#txtSoHopDong').val().length > 0) {
+            sohopdong = $('#txtSoHopDong').val();
+        }
+        else {
+            sohopdong = '0';
+        }
+        
         var loaihopdong = $('#ddlLoaiHopDong').val();
         var ngaykyhopdong = tedu.getFormatDateYYMMDD($('#txtNgayKyHopDong').val()); 
         var ngayhopdong = tedu.getFormatDateYYMMDD($('#txtNgayHopDong').val());

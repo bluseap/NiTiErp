@@ -15,6 +15,24 @@
 
     function registerEvents() {
 
+        $('body').on('click', '.btn-deleteSucKhoe', function (e) {
+            e.preventDefault();
+
+            $('#hidInsertSucKhoeId').val(3); // delete
+
+            var suckhoeId = $(this).data('id');
+
+            //$('#hidSucKhoeId').val(suckhoeId);
+
+            //loadDeleteSucKhoe(suckhoeId);            
+
+        });
+
+        $("#btnXuatExcelSucKhoe").on('click', function (e) {
+            e.preventDefault();
+            XuatExcelSucKhoe(e);
+        });
+
         $("#btnSaveSucKhoe").on('click', function (e) {            
             btnSaveSucKhoe(e);
         });
@@ -512,6 +530,70 @@
             },
             error: function (status) {
                 tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function loadDeleteSucKhoe(suckhoeid) {
+        var insersuckhoe = $('#hidInsertSucKhoeId').val(); // 3
+        //tedu.notify(inserkhenthuong);
+
+        tedu.confirm('Bạn có chắc chắn xóa bằng này?', function () {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/suckhoe/DeleteSucKhoe",
+                data: {
+                    Id: suckhoeid,
+                    InsertUpdateSucKhoeId: insersuckhoe // 3
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    tedu.notify('Xóa thành công', 'success');
+                    tedu.stopLoading();
+
+                    $('#hidInsertSucKhoeId').val(0);
+
+                    loadTableSucKhoe(true);
+                },
+                error: function (status) {
+                    tedu.notify('Xóa Sức khỏe lỗi! Kiểm tra lại.', 'error');
+                    tedu.stopLoading();
+                }
+            });
+        });
+    }
+
+    function XuatExcelSucKhoe(e) {
+        txtNamKham
+        var makhuvuc = $('#ddlKhuVuc').val();
+        var phongId = $('#ddlPhongBan').val();
+        var timnhanvien = $('#txtTimNhanVien').val();
+
+        var dieukien = $('#ddlDieuKienKhac').val();
+
+        
+        
+
+        $.ajax({
+            type: 'POST',
+            url: '/admin/suckhoe/ExportExcelSucKhoe',
+            data: {
+                corporationId: makhuvuc,
+                phongId: phongId,
+                keyword: timnhanvien,
+                page: tedu.configs.pageIndex,
+                pageSize: tedu.configs.pageSize,
+                dieukienkhac: dieukien
+            },
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                window.location.href = response;
                 tedu.stopLoading();
             }
         });

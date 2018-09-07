@@ -337,7 +337,7 @@
                             TenLoaiHopDong: item.TenLoaiHopDong,
                             HeSoLuong: item.HeSoLuong,
                             LuongCoBan: item.LuongCoBan,
-                            NgayHieuLuc: tedu.getFormattedDate(item.LuongCoBan),
+                            NgayHieuLuc: tedu.getFormattedDate(item.NgayHieuLuc),
                             NgayHetHan: tedu.getFormattedDate(item.NgayHetHan),
                             Status: tedu.getHoSoNhanVienStatus(item.Status)                           
                             //HinhNhanVien: item.Image === null ? '<img src="/admin-side/images/user.png?h=90"' : '<img src="' + item.HinhNhanVien + '?h=90" />',                         
