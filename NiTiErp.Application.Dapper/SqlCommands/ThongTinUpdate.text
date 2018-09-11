@@ -21,18 +21,15 @@ create table PhanLoaiSucKhoe
 
 update file table PhanLoaiSucKhoe
 insert into PhanLoaiSucKhoe ( [Id]      ,[TenPhanLoaiSucKhoe]      ,[Status]      ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate] )
-values (  1,	N'Loại 1',	1,	True	, 1, 	'admin',	'2018-01-01 00:00:00.000')
-
+values (  1,	N'Loại 1',	1,	True	, 2, 	'admin',	'2018-01-01 00:00:00.000')
 insert into PhanLoaiSucKhoe ( [Id]      ,[TenPhanLoaiSucKhoe]      ,[Status]      ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate] )
-values (  2,	N'Loại 2',	1,	True	, 1,	'admin',	'2018-01-01 00:00:00.000')	
-
+values (  2,	N'Loại 2',	1,	True	, 3,	'admin',	'2018-01-01 00:00:00.000')	
 insert into PhanLoaiSucKhoe ( [Id]      ,[TenPhanLoaiSucKhoe]      ,[Status]      ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate] )
-values ( 3,		N'Loại 3',	1,	True,	 1,	'admin',	'2018-01-01 00:00:00.000' )
-
+values ( 3,		N'Loại 3',	1,	True,	 4,	'admin',	'2018-01-01 00:00:00.000' )
 insert into PhanLoaiSucKhoe ( [Id]      ,[TenPhanLoaiSucKhoe]      ,[Status]      ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate] )
-values ( 4,		N'Loại 4',	1,	True,	 1,	'admin',	'2018-01-01 00:00:00.000' )
-
-
+values ( 4,		N'Loại 4',	1,	True,	 5,	'admin',	'2018-01-01 00:00:00.000' )
+insert into PhanLoaiSucKhoe ( [Id]      ,[TenPhanLoaiSucKhoe]      ,[Status]      ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate] )
+values ( 5,		N'Không phân loai',	1,	True,	 0,	'admin',	'2018-01-01 00:00:00.000' )
 
 create proc [SucKhoeNhanVienAUD]
 

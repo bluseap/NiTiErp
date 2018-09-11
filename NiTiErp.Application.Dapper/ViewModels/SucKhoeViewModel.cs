@@ -128,8 +128,24 @@ namespace NiTiErp.Application.Dapper.ViewModels
         public int TongIs { get; set; }
 
         [StringLength(100)]
-        public string GhiChu { get; set; }        
+        public string GhiChu { get; set; }
 
+
+        [StringLength(100)]
+        public string TenPhanLoai { get; set; }
+        public int ChauThanh { get; set; }
+        public int ChauPhu { get; set; }
+        public int ChoMoi { get; set; }
+        public int PhuTan { get; set; }
+        public int ChauDoc { get; set; }
+        public int AnPhu { get; set; }
+        public int TanChau { get; set; }
+        public int TriTon { get; set; }
+        public int TinhBien { get; set; }
+        public int ThoaiSon { get; set; }
+        public int LongXuyen { get; set; }
+        public int CongTy { get; set; }
+        public int TongSoLuong { get; set; }
 
 
 

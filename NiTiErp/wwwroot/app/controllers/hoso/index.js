@@ -77,7 +77,8 @@
 
         $('#txtTimNhanVien').on('keypress', function (e) {
             if (e.which === 13) {
-                //loadData();  
+                //loadData(); 
+                loadPhongKhuVucTabCongViec("%");
                 LoadHopDongDangCongViec();
                 LoadTableHoSoNhanVien();
             }
@@ -138,7 +139,6 @@
 
                         LoadTableHoSoNhanVien();
                         LoadTableInHoSo();
-
                         $('#modal-add-edit-HoSo').modal('hide');
                     }
                     else {
@@ -179,10 +179,12 @@
             else {
                 tedu.notify("Chưa lưu được trình độ. Kiểm tra và nhập lại trình độ.", "error");
                 if (hosoInserId == 1) {
-                    UpdateHoSoNhanVien(e);
+                    SaveHoSoNhanVien(e);
+                    //UpdateHoSoNhanVien(e);
                 }
                 else { // tao moi
-                    SaveHoSoNhanVien(e);
+                    UpdateHoSoNhanVien(e);
+                    //SaveHoSoNhanVien(e);
                 }
             }     
 
@@ -926,7 +928,7 @@
                         render += Mustache.render(template, {
                             Id: item.Id,
                             Ten: item.Ten,
-                            HinhNhanVien: item.Image === null ? '<img src="/admin-side/images/user.png?h=90"' : '<img src="' + item.HinhNhanVien + '?h=90" />',
+                            HinhNhanVien: item.HinhNhanVien === null ? '<img src="/admin-side/images/user.png?h=90"' : '<img src="' + item.HinhNhanVien + '?h=90" />',
                             TenKhuVuc: item.CorporationName,
                             TenPhong: item.TenPhong,
                             TenChucVu: item.TenChucVu,
@@ -2525,7 +2527,7 @@
                         render += Mustache.render(template, {
                             Id: item.Id,
                             Ten: item.Ten,
-                            HinhNhanVien: item.Image === null ? '<img src="/admin-side/images/user.png?h=60 && w=40"' : '<img src="' + item.HinhNhanVien + '?h=90 && w=40" />',
+                            HinhNhanVien: item.HinhNhanVien === null ? '<img src="/admin-side/images/user.png?h=90 && w=40"' : '<img src="' + item.HinhNhanVien + '?h=90 && w=40" />',
                             TenKhuVuc: item.CorporationName,
                             TenPhong: item.TenPhong,
                             TenChucVu: item.TenChucVu,
@@ -3682,7 +3684,9 @@
                     $('#hidUpdateCongViecId').val(congviec.Id);
 
                     $('#ddlCongTyXiNghiep').val(congviec.CorporationId);
+                    
                     $('#ddlPhongtabCongViec').val(congviec.PhongDanhMucId);
+
                     $('#ddlChucVuNhanVien').val(congviec.ChucVuCongTyId);
                     $('#txtCongTacChinh').val(congviec.CongTacChinh);
                     $('#txtSoQuyetDinhCongViec').val(congviec.SoQuyetDinh);

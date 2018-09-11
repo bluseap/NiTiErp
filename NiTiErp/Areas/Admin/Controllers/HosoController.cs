@@ -128,7 +128,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             else
             {
                 var username = User.GetSpecificClaim("UserName");
-
+                
                 congviecVm.CreateBy = username;
                 congviecVm.CreateDate = DateTime.Now;
                 congviecVm.UpdateBy = username;

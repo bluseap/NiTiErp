@@ -568,20 +568,17 @@
     }
 
     function XuatExcelSucKhoe(e) {
-        txtNamKham
+        var nam = $('#txtNamKham').val();
         var makhuvuc = $('#ddlKhuVuc').val();
         var phongId = $('#ddlPhongBan').val();
         var timnhanvien = $('#txtTimNhanVien').val();
-
-        var dieukien = $('#ddlDieuKienKhac').val();
-
-        
-        
+        var dieukien = $('#ddlDieuKienKhac').val();    
 
         $.ajax({
             type: 'POST',
             url: '/admin/suckhoe/ExportExcelSucKhoe',
             data: {
+                namkham: nam,
                 corporationId: makhuvuc,
                 phongId: phongId,
                 keyword: timnhanvien,
