@@ -19,16 +19,12 @@
         
     }
 
-    this.loadDataData = function () {       
-        
-        //this.dataa = loadDataDataMoi();
-        //var dataa = [];
-        //this.dataa = [{ "ChucVuNhanVienId": "dd", "productname": "Koi", "unitcost": "10" }, { "ChucVuNhanVienId": "dd", "productname": "Koi", "unitcost": "10" }];
-        //tedu.notify(data, "success");               
+    this.loadDataData = function () {                      
 
         this.datatablehesoluongmoi = loadTableHeSoLuongReturn(function (d) {            
             //clickDataGrid();
-        });        
+        }); 
+        
     }    
 
     this.clickDataGrid = function () {              
@@ -84,7 +80,7 @@
         //});
     }    
 
-    function registerEvents() {        
+    function registerEvents() {         
 
         $('body').on('click', '.btndelete', function (e) {
             e.preventDefault();
@@ -382,7 +378,7 @@
 
                 var makv = $('#ddlKhuVuc').val();
 
-                loadTableHeSoLuong(makv, "");
+                //loadTableHeSoLuong(makv, "");
                 loadChucVu(makv);
                 loadAddEditChucVu(makv);
             },
@@ -465,51 +461,18 @@
             },
             success: function (response) {
                 if (response.Result.length === 0) {
-                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                    render = '[{ Id: "0", Status: "0" ,   Stt: "0", MucLuong: "0",    HeSo: "0",    MucLuongToiThieu : "0",   TenBacLuong: "0"}]';
                 }
-                else {
-                    //$.each(response.Result, function (i, item) {
-                    //    //render += Mustache.render(template, {
-                    //    //    Id: item.Id,
-                    //    //    //ChucVuNhanVienId: item.ChucVuNhanVienId,
-                    //    //    //TenChucVu: item.TenChucVu,
-                    //    //    //MaKhuVuc: item.MaKhuVuc,
-                    //    //    //TenKhuVuc: item.TenKhuVuc,
-                    //    //    //HeSo: item.HeSo,
-                    //    //    //MucLuong: item.MucLuong,
-                    //    //    //BacLuongId: item.BacLuongId,
-                    //    //    //TenBacLuong: item.TenBacLuong,
-                    //    //    //MucLuongToiThieuId: item.MucLuongToiThieuId,
-                    //    //    //MucLuongToiThieu: item.MucLuongToiThieu,
-                    //    //    //TenMucLuongToiThieu: item.TenMucLuongToiThieu,
-
-                    //    //    //CreateDate: tedu.getFormattedDate(item.CreateDate),
-                    //    //    //Status: tedu.getHoSoNhanVienStatus(item.Status)
-                    //    //    //HinhNhanVien: item.Image === null ? '<img src="/admin-side/images/user.png?h=90"' : '<img src="' + item.HinhNhanVien + '?h=90" />',                         
-                    //    //    // Price: tedu.formatNumber(item.Price, 0),
-                    //    //});
-                    //});
-
-                    render = response.Result;
-
-                    //this.datatablehesoluongmoi = response.Result;
-                }
-                //$('#ddl-show-pageHopDong').show();
-                //$('#item-per-pageHopDong').show();
-                //$('#lbl-total-recordsHopDong').text(response.Result.RowCount);
-
+                else {                    
+                    render = response.Result;                   
+                }         
 
                 if (render !== '') {
                     $('#tblContentDMHeSoLuong').html(render);
+
+                    $('#dg').datagrid();
                 }
-
-
-                //if (response.Result.RowCount !== 0) {
-                //    wrapPaging(response.Result.RowCount, function () {
-                //        LoadTableHopDong();
-                //    },
-                //        isPageChanged);
-                //}
+                
             },
             error: function (status) {
                 console.log(status);
@@ -596,6 +559,40 @@
             }
         });      
         return moi;
+    }   
+
+    function loadTableHeSoLuongReturnKhuVuc(callback) {
+        //var moi = makhuvuc;
+        //return moi;   
+        var makv = $('#ddlKhuVuc').val();
+        var moi2;
+        $.ajax({
+            type: 'POST',
+            url: '/admin/hesoluong/PostHeSoLuongKhuVuc',
+            data: {
+                corporationId: makv,
+                phongId: "",
+                keyword: "",
+                page: tedu.configs.pageIndex,
+                pageSize: tedu.configs.pageSize,
+                hosoId: "",
+                chucVuId: ""
+            },
+            async: false,
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                moi2 = response.Result;
+                callback(moi2);                
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+        return moi2;
     }   
 
     function isFormMainValidate() {
@@ -821,7 +818,7 @@
 
                     $('#hidInsertHeSoLuongId').val('0');
 
-                    if (editIndex == undefined) { return }
+                    if (editIndex === undefined) { return }
                     $('#dg').datagrid('cancelEdit', editIndex)
                         .datagrid('deleteRow', editIndex);
                     editIndex = undefined;

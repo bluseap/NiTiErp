@@ -928,7 +928,7 @@
                         render += Mustache.render(template, {
                             Id: item.Id,
                             Ten: item.Ten,
-                            HinhNhanVien: item.HinhNhanVien === null ? '<img src="/admin-side/images/user.png?h=90"' : '<img src="' + item.HinhNhanVien + '?h=90" />',
+                            HinhNhanVien: item.HinhNhanVien === null ? '<img src="/admin-side/images/user.png?h=90" />' : '<img src="' + item.HinhNhanVien + '?h=90" />',
                             TenKhuVuc: item.CorporationName,
                             TenPhong: item.TenPhong,
                             TenChucVu: item.TenChucVu,

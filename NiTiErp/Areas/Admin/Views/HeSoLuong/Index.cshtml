@@ -37,7 +37,7 @@
         hesoluong.initialize();
 
         var datamoi = new hesoluong.loadDataData();
-        var data = datamoi.datatablehesoluongmoi;
+        var data = datamoi.datatablehesoluongmoi;        
 
         //var clickDataGrid = new hesoluong.clickDataGrid();
 
@@ -56,13 +56,35 @@
                 },
                 onClickRow: onClickRow,
                 onBeginEdit: onBeginEdit
-            });
-            //dg.datagrid('enableCellEditing').datagrid('gotoCell', {
-            //    index: 0,
-            //    field: 'Id'
-            //});
+            });            
         });
 
+        $('#btnTimNhanVien').on('click', function () {
+            //alert('dd');
+            var datakv = loadTableHeSoLuongReturnKhuVuc();
+            var dg2 = $('#dg').datagrid({
+                singleSelect: true,
+                collapsible: true,
+                rownumbers: true,
+                fitColumns: true,
+                toolbar: '#tb',
+                data: datakv,
+                view: groupview,
+                groupField: 'TenChucVu',
+                groupFormatter: function (value, rows) {
+                    return value + ' - ' + rows.length + ' Bậc ';
+                },
+                onClickRow: onClickRow,
+                onBeginEdit: onBeginEdit
+            });
+            //$('#dg').datagrid();
+        });
+
+        $('#txtTimNhanVien').on('keypress', function (e) {
+            if (e.which === 13) {
+                alert('dwerwed');
+            }
+        });
 
         var editIndex = undefined;
         function endEditing() {
@@ -222,50 +244,40 @@
             });
 
         }
-
-        //function accept() {
-        //    if (endEditing()) {
-        //        $('#dg').datagrid('acceptChanges');
-
-        //        //$('#dg').datagrid('toExcel', 'dg.xls');//xuat excel
-        //        //$('#dg').datagrid('print', 'DataGrid');//in
-                
-        //        var xml = $('#dg').datagrid('toXML', 'DataGrid');//in               
-                
-        //        var inserthesoluongId = "8";// update string XML bulk sql";//$('#hidInsertHeSoLuongId').val();
-
-        //        alert(xml);
-
-        //        $.ajax({
-        //            type: "POST",
-        //            url: "/Admin/hesoluong/AddUpdateHeSoLuong",
-        //            data: {
-        //                StringXML: xml,
-        //                inserthesoluongId: inserthesoluongId                        
-        //            },
-        //            dataType: "json",
-        //            beforeSend: function () {
-        //                tedu.startLoading();
-        //            },
-        //            success: function (response) {
-        //                if (response.Success === false) {
-        //                    tedu.notify(response.Message, "error");
-        //                }
-        //                else {
-        //                    tedu.notify('Tạo hệ số lương.', 'success');                           
-        //                    tedu.stopLoading();
-        //                }
-        //            },
-        //            error: function () {
-        //                tedu.notify('Có lỗi! Không thể lưu số thứ tự', 'error');
-        //                tedu.stopLoading();
-        //            }
-        //        });
-                
-        //    }
-        //}
-
-
+        
+        function loadTableHeSoLuongReturnKhuVuc() {
+            //var moi = makhuvuc;
+            //return moi;   
+            var makv = $('#ddlKhuVuc').val();
+            var moi2;
+            $.ajax({
+                type: 'POST',
+                url: '/admin/hesoluong/PostHeSoLuongKhuVuc',
+                data: {
+                    corporationId: makv,
+                    phongId: "",
+                    keyword: "",
+                    page: tedu.configs.pageIndex,
+                    pageSize: tedu.configs.pageSize,
+                    hosoId: "",
+                    chucVuId: ""
+                },
+                async: false,
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    moi2 = response.Result;
+                    //callback(moi2);
+                },
+                error: function (status) {
+                    console.log(status);
+                    tedu.notify('Không thể lấy dữ liệu về.', 'error');
+                }
+            });
+            return moi2;
+        }   
     </script>
 }
 
