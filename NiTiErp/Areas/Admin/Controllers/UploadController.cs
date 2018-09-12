@@ -106,7 +106,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             {
                 var file = files[0];
                 var filename = ContentDispositionHeaderValue
-                                    .Parse(file.ContentDisposition)
+                                    .Parse(file.ContentDisposition)                                    
                                     .FileName
                                     .Trim('"');
 

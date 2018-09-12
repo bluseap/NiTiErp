@@ -605,7 +605,7 @@ namespace NiTiErp.Areas.Admin.Controllers
                             worksheet.Cells[rowIndex, 2].Style.Border.Top.Style = ExcelBorderStyle.Dotted; // khoan cach
                             worksheet.Cells[rowIndex, 2].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 3].Value = !string.IsNullOrEmpty(hdDetail.Ten) ? hdDetail.Ten.ToString() : "";
+                            worksheet.Cells[rowIndex, 3].Value = !string.IsNullOrEmpty(hdDetail.TenPhanLoai) ? hdDetail.TenPhanLoai.ToString() : "";
                             worksheet.Cells[rowIndex, 3].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 3].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 3].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
@@ -682,11 +682,11 @@ namespace NiTiErp.Areas.Admin.Controllers
                             worksheet.Cells[rowIndex, 15].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 15].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;                           
 
-                            worksheet.Cells[rowIndex, 23].Value = !string.IsNullOrEmpty(hdDetail.TongSoLuong.ToString()) ? hdDetail.TongSoLuong : 0;
-                            worksheet.Cells[rowIndex, 23].Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                            worksheet.Cells[rowIndex, 23].Style.Border.Right.Style = ExcelBorderStyle.Medium;
-                            worksheet.Cells[rowIndex, 23].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
-                            worksheet.Cells[rowIndex, 23].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                            worksheet.Cells[rowIndex, 16].Value = !string.IsNullOrEmpty(hdDetail.TongSoLuong.ToString()) ? hdDetail.TongSoLuong : 0;
+                            worksheet.Cells[rowIndex, 16].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                            worksheet.Cells[rowIndex, 16].Style.Border.Right.Style = ExcelBorderStyle.Medium;
+                            worksheet.Cells[rowIndex, 16].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                            worksheet.Cells[rowIndex, 16].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
                             //worksheet.Cells[rowIndex, 6].Value = hdDetail.NgayHetHan != null ? hdDetail.NgayHetHan.Date.ToString("dd/M/yyyy", CultureInfo.InvariantCulture) : "";
                             //worksheet.Cells[rowIndex, 5].Value = hdDetail.NgaySinh != null ? hdDetail.NgaySinh.Date.ToString("dd/M/yyyy", CultureInfo.InvariantCulture) : "";
