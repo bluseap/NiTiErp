@@ -11,6 +11,12 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
         public int InsertUpdateSucKhoeId { set; get; }
 
+        public int SucKhoeNoiKhamId { set; get; }
+
+        [StringLength(500)]
+        public string TenNoiKham { get; set; }
+        
+
         public int NamKham { set; get; }
 
         public Guid HoSoNhanVienId { set; get; }       

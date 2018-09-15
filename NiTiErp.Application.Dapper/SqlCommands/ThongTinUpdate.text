@@ -4,16 +4,23 @@ update table insert table
 insert into DieuKienTim (  [Id]      ,[TenDieuKien]      ,[BangDieuKien]      ,[Active]      ,[Stt] )
 	values (5 , N'DS Sức khỏe nhân viên', 	'SucKhoeNhanVien' ,	True ,	5)
 insert into DieuKienTim (  [Id]      ,[TenDieuKien]      ,[BangDieuKien]      ,[Active]      ,[Stt] )
-	values (6 ,	N'DS Tổng hợp sức khỏe',	'SucKhoeNhanVien' ,	True ,	6 )
+	values (6 ,	N'DS Tổng hợp thanh toán sức khỏe',	'SucKhoeNhanVien' ,	True ,	6 )
+insert into DieuKienTim (  [Id]      ,[TenDieuKien]      ,[BangDieuKien]      ,[Active]      ,[Stt] )
+	values (7 ,	N'DS Tổng hợp phân loại sức khỏe',	'SucKhoeNhanVien' ,	True ,	7 )
 
-update table SucKhoeNhanVien files NamKham [int] on HoSoNhanVienId	int	Checked  
+update table SucKhoeNhanVien Columns NamKham [int] on HoSoNhanVienId	int	Checked  
 
-update table SucKhoeNhanVien files PhanLoaiSucKhoeId [varchar(20)] on PhanLoaiSucKhoe	int	Checked  
+update table SucKhoeNhanVien Columns PhanLoaiSucKhoeId [varchar(20)] on PhanLoaiSucKhoe	int	Checked  
 
+r
 update table Functions:  SUCKHOENHAP	fa fa-ambulance	Sức khỏe	SUCKHOE	1	1	/admin/suckhoe/index
-
+r
 update table Functions:	SUCKHOETIM	fa fa-ambulance	Tra cứu Sức khỏe	SUCKHOE	2	1	/admin/timsuckhoe/index
 
+
+create table SucKhoeNoiKham
+
+create table SucKhoeNoiKhamHis
 
 create table SucKhoeNhanVienHis
 
@@ -31,6 +38,11 @@ values ( 4,		N'Loại 4',	1,	True,	 5,	'admin',	'2018-01-01 00:00:00.000' )
 insert into PhanLoaiSucKhoe ( [Id]      ,[TenPhanLoaiSucKhoe]      ,[Status]      ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate] )
 values ( 5,		N'Không phân loai',	1,	True,	 0,	'admin',	'2018-01-01 00:00:00.000' )
 
+
+create proc SucKhoeNoiKhamAUD
+
+create proc SucKhoeNoiKhamGetList
+
 create proc [SucKhoeNhanVienAUD]
 
 create PROC [dbo].[SucKhoeNhanVienGetList]
@@ -38,6 +50,10 @@ create PROC [dbo].[SucKhoeNhanVienGetList]
 r
 update proc [BangDanhMucGetList]
 
+
+create daotao - index.js
+
+create daotao - addeditdaotao.js
 
 create suckhoe - index.js
 

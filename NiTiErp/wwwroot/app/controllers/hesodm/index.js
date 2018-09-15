@@ -125,8 +125,13 @@
         });
 
         $("#btnUpLuongToiThieu").on('click', function () {   
-            loadMucLuongToiThieuVung();
-            $('#modal-add-edit-MucLuongToiThieuVung').modal('show');
+            if (userCorporationId == "PO") {
+                loadMucLuongToiThieuVung();
+                $('#modal-add-edit-MucLuongToiThieuVung').modal('show');
+            }
+            else {
+                tedu.notify("Không đủ quyền để thực hiện chức năng này!", "error");
+            }
         });
 
         $('#ddlKhuVuc').on('change', function () {

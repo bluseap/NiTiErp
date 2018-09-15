@@ -378,7 +378,7 @@
                 Morris.Donut({
                     element: 'graph_donut2',
                     data: response,
-                    colors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB', '#F7CA18', '#E74C3C'],
+                    colors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB', '#F7CA18', '#E74C3C', '#F660AB', '#ECD872', '#BA55D3', '#7FFF00'],
                     formatter: function (y) {                       
                         return y;
                         //return y + "%";

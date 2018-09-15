@@ -225,6 +225,7 @@ namespace NiTiErp
             services.AddTransient<IQuanHuyenService, QuanHuyenService>();
             services.AddTransient<IPhuongXaService, PhuongXaService>();
             services.AddTransient<IMucLuongToiThieuService, MucLuongToiThieuService>();
+            services.AddTransient<ISucKhoeNoiKhamService, SucKhoeNoiKhamService>();
             services.AddTransient<ISucKhoeService, SucKhoeService>();
 
 
@@ -278,22 +279,30 @@ namespace NiTiErp
 
             app.UseMvc(routes =>
             {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");       // localhost: home to product
+                
+                routes.MapRoute(
+                   name: "areaRoute",
+                   template: "{area:exists}/{controller=Login}/{action=Index}/{id?}"); // localhost/admin: login to admin
+
+
                 //routes.MapRoute(
+                //   name: "areaRoute",
+                //   template: "{area:exists}/{controller=Login}/{action=Index}/{id?}"); // localhost: login to admin
+
+                //routes.MapAreaRoute(
                 //    name: "default",
-                //    template: "{controller=Home}/{action=Index}/{id?}");
+                //    areaName: "Admin",
+                //    template: "{controller=Login}/{action=Index}/{id?}");         //  localhost/admin: login to admin
+
+
+
 
                 //routes.MapRoute(
                 //    name: "default",
                 //    template: "{controller=HomeNews}/{action=Index}/{id?}");
-
-                routes.MapRoute(
-                   name: "areaRoute",
-                   template: "{area:exists}/{controller=Login}/{action=Index}/{id?}");
-
-                routes.MapAreaRoute(
-                    name: "default",
-                    areaName: "Admin",
-                    template: "{controller=Login}/{action=Index}/{id?}");
 
                 //routes.MapRoute(
                 //    name: "areaRoute",

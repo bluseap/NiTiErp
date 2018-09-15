@@ -37,7 +37,7 @@
     </div>
 </div>
 <!-- service section -->
-@Html.Partial("_ServicePartial.cshtml")
+<partial name="_ServicePartial.cshtml" />
 
 <div class="inner-box">
     <div class="container">
@@ -49,10 +49,10 @@
                         <a href="#"><img src="/client-side/images/sub1.jpg" alt="HTML template"></a>
                         <div class="hover_content">
                             <div class="hover_data">
-                                <div class="title"> Big Sale </div>
-                                <div class="desc-text">Up to 55% off</div>
+                                <div class="title"> Bán bán </div>
+                                <div class="desc-text">Giảm đến 55% </div>
                                 <span>Camera, Laptop & Mobile</span>
-                                <p><a href="#" class="shop-now">Get it now!</a></p>
+                                <p><a href="#" class="shop-now">Vào xem!</a></p>
                             </div>
                         </div>
                     </div>
@@ -63,7 +63,9 @@
                 <div class="jtv-best-sale-list">
                     <div class="wpb_wrapper">
                         <div class="best-title text-left">
-                            <h2>Special Offers</h2>
+                            <h2>
+                                Sản phẩm ưu đãi đặc biệt
+                            </h2>
                         </div>
                     </div>
                     <div class="slider-items-products">
@@ -74,7 +76,7 @@
                                 <div class="product-item">
                                     <div class="item-inner">
                                         <div class="product-thumbnail">
-                                            <div class="icon-new-label new-left">New</div>
+                                            <div class="icon-new-label new-left">Mới</div>
                                             <div class="pr-img-area">
                                                 <a title="@item.Name" href="/@item.SeoAlias-p.@(item.Id).html">
                                                     <figure>
@@ -122,7 +124,7 @@
 <div class="container">
     <div class="home-tab">
         <div class="tab-title text-left">
-            <h2>Best selling</h2>
+            <h2>Sản phẩm bán nhanh nhất</h2>
             <ul class="nav home-nav-tabs home-product-tabs">
                 @for (var i = 0; i < Model.HomeCategories.Count; i++)
                 {
@@ -213,7 +215,7 @@
                 <div class="jtv-best-sale-list">
                     <div class="wpb_wrapper">
                         <div class="best-title text-left">
-                            <h2>Top Rate</h2>
+                            <h2>Sản phẩm bình chọn nhiều nhất</h2>
                         </div>
                     </div>
                     <div class="slider-items-products">
@@ -379,7 +381,7 @@
                 <div class="jtv-best-sale-list">
                     <div class="wpb_wrapper">
                         <div class="best-title text-left">
-                            <h2>New products</h2>
+                            <h2>Sản phẩm mới</h2>
                         </div>
                     </div>
                     <div class="slider-items-products">

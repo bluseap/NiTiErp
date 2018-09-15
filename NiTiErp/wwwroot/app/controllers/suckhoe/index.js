@@ -39,7 +39,7 @@
 
         $("#btn-create").on('click', function () {
 
-            //resetFormAddEditSucKhoe();
+            resetFormAddEditSucKhoe();
 
             //$('#hidInsertSucKhoeId').val(1); // insert
 
@@ -94,6 +94,12 @@
             if (e.which === 13) {
                 loadTableSucKhoe();
             }
+        });
+
+        $("#ddl-show-pageSucKhoe").on('change', function () {
+            tedu.configs.pageSize = $(this).val();
+            tedu.configs.pageIndex = 1;
+            loadTableSucKhoe(true);
         });
 
         $('#ddlKhuVuc').on('change', function () {
@@ -250,7 +256,7 @@
         });
     }
 
-    function loadTableSucKhoe() {
+    function loadTableSucKhoe(isPageChanged) {
         var template = $('#table-SucKhoe').html();
         var render = "";
 
@@ -535,7 +541,7 @@
         });
     }
 
-    function loadDeleteSucKhoe(suckhoeid) {
+    function loadDeleteSucKhoe (suckhoeid) {
         var insersuckhoe = $('#hidInsertSucKhoeId').val(); // 3
         //tedu.notify(inserkhenthuong);
 
@@ -596,37 +602,37 @@
         });
     }    
 
-    loadDeleteSucKhoe(suckhoeid){
-        var insertsuckhoeid = $('#hidInsertSucKhoeId').val(); // delete
+    //loadDeleteSucKhoe(suckhoeid){
+    //    var insertsuckhoeid = $('#hidInsertSucKhoeId').val(); // delete
 
-        tedu.confirm('Bạn có chắc chắn xóa bằng này?', function () {
-            $.ajax({
-                type: "POST",
-                url: "/Admin/suckhoe/DeleteSucKhoe",
-                data: {
-                    Id: suckhoeid,
-                    InsertUpdateSucKhoeId: insertsuckhoeid // 3
-                },
-                dataType: "json",
-                beforeSend: function () {
-                    tedu.startLoading();
-                },
-                success: function (response) {
-                    tedu.notify('Xóa thành công', 'success');
-                    tedu.stopLoading();
+    //    tedu.confirm('Bạn có chắc chắn xóa bằng này?', function () {
+    //        $.ajax({
+    //            type: "POST",
+    //            url: "/Admin/suckhoe/DeleteSucKhoe",
+    //            data: {
+    //                Id: suckhoeid,
+    //                InsertUpdateSucKhoeId: insertsuckhoeid // 3
+    //            },
+    //            dataType: "json",
+    //            beforeSend: function () {
+    //                tedu.startLoading();
+    //            },
+    //            success: function (response) {
+    //                tedu.notify('Xóa thành công', 'success');
+    //                tedu.stopLoading();
 
-                    $('#hidInsertSucKhoeId').val(0);
+    //                $('#hidInsertSucKhoeId').val(0);
 
-                    loadTableSucKhoe(true);
-                },
-                error: function (status) {
-                    tedu.notify('Xóa Sức khỏe nhân viên lỗi! Kiểm tra lại.', 'error');
-                    tedu.stopLoading();
-                }
-            });
-        });
+    //                loadTableSucKhoe(true);
+    //            },
+    //            error: function (status) {
+    //                tedu.notify('Xóa Sức khỏe nhân viên lỗi! Kiểm tra lại.', 'error');
+    //                tedu.stopLoading();
+    //            }
+    //        });
+    //    });
 
-    }
+    //}
 
 
 
