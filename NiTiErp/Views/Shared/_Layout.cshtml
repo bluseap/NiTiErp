@@ -32,7 +32,7 @@
     <div id="page">
 
         <!-- Header -->
-        @Html.Partial("_Header.cshtml")
+        <Partial name="_Header.cshtml" />
         <!-- end header -->
 
         <nav>
@@ -40,13 +40,13 @@
                 <div class="row">
                     <div class="mm-toggle-wrap">
                         <div class="mm-toggle"><i class="fa fa-align-justify"></i> </div>
-                        <span class="mm-label">All Categories</span>
+                        <span class="mm-label">Sản Phẩm</span>
                     </div>
                     <div class="col-md-3 col-sm-3 mega-container hidden-xs">
                         @await Component.InvokeAsync("CategoryMenu")
                     </div>
                     <div class="col-md-9 col-sm-9 jtv-megamenu">
-                       @await Component.InvokeAsync("MainMenu")
+                        @await Component.InvokeAsync("MainMenu")
                     </div>
                 </div>
             </div>
@@ -54,8 +54,8 @@
 
         @RenderBody()
 
-        <!-- Footer -->
-        @Html.Partial("_Footer.cshtml")
+        <!-- Footer -->     
+        <Partial name="_Footer.cshtml" />
         <!-- End Footer -->
     </div>
 
@@ -86,13 +86,15 @@
     <script src="~/lib/notifyjs/dist/notify.js"></script>
     <script src="~/lib/notifyjs/dist/styles/metro/notify-metro.js"></script>
     <script src="~/lib/mustache/mustache.js"></script>
-    <script src="~/client-app/shared/tedu.js"></script>
 
-    <script src="~/client-app/controllers/base/index.js"></script>
+    <script src="~/client-app/shared/tedu.js" asp-append-version="true"></script>
+
+    <script src="~/client-app/controllers/base/index.js" asp-append-version="true"></script>
     <script>
         var baseObj = new BaseController();
         baseObj.initialize();
     </script>
+
     @RenderSection("Scripts",required:false)
     
 </body>
