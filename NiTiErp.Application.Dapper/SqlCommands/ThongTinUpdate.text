@@ -50,7 +50,6 @@ create proc [SucKhoeNhanVienAUD]
 
 create PROC [dbo].[SucKhoeNhanVienGetList]
 
-r
 update proc [BangDanhMucGetList]
 
 

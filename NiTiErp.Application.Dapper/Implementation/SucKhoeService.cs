@@ -109,6 +109,7 @@ namespace NiTiErp.Application.Dapper.Implementation
 
                 dynamicParameters.Add("@Id", suckhoe.Id);
                 dynamicParameters.Add("@NamKham", suckhoe.NamKham);
+                dynamicParameters.Add("@SucKhoeNoiKhamId", suckhoe.SucKhoeNoiKhamId);
                 dynamicParameters.Add("@hosonhanvienId", suckhoe.HoSoNhanVienId);
 
                 //dynamicParameters.Add("@CorporationId", suckhoe.CorporationId);

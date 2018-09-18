@@ -210,8 +210,9 @@
 
         loadPhanLoaiSucKhoe();
         loadDieuKienTim();
+        loadNoiKhamSucKhoe();
     }
-
+    
     function loadPhanLoaiSucKhoe() {
         $.ajax({
             type: 'GET',
@@ -390,6 +391,8 @@
         $('#txtAddEditTenBenh').val('');
         $('#txtAddEditHuongDieuTri').val('');
 
+        $('#ddlNoiKham')[0].selectedIndex = 0;
+
     }
 
     function loadHoSoSucKhoe(hosoid) {
@@ -423,6 +426,7 @@
         var insertsuckhoeId = $('#hidInsertSucKhoeId').val();
 
         var namkham = $('#txtAddEditNamKham').val();
+        var noikham = $('#ddlNoiKham').val();
 
         var cannang = $('#txtAddEditCanNang').val();
         var chieucao = $('#txtAddEditChieuCao').val();
@@ -451,7 +455,8 @@
                 Id: suckhoeId,
                 HoSoNhanVienId: hosoId,
                 InsertUpdateSucKhoeId: insertsuckhoeId,
-                NamKham: namkham,             
+                NamKham: namkham,
+                SucKhoeNoiKhamId: noikham,
                 CanNang: cannang,
                 ChieuCao: chieucao,
                 HuyetAp: huyetap,
@@ -512,6 +517,9 @@
                 $('#hidHoSoNhanVienId').val(suckhoe.HoSoNhanVienId);
 
                 loadHoSoSucKhoe(suckhoe.HoSoNhanVienId);
+
+                $('#txtAddEditNamKham').val(suckhoe.NamKham);
+                $('#ddlNoiKham').val(suckhoe.SucKhoeNoiKhamId);
 
                 $('#txtAddEditCanNang').val(suckhoe.CanNang);
                 $('#txtAddEditChieuCao').val(suckhoe.ChieuCao);
@@ -601,6 +609,28 @@
             }
         });
     }    
+
+    function loadNoiKhamSucKhoe() {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/suckhoe/GetListAllNoiKham',
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >--- Tất cả ---</option>";
+                $.each(response.Result.Results, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.TenNoiKham + "</option>";
+                });
+                $('#ddlNoiKham').html(render);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có nơi khám sức khỏe.', 'error');
+            }
+        });
+    }
 
     //loadDeleteSucKhoe(suckhoeid){
     //    var insertsuckhoeid = $('#hidInsertSucKhoeId').val(); // delete

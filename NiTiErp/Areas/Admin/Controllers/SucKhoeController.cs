@@ -24,8 +24,9 @@ namespace NiTiErp.Areas.Admin.Controllers
     {
         private readonly IHostingEnvironment _hostingEnvironment;
         private readonly NiTiErp.Application.Interfaces.IUserService _userService;
-        private readonly IAuthorizationService _authorizationService;       
+        private readonly IAuthorizationService _authorizationService;
 
+        private readonly ISucKhoeNoiKhamService _suckhoenoikhamService;
         private readonly IDieuKienTimService _dieukientimService;
         private readonly IPhanLoaiSucKhoeService _phanloaisuckhoeService;
         private readonly ISucKhoeService _suckhoeService;
@@ -36,6 +37,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             NiTiErp.Application.Interfaces.IUserService userService,
             IAuthorizationService authorizationService,
 
+            ISucKhoeNoiKhamService suckhoenoikhamService,
             IDieuKienTimService dieukientimService,
             IPhanLoaiSucKhoeService phanloaisuckhoeService,
             ISucKhoeService suckhoeService,
@@ -46,6 +48,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             _userService = userService;
             _authorizationService = authorizationService;
 
+            _suckhoenoikhamService = suckhoenoikhamService;
             _dieukientimService = dieukientimService;
             _phanloaisuckhoeService = phanloaisuckhoeService;
             _suckhoeService = suckhoeService;
@@ -717,6 +720,14 @@ namespace NiTiErp.Areas.Admin.Controllers
         public IActionResult PhanLoaiSucKhoe()
         {
             var model = _phanloaisuckhoeService.PhanLoaiSucKhoeGetList("", "PO", "", "PhanLoaiSucKhoeGetList");
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetListAllNoiKham()
+        {            
+            var model = _suckhoenoikhamService.GetAllSucKhoeNoiKhamPaging("", "", 1, 1000, "", "", 0, "GetListAllNoiKham");
+
             return new OkObjectResult(model);
         }
 
