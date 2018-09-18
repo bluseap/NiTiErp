@@ -9,7 +9,7 @@ using System.IO;
 using Microsoft.AspNetCore.Http;
 using NiTiErp.Utilities.Helpers;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using NiTiErp.Extensions;
 
 namespace NiTiErp.Areas.Admin.Controllers
 {
@@ -131,6 +131,57 @@ namespace NiTiErp.Areas.Admin.Controllers
                 return new OkObjectResult(Path.Combine(imageFolder, datetimeFilename).Replace(@"\", @"/"));
             }
         }
+
+        public IActionResult UploadImageResizeW60H90()
+        {
+            DateTime now = DateTime.Now;
+            var files = Request.Form.Files;
+            if (files.Count == 0)
+            {
+                return new BadRequestObjectResult(files);
+            }
+            else
+            {
+                var file = files[0];
+                var filename = ContentDispositionHeaderValue
+                                    .Parse(file.ContentDisposition)
+                                    .FileName
+                                    .Trim('"');
+
+                //var imageFolder = $@"\uploaded\images\{now.ToString("yyyyMMdd")}";
+                var imageFolder = $@"\uploaded\hinhnhanvien\{now.ToString("yyyyMMdd")}";
+
+                string folder = _hostingEnvironment.WebRootPath + imageFolder;
+                if (!Directory.Exists(folder))
+                {
+                    Directory.CreateDirectory(folder);
+                }
+
+                var datetimeFilename = TextHelper.ConvertStringDatetime(now) + filename;
+                string filePath = Path.Combine(folder, datetimeFilename);
+
+                using (FileStream fs = System.IO.File.Create(filePath))
+                {
+                    file.CopyTo(fs);
+                    fs.Flush();
+                }
+
+                var imageFolder6090 = $@"\uploaded\hinhnhanvien\{now.ToString("yyyyMMdd")+"6090"}";
+                string folder6090 = _hostingEnvironment.WebRootPath + imageFolder6090;
+                if (!Directory.Exists(folder6090))
+                {
+                    Directory.CreateDirectory(folder6090);
+                }
+                string filePath6090 = Path.Combine(folder6090, datetimeFilename);
+                ImageResizerUpfileExtensions.ResizeAndSaveImageW60h90(file.OpenReadStream(), filePath6090);
+                
+
+                return new OkObjectResult(Path.Combine(imageFolder, datetimeFilename).Replace(@"\", @"/"));
+            }
+
+        }
+
+
 
     }
 }

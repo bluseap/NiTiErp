@@ -33,12 +33,15 @@ namespace NiTiErp.Controllers
         public IActionResult Index()
         {
             ViewData["BodyClass"] = "cms-index-index cms-home-page";
+
             var homeVm = new HomeViewModel();
+
             homeVm.HomeCategories = _productCategoryService.GetHomeCategories(5);
             homeVm.HotProducts = _productService.GetHotProduct(5);
             homeVm.TopSellProducts = _productService.GetLastest(5);
             homeVm.LastestBlogs = _blogService.GetLastest(5);
             homeVm.HomeSlides = _commonService.GetSlides("top");
+
             return View(homeVm);
         }
 

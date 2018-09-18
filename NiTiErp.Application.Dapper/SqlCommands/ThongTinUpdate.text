@@ -8,9 +8,11 @@ insert into DieuKienTim (  [Id]      ,[TenDieuKien]      ,[BangDieuKien]      ,[
 insert into DieuKienTim (  [Id]      ,[TenDieuKien]      ,[BangDieuKien]      ,[Active]      ,[Stt] )
 	values (7 ,	N'DS Tổng hợp phân loại sức khỏe',	'SucKhoeNhanVien' ,	True ,	7 )
 
-update table SucKhoeNhanVien Columns NamKham [int] on HoSoNhanVienId	int	Checked  
+modi table SucKhoeNhanVien Columns NamKham [int] on HoSoNhanVienId	int	Checked  
 
-update table SucKhoeNhanVien Columns PhanLoaiSucKhoeId [varchar(20)] on PhanLoaiSucKhoe	int	Checked  
+modi table SucKhoeNhanVien Columns PhanLoaiSucKhoeId [varchar(20)] on PhanLoaiSucKhoe	int	Checked  
+
+modi table [Slides]		Columns		CaptionInner	nvarchar(MAX)	null
 
 r
 update table Functions:  SUCKHOENHAP	fa fa-ambulance	Sức khỏe	SUCKHOE	1	1	/admin/suckhoe/index
@@ -37,6 +39,7 @@ insert into PhanLoaiSucKhoe ( [Id]      ,[TenPhanLoaiSucKhoe]      ,[Status]    
 values ( 4,		N'Loại 4',	1,	True,	 5,	'admin',	'2018-01-01 00:00:00.000' )
 insert into PhanLoaiSucKhoe ( [Id]      ,[TenPhanLoaiSucKhoe]      ,[Status]      ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate] )
 values ( 5,		N'Không phân loai',	1,	True,	 0,	'admin',	'2018-01-01 00:00:00.000' )
+
 
 
 create proc SucKhoeNoiKhamAUD

@@ -24,6 +24,8 @@ namespace NiTiErp.Data.Entities
         [StringLength(250)]
         public string Url { set; get; }
 
+        public string CaptionInner { set; get; }
+
         public int? DisplayOrder { set; get; }
 
         public bool Status { set; get; }

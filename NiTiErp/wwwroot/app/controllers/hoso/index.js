@@ -386,7 +386,8 @@
             }
             $.ajax({
                 type: "POST",
-                url: "/Admin/Upload/UploadImageNhanVien",
+                //url: "/Admin/Upload/UploadImageNhanVien",
+                url: "/Admin/Upload/UploadImageResizeW60H90",
                 contentType: false,
                 processData: false,
                 data: data,
