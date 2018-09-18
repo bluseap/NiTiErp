@@ -10076,3 +10076,791 @@ END" (0723d8ff)
 2018-09-18T14:59:38.3835370+07:00 0HLGT7GR7J9TH:00000005 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.HoSoNhanVienViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.HoSoNhanVienService+<GetAllHoSoNhanVienPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
 2018-09-18T14:59:38.3968123+07:00 0HLGT7GR7J9TH:00000005 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.GetHoSoId (NiTiErp)" in 14.4422ms (afa2e885)
 2018-09-18T14:59:38.3995324+07:00 0HLGT7GR7J9TH:00000005 [INF] Request finished in 19.1782ms 200 application/json; charset=utf-8 (791a596a)
+2018-09-18T15:00:34.3228183+07:00 0HLGT7GR7J9TH:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/suckhoenk/index   (ca22a1cb)
+2018-09-18T15:00:34.3244995+07:00 0HLGT7GR7J9TH:00000006 [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"SucKhoenk\"}". Executing action "NiTiErp.Areas.Admin.Controllers.SucKhoenkController.Index (NiTiErp)" (a44c0341)
+2018-09-18T15:00:34.3246662+07:00 0HLGT7GR7J9TH:00000006 [INF] Authorization was successful. (0d575a54)
+2018-09-18T15:00:34.3248603+07:00 0HLGT7GR7J9TH:00000006 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.SucKhoenkController.Index (NiTiErp)" - Validation state: Valid (dad538d7)
+2018-09-18T15:00:34.3253082+07:00 0HLGT7GR7J9TH:00000006 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.SucKhoenkController.Index (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.0155ms. (50a9e262)
+2018-09-18T15:00:34.3254494+07:00 0HLGT7GR7J9TH:00000006 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2018-09-18T15:00:34.3306419+07:00 0HLGT7GR7J9TH:00000006 [INF] Executed ViewResult - view "Index" executed in 5.2236ms. (f66409e9)
+2018-09-18T15:00:34.3307485+07:00 0HLGT7GR7J9TH:00000006 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.SucKhoenkController.Index (NiTiErp)" in 6.1545ms (afa2e885)
+2018-09-18T15:00:34.3385539+07:00 0HLGT7GR7J9TH:00000006 [INF] Request finished in 15.8454ms 200 text/html; charset=utf-8 (791a596a)
+2018-09-18T15:00:34.3663016+07:00 0HLGT7GR7J9TH:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/bootstrap-daterangepicker/daterangepicker.css   (ca22a1cb)
+2018-09-18T15:00:34.3669333+07:00 0HLGT7GR7J9TH:00000007 [INF] Sending file. Request path: '"/lib/bootstrap-daterangepicker/daterangepicker.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\bootstrap-daterangepicker\daterangepicker.css"' (27b0a520)
+2018-09-18T15:00:34.3670347+07:00 0HLGT7GR7J9TH:00000007 [INF] Request finished in 0.8008ms 200 text/css (791a596a)
+2018-09-18T15:00:34.3671737+07:00 0HLGT7GR7J9TI:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/nprogress/nprogress.css   (ca22a1cb)
+2018-09-18T15:00:34.3677925+07:00 0HLGT7GR7J9TJ:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/notifyjs/dist/styles/metro/notify-metro.css   (ca22a1cb)
+2018-09-18T15:00:34.3680824+07:00 0HLGT7GR7J9TI:00000001 [INF] Sending file. Request path: '"/lib/nprogress/nprogress.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\nprogress\nprogress.css"' (27b0a520)
+2018-09-18T15:00:34.3681639+07:00 0HLGT7GR7J9TI:00000001 [INF] Request finished in 1.0008ms 200 text/css (791a596a)
+2018-09-18T15:00:34.3682161+07:00 0HLGT7GR7J9TK:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/font-awesome/css/font-awesome.css   (ca22a1cb)
+2018-09-18T15:00:34.3684264+07:00 0HLGT7GR7J9TJ:00000001 [INF] Sending file. Request path: '"/lib/notifyjs/dist/styles/metro/notify-metro.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\notifyjs\dist\styles\metro\notify-metro.css"' (27b0a520)
+2018-09-18T15:00:34.3685007+07:00 0HLGT7GR7J9TJ:00000001 [INF] Request finished in 0.7591ms 200 text/css (791a596a)
+2018-09-18T15:00:34.3685651+07:00 0HLGT7GR7J9TL:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/bootstrap/dist/css/bootstrap.css   (ca22a1cb)
+2018-09-18T15:00:34.3688910+07:00 0HLGT7GR7J9TK:00000001 [INF] Sending file. Request path: '"/lib/font-awesome/css/font-awesome.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\font-awesome\css\font-awesome.css"' (27b0a520)
+2018-09-18T15:00:34.3690036+07:00 0HLGT7GR7J9TK:00000001 [INF] Request finished in 0.7619ms 200 text/css (791a596a)
+2018-09-18T15:00:34.3704757+07:00 0HLGT7GR7J9TJ:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/jQuery-EasyUI/themes/bootstrap/easyui.css   (ca22a1cb)
+2018-09-18T15:00:34.3724340+07:00 0HLGT7GR7J9TJ:00000002 [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/themes/bootstrap/easyui.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\jQuery-EasyUI\themes\bootstrap\easyui.css"' (27b0a520)
+2018-09-18T15:00:34.3725429+07:00 0HLGT7GR7J9TJ:00000002 [INF] Request finished in 2.1058ms 200 text/css (791a596a)
+2018-09-18T15:00:34.3726785+07:00 0HLGT7GR7J9TL:00000001 [INF] Sending file. Request path: '"/lib/bootstrap/dist/css/bootstrap.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\bootstrap\dist\css\bootstrap.css"' (27b0a520)
+2018-09-18T15:00:34.3727301+07:00 0HLGT7GR7J9TL:00000001 [INF] Request finished in 4.2054ms 200 text/css (791a596a)
+2018-09-18T15:00:34.3736128+07:00 0HLGT7GR7J9TI:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css   (ca22a1cb)
+2018-09-18T15:00:34.3739708+07:00 0HLGT7GR7J9TM:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/ckeditor/skins/moono/editor.css   (ca22a1cb)
+2018-09-18T15:00:34.3741477+07:00 0HLGT7GR7J9TI:00000002 [INF] Sending file. Request path: '"/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\bootstrap-datepicker\dist\css\bootstrap-datepicker.css"' (27b0a520)
+2018-09-18T15:00:34.3742056+07:00 0HLGT7GR7J9TI:00000002 [INF] Request finished in 0.6633ms 200 text/css (791a596a)
+2018-09-18T15:00:34.3743822+07:00 0HLGT7GR7J9TN:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/app/controllers/suckhoenk/addeditnoikham.js?v=A-FK5fWHtB0xsHW8931t9xse-DY9Id75HfRfbvrxPy8   (ca22a1cb)
+2018-09-18T15:00:34.3745517+07:00 0HLGT7GR7J9TM:00000001 [INF] Sending file. Request path: '"/lib/ckeditor/skins/moono/editor.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\ckeditor\skins\moono\editor.css"' (27b0a520)
+2018-09-18T15:00:34.3746151+07:00 0HLGT7GR7J9TM:00000001 [INF] Request finished in 0.6602ms 200 text/css (791a596a)
+2018-09-18T15:00:34.3747946+07:00 0HLGT7GR7J9TN:00000001 [INF] Sending file. Request path: '"/app/controllers/suckhoenk/addeditnoikham.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\app\controllers\suckhoenk\addeditnoikham.js"' (27b0a520)
+2018-09-18T15:00:34.3748428+07:00 0HLGT7GR7J9TN:00000001 [INF] Request finished in 0.5252ms 200 application/javascript (791a596a)
+2018-09-18T15:00:34.3750362+07:00 0HLGT7GR7J9TO:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/app/controllers/suckhoenk/index.js?v=1qxpulBlMfvBntp0a-ZY81DGOGcl8mHqiWVe_XApSok   (ca22a1cb)
+2018-09-18T15:00:34.3754110+07:00 0HLGT7GR7J9TP:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/jQuery-EasyUI/themes/icon.css   (ca22a1cb)
+2018-09-18T15:00:34.3754561+07:00 0HLGT7GR7J9TO:00000001 [INF] Sending file. Request path: '"/app/controllers/suckhoenk/index.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\app\controllers\suckhoenk\index.js"' (27b0a520)
+2018-09-18T15:00:34.3755233+07:00 0HLGT7GR7J9TO:00000001 [INF] Request finished in 0.4889ms 200 application/javascript (791a596a)
+2018-09-18T15:00:34.3757342+07:00 0HLGT7GR7J9TP:00000001 [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/themes/icon.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\jQuery-EasyUI\themes\icon.css"' (27b0a520)
+2018-09-18T15:00:34.3757855+07:00 0HLGT7GR7J9TP:00000001 [INF] Request finished in 0.4155ms 200 text/css (791a596a)
+2018-09-18T15:00:34.3928712+07:00 0HLGT7GR7J9TH:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin-side/css/custom.css   (ca22a1cb)
+2018-09-18T15:00:34.4009617+07:00 0HLGT7GR7J9TH:00000008 [INF] Sending file. Request path: '"/admin-side/css/custom.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\admin-side\css\custom.css"' (27b0a520)
+2018-09-18T15:00:34.4010721+07:00 0HLGT7GR7J9TH:00000008 [INF] Request finished in 8.2432ms 200 text/css (791a596a)
+2018-09-18T15:00:34.5231836+07:00 0HLGT7GR7J9TP:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/suckhoenk/GetListSucKhoenk?keyword=&page=1&pageSize=10   (ca22a1cb)
+2018-09-18T15:00:34.5255926+07:00 0HLGT7GR7J9TP:00000002 [INF] Route matched with "{area = \"Admin\", action = \"GetListSucKhoenk\", controller = \"SucKhoenk\"}". Executing action "NiTiErp.Areas.Admin.Controllers.SucKhoenkController.GetListSucKhoenk (NiTiErp)" (a44c0341)
+2018-09-18T15:00:34.5257590+07:00 0HLGT7GR7J9TP:00000002 [INF] Authorization was successful. (0d575a54)
+2018-09-18T15:00:34.5260598+07:00 0HLGT7GR7J9TP:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.SucKhoenkController.GetListSucKhoenk (NiTiErp)" with arguments (["", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-09-18T15:00:34.5263866+07:00 0HLGT7GR7J9TP:00000002 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.SucKhoenkController.GetListSucKhoenk (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.2466ms. (50a9e262)
+2018-09-18T15:00:34.5265160+07:00 0HLGT7GR7J9TP:00000002 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.SucKhoeNoiKhamViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.SucKhoeNoiKhamService+<GetAllSucKhoeNoiKhamPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-09-18T15:00:34.5446679+07:00 0HLGT7GR7J9TP:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.SucKhoenkController.GetListSucKhoenk (NiTiErp)" in 18.9424ms (afa2e885)
+2018-09-18T15:00:34.5480078+07:00 0HLGT7GR7J9TP:00000002 [INF] Request finished in 24.9486ms 200 application/json; charset=utf-8 (791a596a)
+2018-09-18T15:00:35.4835116+07:00 0HLGT7GR7J9TK:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/suckhoe/index   (ca22a1cb)
+2018-09-18T15:00:35.4857567+07:00 0HLGT7GR7J9TK:00000002 [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"SucKhoe\"}". Executing action "NiTiErp.Areas.Admin.Controllers.SucKhoeController.Index (NiTiErp)" (a44c0341)
+2018-09-18T15:00:35.4859001+07:00 0HLGT7GR7J9TK:00000002 [INF] Authorization was successful. (0d575a54)
+2018-09-18T15:00:35.4860292+07:00 0HLGT7GR7J9TK:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.SucKhoeController.Index (NiTiErp)" - Validation state: Valid (dad538d7)
+2018-09-18T15:00:35.4860992+07:00 0HLGT7GR7J9TK:00000002 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.SucKhoeController.Index (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.0087ms. (50a9e262)
+2018-09-18T15:00:35.4861925+07:00 0HLGT7GR7J9TK:00000002 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2018-09-18T15:00:35.4902172+07:00 0HLGT7GR7J9TK:00000002 [INF] Executed ViewResult - view "Index" executed in 4.016ms. (f66409e9)
+2018-09-18T15:00:35.4903811+07:00 0HLGT7GR7J9TK:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.SucKhoeController.Index (NiTiErp)" in 4.5123ms (afa2e885)
+2018-09-18T15:00:35.5019291+07:00 0HLGT7GR7J9TK:00000002 [INF] Request finished in 18.6485ms 200 text/html; charset=utf-8 (791a596a)
+2018-09-18T15:00:35.5273968+07:00 0HLGT7GR7J9TN:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/bootstrap/dist/css/bootstrap.css   (ca22a1cb)
+2018-09-18T15:00:35.5281986+07:00 0HLGT7GR7J9TO:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/font-awesome/css/font-awesome.css   (ca22a1cb)
+2018-09-18T15:00:35.5291036+07:00 0HLGT7GR7J9TO:00000002 [INF] Sending file. Request path: '"/lib/font-awesome/css/font-awesome.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\font-awesome\css\font-awesome.css"' (27b0a520)
+2018-09-18T15:00:35.5291844+07:00 0HLGT7GR7J9TO:00000002 [INF] Request finished in 1.0185ms 200 text/css (791a596a)
+2018-09-18T15:00:35.5302456+07:00 0HLGT7GR7J9TN:00000002 [INF] Sending file. Request path: '"/lib/bootstrap/dist/css/bootstrap.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\bootstrap\dist\css\bootstrap.css"' (27b0a520)
+2018-09-18T15:00:35.5303843+07:00 0HLGT7GR7J9TN:00000002 [INF] Request finished in 4.4293ms 200 text/css (791a596a)
+2018-09-18T15:00:35.5305476+07:00 0HLGT7GR7J9TI:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/bootstrap-daterangepicker/daterangepicker.css   (ca22a1cb)
+2018-09-18T15:00:35.5305812+07:00 0HLGT7GR7J9TJ:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/nprogress/nprogress.css   (ca22a1cb)
+2018-09-18T15:00:35.5310126+07:00 0HLGT7GR7J9TJ:00000003 [INF] Sending file. Request path: '"/lib/nprogress/nprogress.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\nprogress\nprogress.css"' (27b0a520)
+2018-09-18T15:00:35.5310126+07:00 0HLGT7GR7J9TI:00000003 [INF] Sending file. Request path: '"/lib/bootstrap-daterangepicker/daterangepicker.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\bootstrap-daterangepicker\daterangepicker.css"' (27b0a520)
+2018-09-18T15:00:35.5310764+07:00 0HLGT7GR7J9TI:00000003 [INF] Request finished in 0.5439ms 200 text/css (791a596a)
+2018-09-18T15:00:35.5310742+07:00 0HLGT7GR7J9TJ:00000003 [INF] Request finished in 0.5032ms 200 text/css (791a596a)
+2018-09-18T15:00:35.5323648+07:00 0HLGT7GR7J9TM:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/notifyjs/dist/styles/metro/notify-metro.css   (ca22a1cb)
+2018-09-18T15:00:35.5328422+07:00 0HLGT7GR7J9TM:00000002 [INF] Sending file. Request path: '"/lib/notifyjs/dist/styles/metro/notify-metro.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\notifyjs\dist\styles\metro\notify-metro.css"' (27b0a520)
+2018-09-18T15:00:35.5329156+07:00 0HLGT7GR7J9TM:00000002 [INF] Request finished in 0.603ms 200 text/css (791a596a)
+2018-09-18T15:00:35.5330360+07:00 0HLGT7GR7J9TL:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/ckeditor/skins/moono/editor.css   (ca22a1cb)
+2018-09-18T15:00:35.5336253+07:00 0HLGT7GR7J9TL:00000002 [INF] Sending file. Request path: '"/lib/ckeditor/skins/moono/editor.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\ckeditor\skins\moono\editor.css"' (27b0a520)
+2018-09-18T15:00:35.5336891+07:00 0HLGT7GR7J9TL:00000002 [INF] Request finished in 0.6643ms 200 text/css (791a596a)
+2018-09-18T15:00:35.5377848+07:00 0HLGT7GR7J9TH:00000009 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin-side/css/custom.css   (ca22a1cb)
+2018-09-18T15:00:35.5406302+07:00 0HLGT7GR7J9TP:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/jQuery-EasyUI/themes/bootstrap/easyui.css   (ca22a1cb)
+2018-09-18T15:00:35.5406625+07:00 0HLGT7GR7J9TH:00000009 [INF] Sending file. Request path: '"/admin-side/css/custom.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\admin-side\css\custom.css"' (27b0a520)
+2018-09-18T15:00:35.5407480+07:00 0HLGT7GR7J9TH:00000009 [INF] Request finished in 2.9993ms 200 text/css (791a596a)
+2018-09-18T15:00:35.5437219+07:00 0HLGT7GR7J9TP:00000003 [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/themes/bootstrap/easyui.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\jQuery-EasyUI\themes\bootstrap\easyui.css"' (27b0a520)
+2018-09-18T15:00:35.5438603+07:00 0HLGT7GR7J9TP:00000003 [INF] Request finished in 5.3042ms 200 text/css (791a596a)
+2018-09-18T15:00:35.5600705+07:00 0HLGT7GR7J9TK:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/jQuery-EasyUI/themes/icon.css   (ca22a1cb)
+2018-09-18T15:00:35.5606334+07:00 0HLGT7GR7J9TK:00000003 [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/themes/icon.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\jQuery-EasyUI\themes\icon.css"' (27b0a520)
+2018-09-18T15:00:35.5607202+07:00 0HLGT7GR7J9TK:00000003 [INF] Request finished in 0.696ms 200 text/css (791a596a)
+2018-09-18T15:00:35.5650494+07:00 0HLGT7GR7J9TI:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css   (ca22a1cb)
+2018-09-18T15:00:35.5655974+07:00 0HLGT7GR7J9TI:00000004 [INF] Sending file. Request path: '"/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\bootstrap-datepicker\dist\css\bootstrap-datepicker.css"' (27b0a520)
+2018-09-18T15:00:35.5656869+07:00 0HLGT7GR7J9TI:00000004 [INF] Request finished in 0.682ms 200 text/css (791a596a)
+2018-09-18T15:00:35.5670197+07:00 0HLGT7GR7J9TJ:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/app/controllers/suckhoe/addeditsuckhoe.js?v=FjT8Ot-X05-TxzJ8ph342vkq4j-7IFtvJHKoGcRwOjQ   (ca22a1cb)
+2018-09-18T15:00:35.5675148+07:00 0HLGT7GR7J9TJ:00000004 [INF] Sending file. Request path: '"/app/controllers/suckhoe/addeditsuckhoe.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\app\controllers\suckhoe\addeditsuckhoe.js"' (27b0a520)
+2018-09-18T15:00:35.5675922+07:00 0HLGT7GR7J9TJ:00000004 [INF] Request finished in 0.6045ms 200 application/javascript (791a596a)
+2018-09-18T15:00:35.5779789+07:00 0HLGT7GR7J9TM:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/app/controllers/suckhoe/index.js?v=Y6mqni3cGLBHpEPBucTD1OtyomUG0R4blCkq2JLrvso   (ca22a1cb)
+2018-09-18T15:00:35.5787543+07:00 0HLGT7GR7J9TM:00000003 [INF] Sending file. Request path: '"/app/controllers/suckhoe/index.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\app\controllers\suckhoe\index.js"' (27b0a520)
+2018-09-18T15:00:35.5788631+07:00 0HLGT7GR7J9TM:00000003 [INF] Request finished in 0.9252ms 200 application/javascript (791a596a)
+2018-09-18T15:00:35.6780303+07:00 0HLGT7GR7J9TO:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/GetListCorNhanSu   (ca22a1cb)
+2018-09-18T15:00:35.6794383+07:00 0HLGT7GR7J9TO:00000003 [INF] Route matched with "{area = \"Admin\", action = \"GetListCorNhanSu\", controller = \"Hoso\"}". Executing action "NiTiErp.Areas.Admin.Controllers.HosoController.GetListCorNhanSu (NiTiErp)" (a44c0341)
+2018-09-18T15:00:35.6795994+07:00 0HLGT7GR7J9TO:00000003 [INF] Authorization was successful. (0d575a54)
+2018-09-18T15:00:35.6798227+07:00 0HLGT7GR7J9TO:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetListCorNhanSu (NiTiErp)" - Validation state: Valid (dad538d7)
+2018-09-18T15:00:35.6801294+07:00 0HLGT7GR7J9TO:00000003 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetListCorNhanSu (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.2326ms. (50a9e262)
+2018-09-18T15:00:35.6802519+07:00 0HLGT7GR7J9TO:00000003 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[NiTiErp.Application.Dapper.ViewModels.CorporationViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[NiTiErp.Application.Dapper.Implementation.CorporationService+<CorporationGetList>d__3, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-09-18T15:00:35.7095655+07:00 0HLGT7GR7J9TL:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/suckhoe/GetListAllNoiKham   (ca22a1cb)
+2018-09-18T15:00:35.7106186+07:00 0HLGT7GR7J9TL:00000003 [INF] Route matched with "{area = \"Admin\", action = \"GetListAllNoiKham\", controller = \"SucKhoe\"}". Executing action "NiTiErp.Areas.Admin.Controllers.SucKhoeController.GetListAllNoiKham (NiTiErp)" (a44c0341)
+2018-09-18T15:00:35.7107265+07:00 0HLGT7GR7J9TL:00000003 [INF] Authorization was successful. (0d575a54)
+2018-09-18T15:00:35.7117857+07:00 0HLGT7GR7J9TL:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.SucKhoeController.GetListAllNoiKham (NiTiErp)" - Validation state: Valid (dad538d7)
+2018-09-18T15:00:35.7120582+07:00 0HLGT7GR7J9TL:00000003 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.SucKhoeController.GetListAllNoiKham (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.1965ms. (50a9e262)
+2018-09-18T15:00:35.7121988+07:00 0HLGT7GR7J9TL:00000003 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.SucKhoeNoiKhamViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.SucKhoeNoiKhamService+<GetAllSucKhoeNoiKhamPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-09-18T15:00:35.7140453+07:00 0HLGT7GR7J9TO:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.GetListCorNhanSu (NiTiErp)" in 34.5089ms (afa2e885)
+2018-09-18T15:00:35.7160490+07:00 0HLGT7GR7J9TP:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/suckhoe/PhanLoaiSucKhoe   (ca22a1cb)
+2018-09-18T15:00:35.7168773+07:00 0HLGT7GR7J9TP:00000004 [INF] Route matched with "{area = \"Admin\", action = \"PhanLoaiSucKhoe\", controller = \"SucKhoe\"}". Executing action "NiTiErp.Areas.Admin.Controllers.SucKhoeController.PhanLoaiSucKhoe (NiTiErp)" (a44c0341)
+2018-09-18T15:00:35.7170365+07:00 0HLGT7GR7J9TP:00000004 [INF] Authorization was successful. (0d575a54)
+2018-09-18T15:00:35.7171286+07:00 0HLGT7GR7J9TP:00000004 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.SucKhoeController.PhanLoaiSucKhoe (NiTiErp)" - Validation state: Valid (dad538d7)
+2018-09-18T15:00:35.7172645+07:00 0HLGT7GR7J9TO:00000003 [INF] Request finished in 39.2838ms 200 application/json; charset=utf-8 (791a596a)
+2018-09-18T15:00:35.7173870+07:00 0HLGT7GR7J9TN:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/suckhoe/DieuKienSucKhoe   (ca22a1cb)
+2018-09-18T15:00:35.7174194+07:00 0HLGT7GR7J9TP:00000004 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.SucKhoeController.PhanLoaiSucKhoe (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.241ms. (50a9e262)
+2018-09-18T15:00:35.7175067+07:00 0HLGT7GR7J9TP:00000004 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[NiTiErp.Application.Dapper.ViewModels.PhanLoaiSucKhoeViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[NiTiErp.Application.Dapper.Implementation.PhanLoaiSucKhoeService+<PhanLoaiSucKhoeGetList>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-09-18T15:00:35.7181408+07:00 0HLGT7GR7J9TN:00000003 [INF] Route matched with "{area = \"Admin\", action = \"DieuKienSucKhoe\", controller = \"SucKhoe\"}". Executing action "NiTiErp.Areas.Admin.Controllers.SucKhoeController.DieuKienSucKhoe (NiTiErp)" (a44c0341)
+2018-09-18T15:00:35.7182351+07:00 0HLGT7GR7J9TN:00000003 [INF] Authorization was successful. (0d575a54)
+2018-09-18T15:00:35.7183262+07:00 0HLGT7GR7J9TN:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.SucKhoeController.DieuKienSucKhoe (NiTiErp)" - Validation state: Valid (dad538d7)
+2018-09-18T15:00:35.7441799+07:00 0HLGT7GR7J9TL:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.SucKhoeController.GetListAllNoiKham (NiTiErp)" in 33.4384ms (afa2e885)
+2018-09-18T15:00:35.7462876+07:00 0HLGT7GR7J9TP:00000004 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.SucKhoeController.PhanLoaiSucKhoe (NiTiErp)" in 29.3148ms (afa2e885)
+2018-09-18T15:00:35.7482388+07:00 0HLGT7GR7J9TL:00000003 [INF] Request finished in 38.6885ms 200 application/json; charset=utf-8 (791a596a)
+2018-09-18T15:00:35.7486428+07:00 0HLGT7GR7J9TN:00000003 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.SucKhoeController.DieuKienSucKhoe (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 30.2351ms. (50a9e262)
+2018-09-18T15:00:35.7487912+07:00 0HLGT7GR7J9TN:00000003 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[NiTiErp.Application.Dapper.ViewModels.DieuKienTimViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[NiTiErp.Application.Dapper.Implementation.DieuKienTimService+<DieuKienTimGetList>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-09-18T15:00:35.7638597+07:00 0HLGT7GR7J9TP:00000004 [INF] Request finished in 47.723ms 200 application/json; charset=utf-8 (791a596a)
+2018-09-18T15:00:35.7825519+07:00 0HLGT7GR7J9TN:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.SucKhoeController.DieuKienSucKhoe (NiTiErp)" in 64.3276ms (afa2e885)
+2018-09-18T15:00:35.7860523+07:00 0HLGT7GR7J9TN:00000003 [INF] Request finished in 68.6341ms 200 application/json; charset=utf-8 (791a596a)
+2018-09-18T15:00:35.8335971+07:00 0HLGT7GR7J9TK:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/GetListPhongKhuVuc?makv=PO   (ca22a1cb)
+2018-09-18T15:00:35.8349269+07:00 0HLGT7GR7J9TK:00000004 [INF] Route matched with "{area = \"Admin\", action = \"GetListPhongKhuVuc\", controller = \"Hoso\"}". Executing action "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)" (a44c0341)
+2018-09-18T15:00:35.8350479+07:00 0HLGT7GR7J9TK:00000004 [INF] Authorization was successful. (0d575a54)
+2018-09-18T15:00:35.8354933+07:00 0HLGT7GR7J9TK:00000004 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)" with arguments (["PO"]) - Validation state: Valid (4e3479ed)
+2018-09-18T15:00:35.8358031+07:00 0HLGT7GR7J9TK:00000004 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.2164ms. (50a9e262)
+2018-09-18T15:00:35.8359262+07:00 0HLGT7GR7J9TK:00000004 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[NiTiErp.Application.Dapper.ViewModels.PhongDanhMucViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[NiTiErp.Application.Dapper.Implementation.PhongDanhMucService+<PhongDanhMucGetList>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-09-18T15:00:35.8455528+07:00 0HLGT7GR7J9TI:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/suckhoe/GetListSucKhoe?namKham=2018&corporationId=PO&phongId=&keyword=&page=1&pageSize=10   (ca22a1cb)
+2018-09-18T15:00:35.8464917+07:00 0HLGT7GR7J9TI:00000005 [INF] Route matched with "{area = \"Admin\", action = \"GetListSucKhoe\", controller = \"SucKhoe\"}". Executing action "NiTiErp.Areas.Admin.Controllers.SucKhoeController.GetListSucKhoe (NiTiErp)" (a44c0341)
+2018-09-18T15:00:35.8465947+07:00 0HLGT7GR7J9TI:00000005 [INF] Authorization was successful. (0d575a54)
+2018-09-18T15:00:35.8474708+07:00 0HLGT7GR7J9TI:00000005 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.SucKhoeController.GetListSucKhoe (NiTiErp)" with arguments (["2018", "PO", "", "", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-09-18T15:00:35.8477554+07:00 0HLGT7GR7J9TI:00000005 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.SucKhoeController.GetListSucKhoe (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.2136ms. (50a9e262)
+2018-09-18T15:00:35.8478512+07:00 0HLGT7GR7J9TI:00000005 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.SucKhoeViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.SucKhoeService+<GetAllSucKhoePaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-09-18T15:00:35.8535108+07:00 0HLGT7GR7J9TK:00000004 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)" in 18.4759ms (afa2e885)
+2018-09-18T15:00:35.8577520+07:00 0HLGT7GR7J9TK:00000004 [INF] Request finished in 24.1437ms 200 application/json; charset=utf-8 (791a596a)
+2018-09-18T15:00:35.8692509+07:00 0HLGT7GR7J9TI:00000005 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.SucKhoeController.GetListSucKhoe (NiTiErp)" in 22.6689ms (afa2e885)
+2018-09-18T15:00:35.8838791+07:00 0HLGT7GR7J9TJ:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/GetListPhongKhuVuc?makv=PO   (ca22a1cb)
+2018-09-18T15:00:35.8857150+07:00 0HLGT7GR7J9TJ:00000005 [INF] Route matched with "{area = \"Admin\", action = \"GetListPhongKhuVuc\", controller = \"Hoso\"}". Executing action "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)" (a44c0341)
+2018-09-18T15:00:35.8858895+07:00 0HLGT7GR7J9TJ:00000005 [INF] Authorization was successful. (0d575a54)
+2018-09-18T15:00:35.8861712+07:00 0HLGT7GR7J9TJ:00000005 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)" with arguments (["PO"]) - Validation state: Valid (4e3479ed)
+2018-09-18T15:00:35.8865410+07:00 0HLGT7GR7J9TJ:00000005 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.2811ms. (50a9e262)
+2018-09-18T15:00:35.8866657+07:00 0HLGT7GR7J9TJ:00000005 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[NiTiErp.Application.Dapper.ViewModels.PhongDanhMucViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[NiTiErp.Application.Dapper.Implementation.PhongDanhMucService+<PhongDanhMucGetList>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-09-18T15:00:35.8867117+07:00 0HLGT7GR7J9TI:00000005 [INF] Request finished in 41.1881ms 200 application/json; charset=utf-8 (791a596a)
+2018-09-18T15:00:35.9152127+07:00 0HLGT7GR7J9TJ:00000005 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)" in 28.2633ms (afa2e885)
+2018-09-18T15:00:35.9194549+07:00 0HLGT7GR7J9TJ:00000005 [INF] Request finished in 35.5272ms 200 application/json; charset=utf-8 (791a596a)
+2018-09-18T15:00:37.0575937+07:00 0HLGT7GR7J9TH:0000000A [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/suckhoenk/index   (ca22a1cb)
+2018-09-18T15:00:37.0600488+07:00 0HLGT7GR7J9TH:0000000A [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"SucKhoenk\"}". Executing action "NiTiErp.Areas.Admin.Controllers.SucKhoenkController.Index (NiTiErp)" (a44c0341)
+2018-09-18T15:00:37.0602067+07:00 0HLGT7GR7J9TH:0000000A [INF] Authorization was successful. (0d575a54)
+2018-09-18T15:00:37.0603899+07:00 0HLGT7GR7J9TH:0000000A [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.SucKhoenkController.Index (NiTiErp)" - Validation state: Valid (dad538d7)
+2018-09-18T15:00:37.0605075+07:00 0HLGT7GR7J9TH:0000000A [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.SucKhoenkController.Index (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.0115ms. (50a9e262)
+2018-09-18T15:00:37.0606079+07:00 0HLGT7GR7J9TH:0000000A [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2018-09-18T15:00:37.0642647+07:00 0HLGT7GR7J9TH:0000000A [INF] Executed ViewResult - view "Index" executed in 3.6692ms. (f66409e9)
+2018-09-18T15:00:37.0644034+07:00 0HLGT7GR7J9TH:0000000A [INF] Executed action "NiTiErp.Areas.Admin.Controllers.SucKhoenkController.Index (NiTiErp)" in 4.2657ms (afa2e885)
+2018-09-18T15:00:37.0723624+07:00 0HLGT7GR7J9TH:0000000A [INF] Request finished in 14.7731ms 200 text/html; charset=utf-8 (791a596a)
+2018-09-18T15:00:37.0938766+07:00 0HLGT7GR7J9TM:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/bootstrap/dist/css/bootstrap.css   (ca22a1cb)
+2018-09-18T15:00:37.0963137+07:00 0HLGT7GR7J9TM:00000004 [INF] Sending file. Request path: '"/lib/bootstrap/dist/css/bootstrap.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\bootstrap\dist\css\bootstrap.css"' (27b0a520)
+2018-09-18T15:00:37.0964810+07:00 0HLGT7GR7J9TM:00000004 [INF] Request finished in 4.2931ms 200 text/css (791a596a)
+2018-09-18T15:00:37.0980491+07:00 0HLGT7GR7J9TO:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/font-awesome/css/font-awesome.css   (ca22a1cb)
+2018-09-18T15:00:37.0981166+07:00 0HLGT7GR7J9TL:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/nprogress/nprogress.css   (ca22a1cb)
+2018-09-18T15:00:37.0985781+07:00 0HLGT7GR7J9TL:00000004 [INF] Sending file. Request path: '"/lib/nprogress/nprogress.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\nprogress\nprogress.css"' (27b0a520)
+2018-09-18T15:00:37.0985781+07:00 0HLGT7GR7J9TO:00000004 [INF] Sending file. Request path: '"/lib/font-awesome/css/font-awesome.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\font-awesome\css\font-awesome.css"' (27b0a520)
+2018-09-18T15:00:37.0986400+07:00 0HLGT7GR7J9TO:00000004 [INF] Request finished in 0.682ms 200 text/css (791a596a)
+2018-09-18T15:00:37.0986397+07:00 0HLGT7GR7J9TL:00000004 [INF] Request finished in 0.5352ms 200 text/css (791a596a)
+2018-09-18T15:00:37.1000255+07:00 0HLGT7GR7J9TP:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/bootstrap-daterangepicker/daterangepicker.css   (ca22a1cb)
+2018-09-18T15:00:37.1009552+07:00 0HLGT7GR7J9TK:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css   (ca22a1cb)
+2018-09-18T15:00:37.1009779+07:00 0HLGT7GR7J9TN:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/app/controllers/suckhoenk/addeditnoikham.js?v=A-FK5fWHtB0xsHW8931t9xse-DY9Id75HfRfbvrxPy8   (ca22a1cb)
+2018-09-18T15:00:37.1012068+07:00 0HLGT7GR7J9TJ:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/jQuery-EasyUI/themes/bootstrap/easyui.css   (ca22a1cb)
+2018-09-18T15:00:37.1014217+07:00 0HLGT7GR7J9TI:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/notifyjs/dist/styles/metro/notify-metro.css   (ca22a1cb)
+2018-09-18T15:00:37.1014574+07:00 0HLGT7GR7J9TP:00000005 [INF] Sending file. Request path: '"/lib/bootstrap-daterangepicker/daterangepicker.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\bootstrap-daterangepicker\daterangepicker.css"' (27b0a520)
+2018-09-18T15:00:37.1015395+07:00 0HLGT7GR7J9TP:00000005 [INF] Request finished in 1.5584ms 200 text/css (791a596a)
+2018-09-18T15:00:37.1016024+07:00 0HLGT7GR7J9TK:00000005 [INF] Sending file. Request path: '"/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\bootstrap-datepicker\dist\css\bootstrap-datepicker.css"' (27b0a520)
+2018-09-18T15:00:37.1016213+07:00 0HLGT7GR7J9TN:00000004 [INF] Sending file. Request path: '"/app/controllers/suckhoenk/addeditnoikham.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\app\controllers\suckhoenk\addeditnoikham.js"' (27b0a520)
+2018-09-18T15:00:37.1016649+07:00 0HLGT7GR7J9TN:00000004 [INF] Request finished in 0.7044ms 200 application/javascript (791a596a)
+2018-09-18T15:00:37.1016708+07:00 0HLGT7GR7J9TK:00000005 [INF] Request finished in 0.7753ms 200 text/css (791a596a)
+2018-09-18T15:00:37.1018285+07:00 0HLGT7GR7J9TI:00000006 [INF] Sending file. Request path: '"/lib/notifyjs/dist/styles/metro/notify-metro.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\notifyjs\dist\styles\metro\notify-metro.css"' (27b0a520)
+2018-09-18T15:00:37.1018782+07:00 0HLGT7GR7J9TI:00000006 [INF] Request finished in 0.473ms 200 text/css (791a596a)
+2018-09-18T15:00:37.1039246+07:00 0HLGT7GR7J9TJ:00000006 [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/themes/bootstrap/easyui.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\jQuery-EasyUI\themes\bootstrap\easyui.css"' (27b0a520)
+2018-09-18T15:00:37.1040948+07:00 0HLGT7GR7J9TJ:00000006 [INF] Request finished in 2.8251ms 200 text/css (791a596a)
+2018-09-18T15:00:37.1044067+07:00 0HLGT7GR7J9TH:0000000B [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin-side/css/custom.css   (ca22a1cb)
+2018-09-18T15:00:37.1051096+07:00 0HLGT7GR7J9TL:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/ckeditor/skins/moono/editor.css   (ca22a1cb)
+2018-09-18T15:00:37.1075802+07:00 0HLGT7GR7J9TH:0000000B [INF] Sending file. Request path: '"/admin-side/css/custom.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\admin-side\css\custom.css"' (27b0a520)
+2018-09-18T15:00:37.1077497+07:00 0HLGT7GR7J9TH:0000000B [INF] Request finished in 3.3134ms 200 text/css (791a596a)
+2018-09-18T15:00:37.1079979+07:00 0HLGT7GR7J9TL:00000005 [INF] Sending file. Request path: '"/lib/ckeditor/skins/moono/editor.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\ckeditor\skins\moono\editor.css"' (27b0a520)
+2018-09-18T15:00:37.1080701+07:00 0HLGT7GR7J9TL:00000005 [INF] Request finished in 2.9915ms 200 text/css (791a596a)
+2018-09-18T15:00:37.1135046+07:00 0HLGT7GR7J9TI:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44352/app/controllers/suckhoenk/index.js?v=1qxpulBlMfvBntp0a-ZY81DGOGcl8mHqiWVe_XApSok   (ca22a1cb)
+2018-09-18T15:00:37.1141817+07:00 0HLGT7GR7J9TI:00000007 [INF] Sending file. Request path: '"/app/controllers/suckhoenk/index.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\app\controllers\suckhoenk\index.js"' (27b0a520)
+2018-09-18T15:00:37.1142678+07:00 0HLGT7GR7J9TI:00000007 [INF] Request finished in 0.8269ms 200 application/javascript (791a596a)
+2018-09-18T15:00:37.1225844+07:00 0HLGT7GR7J9TN:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/jQuery-EasyUI/themes/icon.css   (ca22a1cb)
+2018-09-18T15:00:37.1231629+07:00 0HLGT7GR7J9TN:00000005 [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/themes/icon.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\jQuery-EasyUI\themes\icon.css"' (27b0a520)
+2018-09-18T15:00:37.1232245+07:00 0HLGT7GR7J9TN:00000005 [INF] Request finished in 0.7162ms 200 text/css (791a596a)
+2018-09-18T15:00:37.2114207+07:00 0HLGT7GR7J9TO:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/suckhoenk/GetListSucKhoenk?keyword=&page=1&pageSize=10   (ca22a1cb)
+2018-09-18T15:00:37.2125054+07:00 0HLGT7GR7J9TO:00000005 [INF] Route matched with "{area = \"Admin\", action = \"GetListSucKhoenk\", controller = \"SucKhoenk\"}". Executing action "NiTiErp.Areas.Admin.Controllers.SucKhoenkController.GetListSucKhoenk (NiTiErp)" (a44c0341)
+2018-09-18T15:00:37.2126277+07:00 0HLGT7GR7J9TO:00000005 [INF] Authorization was successful. (0d575a54)
+2018-09-18T15:00:37.2129753+07:00 0HLGT7GR7J9TO:00000005 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.SucKhoenkController.GetListSucKhoenk (NiTiErp)" with arguments (["", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-09-18T15:00:37.2132630+07:00 0HLGT7GR7J9TO:00000005 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.SucKhoenkController.GetListSucKhoenk (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.2121ms. (50a9e262)
+2018-09-18T15:00:37.2133893+07:00 0HLGT7GR7J9TO:00000005 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.SucKhoeNoiKhamViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.SucKhoeNoiKhamService+<GetAllSucKhoeNoiKhamPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-09-18T15:00:37.2282216+07:00 0HLGT7GR7J9TO:00000005 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.SucKhoenkController.GetListSucKhoenk (NiTiErp)" in 15.6134ms (afa2e885)
+2018-09-18T15:00:37.2438148+07:00 0HLGT7GR7J9TO:00000005 [INF] Request finished in 32.39ms 200 application/json; charset=utf-8 (791a596a)
+2018-09-18T15:00:38.4906075+07:00 0HLGT7GR7J9TP:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/suckhoe/index   (ca22a1cb)
+2018-09-18T15:00:38.4918385+07:00 0HLGT7GR7J9TP:00000006 [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"SucKhoe\"}". Executing action "NiTiErp.Areas.Admin.Controllers.SucKhoeController.Index (NiTiErp)" (a44c0341)
+2018-09-18T15:00:38.4924139+07:00 0HLGT7GR7J9TP:00000006 [INF] Authorization was successful. (0d575a54)
+2018-09-18T15:00:38.4926331+07:00 0HLGT7GR7J9TP:00000006 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.SucKhoeController.Index (NiTiErp)" - Validation state: Valid (dad538d7)
+2018-09-18T15:00:38.4927339+07:00 0HLGT7GR7J9TP:00000006 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.SucKhoeController.Index (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.0115ms. (50a9e262)
+2018-09-18T15:00:38.4928726+07:00 0HLGT7GR7J9TP:00000006 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2018-09-18T15:00:38.4976045+07:00 0HLGT7GR7J9TP:00000006 [INF] Executed ViewResult - view "Index" executed in 4.7437ms. (f66409e9)
+2018-09-18T15:00:38.4977289+07:00 0HLGT7GR7J9TP:00000006 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.SucKhoeController.Index (NiTiErp)" in 5.7949ms (afa2e885)
+2018-09-18T15:00:38.5079110+07:00 0HLGT7GR7J9TP:00000006 [INF] Request finished in 17.3734ms 200 text/html; charset=utf-8 (791a596a)
+2018-09-18T15:00:38.5303893+07:00 0HLGT7GR7J9TK:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/bootstrap-daterangepicker/daterangepicker.css   (ca22a1cb)
+2018-09-18T15:00:38.5304092+07:00 0HLGT7GR7J9TI:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/bootstrap/dist/css/bootstrap.css   (ca22a1cb)
+2018-09-18T15:00:38.5310331+07:00 0HLGT7GR7J9TL:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/nprogress/nprogress.css   (ca22a1cb)
+2018-09-18T15:00:38.5311503+07:00 0HLGT7GR7J9TN:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/jQuery-EasyUI/themes/bootstrap/easyui.css   (ca22a1cb)
+2018-09-18T15:00:38.5312598+07:00 0HLGT7GR7J9TJ:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/font-awesome/css/font-awesome.css   (ca22a1cb)
+2018-09-18T15:00:38.5314212+07:00 0HLGT7GR7J9TK:00000006 [INF] Sending file. Request path: '"/lib/bootstrap-daterangepicker/daterangepicker.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\bootstrap-daterangepicker\daterangepicker.css"' (27b0a520)
+2018-09-18T15:00:38.5314869+07:00 0HLGT7GR7J9TK:00000006 [INF] Request finished in 1.1242ms 200 text/css (791a596a)
+2018-09-18T15:00:38.5315699+07:00 0HLGT7GR7J9TL:00000006 [INF] Sending file. Request path: '"/lib/nprogress/nprogress.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\nprogress\nprogress.css"' (27b0a520)
+2018-09-18T15:00:38.5316250+07:00 0HLGT7GR7J9TL:00000006 [INF] Request finished in 0.6241ms 200 text/css (791a596a)
+2018-09-18T15:00:38.5316393+07:00 0HLGT7GR7J9TH:0000000C [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/ckeditor/skins/moono/editor.css   (ca22a1cb)
+2018-09-18T15:00:38.5316751+07:00 0HLGT7GR7J9TJ:00000007 [INF] Sending file. Request path: '"/lib/font-awesome/css/font-awesome.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\font-awesome\css\font-awesome.css"' (27b0a520)
+2018-09-18T15:00:38.5317239+07:00 0HLGT7GR7J9TJ:00000007 [INF] Request finished in 0.478ms 200 text/css (791a596a)
+2018-09-18T15:00:38.5320691+07:00 0HLGT7GR7J9TH:0000000C [INF] Sending file. Request path: '"/lib/ckeditor/skins/moono/editor.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\ckeditor\skins\moono\editor.css"' (27b0a520)
+2018-09-18T15:00:38.5320822+07:00 0HLGT7GR7J9TN:00000006 [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/themes/bootstrap/easyui.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\jQuery-EasyUI\themes\bootstrap\easyui.css"' (27b0a520)
+2018-09-18T15:00:38.5321332+07:00 0HLGT7GR7J9TH:0000000C [INF] Request finished in 0.5047ms 200 text/css (791a596a)
+2018-09-18T15:00:38.5321335+07:00 0HLGT7GR7J9TN:00000006 [INF] Request finished in 0.9958ms 200 text/css (791a596a)
+2018-09-18T15:00:38.5410609+07:00 0HLGT7GR7J9TQ:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/app/controllers/suckhoe/addeditsuckhoe.js?v=FjT8Ot-X05-TxzJ8ph342vkq4j-7IFtvJHKoGcRwOjQ   (ca22a1cb)
+2018-09-18T15:00:38.5415183+07:00 0HLGT7GR7J9TM:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/notifyjs/dist/styles/metro/notify-metro.css   (ca22a1cb)
+2018-09-18T15:00:38.5415914+07:00 0HLGT7GR7J9TO:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/jQuery-EasyUI/themes/icon.css   (ca22a1cb)
+2018-09-18T15:00:38.5418645+07:00 0HLGT7GR7J9TM:00000005 [INF] Sending file. Request path: '"/lib/notifyjs/dist/styles/metro/notify-metro.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\notifyjs\dist\styles\metro\notify-metro.css"' (27b0a520)
+2018-09-18T15:00:38.5418663+07:00 0HLGT7GR7J9TO:00000006 [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/themes/icon.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\jQuery-EasyUI\themes\icon.css"' (27b0a520)
+2018-09-18T15:00:38.5419192+07:00 0HLGT7GR7J9TO:00000006 [INF] Request finished in 0.3358ms 200 text/css (791a596a)
+2018-09-18T15:00:38.5419214+07:00 0HLGT7GR7J9TM:00000005 [INF] Request finished in 0.445ms 200 text/css (791a596a)
+2018-09-18T15:00:38.5420147+07:00 0HLGT7GR7J9TL:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44352/app/controllers/suckhoe/index.js?v=Y6mqni3cGLBHpEPBucTD1OtyomUG0R4blCkq2JLrvso   (ca22a1cb)
+2018-09-18T15:00:38.5420138+07:00 0HLGT7GR7J9TP:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css   (ca22a1cb)
+2018-09-18T15:00:38.5420651+07:00 0HLGT7GR7J9TQ:00000001 [INF] Sending file. Request path: '"/app/controllers/suckhoe/addeditsuckhoe.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\app\controllers\suckhoe\addeditsuckhoe.js"' (27b0a520)
+2018-09-18T15:00:38.5421130+07:00 0HLGT7GR7J9TQ:00000001 [INF] Request finished in 1.1062ms 200 application/javascript (791a596a)
+2018-09-18T15:00:38.5421920+07:00 0HLGT7GR7J9TI:00000008 [INF] Sending file. Request path: '"/lib/bootstrap/dist/css/bootstrap.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\bootstrap\dist\css\bootstrap.css"' (27b0a520)
+2018-09-18T15:00:38.5422392+07:00 0HLGT7GR7J9TI:00000008 [INF] Request finished in 12.0854ms 200 text/css (791a596a)
+2018-09-18T15:00:38.5424361+07:00 0HLGT7GR7J9TP:00000007 [INF] Sending file. Request path: '"/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\bootstrap-datepicker\dist\css\bootstrap-datepicker.css"' (27b0a520)
+2018-09-18T15:00:38.5425490+07:00 0HLGT7GR7J9TP:00000007 [INF] Request finished in 0.4842ms 200 text/css (791a596a)
+2018-09-18T15:00:38.5500596+07:00 0HLGT7GR7J9TH:0000000D [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin-side/css/custom.css   (ca22a1cb)
+2018-09-18T15:00:38.5501342+07:00 0HLGT7GR7J9TL:00000007 [INF] Sending file. Request path: '"/app/controllers/suckhoe/index.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\app\controllers\suckhoe\index.js"' (27b0a520)
+2018-09-18T15:00:38.5502969+07:00 0HLGT7GR7J9TL:00000007 [INF] Request finished in 8.1912ms 200 application/javascript (791a596a)
+2018-09-18T15:00:38.5583998+07:00 0HLGT7GR7J9TH:0000000D [INF] Sending file. Request path: '"/admin-side/css/custom.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\admin-side\css\custom.css"' (27b0a520)
+2018-09-18T15:00:38.5584847+07:00 0HLGT7GR7J9TH:0000000D [INF] Request finished in 8.4988ms 200 text/css (791a596a)
+2018-09-18T15:00:38.7015079+07:00 0HLGT7GR7J9TJ:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/suckhoe/PhanLoaiSucKhoe   (ca22a1cb)
+2018-09-18T15:00:38.7058605+07:00 0HLGT7GR7J9TN:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/suckhoe/DieuKienSucKhoe   (ca22a1cb)
+2018-09-18T15:00:38.7061967+07:00 0HLGT7GR7J9TJ:00000008 [INF] Route matched with "{area = \"Admin\", action = \"PhanLoaiSucKhoe\", controller = \"SucKhoe\"}". Executing action "NiTiErp.Areas.Admin.Controllers.SucKhoeController.PhanLoaiSucKhoe (NiTiErp)" (a44c0341)
+2018-09-18T15:00:38.7063052+07:00 0HLGT7GR7J9TJ:00000008 [INF] Authorization was successful. (0d575a54)
+2018-09-18T15:00:38.7066700+07:00 0HLGT7GR7J9TN:00000007 [INF] Route matched with "{area = \"Admin\", action = \"DieuKienSucKhoe\", controller = \"SucKhoe\"}". Executing action "NiTiErp.Areas.Admin.Controllers.SucKhoeController.DieuKienSucKhoe (NiTiErp)" (a44c0341)
+2018-09-18T15:00:38.7067552+07:00 0HLGT7GR7J9TN:00000007 [INF] Authorization was successful. (0d575a54)
+2018-09-18T15:00:38.7068457+07:00 0HLGT7GR7J9TN:00000007 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.SucKhoeController.DieuKienSucKhoe (NiTiErp)" - Validation state: Valid (dad538d7)
+2018-09-18T15:00:38.7073486+07:00 0HLGT7GR7J9TN:00000007 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.SucKhoeController.DieuKienSucKhoe (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.218ms. (50a9e262)
+2018-09-18T15:00:38.7074186+07:00 0HLGT7GR7J9TJ:00000008 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.SucKhoeController.PhanLoaiSucKhoe (NiTiErp)" - Validation state: Valid (dad538d7)
+2018-09-18T15:00:38.7074684+07:00 0HLGT7GR7J9TN:00000007 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[NiTiErp.Application.Dapper.ViewModels.DieuKienTimViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[NiTiErp.Application.Dapper.Implementation.DieuKienTimService+<DieuKienTimGetList>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-09-18T15:00:38.7076572+07:00 0HLGT7GR7J9TJ:00000008 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.SucKhoeController.PhanLoaiSucKhoe (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.1682ms. (50a9e262)
+2018-09-18T15:00:38.7077402+07:00 0HLGT7GR7J9TJ:00000008 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[NiTiErp.Application.Dapper.ViewModels.PhanLoaiSucKhoeViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[NiTiErp.Application.Dapper.Implementation.PhanLoaiSucKhoeService+<PhanLoaiSucKhoeGetList>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-09-18T15:00:38.7278669+07:00 0HLGT7GR7J9TO:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/GetListCorNhanSu   (ca22a1cb)
+2018-09-18T15:00:38.7288143+07:00 0HLGT7GR7J9TO:00000007 [INF] Route matched with "{area = \"Admin\", action = \"GetListCorNhanSu\", controller = \"Hoso\"}". Executing action "NiTiErp.Areas.Admin.Controllers.HosoController.GetListCorNhanSu (NiTiErp)" (a44c0341)
+2018-09-18T15:00:38.7289400+07:00 0HLGT7GR7J9TO:00000007 [INF] Authorization was successful. (0d575a54)
+2018-09-18T15:00:38.7290862+07:00 0HLGT7GR7J9TO:00000007 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetListCorNhanSu (NiTiErp)" - Validation state: Valid (dad538d7)
+2018-09-18T15:00:38.7303737+07:00 0HLGT7GR7J9TM:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/suckhoe/GetListAllNoiKham   (ca22a1cb)
+2018-09-18T15:00:38.7313129+07:00 0HLGT7GR7J9TM:00000006 [INF] Route matched with "{area = \"Admin\", action = \"GetListAllNoiKham\", controller = \"SucKhoe\"}". Executing action "NiTiErp.Areas.Admin.Controllers.SucKhoeController.GetListAllNoiKham (NiTiErp)" (a44c0341)
+2018-09-18T15:00:38.7314329+07:00 0HLGT7GR7J9TM:00000006 [INF] Authorization was successful. (0d575a54)
+2018-09-18T15:00:38.7315499+07:00 0HLGT7GR7J9TM:00000006 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.SucKhoeController.GetListAllNoiKham (NiTiErp)" - Validation state: Valid (dad538d7)
+2018-09-18T15:00:38.7339431+07:00 0HLGT7GR7J9TN:00000007 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.SucKhoeController.DieuKienSucKhoe (NiTiErp)" in 27.1776ms (afa2e885)
+2018-09-18T15:00:38.7378394+07:00 0HLGT7GR7J9TJ:00000008 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.SucKhoeController.PhanLoaiSucKhoe (NiTiErp)" in 31.5239ms (afa2e885)
+2018-09-18T15:00:38.7384462+07:00 0HLGT7GR7J9TN:00000007 [INF] Request finished in 32.5555ms 200 application/json; charset=utf-8 (791a596a)
+2018-09-18T15:00:38.7414414+07:00 0HLGT7GR7J9TJ:00000008 [INF] Request finished in 39.908ms 200 application/json; charset=utf-8 (791a596a)
+2018-09-18T15:00:38.7465348+07:00 0HLGT7GR7J9TO:00000007 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetListCorNhanSu (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 17.3327ms. (50a9e262)
+2018-09-18T15:00:38.7468579+07:00 0HLGT7GR7J9TO:00000007 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[NiTiErp.Application.Dapper.ViewModels.CorporationViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[NiTiErp.Application.Dapper.Implementation.CorporationService+<CorporationGetList>d__3, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-09-18T15:00:38.7492434+07:00 0HLGT7GR7J9TM:00000006 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.SucKhoeController.GetListAllNoiKham (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 17.5762ms. (50a9e262)
+2018-09-18T15:00:38.7494007+07:00 0HLGT7GR7J9TM:00000006 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.SucKhoeNoiKhamViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.SucKhoeNoiKhamService+<GetAllSucKhoeNoiKhamPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-09-18T15:00:38.7652338+07:00 0HLGT7GR7J9TO:00000007 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.GetListCorNhanSu (NiTiErp)" in 36.3153ms (afa2e885)
+2018-09-18T15:00:38.7701004+07:00 0HLGT7GR7J9TO:00000007 [INF] Request finished in 42.2051ms 200 application/json; charset=utf-8 (791a596a)
+2018-09-18T15:00:38.7761218+07:00 0HLGT7GR7J9TM:00000006 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.SucKhoeController.GetListAllNoiKham (NiTiErp)" in 44.4151ms (afa2e885)
+2018-09-18T15:00:38.7801096+07:00 0HLGT7GR7J9TM:00000006 [INF] Request finished in 49.6792ms 200 application/json; charset=utf-8 (791a596a)
+2018-09-18T15:00:38.8537712+07:00 0HLGT7GR7J9TK:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/GetListPhongKhuVuc?makv=PO   (ca22a1cb)
+2018-09-18T15:00:38.8551361+07:00 0HLGT7GR7J9TK:00000007 [INF] Route matched with "{area = \"Admin\", action = \"GetListPhongKhuVuc\", controller = \"Hoso\"}". Executing action "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)" (a44c0341)
+2018-09-18T15:00:38.8552658+07:00 0HLGT7GR7J9TK:00000007 [INF] Authorization was successful. (0d575a54)
+2018-09-18T15:00:38.8556863+07:00 0HLGT7GR7J9TK:00000007 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)" with arguments (["PO"]) - Validation state: Valid (4e3479ed)
+2018-09-18T15:00:38.8560695+07:00 0HLGT7GR7J9TK:00000007 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.2873ms. (50a9e262)
+2018-09-18T15:00:38.8561995+07:00 0HLGT7GR7J9TK:00000007 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[NiTiErp.Application.Dapper.ViewModels.PhongDanhMucViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[NiTiErp.Application.Dapper.Implementation.PhongDanhMucService+<PhongDanhMucGetList>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-09-18T15:00:38.8761959+07:00 0HLGT7GR7J9TK:00000007 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)" in 20.9553ms (afa2e885)
+2018-09-18T15:00:38.8828592+07:00 0HLGT7GR7J9TK:00000007 [INF] Request finished in 29.1873ms 200 application/json; charset=utf-8 (791a596a)
+2018-09-18T15:00:38.8889248+07:00 0HLGT7GR7J9TQ:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/suckhoe/GetListSucKhoe?namKham=2018&corporationId=PO&phongId=&keyword=&page=1&pageSize=10   (ca22a1cb)
+2018-09-18T15:00:38.8926793+07:00 0HLGT7GR7J9TQ:00000002 [INF] Route matched with "{area = \"Admin\", action = \"GetListSucKhoe\", controller = \"SucKhoe\"}". Executing action "NiTiErp.Areas.Admin.Controllers.SucKhoeController.GetListSucKhoe (NiTiErp)" (a44c0341)
+2018-09-18T15:00:38.8928339+07:00 0HLGT7GR7J9TQ:00000002 [INF] Authorization was successful. (0d575a54)
+2018-09-18T15:00:38.8931928+07:00 0HLGT7GR7J9TQ:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.SucKhoeController.GetListSucKhoe (NiTiErp)" with arguments (["2018", "PO", "", "", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-09-18T15:00:38.8935436+07:00 0HLGT7GR7J9TQ:00000002 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.SucKhoeController.GetListSucKhoe (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.2615ms. (50a9e262)
+2018-09-18T15:00:38.8936671+07:00 0HLGT7GR7J9TQ:00000002 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.SucKhoeViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.SucKhoeService+<GetAllSucKhoePaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-09-18T15:00:38.9067760+07:00 0HLGT7GR7J9TP:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/GetListPhongKhuVuc?makv=PO   (ca22a1cb)
+2018-09-18T15:00:38.9080710+07:00 0HLGT7GR7J9TP:00000008 [INF] Route matched with "{area = \"Admin\", action = \"GetListPhongKhuVuc\", controller = \"Hoso\"}". Executing action "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)" (a44c0341)
+2018-09-18T15:00:38.9081879+07:00 0HLGT7GR7J9TP:00000008 [INF] Authorization was successful. (0d575a54)
+2018-09-18T15:00:38.9084396+07:00 0HLGT7GR7J9TP:00000008 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)" with arguments (["PO"]) - Validation state: Valid (4e3479ed)
+2018-09-18T15:00:38.9087161+07:00 0HLGT7GR7J9TP:00000008 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.2102ms. (50a9e262)
+2018-09-18T15:00:38.9088262+07:00 0HLGT7GR7J9TP:00000008 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[NiTiErp.Application.Dapper.ViewModels.PhongDanhMucViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[NiTiErp.Application.Dapper.Implementation.PhongDanhMucService+<PhongDanhMucGetList>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-09-18T15:00:38.9223161+07:00 0HLGT7GR7J9TQ:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.SucKhoeController.GetListSucKhoe (NiTiErp)" in 29.5098ms (afa2e885)
+2018-09-18T15:00:38.9258584+07:00 0HLGT7GR7J9TQ:00000002 [INF] Request finished in 36.9696ms 200 application/json; charset=utf-8 (791a596a)
+2018-09-18T15:00:38.9315778+07:00 0HLGT7GR7J9TP:00000008 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)" in 22.7563ms (afa2e885)
+2018-09-18T15:00:38.9352337+07:00 0HLGT7GR7J9TP:00000008 [INF] Request finished in 28.4959ms 200 application/json; charset=utf-8 (791a596a)
+2018-09-18T20:57:16.8890343+07:00 0HLGTDQICDRSL:00000001 [INF] Request starting HTTP/1.1 DEBUG http://localhost:57431/  0 (ca22a1cb)
+2018-09-18T20:57:16.8890343+07:00 0HLGTDQICDRSK:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/   (ca22a1cb)
+2018-09-18T20:57:16.9326446+07:00 0HLGTDQICDRSL:00000001 [INF] Request finished in 61.4623ms 200  (791a596a)
+2018-09-18T20:57:17.0621032+07:00 0HLGTDQICDRSK:00000001 [INF] Entity Framework Core "2.1.0-rtm-30799" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-09-18T20:57:17.1678611+07:00 0HLGTDQICDRSK:00000001 [INF] Executed DbCommand ("18"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[CorporationId], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserCreated], [e].[UserModified], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2018-09-18T20:57:17.3890371+07:00 0HLGTDQICDRSK:00000001 [INF] Executed DbCommand ("7"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-09-18T20:57:17.4610681+07:00 0HLGTDQICDRSK:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-09-18T20:57:17.5010916+07:00 0HLGTDQICDRSK:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CorporationId], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-09-18T20:57:17.5469908+07:00 0HLGTDQICDRSK:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2018-09-18T20:57:17.5571384+07:00 0HLGTDQICDRSK:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-09-18T20:57:17.8504757+07:00 0HLGTDQICDRSK:00000001 [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"Login\"}". Executing action "NiTiErp.Areas.Admin.Controllers.LoginController.Index (NiTiErp)" (a44c0341)
+2018-09-18T20:57:17.8822920+07:00 0HLGTDQICDRSK:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.LoginController.Index (NiTiErp)" - Validation state: Valid (dad538d7)
+2018-09-18T20:57:17.8942760+07:00 0HLGTDQICDRSK:00000001 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.LoginController.Index (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 1.2872ms. (50a9e262)
+2018-09-18T20:57:18.0117146+07:00 0HLGTDQICDRSK:00000001 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2018-09-18T20:57:18.3897699+07:00 0HLGTDQICDRSK:00000001 [INF] Executed ViewResult - view "Index" executed in 469.1291ms. (f66409e9)
+2018-09-18T20:57:18.4049006+07:00 0HLGTDQICDRSK:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.LoginController.Index (NiTiErp)" in 539.5531ms (afa2e885)
+2018-09-18T20:57:19.1944266+07:00 0HLGTDQICDRSM:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/font-awesome/css/font-awesome.css   (ca22a1cb)
+2018-09-18T20:57:19.2057059+07:00 0HLGTDQICDRSK:00000001 [INF] Request finished in 2331.6894ms 200 text/html; charset=utf-8 (791a596a)
+2018-09-18T20:57:19.2155222+07:00 0HLGTDQICDRSN:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/notifyjs/dist/styles/metro/notify-metro.css   (ca22a1cb)
+2018-09-18T20:57:19.2186499+07:00 0HLGTDQICDRSL:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/nprogress/nprogress.css   (ca22a1cb)
+2018-09-18T20:57:19.2213949+07:00 0HLGTDQICDRSK:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/bootstrap/dist/css/bootstrap.css   (ca22a1cb)
+2018-09-18T20:57:19.2618360+07:00 0HLGTDQICDRSL:00000002 [INF] Sending file. Request path: '"/lib/nprogress/nprogress.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\nprogress\nprogress.css"' (27b0a520)
+2018-09-18T20:57:19.2768023+07:00 0HLGTDQICDRSL:00000002 [INF] Request finished in 52.9998ms 200 text/css (791a596a)
+2018-09-18T20:57:19.2885904+07:00 0HLGTDQICDRSO:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin-side/images/powaco148.png   (ca22a1cb)
+2018-09-18T20:57:19.3006021+07:00 0HLGTDQICDRSO:00000001 [INF] Sending file. Request path: '"/admin-side/images/powaco148.png"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\admin-side\images\powaco148.png"' (27b0a520)
+2018-09-18T20:57:19.3056945+07:00 0HLGTDQICDRSP:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin-side/css/custom.css   (ca22a1cb)
+2018-09-18T20:57:19.3098166+07:00 0HLGTDQICDRSN:00000001 [INF] Sending file. Request path: '"/lib/notifyjs/dist/styles/metro/notify-metro.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\notifyjs\dist\styles\metro\notify-metro.css"' (27b0a520)
+2018-09-18T20:57:19.3124564+07:00 0HLGTDQICDRSO:00000001 [INF] Request finished in 23.7226ms 200 image/png (791a596a)
+2018-09-18T20:57:19.3292342+07:00 0HLGTDQICDRSN:00000001 [INF] Request finished in 104.4366ms 200 text/css (791a596a)
+2018-09-18T20:57:19.3493495+07:00 0HLGTDQICDRSQ:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/animate.css/animate.css   (ca22a1cb)
+2018-09-18T20:57:19.3577486+07:00 0HLGTDQICDRSS:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/jquery/dist/jquery.js   (ca22a1cb)
+2018-09-18T20:57:19.3597036+07:00 0HLGTDQICDRSR:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/notifyjs/dist/notify.js   (ca22a1cb)
+2018-09-18T20:57:19.3630768+07:00 0HLGTDQICDRST:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/notifyjs/dist/styles/metro/notify-metro.js   (ca22a1cb)
+2018-09-18T20:57:19.4078972+07:00 0HLGTDQICDRST:00000001 [INF] Sending file. Request path: '"/lib/notifyjs/dist/styles/metro/notify-metro.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\notifyjs\dist\styles\metro\notify-metro.js"' (27b0a520)
+2018-09-18T20:57:19.4104608+07:00 0HLGTDQICDRSU:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/jquery-validation/dist/additional-methods.js   (ca22a1cb)
+2018-09-18T20:57:19.4120025+07:00 0HLGTDQICDRST:00000001 [INF] Request finished in 48.2476ms 200 application/javascript (791a596a)
+2018-09-18T20:57:19.4159236+07:00 0HLGTDQICDRSV:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js   (ca22a1cb)
+2018-09-18T20:57:19.4376220+07:00 0HLGTDQICDRSR:00000001 [INF] Sending file. Request path: '"/lib/notifyjs/dist/notify.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\notifyjs\dist\notify.js"' (27b0a520)
+2018-09-18T20:57:19.4414495+07:00 0HLGTDQICDRSR:00000001 [INF] Request finished in 117.4482ms 200 application/javascript (791a596a)
+2018-09-18T20:57:19.4506935+07:00 0HLGTDQICDRT0:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/app/shared/tedu.js?v=a-ERwWiIO-i-C_FHyqqRqDy0fh3aCOZIEbphsjiEjFE   (ca22a1cb)
+2018-09-18T20:57:19.4515585+07:00 0HLGTDQICDRSU:00000001 [INF] Sending file. Request path: '"/lib/jquery-validation/dist/additional-methods.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\jquery-validation\dist\additional-methods.js"' (27b0a520)
+2018-09-18T20:57:19.4546415+07:00 0HLGTDQICDRSU:00000001 [INF] Request finished in 44.9426ms 200 application/javascript (791a596a)
+2018-09-18T20:57:19.4586687+07:00 0HLGTDQICDRT1:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/app/controllers/login/index.js?v=MjVVKy-6DB9gNODPpVMYpzza2OoBKkJ1KnsCL3CRyW0   (ca22a1cb)
+2018-09-18T20:57:19.4703747+07:00 0HLGTDQICDRT1:00000001 [INF] Sending file. Request path: '"/app/controllers/login/index.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\app\controllers\login\index.js"' (27b0a520)
+2018-09-18T20:57:19.4731591+07:00 0HLGTDQICDRT0:00000001 [INF] Sending file. Request path: '"/app/shared/tedu.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\app\shared\tedu.js"' (27b0a520)
+2018-09-18T20:57:19.4831387+07:00 0HLGTDQICDRT1:00000001 [INF] Request finished in 16.8518ms 200 application/javascript (791a596a)
+2018-09-18T20:57:19.4845047+07:00 0HLGTDQICDRT0:00000001 [INF] Request finished in 38.6503ms 200 application/javascript (791a596a)
+2018-09-18T20:57:19.4870153+07:00 0HLGTDQICDRT2:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/jquery-validation/dist/jquery.validate.js   (ca22a1cb)
+2018-09-18T20:57:19.5061800+07:00 0HLGTDQICDRSV:00000001 [INF] Sending file. Request path: '"/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js"' (27b0a520)
+2018-09-18T20:57:19.5222326+07:00 0HLGTDQICDRSV:00000001 [INF] Request finished in 94.1615ms 200 application/javascript (791a596a)
+2018-09-18T20:57:19.5950255+07:00 0HLGTDQICDRSM:00000001 [INF] Sending file. Request path: '"/lib/font-awesome/css/font-awesome.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\font-awesome\css\font-awesome.css"' (27b0a520)
+2018-09-18T20:57:19.6180269+07:00 0HLGTDQICDRSM:00000001 [INF] Request finished in 411.1395ms 200 text/css (791a596a)
+2018-09-18T20:57:19.6220489+07:00 0HLGTDQICDRT2:00000001 [INF] Sending file. Request path: '"/lib/jquery-validation/dist/jquery.validate.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\jquery-validation\dist\jquery.validate.js"' (27b0a520)
+2018-09-18T20:57:19.6247985+07:00 0HLGTDQICDRSP:00000001 [INF] Sending file. Request path: '"/admin-side/css/custom.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\admin-side\css\custom.css"' (27b0a520)
+2018-09-18T20:57:19.6284746+07:00 0HLGTDQICDRSQ:00000001 [INF] Sending file. Request path: '"/lib/animate.css/animate.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\animate.css\animate.css"' (27b0a520)
+2018-09-18T20:57:19.6313236+07:00 0HLGTDQICDRT2:00000001 [INF] Request finished in 138.679ms 200 application/javascript (791a596a)
+2018-09-18T20:57:19.6363144+07:00 0HLGTDQICDRSP:00000001 [INF] Request finished in 329.894ms 200 text/css (791a596a)
+2018-09-18T20:57:19.6600738+07:00 0HLGTDQICDRSQ:00000001 [INF] Request finished in 316.1033ms 200 text/css (791a596a)
+2018-09-18T20:57:19.7323004+07:00 0HLGTDQICDRSK:00000002 [INF] Sending file. Request path: '"/lib/bootstrap/dist/css/bootstrap.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\bootstrap\dist\css\bootstrap.css"' (27b0a520)
+2018-09-18T20:57:19.7515598+07:00 0HLGTDQICDRSS:00000001 [INF] Sending file. Request path: '"/lib/jquery/dist/jquery.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\jquery\dist\jquery.js"' (27b0a520)
+2018-09-18T20:57:19.7740527+07:00 0HLGTDQICDRSK:00000002 [INF] Request finished in 516.6606ms 200 text/css (791a596a)
+2018-09-18T20:57:19.8148982+07:00 0HLGTDQICDRSS:00000001 [INF] Request finished in 422.1429ms 200 application/javascript (791a596a)
+2018-09-18T20:58:37.9951678+07:00 0HLGTDRAHR5N7:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/   (ca22a1cb)
+2018-09-18T20:58:37.9951678+07:00 0HLGTDRAHR5N8:00000001 [INF] Request starting HTTP/1.1 DEBUG http://localhost:57431/  0 (ca22a1cb)
+2018-09-18T20:58:38.0433851+07:00 0HLGTDRAHR5N8:00000001 [INF] Request finished in 52.0074ms 200  (791a596a)
+2018-09-18T20:58:38.5819262+07:00 0HLGTDRAHR5N7:00000001 [INF] Route matched with "{action = \"Index\", controller = \"Home\", area = \"\"}". Executing action "NiTiErp.Controllers.HomeController.Index (NiTiErp)" (a44c0341)
+2018-09-18T20:58:38.6218408+07:00 0HLGTDRAHR5N7:00000001 [INF] Executing action method "NiTiErp.Controllers.HomeController.Index (NiTiErp)" - Validation state: Valid (dad538d7)
+2018-09-18T20:58:38.6308304+07:00 0HLGTDRAHR5N7:00000001 [INF] Entity Framework Core "2.1.0-rtm-30799" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-09-18T20:58:38.7553080+07:00 0HLGTDRAHR5N7:00000001 [WRN] The Include operation for navigation '"[c].Products"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2018-09-18T20:58:38.8551896+07:00 0HLGTDRAHR5N7:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [c].[Id], [c].[Name], [c].[Description], [c].[ParentId], [c].[HomeOrder], [c].[Image], [c].[HomeFlag], [c].[DateCreated], [c].[DateModified], [c].[SortOrder], [c].[Status], [c].[SeoPageTitle], [c].[SeoAlias], [c].[SeoKeywords], [c].[SeoDescription]
+FROM [ProductCategories] AS [c]
+WHERE [c].[HomeFlag] = 1
+ORDER BY [c].[HomeOrder], [c].[Id]" (0723d8ff)
+2018-09-18T20:58:38.9131162+07:00 0HLGTDRAHR5N7:00000001 [INF] Executed DbCommand ("19"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[HomeOrder], [t].[Id], [c.Products].[Id] AS [Id0], [c.Products].[Name], [c.Products].[CategoryId], [c.Products].[Image], [c.Products].[Price], [c.Products].[PromotionPrice], [c.Products].[OriginalPrice], [c.Products].[Description], [c.Products].[Content], [c.Products].[HomeFlag], [c.Products].[HotFlag], [c.Products].[ViewCount], [c.Products].[Tags], [c.Products].[Unit], [c.Products].[SeoPageTitle], [c.Products].[SeoAlias], [c.Products].[SeoKeywords], [c.Products].[SeoDescription], [c.Products].[DateCreated], [c.Products].[DateModified], [c.Products].[Status]
+FROM [Products] AS [c.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [c0].[HomeOrder], [c0].[Id]
+    FROM [ProductCategories] AS [c0]
+    WHERE [c0].[HomeFlag] = 1
+    ORDER BY [c0].[HomeOrder], [c0].[Id]
+) AS [t] ON [c.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[HomeOrder], [t].[Id]" (0723d8ff)
+2018-09-18T20:58:38.9915477+07:00 0HLGTDRAHR5N7:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) AND ([x].[HotFlag] = 1)
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2018-09-18T20:58:39.0192562+07:00 0HLGTDRAHR5N7:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [t].[Id0], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[ViewCount], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Status]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id], [x.ProductCategory0].[Id] AS [Id0]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE ([x0].[Status] = 1) AND ([x0].[HotFlag] = 1)
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id], [x.ProductCategory0].[Id]
+) AS [t] ON [x.ProductCategory.Products].[CategoryId] = [t].[Id0]
+ORDER BY [t].[DateCreated] DESC, [t].[Id], [t].[Id0]" (0723d8ff)
+2018-09-18T20:58:39.0862927+07:00 0HLGTDRAHR5N7:00000001 [INF] Executed DbCommand ("6"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2018-09-18T20:58:39.0989557+07:00 0HLGTDRAHR5N7:00000001 [INF] Executed DbCommand ("6"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [t].[Id0], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[ViewCount], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Status]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id], [x.ProductCategory0].[Id] AS [Id0]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id], [x.ProductCategory0].[Id]
+) AS [t] ON [x.ProductCategory.Products].[CategoryId] = [t].[Id0]
+ORDER BY [t].[DateCreated] DESC, [t].[Id], [t].[Id0]" (0723d8ff)
+2018-09-18T20:58:39.1419016+07:00 0HLGTDRAHR5N7:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[Image], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[DateCreated], [x].[DateModified], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [Blogs] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC, [x].[Id]" (0723d8ff)
+2018-09-18T20:58:39.1651077+07:00 0HLGTDRAHR5N7:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Image], [x].[Url], [x].[CaptionInner], [x].[DisplayOrder], [x].[Status], [x].[Content], [x].[GroupAlias]
+FROM [Slides] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)" (0723d8ff)
+2018-09-18T20:58:39.1803302+07:00 0HLGTDRAHR5N7:00000001 [INF] Executed action method "NiTiErp.Controllers.HomeController.Index (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 551.1652ms. (50a9e262)
+2018-09-18T20:58:39.7317107+07:00 0HLGTDRAHR5N7:00000001 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2018-09-18T20:58:41.1195925+07:00 0HLGTDRAHR5N7:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2018-09-18T20:58:41.1277639+07:00 0HLGTDRAHR5N7:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2018-09-18T20:58:41.5397105+07:00 0HLGTDRAHR5N7:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2018-09-18T20:58:41.5427033+07:00 0HLGTDRAHR5N7:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2018-09-18T20:58:41.6504562+07:00 0HLGTDRAHR5N7:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2018-09-18T20:58:41.6533454+07:00 0HLGTDRAHR5N7:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2018-09-18T20:58:41.8543350+07:00 0HLGTDRAHR5N7:00000001 [INF] Executed ViewResult - view "Index" executed in 2659.4328ms. (f66409e9)
+2018-09-18T20:58:41.8568442+07:00 0HLGTDRAHR5N7:00000001 [INF] Executed action "NiTiErp.Controllers.HomeController.Index (NiTiErp)" in 3272.6159ms (afa2e885)
+2018-09-18T20:58:42.3656463+07:00 0HLGTDRAHR5N7:00000001 [INF] Request finished in 4378.1752ms 200 text/html; charset=utf-8 (791a596a)
+2018-09-18T20:58:42.5008104+07:00 0HLGTDRAHR5NA:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/notifyjs/dist/styles/metro/notify-metro.css   (ca22a1cb)
+2018-09-18T20:58:42.5008281+07:00 0HLGTDRAHR5NC:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/js/bootstrap.min.js   (ca22a1cb)
+2018-09-18T20:58:42.5101331+07:00 0HLGTDRAHR5NB:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/js/owl.carousel.min.js   (ca22a1cb)
+2018-09-18T20:58:42.5145304+07:00 0HLGTDRAHR5N9:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/style.css   (ca22a1cb)
+2018-09-18T20:58:42.5170866+07:00 0HLGTDRAHR5ND:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/js/mobile-menu.js   (ca22a1cb)
+2018-09-18T20:58:42.5609149+07:00 0HLGTDRAHR5NA:00000001 [INF] Sending file. Request path: '"/lib/notifyjs/dist/styles/metro/notify-metro.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\notifyjs\dist\styles\metro\notify-metro.css"' (27b0a520)
+2018-09-18T20:58:42.5759060+07:00 0HLGTDRAHR5NA:00000001 [INF] Request finished in 77.0689ms 200 text/css (791a596a)
+2018-09-18T20:58:42.6221909+07:00 0HLGTDRAHR5NE:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/flag-english.jpg   (ca22a1cb)
+2018-09-18T20:58:42.6268810+07:00 0HLGTDRAHR5NF:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/js/jquery-ui.js   (ca22a1cb)
+2018-09-18T20:58:42.6397259+07:00 0HLGTDRAHR5N9:00000001 [INF] Sending file. Request path: '"/client-side/style.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\style.css"' (27b0a520)
+2018-09-18T20:58:42.6564098+07:00 0HLGTDRAHR5N9:00000001 [INF] Request finished in 158.2815ms 200 text/css (791a596a)
+2018-09-18T20:58:42.6714305+07:00 0HLGTDRAHR5NG:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/js/main.js   (ca22a1cb)
+2018-09-18T20:58:42.6794600+07:00 0HLGTDRAHR5NE:00000001 [INF] Sending file. Request path: '"/client-side/images/flag-english.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\flag-english.jpg"' (27b0a520)
+2018-09-18T20:58:42.6834204+07:00 0HLGTDRAHR5NE:00000001 [INF] Request finished in 103.5291ms 200 image/jpeg (791a596a)
+2018-09-18T20:58:42.6889259+07:00 0HLGTDRAHR5NH:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/js/countdown.js   (ca22a1cb)
+2018-09-18T20:58:42.7205655+07:00 0HLGTDRAHR5NG:00000001 [INF] Sending file. Request path: '"/client-side/js/main.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\js\main.js"' (27b0a520)
+2018-09-18T20:58:42.7297551+07:00 0HLGTDRAHR5NG:00000001 [INF] Request finished in 64.0001ms 200 application/javascript (791a596a)
+2018-09-18T20:58:42.7573703+07:00 0HLGTDRAHR5NI:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/js/revolution-slider.js   (ca22a1cb)
+2018-09-18T20:58:42.7626801+07:00 0HLGTDRAHR5NH:00000001 [INF] Sending file. Request path: '"/client-side/js/countdown.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\js\countdown.js"' (27b0a520)
+2018-09-18T20:58:42.7656216+07:00 0HLGTDRAHR5NJ:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/notifyjs/dist/notify.js   (ca22a1cb)
+2018-09-18T20:58:42.7702706+07:00 0HLGTDRAHR5NC:00000001 [INF] Sending file. Request path: '"/client-side/js/bootstrap.min.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\js\bootstrap.min.js"' (27b0a520)
+2018-09-18T20:58:42.7793930+07:00 0HLGTDRAHR5NH:00000001 [INF] Request finished in 79.1788ms 200 application/javascript (791a596a)
+2018-09-18T20:58:42.7845703+07:00 0HLGTDRAHR5NC:00000001 [INF] Request finished in 281.4942ms 200 application/javascript (791a596a)
+2018-09-18T20:58:42.7925747+07:00 0HLGTDRAHR5NK:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/notifyjs/dist/styles/metro/notify-metro.js   (ca22a1cb)
+2018-09-18T20:58:42.7968743+07:00 0HLGTDRAHR5NL:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/mustache/mustache.js   (ca22a1cb)
+2018-09-18T20:58:42.8002789+07:00 0HLGTDRAHR5NM:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-app/shared/tedu.js?v=cwEWxNgDiuVvz-MFQOwfCIHDAqm_x7qlngj3ZwYq-7s   (ca22a1cb)
+2018-09-18T20:58:42.8063513+07:00 0HLGTDRAHR5NK:00000001 [INF] Sending file. Request path: '"/lib/notifyjs/dist/styles/metro/notify-metro.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\notifyjs\dist\styles\metro\notify-metro.js"' (27b0a520)
+2018-09-18T20:58:42.8210026+07:00 0HLGTDRAHR5NK:00000001 [INF] Request finished in 26.884ms 200 application/javascript (791a596a)
+2018-09-18T20:58:42.8552590+07:00 0HLGTDRAHR5NN:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/flag-german.jpg   (ca22a1cb)
+2018-09-18T20:58:42.8608382+07:00 0HLGTDRAHR5NO:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-app/controllers/home/index.js?v=ieb1isNHo5jqJzmVv6Jtv6OcH414HbTn_gWHxiRHqZQ   (ca22a1cb)
+2018-09-18T20:58:42.8639016+07:00 0HLGTDRAHR5NL:00000001 [INF] Sending file. Request path: '"/lib/mustache/mustache.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\mustache\mustache.js"' (27b0a520)
+2018-09-18T20:58:42.8888934+07:00 0HLGTDRAHR5NL:00000001 [INF] Request finished in 80.9494ms 200 application/javascript (791a596a)
+2018-09-18T20:58:42.8976436+07:00 0HLGTDRAHR5NO:00000001 [INF] Sending file. Request path: '"/client-app/controllers/home/index.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-app\controllers\home\index.js"' (27b0a520)
+2018-09-18T20:58:42.9002644+07:00 0HLGTDRAHR5NR:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/flag-chile.jpg   (ca22a1cb)
+2018-09-18T20:58:42.9169509+07:00 0HLGTDRAHR5NQ:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/flag-brazil.jpg   (ca22a1cb)
+2018-09-18T20:58:42.9482158+07:00 0HLGTDRAHR5NO:00000001 [INF] Request finished in 76.3564ms 200 application/javascript (791a596a)
+2018-09-18T20:58:42.9558140+07:00 0HLGTDRAHR5NT:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/products/product-1.jpg   (ca22a1cb)
+2018-09-18T20:58:42.9598499+07:00 0HLGTDRAHR5NS:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/logoniti.png   (ca22a1cb)
+2018-09-18T20:58:42.9649787+07:00 0HLGTDRAHR5NQ:00000001 [INF] Sending file. Request path: '"/client-side/images/flag-brazil.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\flag-brazil.jpg"' (27b0a520)
+2018-09-18T20:58:42.9694177+07:00 0HLGTDRAHR5NP:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-app/controllers/base/index.js?v=5fi4vbzb_mldD45o4lGiJYqcjX0tsM69hhrxoXHZY4Q   (ca22a1cb)
+2018-09-18T20:58:42.9718635+07:00 0HLGTDRAHR5NQ:00000001 [INF] Request finished in 78.545ms 200 image/jpeg (791a596a)
+2018-09-18T20:58:42.9788910+07:00 0HLGTDRAHR5N7:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/js/jquery.min.js   (ca22a1cb)
+2018-09-18T20:58:42.9827636+07:00 0HLGTDRAHR5NP:00000001 [INF] Sending file. Request path: '"/client-app/controllers/base/index.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-app\controllers\base\index.js"' (27b0a520)
+2018-09-18T20:58:42.9876312+07:00 0HLGTDRAHR5NP:00000001 [INF] Request finished in 96.5896ms 200 application/javascript (791a596a)
+2018-09-18T20:58:42.9937369+07:00 0HLGTDRAHR5NU:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/banner-left.jpg   (ca22a1cb)
+2018-09-18T20:58:42.9967200+07:00 0HLGTDRAHR5N8:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/flag-default.jpg   (ca22a1cb)
+2018-09-18T20:58:43.0024211+07:00 0HLGTDRAHR5NS:00000001 [INF] Sending file. Request path: '"/client-side/images/logoniti.png"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\logoniti.png"' (27b0a520)
+2018-09-18T20:58:43.0065491+07:00 0HLGTDRAHR5NS:00000001 [INF] Request finished in 54.4622ms 200 image/png (791a596a)
+2018-09-18T20:58:43.0146807+07:00 0HLGTDRAHR5NV:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/slider/slide-1.jpg   (ca22a1cb)
+2018-09-18T20:58:43.0209848+07:00 0HLGTDRAHR5N8:00000002 [INF] Sending file. Request path: '"/client-side/images/flag-default.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\flag-default.jpg"' (27b0a520)
+2018-09-18T20:58:43.0256959+07:00 0HLGTDRAHR5N8:00000002 [INF] Request finished in 31.9266ms 200 image/jpeg (791a596a)
+2018-09-18T20:58:43.0305025+07:00 0HLGTDRAHR5O0:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/slider/slide-3.jpg   (ca22a1cb)
+2018-09-18T20:58:43.0368228+07:00 0HLGTDRAHR5O1:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/slider/slide-2.jpg   (ca22a1cb)
+2018-09-18T20:58:43.0547616+07:00 0HLGTDRAHR5O2:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/sub1.jpg   (ca22a1cb)
+2018-09-18T20:58:43.0779055+07:00 0HLGTDRAHR5O3:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/products/product-1.jpg?w=190   (ca22a1cb)
+2018-09-18T20:58:43.0834181+07:00 0HLGTDRAHR5O4:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/banner-sunglasses.jpg   (ca22a1cb)
+2018-09-18T20:58:43.0843464+07:00 0HLGTDRAHR5O5:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/banner-women.jpg   (ca22a1cb)
+2018-09-18T20:58:43.0874158+07:00 0HLGTDRAHR5O3:00000001 [INF] Resizing /client-side/images/products/product-1.jpg with params w: 190, h: 0, autorotate: False, quality: 100, format: jpg, mode: max (d9bba74d)
+2018-09-18T20:58:43.2099179+07:00 0HLGTDRAHR5O5:00000001 [INF] Sending file. Request path: '"/client-side/images/banner-women.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\banner-women.jpg"' (27b0a520)
+2018-09-18T20:58:43.2110117+07:00 0HLGTDRAHR5O4:00000001 [INF] Sending file. Request path: '"/client-side/images/banner-sunglasses.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\banner-sunglasses.jpg"' (27b0a520)
+2018-09-18T20:58:43.2144670+07:00 0HLGTDRAHR5O4:00000001 [INF] Request finished in 131.8599ms 200 image/jpeg (791a596a)
+2018-09-18T20:58:43.2194851+07:00 0HLGTDRAHR5O5:00000001 [INF] Request finished in 131.1076ms 200 image/jpeg (791a596a)
+2018-09-18T20:58:43.2220667+07:00 0HLGTDRAHR5O6:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/sub1a.jpg   (ca22a1cb)
+2018-09-18T20:58:43.2239614+07:00 0HLGTDRAHR5O7:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/banner-kids.jpg   (ca22a1cb)
+2018-09-18T20:58:43.2660128+07:00 0HLGTDRAHR5O6:00000001 [INF] Sending file. Request path: '"/client-side/images/sub1a.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\sub1a.jpg"' (27b0a520)
+2018-09-18T20:58:43.2677100+07:00 0HLGTDRAHR5NB:00000001 [INF] Sending file. Request path: '"/client-side/js/owl.carousel.min.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\js\owl.carousel.min.js"' (27b0a520)
+2018-09-18T20:58:43.2775319+07:00 0HLGTDRAHR5NB:00000001 [INF] Request finished in 778.3036ms 200 application/javascript (791a596a)
+2018-09-18T20:58:43.2763261+07:00 0HLGTDRAHR5O6:00000001 [INF] Request finished in 51.8264ms 200 image/jpeg (791a596a)
+2018-09-18T20:58:43.2966175+07:00 0HLGTDRAHR5O8:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/banner-arrival.jpg   (ca22a1cb)
+2018-09-18T20:58:43.3009554+07:00 0HLGTDRAHR5O9:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/footer-logo.png   (ca22a1cb)
+2018-09-18T20:58:43.3037290+07:00 0HLGTDRAHR5O7:00000001 [INF] Sending file. Request path: '"/client-side/images/banner-kids.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\banner-kids.jpg"' (27b0a520)
+2018-09-18T20:58:43.3073581+07:00 0HLGTDRAHR5O7:00000001 [INF] Request finished in 84.2395ms 200 image/jpeg (791a596a)
+2018-09-18T20:58:43.3131322+07:00 0HLGTDRAHR5OA:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/discover.png   (ca22a1cb)
+2018-09-18T20:58:43.3859824+07:00 0HLGTDRAHR5O9:00000001 [INF] Sending file. Request path: '"/client-side/images/footer-logo.png"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\footer-logo.png"' (27b0a520)
+2018-09-18T20:58:43.3929406+07:00 0HLGTDRAHR5OB:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/flag-spain.jpg   (ca22a1cb)
+2018-09-18T20:58:43.3978902+07:00 0HLGTDRAHR5O9:00000001 [INF] Request finished in 93.9078ms 200 image/png (791a596a)
+2018-09-18T20:58:43.3996941+07:00 0HLGTDRAHR5OC:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/paypal.png   (ca22a1cb)
+2018-09-18T20:58:43.4095938+07:00 0HLGTDRAHR5OD:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/master-card.png   (ca22a1cb)
+2018-09-18T20:58:43.4440126+07:00 0HLGTDRAHR5OB:00000001 [INF] Sending file. Request path: '"/client-side/images/flag-spain.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\flag-spain.jpg"' (27b0a520)
+2018-09-18T20:58:43.4525027+07:00 0HLGTDRAHR5OB:00000001 [INF] Request finished in 62.1192ms 200 image/jpeg (791a596a)
+2018-09-18T20:58:43.5725136+07:00 0HLGTDRAHR5OE:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/visa.png   (ca22a1cb)
+2018-09-18T20:58:43.5756949+07:00 0HLGTDRAHR5O8:00000001 [INF] Sending file. Request path: '"/client-side/images/banner-arrival.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\banner-arrival.jpg"' (27b0a520)
+2018-09-18T20:58:43.5788830+07:00 0HLGTDRAHR5OD:00000001 [INF] Sending file. Request path: '"/client-side/images/master-card.png"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\master-card.png"' (27b0a520)
+2018-09-18T20:58:43.6126151+07:00 0HLGTDRAHR5O8:00000001 [INF] Request finished in 298.1178ms 200 image/jpeg (791a596a)
+2018-09-18T20:58:43.6210263+07:00 0HLGTDRAHR5OD:00000001 [INF] Request finished in 179.355ms 200 image/png (791a596a)
+2018-09-18T20:58:43.6633897+07:00 0HLGTDRAHR5OC:00000001 [INF] Sending file. Request path: '"/client-side/images/paypal.png"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\paypal.png"' (27b0a520)
+2018-09-18T20:58:43.8349046+07:00 0HLGTDRAHR5ND:00000001 [INF] Sending file. Request path: '"/client-side/js/mobile-menu.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\js\mobile-menu.js"' (27b0a520)
+2018-09-18T20:58:43.8414307+07:00 0HLGTDRAHR5NM:00000001 [INF] Sending file. Request path: '"/client-app/shared/tedu.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-app\shared\tedu.js"' (27b0a520)
+2018-09-18T20:58:43.8464168+07:00 0HLGTDRAHR5ND:00000001 [INF] Request finished in 1341.1627ms 200 application/javascript (791a596a)
+2018-09-18T20:58:43.8496914+07:00 0HLGTDRAHR5NM:00000001 [INF] Request finished in 1049.064ms 200 application/javascript (791a596a)
+2018-09-18T20:58:43.8554599+07:00 0HLGTDRAHR5NJ:00000001 [INF] Sending file. Request path: '"/lib/notifyjs/dist/notify.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\notifyjs\dist\notify.js"' (27b0a520)
+2018-09-18T20:58:43.8620918+07:00 0HLGTDRAHR5NN:00000001 [INF] Sending file. Request path: '"/client-side/images/flag-german.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\flag-german.jpg"' (27b0a520)
+2018-09-18T20:58:43.8712137+07:00 0HLGTDRAHR5NR:00000001 [INF] Sending file. Request path: '"/client-side/images/flag-chile.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\flag-chile.jpg"' (27b0a520)
+2018-09-18T20:58:43.8740139+07:00 0HLGTDRAHR5NN:00000001 [INF] Request finished in 1046.2081ms 200 image/jpeg (791a596a)
+2018-09-18T20:58:43.8767791+07:00 0HLGTDRAHR5NJ:00000001 [INF] Request finished in 1097.3942ms 200 application/javascript (791a596a)
+2018-09-18T20:58:43.8798130+07:00 0HLGTDRAHR5NR:00000001 [INF] Request finished in 985.0729ms 200 image/jpeg (791a596a)
+2018-09-18T20:58:43.8829305+07:00 0HLGTDRAHR5NT:00000001 [INF] Sending file. Request path: '"/client-side/images/products/product-1.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\products\product-1.jpg"' (27b0a520)
+2018-09-18T20:58:43.8860026+07:00 0HLGTDRAHR5NU:00000001 [INF] Sending file. Request path: '"/client-side/images/banner-left.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\banner-left.jpg"' (27b0a520)
+2018-09-18T20:58:43.8891497+07:00 0HLGTDRAHR5O2:00000001 [INF] Sending file. Request path: '"/client-side/images/sub1.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\sub1.jpg"' (27b0a520)
+2018-09-18T20:58:43.8919933+07:00 0HLGTDRAHR5NT:00000001 [INF] Request finished in 934.7421ms 200 image/jpeg (791a596a)
+2018-09-18T20:58:43.8948259+07:00 0HLGTDRAHR5O2:00000001 [INF] Request finished in 838.8547ms 200 image/jpeg (791a596a)
+2018-09-18T20:58:43.9001382+07:00 0HLGTDRAHR5NU:00000001 [INF] Request finished in 898.5185ms 200 image/jpeg (791a596a)
+2018-09-18T20:58:43.9031618+07:00 0HLGTDRAHR5OA:00000001 [INF] Sending file. Request path: '"/client-side/images/discover.png"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\discover.png"' (27b0a520)
+2018-09-18T20:58:43.9072332+07:00 0HLGTDRAHR5OC:00000001 [INF] Request finished in 300.8966ms 200 image/png (791a596a)
+2018-09-18T20:58:43.9449904+07:00 0HLGTDRAHR5OA:00000001 [INF] Request finished in 595.4836ms 200 image/png (791a596a)
+2018-09-18T20:58:43.9477437+07:00 0HLGTDRAHR5OF:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/shortcodes/featured-box.css   (ca22a1cb)
+2018-09-18T20:58:43.9518260+07:00 0HLGTDRAHR5OG:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/responsive.css   (ca22a1cb)
+2018-09-18T20:58:43.9544642+07:00 0HLGTDRAHR5OH:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/style.css   (ca22a1cb)
+2018-09-18T20:58:43.9574048+07:00 0HLGTDRAHR5OE:00000001 [INF] Sending file. Request path: '"/client-side/images/visa.png"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\visa.png"' (27b0a520)
+2018-09-18T20:58:43.9614028+07:00 0HLGTDRAHR5OE:00000001 [INF] Request finished in 504.0104ms 200 image/png (791a596a)
+2018-09-18T20:58:43.9645937+07:00 0HLGTDRAHR5NA:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/animate.css   (ca22a1cb)
+2018-09-18T20:58:43.9793761+07:00 0HLGTDRAHR5OF:00000001 [INF] Sending file. Request path: '"/client-side/css/shortcodes/featured-box.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\shortcodes\featured-box.css"' (27b0a520)
+2018-09-18T20:58:43.9828547+07:00 0HLGTDRAHR5OF:00000001 [INF] Request finished in 71.7977ms 200 text/css (791a596a)
+2018-09-18T20:58:43.9877979+07:00 0HLGTDRAHR5NH:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/owl.carousel.css   (ca22a1cb)
+2018-09-18T20:58:43.9942861+07:00 0HLGTDRAHR5NE:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/bootstrap.min.css   (ca22a1cb)
+2018-09-18T20:58:44.0077685+07:00 0HLGTDRAHR5NA:00000002 [INF] Sending file. Request path: '"/client-side/css/animate.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\animate.css"' (27b0a520)
+2018-09-18T20:58:44.0108603+07:00 0HLGTDRAHR5NA:00000002 [INF] Request finished in 45.9891ms 200 text/css (791a596a)
+2018-09-18T20:58:44.0153951+07:00 0HLGTDRAHR5NQ:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/font-awesome.min.css   (ca22a1cb)
+2018-09-18T20:58:44.0359470+07:00 0HLGTDRAHR5OG:00000001 [INF] Sending file. Request path: '"/client-side/css/responsive.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\responsive.css"' (27b0a520)
+2018-09-18T20:58:44.0400682+07:00 0HLGTDRAHR5NQ:00000002 [INF] Sending file. Request path: '"/client-side/css/font-awesome.min.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\font-awesome.min.css"' (27b0a520)
+2018-09-18T20:58:44.0472306+07:00 0HLGTDRAHR5OG:00000001 [INF] Request finished in 128.0302ms 200 text/css (791a596a)
+2018-09-18T20:58:44.0486793+07:00 0HLGTDRAHR5NQ:00000002 [INF] Request finished in 30.5778ms 200 text/css (791a596a)
+2018-09-18T20:58:44.0550456+07:00 0HLGTDRAHR5N9:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/owl.transitions.css   (ca22a1cb)
+2018-09-18T20:58:44.0685359+07:00 0HLGTDRAHR5NH:00000002 [INF] Sending file. Request path: '"/client-side/css/owl.carousel.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\owl.carousel.css"' (27b0a520)
+2018-09-18T20:58:44.0711620+07:00 0HLGTDRAHR5NH:00000002 [INF] Request finished in 85.5638ms 200 text/css (791a596a)
+2018-09-18T20:58:44.0741218+07:00 0HLGTDRAHR5O6:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/pe-icon-7-stroke.min.css   (ca22a1cb)
+2018-09-18T20:58:44.1382143+07:00 0HLGTDRAHR5O6:00000002 [INF] Sending file. Request path: '"/client-side/css/pe-icon-7-stroke.min.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\pe-icon-7-stroke.min.css"' (27b0a520)
+2018-09-18T20:58:44.1411864+07:00 0HLGTDRAHR5O6:00000002 [INF] Request finished in 66.6424ms 200 text/css (791a596a)
+2018-09-18T20:58:44.1455967+07:00 0HLGTDRAHR5NP:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/simple-line-icons.css   (ca22a1cb)
+2018-09-18T20:58:44.1479600+07:00 0HLGTDRAHR5NL:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/quick_view_popup.css   (ca22a1cb)
+2018-09-18T20:58:44.1884636+07:00 0HLGTDRAHR5OD:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/jquery-ui.css   (ca22a1cb)
+2018-09-18T20:58:44.2024705+07:00 0HLGTDRAHR5NL:00000002 [INF] Sending file. Request path: '"/client-side/css/quick_view_popup.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\quick_view_popup.css"' (27b0a520)
+2018-09-18T20:58:44.2093497+07:00 0HLGTDRAHR5NL:00000002 [INF] Request finished in 57.1045ms 200 text/css (791a596a)
+2018-09-18T20:58:44.2122893+07:00 0HLGTDRAHR5OD:00000002 [INF] Sending file. Request path: '"/client-side/css/jquery-ui.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\jquery-ui.css"' (27b0a520)
+2018-09-18T20:58:44.2141840+07:00 0HLGTDRAHR5NP:00000002 [INF] Sending file. Request path: '"/client-side/css/simple-line-icons.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\simple-line-icons.css"' (27b0a520)
+2018-09-18T20:58:44.2159977+07:00 0HLGTDRAHR5O9:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/shortcodes/shortcodes.css   (ca22a1cb)
+2018-09-18T20:58:44.2192754+07:00 0HLGTDRAHR5OD:00000002 [INF] Request finished in 27.9492ms 200 text/css (791a596a)
+2018-09-18T20:58:44.2206852+07:00 0HLGTDRAHR5NP:00000002 [INF] Request finished in 75.6846ms 200 text/css (791a596a)
+2018-09-18T20:58:44.2251177+07:00 0HLGTDRAHR5ND:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/shortcodes/tooltip.css   (ca22a1cb)
+2018-09-18T20:58:44.2273952+07:00 0HLGTDRAHR5OC:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/flexslider.css   (ca22a1cb)
+2018-09-18T20:58:44.2519137+07:00 0HLGTDRAHR5OC:00000002 [INF] Sending file. Request path: '"/client-side/css/flexslider.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\flexslider.css"' (27b0a520)
+2018-09-18T20:58:44.2547803+07:00 0HLGTDRAHR5ND:00000002 [INF] Sending file. Request path: '"/client-side/css/shortcodes/tooltip.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\shortcodes\tooltip.css"' (27b0a520)
+2018-09-18T20:58:44.2568183+07:00 0HLGTDRAHR5OC:00000002 [INF] Request finished in 29.4884ms 200 text/css (791a596a)
+2018-09-18T20:58:44.2609475+07:00 0HLGTDRAHR5NS:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/revolution-slider.css   (ca22a1cb)
+2018-09-18T20:58:44.2639677+07:00 0HLGTDRAHR5NO:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/shortcode.css   (ca22a1cb)
+2018-09-18T20:58:44.2650658+07:00 0HLGTDRAHR5ND:00000002 [INF] Request finished in 38.3698ms 200 text/css (791a596a)
+2018-09-18T20:58:44.2717515+07:00 0HLGTDRAHR5N8:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/shortcodes/post.css   (ca22a1cb)
+2018-09-18T20:58:44.2793933+07:00 0HLGTDRAHR5NS:00000002 [INF] Sending file. Request path: '"/client-side/css/revolution-slider.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\revolution-slider.css"' (27b0a520)
+2018-09-18T20:58:44.2850757+07:00 0HLGTDRAHR5NS:00000002 [INF] Request finished in 34.805ms 200 text/css (791a596a)
+2018-09-18T20:58:44.2880657+07:00 0HLGTDRAHR5NK:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/blog.css   (ca22a1cb)
+2018-09-18T20:58:44.2910958+07:00 0HLGTDRAHR5NV:00000001 [INF] Sending file. Request path: '"/client-side/images/slider/slide-1.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\slider\slide-1.jpg"' (27b0a520)
+2018-09-18T20:58:44.2936483+07:00 0HLGTDRAHR5OB:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/css/shortcodes/pricing-table.css   (ca22a1cb)
+2018-09-18T20:58:44.2950307+07:00 0HLGTDRAHR5NV:00000001 [INF] Request finished in 1284.2279ms 200 image/jpeg (791a596a)
+2018-09-18T20:58:44.2990542+07:00 0HLGTDRAHR5NF:00000001 [INF] Sending file. Request path: '"/client-side/js/jquery-ui.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\js\jquery-ui.js"' (27b0a520)
+2018-09-18T20:58:44.3054025+07:00 0HLGTDRAHR5NF:00000001 [INF] Request finished in 1691.2003ms 200 application/javascript (791a596a)
+2018-09-18T20:58:44.3747844+07:00 0HLGTDRAHR5N9:00000002 [INF] Sending file. Request path: '"/client-side/css/owl.transitions.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\owl.transitions.css"' (27b0a520)
+2018-09-18T20:58:44.3785630+07:00 0HLGTDRAHR5NO:00000002 [INF] Sending file. Request path: '"/client-side/css/shortcode.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\shortcode.css"' (27b0a520)
+2018-09-18T20:58:44.3810878+07:00 0HLGTDRAHR5N9:00000002 [INF] Request finished in 325.8776ms 200 text/css (791a596a)
+2018-09-18T20:58:44.4026088+07:00 0HLGTDRAHR5N8:00000003 [INF] Sending file. Request path: '"/client-side/css/shortcodes/post.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\shortcodes\post.css"' (27b0a520)
+2018-09-18T20:58:44.4060430+07:00 0HLGTDRAHR5OB:00000002 [INF] Sending file. Request path: '"/client-side/css/shortcodes/pricing-table.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\shortcodes\pricing-table.css"' (27b0a520)
+2018-09-18T20:58:44.4083646+07:00 0HLGTDRAHR5NO:00000002 [INF] Request finished in 119.5101ms 200 text/css (791a596a)
+2018-09-18T20:58:44.4116429+07:00 0HLGTDRAHR5N8:00000003 [INF] Request finished in 137.5827ms 200 text/css (791a596a)
+2018-09-18T20:58:44.4159015+07:00 0HLGTDRAHR5OB:00000002 [INF] Request finished in 118.8231ms 200 text/css (791a596a)
+2018-09-18T20:58:44.4190284+07:00 0HLGTDRAHR5NK:00000002 [INF] Sending file. Request path: '"/client-side/css/blog.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\blog.css"' (27b0a520)
+2018-09-18T20:58:44.4225108+07:00 0HLGTDRAHR5O1:00000001 [INF] Sending file. Request path: '"/client-side/images/slider/slide-2.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\slider\slide-2.jpg"' (27b0a520)
+2018-09-18T20:58:44.4253792+07:00 0HLGTDRAHR5NK:00000002 [INF] Request finished in 135.777ms 200 text/css (791a596a)
+2018-09-18T20:58:44.4277795+07:00 0HLGTDRAHR5O9:00000002 [INF] Sending file. Request path: '"/client-side/css/shortcodes/shortcodes.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\shortcodes\shortcodes.css"' (27b0a520)
+2018-09-18T20:58:44.4321221+07:00 0HLGTDRAHR5O1:00000001 [INF] Request finished in 1395.2952ms 200 image/jpeg (791a596a)
+2018-09-18T20:58:44.4877649+07:00 0HLGTDRAHR5O9:00000002 [INF] Request finished in 218.4006ms 200 text/css (791a596a)
+2018-09-18T20:58:44.4943029+07:00 0HLGTDRAHR5NE:00000002 [INF] Sending file. Request path: '"/client-side/css/bootstrap.min.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\bootstrap.min.css"' (27b0a520)
+2018-09-18T20:58:44.4983985+07:00 0HLGTDRAHR5OH:00000001 [INF] Sending file. Request path: '"/client-side/css/style.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\css\style.css"' (27b0a520)
+2018-09-18T20:58:44.5017817+07:00 0HLGTDRAHR5NE:00000002 [INF] Request finished in 502.947ms 200 text/css (791a596a)
+2018-09-18T20:58:44.5050466+07:00 0HLGTDRAHR5N7:00000002 [INF] Sending file. Request path: '"/client-side/js/jquery.min.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\js\jquery.min.js"' (27b0a520)
+2018-09-18T20:58:44.5074292+07:00 0HLGTDRAHR5OH:00000001 [INF] Request finished in 550.834ms 200 text/css (791a596a)
+2018-09-18T20:58:44.5099466+07:00 0HLGTDRAHR5O0:00000001 [INF] Sending file. Request path: '"/client-side/images/slider/slide-3.jpg"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\slider\slide-3.jpg"' (27b0a520)
+2018-09-18T20:58:44.5281321+07:00 0HLGTDRAHR5N7:00000002 [INF] Request finished in 1534.5531ms 200 application/javascript (791a596a)
+2018-09-18T20:58:44.5452184+07:00 0HLGTDRAHR5O0:00000001 [INF] Request finished in 1484.5541ms 200 image/jpeg (791a596a)
+2018-09-18T20:58:44.5701216+07:00 0HLGTDRAHR5NI:00000001 [INF] Sending file. Request path: '"/client-side/js/revolution-slider.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\js\revolution-slider.js"' (27b0a520)
+2018-09-18T20:58:44.5815676+07:00 0HLGTDRAHR5NI:00000001 [INF] Request finished in 1840.28ms 200 application/javascript (791a596a)
+2018-09-18T20:58:44.6258133+07:00 0HLGTDRAHR5NG:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/images/bg_text_des.png   (ca22a1cb)
+2018-09-18T20:58:44.6644242+07:00 0HLGTDRAHR5NG:00000002 [INF] Sending file. Request path: '"/client-side/images/bg_text_des.png"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\images\bg_text_des.png"' (27b0a520)
+2018-09-18T20:58:44.6696633+07:00 0HLGTDRAHR5NG:00000002 [INF] Request finished in 43.999ms 200 image/png (791a596a)
+2018-09-18T20:58:44.6952962+07:00 0HLGTDRAHR5O5:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/fonts/font-awesome/fontawesome-webfont.woff2?v=4.7.0   (ca22a1cb)
+2018-09-18T20:58:44.6994640+07:00 0HLGTDRAHR5NJ:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/client-side/fonts/simple-line-icons/Simple-Line-Icons.woff2?v=2.4.0   (ca22a1cb)
+2018-09-18T20:58:44.7074814+07:00 0HLGTDRAHR5O5:00000002 [INF] Sending file. Request path: '"/client-side/fonts/font-awesome/fontawesome-webfont.woff2"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\fonts\font-awesome\fontawesome-webfont.woff2"' (27b0a520)
+2018-09-18T20:58:44.7190723+07:00 0HLGTDRAHR5NJ:00000002 [INF] Sending file. Request path: '"/client-side/fonts/simple-line-icons/Simple-Line-Icons.woff2"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\client-side\fonts\simple-line-icons\Simple-Line-Icons.woff2"' (27b0a520)
+2018-09-18T20:58:44.7217983+07:00 0HLGTDRAHR5O5:00000002 [INF] Request finished in 32.9296ms 200 font/woff2 (791a596a)
+2018-09-18T20:58:44.7231409+07:00 0HLGTDRAHR5NJ:00000002 [INF] Request finished in 40.6103ms 200 font/woff2 (791a596a)
+2018-09-18T20:58:44.8362223+07:00 0HLGTDRAHR5O3:00000001 [INF] Request finished in 1758.1003ms 200 image/jpeg (791a596a)
+2018-09-18T20:58:45.8808729+07:00 0HLGTDRAHR5O7:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/   (ca22a1cb)
+2018-09-18T20:58:45.8884695+07:00 0HLGTDRAHR5O7:00000002 [INF] Route matched with "{action = \"Index\", controller = \"Home\", area = \"\"}". Executing action "NiTiErp.Controllers.HomeController.Index (NiTiErp)" (a44c0341)
+2018-09-18T20:58:45.9030943+07:00 0HLGTDRAHR5O7:00000002 [INF] Executing action method "NiTiErp.Controllers.HomeController.Index (NiTiErp)" - Validation state: Valid (dad538d7)
+2018-09-18T20:58:45.9080285+07:00 0HLGTDRAHR5O7:00000002 [INF] Entity Framework Core "2.1.0-rtm-30799" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-09-18T20:58:45.9183700+07:00 0HLGTDRAHR5O7:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [c].[Id], [c].[Name], [c].[Description], [c].[ParentId], [c].[HomeOrder], [c].[Image], [c].[HomeFlag], [c].[DateCreated], [c].[DateModified], [c].[SortOrder], [c].[Status], [c].[SeoPageTitle], [c].[SeoAlias], [c].[SeoKeywords], [c].[SeoDescription]
+FROM [ProductCategories] AS [c]
+WHERE [c].[HomeFlag] = 1
+ORDER BY [c].[HomeOrder], [c].[Id]" (0723d8ff)
+2018-09-18T20:58:45.9226731+07:00 0HLGTDRAHR5O7:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[HomeOrder], [t].[Id], [c.Products].[Id] AS [Id0], [c.Products].[Name], [c.Products].[CategoryId], [c.Products].[Image], [c.Products].[Price], [c.Products].[PromotionPrice], [c.Products].[OriginalPrice], [c.Products].[Description], [c.Products].[Content], [c.Products].[HomeFlag], [c.Products].[HotFlag], [c.Products].[ViewCount], [c.Products].[Tags], [c.Products].[Unit], [c.Products].[SeoPageTitle], [c.Products].[SeoAlias], [c.Products].[SeoKeywords], [c.Products].[SeoDescription], [c.Products].[DateCreated], [c.Products].[DateModified], [c.Products].[Status]
+FROM [Products] AS [c.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [c0].[HomeOrder], [c0].[Id]
+    FROM [ProductCategories] AS [c0]
+    WHERE [c0].[HomeFlag] = 1
+    ORDER BY [c0].[HomeOrder], [c0].[Id]
+) AS [t] ON [c.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[HomeOrder], [t].[Id]" (0723d8ff)
+2018-09-18T20:58:45.9413304+07:00 0HLGTDRAHR5O7:00000002 [INF] Executed DbCommand ("14"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) AND ([x].[HotFlag] = 1)
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2018-09-18T20:58:45.9559135+07:00 0HLGTDRAHR5O7:00000002 [INF] Executed DbCommand ("7"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [t].[Id0], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[ViewCount], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Status]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id], [x.ProductCategory0].[Id] AS [Id0]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE ([x0].[Status] = 1) AND ([x0].[HotFlag] = 1)
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id], [x.ProductCategory0].[Id]
+) AS [t] ON [x.ProductCategory.Products].[CategoryId] = [t].[Id0]
+ORDER BY [t].[DateCreated] DESC, [t].[Id], [t].[Id0]" (0723d8ff)
+2018-09-18T20:58:45.9641150+07:00 0HLGTDRAHR5O7:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2018-09-18T20:58:45.9697206+07:00 0HLGTDRAHR5O7:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [t].[Id0], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[ViewCount], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Status]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id], [x.ProductCategory0].[Id] AS [Id0]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id], [x.ProductCategory0].[Id]
+) AS [t] ON [x.ProductCategory.Products].[CategoryId] = [t].[Id0]
+ORDER BY [t].[DateCreated] DESC, [t].[Id], [t].[Id0]" (0723d8ff)
+2018-09-18T20:58:45.9761933+07:00 0HLGTDRAHR5O7:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[Image], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[DateCreated], [x].[DateModified], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [Blogs] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC, [x].[Id]" (0723d8ff)
+2018-09-18T20:58:45.9816477+07:00 0HLGTDRAHR5O7:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Image], [x].[Url], [x].[CaptionInner], [x].[DisplayOrder], [x].[Status], [x].[Content], [x].[GroupAlias]
+FROM [Slides] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)" (0723d8ff)
+2018-09-18T20:58:45.9854858+07:00 0HLGTDRAHR5O7:00000002 [INF] Executed action method "NiTiErp.Controllers.HomeController.Index (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 78.9387ms. (50a9e262)
+2018-09-18T20:58:45.9888457+07:00 0HLGTDRAHR5O7:00000002 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2018-09-18T20:58:45.9950179+07:00 0HLGTDRAHR5O7:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2018-09-18T20:58:46.0008505+07:00 0HLGTDRAHR5O7:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2018-09-18T20:58:46.0098219+07:00 0HLGTDRAHR5O7:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2018-09-18T20:58:46.0136621+07:00 0HLGTDRAHR5O7:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2018-09-18T20:58:46.0190444+07:00 0HLGTDRAHR5O7:00000002 [INF] Executed ViewResult - view "Index" executed in 30.0796ms. (f66409e9)
+2018-09-18T20:58:46.0220320+07:00 0HLGTDRAHR5O7:00000002 [INF] Executed action "NiTiErp.Controllers.HomeController.Index (NiTiErp)" in 130.7449ms (afa2e885)
+2018-09-18T20:58:46.0653101+07:00 0HLGTDRAHR5O7:00000002 [INF] Request finished in 183.1026ms 200 text/html; charset=utf-8 (791a596a)

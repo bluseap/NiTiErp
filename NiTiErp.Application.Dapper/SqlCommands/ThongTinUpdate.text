@@ -20,6 +20,16 @@ r
 update table Functions:	SUCKHOETIM	fa fa-ambulance	Tra cứu Sức khỏe	SUCKHOE	2	1	/admin/timsuckhoe/index
 
 
+create table DaoTaoNhanVien
+
+create table DaoTaoGiaoVien
+
+create table DaoTaoLopGiaoVien
+
+create table DaoTaoLop
+
+create table DaoTaoNoi
+
 create table SucKhoeNoiKham
 
 create table SucKhoeNoiKhamHis
