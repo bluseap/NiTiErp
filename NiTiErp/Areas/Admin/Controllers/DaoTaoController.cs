@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace NiTiErp.Areas.Admin.Controllers
 {
-    public class DaoTaoController : Controller
+    public class DaoTaoController : BaseController
     {
         public IActionResult Index()
         {
