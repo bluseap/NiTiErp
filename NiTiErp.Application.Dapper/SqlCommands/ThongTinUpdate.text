@@ -51,6 +51,10 @@ insert into PhanLoaiSucKhoe ( [Id]      ,[TenPhanLoaiSucKhoe]      ,[Status]    
 values ( 5,		N'Không phân loai',	1,	True,	 0,	'admin',	'2018-01-01 00:00:00.000' )
 
 
+create proc [DaoTaoLopGetList]
+
+create proc  [DaoTaoLopAUD]
+
 create proc  [DaoTaoNoiGetList]
 
 create proc [DaoTaoNoiAUD]
@@ -62,6 +66,7 @@ create proc SucKhoeNoiKhamGetList
 create proc [SucKhoeNhanVienAUD]
 
 create PROC [dbo].[SucKhoeNhanVienGetList]
+
 
 update proc [BangDanhMucGetList]
 

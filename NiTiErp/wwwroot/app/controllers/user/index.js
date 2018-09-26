@@ -5,7 +5,9 @@
         loadKhuVuc();  
 
         loadData();
+
         loadCorporation();
+
         registerEvents();
     }
 

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using NiTiErp.Extensions;
 using NiTiErp.Application.Dapper.Interfaces;
+using System.Net;
 
 namespace NiTiErp.Areas.Admin.Controllers
 {
@@ -22,11 +23,13 @@ namespace NiTiErp.Areas.Admin.Controllers
         {
             var email = User.GetSpecificClaim("Email");
 
+            GetIpAddress();
+
             return View();
         }
 
         public async Task<IActionResult> GetRevenue(string fromDate, string toDate)
-        {
+        {       
             return new OkObjectResult(await _reportService.GetReportAsync(fromDate, toDate));
         }
 
@@ -40,6 +43,21 @@ namespace NiTiErp.Areas.Admin.Controllers
         {
             return new OkObjectResult(await _reportService.SumHoSoNhanVienPara(corporationId, phongId, chucvuId, trinhdoId,
                 "", "", "", "", "", "TKChucVuKhuVuc"));
+        }
+
+        public IEnumerable<string> GetIpAddress()
+        {
+            // As a string
+            string ipString = HttpContext.Connection.RemoteIpAddress.ToString();
+
+            // As the IpAddress object
+            System.Net.IPAddress ipAddress = HttpContext.Connection.RemoteIpAddress;
+
+            //var remoteIpAddress = request.HttpContext.Connection.RemoteIpAddress;
+
+            IPHostEntry heserver = Dns.GetHostEntry(Dns.GetHostName());
+            var ip = heserver.AddressList[2].ToString();
+            return new string[] { ip, "value2" };
         }
 
     }

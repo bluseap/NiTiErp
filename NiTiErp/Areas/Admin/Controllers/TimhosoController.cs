@@ -67,8 +67,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
 
             var model = _hisquyetdinhService.GetAllHisQuyetDinhPaging(khuvuc, phong, tukhoa, page, pageSize, hosoId, "", "",
-                "", "", DateTime.Now, DateTime.Now, 1,
-                "HisQDCongViecTimHoSoId");
+                "", "", DateTime.Now, DateTime.Now, 1,  "HisQDCongViecTimHoSoId");
 
             return new OkObjectResult(model);
         }

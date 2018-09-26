@@ -14,5 +14,7 @@ namespace NiTiErp.Hubs
             Clients.All.SendAsync("broadcastMessage", name, message);
         }
 
+      
+
     }
 }

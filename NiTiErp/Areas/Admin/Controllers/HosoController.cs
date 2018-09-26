@@ -786,6 +786,13 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult ChucVuNhanVienKhuVuc(string makv)
+        {           
+            var model = _chucvunhanvienService.ChucVuNhanVienGetList(makv, "", "", "ChucVuNhanVienGetListMaKV");
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
         public IActionResult CapBacQuanDoiGetList()
         {
             var model = _capbacquandoiService.CapBacQuanDoiGetList("", "", "", "CapBacQuanDoiGetList");

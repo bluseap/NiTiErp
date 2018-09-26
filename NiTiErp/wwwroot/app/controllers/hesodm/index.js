@@ -139,8 +139,8 @@
             loadChucVu(corporationId);
         });
 
-        $('#lbAddEditKhuVuc').on('change', function () {
-            var corporationId = $('#lbAddEditKhuVuc').val();
+        $('#ddlAddEditKhuVuc').on('change', function () {
+            var corporationId = $('#ddlAddEditKhuVuc').val();
             loadAddEditChucVu(corporationId);
         });
 
