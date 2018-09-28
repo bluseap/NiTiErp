@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using NiTiErp.Utilities.Dtos;
 using System.Net;
+using NiTiErp.Application.Dapper.Interfaces;
+using NiTiErp.Application.Dapper.ViewModels;
 
 namespace NiTiErp.Areas.Admin.Controllers
 {
@@ -18,44 +20,23 @@ namespace NiTiErp.Areas.Admin.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
-        private readonly ILogger _logger;        
+        private readonly ILogger _logger;
+
+        private readonly IAppUserLoginService _appuserloginService;
 
         public LoginController(UserManager<AppUser> userManager,SignInManager<AppUser> signInManager
-            ,ILogger<LoginController> logger)
+            ,ILogger<LoginController> logger, IAppUserLoginService appuserloginService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
+
+            _appuserloginService = appuserloginService;
         }
         public IActionResult Index()
-        {
-            //GetIpAddress();
-
+        {          
             return View();
-        }
-
-        //public IEnumerable<string> GetIpAddress()
-        //{
-        //    // As a string
-        //    string ipString = HttpContext.Connection.RemoteIpAddress.ToString(); // LoginIpAddress
-
-        //    // As the IpAddress object
-        //    System.Net.IPAddress ipAddress = HttpContext.Connection.RemoteIpAddress;
-
-        //    //var remoteIpAddress = request.HttpContext.Connection.RemoteIpAddress;
-
-        //    IPHostEntry heserver = Dns.GetHostEntry(Dns.GetHostName());
-        //    var ip = heserver.AddressList[2].ToString();
-                        
-        //    var nameComputer = heserver.HostName.ToString(); // LoginNameIp
-
-        //    var localIp6 = heserver.AddressList[0].ToString();
-        //    var temIp6 = heserver.AddressList[1].ToString();
-        //    var ip6Address = heserver.AddressList[2].ToString();
-        //    var ipComputer = heserver.AddressList[3].ToString(); // LoginIp
-
-        //    return new string[] { ip, "value2" };
-        //}
+        } 
 
         [HttpPost]
         [AllowAnonymous]
@@ -71,7 +52,7 @@ namespace NiTiErp.Areas.Admin.Controllers
                 {
                     _logger.LogInformation("User logged in.");
 
-
+                    CountUserLogin(model.Email);
 
                     return new OkObjectResult(new GenericResult(true));
                 }
@@ -88,6 +69,42 @@ namespace NiTiErp.Areas.Admin.Controllers
 
             // If we got this far, something failed, redisplay form
             return new ObjectResult(new GenericResult(false, model));
+        }
+
+        public IActionResult CountUserLogin(string userNameId)
+        {
+            string ipString = HttpContext.Connection.RemoteIpAddress.ToString(); // LoginIpAddress
+
+            IPHostEntry heserver = Dns.GetHostEntry(Dns.GetHostName());
+
+            //var ip = heserver.AddressList[2].ToString();
+            var nameComputer = heserver.HostName.ToString(); // LoginNameIp
+            var localIp6 = heserver.AddressList[0].ToString();
+            var temIp6 = heserver.AddressList[1].ToString();
+            var ip6Address = heserver.AddressList[2].ToString();
+            var ipComputer = heserver.AddressList[3].ToString(); // LoginIp
+
+
+            var appuserloginVm = new AppUserLoginViewModel();
+
+            //var username = User.GetSpecificClaim("UserName");
+            var username = userNameId;
+
+            appuserloginVm.UserName = username;
+
+            appuserloginVm.LoginIpAddress = ipString;
+            appuserloginVm.LoginIp = ipComputer;
+            appuserloginVm.LoginNameIp = nameComputer;
+            appuserloginVm.LoginIp6Address = ip6Address;
+            appuserloginVm.LoginLocalIp6Adress = localIp6;
+            appuserloginVm.LoginMacIp = temIp6;
+
+            appuserloginVm.CreateDate = DateTime.Now;
+            appuserloginVm.CreateBy = username;
+
+            var model = _appuserloginService.AppUserLoginAUD(appuserloginVm, "InAppUserLogin");
+
+            return new OkObjectResult(model);
         }
 
     }

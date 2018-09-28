@@ -28,7 +28,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         {
             var email = User.GetSpecificClaim("Email");
 
-            CountUserLogin();
+            //CountUserLogin();
 
             return View();
         }

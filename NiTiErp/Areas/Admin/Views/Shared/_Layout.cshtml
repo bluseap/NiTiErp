@@ -23,16 +23,11 @@
     <link href="~/lib/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
     <link href="~/lib/notifyjs/dist/styles/metro/notify-metro.css" rel="stylesheet" />
     <link href="~/lib/ckeditor/skins/moono/editor.css" rel="stylesheet" />
-    
-   
 
     @*<link href="~/lib/jquery-loading/loading.css" rel="stylesheet" />*@
 
     <!-- Custom Theme Style -->
     <link href="~/admin-side/css/custom.css" rel="stylesheet" />
-
-
-
 
     @RenderSection("Styles", required: false)
 </head>
@@ -55,19 +50,19 @@
 
                     <input type="hidden" id="hidUserCorporationId" value=@User.GetSpecificClaim("CorporationId") />
                     <input type="hidden" id="hidUserFullName" value=@User.GetSpecificClaim("FullName") />
-
+                    <input type="hidden" id="hidUserName" value=@User.GetSpecificClaim("UserName") />
                     <!-- menu profile quick info -->
                     @*<div class="profile clearfix">
-                            <div class="profile_pic">
-                                <img src="/admin-side/images/img.jpg" alt="..." class="img-circle profile_img">
-                            </div>
-                            <div class="profile_info">
-                                <input type="hidden" id="hidUserCorporationId" value=@User.GetSpecificClaim("CorporationId") />
-                                <input type="hidden" id="hidUserCorporationId" value=@User.GetSpecificClaim("FullName") />
-                                <span> </span>
-                                <h2>@User.GetSpecificClaim("FullName")</h2>
-                            </div>
-                        </div>*@
+            <div class="profile_pic">
+                <img src="/admin-side/images/img.jpg" alt="..." class="img-circle profile_img">
+            </div>
+            <div class="profile_info">
+                <input type="hidden" id="hidUserCorporationId" value=@User.GetSpecificClaim("CorporationId") />
+                <input type="hidden" id="hidUserCorporationId" value=@User.GetSpecificClaim("FullName") />
+                <span> </span>
+                <h2>@User.GetSpecificClaim("FullName")</h2>
+            </div>
+        </div>*@
                     <!-- /menu profile quick info -->
 
                     <br />
@@ -78,20 +73,19 @@
                     <!-- /menu footer buttons -->
                     <div class="sidebar-footer hidden-small">
                         @*<a data-toggle="tooltip" data-placement="top" title="Settings">
-                                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                            </a>
-                            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-                            </a>
-                            <a data-toggle="tooltip" data-placement="top" title="Lock">
-                                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-                            </a>
-                            <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-                                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                            </a>*@
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+            </a>*@
                     </div>
                     <!-- /menu footer buttons -->
-
                 </div>
             </div>
 
@@ -186,15 +180,16 @@
             <!-- /page content -->
             <!-- footer content -->
             <footer>
+               
                 <div class="pull-right">
                     Công Ty Cổ Phần Điện Nước An Giang - <a href="http://powaco.com.vn">HRM</a>
+                    - Đang online <i class="fa fa-user"> <span id="users" class="badge bg-orange"> </span></i>
+                    
                 </div>
                 <div class="clearfix"></div>
             </footer>
             <!-- /footer content -->
         </div>
-
-
     </div>
 
     <!-- jQuery -->
@@ -231,16 +226,13 @@
     <script src="~/lib/gentelella/vendors/raphael/raphael.js" asp-append-version="true"></script>
     <script src="~/lib/gentelella/vendors/morris.js/morris.js" asp-append-version="true"></script>
 
-
     <!-- Custom Theme Scripts -->
     <script src="~/admin-side/js/custom.min.js"></script>
 
     @*<script src="~/lib/jquery-loading/jquery.loading.js"></script>*@
     <script src="~/lib/jQuery.print/jQuery.print.js"></script>
 
-
     <script src="~/lib/signalr/lib/signalr.min.js"></script>
-
 
     <script src="~/app/shared/tedu.js" asp-append-version="true"></script>
 
@@ -249,14 +241,82 @@
         </environment>
         <environment names="Staging,Production">
             <script src="~/bundled/site-admin.min.js"></script>
-
         </environment>*@
 
+
+    <script>
+        @*<input type="hidden" id="hidUserCorporationId" value=@User.GetSpecificClaim("UserName") />*@
+        var userName = $('#hidUserName').val();
+        //console.log(userName);
+
+        $.ajax({
+            type: "GET",
+            url: "/Admin/appuserlogin/GetUserName",
+            data: { username: userName },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {     
+                if (response.Result.Results.length === 1) {
+                    const connection = new signalR.HubConnectionBuilder()
+                        .withUrl("/chat")
+                        .build();
+                    bindConnectionMessage(connection);
+
+                    connection.start()
+                        .then(function () {
+                            onConnected(connection);
+                        })
+                        .catch(function (error) {
+                            console.error(error.message);
+                        });
+                }
+
+                tedu.stopLoading();
+            },
+            error: function (status) {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
+        });
+
+
+        function bindConnectionMessage(connection) {
+            var messageCallback = function (message) {
+                console.log('message' + message);
+                if (!message) return;
+                var userCountSpan = document.getElementById('users');
+                userCountSpan.innerText = message;
+            };
+            connection.on("updateCount", messageCallback);
+            connection.onclose(onConnectionError);
+        }
+        function onConnected(connection) {
+            console.log('Bắt đầu kết nối');
+        }
+        function onConnectionError(error) {
+            if (error && error.message) {
+                console.error(error.message);
+            }
+            else {
+                console.log('Close kết nối');
+            }
+        }
+
+        //const connection = new signalR.HubConnectionBuilder()
+        //    .withUrl("/chat")
+        //    .build();
+        //bindConnectionMessage(connection);
+
+        //connection.start()
+        //    .then(function () {
+        //        onConnected(connection);
+        //    })
+        //    .catch(function (error) {
+        //        console.error(error.message);
+        //    });
+    </script>
     @RenderSection("Scripts", required: false)
-
-
-
-
-
 </body>
 </html>
