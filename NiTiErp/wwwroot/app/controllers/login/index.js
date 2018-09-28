@@ -54,6 +54,13 @@
             success: function (res) {
                 if (res.Success) {
                     window.location.href = "/Admin/Home/Index";
+
+                    $.getJSON("http://jsonip.com?callback=?", function (data) {
+                        //$(".ip").text(data.ip);
+                        var ipAddress = data.ip;
+                        alert(ipAddress);
+                    });
+
                 }
                 else {
                     tedu.notify('Login failed', 'error');
@@ -77,6 +84,11 @@
                 // Ngược lại cho phép
                 else {
                     //alert('Bạn đã cho phép thông báo trên trình duyệt, hãy bắt đầu thử Hiển thị thông báo.');
+                    //$.getJSON("http://jsonip.com?callback=?", function (data) {
+                    //    //$(".ip").text(data.ip);
+                    //    var ipAddress = data.ip;
+                    //    alert(ipAddress);
+                    //});
                 }
             });
         }

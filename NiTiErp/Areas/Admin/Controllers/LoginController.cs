@@ -9,6 +9,7 @@ using NiTiErp.Data.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using NiTiErp.Utilities.Dtos;
+using System.Net;
 
 namespace NiTiErp.Areas.Admin.Controllers
 {
@@ -17,8 +18,7 @@ namespace NiTiErp.Areas.Admin.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
-        private readonly ILogger _logger;
-
+        private readonly ILogger _logger;        
 
         public LoginController(UserManager<AppUser> userManager,SignInManager<AppUser> signInManager
             ,ILogger<LoginController> logger)
@@ -29,8 +29,33 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
+            //GetIpAddress();
+
             return View();
         }
+
+        //public IEnumerable<string> GetIpAddress()
+        //{
+        //    // As a string
+        //    string ipString = HttpContext.Connection.RemoteIpAddress.ToString(); // LoginIpAddress
+
+        //    // As the IpAddress object
+        //    System.Net.IPAddress ipAddress = HttpContext.Connection.RemoteIpAddress;
+
+        //    //var remoteIpAddress = request.HttpContext.Connection.RemoteIpAddress;
+
+        //    IPHostEntry heserver = Dns.GetHostEntry(Dns.GetHostName());
+        //    var ip = heserver.AddressList[2].ToString();
+                        
+        //    var nameComputer = heserver.HostName.ToString(); // LoginNameIp
+
+        //    var localIp6 = heserver.AddressList[0].ToString();
+        //    var temIp6 = heserver.AddressList[1].ToString();
+        //    var ip6Address = heserver.AddressList[2].ToString();
+        //    var ipComputer = heserver.AddressList[3].ToString(); // LoginIp
+
+        //    return new string[] { ip, "value2" };
+        //}
 
         [HttpPost]
         [AllowAnonymous]
@@ -45,6 +70,9 @@ namespace NiTiErp.Areas.Admin.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+
+
+
                     return new OkObjectResult(new GenericResult(true));
                 }
                 if (result.IsLockedOut)

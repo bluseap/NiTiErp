@@ -20,6 +20,11 @@ r
 update table Functions:	SUCKHOETIM	fa fa-ambulance	Tra cứu Sức khỏe	SUCKHOE	2	1	/admin/timsuckhoe/index
 
 
+delete table AppUserLogins and create tabel AppUserLogins to database NiTi by scripts
+
+
+create table CountLogins
+
 create table DaoTaoNhanVien
 
 create table DaoTaoGiaoVien
@@ -51,6 +56,8 @@ insert into PhanLoaiSucKhoe ( [Id]      ,[TenPhanLoaiSucKhoe]      ,[Status]    
 values ( 5,		N'Không phân loai',	1,	True,	 0,	'admin',	'2018-01-01 00:00:00.000' )
 
 
+create proc [AppUserLoginAUD]
+
 create proc [DaoTaoLopGetList]
 
 create proc  [DaoTaoLopAUD]
@@ -71,19 +78,20 @@ create PROC [dbo].[SucKhoeNhanVienGetList]
 update proc [BangDanhMucGetList]
 
 
+update hoso - index.js
+
+r
 create daotao - index.js
-
+r
 create daotao - addeditdaotao.js
-
+r
 create suckhoe - index.js
-
+r
 create suckhoe - addeditsuckhoe.js
-
+r
 update hesodm - index.js
 
 r
 update app - share - tedu.js
-r
-update hoso - index.js
 r
 update login - index.js

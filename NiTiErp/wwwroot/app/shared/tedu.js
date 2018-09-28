@@ -225,6 +225,10 @@
             return '<span class="badge bg-red">Cũ</span>';
         else if (status === 60)
             return '';
+        else if (status === 41)
+            return '<span class="badge bg-green">Online</span>';
+        else if(status === 42)
+            return '<span class="badge bg-red">Offline</span>';
         else 
             return '<span class="badge bg-purple">Chưa biết</span>';
 

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using NiTiErp.Extensions;
 using NiTiErp.Application.Dapper.Interfaces;
 using System.Net;
+using NiTiErp.Application.Dapper.ViewModels;
 
 namespace NiTiErp.Areas.Admin.Controllers
 {
@@ -14,16 +15,20 @@ namespace NiTiErp.Areas.Admin.Controllers
     {
         private readonly IReportService _reportService;
 
-        public HomeController(IReportService reportService)
+        private readonly IAppUserLoginService _appuserloginService;
+
+        public HomeController(IReportService reportService, IAppUserLoginService appuserloginService)
         {
             _reportService = reportService;
+
+            _appuserloginService = appuserloginService;
         }
 
         public IActionResult Index()
         {
             var email = User.GetSpecificClaim("Email");
 
-            GetIpAddress();
+            CountUserLogin();
 
             return View();
         }
@@ -45,10 +50,47 @@ namespace NiTiErp.Areas.Admin.Controllers
                 "", "", "", "", "", "TKChucVuKhuVuc"));
         }
 
+        public IActionResult CountUserLogin()
+        {
+            string ipString = HttpContext.Connection.RemoteIpAddress.ToString(); // LoginIpAddress
+
+            IPHostEntry heserver = Dns.GetHostEntry(Dns.GetHostName());
+
+            //var ip = heserver.AddressList[2].ToString();
+            var nameComputer = heserver.HostName.ToString(); // LoginNameIp
+            var localIp6 = heserver.AddressList[0].ToString();
+            var temIp6 = heserver.AddressList[1].ToString();
+            var ip6Address = heserver.AddressList[2].ToString();
+            var ipComputer = heserver.AddressList[3].ToString(); // LoginIp
+
+
+            var appuserloginVm =  new AppUserLoginViewModel();
+
+            var username = User.GetSpecificClaim("UserName");
+
+            appuserloginVm.UserName = username;
+
+            appuserloginVm.LoginIpAddress = ipString;
+            appuserloginVm.LoginIp = ipComputer;
+            appuserloginVm.LoginNameIp = nameComputer;
+            appuserloginVm.LoginIp6Address = ip6Address;
+            appuserloginVm.LoginLocalIp6Adress = localIp6;
+            appuserloginVm.LoginMacIp = temIp6;
+
+            appuserloginVm.CreateDate = DateTime.Now;
+            appuserloginVm.CreateBy = username;            
+           
+            var model = _appuserloginService.AppUserLoginAUD(appuserloginVm, "InAppUserLogin");
+
+            return new OkObjectResult(model);
+        }
+
         public IEnumerable<string> GetIpAddress()
         {
+            var username = User.GetSpecificClaim("UserName");
+
             // As a string
-            string ipString = HttpContext.Connection.RemoteIpAddress.ToString();
+            string ipString = HttpContext.Connection.RemoteIpAddress.ToString(); // LoginIpAddress
 
             // As the IpAddress object
             System.Net.IPAddress ipAddress = HttpContext.Connection.RemoteIpAddress;
@@ -57,8 +99,17 @@ namespace NiTiErp.Areas.Admin.Controllers
 
             IPHostEntry heserver = Dns.GetHostEntry(Dns.GetHostName());
             var ip = heserver.AddressList[2].ToString();
+
+            var nameComputer = heserver.HostName.ToString(); // LoginNameIp
+
+            var localIp6 = heserver.AddressList[0].ToString();
+            var temIp6 = heserver.AddressList[1].ToString();
+            var ip6Address = heserver.AddressList[2].ToString();
+            var ipComputer = heserver.AddressList[3].ToString(); // LoginIp
+
             return new string[] { ip, "value2" };
         }
+
 
     }
 }

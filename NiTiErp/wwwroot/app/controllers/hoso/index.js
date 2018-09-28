@@ -73,6 +73,12 @@
             LoadHopDongDangCongViec();
             LoadTableHoSoNhanVien();
             LoadTableInHoSo();
+
+            var khuvuc = $('#ddlKhuVuc').val();
+            loadChucVuNhanVien(khuvuc);
+            $('#ddlCongTyXiNghiep').val(khuvuc);
+            loadPhongKhuVucTabCongViec(khuvuc);
+            LoadCongViecKhuVuc(khuvuc);
         });
 
         $('#txtTimNhanVien').on('keypress', function (e) {
@@ -81,6 +87,12 @@
                 loadPhongKhuVucTabCongViec("%");
                 LoadHopDongDangCongViec();
                 LoadTableHoSoNhanVien();
+
+                var khuvuc = $('#ddlKhuVuc').val();
+                loadChucVuNhanVien(khuvuc);
+                $('#ddlCongTyXiNghiep').val(khuvuc);
+                loadPhongKhuVucTabCongViec(khuvuc);
+                LoadCongViecKhuVuc(khuvuc);
             }
         });
 
@@ -289,6 +301,9 @@
             $('#hidLyLichIdInsert').val(1);           
 
             var hosoId = $(this).data('id');
+
+            //loadHoSoNhanVienKhuVuc(hosoId);
+
             loadHoSoNhanVien(hosoId);   
 
             $('#hidTrinhDoId').val(0); // sua la bang = 1     
@@ -1509,8 +1524,15 @@
                 LoadTableHoSoNhanVien(true);
 
                 loadPhongKhuVuc($("#ddlKhuVuc").val());
-                loadPhongKhuVucTabCongViec($("#ddlCongTyXiNghiep").val());
-                
+
+                //loadPhongKhuVucTabCongViec($("#ddlCongTyXiNghiep").val());
+
+                var khuvuc = $('#ddlKhuVuc').val();
+                loadChucVuNhanVien(khuvuc);
+                $('#ddlCongTyXiNghiep').val(khuvuc);
+                loadPhongKhuVucTabCongViec(khuvuc);
+                LoadCongViecKhuVuc(khuvuc);
+
                 //LoadTableInHoSo();
                 //var userCorporationId = $("#hidUserCorporationId").val();
                 //alert(userCorporationId);
@@ -1716,7 +1738,7 @@
 
             return false;
         }
-    }
+    }   
 
     function loadHoSoNhanVien(hosoid) {       
 
@@ -1729,7 +1751,7 @@
                 tedu.startLoading();
             },
             success: function (response) {
-                var hoso = response.Result.Results[0];         
+                var hoso = response.Result.Results[0];        
 
                 $('#hidLyLichId').val(hoso.Id);
 
@@ -1768,17 +1790,23 @@
                 $('#ddlXuatThan').val(hoso.XuatThanDanhMucId);
 
                 // tab hopdong
-                $('#ddlChucVuKyHopDong').val(hoso.ChucVuNhanVienId);                
-
+                $('#ddlChucVuKyHopDong').val(hoso.ChucVuNhanVienId);
                 // tab cong viec
                 $('#ddlCongTyXiNghiep').val(hoso.CorporationId);
+                $('#ddlChucVuNhanVien').val(hoso.ChucVuNhanVienId);       
+
+                //// tab hopdong
+                //$('#ddlChucVuKyHopDong').val(hoso.ChucVuNhanVienId);                
+
+                //// tab cong viec
+                //$('#ddlCongTyXiNghiep').val(hoso.CorporationId);
                 //$('#ddlPhongtabCongViec').val(hoso.ChucVuNhanVienId);
 
                 //$('#ckStatusM').prop('checked', data.Status === 1);                
 
                 $('#modal-add-edit-HoSo').modal('show');
 
-                LoadTableTrinhDo(true);
+                LoadTableTrinhDo(true);                
 
                 tedu.stopLoading();
             },
@@ -3921,11 +3949,11 @@
         });
     }
 
-    function loadChucVuNhanVien(makv) {
+    function loadChucVuNhanVien(makv2) {
         $.ajax({
             type: 'GET',
             url: '/admin/hoso/ChucVuNhanVienKhuVuc',
-            data: { makv: makv },
+            data: { makv: makv2 },
             dataType: "json",
             beforeSend: function () {
                 tedu.startLoading();
