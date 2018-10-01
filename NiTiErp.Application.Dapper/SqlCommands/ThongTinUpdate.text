@@ -23,7 +23,7 @@ update table Functions:	SUCKHOETIM	fa fa-ambulance	Tra cứu Sức khỏe	SUCKHO
 delete table AppUserLogins and create tabel AppUserLogins to database NiTi by scripts
 
 
-create table CountLogins
+create table AppUserOnline
 
 create table DaoTaoNhanVien
 
