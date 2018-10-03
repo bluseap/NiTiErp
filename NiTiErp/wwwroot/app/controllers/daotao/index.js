@@ -15,15 +15,57 @@
 
     function registerEvents() {
 
+        $("#btnSaveDaoTao").on('click', function () {  
+            SaveDaoTaoLopGiaoVien();           
+        });
+
         $("#btn-create").on('click', function () {
 
             resetFormAddEditDaoTao();
 
-            $('#InsUpDaoTaoLopId').val(1); // insert
+            $('#hidInsertDaoTaoId').val(1); // insert
+
+            var template = $('#table-DaoTao').html();
+            var render = "";
+            $('#table-contentAddEditDaoTaoGiaoVien').html(render);            
 
             $('#modal-add-edit-DaoTao').modal('show'); 
         });
 
+        $('#btn-AddEditDaoTaoGiaoVien').on('click', function () {
+            var template = $('#template-table-AddEditDaoTaoGiaoVien').html();
+            var render = Mustache.render(template, {               
+                GiaoVienTenGiaoVien: "",
+                GiaoVienChucDanh: "",
+                GiaoVienSoDienThoai: "",
+                GiaoVienEmail: ""
+            });
+            $('#table-contentAddEditDaoTaoGiaoVien').append(render);
+        });
+
+        $('body').on('click', '.btn-deleteAddEditDaoTaoGiaoVien', function (e) {
+            e.preventDefault();
+            $(this).closest('tr').remove();
+        });
+    }
+
+    function loadNewGuid() {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/daotao/GetNewGuid',           
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var newgui = response;
+                $('#hidNewGuidDaoTaoGiaoVienId').val(newgui);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không tạo được Giáo viên cho đào tạo.', 'error');
+            }
+        });
     }
 
     function loadData() {
@@ -62,7 +104,12 @@
     function resetFormAddEditDaoTao() {
         $('#hidDaoTaoId').val(0); 
         $('#hidHoSoNhanVienId').val(''); 
-        $('#hidInsertDaoTaoId').val('');  
+        $('#hidInsertDaoTaoId').val('0');  
+
+        $('#hidDaoTaoGiaoVienId').val('');
+        $('#hidInsertDaoTaoGaiVienId').val('0');  
+        $('#hidNewGuidDaoTaoGiaoVienId').val("");
+
     }
 
     function loadTableDaoTao(isPageChanged) {
@@ -147,5 +194,79 @@
         });
     }
 
+    function SaveDaoTaoLopGiaoVien() {
+        var giaovienList = [];
+        $.each($('#table-contentAddEditDaoTaoGiaoVien').find('tr'), function (i, item) {
+            //console.log(item);
+            giaovienList.push({ 
+                Id: '0',
+                TenGiaoVien: $(item).find('input.GiaoVienTenGiaoVien').first().val(),
+                ChucDanh: $(item).find('input.GiaoVienChucDanh').first().val(),
+                SoDienThoai: $(item).find('input.GiaoVienSoDienThoai').first().val(),
+                Email: $(item).find('input.GiaoVienEmail').first().val()
+            });
+            //console.log(giaovienList);
+        });
+
+        var noidaotao = $('#ddlAddEditDaoTaoNoi').val();
+        $.ajax({
+            url: '/admin/daotao/SaveDaoTaoGiaoVien',
+            data: {
+                DaoTaoNoiId: noidaotao,
+                daotaogiaovienList: giaovienList
+            },
+            type: 'post',
+            dataType: 'json',
+            success: function (response) {
+                SaveDaoTaoLop(noidaotao);
+            }
+        });
+
+        
+    }
+
+    function SaveDaoTaoLop(noidaotao) {
+
+        var insupdatetaolopid = $('#hidInsertDaoTaoId').val();
+        
+        var loaidaotao = $('#ddlAddEditLoaiDaoTao').val();
+        var loaibang = $('#ddlAddEditLoaiBang').val();
+        var chuyenmon = $('#txtAddEditChuyenMon').val();
+        var noihoc = $('#txtAddEditNoiHoc').val(); 
+        var diachihoc = $('#txtAddEditDiaChiHoc').val();
+        var sodienthoai = $('#txtAddEditSoDienThoai').val();
+        var soluongdangky = $('#txtAddEditSoLuongDangKy').val();
+        var soluonghoc = $('#txtAddEditSoLuongHoc').val();
+        var ngaybatdau = tedu.getFormatDateYYMMDD($('#txtAddEditNgayBatDau').val());  
+        var ngayketthuc = tedu.getFormatDateYYMMDD($('#txtAddEditNgayKetThuc').val()); 
+
+        $.ajax({
+            url: '/admin/daotao/AddUpdateDaoTao',
+            data: {
+                InsUpDaoTaoLopId: insupdatetaolopid,
+                DaoTaoNoiId: noidaotao,
+
+                LoaiDaoTaoDanhMucId: loaidaotao,
+                LoaiBangDanhMucId: loaibang,
+                ChuyenMon:   chuyenmon ,
+                NoiHoc: noihoc,
+                DiaChiHoc: diachihoc ,
+                SoDienThoai: sodienthoai ,
+                SoLuongDangKy: soluongdangky,
+                SoLuongHoc: soluonghoc,
+                NgayBatDau: ngaybatdau ,
+                NgayKetThuc: ngayketthuc 
+            },
+            type: 'post',
+            dataType: 'json',
+            success: function (response) {
+
+                $('#modal-add-edit-DaoTao').modal('hide');
+                $('#table-contentAddEditDaoTaoGiaoVien').html('');
+                resetFormAddEditDaoTao();
+            }
+        });
+
+    }
 
 }

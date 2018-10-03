@@ -12,18 +12,67 @@
                         <input type="hidden" id="hidHoSoNhanVienId" value="" />
                         <input type="hidden" id="hidInsertDaoTaoId" value="" />
 
-                        
+                        <input type="hidden" id="hidDaoTaoGiaoVienId" value="" />
+                        <input type="hidden" id="hidInsertDaoTaoGaiVienId" value="" />
+                        <input type="hidden" id="hidNewGuidDaoTaoGiaoVienId" value="" />
+
                         <div class="form-group">
-                            <label for="lbAddEditHoTen" class="control-label col-md-2 col-sm-2 col-xs-12 ">Họ và tên</label>
+                            <label for="lbAddEditDaoTaoNoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Trường đào tạo</label>
                             <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                                <input type="text" class="form-control has-feedback-right" id="txtAddEditHoTen" placeholder="Họ và tên nhân viên">
-                            </div>
-                            <label for="lbAddEditPhongTo" class="control-label col-md-2 col-sm-2 col-xs-12 ">Phòng, tổ</label>
-                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                                <input type="text" class="form-control has-feedback-right" id="txtAddEditPhongTo" placeholder="Phòng, tổ, nhà máy">
+                                <select id="ddlAddEditDaoTaoNoi" class="form-control"></select>
                             </div>
                         </div>
-                        
+                        <div class="form-group">
+                            <label for="lbAddEditLoaiDaoTao" class="control-label col-md-2 col-sm-2 col-xs-12 ">Loại đào tạo</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlAddEditLoaiDaoTao" class="form-control"></select>
+                            </div>
+                            <label for="lbAddEditLoaiBang" class="control-label col-md-2 col-sm-2 col-xs-12 ">Loại bằng</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlAddEditLoaiBang" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbAddEditChuyenMon" class="control-label col-md-2 col-sm-2 col-xs-12 ">Chuyên môn</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditChuyenMon" placeholder="Chuyên môn đào tạo">
+                            </div>
+                            <label for="lbAddEditNoiHoc" class="control-label col-md-2 col-sm-2 col-xs-12 ">Nơi học</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditNoiHoc" placeholder="Nơi học">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbAddEditDiaChiHoc" class="control-label col-md-2 col-sm-2 col-xs-12 ">Địa chỉ học</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditDiaChiHoc" placeholder="Địa chỉ học">
+                            </div>
+                            <label for="lbAddEditSoDienThoai" class="control-label col-md-2 col-sm-2 col-xs-12 ">Số điện thoại</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditSoDienThoai" placeholder="Số điện thoại nơi học">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbAddEditSoLuongDangKy" class="control-label col-md-2 col-sm-2 col-xs-12 ">Số lượng đăng ký</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditSoLuongDangKy" placeholder="Số lượng đăng ký">
+                            </div>
+                            <label for="lbAddEditSoLuongHoc" class="control-label col-md-2 col-sm-2 col-xs-12 ">Số lượng học</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditSoLuongHoc" placeholder="Số lượng học">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbAddEditNgayBatDau" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày bắt đầu</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditNgayBatDau" placeholder="Ngày bắt đầu">
+                            </div>
+                            <label for="lbAddEditNgayKetThuc" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày kết thúc</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditNgayKetThuc" placeholder="Ngày kết thúc">
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="button" id="btnSaveDaoTao" class="btn btn-success">Lưu</button>
@@ -33,71 +82,44 @@
                     </form>
                 </div>
                 <div class="ln_solid"></div>
-                <div class="table-responsive" id="table-responsiveHoSoDaoTao">
-                    <div class="row" id="row-AddEditDaoTao">
-                        <div class="col-md-3 col-sm-12 col-xs-12 form-group">
-                            <select id="ddlKhuVucAddEdit" class="form-control"></select>
-                        </div>
-                        <div class="col-md-3 col-sm-12 col-xs-12 form-group">
-                            <select id="ddlPhongBanAddEdit" class="form-control"></select>
-                        </div>
-                        <div class="col-md-3 col-sm-12 col-xs-12 form-group">
-                            <input type="text" id="txtTimNhanVienAddEdit" class="form-control" placeholder="Từ khóa...">
-                        </div>
-                        <div class="col-md-3 col-sm-12 col-xs-12 form-group">
-                            <button class="btn btn-primary " id="btnTimNhanVienAddEdit" type="button">Tìm !</button>
-                        </div>
-                    </div>
-                    <table id="tblHoSoNhanVienDaoTao" class="table table-striped jambo_table bulk_action" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th width="=20%">#</th>
-                                <th>Họ và tên</th>
-                                <th>Khu vực</th>
-                                <th>Phòng, tổ</th>
-                                <th>Chức vụ</th>
-                                <th>Ngày tạo</th>
-                                <th>Trạng thái</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tblContentHoSoDaoTao"></tbody>
-                    </table>
-                    <div class="row" id="row-AddEditDaoTao-infoHoSoDaoTao">
-                        <div class="col-sm-5">
-                            <div class="dataTables_info" id="datatable-checkbox_infoHoSoDaoTao" role="status" aria-live="polite">
-                                <select id="ddl-show-pageHoSoDaoTao">
-                                    <option value="10" selected="selected">10</option>
-                                    <option value="20">20</option>
-                                    <option value="30">30</option>
-                                    <option value="50">50</option>
-                                </select>
-                                <span class="item-per-page">
-                                    dòng/trang.
-                                </span>
-                                Tổng cộng: <strong id="lblHoSoDaoTaoTotalRecords"></strong>
-                            </div>
-                        </div><div class="col-sm-7">
-                            <div class="dataTables_paginate" id="datatable-checkbox_paginateHoSoDaoTao">
-                                <ul id="paginationULHoSoDaoTao"></ul>
-                            </div>
-                        </div>
-                    </div>
+
+                <div id="formAddEditDaoTaoGiaoVien">
+                    <form class="form-horizontal" role="form" id="frmMaintainanceAddEditDaoTaoGiaoVien">
+                        <input type="hidden" id="hidId" value="" />
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <td>Tên giáo viên</td>
+                                    <td>Chức danh</td>
+                                    <td>Số điện thoại</td>
+                                    <td>Email</td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody id="table-contentAddEditDaoTaoGiaoVien"></tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4">
+                                        <button class="btn btn-xs btn-warning" type="button" id="btn-AddEditDaoTaoGiaoVien">Thêm</button>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </form>
+
+                    <script type="x-tmpl-mustache" id="template-table-AddEditDaoTaoGiaoVien">
+                        @*<tr data-id="{{Id}}">*@
+                        <tr>
+                            <td><input type="text" class="GiaoVienTenGiaoVien form-control" value="{{GiaoVienTenGiaoVien}}" /></td>
+                            <td><input type="text" class="GiaoVienChucDanh form-control" value="{{GiaoVienChucDanh}}" /></td>
+                            <td><input type="text" class="GiaoVienSoDienThoai form-control" value="{{GiaoVienSoDienThoai}}" /></td>
+                            <td><input type="text" class="GiaoVienEmail form-control" value="{{GiaoVienEmail}}" /></td>
+                            <td><button class="btn btn-xs btn-danger btn-deleteAddEditDaoTaoGiaoVien" type="button"><i class="fa fa-trash"></i></button></td>
+                           
+                        </tr>
+                    </script>
                 </div>
 
-                <script id="table-HoSoDaoTao" type="x-tmpl-mustache">
-                    <tr>
-                        <th scope="row">
-                            <a class="btn btn-lg btn-editHoSoDaoTao" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Thêm mới"><i class="fa fa-pencil"></i> </a>
-                        </th>
-                        <td>{{Ten}}</td>
-                        <td>{{TenKhuVuc}}</td>
-                        <td>{{TenPhong}}</td>
-                        <td>{{TenChucVu}}</td>
-                        <td>{{CreateDate}}</td>
-                        <td>{{{Status}}}</td>
-                    </tr>
-                </script>
-            </div>
         </div>
     </div>
 </div>

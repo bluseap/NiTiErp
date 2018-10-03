@@ -60,8 +60,24 @@ namespace NiTiErp.Application.Dapper.ViewModels
         public int SoChungChiHoc { set; get; }
         
         [StringLength(1000)]
-        public string Hinh { get; set; }        
+        public string Hinh { get; set; }
 
+
+
+        public Guid DaoTaoGiaoVienId { get; set; }
+
+        [StringLength(50)]
+        public string GiaoVienTenGiaoVien { get; set; }
+
+        [StringLength(50)]
+        public string GiaoVienChucDanh { get; set; }
+
+        [StringLength(50)]
+        public string GiaoVienSoDienThoai { get; set; }
+        
+        [StringLength(50)]
+        public string GiaoVienEmail { get; set; }
+        
 
 
         public int Status { get; set; }

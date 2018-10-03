@@ -26,6 +26,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         private readonly NiTiErp.Application.Interfaces.IUserService _userService;
         private readonly IAuthorizationService _authorizationService;
 
+        private readonly IDaoTaoGiaoVienService _daotaogiaovienService;
         private readonly IDaoTaoNoiService _daotaonoiService;
         private readonly IDaoTaoLopService _daotaolopService;
 
@@ -33,6 +34,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             NiTiErp.Application.Interfaces.IUserService userService,
             IAuthorizationService authorizationService,
 
+            IDaoTaoGiaoVienService daotaogiaovienService,
             IDaoTaoNoiService daotaonoiService,
             IDaoTaoLopService daotaolopService
             )
@@ -41,6 +43,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             _userService = userService;
             _authorizationService = authorizationService;
 
+            _daotaogiaovienService = daotaogiaovienService;
             _daotaonoiService = daotaonoiService;
             _daotaolopService = daotaolopService;
         }
@@ -76,6 +79,8 @@ namespace NiTiErp.Areas.Admin.Controllers
                         return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
                     }
 
+                    daotaoVm.Id = Guid.NewGuid();
+
                     var daotao = _daotaolopService.DaoTaoLopAUD(daotaoVm, "InDaoTaoLop");
                     return new OkObjectResult(daotao);
                 }
@@ -100,7 +105,7 @@ namespace NiTiErp.Areas.Admin.Controllers
 
             var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
 
-            var model = _daotaolopService.GetAllDaoTaoLopPaging(1, daotaonoiId, "", keyword, page, pageSize, guid, "", "GetListDaoTaoLop");
+            var model = _daotaolopService.GetAllDaoTaoLopPaging(1, daotaonoiId, "", tukhoa, page, pageSize, guid, "", "GetListDaoTaoLop");
 
             return new OkObjectResult(model);
         }
@@ -111,6 +116,14 @@ namespace NiTiErp.Areas.Admin.Controllers
             var model = _daotaolopService.GetAllDaoTaoLopPaging(1, "", "", "", 1, 1, daotaolopId, "", "GetDaoTaoLopId");
 
             return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetNewGuid()
+        {
+            var newguid = Guid.NewGuid();
+
+            return new OkObjectResult(newguid);
         }
 
         [HttpPost]
@@ -142,6 +155,31 @@ namespace NiTiErp.Areas.Admin.Controllers
                 {
                     return new OkObjectResult(daotaoVm);
                 }
+            }
+        }
+
+        [HttpPost]
+        public IActionResult SaveDaoTaoGiaoVien(int DaoTaoNoiId, List<DaoTaoGiaoVienViewModel> daotaogiaovienList)
+        {
+            AddDaoTaoGiaoVien(DaoTaoNoiId, daotaogiaovienList);          
+            return new OkObjectResult(daotaogiaovienList);
+        }
+
+        public void AddDaoTaoGiaoVien(int DaoTaoNoiId, List<DaoTaoGiaoVienViewModel> daotaogiaovienList)
+        {
+            var username = User.GetSpecificClaim("UserName");
+
+            foreach (var giaovienlist in daotaogiaovienList)
+            {
+                giaovienlist.Id = Guid.NewGuid();
+                giaovienlist.DaoTaoNoiId = DaoTaoNoiId;
+
+                giaovienlist.CreateBy = username;
+                giaovienlist.CreateDate = DateTime.Now;
+                giaovienlist.UpdateBy = username;
+                giaovienlist.UpdateDate = DateTime.Now;
+
+                var daotaogiaovien = _daotaogiaovienService.DaoTaoGiaoVienAUD(giaovienlist, "InDaoTaoGiaoVien");               
             }
         }
 
