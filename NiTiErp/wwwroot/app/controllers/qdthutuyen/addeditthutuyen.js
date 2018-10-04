@@ -180,7 +180,7 @@
                 });
                 $('#ddlLoaiQuyetDinh').html(render);
 
-                $('#ddlLoaiQuyetDinh').val("TV07"); //Quyet dinh thôi việc
+                $('#ddlLoaiQuyetDinh').val("TT06"); //Quyet dinh THU TUYEN
             },
             error: function (status) {
                 console.log(status);

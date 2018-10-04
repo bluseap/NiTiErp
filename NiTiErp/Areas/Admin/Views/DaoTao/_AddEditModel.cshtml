@@ -9,7 +9,7 @@
                 <div id="horizontal-form">
                     <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainDaoTao">
                         <input type="hidden" id="hidDaoTaoId" value="" />
-                        <input type="hidden" id="hidHoSoNhanVienId" value="" />
+                        @*<input type="hidden" id="hidHoSoNhanVienId" value="" />*@
                         <input type="hidden" id="hidInsertDaoTaoId" value="" />
 
                         <input type="hidden" id="hidDaoTaoGiaoVienId" value="" />
@@ -115,7 +115,8 @@
                             <td><input type="text" class="GiaoVienSoDienThoai form-control" value="{{GiaoVienSoDienThoai}}" /></td>
                             <td><input type="text" class="GiaoVienEmail form-control" value="{{GiaoVienEmail}}" /></td>
                             <td><button class="btn btn-xs btn-danger btn-deleteAddEditDaoTaoGiaoVien" type="button"><i class="fa fa-trash"></i></button></td>
-                           
+
+                            <td><input type="hidden" class="GiaoVienId form-control" value="{{GiaoVienId}}" /></td>
                         </tr>
                     </script>
                 </div>

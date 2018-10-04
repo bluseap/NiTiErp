@@ -183,6 +183,24 @@ namespace NiTiErp.Areas.Admin.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult GetDaoTaoGiaoVienLopId(string daotaonoiId)
+        {
+            var moimoi = Guid.NewGuid();
+
+            var model = _daotaogiaovienService.DaoTaoGiaoVienGetList(1, daotaonoiId, "", "", 1, 1000, moimoi, moimoi, "GetDaoTaoGiaoVienNoi");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetDaoTaoGiaoVienId(Guid daotaogiaovienId)
+        {
+            var model = _daotaogiaovienService.GetAllDaoTaoGiaoVienPaging(1, "", "", "", 1, 1000, daotaogiaovienId, daotaogiaovienId, "GetDaoTaoGiaoVienId");
+
+            return new OkObjectResult(model);
+        }
+
         #endregion
 
     }

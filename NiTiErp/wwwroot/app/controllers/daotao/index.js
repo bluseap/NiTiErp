@@ -16,7 +16,16 @@
     function registerEvents() {
 
         $("#btnSaveDaoTao").on('click', function () {  
-            SaveDaoTaoLopGiaoVien();           
+            var insertDaoTaoLop = $('#hidInsertDaoTaoId').val(); // update
+
+            if (insertDaoTaoLop === "2") {
+                UpdateDaoTaoLopGiaoVien();
+            }
+            else {
+                SaveDaoTaoLopGiaoVien();
+            }
+
+            //SaveDaoTaoLopGiaoVien();           
         });
 
         $("#btn-create").on('click', function () {
@@ -32,6 +41,23 @@
             $('#modal-add-edit-DaoTao').modal('show'); 
         });
 
+        $('body').on('click', '.btn-editDaoTao', function (e) {
+            e.preventDefault();
+
+            resetFormAddEditDaoTao();
+
+            $('#hidInsertDaoTaoId').val(2); // insert            
+
+            var daotaoId = $(this).data('id');
+
+            $('#hidDaoTaoId').val(daotaoId);
+
+            loadDaoTaoLop(daotaoId);
+
+            $('#modal-add-edit-DaoTao').modal('show'); 
+
+        });
+
         $('#btn-AddEditDaoTaoGiaoVien').on('click', function () {
             var template = $('#template-table-AddEditDaoTaoGiaoVien').html();
             var render = Mustache.render(template, {               
@@ -43,10 +69,13 @@
             $('#table-contentAddEditDaoTaoGiaoVien').append(render);
         });
 
+
         $('body').on('click', '.btn-deleteAddEditDaoTaoGiaoVien', function (e) {
             e.preventDefault();
             $(this).closest('tr').remove();
         });
+       
+
     }
 
     function loadNewGuid() {
@@ -221,8 +250,36 @@
                 SaveDaoTaoLop(noidaotao);
             }
         });
-
         
+    }
+
+    function UpdateDaoTaoLopGiaoVien() {
+        //var giaovienList = [];
+        //$.each($('#table-contentAddEditDaoTaoGiaoVien').find('tr'), function (i, item) {
+        //    //console.log(item);
+        //    giaovienList.push({
+        //        Id: '0',
+        //        TenGiaoVien: $(item).find('input.GiaoVienTenGiaoVien').first().val(),
+        //        ChucDanh: $(item).find('input.GiaoVienChucDanh').first().val(),
+        //        SoDienThoai: $(item).find('input.GiaoVienSoDienThoai').first().val(),
+        //        Email: $(item).find('input.GiaoVienEmail').first().val()
+        //    });
+        //    //console.log(giaovienList);
+        //});
+
+        //var noidaotao = $('#ddlAddEditDaoTaoNoi').val();
+        //$.ajax({
+        //    url: '/admin/daotao/SaveDaoTaoGiaoVien',
+        //    data: {
+        //        DaoTaoNoiId: noidaotao,
+        //        daotaogiaovienList: giaovienList
+        //    },
+        //    type: 'post',
+        //    dataType: 'json',
+        //    success: function (response) {
+        //        SaveDaoTaoLop(noidaotao);
+        //    }
+        //});
     }
 
     function SaveDaoTaoLop(noidaotao) {
@@ -268,5 +325,74 @@
         });
 
     }
+
+    function loadDaoTaoLop(daotaoid) {
+
+        tedu.notify(daotaoid, "error");
+
+        $.ajax({
+            type: "GET",
+            url: "/Admin/daotao/GetDaoTaoId",
+            data: { daotaolopId: daotaoid },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var daotao = response.Result.Results[0];
+
+                $('#ddlAddEditDaoTaoNoi').val(daotao.DaoTaoNoiId);
+                $('#ddlAddEditLoaiDaoTao').val(daotao.LoaiDaoTaoDanhMucId);
+                $('#ddlAddEditLoaiBang').val(daotao.LoaiBangDanhMucId);
+                $('#txtAddEditChuyenMon').val(daotao.ChuyenMon);
+                $('#txtAddEditNoiHoc').val(daotao.NoiHoc);
+                $('#txtAddEditDiaChiHoc').val(daotao.DiaChiHoc);
+                $('#txtAddEditSoDienThoai').val(daotao.SoDienThoai);
+                $('#txtAddEditSoLuongDangKy').val(daotao.SoLuongDangKy);
+                $('#txtAddEditSoLuongHoc').val(daotao.SoLuongHoc);
+                $('#txtAddEditNgayBatDau').val(tedu.getFormattedDate(daotao.NgayBatDau));
+                $('#txtAddEditNgayKetThuc').val(tedu.getFormattedDate(daotao.NgayKetThuc));
+
+                loadGiaoVienLop(daotao.DaoTaoNoiId);
+
+                //$('#txtNgaKyQuyetDinh').val(tedu.getFormattedDate(bonhiem.NgayKyQuyetDinh));  
+                tedu.stopLoading();
+            },
+            error: function (status) {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function loadGiaoVienLop(daotanoid) {
+        var daotaogiaovien = [];
+        $.ajax({
+            url: '/admin/daotao/GetDaoTaoGiaoVienLopId',
+            data: {
+                daotaonoiId: daotanoid
+            },
+            type: 'get',
+            dataType: 'json',
+            success: function (response) {
+                //daotaogiaovien = response.Result.Results;
+                var render = '';
+                var template = $('#template-table-AddEditDaoTaoGiaoVien').html();
+                $.each(response.Result, function (i, item) {
+                    render += Mustache.render(template, {
+                        GiaoVienId: item.Id,
+                        GiaoVienTenGiaoVien: item.TenGiaoVien,
+                        GiaoVienChucDanh: item.ChucDanh,
+                        GiaoVienSoDienThoai: item.SoDienThoai,
+                        GiaoVienEmail: item.Email
+                    });
+                });
+                $('#table-contentAddEditDaoTaoGiaoVien').html(render);
+                
+            }
+        });
+    }
+
+
 
 }
