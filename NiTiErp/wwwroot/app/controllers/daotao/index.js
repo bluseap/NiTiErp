@@ -269,24 +269,7 @@
                 Email: $(item).find('input.GiaoVienEmail').first().val()
             });
             //console.log(giaovienList);
-        });
-
-        //var noidaotao = $('#ddlAddEditDaoTaoNoi').val();
-        //$.ajax({
-        //    url: '/admin/daotao/SaveDaoTaoGiaoVien',
-        //    data: {
-        //        DaoTaoNoiId: noidaotao,
-        //        daotaogiaovienList: giaovienList
-        //    },
-        //    type: 'post',
-        //    dataType: 'json',
-        //    success: function (response) {
-        //        loadTableDaoTao();
-        //        $('#modal-add-edit-DaoTao').modal('hide');
-        //        $('#table-contentAddEditDaoTaoGiaoVien').html('');
-        //        resetFormAddEditDaoTao();
-        //    }
-        //});
+        });       
 
         var noidaotao = $('#ddlAddEditDaoTaoNoi').val();
 
@@ -361,7 +344,7 @@
                 $('#txtAddEditNgayBatDau').val(tedu.getFormattedDate(daotao.NgayBatDau));
                 $('#txtAddEditNgayKetThuc').val(tedu.getFormattedDate(daotao.NgayKetThuc));
 
-                loadGiaoVienLop(daotao.DaoTaoNoiId);
+                loadGiaoVienLop(daotaoid);
 
                 //$('#txtNgaKyQuyetDinh').val(tedu.getFormattedDate(bonhiem.NgayKyQuyetDinh));  
                 tedu.stopLoading();
@@ -373,12 +356,12 @@
         });
     }
 
-    function loadGiaoVienLop(daotanoid) {
+    function loadGiaoVienLop(daotaoid) {
         var daotaogiaovien = [];
         $.ajax({
             url: '/admin/daotao/GetDaoTaoGiaoVienLopId',
             data: {
-                daotaonoiId: daotanoid
+                daotaoId: daotaoid
             },
             type: 'get',
             dataType: 'json',

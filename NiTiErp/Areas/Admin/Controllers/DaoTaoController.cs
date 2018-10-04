@@ -83,7 +83,8 @@ namespace NiTiErp.Areas.Admin.Controllers
 
                     var daotao = _daotaolopService.DaoTaoLopAUD(daotaoVm, "InDaoTaoLop");
 
-                    SaveDaoTaoGiaoVien(daotaoVm.DaoTaoNoiId, daotaoVm.DaoTaoGiaoVienList, daotaoVm.Id);
+                    if (daotaoVm.DaoTaoGiaoVienList != null)
+                        SaveDaoTaoGiaoVien(daotaoVm.DaoTaoNoiId, daotaoVm.DaoTaoGiaoVienList, daotaoVm.Id);
                     
                     return new OkObjectResult(daotao);
                 }
@@ -213,11 +214,11 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetDaoTaoGiaoVienLopId(string daotaonoiId)
+        public IActionResult GetDaoTaoGiaoVienLopId(Guid daotaoId)
         {
             var moimoi = Guid.NewGuid();
 
-            var model = _daotaogiaovienService.DaoTaoGiaoVienGetList(1, daotaonoiId, "", "", 1, 1000, moimoi, moimoi, "GetDaoTaoGiaoVienNoi");
+            var model = _daotaogiaovienService.DaoTaoGiaoVienGetList(1, "", "", "", 1, 1000, moimoi, daotaoId, "GetDaoTaoGiaoVienLop");
 
             return new OkObjectResult(model);
         }
