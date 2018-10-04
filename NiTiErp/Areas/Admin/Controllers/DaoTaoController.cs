@@ -82,6 +82,9 @@ namespace NiTiErp.Areas.Admin.Controllers
                     daotaoVm.Id = Guid.NewGuid();
 
                     var daotao = _daotaolopService.DaoTaoLopAUD(daotaoVm, "InDaoTaoLop");
+
+                    SaveDaoTaoGiaoVien(daotaoVm.DaoTaoNoiId, daotaoVm.DaoTaoGiaoVienList, daotaoVm.Id);
+                    
                     return new OkObjectResult(daotao);
                 }
                 else
@@ -159,19 +162,20 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult SaveDaoTaoGiaoVien(int DaoTaoNoiId, List<DaoTaoGiaoVienViewModel> daotaogiaovienList)
+        public IActionResult SaveDaoTaoGiaoVien(int DaoTaoNoiId, List<DaoTaoGiaoVienViewModel> daotaogiaovienList, Guid daotaoId )
         {
-            AddDaoTaoGiaoVien(DaoTaoNoiId, daotaogiaovienList);          
+            AddDaoTaoGiaoVien(DaoTaoNoiId, daotaogiaovienList, daotaoId);          
             return new OkObjectResult(daotaogiaovienList);
         }
 
-        public void AddDaoTaoGiaoVien(int DaoTaoNoiId, List<DaoTaoGiaoVienViewModel> daotaogiaovienList)
+        public void AddDaoTaoGiaoVien(int DaoTaoNoiId, List<DaoTaoGiaoVienViewModel> daotaogiaovienList, Guid daotaoId)
         {
             var username = User.GetSpecificClaim("UserName");
 
             foreach (var giaovienlist in daotaogiaovienList)
             {
                 giaovienlist.Id = Guid.NewGuid();
+                giaovienlist.DaoTaoId = daotaoId;
                 giaovienlist.DaoTaoNoiId = DaoTaoNoiId;
 
                 giaovienlist.CreateBy = username;
@@ -180,6 +184,31 @@ namespace NiTiErp.Areas.Admin.Controllers
                 giaovienlist.UpdateDate = DateTime.Now;
 
                 var daotaogiaovien = _daotaogiaovienService.DaoTaoGiaoVienAUD(giaovienlist, "InDaoTaoGiaoVien");               
+            }
+        }
+
+        [HttpPost]
+        public IActionResult UpdateDaoTaoGiaoVien(int DaoTaoNoiId, List<DaoTaoGiaoVienViewModel> daotaogiaovienList)
+        {
+            UpdateAddDaoTaoGiaoVien(DaoTaoNoiId, daotaogiaovienList);
+            return new OkObjectResult(daotaogiaovienList);
+        }
+
+        public void UpdateAddDaoTaoGiaoVien(int DaoTaoNoiId, List<DaoTaoGiaoVienViewModel> daotaogiaovienList)
+        {
+            var username = User.GetSpecificClaim("UserName");
+
+            foreach (var giaovienlist in daotaogiaovienList)
+            {
+                //giaovienlist.Id = Guid.NewGuid();
+                giaovienlist.DaoTaoNoiId = DaoTaoNoiId;
+
+                giaovienlist.CreateBy = username;
+                giaovienlist.CreateDate = DateTime.Now;
+                giaovienlist.UpdateBy = username;
+                giaovienlist.UpdateDate = DateTime.Now;
+
+                var daotaogiaovien = _daotaogiaovienService.DaoTaoGiaoVienAUD(giaovienlist, "InDaoTaoGiaoVien");
             }
         }
 

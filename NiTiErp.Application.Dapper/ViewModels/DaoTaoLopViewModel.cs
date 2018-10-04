@@ -77,7 +77,9 @@ namespace NiTiErp.Application.Dapper.ViewModels
         
         [StringLength(50)]
         public string GiaoVienEmail { get; set; }
-        
+
+       
+        public List<DaoTaoGiaoVienViewModel> DaoTaoGiaoVienList { set; get; }
 
 
         public int Status { get; set; }

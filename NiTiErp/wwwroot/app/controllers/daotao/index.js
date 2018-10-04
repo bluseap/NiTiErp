@@ -52,6 +52,10 @@
 
             $('#hidDaoTaoId').val(daotaoId);
 
+            var template = $('#table-DaoTao').html();
+            var render = "";
+            $('#table-contentAddEditDaoTaoGiaoVien').html(render);    
+
             loadDaoTaoLop(daotaoId);
 
             $('#modal-add-edit-DaoTao').modal('show'); 
@@ -221,14 +225,14 @@
                 }
             }
         });
-    }
+    }   
 
-    function SaveDaoTaoLopGiaoVien() {
+    function UpdateDaoTaoLopGiaoVien() {
         var giaovienList = [];
         $.each($('#table-contentAddEditDaoTaoGiaoVien').find('tr'), function (i, item) {
             //console.log(item);
-            giaovienList.push({ 
-                Id: '0',
+            giaovienList.push({
+                Id: $(item).find('input.GiaoVienId').first().val(),
                 TenGiaoVien: $(item).find('input.GiaoVienTenGiaoVien').first().val(),
                 ChucDanh: $(item).find('input.GiaoVienChucDanh').first().val(),
                 SoDienThoai: $(item).find('input.GiaoVienSoDienThoai').first().val(),
@@ -239,7 +243,7 @@
 
         var noidaotao = $('#ddlAddEditDaoTaoNoi').val();
         $.ajax({
-            url: '/admin/daotao/SaveDaoTaoGiaoVien',
+            url: '/admin/daotao/UpdateDaoTaoGiaoVien',
             data: {
                 DaoTaoNoiId: noidaotao,
                 daotaogiaovienList: giaovienList
@@ -248,24 +252,24 @@
             dataType: 'json',
             success: function (response) {
                 SaveDaoTaoLop(noidaotao);
+                loadTableDaoTao();
             }
         });
-        
     }
 
-    function UpdateDaoTaoLopGiaoVien() {
-        //var giaovienList = [];
-        //$.each($('#table-contentAddEditDaoTaoGiaoVien').find('tr'), function (i, item) {
-        //    //console.log(item);
-        //    giaovienList.push({
-        //        Id: '0',
-        //        TenGiaoVien: $(item).find('input.GiaoVienTenGiaoVien').first().val(),
-        //        ChucDanh: $(item).find('input.GiaoVienChucDanh').first().val(),
-        //        SoDienThoai: $(item).find('input.GiaoVienSoDienThoai').first().val(),
-        //        Email: $(item).find('input.GiaoVienEmail').first().val()
-        //    });
-        //    //console.log(giaovienList);
-        //});
+    function SaveDaoTaoLopGiaoVien() {
+        var giaovienList = [];
+        $.each($('#table-contentAddEditDaoTaoGiaoVien').find('tr'), function (i, item) {
+            //console.log(item);
+            giaovienList.push({
+                GiaoVienId: '0',
+                TenGiaoVien: $(item).find('input.GiaoVienTenGiaoVien').first().val(),
+                ChucDanh: $(item).find('input.GiaoVienChucDanh').first().val(),
+                SoDienThoai: $(item).find('input.GiaoVienSoDienThoai').first().val(),
+                Email: $(item).find('input.GiaoVienEmail').first().val()
+            });
+            //console.log(giaovienList);
+        });
 
         //var noidaotao = $('#ddlAddEditDaoTaoNoi').val();
         //$.ajax({
@@ -277,12 +281,14 @@
         //    type: 'post',
         //    dataType: 'json',
         //    success: function (response) {
-        //        SaveDaoTaoLop(noidaotao);
+        //        loadTableDaoTao();
+        //        $('#modal-add-edit-DaoTao').modal('hide');
+        //        $('#table-contentAddEditDaoTaoGiaoVien').html('');
+        //        resetFormAddEditDaoTao();
         //    }
         //});
-    }
 
-    function SaveDaoTaoLop(noidaotao) {
+        var noidaotao = $('#ddlAddEditDaoTaoNoi').val();
 
         var insupdatetaolopid = $('#hidInsertDaoTaoId').val();
         
@@ -312,12 +318,14 @@
                 SoLuongDangKy: soluongdangky,
                 SoLuongHoc: soluonghoc,
                 NgayBatDau: ngaybatdau ,
-                NgayKetThuc: ngayketthuc 
+                NgayKetThuc: ngayketthuc,
+
+                DaoTaoGiaoVienList: giaovienList
             },
             type: 'post',
             dataType: 'json',
             success: function (response) {
-
+                loadTableDaoTao();
                 $('#modal-add-edit-DaoTao').modal('hide');
                 $('#table-contentAddEditDaoTaoGiaoVien').html('');
                 resetFormAddEditDaoTao();
@@ -387,8 +395,7 @@
                         GiaoVienEmail: item.Email
                     });
                 });
-                $('#table-contentAddEditDaoTaoGiaoVien').html(render);
-                
+                $('#table-contentAddEditDaoTaoGiaoVien').html(render);                
             }
         });
     }

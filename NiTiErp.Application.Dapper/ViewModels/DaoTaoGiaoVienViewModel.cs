@@ -9,6 +9,8 @@ namespace NiTiErp.Application.Dapper.ViewModels
     {
         public Guid Id { set; get; }
 
+        public Guid DaoTaoId { set; get; }
+
         public int InsertDaoTaoGiaoVienId { set; get; }
 
         [StringLength(50)]
