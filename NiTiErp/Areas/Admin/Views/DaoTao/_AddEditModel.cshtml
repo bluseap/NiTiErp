@@ -107,15 +107,15 @@
                         </table>
                     </form>
 
-                    <script type="x-tmpl-mustache" id="template-table-AddEditDaoTaoGiaoVien">
-                        @*<tr data-id="{{Id}}">*@
-                        <tr>
+                    <script type="x-tmpl-mustache" id="template-table-AddEditDaoTaoGiaoVien">                        
+                        <tr >
                             <td><input type="text" class="GiaoVienTenGiaoVien form-control" value="{{GiaoVienTenGiaoVien}}" /></td>
                             <td><input type="text" class="GiaoVienChucDanh form-control" value="{{GiaoVienChucDanh}}" /></td>
                             <td><input type="text" class="GiaoVienSoDienThoai form-control" value="{{GiaoVienSoDienThoai}}" /></td>
                             <td><input type="text" class="GiaoVienEmail form-control" value="{{GiaoVienEmail}}" /></td>
-                            <td><button class="btn btn-xs btn-danger btn-deleteAddEditDaoTaoGiaoVien" type="button"><i class="fa fa-trash"></i></button></td>
-
+                            <th scope="row">
+                                <a class="btn btn-danger btn-deleteAddEditDaoTaoGiaoVien" data-id="{{GiaoVienId}}" data-toggle="tooltip" data-placement="top" title="Sửa "><i class="fa fa-trash-o"></i> </a>
+                            </th>                           
                             <td><input type="hidden" class="GiaoVienId form-control" value="{{GiaoVienId}}" /></td>
                         </tr>
                     </script>
