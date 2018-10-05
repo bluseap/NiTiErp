@@ -9,6 +9,7 @@
         registerEvents();
 
         addeditDaoTao.initialize();
+        daotaoDangKy.initialize();
 
         loadData();
     }
@@ -110,6 +111,7 @@
                 //deleteGiaoVien(giaovienid);
             }            
         });       
+        
 
     }
 

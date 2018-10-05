@@ -9,46 +9,116 @@
                 <div id="horizontal-form">
                     <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainDaoTaoDangKy">
                         <input type="hidden" id="hidDaoTaoDangKyId" value="" />
-                        <input type="hidden" id="hidDaoTaoNoiId" value="" />
-                     
+
+                        <input type="hidden" id="hidDangKyDaoTaoNoiId" value="" />
+                        <input type="hidden" id="hidDangKyDaoTaoLopId" value="" />
+                        <input type="hidden" id="hidDangKyInserUpdate" value="" />
 
 
                         <div class="form-group">
-                            <label for="lbAddEditHoTen" class="control-label col-md-2 col-sm-2 col-xs-12 ">Họ và tên</label>
+                            <label for="lbDangKyNoiDaoTao" class="control-label col-md-2 col-sm-2 col-xs-12 ">Trường đào tạo</label>
                             <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                                <input type="text" class="form-control has-feedback-right" id="txtAddEditHoTen" placeholder="Họ và tên nhân viên">
+                                <input type="text" class="form-control has-feedback-right" id="txtDangKyNoiDaoTao" placeholder="Trường đào tạo">
                             </div>
-                            <label for="lbAddEditPhongTo" class="control-label col-md-2 col-sm-2 col-xs-12 ">Phòng, tổ</label>
+                            <label for="lbDangKyLoaiDaoTao" class="control-label col-md-2 col-sm-2 col-xs-12 ">Loại đào tạo</label>
                             <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                                <input type="text" class="form-control has-feedback-right" id="txtAddEditPhongTo" placeholder="Phòng, tổ, nhà máy">
+                                <input type="text" class="form-control has-feedback-right" id="txtDangKyLoaiDaoTao" placeholder="Loại đào tạo">
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            <label for="lbDangKyLoaiBang" class="control-label col-md-2 col-sm-2 col-xs-12 ">Loại bằng</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtDangKyLoaiBang" placeholder="Loại bằng">
+                            </div>
+                            <label for="lbDangKyChuyenMon" class="control-label col-md-2 col-sm-2 col-xs-12 ">Chuyên môn</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtDangKyChuyenMon" placeholder="Chuyên môn">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbDangKyNoiHoc" class="control-label col-md-2 col-sm-2 col-xs-12 ">Nơi học</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtDangKyNoiHoc" placeholder="Nơi học">
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="button" id="btnSaveDaoTao" class="btn btn-success">Lưu</button>
-                                <button type="button" id="btnCanceDaoTao" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                <button type="button" id="btnSaveDangKyNhanVien" class="btn btn-success">Lưu</button>
+                                <button type="button" id="btnCanceDangKyNhanVien" data-dismiss="modal" class="btn btn-default">Đóng</button>
                             </div>
                         </div>
                     </form>
-                </div>
+                </div>               
+                <div id="formDangKyDaoTaoNhanVien">
+                    <form class="form-horizontal" role="form" id="frmMaintainanceDangKyDaoTaoNhanVien">
+                        <div class="row no-print">
+                            <div class="col-xs-12">
+                                <button type="button" class="btn btn-info pull-right"  id="btnExcelDangKyNhanVien" >Xuất Excel</button>
+                            </div>
+                        </div>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Họ và tên</th>
+                                    <th>Khu vực</th>
+                                    <th>Phòng, tổ</th>
+                                    <th>Chức vụ</th>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody id="table-contentDangKyDaoTaoNhanVien"></tbody>
+                        </table>
+                        <div class="row" id="row--infoDangKyDaoTaoNhanVien">
+                            <div class="col-sm-5">
+                                <div class="dataTables_info" id="datatable-checkbox_infoDangKyDaoTaoNhanVien" role="status" aria-live="polite">
+                                    <select id="ddl-show-pageDangKyDaoTaoNhanVien">
+                                        <option value="10" selected="selected">10</option>
+                                        <option value="20">20</option>
+                                        <option value="30">30</option>
+                                        <option value="50">50</option>
+                                    </select>
+                                    <span class="item-per-page">
+                                        dòng/trang.
+                                    </span>
+                                    Tổng cộng: <strong id="lblDangKyDaoTaoNhanVienTotalRecords"></strong>
+                                </div>
+                            </div><div class="col-sm-7">
+                                <div class="dataTables_paginate" id="datatable-checkbox_paginateDangKyDaoTaoNhanVien">
+                                    <ul id="paginationULDangKyDaoTaoNhanVien"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <script type="x-tmpl-mustache" id="template-table-DangKyDaoTaoNhanVien">
+                        <tr>
+                            <td>{{Ten}}</td>
+                            <td>{{TenKhuVuc}}</td>
+                            <td>{{TenPhong}}</td>
+                            <td>{{TenChucVu}}</td>
+                            <th scope="row">
+                                <a class="btn btn-danger btn-deleteDangKyDaoTapNhanVien" data-id="{{id}}" data-toggle="tooltip" data-placement="top" title="Hủy nhân viên đào tạo"><i class="fa fa-trash-o"></i> </a>
+                            </th>
+                            <td><input type="hidden" class="hosoId form-control" value="{{hosoId}}" /></td>
+                        </tr>
+                    </script>
+                </div>                
                 <div class="ln_solid"></div>
-                <div class="table-responsive" id="table-responsiveHoSoDaoTao">
-                    <div class="row" id="row-AddEditDaoTao">
+                <div class="table-responsive" id="table-responsiveHoSoDaoTaoDangKy">
+                    <div class="row" id="row-AddEditDaoTaoDangKy">
                         <div class="col-md-3 col-sm-12 col-xs-12 form-group">
-                            <select id="ddlKhuVucAddEdit" class="form-control"></select>
+                            <select id="ddlKhuVucAddEditDangKy" class="form-control"></select>
                         </div>
                         <div class="col-md-3 col-sm-12 col-xs-12 form-group">
-                            <select id="ddlPhongBanAddEdit" class="form-control"></select>
+                            <select id="ddlPhongBanAddEditDangKy" class="form-control"></select>
                         </div>
                         <div class="col-md-3 col-sm-12 col-xs-12 form-group">
-                            <input type="text" id="txtTimNhanVienAddEdit" class="form-control" placeholder="Từ khóa...">
+                            <input type="text" id="txtTimNhanVienAddEditDangKy" class="form-control" placeholder="Từ khóa...">
                         </div>
                         <div class="col-md-3 col-sm-12 col-xs-12 form-group">
-                            <button class="btn btn-primary " id="btnTimNhanVienAddEdit" type="button">Tìm !</button>
+                            <button class="btn btn-primary " id="btnTimNhanVienAddEditDangKy" type="button">Tìm !</button>
                         </div>
                     </div>
-                    <table id="tblHoSoNhanVienDaoTao" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                    <table id="tblHoSoNhanVienDaoTaoDangKy" class="table table-striped jambo_table bulk_action" cellspacing="0">
                         <thead>
                             <tr>
                                 <th width="=20%">#</th>
@@ -60,12 +130,12 @@
                                 <th>Trạng thái</th>
                             </tr>
                         </thead>
-                        <tbody id="tblContentHoSoDaoTao"></tbody>
+                        <tbody id="tblContentHoSoDaoTaoDangKy"></tbody>
                     </table>
-                    <div class="row" id="row-AddEditDaoTao-infoHoSoDaoTao">
+                    <div class="row" id="row-AddEditDaoTao-infoHoSoDaoTaoDangKy">
                         <div class="col-sm-5">
-                            <div class="dataTables_info" id="datatable-checkbox_infoHoSoDaoTao" role="status" aria-live="polite">
-                                <select id="ddl-show-pageHoSoDaoTao">
+                            <div class="dataTables_info" id="datatable-checkbox_infoHoSoDaoTaoDangKy" role="status" aria-live="polite">
+                                <select id="ddl-show-pageHoSoDaoTaoDangKy">
                                     <option value="10" selected="selected">10</option>
                                     <option value="20">20</option>
                                     <option value="30">30</option>
@@ -74,20 +144,20 @@
                                 <span class="item-per-page">
                                     dòng/trang.
                                 </span>
-                                Tổng cộng: <strong id="lblHoSoDaoTaoTotalRecords"></strong>
+                                Tổng cộng: <strong id="lblHoSoDaoTaoDangKyTotalRecords"></strong>
                             </div>
                         </div><div class="col-sm-7">
-                            <div class="dataTables_paginate" id="datatable-checkbox_paginateHoSoDaoTao">
-                                <ul id="paginationULHoSoDaoTao"></ul>
+                            <div class="dataTables_paginate" id="datatable-checkbox_paginateHoSoDaoTaoDangKy">
+                                <ul id="paginationULHoSoDaoTaoDangKy"></ul>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <script id="table-HoSoDaoTao" type="x-tmpl-mustache">
+                <script id="table-HoSoDaoTaoDangKy" type="x-tmpl-mustache">
                     <tr>
                         <th scope="row">
-                            <a class="btn btn-lg btn-editHoSoDaoTao" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Thêm mới"><i class="fa fa-pencil"></i> </a>
+                            <a class="btn btn-lg btn-editHoSoDaoTaoDangKy" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Tham gia đào tạo"><i class="fa fa-arrow-up"></i> </a>
                         </th>
                         <td>{{Ten}}</td>
                         <td>{{TenKhuVuc}}</td>
