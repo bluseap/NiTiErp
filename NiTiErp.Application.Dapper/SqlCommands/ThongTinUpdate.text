@@ -1,5 +1,14 @@
 ﻿
 
+copy file excel in tepmlate DaoTaoNhanVien.xlsx
+
+copy file excel in tepmlate SucKhoeTKPL.xlsx
+
+copy file excel in tepmlate SucKhoeTK.xlsx
+
+copy file excel in tepmlate SucKhoe.xlsx
+
+
 update table insert table 
 insert into DieuKienTim (  [Id]      ,[TenDieuKien]      ,[BangDieuKien]      ,[Active]      ,[Stt] )
 	values (5 , N'DS Sức khỏe nhân viên', 	'SucKhoeNhanVien' ,	True ,	5)
@@ -8,11 +17,13 @@ insert into DieuKienTim (  [Id]      ,[TenDieuKien]      ,[BangDieuKien]      ,[
 insert into DieuKienTim (  [Id]      ,[TenDieuKien]      ,[BangDieuKien]      ,[Active]      ,[Stt] )
 	values (7 ,	N'DS Tổng hợp phân loại sức khỏe',	'SucKhoeNhanVien' ,	True ,	7 )
 
+
 modi table SucKhoeNhanVien Columns NamKham [int] on HoSoNhanVienId	int	Checked  
 
 modi table SucKhoeNhanVien Columns PhanLoaiSucKhoeId [varchar(20)] on PhanLoaiSucKhoe	int	Checked  
 
 modi table [Slides]		Columns		CaptionInner	nvarchar(MAX)	null
+
 
 r
 update table Functions:  SUCKHOENHAP	fa fa-ambulance	Sức khỏe	SUCKHOE	1	1	/admin/suckhoe/index

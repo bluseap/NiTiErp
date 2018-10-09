@@ -18,7 +18,8 @@
         });
        
         $('#btnExcelDangKyNhanVien').on('click', function () {
-            tedu.notify("xuat excel dang ky nhanv ein", "success");
+            //tedu.notify("xuat excel dang ky nhanv ein", "success");
+            XuatExcelDaoTaoNhanVien();
         });
 
         $('body').on('click', '.btn-editHoSoDaoTaoDangKy', function (e) {
@@ -439,6 +440,33 @@
             }
         });
     } 
+
+    function XuatExcelDaoTaoNhanVien() {
+        var daotaolopid = $('#hidDangKyDaoTaoLopId').val();
+
+        $.ajax({
+            type: 'POST',
+            url: '/admin/daotao/ExportExcelDaoTaoNhanVien',
+            data: {
+                daotaolopId: daotaolopid,
+                hosoId: daotaolopid,
+                daotaonoiId: daotaolopid,
+                corporationId: daotaolopid,
+                phongId: "",
+                chucvuId: "",
+                keyword: "",
+                dieukienkhac: "1"
+            },
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                window.location.href = response;
+                tedu.stopLoading();
+            }
+        });
+
+    }    
 
     function loadDaoTaoDangKyData() {
            

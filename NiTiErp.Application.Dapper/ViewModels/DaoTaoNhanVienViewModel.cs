@@ -20,6 +20,11 @@ namespace NiTiErp.Application.Dapper.ViewModels
         [StringLength(1000)]
         public string TenNhanVien { get; set; }
 
+        [StringLength(2)]
+        public string GioiTinh { get; set; }
+
+        public DateTime NgaySinh { get; set; }
+
         public Guid DaoTaoLopId { set; get; }
 
         [StringLength(100)]
