@@ -102,7 +102,7 @@
 
                     },
                     error: function (status) {
-                        tedu.notify('Xóa Quết định Giáo viên lỗi! Kiểm tra lại.', 'error');
+                        tedu.notify('Xóa Đào tạo Giáo viên lỗi! Kiểm tra lại.', 'error');
                         tedu.stopLoading();
                     }
                 });   
@@ -111,7 +111,12 @@
                 //deleteGiaoVien(giaovienid);
             }            
         });       
-        
+
+        $("#ddl-show-pageDaoTao").on('change', function () {
+            tedu.configs.pageSize = $(this).val();
+            tedu.configs.pageIndex = 1;
+            loadTableDaoTao(true);
+        });
 
     }
 

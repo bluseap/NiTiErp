@@ -231,6 +231,7 @@ namespace NiTiErp
             services.AddTransient<IAppUserLoginService, AppUserLoginService>();
             services.AddTransient<IDaoTaoLopService, DaoTaoLopService>();
             services.AddTransient<IDaoTaoGiaoVienService, DaoTaoGiaoVienService>();
+            services.AddTransient<IDaoTaoNhanVienService, DaoTaoNhanVienService>();
 
 
             services.AddTransient<IQDKhenThuongService, QDKhenThuongService>();

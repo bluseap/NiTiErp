@@ -1,5 +1,7 @@
 ﻿var daotaodangkyController = function () {
 
+    var tableHoSo = [];
+    var tableDaoTaoNhanVien = [];
 
     this.initialize = function () {
         loadKhuVucDangKy();
@@ -40,8 +42,7 @@
 
             loadDaoTaoDangKy(daotaolopId);
 
-            var render = "";
-            $('#table-contentDangKyDaoTaoNhanVien').html(render);  
+            //loadTableDaoTaoDangKy(true);                   
 
             $('#modal-add-edit-DaoTaoDangKy').modal('show');
 
@@ -64,11 +65,40 @@
         });
 
         $('body').on('click', '.btn-deleteDangKyDaoTapNhanVien', function (e) {
-            e.preventDefault();           
+            e.preventDefault();  
 
-            $(this).closest('tr').remove();
+            var daotaonhanvienid = $(this).data("id");
+            //tedu.notify(daotaonhanvienid, 'success');
+
+            $.ajax({
+                type: "POST",
+                url: "/Admin/daotao/DeleteDaoTaoNhanVien",
+                data: {
+                    Id: daotaonhanvienid
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    tedu.notify('Xóa thành công', 'success');
+                    tedu.stopLoading();
+                },
+                error: function (status) {
+                    tedu.notify('Xóa Đào tạo Nhân viên lỗi! Kiểm tra lại.', 'error');
+                    tedu.stopLoading();
+                }
+            });
+
+            $(this).closest('tr').remove();    
+
         });
 
+        $("#ddl-show-pageDangKyDaoTaoNhanVien").on('change', function () {
+            tedu.configs.pageSize = $(this).val();
+            tedu.configs.pageIndex = 1;
+            loadTableDaoTaoDangKy(true);
+        });
     }
 
     function resetFormDaoTaoDangKy() {
@@ -77,6 +107,8 @@
         $('#hidDangKyDaoTaoLopId').val(""); 
         $('#hidDangKyInserUpdate').val(""); 
 
+        tableHoSo = [];
+        tableDaoTaoNhanVien = [];
     }
 
     function loadKhuVucDangKy() {
@@ -133,7 +165,7 @@
             }
         });
     }
-
+    
     function LoadTableHoSo(isPageChanged) {
         var template = $('#table-HoSoDaoTaoDangKy').html();
         var render = "";
@@ -175,6 +207,8 @@
                         });
                     });
                 }
+
+                tableHoSo = response.Result.Results;
 
                 $('#lblHoSoDaoTaoDangKyTotalRecords').text(response.Result.RowCount);
 
@@ -241,7 +275,7 @@
                 $('#txtDangKyChuyenMon').val(daotao.ChuyenMon);
                 $('#txtDangKyNoiHoc').val(daotao.NoiHoc);              
 
-                loadTableDaoTaoDangKy(daotao.Id);
+                loadTableDaoTaoDangKy(true);
 
                 //$('#txtNgaKyQuyetDinh').val(tedu.getFormattedDate(bonhiem.NgayKyQuyetDinh));  
                 tedu.stopLoading();
@@ -252,26 +286,162 @@
             }
         });
     }
+    
+    function addDangKyNhanVien(hosoid) {   
 
-    function addDangKyNhanVien(hosoid) {       
-        var template = $('#template-table-DangKyDaoTaoNhanVien').html();
-        var render = Mustache.render(template, {
-            Ten: "2",
-            TenKhuVuc: "2",
-            TenPhong: "2",
-            TenChucVu: "2",
-            hosoId: "00000000-0000-0000-0000-000000000000"
+        var daotaolopid = $('#hidDangKyDaoTaoLopId').val();
 
+        $.ajax({
+            type: "GET",
+            url: "/Admin/daotao/SaveDaoTaoNhanVien",
+            data: {
+                InsertDaoTaoNhanVienId: 1,
+                HoSoNhanVienId: hosoid,
+                DaoTaoLopId: daotaolopid,
+                Ten: ""               
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var query = response.Result[0];
+                if (query.KETQUA === "SAI") {
+                    tedu.notify('Nhân viên đăng ký rồi! Kiểm tra lại.', 'error');
+                }
+                else {       
+                    loadHoSoId(hosoid);      
+                }                
+                tedu.stopLoading();
+            },
+            error: function (status) {
+                tedu.notify('Nhân viên đã đăng ký rồi! Kiểm tra lại.', 'error');
+                tedu.stopLoading();
+            }
+        });        
+    }
+
+    function loadHoSoId(hosoid) {
+        //tedu.notify(hosoid, "success");
+
+        $.ajax({
+            type: "GET",
+            url: "/Admin/Hoso/GetHoSoId",
+            data: { hosoId: hosoid },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var hoso = response.Result.Results[0];   
+               
+                var template = $('#template-table-DangKyDaoTaoNhanVien').html();
+                  
+                var render = Mustache.render(template, {
+                    Ten: hoso.Ten,
+                    TenKhuVuc: hoso.CorporationName,
+                    TenPhong: hoso.TenPhong,
+                    TenChucVu: hoso.TenChucVu,
+                    hosoId: hoso.Id
+                });
+                //tedu.notify('Nhân viên đăng ký.', 'success');
+                $('#table-contentDangKyDaoTaoNhanVien').append(render);   
+
+                tedu.stopLoading();
+            },
+            error: function (status) {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
         });
-        $('#table-contentDangKyDaoTaoNhanVien').append(render);
     }
 
-    function loadTableDaoTaoDangKy(daotaoid) {
+    function loadTableDaoTaoDangKy(isPageChanged) {
+        var template = $('#template-table-DangKyDaoTaoNhanVien').html();
+        var render = ""; 
+        //daotaonhanvienId        //hosoId        // DaoTaoLopId          //CorporationId        //PhongBanDanhMucId       // daotaonhanvienId2
+        var daotaolopId = $('#hidDangKyDaoTaoLopId').val();  
+        //tedu.notify(timnhanvien, "success");
+
+        $.ajax({
+            type: 'GET',
+            data: {
+                daotaoId: daotaolopId,                
+                keyword: "",
+                page: tedu.configs.pageIndex,
+                pageSize: tedu.configs.pageSize
+            },
+            url: '/admin/daotao/GetDaoTaoNhanVienLopId',
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.Results.length === 0) {                   
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th></tr>";                    
+                }
+                else {
+                    var query = response.Result.Results;
+                    $.each(query, function (i, item) {
+                        render += Mustache.render(template, {
+                            Ten: item.TenNhanVien,
+                            TenKhuVuc: item.TenKhuVuc,
+                            TenPhong: item.TenPhong,
+                            TenChucVu: item.TenChucVu,
+                            hosoId: item.Id
+                            //Status: tedu.getHoSoNhanVienStatus(item.Status)
+                            // Price: tedu.formatNumber(item.Price, 0),                          
+                        });
+                    });
+                    
+                }                
+
+                $('#lblDangKyDaoTaoNhanVienTotalRecords').text(response.Result.RowCount);
+
+                if (render !== '') {
+                    $('#table-contentDangKyDaoTaoNhanVien').html(render);
+                }
+
+                if (response.Result.RowCount !== 0) {
+                    wrapPagingDaoTaoDangKy(response.Result.RowCount, function () {
+                        loadTableDaoTaoDangKy();
+                    },
+                        isPageChanged);
+                }
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
 
     }
+    function wrapPagingDaoTaoDangKy(recordCount, callBack, changePageSize) {
+        var totalsize = Math.ceil(recordCount / tedu.configs.pageSize);
+        //Unbind pagination if it existed or click change pagesize
+        if ($('#paginationULDangKyDaoTaoNhanVien a').length === 0 || changePageSize === true) {
+            $('#paginationULDangKyDaoTaoNhanVien').empty();
+            $('#paginationULDangKyDaoTaoNhanVien').removeData("twbs-pagination");
+            $('#paginationULDangKyDaoTaoNhanVien').unbind("page");
+        }
+        //Bind Pagination Event
+        $('#paginationULDangKyDaoTaoNhanVien').twbsPagination({
+            totalPages: totalsize,
+            visiblePages: 7,
+            first: 'Đầu',
+            prev: 'Trước',
+            next: 'Tiếp',
+            last: 'Cuối',
+            onPageClick: function (event, p) {
+                //tedu.configs.pageIndex = p;
+                //setTimeout(callBack(), 200);
+                if (tedu.configs.pageIndex !== p) {
+                    tedu.configs.pageIndex = p;
+                    setTimeout(callBack(), 200);
+                }
+            }
+        });
+    } 
 
     function loadDaoTaoDangKyData() {
-
+           
     }
 
 

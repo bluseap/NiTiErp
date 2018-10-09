@@ -26,6 +26,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         private readonly NiTiErp.Application.Interfaces.IUserService _userService;
         private readonly IAuthorizationService _authorizationService;
 
+        private readonly IDaoTaoNhanVienService _daotaonhanvienService;
         private readonly IDaoTaoGiaoVienService _daotaogiaovienService;
         private readonly IDaoTaoNoiService _daotaonoiService;
         private readonly IDaoTaoLopService _daotaolopService;
@@ -34,6 +35,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             NiTiErp.Application.Interfaces.IUserService userService,
             IAuthorizationService authorizationService,
 
+            IDaoTaoNhanVienService daotaonhanvienService,
             IDaoTaoGiaoVienService daotaogiaovienService,
             IDaoTaoNoiService daotaonoiService,
             IDaoTaoLopService daotaolopService
@@ -43,6 +45,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             _userService = userService;
             _authorizationService = authorizationService;
 
+            _daotaonhanvienService = daotaonhanvienService;
             _daotaogiaovienService = daotaogiaovienService;
             _daotaonoiService = daotaonoiService;
             _daotaolopService = daotaolopService;
@@ -214,6 +217,87 @@ namespace NiTiErp.Areas.Admin.Controllers
                 giaovienlist.UpdateDate = DateTime.Now;
 
                 var daotaogiaovien = _daotaogiaovienService.DaoTaoGiaoVienAUD(giaovienlist, "InDaoTaoGiaoVien");               
+            }
+        }
+
+        [HttpGet]
+        public IActionResult SaveDaoTaoNhanVien(DaoTaoNhanVienViewModel daotaonhanvienVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+
+                //daotaonhanvienVm.CreateBy = username;
+                //daotaonhanvienVm.CreateDate = DateTime.Now;
+                //daotaonhanvienVm.UpdateBy = username;
+                //daotaonhanvienVm.UpdateDate = DateTime.Now;
+
+                var result = _authorizationService.AuthorizeAsync(User, "DAOTAONHAP", Operations.Create); // nhap dao tao
+                if (result.Result.Succeeded == false)
+                {
+                    return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
+                }
+
+                daotaonhanvienVm.Id = Guid.NewGuid();
+
+                //daotaonhanvienVm.Ten = "";
+                //daotaonhanvienVm.Hinh = "";               
+
+                try
+                {
+                    var daotaonhanvien = _daotaonhanvienService.DaoTaoNhanVienListAUD(daotaonhanvienVm.Id, daotaonhanvienVm.HoSoNhanVienId,
+                        daotaonhanvienVm.DaoTaoLopId, username, "InDaoTaoNhanVien");
+                    
+                    return new OkObjectResult(daotaonhanvien);                   
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+            }
+        }
+
+        [HttpGet]
+        public IActionResult GetDaoTaoNhanVienLopId(Guid daotaoId, string keyword, int page, int pageSize)
+        {
+            var keyword2 = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+
+            var moimoi = Guid.NewGuid();
+
+            var model = _daotaonhanvienService.GetAllDaoTaoNhanVienPaging(moimoi, moimoi, daotaoId,
+                "", "", moimoi, keyword2, page, pageSize, "GetListDaoTaoNhanVienLop");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteDaoTaoNhanVien(DaoTaoNhanVienViewModel daotaonhanvienVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var result = _authorizationService.AuthorizeAsync(User, "DAOTAONHAP", Operations.Delete); // xoa truong dao tao
+                if (result.Result.Succeeded == false)
+                {
+                    return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền xóa."));
+                }
+
+                daotaonhanvienVm.CreateDate = DateTime.Now;
+                daotaonhanvienVm.UpdateDate = DateTime.Now;
+
+                var daotaonhanvien = _daotaonhanvienService.DaoTaoNhanVienAUD(daotaonhanvienVm, "DelDaoTaoNhanVien");
+
+                return new OkObjectResult(daotaonhanvien);
             }
         }
 

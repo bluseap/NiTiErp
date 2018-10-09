@@ -217,18 +217,25 @@
             return '<span class="badge bg-blue">Về hưu</span>';
         else if (status === 4)
             return '<span class="badge bg-orange">Hết hạn</span>';
-        if (status === 71)
-            return '<span class="badge bg-green">Hoạt động</span>';
+
+        else if (status === 30)
+            return '<span class="badge bg-green">Đang học</span>';
+
+        else if (status === 41)
+            return '<span class="badge bg-green">Online</span>';
+        else if (status === 42)
+            return '<span class="badge bg-red">Offline</span>';    
+
+        
         else if (status === 61)
             return '<span class="badge bg-green">Mới</span>';
         else if (status === 62)
             return '<span class="badge bg-red">Cũ</span>';
         else if (status === 60)
             return '';
-        else if (status === 41)
-            return '<span class="badge bg-green">Online</span>';
-        else if(status === 42)
-            return '<span class="badge bg-red">Offline</span>';
+
+        else if (status === 71)
+            return '<span class="badge bg-green">Hoạt động</span>';    
         else 
             return '<span class="badge bg-purple">Chưa biết</span>';
 
