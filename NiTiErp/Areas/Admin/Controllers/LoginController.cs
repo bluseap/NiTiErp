@@ -71,7 +71,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new ObjectResult(new GenericResult(false, model));
         }
 
-        public IActionResult CountUserLogin(string userNameId)
+        public void CountUserLogin(string userNameId)
         {
             string ipString = HttpContext.Connection.RemoteIpAddress.ToString(); // LoginIpAddress
 
@@ -79,10 +79,10 @@ namespace NiTiErp.Areas.Admin.Controllers
 
             //var ip = heserver.AddressList[2].ToString();
             var nameComputer = heserver.HostName.ToString(); // LoginNameIp
-            var localIp6 = heserver.AddressList[0].ToString();
-            var temIp6 = heserver.AddressList[1].ToString();
-            var ip6Address = heserver.AddressList[2].ToString();
-            var ipComputer = heserver.AddressList[3].ToString(); // LoginIp
+            var localIp6 = heserver.AddressList[0] != null ? heserver.AddressList[0].ToString() : "";
+            var temIp6 = heserver.AddressList[1] != null ? heserver.AddressList[1].ToString() : "";
+            var ip6Address =  "";
+            var ipComputer = ipString;//heserver.AddressList[3].ToString(); // LoginIp
 
 
             var appuserloginVm = new AppUserLoginViewModel();
@@ -104,8 +104,44 @@ namespace NiTiErp.Areas.Admin.Controllers
 
             var model = _appuserloginService.AppUserLoginAUD(appuserloginVm, "InAppUserLogin");
 
-            return new OkObjectResult(model);
+           // return new OkObjectResult(model);
         }
+
+        //public IActionResult CountUserLogin(string userNameId)
+        //{
+        //    string ipString = HttpContext.Connection.RemoteIpAddress.ToString(); // LoginIpAddress
+
+        //    IPHostEntry heserver = Dns.GetHostEntry(Dns.GetHostName());
+
+        //    //var ip = heserver.AddressList[2].ToString();
+        //    var nameComputer = heserver.HostName.ToString(); // LoginNameIp
+        //    var localIp6 = heserver.AddressList[0].ToString();
+        //    var temIp6 = heserver.AddressList[1].ToString();
+        //    var ip6Address = heserver.AddressList[2].ToString();
+        //    var ipComputer = heserver.AddressList[3].ToString(); // LoginIp
+
+
+        //    var appuserloginVm = new AppUserLoginViewModel();
+
+        //    //var username = User.GetSpecificClaim("UserName");
+        //    var username = userNameId;
+
+        //    appuserloginVm.UserName = username;
+
+        //    appuserloginVm.LoginIpAddress = ipString;
+        //    appuserloginVm.LoginIp = ipComputer;
+        //    appuserloginVm.LoginNameIp = nameComputer;
+        //    appuserloginVm.LoginIp6Address = ip6Address;
+        //    appuserloginVm.LoginLocalIp6Adress = localIp6;
+        //    appuserloginVm.LoginMacIp = temIp6;
+
+        //    appuserloginVm.CreateDate = DateTime.Now;
+        //    appuserloginVm.CreateBy = username;
+
+        //    var model = _appuserloginService.AppUserLoginAUD(appuserloginVm, "InAppUserLogin");
+
+        //    return new OkObjectResult(model);
+        //}
 
     }
 }

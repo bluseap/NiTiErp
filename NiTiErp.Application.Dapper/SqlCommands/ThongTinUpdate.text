@@ -21,7 +21,7 @@ insert into DieuKienTim (  [Id]      ,[TenDieuKien]      ,[BangDieuKien]      ,[
 modi table SucKhoeNhanVien Columns NamKham [int] on HoSoNhanVienId	int	Checked  
 
 modi table SucKhoeNhanVien Columns PhanLoaiSucKhoeId [varchar(20)] on PhanLoaiSucKhoe	int	Checked  
-
+r
 modi table [Slides]		Columns		CaptionInner	nvarchar(MAX)	null
 
 
@@ -30,10 +30,10 @@ update table Functions:  SUCKHOENHAP	fa fa-ambulance	Sức khỏe	SUCKHOE	1	1	/a
 r
 update table Functions:	SUCKHOETIM	fa fa-ambulance	Tra cứu Sức khỏe	SUCKHOE	2	1	/admin/timsuckhoe/index
 
-
+r
 delete table AppUserLogins and create tabel AppUserLogins to database NiTi by scripts
 
-
+r
 create table AppUserOnline
 
 create table DaoTaoNhanVien
@@ -103,6 +103,11 @@ create proc [SucKhoeNhanVienAUD]
 
 create PROC [dbo].[SucKhoeNhanVienGetList]
 
+
+
+update proc [QDDieuDongAUD]
+
+update proc [QDBoNhiemAUD]
 
 update proc [BangDanhMucGetList]
 
