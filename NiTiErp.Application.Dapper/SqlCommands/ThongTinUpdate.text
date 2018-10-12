@@ -1,14 +1,73 @@
 ﻿
 
+
+
+create table LuongBaoHiem
+
+create table LuongThemGio
+
+create table LuongCaBa
+
+create table ChiPhi
+
+create table LuongCPGiam
+
+create table LuongCPTang
+
+create table LuongTongHop
+
+create table LockLuongThang
+
+
+
+
+update [functions] set [Name]=N'Bảng chấm công làm thêm giờ', [URl]=N'/admin/conggio/index' where Id='LUONGBANG'
+update [functions] set [Name]=N'Bảng chấm công ngày', [URl]=N'/admin/congngay/index' where Id='LUONGNHAP'
+
+
+INSERT INTO [dbo].[Functions]           ([Id]           ,[IconCss]           ,[Name]           ,[ParentId]
+           ,[SortOrder]           ,[Status]           ,[URL])
+     VALUES     (  'LUONGKHOITAO',	'fa-dollar',	N'Tạo kỳ lương mới',	'LUONG',	9	,1	, N'/admin/khoitao/index'	 )
+
+
+INSERT INTO [dbo].[Functions]           ([Id]           ,[IconCss]           ,[Name]           ,[ParentId]
+           ,[SortOrder]           ,[Status]           ,[URL])
+     VALUES     (  'LUONGLOCK',	'fa-dollar',	N'Khóa sổ lương tháng',	'LUONG',	8	,1	, N'/admin/khoaso/index'	 )
+
+INSERT INTO [dbo].[Functions]           ([Id]           ,[IconCss]           ,[Name]           ,[ParentId]
+           ,[SortOrder]           ,[Status]           ,[URL])
+     VALUES     (  'LUONGCHIPHIDM',	'fa-dollar',	N'Danh mục Chi phí lương',	'LUONG',	7	,1	, N'/admin/chiphidm/index'	 )
+
+INSERT INTO [dbo].[Functions]           ([Id]           ,[IconCss]           ,[Name]           ,[ParentId]
+           ,[SortOrder]           ,[Status]           ,[URL])
+     VALUES     (  'LUONGTIM',	'fa-dollar',	N'Tra cứu lương',	'LUONG',	6	,1	, N'/admin/luongtim/index'	 )
+
+INSERT INTO [dbo].[Functions]           ([Id]           ,[IconCss]           ,[Name]           ,[ParentId]
+           ,[SortOrder]           ,[Status]           ,[URL])
+     VALUES     (  'LUONGTONG',	'fa-dollar',	N'Bảng lương tổng hợp',	'LUONG',	5	,1	, N'/admin/luongtong/index'	 )
+
+INSERT INTO [dbo].[Functions]           ([Id]           ,[IconCss]           ,[Name]           ,[ParentId]
+           ,[SortOrder]           ,[Status]           ,[URL])
+     VALUES     (  'LUONGCHIPHI',	'fa-dollar',	N'Bảng Chi phí lương',	'LUONG',	4	,1	, N'/admin/chiphi/index'	 )
+
+INSERT INTO [dbo].[Functions]           ([Id]           ,[IconCss]           ,[Name]           ,[ParentId]
+           ,[SortOrder]           ,[Status]           ,[URL])
+     VALUES     (  'LUONGCABA',	'fa-dollar',	N'Bảng chấm công làm ca ba',	'LUONG',	3	,1	, N'/admin/congcaba/index'	 )
+
+
+
+
+
+r
 copy file excel in tepmlate DaoTaoNhanVien.xlsx
-
+r
 copy file excel in tepmlate SucKhoeTKPL.xlsx
-
+r
 copy file excel in tepmlate SucKhoeTK.xlsx
-
+r
 copy file excel in tepmlate SucKhoe.xlsx
 
-
+r
 update table insert table 
 insert into DieuKienTim (  [Id]      ,[TenDieuKien]      ,[BangDieuKien]      ,[Active]      ,[Stt] )
 	values (5 , N'DS Sức khỏe nhân viên', 	'SucKhoeNhanVien' ,	True ,	5)
@@ -17,9 +76,9 @@ insert into DieuKienTim (  [Id]      ,[TenDieuKien]      ,[BangDieuKien]      ,[
 insert into DieuKienTim (  [Id]      ,[TenDieuKien]      ,[BangDieuKien]      ,[Active]      ,[Stt] )
 	values (7 ,	N'DS Tổng hợp phân loại sức khỏe',	'SucKhoeNhanVien' ,	True ,	7 )
 
-
+r
 modi table SucKhoeNhanVien Columns NamKham [int] on HoSoNhanVienId	int	Checked  
-
+r
 modi table SucKhoeNhanVien Columns PhanLoaiSucKhoeId [varchar(20)] on PhanLoaiSucKhoe	int	Checked  
 r
 modi table [Slides]		Columns		CaptionInner	nvarchar(MAX)	null
@@ -35,33 +94,33 @@ delete table AppUserLogins and create tabel AppUserLogins to database NiTi by sc
 
 r
 create table AppUserOnline
-
+r
 create table DaoTaoNhanVien
-
+r
 create table DaoTaoNhanVienHis
-
+r
 create table DaoTaoGiaoVien
-
+r
 create table DaoTaoGiaoVienHis
-
+r
 create table DaoTaoLopGiaoVien
-
+r
 create table DaoTaoLop
-
+r
 create table DaoTaoLopHis
-
+r
 create table DaoTaoNoi
-
+r
 create table DaoTaoNoiHis
-
+r
 create table SucKhoeNoiKham
-
+r
 create table SucKhoeNoiKhamHis
-
+r
 create table SucKhoeNhanVienHis
-
+r
 create table PhanLoaiSucKhoe
-
+r
 update file table PhanLoaiSucKhoe
 insert into PhanLoaiSucKhoe ( [Id]      ,[TenPhanLoaiSucKhoe]      ,[Status]      ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate] )
 values (  1,	N'Loại 1',	1,	True	, 2, 	'admin',	'2018-01-01 00:00:00.000')
@@ -74,44 +133,44 @@ values ( 4,		N'Loại 4',	1,	True,	 5,	'admin',	'2018-01-01 00:00:00.000' )
 insert into PhanLoaiSucKhoe ( [Id]      ,[TenPhanLoaiSucKhoe]      ,[Status]      ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate] )
 values ( 5,		N'Không phân loai',	1,	True,	 0,	'admin',	'2018-01-01 00:00:00.000' )
 
-
+r
 create proc [DaoTaoNhanVienAUD]
-
+r
 create proc [DaoTaoNhanVienGetList]
-
+r
 create proc [DaoTaoGiaoVienAUD]
-
+r
 create proc [DaoTaoGiaoVienGetList]
-
+r
 create proc [AppUserLoginGetList]
-
+r
 create proc [AppUserLoginAUD]
-
+r
 create proc [DaoTaoLopGetList]
-
+r
 create proc  [DaoTaoLopAUD]
-
+r
 create proc  [DaoTaoNoiGetList]
-
+r
 create proc [DaoTaoNoiAUD]
-
+r
 create proc SucKhoeNoiKhamAUD
-
+r
 create proc SucKhoeNoiKhamGetList
-
+r
 create proc [SucKhoeNhanVienAUD]
-
+r
 create PROC [dbo].[SucKhoeNhanVienGetList]
 
 
-
+r
 update proc [QDDieuDongAUD]
-
+r
 update proc [QDBoNhiemAUD]
-
+r
 update proc [BangDanhMucGetList]
 
-
+r
 update hoso - index.js
 
 r
