@@ -56,6 +56,29 @@
             }
         });
     },
+    confirmOk: function (message, okCallback) {
+        bootbox.confirm({
+            message: message,
+            buttons: {
+                confirm: {
+                    label: 'Đồng ý',
+                    className: 'btn-success'
+                },
+                cancel: {
+                    label: 'Hủy',
+                    className: 'btn-danger'
+                }
+            },
+            callback: function (result) {
+                if (result === true) {
+                    okCallback();
+                }
+                else {
+                    okCallback();
+                }
+            }
+        });
+    },
 
     getFormattedDateTimeHour: function (datetime) {
         if (datetime === null || datetime === '')
