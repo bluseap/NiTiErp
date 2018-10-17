@@ -222,124 +222,129 @@ namespace NiTiErp.Areas.Admin.Controllers
                             worksheet.Cells[rowIndex, 3].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 3].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 4].Value = !string.IsNullOrEmpty(hdDetail.TenPhong) ? hdDetail.TenPhong.ToString() : "";
+                            worksheet.Cells[rowIndex, 4].Value = !string.IsNullOrEmpty(hdDetail.TenKhuVuc) ? hdDetail.TenKhuVuc.ToString() : "";
                             worksheet.Cells[rowIndex, 4].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 4].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 4].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 4].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 5].Value = !string.IsNullOrEmpty(hdDetail.NgaySinh.ToString()) ? hdDetail.NgaySinh.Year.ToString() : "";
+                            worksheet.Cells[rowIndex, 5].Value = !string.IsNullOrEmpty(hdDetail.TenPhong) ? hdDetail.TenPhong.ToString() : "";
                             worksheet.Cells[rowIndex, 5].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 5].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 5].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 5].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 6].Value = !string.IsNullOrEmpty(hdDetail.GioiTinh) ? hdDetail.GioiTinh == "1" ? "Nam" : "Nữ" : ""; worksheet.Cells[rowIndex, 3].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                            worksheet.Cells[rowIndex, 6].Value = !string.IsNullOrEmpty(hdDetail.NgaySinh.ToString()) ? hdDetail.NgaySinh.Year.ToString() : "";
+                            worksheet.Cells[rowIndex, 6].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 6].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 6].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 6].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 7].Value = !string.IsNullOrEmpty(hdDetail.CanNang.ToString()) ? hdDetail.CanNang.ToString() : "";
-                            worksheet.Cells[rowIndex, 7].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                            worksheet.Cells[rowIndex, 7].Value = !string.IsNullOrEmpty(hdDetail.GioiTinh) ? hdDetail.GioiTinh == "1" ? "Nam" : "Nữ" : ""; worksheet.Cells[rowIndex, 3].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 7].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 7].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 7].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 8].Value = !string.IsNullOrEmpty(hdDetail.ChieuCao.ToString()) ? hdDetail.ChieuCao.ToString() : "";
+                            worksheet.Cells[rowIndex, 8].Value = !string.IsNullOrEmpty(hdDetail.CanNang.ToString()) ? hdDetail.CanNang.ToString() : "";
                             worksheet.Cells[rowIndex, 8].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 8].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 8].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 8].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 9].Value = !string.IsNullOrEmpty(hdDetail.HuyetAp) ? hdDetail.HuyetAp.ToString() : "";
+                            worksheet.Cells[rowIndex, 9].Value = !string.IsNullOrEmpty(hdDetail.ChieuCao.ToString()) ? hdDetail.ChieuCao.ToString() : "";
                             worksheet.Cells[rowIndex, 9].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 9].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 9].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 9].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 10].Value = !string.IsNullOrEmpty(hdDetail.Mat) ? hdDetail.Mat.ToString() : "";
                             worksheet.Cells[rowIndex, 10].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 10].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 10].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 10].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 11].Value = !string.IsNullOrEmpty(hdDetail.TaiMuiHong) ? hdDetail.TaiMuiHong.ToString() : "";
+                            worksheet.Cells[rowIndex, 11].Value = !string.IsNullOrEmpty(hdDetail.Mat) ? hdDetail.Mat.ToString() : "";
                             worksheet.Cells[rowIndex, 11].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 11].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 11].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 11].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 12].Value = !string.IsNullOrEmpty(hdDetail.RangHamMat) ? hdDetail.RangHamMat.ToString() : "";
+                            worksheet.Cells[rowIndex, 12].Value = !string.IsNullOrEmpty(hdDetail.TaiMuiHong) ? hdDetail.TaiMuiHong.ToString() : "";
                             worksheet.Cells[rowIndex, 12].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 12].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 12].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 12].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 13].Value = !string.IsNullOrEmpty(hdDetail.SieuAmVungBung) ? hdDetail.SieuAmVungBung.ToString() : "";
+                            worksheet.Cells[rowIndex, 13].Value = !string.IsNullOrEmpty(hdDetail.RangHamMat) ? hdDetail.RangHamMat.ToString() : "";
                             worksheet.Cells[rowIndex, 13].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 13].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 13].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 13].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 14].Value = !string.IsNullOrEmpty(hdDetail.XQTimPhoi) ? hdDetail.XQTimPhoi.ToString() : "";
+                            worksheet.Cells[rowIndex, 14].Value = !string.IsNullOrEmpty(hdDetail.SieuAmVungBung) ? hdDetail.SieuAmVungBung.ToString() : "";
                             worksheet.Cells[rowIndex, 14].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 14].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 14].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 14].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 15].Value = !string.IsNullOrEmpty(hdDetail.DoDienTim) ? hdDetail.DoDienTim.ToString() : "";
+                            worksheet.Cells[rowIndex, 15].Value = !string.IsNullOrEmpty(hdDetail.XQTimPhoi) ? hdDetail.XQTimPhoi.ToString() : "";
                             worksheet.Cells[rowIndex, 15].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 15].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 15].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 15].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 16].Value = !string.IsNullOrEmpty(hdDetail.PhuKhoa) ? hdDetail.PhuKhoa.ToString() : "";
+                            worksheet.Cells[rowIndex, 16].Value = !string.IsNullOrEmpty(hdDetail.DoDienTim) ? hdDetail.DoDienTim.ToString() : "";
                             worksheet.Cells[rowIndex, 16].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 16].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 16].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 16].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 17].Value = !string.IsNullOrEmpty(hdDetail.PhetTBAmDao) ? hdDetail.PhetTBAmDao.ToString() : "";
+                            worksheet.Cells[rowIndex, 17].Value = !string.IsNullOrEmpty(hdDetail.PhuKhoa) ? hdDetail.PhuKhoa.ToString() : "";
                             worksheet.Cells[rowIndex, 17].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 17].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 17].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 17].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 18].Value = !string.IsNullOrEmpty(hdDetail.CongThucMau) ? hdDetail.CongThucMau.ToString() : "";
+                            worksheet.Cells[rowIndex, 18].Value = !string.IsNullOrEmpty(hdDetail.PhetTBAmDao) ? hdDetail.PhetTBAmDao.ToString() : "";
                             worksheet.Cells[rowIndex, 18].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 18].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 18].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 18].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 19].Value = !string.IsNullOrEmpty(hdDetail.TPTNT) ? hdDetail.TPTNT.ToString() : "";
+                            worksheet.Cells[rowIndex, 19].Value = !string.IsNullOrEmpty(hdDetail.CongThucMau) ? hdDetail.CongThucMau.ToString() : "";
                             worksheet.Cells[rowIndex, 19].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 19].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 19].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 19].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 20].Value = !string.IsNullOrEmpty(hdDetail.GlucoDuong) ? hdDetail.GlucoDuong.ToString() : "";
+                            worksheet.Cells[rowIndex, 20].Value = !string.IsNullOrEmpty(hdDetail.TPTNT) ? hdDetail.TPTNT.ToString() : "";
                             worksheet.Cells[rowIndex, 20].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 20].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 20].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 20].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 21].Value = !string.IsNullOrEmpty(hdDetail.NhomMau) ? hdDetail.NhomMau.ToString() : "";
+                            worksheet.Cells[rowIndex, 21].Value = !string.IsNullOrEmpty(hdDetail.GlucoDuong) ? hdDetail.GlucoDuong.ToString() : "";
                             worksheet.Cells[rowIndex, 21].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 21].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 21].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 21].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 22].Value = !string.IsNullOrEmpty(hdDetail.PhanLoaiSucKhoe) ? hdDetail.PhanLoaiSucKhoe.ToString() : "";
+                            worksheet.Cells[rowIndex, 22].Value = !string.IsNullOrEmpty(hdDetail.NhomMau) ? hdDetail.NhomMau.ToString() : "";
                             worksheet.Cells[rowIndex, 22].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 22].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 22].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 22].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 23].Value = !string.IsNullOrEmpty(hdDetail.HuongDieuTri) ? hdDetail.HuongDieuTri.ToString() : "";
+                            worksheet.Cells[rowIndex, 23].Value = !string.IsNullOrEmpty(hdDetail.PhanLoaiSucKhoe) ? hdDetail.PhanLoaiSucKhoe.ToString() : "";
                             worksheet.Cells[rowIndex, 23].Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                            worksheet.Cells[rowIndex, 23].Style.Border.Right.Style = ExcelBorderStyle.Medium;
+                            worksheet.Cells[rowIndex, 23].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 23].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 23].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+
+                            worksheet.Cells[rowIndex, 24].Value = !string.IsNullOrEmpty(hdDetail.HuongDieuTri) ? hdDetail.HuongDieuTri.ToString() : "";
+                            worksheet.Cells[rowIndex, 24].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                            worksheet.Cells[rowIndex, 24].Style.Border.Right.Style = ExcelBorderStyle.Medium;
+                            worksheet.Cells[rowIndex, 24].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                            worksheet.Cells[rowIndex, 24].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
                             //worksheet.Cells[rowIndex, 6].Value = hdDetail.NgayHetHan != null ? hdDetail.NgayHetHan.Date.ToString("dd/M/yyyy", CultureInfo.InvariantCulture) : "";
                             //worksheet.Cells[rowIndex, 5].Value = hdDetail.NgaySinh != null ? hdDetail.NgaySinh.Date.ToString("dd/M/yyyy", CultureInfo.InvariantCulture) : "";
@@ -418,124 +423,130 @@ namespace NiTiErp.Areas.Admin.Controllers
                             worksheet.Cells[rowIndex, 3].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 3].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 4].Value = !string.IsNullOrEmpty(hdDetail.TenPhong) ? hdDetail.TenPhong.ToString() : "";
+                            worksheet.Cells[rowIndex, 4].Value = !string.IsNullOrEmpty(hdDetail.TenKhuVuc) ? hdDetail.TenKhuVuc.ToString() : "";
                             worksheet.Cells[rowIndex, 4].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 4].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 4].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 4].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 5].Value = !string.IsNullOrEmpty(hdDetail.NgaySinh.ToString()) ? hdDetail.NgaySinh.Year.ToString() : "";
+                            worksheet.Cells[rowIndex, 5].Value = !string.IsNullOrEmpty(hdDetail.TenPhong) ? hdDetail.TenPhong.ToString() : "";
                             worksheet.Cells[rowIndex, 5].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 5].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 5].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 5].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 6].Value = !string.IsNullOrEmpty(hdDetail.GioiTinh) ? hdDetail.GioiTinh == "1" ? "Nam" : "Nữ" : ""; worksheet.Cells[rowIndex, 3].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                            worksheet.Cells[rowIndex, 6].Value = !string.IsNullOrEmpty(hdDetail.NgaySinh.ToString()) ? hdDetail.NgaySinh.Year.ToString() : "";
+                            worksheet.Cells[rowIndex, 6].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 6].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 6].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 6].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 7].Value = !string.IsNullOrEmpty(hdDetail.CanNangIs.ToString()) ? hdDetail.CanNangIs : 0;
-                            worksheet.Cells[rowIndex, 7].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                            worksheet.Cells[rowIndex, 7].Value = !string.IsNullOrEmpty(hdDetail.GioiTinh) ? hdDetail.GioiTinh == "1" ? "Nam" : "Nữ" : ""; worksheet.Cells[rowIndex, 3].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 7].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 7].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 7].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 8].Value = !string.IsNullOrEmpty(hdDetail.ChieuCaoIs.ToString()) ? hdDetail.ChieuCaoIs : 0;
+                            worksheet.Cells[rowIndex, 8].Value = !string.IsNullOrEmpty(hdDetail.CanNangIs.ToString()) ? hdDetail.CanNangIs : 0;
                             worksheet.Cells[rowIndex, 8].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 8].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 8].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 8].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 9].Value = !string.IsNullOrEmpty(hdDetail.HuyetApIs.ToString()) ? hdDetail.HuyetApIs : 0;
+                            worksheet.Cells[rowIndex, 9].Value = !string.IsNullOrEmpty(hdDetail.ChieuCaoIs.ToString()) ? hdDetail.ChieuCaoIs : 0;
                             worksheet.Cells[rowIndex, 9].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 9].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 9].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 9].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 10].Value = !string.IsNullOrEmpty(hdDetail.MatIs.ToString()) ? hdDetail.MatIs : 0;
+                            worksheet.Cells[rowIndex, 10].Value = !string.IsNullOrEmpty(hdDetail.HuyetApIs.ToString()) ? hdDetail.HuyetApIs : 0;
                             worksheet.Cells[rowIndex, 10].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 10].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 10].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 10].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 11].Value = !string.IsNullOrEmpty(hdDetail.TaiMuiHongIs.ToString()) ? hdDetail.TaiMuiHongIs : 0;
+                            worksheet.Cells[rowIndex, 11].Value = !string.IsNullOrEmpty(hdDetail.MatIs.ToString()) ? hdDetail.MatIs : 0;
                             worksheet.Cells[rowIndex, 11].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 11].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 11].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 11].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 12].Value = !string.IsNullOrEmpty(hdDetail.RangHamMatIs.ToString()) ? hdDetail.RangHamMatIs : 0;
+                            worksheet.Cells[rowIndex, 12].Value = !string.IsNullOrEmpty(hdDetail.TaiMuiHongIs.ToString()) ? hdDetail.TaiMuiHongIs : 0;
                             worksheet.Cells[rowIndex, 12].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 12].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 12].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 12].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 13].Value = !string.IsNullOrEmpty(hdDetail.SieuAmVungBungIs.ToString()) ? hdDetail.SieuAmVungBungIs : 0;
+                            worksheet.Cells[rowIndex, 13].Value = !string.IsNullOrEmpty(hdDetail.RangHamMatIs.ToString()) ? hdDetail.RangHamMatIs : 0;
                             worksheet.Cells[rowIndex, 13].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 13].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 13].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 13].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 14].Value = !string.IsNullOrEmpty(hdDetail.XQTimPhoiIs.ToString()) ? hdDetail.XQTimPhoiIs : 0;
+                            worksheet.Cells[rowIndex, 14].Value = !string.IsNullOrEmpty(hdDetail.SieuAmVungBungIs.ToString()) ? hdDetail.SieuAmVungBungIs : 0;
                             worksheet.Cells[rowIndex, 14].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 14].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 14].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 14].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 15].Value = !string.IsNullOrEmpty(hdDetail.DoDienTimIs.ToString()) ? hdDetail.DoDienTimIs : 0;
+                            worksheet.Cells[rowIndex, 15].Value = !string.IsNullOrEmpty(hdDetail.XQTimPhoiIs.ToString()) ? hdDetail.XQTimPhoiIs : 0;
                             worksheet.Cells[rowIndex, 15].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 15].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 15].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 15].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 16].Value = !string.IsNullOrEmpty(hdDetail.PhuKhoaIs.ToString()) ? hdDetail.PhuKhoaIs : 0;
+                            worksheet.Cells[rowIndex, 16].Value = !string.IsNullOrEmpty(hdDetail.DoDienTimIs.ToString()) ? hdDetail.DoDienTimIs : 0;
                             worksheet.Cells[rowIndex, 16].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 16].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 16].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 16].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 17].Value = !string.IsNullOrEmpty(hdDetail.PhetTBAmDaoIs.ToString()) ? hdDetail.PhetTBAmDaoIs : 0;
+                            worksheet.Cells[rowIndex, 17].Value = !string.IsNullOrEmpty(hdDetail.PhuKhoaIs.ToString()) ? hdDetail.PhuKhoaIs : 0;
                             worksheet.Cells[rowIndex, 17].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 17].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 17].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 17].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 18].Value = !string.IsNullOrEmpty(hdDetail.CongThucMauIs.ToString()) ? hdDetail.CongThucMauIs : 0;
+                            worksheet.Cells[rowIndex, 18].Value = !string.IsNullOrEmpty(hdDetail.PhetTBAmDaoIs.ToString()) ? hdDetail.PhetTBAmDaoIs : 0;
                             worksheet.Cells[rowIndex, 18].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 18].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 18].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 18].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 19].Value = !string.IsNullOrEmpty(hdDetail.TPTNTIs.ToString()) ? hdDetail.TPTNTIs : 0;
+                            worksheet.Cells[rowIndex, 19].Value = !string.IsNullOrEmpty(hdDetail.CongThucMauIs.ToString()) ? hdDetail.CongThucMauIs : 0;
                             worksheet.Cells[rowIndex, 19].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 19].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 19].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 19].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 20].Value = !string.IsNullOrEmpty(hdDetail.GlucoDuongIs.ToString()) ? hdDetail.GlucoDuongIs : 0;
+                            worksheet.Cells[rowIndex, 20].Value = !string.IsNullOrEmpty(hdDetail.TPTNTIs.ToString()) ? hdDetail.TPTNTIs : 0;
                             worksheet.Cells[rowIndex, 20].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 20].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 20].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 20].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 21].Value = !string.IsNullOrEmpty(hdDetail.NhomMauIs.ToString()) ? hdDetail.NhomMauIs : 0;
+                            worksheet.Cells[rowIndex, 21].Value = !string.IsNullOrEmpty(hdDetail.GlucoDuongIs.ToString()) ? hdDetail.GlucoDuongIs : 0;
                             worksheet.Cells[rowIndex, 21].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 21].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 21].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 21].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 22].Value = !string.IsNullOrEmpty(hdDetail.PhanLoaiSucKhoe) ? hdDetail.PhanLoaiSucKhoe.ToString() : "";
+                            worksheet.Cells[rowIndex, 22].Value = !string.IsNullOrEmpty(hdDetail.NhomMauIs.ToString()) ? hdDetail.NhomMauIs : 0;
                             worksheet.Cells[rowIndex, 22].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 22].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 22].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 22].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
-                            worksheet.Cells[rowIndex, 23].Value = !string.IsNullOrEmpty(hdDetail.HuongDieuTri) ? hdDetail.HuongDieuTri.ToString() : "";
+                            worksheet.Cells[rowIndex, 23].Value = !string.IsNullOrEmpty(hdDetail.PhanLoaiSucKhoe) ? hdDetail.PhanLoaiSucKhoe.ToString() : "";
                             worksheet.Cells[rowIndex, 23].Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                            worksheet.Cells[rowIndex, 23].Style.Border.Right.Style = ExcelBorderStyle.Medium;
+                            worksheet.Cells[rowIndex, 23].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 23].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 23].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+
+                            worksheet.Cells[rowIndex, 24].Value = !string.IsNullOrEmpty(hdDetail.HuongDieuTri) ? hdDetail.HuongDieuTri.ToString() : "";
+                            worksheet.Cells[rowIndex, 24].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                            worksheet.Cells[rowIndex, 24].Style.Border.Right.Style = ExcelBorderStyle.Medium;
+                            worksheet.Cells[rowIndex, 24].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                            worksheet.Cells[rowIndex, 24].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
                             //worksheet.Cells[rowIndex, 6].Value = hdDetail.NgayHetHan != null ? hdDetail.NgayHetHan.Date.ToString("dd/M/yyyy", CultureInfo.InvariantCulture) : "";
                             //worksheet.Cells[rowIndex, 5].Value = hdDetail.NgaySinh != null ? hdDetail.NgaySinh.Date.ToString("dd/M/yyyy", CultureInfo.InvariantCulture) : "";

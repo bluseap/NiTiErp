@@ -1,6 +1,22 @@
 ﻿
 
 
+create procedure [LuongBaoHiemAUD]
+
+create procedure [LuongBaoHiemGetList]
+
+
+
+update procedure [SucKhoeNhanVienGetList]
+
+
+copy file template SucKhoeTK.xlsx 
+
+copy file template SucKhoe.xlsx 
+
+
+
+create table LuongKyHieuChamCong
 
 create table LuongBaoHiem
 
@@ -9,6 +25,8 @@ create table LuongThemGio
 create table LuongCaBa
 
 create table ChiPhi
+
+create table ChiPhiLoai
 
 create table LuongCPGiam
 
@@ -20,9 +38,10 @@ create table LockLuongThang
 
 
 
+update table functions
+	update [functions] set [Name]=N'Bảng chấm công làm thêm giờ', [URl]=N'/admin/conggio/index' where Id='LUONGBANG'
+	update [functions] set [Name]=N'Bảng chấm công ngày', [URl]=N'/admin/congngay/index' where Id='LUONGNHAP'
 
-update [functions] set [Name]=N'Bảng chấm công làm thêm giờ', [URl]=N'/admin/conggio/index' where Id='LUONGBANG'
-update [functions] set [Name]=N'Bảng chấm công ngày', [URl]=N'/admin/congngay/index' where Id='LUONGNHAP'
 
 
 INSERT INTO [dbo].[Functions]           ([Id]           ,[IconCss]           ,[Name]           ,[ParentId]
@@ -53,6 +72,128 @@ INSERT INTO [dbo].[Functions]           ([Id]           ,[IconCss]           ,[N
 INSERT INTO [dbo].[Functions]           ([Id]           ,[IconCss]           ,[Name]           ,[ParentId]
            ,[SortOrder]           ,[Status]           ,[URL])
      VALUES     (  'LUONGCABA',	'fa-dollar',	N'Bảng chấm công làm ca ba',	'LUONG',	3	,1	, N'/admin/congcaba/index'	 )
+
+
+
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id] ,  MaKyHieu        ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'x','x', N'Đủ công'		, 1, 1, 1, 'admin', Getdate()	 )
+
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'CT', 'CT',N'Đi công tác'		, 1, 1, 2, 'admin', Getdate()	 )
+
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]        ,  MaKyHieu   ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'H',  'H',N'Hội họp, học tập'		, 1, 1, 3, 'admin', Getdate()	 )
+
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'F',  'F',N'Nghỉ phép năm theo chế độ'		, 1, 1, 4, 'admin', Getdate()	 )
+
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]
+           )
+VALUES           ( 'L', 'L', N'Nghỉ lễ tết do nhà nước qui định'		, 1, 1, 5, 'admin', Getdate()	 )
+
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]    ,  MaKyHieu       ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'R', 'R',N'Nghỉ việc riêng có lương'		, 1, 1, 6, 'admin', Getdate()	 )
+
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'Ro','Ro', N'Nghỉ việc riêng không có lương'		, 1, 1, 7, 'admin', Getdate()	 )
+
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'OM','OM', N'Nghỉ ốm'		, 1, 1, 8, 'admin', Getdate()	 )
+
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'CO','CO', N'Nghỉ con ốm'		, 1, 1, 9, 'admin', Getdate()	 )
+
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'VS','VS', N'Vợ sinh không hưởng lương'		, 1, 1, 10, 'admin', Getdate()	 )
+
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'TS','TS', N'Nghỉ thai sản'		, 1, 1, 11, 'admin', Getdate()	 )
+
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'TN','TN', N'Nghỉ tai nạn lao động'		, 1, 1, 12, 'admin', Getdate()	 )
+
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'NB','NB', N'Nghỉ bù'		, 1, 1, 13, 'admin', Getdate()	 )
+
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'AD','AD', N'Nghỉ an dưỡng'		, 1, 1, 14, 'admin', Getdate()	 )
+
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'NV','NV', N'Ngừng việc, chờ việc'		, 1, 1, 15, 'admin', Getdate()	 )
+
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'O','O', N'Nghỉ không lý do'		, 1, 1, 16, 'admin', Getdate()	 )
+
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'T','T', N'Trực vào ngày lễ tết và nghĩ hàng tuần'		, 1, 1, 17, 'admin', Getdate()	 )
+
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'HT','HT', N'Nghỉ chờ giải quyết chế độ hưu trí'		, 1, 1, 18, 'admin', Getdate()	 )
+
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'PT','PT', N'Tham gia các hoạt động phong trào thể thao'		, 1, 1, 19, 'admin', Getdate()	 )
+
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'KO','KO', N'Không'		, 1, 1, 99, 'admin', Getdate()	 )
+
+
+
+INSERT INTO [dbo].[ChiPhi]           ([Id]           ,[TenChiPhi]    , IsChiPhiTang, ChiPhiLoaiId      
+,[IsHeSoChiPhi]           ,[HeSoChiPhi]          
+		 ,[IsSoTienChiPhi]           ,[SoTienChiPhi]           ,[IsSoGioCong]           ,[SoGioCong]     
+		   ,[Status]           ,[Active]           ,[Stt]           ,[CreateDate]           ,[CreateBy]            )
+VALUES   ( 1, N'Đóng BHYT (1,5 %)', 1,1
+1, 0.015
+		,	0, 0, 0, 0
+		, 1, 1, 1, getdate(), 'admin'	  )
+
+INSERT INTO [dbo].[ChiPhi]           ([Id]           ,[TenChiPhi]       , IsChiPhiTang, ChiPhiLoaiId     
+,[IsHeSoChiPhi]           ,[HeSoChiPhi]          
+		 ,[IsSoTienChiPhi]           ,[SoTienChiPhi]           ,[IsSoGioCong]           ,[SoGioCong]     
+		   ,[Status]           ,[Active]           ,[Stt]           ,[CreateDate]           ,[CreateBy]            )
+VALUES   ( 2, N'Đóng BHTN (1 %)',  1,1
+1, 0.01
+		,	0, 0, 0, 0
+		, 1, 1, 2, getdate(), 'admin'	  )
+
+INSERT INTO [dbo].[ChiPhi]           ([Id]           ,[TenChiPhi]        , IsChiPhiTang, ChiPhiLoaiId   
+,[IsHeSoChiPhi]           ,[HeSoChiPhi]          
+		 ,[IsSoTienChiPhi]           ,[SoTienChiPhi]           ,[IsSoGioCong]           ,[SoGioCong]     
+		   ,[Status]           ,[Active]           ,[Stt]           ,[CreateDate]           ,[CreateBy]            )
+VALUES   ( 3, N'Đóng BHXH (8 %)',  1,1
+1, 0.08
+		,	0, 0, 0, 0
+		, 1, 1, 3, getdate(), 'admin'	  )
+
+
+INSERT INTO [dbo].[ChiPhiLoai]    ([Id]    ,[TenLoai]     ,[Status]     ,[Active]      ,[Stt]       ,[CreateDate]      ,[CreateBy]      )
+     VALUES ( 1, N'Bảo hiểm xã hội', 1, 1, 1	 , getdate(), 'admin'	 )
+
+INSERT INTO [dbo].[ChiPhiLoai]    ([Id]    ,[TenLoai]     ,[Status]     ,[Active]      ,[Stt]       ,[CreateDate]      ,[CreateBy]      )
+     VALUES ( 2, N'Tiền ăn', 1, 1, 2	 , getdate(), 'admin'	 )
+
+
+
 
 
 

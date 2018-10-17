@@ -1,0 +1,14 @@
+﻿[
+  {
+    "Id": "CN",
+    "TenKyHieu": "Chủ nhật"
+  },
+  {
+    "Id": "X",
+    "TenKyHieu": "X"
+  },
+  {
+    "Id": "KO",
+    "TenKyHieu": "Không"
+  }
+]
