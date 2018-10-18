@@ -6,19 +6,21 @@ create procedure [LuongBaoHiemAUD]
 create procedure [LuongBaoHiemGetList]
 
 
-
+r
+update procedure [HopDongGetList]
+r
 update procedure [BangDanhMucGetList]
-
+r
 update procedure [SucKhoeNhanVienGetList]
-
+r
 update procedure [HoSoNhanVienAUD]
-
+r
 update procedure [CongViecAUD]
 
 
-
+r
 copy file template SucKhoeTK.xlsx 
-
+r
 copy file template SucKhoe.xlsx 
 
 
@@ -44,38 +46,37 @@ create table LuongTongHop
 create table LockLuongThang
 
 
-
+r
 update table functions
 	update [functions] set [Name]=N'Bảng chấm công làm thêm giờ', [URl]=N'/admin/conggio/index' where Id='LUONGBANG'
 	update [functions] set [Name]=N'Bảng chấm công ngày', [URl]=N'/admin/congngay/index' where Id='LUONGNHAP'
 
-
-
+r
 INSERT INTO [dbo].[Functions]           ([Id]           ,[IconCss]           ,[Name]           ,[ParentId]
            ,[SortOrder]           ,[Status]           ,[URL])
      VALUES     (  'LUONGKHOITAO',	'fa-dollar',	N'Tạo kỳ lương mới',	'LUONG',	9	,1	, N'/admin/khoitao/index'	 )
 
-
+r
 INSERT INTO [dbo].[Functions]           ([Id]           ,[IconCss]           ,[Name]           ,[ParentId]
            ,[SortOrder]           ,[Status]           ,[URL])
      VALUES     (  'LUONGLOCK',	'fa-dollar',	N'Khóa sổ lương tháng',	'LUONG',	8	,1	, N'/admin/khoaso/index'	 )
-
+r
 INSERT INTO [dbo].[Functions]           ([Id]           ,[IconCss]           ,[Name]           ,[ParentId]
            ,[SortOrder]           ,[Status]           ,[URL])
-     VALUES     (  'LUONGCHIPHIDM',	'fa-dollar',	N'Danh mục Chi phí lương',	'LUONG',	7	,1	, N'/admin/chiphidm/index'	 )
-
+     VALUES     (  'LUONGCHIPHIDM',	'fa-dollar',	N'Danh mục chi phí lương',	'LUONG',	7	,1	, N'/admin/chiphidm/index'	 )
+r
 INSERT INTO [dbo].[Functions]           ([Id]           ,[IconCss]           ,[Name]           ,[ParentId]
            ,[SortOrder]           ,[Status]           ,[URL])
      VALUES     (  'LUONGTIM',	'fa-dollar',	N'Tra cứu lương',	'LUONG',	6	,1	, N'/admin/luongtim/index'	 )
-
+r
 INSERT INTO [dbo].[Functions]           ([Id]           ,[IconCss]           ,[Name]           ,[ParentId]
            ,[SortOrder]           ,[Status]           ,[URL])
      VALUES     (  'LUONGTONG',	'fa-dollar',	N'Bảng lương tổng hợp',	'LUONG',	5	,1	, N'/admin/luongtong/index'	 )
-
+r
 INSERT INTO [dbo].[Functions]           ([Id]           ,[IconCss]           ,[Name]           ,[ParentId]
            ,[SortOrder]           ,[Status]           ,[URL])
-     VALUES     (  'LUONGCHIPHI',	'fa-dollar',	N'Bảng Chi phí lương',	'LUONG',	4	,1	, N'/admin/chiphi/index'	 )
-
+     VALUES     (  'LUONGCHIPHI',	'fa-dollar',	N'Bảng chi phí lương',	'LUONG',	4	,1	, N'/admin/chiphi/index'	 )
+r
 INSERT INTO [dbo].[Functions]           ([Id]           ,[IconCss]           ,[Name]           ,[ParentId]
            ,[SortOrder]           ,[Status]           ,[URL])
      VALUES     (  'LUONGCABA',	'fa-dollar',	N'Bảng chấm công làm ca ba',	'LUONG',	3	,1	, N'/admin/congcaba/index'	 )
@@ -170,7 +171,7 @@ INSERT INTO [dbo].[ChiPhi]           ([Id]           ,[TenChiPhi]    , IsChiPhiT
 		 ,[IsSoTienChiPhi]           ,[SoTienChiPhi]           ,[IsSoGioCong]           ,[SoGioCong]     
 		   ,[Status]           ,[Active]           ,[Stt]           ,[CreateDate]           ,[CreateBy]            )
 VALUES   ( 1, N'Đóng BHYT (1,5 %)', 1,1
-1, 0.015
+,1, 0.015
 		,	0, 0, 0, 0
 		, 1, 1, 1, getdate(), 'admin'	  )
 
@@ -179,7 +180,7 @@ INSERT INTO [dbo].[ChiPhi]           ([Id]           ,[TenChiPhi]       , IsChiP
 		 ,[IsSoTienChiPhi]           ,[SoTienChiPhi]           ,[IsSoGioCong]           ,[SoGioCong]     
 		   ,[Status]           ,[Active]           ,[Stt]           ,[CreateDate]           ,[CreateBy]            )
 VALUES   ( 2, N'Đóng BHTN (1 %)',  1,1
-1, 0.01
+,1, 0.01
 		,	0, 0, 0, 0
 		, 1, 1, 2, getdate(), 'admin'	  )
 
@@ -188,7 +189,7 @@ INSERT INTO [dbo].[ChiPhi]           ([Id]           ,[TenChiPhi]        , IsChi
 		 ,[IsSoTienChiPhi]           ,[SoTienChiPhi]           ,[IsSoGioCong]           ,[SoGioCong]     
 		   ,[Status]           ,[Active]           ,[Stt]           ,[CreateDate]           ,[CreateBy]            )
 VALUES   ( 3, N'Đóng BHXH (8 %)',  1,1
-1, 0.08
+,1, 0.08
 		,	0, 0, 0, 0
 		, 1, 1, 3, getdate(), 'admin'	  )
 
@@ -203,18 +204,16 @@ INSERT INTO [dbo].[ChiPhiLoai]    ([Id]    ,[TenLoai]     ,[Status]     ,[Active
 
 
 
+
+
+
+r
 INSERT INTO [dbo].[DieuKienTim]    ([Id]   ,[TenDieuKien]  ,[BangDieuKien]  ,[Active]           ,[Stt])
      VALUES           ( 8          , N'DS Bảng chấm công ngày'          , N'LuongBaoHiem'    , 1          , 8 )
-
+r
 INSERT INTO [dbo].[DieuKienTim]    ([Id]   ,[TenDieuKien]  ,[BangDieuKien]  ,[Active]           ,[Stt])
      VALUES           ( 9          , N'DS Bảng lương Nhân viên'          , N'LuongBaoHiem'    , 1          , 9 )
-
-
-
-
-
-
-
+	 	 
 
 r
 copy file excel in tepmlate DaoTaoNhanVien.xlsx

@@ -140,7 +140,7 @@
 
     function loadDataChiTiet() {
         loadLoaiHopDongChiTiet();
-        loadChucVuChiTiet();
+        loadChucVuChiTiet();        
     }
 
     function loadLoaiHopDongChiTiet() {
@@ -180,7 +180,7 @@
                     render += "<option value='" + item.Id + "'>" + item.TenChucVu + "</option>";
                 });
                 $('#ddlChucVuKyHopDongChiTietCu').html(render);
-                $('#ddlChucVuKyHopDongChiTietMoi').html(render);
+                //$('#ddlChucVuKyHopDongChiTietMoi').html(render);
             },
             error: function (status) {
                 console.log(status);
@@ -188,5 +188,6 @@
             }
         });
     }
+    
 
 }

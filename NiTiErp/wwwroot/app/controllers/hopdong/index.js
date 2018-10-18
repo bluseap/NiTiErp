@@ -516,6 +516,8 @@
                     var hosoId = hopdong.HoSoNhanVienId;
                     LoadTableHopDongChiTiet(hosoId);
 
+                    loadChucVuChiTietKhuVuc(hopdong.CorporationId);
+
                     $('#hidHopDongNhanVienCuId').val(hopdong.Id);
                     $('#hidHoSoId').val(hosoId);
                 } 
@@ -1356,6 +1358,29 @@
             success: function (response) {
                 window.location.href = response;
                 tedu.stopLoading();
+            }
+        });
+    }
+
+    function loadChucVuChiTietKhuVuc(makvmoi) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/hoso/ChucVuNhanVienKhuVuc',
+            data: { makv: makvmoi },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >--- Lựa chọn ---</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.TenChucVu + "</option>";
+                });
+                $('#ddlChucVuKyHopDongChiTietMoi').html(render);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh Chức vụ hợp đồng.', 'error');
             }
         });
     }
