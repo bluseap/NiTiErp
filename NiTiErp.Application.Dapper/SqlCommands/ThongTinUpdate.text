@@ -11,6 +11,10 @@ update procedure [BangDanhMucGetList]
 
 update procedure [SucKhoeNhanVienGetList]
 
+update procedure [HoSoNhanVienAUD]
+
+update procedure [CongViecAUD]
+
 
 
 copy file template SucKhoeTK.xlsx 
@@ -189,11 +193,21 @@ VALUES   ( 3, N'Đóng BHXH (8 %)',  1,1
 		, 1, 1, 3, getdate(), 'admin'	  )
 
 
+
 INSERT INTO [dbo].[ChiPhiLoai]    ([Id]    ,[TenLoai]     ,[Status]     ,[Active]      ,[Stt]       ,[CreateDate]      ,[CreateBy]      )
      VALUES ( 1, N'Bảo hiểm xã hội', 1, 1, 1	 , getdate(), 'admin'	 )
 
 INSERT INTO [dbo].[ChiPhiLoai]    ([Id]    ,[TenLoai]     ,[Status]     ,[Active]      ,[Stt]       ,[CreateDate]      ,[CreateBy]      )
      VALUES ( 2, N'Tiền ăn', 1, 1, 2	 , getdate(), 'admin'	 )
+
+
+
+
+INSERT INTO [dbo].[DieuKienTim]    ([Id]   ,[TenDieuKien]  ,[BangDieuKien]  ,[Active]           ,[Stt])
+     VALUES           ( 8          , N'DS Bảng chấm công ngày'          , N'LuongBaoHiem'    , 1          , 8 )
+
+INSERT INTO [dbo].[DieuKienTim]    ([Id]   ,[TenDieuKien]  ,[BangDieuKien]  ,[Active]           ,[Stt])
+     VALUES           ( 9          , N'DS Bảng lương Nhân viên'          , N'LuongBaoHiem'    , 1          , 9 )
 
 
 

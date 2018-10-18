@@ -5,7 +5,7 @@
         //collapsible: true,
         //fitColumns: true,
         rownumbers: true,
-        toolbar: '#tb',
+        //toolbar: '#tb',
         data: data,
         view: groupview,
         groupField: 'TenPhong',

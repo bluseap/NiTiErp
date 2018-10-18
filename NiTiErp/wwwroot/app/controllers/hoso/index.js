@@ -889,11 +889,15 @@
         $('#txtCongTacChinh').val('');
         $('#txtSoQuyetDinhCongViec').val('');
         $('#txtTenQuyetDinhCongViec').val('');
-        $('#txtNgayKyCongViec').val('');
-        $('#txtNgayHieuLucCongViec').val('');
+
+        var ngayhientai = tedu.getFormattedDate(new Date());        
+
+        $('#txtNgayKyCongViec').val(ngayhientai);
+        $('#txtNgayHieuLucCongViec').val(ngayhientai);
     }
 
-    function loadData() {
+    function loadData() {        
+
         loadQuanHuyenMaTinh("%");
         loadPhuongXaMaTinh("%");
         loadQuanHuyenMaTinhQueQuan("%");
@@ -1139,29 +1143,29 @@
     }
 
     function LoadTabDanhMucLyLich() {
-        $.ajax({
-            type: 'GET',
-            url: '/admin/hoso/ThanhPhoTinhGetList',
-            dataType: "json",
-            beforeSend: function () {
-                tedu.startLoading();
-            },
-            success: function (response) {
-                var render = "<option value='%' >--- Lựa chọn ---</option>";
-                $.each(response.Result, function (i, item) {
-                    render += "<option value='" + item.Id + "'>" + item.TenTinh + "</option>";
-                });
-                $('#ddlThanhPhoTinhQueQuan').html(render);
-                $('#ddlThanhPhoTinhQueQuan')[0].selectedIndex = 1;
+        //$.ajax({
+        //    type: 'GET',
+        //    url: '/admin/hoso/ThanhPhoTinhGetList',
+        //    dataType: "json",
+        //    beforeSend: function () {
+        //        tedu.startLoading();
+        //    },
+        //    success: function (response) {
+        //        var render = "<option value='%' >--- Lựa chọn ---</option>";
+        //        $.each(response.Result, function (i, item) {
+        //            render += "<option value='" + item.Id + "'>" + item.TenTinh + "</option>";
+        //        });
+        //        $('#ddlThanhPhoTinhQueQuan').html(render);
+        //        $('#ddlThanhPhoTinhQueQuan')[0].selectedIndex = 1;
 
-                var tinhid = $('#ddlThanhPhoTinhQueQuan').val();
-                loadQuanHuyenMaTinhQueQuan(tinhid);
-            },
-            error: function (status) {
-                console.log(status);
-                tedu.notify('Không có danh mục Thành phố, tỉnh.', 'error');
-            }
-        });
+        //        var tinhid1 = $('#ddlThanhPhoTinhQueQuan').val();
+        //        loadQuanHuyenMaTinhQueQuan(tinhid1);
+        //    },
+        //    error: function (status) {
+        //        console.log(status);
+        //        tedu.notify('Không có danh mục Thành phố, tỉnh.', 'error');
+        //    }
+        //});
 
         $.ajax({
             type: 'GET',
@@ -1177,9 +1181,13 @@
                 });
                 $('#ddlThanhPhoTinh').html(render);
                 $('#ddlThanhPhoTinh')[0].selectedIndex = 1;
-
                 var tinhid = $('#ddlThanhPhoTinh').val();
                 loadQuanHuyenMaTinh(tinhid);
+
+                $('#ddlThanhPhoTinhQueQuan').html(render);
+                $('#ddlThanhPhoTinhQueQuan')[0].selectedIndex = 1;
+                var tinhid1 = $('#ddlThanhPhoTinhQueQuan').val();
+                loadQuanHuyenMaTinhQueQuan(tinhid1);
             },
             error: function (status) {
                 console.log(status);
@@ -2659,7 +2667,7 @@
                             TenLoaiHopDong: item.TenLoaiHopDong,
                             HeSoLuong: item.HeSoLuong,
                             LuongCoBan: item.LuongCoBan,
-                            NgayHieuLuc: tedu.getFormattedDate(item.LuongCoBan),
+                            NgayHieuLuc: tedu.getFormattedDate(item.NgayHieuLuc),
                             NgayHetHan: tedu.getFormattedDate(item.NgayHetHan),
                             Status: tedu.getHoSoNhanVienStatus(item.Status)
                         });
@@ -3632,21 +3640,24 @@
 
         var ngaykycongviec = tedu.getFormatDateYYMMDD($('#txtNgayKyCongViec').val());
         var ngayhieuluccongviec = tedu.getFormatDateYYMMDD($('#txtNgayHieuLucCongViec').val());   
-        var ngayketthucid = tedu.getFormatDateYYMMDD('01/01/2111');
+        var ngayketthucid = tedu.getFormatDateYYMMDD('2111/01/01');
 
-        if (ngaykycongviec) {
-            ngaykycongviec = tedu.getFormatDateYYMMDD($('#txtNgayKyCongViec').val());            
-        }
-        else {
-            ngaykycongviec = tedu.getFormatDateYYMMDD('01/01/2111');
-        }
+        ngaykycongviec = tedu.getFormatDateYYMMDD($('#txtNgayKyCongViec').val());      
+        ngayhieuluccongviec = tedu.getFormatDateYYMMDD($('#txtNgayHieuLucCongViec').val());
 
-        if ( ngayhieuluccongviec) {           
-            ngayhieuluccongviec = tedu.getFormatDateYYMMDD($('#txtNgayHieuLucCongViec').val());
-        }
-        else {            
-            ngayhieuluccongviec = tedu.getFormatDateYYMMDD('01/01/2111');
-        }                
+        //if (ngaykycongviec !== null) {
+        //    ngaykycongviec = tedu.getFormatDateYYMMDD($('#txtNgayKyCongViec').val());            
+        //}
+        //else {
+        //    ngaykycongviec = tedu.getFormatDateYYMMDD('2111/01/01');
+        //}
+
+        //if (ngayhieuluccongviec !== null) {           
+        //    ngayhieuluccongviec = tedu.getFormatDateYYMMDD($('#txtNgayHieuLucCongViec').val());
+        //}
+        //else {            
+        //    ngayhieuluccongviec = tedu.getFormatDateYYMMDD('2111/01/01');
+        //}                
 
         $.ajax({
             type: "POST",

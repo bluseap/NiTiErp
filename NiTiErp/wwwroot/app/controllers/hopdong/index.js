@@ -202,7 +202,7 @@
     function loadDieuKienTim() {
         $.ajax({
             type: 'GET',
-            url: '/admin/hopdong/DieuKienGetList',
+            url: '/admin/congngay/DieuKienGetList',
             dataType: "json",
             beforeSend: function () {
                 tedu.startLoading();

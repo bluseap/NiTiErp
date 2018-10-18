@@ -26,6 +26,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         private readonly NiTiErp.Application.Interfaces.IUserService _userService;
         private readonly IAuthorizationService _authorizationService;
 
+        private readonly IDieuKienTimService _dieukientimService;
         private readonly ILuongKyHieuService _luongkyhieuService;
         private readonly ILuongBaoHiemService _luongbaohiemService;
 
@@ -35,6 +36,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             NiTiErp.Application.Interfaces.IUserService userService,
             IAuthorizationService authorizationService,
 
+            IDieuKienTimService dieukientimService,
             ILuongKyHieuService luongkyhieuService,
             ILuongBaoHiemService luongbaohiemService,
             Application.Dapper.Interfaces.ICorporationService corporationsService
@@ -44,6 +46,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             _userService = userService;
             _authorizationService = authorizationService;
 
+            _dieukientimService = dieukientimService;
             _luongkyhieuService = luongkyhieuService;
             _luongbaohiemService = luongbaohiemService;
 
@@ -75,10 +78,18 @@ namespace NiTiErp.Areas.Admin.Controllers
 
 
         #region Danh muc Hop dong nhan vien
+
         [HttpGet]
         public IActionResult LuongKyHieuGetList()
         {
             var model = _luongkyhieuService.LuongKyHieuGetList("LuongKyHieu", "", "", "KyHieuChamCongGetList");
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult DieuKienGetList()
+        {
+            var model = _dieukientimService.DieuKienTimGetList("HopDongNhanVien", "", "", "BangDieuKienTimGetList");
             return new OkObjectResult(model);
         }
 

@@ -3,10 +3,13 @@
     var userCorporationId = $("#hidUserCorporationId").val();
     
 
-    this.initialize = function () {      
+    this.initialize = function () {  
+        
+        loadKhuVuc();
 
-        registerEvents();
+        loadData();
 
+        registerEvents();       
       
     }
 
@@ -56,13 +59,98 @@
         });
         return moi;
     } 
-
      
-
-  
-
     function registerEvents() {
 
     }
+
+    function loadData() {
+        $('#btnInHopDong').hide();
+        $('#btnInHopDongChiTiet').hide();
+
+        var date = new Date();
+        $('#txtTuNgayHieuLuc').val(tedu.getFormattedDate(date));
+        $('#txtDenNgayHieuLuc').val(tedu.getFormattedDate(date));
+        
+        loadDieuKienTim();
+    }
+
+    function loadDieuKienTim() {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/hopdong/DieuKienGetList',
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >--- Lựa chọn ---</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.TenDieuKien + "</option>";
+                });
+                $('#ddlDieuKienKhac').html(render);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh Loại hợp đồng.', 'error');
+            }
+        });
+    }   
+
+    function loadKhuVuc() {
+        return $.ajax({
+            type: 'GET',
+            url: '/admin/hoso/GetListCorNhanSu',
+            dataType: 'json',
+            success: function (response) {
+                var render = "<option value='%' >-- Lựa chọn --</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.Name + "</option>";
+                });
+                $('#ddlKhuVuc').html(render);
+
+                var userCorporationId = $("#hidUserCorporationId").val();
+                if (userCorporationId !== "PO") {
+                    $('#ddlKhuVuc').prop('disabled', true);
+                }
+                else {
+                    $('#ddlKhuVuc').prop('disabled', false);
+                }
+
+                $("#ddlKhuVuc")[0].selectedIndex = 1;
+
+                loadPhongKhuVuc($("#ddlKhuVuc").val());
+               
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh mục Công Ty.', 'error');
+            }
+        });
+    }
+
+    function loadPhongKhuVuc(makhuvuc) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/hoso/GetListPhongKhuVuc',
+            data: { makv: makhuvuc },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >-- Lựa chọn --</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.TenPhong + "</option>";
+                });
+                $('#ddlPhongBan').html(render);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh mục Phòng.', 'error');
+            }
+        });
+    }
+
 
 }
