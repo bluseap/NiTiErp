@@ -25,8 +25,9 @@ namespace NiTiErp.Application.Dapper.ViewModels
         public int Thang { set; get; }
 
 
+        public int IsNgay { set; get; }
 
-        
+
         public Guid HoSoNhanVienId { get; set; }
 
         [StringLength(1000)]

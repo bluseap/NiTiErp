@@ -397,7 +397,7 @@
     function loadChucVu(makhuvuc) {
         $.ajax({
             type: 'GET',
-            url: '/admin/qdbonhiem/ChucVuKhuVucGetList',
+            url: '/admin/qdbonhiem/ChucVuKhuVucGetListMaKV',
             data: { makv: makhuvuc },
             dataType: "json",
             beforeSend: function () {
@@ -420,7 +420,7 @@
     function loadAddEditChucVu(makhuvuc) {
         $.ajax({
             type: 'GET',
-            url: '/admin/qdbonhiem/ChucVuKhuVucGetList',
+            url: '/admin/qdbonhiem/ChucVuKhuVucGetListMaKV',
             data: { makv: makhuvuc },
             dataType: "json",
             beforeSend: function () {

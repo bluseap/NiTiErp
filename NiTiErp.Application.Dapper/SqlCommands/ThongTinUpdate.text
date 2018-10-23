@@ -6,6 +6,11 @@ create procedure [LuongBaoHiemAUD]
 create procedure [LuongBaoHiemGetList]
 
 
+
+update procedure [HopDongAUD]
+
+update procedure [HopDongGetList]
+
 r
 update procedure [HopDongGetList]
 r
@@ -25,6 +30,8 @@ copy file template SucKhoe.xlsx
 
 
 
+create table LuongDotInKy
+
 create table LuongKyHieuChamCong
 
 create table LuongBaoHiem
@@ -43,7 +50,11 @@ create table LuongCPTang
 
 create table LuongTongHop
 
+create table LuongTongHopAll
+
 create table LockLuongThang
+
+create table LockLuongDotIn
 
 
 r
@@ -110,7 +121,7 @@ VALUES           ( 'R', 'R',N'Nghỉ việc riêng có lương'		, 1, 1, 6, 'adm
 
 INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
            ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
-VALUES           ( 'Ro','Ro', N'Nghỉ việc riêng không có lương'		, 1, 1, 7, 'admin', Getdate()	 )
+VALUES           ( 'RO','RO', N'Nghỉ việc riêng không có lương'		, 1, 1, 7, 'admin', Getdate()	 )
 
 INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
            ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
@@ -128,21 +139,18 @@ INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[T
            ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
 VALUES           ( 'TS','TS', N'Nghỉ thai sản'		, 1, 1, 11, 'admin', Getdate()	 )
 
-INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
-           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
-VALUES           ( 'TN','TN', N'Nghỉ tai nạn lao động'		, 1, 1, 12, 'admin', Getdate()	 )
+--INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+--VALUES           ( 'TN','TN', N'Nghỉ tai nạn lao động'		, 1, 1, 12, 'admin', Getdate()	 )
 
 INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
            ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
 VALUES           ( 'NB','NB', N'Nghỉ bù'		, 1, 1, 13, 'admin', Getdate()	 )
 
-INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
-           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
-VALUES           ( 'AD','AD', N'Nghỉ an dưỡng'		, 1, 1, 14, 'admin', Getdate()	 )
+--INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+--VALUES           ( 'AD','AD', N'Nghỉ an dưỡng'		, 1, 1, 14, 'admin', Getdate()	 )
 
-INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
-           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
-VALUES           ( 'NV','NV', N'Ngừng việc, chờ việc'		, 1, 1, 15, 'admin', Getdate()	 )
+--INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+--VALUES           ( 'NV','NV', N'Ngừng việc, chờ việc'		, 1, 1, 15, 'admin', Getdate()	 )
 
 INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
            ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
@@ -152,13 +160,11 @@ INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[T
            ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
 VALUES           ( 'T','T', N'Trực vào ngày lễ tết và nghĩ hàng tuần'		, 1, 1, 17, 'admin', Getdate()	 )
 
-INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
-           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
-VALUES           ( 'HT','HT', N'Nghỉ chờ giải quyết chế độ hưu trí'		, 1, 1, 18, 'admin', Getdate()	 )
+--INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+--VALUES           ( 'HT','HT', N'Nghỉ chờ giải quyết chế độ hưu trí'		, 1, 1, 18, 'admin', Getdate()	 )
 
-INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
-           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
-VALUES           ( 'PT','PT', N'Tham gia các hoạt động phong trào thể thao'		, 1, 1, 19, 'admin', Getdate()	 )
+--INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+--VALUES           ( 'PT','PT', N'Tham gia các hoạt động phong trào thể thao'		, 1, 1, 19, 'admin', Getdate()	 )
 
 INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
            ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
@@ -203,6 +209,30 @@ INSERT INTO [dbo].[ChiPhiLoai]    ([Id]    ,[TenLoai]     ,[Status]     ,[Active
 
 
 
+update DieuKienTim set TenDieuKien = N'DS Bảng lương Nhân viên đóng BHXH' where Id=9
+
+
+INSERT INTO [dbo].[LuongDotInKy]           ([Id]           ,[Nam]           ,[Thang]           ,[CorporationId]
+           ,[TenDotIn]                   ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+     VALUES           ( 1           , 2018,            10            , N'PO'
+           , N'Đợt 1'      ,           1           ,1, 1 		   , 'admin', getdate() )
+
+INSERT INTO [dbo].[LuongDotInKy]           ([Id]           ,[Nam]           ,[Thang]           ,[CorporationId]
+           ,[TenDotIn]                   ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+     VALUES           ( 2           , 2018,            10            , N'CT'
+           , N'Đợt 1'      ,           1           ,1, 1 		   , 'admin', getdate() )
+
+INSERT INTO [dbo].[LuongDotInKy]           ([Id]           ,[Nam]           ,[Thang]           ,[CorporationId]
+           ,[TenDotIn]                   ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+     VALUES           ( 3           , 2018,            10            , N'CT'
+           , N'Đợt 2'      ,           1           ,1, 1 		   , 'admin', getdate() )
+
+
+
+
+
+
+
 
 
 
@@ -212,8 +242,7 @@ INSERT INTO [dbo].[DieuKienTim]    ([Id]   ,[TenDieuKien]  ,[BangDieuKien]  ,[Ac
      VALUES           ( 8          , N'DS Bảng chấm công ngày'          , N'LuongBaoHiem'    , 1          , 8 )
 r
 INSERT INTO [dbo].[DieuKienTim]    ([Id]   ,[TenDieuKien]  ,[BangDieuKien]  ,[Active]           ,[Stt])
-     VALUES           ( 9          , N'DS Bảng lương Nhân viên'          , N'LuongBaoHiem'    , 1          , 9 )
-	 	 
+     VALUES           ( 9          , N'DS Bảng lương Nhân viên'          , N'LuongBaoHiem'    , 1          , 9 )	 	 
 
 r
 copy file excel in tepmlate DaoTaoNhanVien.xlsx
@@ -318,7 +347,6 @@ r
 create proc [SucKhoeNhanVienAUD]
 r
 create PROC [dbo].[SucKhoeNhanVienGetList]
-
 
 r
 update proc [QDDieuDongAUD]

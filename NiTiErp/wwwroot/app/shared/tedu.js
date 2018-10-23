@@ -272,6 +272,18 @@
         a[0] = a[0].replace(/\d(?=(\d{3})+$)/g, '$&,');
         return a.join('.');
     },
+    formatNumberKhongLe: function (number2) {
+        //var number = 330000.22;
+        var number = parseInt(number2);
+        if (!isFinite(number)) {
+            return number.toString();
+        }
+
+        var a = number.toFixed(0).split('.');
+        a[0] = a[0].replace(/\d(?=(\d{3})+$)/g, '$&,');
+        return a.join('.');
+    },
+    
     unflattern: function (arr) {
         var map = {};
         var roots = [];

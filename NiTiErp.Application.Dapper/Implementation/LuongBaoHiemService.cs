@@ -33,6 +33,8 @@ namespace NiTiErp.Application.Dapper.Implementation
                 dynamicParameters.Add("@nam", luongbaohiem.Nam);
                 dynamicParameters.Add("@thang", luongbaohiem.Thang);
 
+                dynamicParameters.Add("@IsNgay", luongbaohiem.IsNgay);
+
                 dynamicParameters.Add("@HoSoNhanVienId", luongbaohiem.HoSoNhanVienId); 
 
                 dynamicParameters.Add("@SoNgay", luongbaohiem.SoNgay);

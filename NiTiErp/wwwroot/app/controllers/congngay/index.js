@@ -62,23 +62,52 @@
      
     function registerEvents() {
 
+        $('#ddlKhuVuc').on('change', function () {
+            var corporationId = $('#ddlKhuVuc').val();
+            loadPhongKhuVuc(corporationId);
+
+            tedu.notify('Danh mục phòng theo khu vực.', 'success');
+        });
+
     }
 
     function loadData() {
-        $('#btnInHopDong').hide();
-        $('#btnInHopDongChiTiet').hide();
+        var newdate = new Date();
+        var namNow = newdate.getFullYear();
+        var thangNow = newdate.getMonth();
 
-        var date = new Date();
-        $('#txtTuNgayHieuLuc').val(tedu.getFormattedDate(date));
-        $('#txtDenNgayHieuLuc').val(tedu.getFormattedDate(date));
+        $('#txtNam').val(namNow);
+        loadThang(thangNow);
         
         loadDieuKienTim();
+    }
+
+    function loadThang(thangnow) {
+        var render;
+        
+        render += "<option value='1'>Tháng 01 </option>";
+        render += "<option value='2'>Tháng 02 </option>";
+        render += "<option value='3'>Tháng 03 </option>";
+        render += "<option value='4'>Tháng 04 </option>";
+        render += "<option value='5'>Tháng 05 </option>";
+        render += "<option value='6'>Tháng 06 </option>";
+        render += "<option value='7'>Tháng 07 </option>";
+        render += "<option value='8'>Tháng 08 </option>";
+        render += "<option value='9'>Tháng 09 </option>";
+        render += "<option value='10'>Tháng 10 </option>";
+        render += "<option value='11'>Tháng 11 </option>";
+        render += "<option value='12'>Tháng 12 </option>";
+        
+        $('#ddlThang').html(render);
+        $('#ddlThang').val(thangnow);
+
+        tedu.notify(thangnow,"success");
     }
 
     function loadDieuKienTim() {
         $.ajax({
             type: 'GET',
-            url: '/admin/hopdong/DieuKienGetList',
+            url: '/admin/congngay/DieuKienGetList',
             dataType: "json",
             beforeSend: function () {
                 tedu.startLoading();

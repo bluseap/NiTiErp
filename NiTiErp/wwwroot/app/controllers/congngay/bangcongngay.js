@@ -79,14 +79,28 @@ function onBeginEdit(index) {
     var n30 = $(editors[29].target);
     var n31 = $(editors[30].target);
 
+    var sogiocong = $(editors[31].target);
+    var songay = $(editors[32].target);
+    var mucluong = $(editors[33].target);
+    var tienbaohiem = $(editors[34].target);
 
+    var congngayId = $(editors[35].target).textbox('getValue');
+
+    $('#hidLuongBaoHiemSoNgay').val("0");
 
     n01.textbox({
         onChange: function () {
             var ngay01 = n01.textbox('getValue');
-            //console.log(kyhieucongngay);
-            if (ngay01 === 'X' || ngay01 === 'CN' || ngay01 === 'KO') {
-                //alert('Cog6 ngay dung');
+            //console.log(isNgayKyHieuChamCong(ngay01));
+            if (isNgayKyHieuChamCong(ngay01) == true) {
+                //alert(congngayId.textbox('getValue'));
+                SaveLuongBaoHiemNgay(congngayId, ngay01, '1');
+                loadLuongBaoHiemId(congngayId);
+
+                var songayid = $('#hidLuongBaoHiemSoNgay').val();
+                //console.log(songayid + 'fff');
+                songay.numberbox('setValue', songayid);
+                
             }
             else {
                 tedu.confirmOk('Nhập sai mã ký hiệu bảng chấm công? Kiểm tra lại.', function () {
@@ -98,38 +112,124 @@ function onBeginEdit(index) {
     });
     n02.textbox({
         onChange: function () {
-            alert(n2.textbox('getValue'));
+            var ngay02 = n02.textbox('getValue');         
+            if (isNgayKyHieuChamCong(ngay02) === true) {                
+                SaveLuongBaoHiemNgay(congngayId, ngay02, '2');
+                loadLuongBaoHiemId(congngayId);
+
+                var songayid = $('#hidLuongBaoHiemSoNgay').val();               
+                songay.numberbox('setValue', songayid);
+            }
+            else {
+                tedu.confirmOk('Nhập sai mã ký hiệu bảng chấm công? Kiểm tra lại.', function () {
+                    $('#dg').datagrid('rejectChanges');
+                    editIndex = undefined;
+                });
+            }
         }
     });
     n03.textbox({
         onChange: function () {
-            alert(n3.textbox('getValue'));
+            var ngay03 = n03.textbox('getValue');            
+            if (isNgayKyHieuChamCong(ngay03) === true) {
+                SaveLuongBaoHiemNgay(congngayId, ngay03, '3');
+            }
+            else {
+                tedu.confirmOk('Nhập sai mã ký hiệu bảng chấm công? Kiểm tra lại.', function () {
+                    $('#dg').datagrid('rejectChanges');
+                    editIndex = undefined;
+                });
+            }
+        }
+    });   
+
+}
+
+function isNgayKyHieuChamCong(kyhieu) { 
+    if (kyhieu === 'X'  || kyhieu === 'CT' || kyhieu === 'H' || kyhieu === 'F' || kyhieu === 'L' || kyhieu === 'R'
+        || kyhieu === 'RO' || kyhieu === 'OM' || kyhieu === 'CO' || kyhieu === 'VS' || kyhieu === 'TS' || kyhieu === 'NB' || kyhieu === 'O'
+        || kyhieu === 'T'
+        || kyhieu === 'CN'
+    ) {
+
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+function formatPrice(val, row) {
+    return '<span>' + tedu.formatNumber(val) + '</span>';
+}
+
+function SaveLuongBaoHiemNgay(luongbaohiemid, ngaynao, isngay) {   
+    //tedu.notify("vao hop dong", "success");  
+    //var ngayhethan = tedu.getFormatDateYYMMDD($('#txtNgayHetHanMoi').val());
+
+    $.ajax({
+        type: "POST",
+        url: "/Admin/congngay/AddUpdateLuongBaoHiem",
+        data: {
+            Id: luongbaohiemid,    
+            InsertLuongBaoHiemId: '2',
+            Ngay01: ngaynao,
+            IsNgay: isngay           
+        },
+        dataType: "json",
+        beforeSend: function () {
+            tedu.startLoading();
+        },
+        success: function (response) {
+            if (response.Success == false) {
+                tedu.notify(response.Message, "error");
+            }            
+            tedu.stopLoading();
+        },
+        error: function () {
+            tedu.notify('Có lỗi! Không thể lưu Bảng chấm công ngày nhân viên', 'error');
+            tedu.stopLoading();
+        }
+    });
+}
+
+function loadLuongBaoHiemId(luongbaohiemid) {
+    var thang1 = $('#ddlThang').val();
+    var nam1 = $('#txtNam').val();
+    var makhuvuc = $('#ddlKhuVuc').val();
+    var maphong = $('#ddlPhongBan').val();
+    var keyword2 = $('#txtTimNhanVien').val();   
+
+    $.ajax({
+        type: 'POST',
+        url: '/admin/congngay/LuongBaoHiemGetListId',
+        data: {
+            Id: luongbaohiemid,
+            nam: '2018',
+            thang: '10',
+            corporationId: 'PO',
+            phongId: '%',
+            chucvuId: "%",
+            keyword: '%',
+            page: tedu.configs.pageIndex,
+            pageSize: tedu.configs.pageSize
+        },
+        async: false,
+        dataType: "json",
+        beforeSend: function () {
+            tedu.startLoading();
+        },
+        success: function (response) {
+            moi = response.Result[0];           
+            $('#hidLuongBaoHiemSoNgay').val(moi.SoNgay);
+            //console.log($('#hidLuongBaoHiemSoNgay').val());
+        },
+        error: function (status) {
+            console.log(status);
+            tedu.notify('Không thể lấy dữ liệu về.', 'error');
         }
     });
 
 }
 
-//function isKyHieuCongNgay(kyhieu) {
 
-//    //var bien1;
-//    //var bien2 = 0;
-//    var JSONItems = [];
-
-//    $.getJSON("/templates/luongkyhieu.json", function (data) {
-//        $.each(data, function (i, item) {
-
-//            console.log(item);
-//            if (kyhieu === item.Id) {
-//                console.log("giong ky hieu");
-//                return false;
-//            }
-//            else {
-//                console.log("saiii ky hieu");
-//                return true;
-//            }
-//        });
-
-//    });
-//    //console.log(JSONItems);
-//    //console.log(data2.responseJSON);
-//}

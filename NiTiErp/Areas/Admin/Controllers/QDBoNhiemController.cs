@@ -142,6 +142,13 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        [HttpGet]
+        public IActionResult ChucVuKhuVucGetListMaKV(string makv)
+        {
+            var model = _chucvunhanvienService.ChucVuNhanVienGetList(makv, "", "", "ChucVuNhanVienGetListMaKV");
+            return new OkObjectResult(model);
+        }
+
         #endregion
 
         [HttpPost]

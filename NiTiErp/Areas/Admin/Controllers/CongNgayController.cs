@@ -60,6 +60,43 @@ namespace NiTiErp.Areas.Admin.Controllers
 
         #region AJAX API
 
+        [HttpPost]
+        public IActionResult AddUpdateLuongBaoHiem(LuongBaoHiemViewModel luongbaohiemVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+
+                luongbaohiemVm.CreateBy = username;
+                luongbaohiemVm.CreateDate = DateTime.Now;
+                luongbaohiemVm.UpdateBy = username;
+                luongbaohiemVm.UpdateDate = DateTime.Now;
+
+                if (luongbaohiemVm.InsertLuongBaoHiemId == 2 )
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "LUONGNHAP", Operations.Update); // Cap nhat luong bao hiem nhan vien cham cong ngay
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
+                    }                   
+
+                    var luongbaohiem = _luongbaohiemService.LuongBaoHiemAUD(luongbaohiemVm, "UpBangChamCongNgay");
+                    return new OkObjectResult(luongbaohiem);
+                
+                }
+                else
+                {
+                    return new OkObjectResult(luongbaohiemVm);
+                }
+
+            }
+        }
+
         public IActionResult LuongBaoHiemGetList(int nam, int thang, string corporationId, string phongId,
             string chucvuId, string keyword, int page, int pageSize)
         {
@@ -76,6 +113,21 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        public IActionResult LuongBaoHiemGetListId(Int64 Id, int nam, int thang, string corporationId, string phongId,
+            string chucvuId, string keyword, int page, int pageSize)
+        {
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var phong = !string.IsNullOrEmpty(phongId) ? phongId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+            var chucvu = !string.IsNullOrEmpty(chucvuId) ? chucvuId : "%";
+
+            var hosoid = new Guid();
+
+            var model = _luongbaohiemService.LuongBaoHiemGetList(Id, nam, thang, khuvuc, phong,
+                chucvuId, hosoid, "", "", "", "", keyword, "GetLuongBaoHiemId");
+
+            return new OkObjectResult(model);
+        }
 
         #region Danh muc Hop dong nhan vien
 
@@ -89,7 +141,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult DieuKienGetList()
         {
-            var model = _dieukientimService.DieuKienTimGetList("HopDongNhanVien", "", "", "BangDieuKienTimGetList");
+            var model = _dieukientimService.DieuKienTimGetList("LuongBaoHiem", "", "", "BangDieuKienTimGetList");
             return new OkObjectResult(model);
         }
 
