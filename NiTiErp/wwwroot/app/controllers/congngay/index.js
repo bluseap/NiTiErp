@@ -28,20 +28,23 @@
         var maphong = $('#ddlPhongBan').val();
         var keyword2 = $('#txtTimNhanVien').val();
 
+        var dotinluongid = $('#ddlLuongDotIn').val();
+
         var moi;
 
         $.ajax({
             type: 'POST',
             url: '/admin/congngay/LuongBaoHiemGetList',
             data: {
-                nam: '2018',
-                thang: '10',
-                corporationId: 'PO',
-                phongId: '%',
+                nam: nam1,
+                thang: thang1,
+                corporationId: makhuvuc,
+                phongId: maphong,
                 chucvuId: "%",
-                keyword: '%',
+                keyword: keyword2,
                 page: tedu.configs.pageIndex,
-                pageSize: tedu.configs.pageSize                
+                pageSize: tedu.configs.pageSize,
+                dotinluong: dotinluongid
             },
             async: false,
             dataType: "json",
@@ -80,6 +83,34 @@
         loadThang(thangNow);
         
         loadDieuKienTim();
+
+        //loadLuongDotInKy(corporationId);
+    }
+
+    function loadLuongDotInKy(corporationId) { 
+        $.ajax({
+            type: 'GET',
+            url: '/admin/congngay/LuongDotInGetList',
+            data: {makv: corporationId},
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >--- Lựa chọn ---</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.TenDotIn + "</option>";
+                });
+                $('#ddlLuongDotIn').html(render);
+
+                $('#ddlLuongDotIn')[0].selectedIndex = 1;
+                
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có đợt in lương.', 'error');
+            }
+        });
     }
 
     function loadThang(thangnow) {
@@ -149,6 +180,8 @@
                 $("#ddlKhuVuc")[0].selectedIndex = 1;
 
                 loadPhongKhuVuc($("#ddlKhuVuc").val());
+
+                loadLuongDotInKy($("#ddlKhuVuc").val());
                
             },
             error: function (status) {

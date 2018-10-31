@@ -6,11 +6,15 @@ create procedure [LuongBaoHiemAUD]
 create procedure [LuongBaoHiemGetList]
 
 
+update procedure [BangDanhMucGetList]
 
+update procedure [QDNangNgachAUD]
+
+
+r
 update procedure [HopDongAUD]
-
+r
 update procedure [HopDongGetList]
-
 r
 update procedure [HopDongGetList]
 r
@@ -172,32 +176,8 @@ VALUES           ( 'KO','KO', N'Không'		, 1, 1, 99, 'admin', Getdate()	 )
 
 
 
-INSERT INTO [dbo].[ChiPhi]           ([Id]           ,[TenChiPhi]    , IsChiPhiTang, ChiPhiLoaiId      
-,[IsHeSoChiPhi]           ,[HeSoChiPhi]          
-		 ,[IsSoTienChiPhi]           ,[SoTienChiPhi]           ,[IsSoGioCong]           ,[SoGioCong]     
-		   ,[Status]           ,[Active]           ,[Stt]           ,[CreateDate]           ,[CreateBy]            )
-VALUES   ( 1, N'Đóng BHYT (1,5 %)', 1,1
-,1, 0.015
-		,	0, 0, 0, 0
-		, 1, 1, 1, getdate(), 'admin'	  )
 
-INSERT INTO [dbo].[ChiPhi]           ([Id]           ,[TenChiPhi]       , IsChiPhiTang, ChiPhiLoaiId     
-,[IsHeSoChiPhi]           ,[HeSoChiPhi]          
-		 ,[IsSoTienChiPhi]           ,[SoTienChiPhi]           ,[IsSoGioCong]           ,[SoGioCong]     
-		   ,[Status]           ,[Active]           ,[Stt]           ,[CreateDate]           ,[CreateBy]            )
-VALUES   ( 2, N'Đóng BHTN (1 %)',  1,1
-,1, 0.01
-		,	0, 0, 0, 0
-		, 1, 1, 2, getdate(), 'admin'	  )
-
-INSERT INTO [dbo].[ChiPhi]           ([Id]           ,[TenChiPhi]        , IsChiPhiTang, ChiPhiLoaiId   
-,[IsHeSoChiPhi]           ,[HeSoChiPhi]          
-		 ,[IsSoTienChiPhi]           ,[SoTienChiPhi]           ,[IsSoGioCong]           ,[SoGioCong]     
-		   ,[Status]           ,[Active]           ,[Stt]           ,[CreateDate]           ,[CreateBy]            )
-VALUES   ( 3, N'Đóng BHXH (8 %)',  1,1
-,1, 0.08
-		,	0, 0, 0, 0
-		, 1, 1, 3, getdate(), 'admin'	  )
+insert value genegic value from [ChiPhi] database
 
 
 
@@ -225,9 +205,12 @@ INSERT INTO [dbo].[LuongDotInKy]           ([Id]           ,[Nam]           ,[Th
 INSERT INTO [dbo].[LuongDotInKy]           ([Id]           ,[Nam]           ,[Thang]           ,[CorporationId]
            ,[TenDotIn]                   ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
      VALUES           ( 3           , 2018,            10            , N'CT'
-           , N'Đợt 2'      ,           1           ,1, 1 		   , 'admin', getdate() )
+           , N'Đợt 2'      ,           1           ,1, 2 		   , 'admin', getdate() )
 
-
+INSERT INTO [dbo].[LuongDotInKy]           ([Id]           ,[Nam]           ,[Thang]           ,[CorporationId]
+           ,[TenDotIn]                   ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+     VALUES           ( 4           , 2018,            10            , N'PO'
+           , N'Đợt 2'      ,           1           ,1, 2 		   , 'admin', getdate() )
 
 
 

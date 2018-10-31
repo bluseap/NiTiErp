@@ -26,6 +26,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         private readonly NiTiErp.Application.Interfaces.IUserService _userService;
         private readonly IAuthorizationService _authorizationService;
 
+        private readonly ILuongDotInKyService _luongdotinkyService;
         private readonly IDieuKienTimService _dieukientimService;
         private readonly ILuongKyHieuService _luongkyhieuService;
         private readonly ILuongBaoHiemService _luongbaohiemService;
@@ -36,6 +37,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             NiTiErp.Application.Interfaces.IUserService userService,
             IAuthorizationService authorizationService,
 
+            ILuongDotInKyService luongdotinkyService,
             IDieuKienTimService dieukientimService,
             ILuongKyHieuService luongkyhieuService,
             ILuongBaoHiemService luongbaohiemService,
@@ -46,6 +48,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             _userService = userService;
             _authorizationService = authorizationService;
 
+            _luongdotinkyService = luongdotinkyService;
             _dieukientimService = dieukientimService;
             _luongkyhieuService = luongkyhieuService;
             _luongbaohiemService = luongbaohiemService;
@@ -98,7 +101,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         public IActionResult LuongBaoHiemGetList(int nam, int thang, string corporationId, string phongId,
-            string chucvuId, string keyword, int page, int pageSize)
+            string chucvuId, string keyword, int page, int pageSize, string dotinluong)
         {
             var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
             var phong = !string.IsNullOrEmpty(phongId) ? phongId : "%";
@@ -108,7 +111,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             var hosoid = new Guid();
 
             var model = _luongbaohiemService.LuongBaoHiemGetList(1, nam, thang, khuvuc, phong, 
-                chucvuId, hosoid, "", "", "", "", keyword, "GetListLuongBaoHiemKy");
+                chucvuId, hosoid, "", "", "", dotinluong, tukhoa, "GetListLuongBaoHiemKy");
 
             return new OkObjectResult(model);
         }
@@ -142,6 +145,13 @@ namespace NiTiErp.Areas.Admin.Controllers
         public IActionResult DieuKienGetList()
         {
             var model = _dieukientimService.DieuKienTimGetList("LuongBaoHiem", "", "", "BangDieuKienTimGetList");
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult LuongDotInGetList(string makv)
+        {
+            var model = _luongdotinkyService.LuongDotInKyGetList(makv, "", "", "LuongDotInKyGetList");
             return new OkObjectResult(model);
         }
 

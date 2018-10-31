@@ -18,6 +18,25 @@
     });
 });
 
+$('#btnTimNhanVien').on('click', function () {    
+    var datakv = loadTableCongNgay();
+    var dg = $('#dg').datagrid({
+        singleSelect: true,
+        //collapsible: true,
+        //fitColumns: true,
+        rownumbers: true,
+        //toolbar: '#tb',
+        data: datakv,
+        view: groupview,
+        groupField: 'TenPhong',
+        groupFormatter: function (value, rows) {
+            return value + ' - ' + rows.length + ' Nhân viên ';
+        },
+        onClickRow: onClickRow,
+        onBeginEdit: onBeginEdit
+    });
+});
+
 var editIndex = undefined;
 function endEditing() {
     if (editIndex == undefined) { return true }
@@ -85,6 +104,17 @@ function onBeginEdit(index) {
     var tienbaohiem = $(editors[34].target);
 
     var congngayId = $(editors[35].target).textbox('getValue');
+
+    //var songayan = $(editors[36].target);
+    //var tienangiuaca = $(editors[37].target);
+    //var tienhieuquakinhdoanh = $(editors[38].target);
+
+    var tienbaohiemyte = $(editors[36].target);
+    var tienbaohiemthatnghiep = $(editors[37].target);
+    var tienbaohiemxahoi = $(editors[38].target);
+    var tongtiendongbaohiem = $(editors[39].target);
+
+    var tongtienthuclinh = $(editors[40].target);
 
     $('#hidLuongBaoHiemSoNgay').val("0");
 
@@ -231,5 +261,49 @@ function loadLuongBaoHiemId(luongbaohiemid) {
     });
 
 }
+
+function loadTableCongNgay() {
+
+    var thang1 = $('#ddlThang').val();
+    var nam1 = $('#txtNam').val();
+    var makhuvuc = $('#ddlKhuVuc').val();
+    var maphong = $('#ddlPhongBan').val();
+    var keyword2 = $('#txtTimNhanVien').val();
+
+    var dotinluongid = $('#ddlLuongDotIn').val();
+
+    var moi;
+
+    $.ajax({
+        type: 'POST',
+        url: '/admin/congngay/LuongBaoHiemGetList',
+        data: {
+            nam: nam1,
+            thang: thang1,
+            corporationId: makhuvuc,
+            phongId: maphong,
+            chucvuId: "%",
+            keyword: keyword2,
+            page: tedu.configs.pageIndex,
+            pageSize: tedu.configs.pageSize,
+            dotinluong: dotinluongid
+        },
+        async: false,
+        dataType: "json",
+        beforeSend: function () {
+            tedu.startLoading();
+        },
+        success: function (response) {
+            moi = response.Result;
+            
+        },
+        error: function (status) {
+            console.log(status);
+            tedu.notify('Không thể lấy dữ liệu về.', 'error');
+        }
+    });
+    return moi;
+} 
+
 
 
