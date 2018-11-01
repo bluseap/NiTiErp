@@ -147,14 +147,16 @@
             </div>
             <div class="clearfix"></div>
             <div class="table-responsive" id="table-responsiveDMHeSoLuong">
-                <input type="hidden" id="hidLuongBaoHiemSoNgay" value="" />
 
+                <input type="hidden" id="hidLuongBaoHiemSoGio" value="" />
+                <input type="hidden" id="hidLuongBaoHiemSoNgay" value="" />
                 <input type="hidden" id="hidLuongBaoHiemMucLuong" value="" />
                 <input type="hidden" id="hidLuongBaoHiemThanhTien" value="" />
                 <input type="hidden" id="hidChiPhiGiamBHYT" value="" />
                 <input type="hidden" id="hidChiPhiGiamBHTN" value="" />
                 <input type="hidden" id="hidChiPhiGiamBHXH" value="" />
                 <input type="hidden" id="hidChiPhiBHXH" value="" />
+                <input type="hidden" id="hidTongTienThucLinh" value="" />
 
                 <table id="dg" class="easyui-datagrid" title="Bảng chấm công nhân viên" style="width:1000px;height:auto" cellspacing="0">
 
@@ -229,14 +231,14 @@
                             <th data-options="field:'Id',width:60,align:'center', hidden:'true', editor: 'numberbox' ">Id</th>
 
                             @*<th data-options="field:'SoNgayAn',width:80, align:'right', editor:'numberbox' ">Số ngày ăn</th>
-                            <th data-options="field:'TienAnGiuaCa',width:100,  align:'right', formatter:formatPrice2, editor:{type:'numberbox', options:{min:0,precision:0,groupSeparator:','}}  ">Ăn giữa ca</th>
-                            <th data-options="field:'TienHieuQuaKD',width:100,  align:'right', formatter:formatPrice2, editor:{type:'numberbox', options:{min:0,precision:0,groupSeparator:','}}  ">Hiệu quả KD</th>*@
+                    <th data-options="field:'TienAnGiuaCa',width:100,  align:'right', formatter:formatPrice2, editor:{type:'numberbox', options:{min:0,precision:0,groupSeparator:','}}  ">Ăn giữa ca</th>
+                    <th data-options="field:'TienHieuQuaKD',width:100,  align:'right', formatter:formatPrice2, editor:{type:'numberbox', options:{min:0,precision:0,groupSeparator:','}}  ">Hiệu quả KD</th>*@
 
                             <th data-options="field:'TienBHYT',width:100,  align:'right', formatter:formatPrice2, editor:{type:'numberbox', options:{min:0,precision:0,groupSeparator:','}}  ">BH Y Tế</th>
                             <th data-options="field:'TienBHTN',width:100,  align:'right', formatter:formatPrice2, editor:{type:'numberbox', options:{min:0,precision:0,groupSeparator:','}}  ">BH Thất Nghiệp</th>
                             <th data-options="field:'TienBHXH',width:100,  align:'right', formatter:formatPrice2, editor:{type:'numberbox', options:{min:0,precision:0,groupSeparator:','}}  ">BH Xã Hội</th>
                             <th data-options="field:'TongTienBaoHiem',width:100,  align:'right', formatter:formatPrice2, editor:{type:'numberbox', options:{min:0,precision:0,groupSeparator:','}}  ">Tổng tiền đóng BH</th>
-                            
+
                             <th data-options="field:'TongTienThucLinh',width:100,  align:'right', formatter:formatPrice2, editor:{type:'numberbox', options:{min:0,precision:0,groupSeparator:','}}  ">Tiền thực lĩnh</th>
                         </tr>
                     </thead>
@@ -244,10 +246,10 @@
                 </table>
 
                 @*<div id="tb" style="height:auto">
-                <a class="easyui-linkbutton btndelete" data-options="iconCls:'icon-cut',plain:true">Xóa</a>
-                <a class="easyui-linkbutton btnaccept" data-options="iconCls:'icon-save',plain:true">Lưu</a>
+            <a class="easyui-linkbutton btndelete" data-options="iconCls:'icon-cut',plain:true">Xóa</a>
+            <a class="easyui-linkbutton btnaccept" data-options="iconCls:'icon-save',plain:true">Lưu</a>
 
-            </div>*@
+        </div>*@
                 <script type="text/javascript">
                     function formatNgayCN(val, row) {
                         if (val === 'CN') {
