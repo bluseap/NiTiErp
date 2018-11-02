@@ -59,17 +59,40 @@ namespace NiTiErp.WebApi
                 AddJsonOptions(options =>
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
-            services.AddSwaggerGen(s =>
+            // Register the Swagger generator, defining 1 or more Swagger documents
+            services.AddSwaggerGen(c =>
             {
-                s.SwaggerDoc("v1", new Info
+                c.SwaggerDoc("v1", new Info
                 {
                     Version = "v1",
-                    Title = "TEDU Project",
-                    Description = "TEDU API Swagger surface",
-                    Contact = new Contact { Name = "ToanBN", Email = "tedu.international@gmail.com", Url = "http://www.tedu.com.vn" },
-                    License = new License { Name = "MIT", Url = "https://github.com/teduinternational/teducoreapp" }
+                    Title = "ToDo API",
+                    Description = "A simple example ASP.NET Core Web API",
+                    TermsOfService = "None",
+                    Contact = new Contact
+                    {
+                        Name = "Shayne Boyer",
+                        Email = string.Empty,
+                        Url = "https://twitter.com/spboyer"
+                    },
+                    License = new License
+                    {
+                        Name = "Use under LICX",
+                        Url = "https://example.com/license"
+                    }
                 });
+               
             });
+            //services.AddSwaggerGen(s =>
+            //{
+            //    s.SwaggerDoc("v1", new Info
+            //    {
+            //        Version = "v1",
+            //        Title = "TEDU Project",
+            //        Description = "TEDU API Swagger surface",
+            //        Contact = new Contact { Name = "ToanBN", Email = "tedu.international@gmail.com", Url = "http://www.tedu.com.vn" },
+            //        License = new License { Name = "MIT", Url = "https://github.com/teduinternational/teducoreapp" }
+            //    });
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -87,6 +110,7 @@ namespace NiTiErp.WebApi
             app.UseSwaggerUI(s =>
             {
                 s.SwaggerEndpoint("/swagger/v1/swagger.json", "Project API v1.1");
+                
             });
 
             app.UseMvc(routes =>
