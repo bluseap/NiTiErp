@@ -65,6 +65,10 @@
      
     function registerEvents() {
 
+        $('#btnXuatExcelCongNgay').on('click', function () {           
+            XuatExcel();
+        });
+
         $('#ddlKhuVuc').on('change', function () {
             var corporationId = $('#ddlKhuVuc').val();
             loadPhongKhuVuc(corporationId);
@@ -212,6 +216,56 @@
                 tedu.notify('Không có danh mục Phòng.', 'error');
             }
         });
+    }
+
+    function XuatExcel() {
+        var dieukien = $('#ddlDieuKienKhac').val();
+
+        if (dieukien === "8") { //8	    DS Bảng chấm công ngày	            LuongBaoHiem
+            ExcelChamCongNgay();
+        }
+        else if (dieukien === "9") {    //9	    DS Bảng lương Nhân viên đóng BHXH	LuongBaoHiem
+            ExcelLuongDongBHXH();
+        }
+        else {
+            tedu.notify("Chọn điều kiện xuất Excel.","error");
+        }  
+    }
+
+    function ExcelChamCongNgay() {
+        var thang = $('#ddlThang').val();
+        var nam = $('#txtNam').val();
+        var dotinluongid = $('#ddlLuongDotIn').val();
+        var makhuvuc = $('#ddlKhuVuc').val();
+        var maphong = $('#ddlPhongBan').val();
+        var keyword = $('#txtTimNhanVien').val();
+
+        var dieukien = $('#ddlDieuKienKhac').val();
+
+        $.ajax({
+            type: 'POST',
+            url: '/admin/congngay/ExportExcelChamCongNgay',
+            data: {
+                thangChamCong: thang,
+                namChamCong: nam,
+                luongDotInId: dotinluongid,
+                makvChamCong: makhuvuc,
+                madphongChamCong: maphong,
+                keywordChamCong: keyword,
+                dieukienChamCong: dieukien
+            },
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                window.location.href = response;
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function ExcelLuongDongBHXH() {
+
     }
 
 
