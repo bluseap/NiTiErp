@@ -177,7 +177,18 @@ namespace NiTiErp.Areas.Admin.Controllers
                     {
                         var khuvucvm = _corporationsService.GetAllCorPaging(khuvuc, "", "", 1, 10, "", "", khuvuc, "GetCorporationId");
                         worksheet.Cells[3, 2].Value = khuvucvm.Result.Results[0].Name.ToString().ToUpper();
+
+                        worksheet.Cells[3, 2].Style.Font.Size = 8;
+                        worksheet.Cells[3, 2].Style.Font.Bold = true;
+                        worksheet.Cells[3, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                        worksheet.Cells[3, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
                     }
+
+                    worksheet.Cells[6, 2].Value = "(Tháng " + thangChamCong.ToString() + "/" + namChamCong.ToString() + ")";
+                    worksheet.Cells[6, 2].Style.Font.Size = 7;
+                    worksheet.Cells[6, 2].Style.Font.Bold = true;
+                    worksheet.Cells[6, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[6, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
 
                     worksheet.InsertRow(12, suckhoeDetail.Result.Count());
                     foreach (var hdDetail in suckhoeDetail.Result)
@@ -192,32 +203,40 @@ namespace NiTiErp.Areas.Admin.Controllers
                         worksheet.Cells[rowIndex, 2].Style.Border.Top.Style = ExcelBorderStyle.Dotted; // khoan cach
                         worksheet.Cells[rowIndex, 2].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
                         worksheet.Cells[rowIndex, 2].Style.Font.Size = 7;
+                        worksheet.Row(rowIndex).Height = 9;
 
-                        //worksheet.Cells[rowIndex, 3].Value = !string.IsNullOrEmpty(hdDetail.Ten) ? hdDetail.Ten.ToString() : "";
-                        //worksheet.Cells[rowIndex, 3].Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 3].Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 3].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
-                        //worksheet.Cells[rowIndex, 3].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 3].Value = !string.IsNullOrEmpty(hdDetail.TenNhanVien) ? hdDetail.TenNhanVien.ToString() : "";
+                        worksheet.Cells[rowIndex, 3].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 3].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 3].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 3].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 3].Style.Font.Size = 7;
+                        worksheet.Row(rowIndex).Height = 9;
 
-                        //worksheet.Cells[rowIndex, 4].Value = !string.IsNullOrEmpty(hdDetail.TenKhuVuc) ? hdDetail.TenKhuVuc.ToString() : "";
-                        //worksheet.Cells[rowIndex, 4].Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 4].Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 4].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
-                        //worksheet.Cells[rowIndex, 4].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 4].Value = !string.IsNullOrEmpty(hdDetail.TenPhong) ? hdDetail.TenPhong.ToString() : "";
+                        worksheet.Cells[rowIndex, 4].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 4].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 4].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 4].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 4].Style.Font.Size = 7;
+                        worksheet.Row(rowIndex).Height = 9;
 
-                        //worksheet.Cells[rowIndex, 5].Value = !string.IsNullOrEmpty(hdDetail.TenPhong) ? hdDetail.TenPhong.ToString() : "";
-                        //worksheet.Cells[rowIndex, 5].Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 5].Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 5].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
-                        //worksheet.Cells[rowIndex, 5].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 5].Value = !string.IsNullOrEmpty(hdDetail.TenChucVu) ? hdDetail.TenChucVu.ToString() : "";
+                        worksheet.Cells[rowIndex, 5].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 5].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 5].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 5].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 5].Style.Font.Size = 7;
+                        worksheet.Row(rowIndex).Height = 9;
 
-                        Color colFromHex = System.Drawing.ColorTranslator.FromHtml("#DDDDDD");
-                        if (hdDetail.Ngay01.ToString() == "X")
+
+                        Color colFromHex = System.Drawing.ColorTranslator.FromHtml("#DDDDDD"); // mau xam nhat
+                        if (hdDetail.Ngay01.ToString() == "CN")
                         {
-                            worksheet.Cells[rowIndex, 6].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                            worksheet.Cells[rowIndex, 6].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
                             worksheet.Cells[rowIndex, 6].Style.Fill.BackgroundColor.SetColor(colFromHex);
-                        }
-                        worksheet.Cells[rowIndex, 6].Value = !string.IsNullOrEmpty(hdDetail.Ngay01.ToString()) ? hdDetail.Ngay01.ToString() : "";
+                        }                        
+                        worksheet.Cells[rowIndex, 6].Value = !string.IsNullOrEmpty(hdDetail.Ngay01.ToString()) ? hdDetail.Ngay01.ToString() : "";                        
                         worksheet.Cells[rowIndex, 6].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                         worksheet.Cells[rowIndex, 6].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                         worksheet.Cells[rowIndex, 6].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
@@ -225,111 +244,437 @@ namespace NiTiErp.Areas.Admin.Controllers
                         worksheet.Cells[rowIndex, 6].Style.Font.Size = 7;
                         worksheet.Cells[rowIndex, 6].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                        //worksheet.Cells[rowIndex, 7].Value = !string.IsNullOrEmpty(hdDetail.GioiTinh) ? hdDetail.GioiTinh == "1" ? "Nam" : "Nữ" : ""; worksheet.Cells[rowIndex, 3].Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 7].Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 7].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
-                        //worksheet.Cells[rowIndex, 7].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        if (hdDetail.Ngay02.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 7].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 7].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 7].Value = !string.IsNullOrEmpty(hdDetail.Ngay02.ToString()) ? hdDetail.Ngay02.ToString() : "";
+                        worksheet.Cells[rowIndex, 7].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 7].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 7].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 7].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 7].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 7].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                        //worksheet.Cells[rowIndex, 8].Value = !string.IsNullOrEmpty(hdDetail.CanNang.ToString()) ? hdDetail.CanNang.ToString() : "";
-                        //worksheet.Cells[rowIndex, 8].Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 8].Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 8].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
-                        //worksheet.Cells[rowIndex, 8].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        if (hdDetail.Ngay03.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 8].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 8].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 8].Value = !string.IsNullOrEmpty(hdDetail.Ngay03.ToString()) ? hdDetail.Ngay03.ToString() : "";
+                        worksheet.Cells[rowIndex, 8].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 8].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 8].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 8].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 8].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 8].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                        //worksheet.Cells[rowIndex, 9].Value = !string.IsNullOrEmpty(hdDetail.ChieuCao.ToString()) ? hdDetail.ChieuCao.ToString() : "";
-                        //worksheet.Cells[rowIndex, 9].Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 9].Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 9].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
-                        //worksheet.Cells[rowIndex, 9].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        if (hdDetail.Ngay04.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 9].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 9].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 9].Value = !string.IsNullOrEmpty(hdDetail.Ngay04.ToString()) ? hdDetail.Ngay04.ToString() : "";
+                        worksheet.Cells[rowIndex, 9].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 9].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 9].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 9].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 9].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 9].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                        //worksheet.Cells[rowIndex, 10].Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 10].Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 10].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
-                        //worksheet.Cells[rowIndex, 10].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        if (hdDetail.Ngay04.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 9].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 9].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 9].Value = !string.IsNullOrEmpty(hdDetail.Ngay04.ToString()) ? hdDetail.Ngay04.ToString() : "";
+                        worksheet.Cells[rowIndex, 9].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 9].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 9].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 9].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 9].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 9].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                        //worksheet.Cells[rowIndex, 11].Value = !string.IsNullOrEmpty(hdDetail.Mat) ? hdDetail.Mat.ToString() : "";
-                        //worksheet.Cells[rowIndex, 11].Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 11].Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 11].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
-                        //worksheet.Cells[rowIndex, 11].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        if (hdDetail.Ngay05.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 10].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 10].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 10].Value = !string.IsNullOrEmpty(hdDetail.Ngay05.ToString()) ? hdDetail.Ngay05.ToString() : "";
+                        worksheet.Cells[rowIndex, 10].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 10].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 10].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 10].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 10].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 10].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                        //worksheet.Cells[rowIndex, 12].Value = !string.IsNullOrEmpty(hdDetail.TaiMuiHong) ? hdDetail.TaiMuiHong.ToString() : "";
-                        //worksheet.Cells[rowIndex, 12].Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 12].Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 12].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
-                        //worksheet.Cells[rowIndex, 12].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        if (hdDetail.Ngay06.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 11].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 11].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 11].Value = !string.IsNullOrEmpty(hdDetail.Ngay06.ToString()) ? hdDetail.Ngay06.ToString() : "";
+                        worksheet.Cells[rowIndex, 11].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 11].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 11].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 11].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 11].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 11].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                        //worksheet.Cells[rowIndex, 13].Value = !string.IsNullOrEmpty(hdDetail.RangHamMat) ? hdDetail.RangHamMat.ToString() : "";
-                        //worksheet.Cells[rowIndex, 13].Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 13].Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 13].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
-                        //worksheet.Cells[rowIndex, 13].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        if (hdDetail.Ngay07.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 12].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 12].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 12].Value = !string.IsNullOrEmpty(hdDetail.Ngay07.ToString()) ? hdDetail.Ngay07.ToString() : "";
+                        worksheet.Cells[rowIndex, 12].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 12].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 12].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 12].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 12].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 12].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                        //worksheet.Cells[rowIndex, 14].Value = !string.IsNullOrEmpty(hdDetail.SieuAmVungBung) ? hdDetail.SieuAmVungBung.ToString() : "";
-                        //worksheet.Cells[rowIndex, 14].Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 14].Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 14].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
-                        //worksheet.Cells[rowIndex, 14].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        if (hdDetail.Ngay08.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 13].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 13].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 13].Value = !string.IsNullOrEmpty(hdDetail.Ngay08.ToString()) ? hdDetail.Ngay08.ToString() : "";
+                        worksheet.Cells[rowIndex, 13].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 13].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 13].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 13].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 13].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 13].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                        //worksheet.Cells[rowIndex, 15].Value = !string.IsNullOrEmpty(hdDetail.XQTimPhoi) ? hdDetail.XQTimPhoi.ToString() : "";
-                        //worksheet.Cells[rowIndex, 15].Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 15].Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 15].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
-                        //worksheet.Cells[rowIndex, 15].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        if (hdDetail.Ngay09.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 14].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 14].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 14].Value = !string.IsNullOrEmpty(hdDetail.Ngay09.ToString()) ? hdDetail.Ngay09.ToString() : "";
+                        worksheet.Cells[rowIndex, 14].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 14].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 14].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 14].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 14].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 14].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                        //worksheet.Cells[rowIndex, 16].Value = !string.IsNullOrEmpty(hdDetail.DoDienTim) ? hdDetail.DoDienTim.ToString() : "";
-                        //worksheet.Cells[rowIndex, 16].Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 16].Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 16].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
-                        //worksheet.Cells[rowIndex, 16].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        if (hdDetail.Ngay10.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 15].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 15].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 15].Value = !string.IsNullOrEmpty(hdDetail.Ngay10.ToString()) ? hdDetail.Ngay10.ToString() : "";
+                        worksheet.Cells[rowIndex, 15].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 15].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 15].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 15].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 15].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 15].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                        //worksheet.Cells[rowIndex, 17].Value = !string.IsNullOrEmpty(hdDetail.PhuKhoa) ? hdDetail.PhuKhoa.ToString() : "";
-                        //worksheet.Cells[rowIndex, 17].Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 17].Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 17].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
-                        //worksheet.Cells[rowIndex, 17].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        if (hdDetail.Ngay11.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 16].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 16].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 16].Value = !string.IsNullOrEmpty(hdDetail.Ngay11.ToString()) ? hdDetail.Ngay11.ToString() : "";
+                        worksheet.Cells[rowIndex, 16].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 16].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 16].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 16].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 16].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 16].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                        //worksheet.Cells[rowIndex, 18].Value = !string.IsNullOrEmpty(hdDetail.PhetTBAmDao) ? hdDetail.PhetTBAmDao.ToString() : "";
-                        //worksheet.Cells[rowIndex, 18].Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 18].Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 18].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
-                        //worksheet.Cells[rowIndex, 18].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        if (hdDetail.Ngay12.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 17].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 17].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 17].Value = !string.IsNullOrEmpty(hdDetail.Ngay12.ToString()) ? hdDetail.Ngay12.ToString() : "";
+                        worksheet.Cells[rowIndex, 17].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 17].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 17].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 17].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 17].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 17].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                        //worksheet.Cells[rowIndex, 19].Value = !string.IsNullOrEmpty(hdDetail.CongThucMau) ? hdDetail.CongThucMau.ToString() : "";
-                        //worksheet.Cells[rowIndex, 19].Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 19].Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 19].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
-                        //worksheet.Cells[rowIndex, 19].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        if (hdDetail.Ngay13.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 18].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 18].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 18].Value = !string.IsNullOrEmpty(hdDetail.Ngay13.ToString()) ? hdDetail.Ngay13.ToString() : "";
+                        worksheet.Cells[rowIndex, 18].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 18].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 18].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 18].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 18].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 18].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                        //worksheet.Cells[rowIndex, 20].Value = !string.IsNullOrEmpty(hdDetail.TPTNT) ? hdDetail.TPTNT.ToString() : "";
-                        //worksheet.Cells[rowIndex, 20].Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 20].Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 20].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
-                        //worksheet.Cells[rowIndex, 20].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        if (hdDetail.Ngay14.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 19].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 19].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 19].Value = !string.IsNullOrEmpty(hdDetail.Ngay14.ToString()) ? hdDetail.Ngay14.ToString() : "";
+                        worksheet.Cells[rowIndex, 19].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 19].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 19].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 19].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 19].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 19].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                        //worksheet.Cells[rowIndex, 21].Value = !string.IsNullOrEmpty(hdDetail.GlucoDuong) ? hdDetail.GlucoDuong.ToString() : "";
-                        //worksheet.Cells[rowIndex, 21].Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 21].Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 21].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
-                        //worksheet.Cells[rowIndex, 21].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        if (hdDetail.Ngay15.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 20].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 20].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 20].Value = !string.IsNullOrEmpty(hdDetail.Ngay15.ToString()) ? hdDetail.Ngay15.ToString() : "";
+                        worksheet.Cells[rowIndex, 20].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 20].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 20].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 20].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 20].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 20].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                        //worksheet.Cells[rowIndex, 22].Value = !string.IsNullOrEmpty(hdDetail.NhomMau) ? hdDetail.NhomMau.ToString() : "";
-                        //worksheet.Cells[rowIndex, 22].Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 22].Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 22].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
-                        //worksheet.Cells[rowIndex, 22].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        if (hdDetail.Ngay16.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 21].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 21].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 21].Value = !string.IsNullOrEmpty(hdDetail.Ngay16.ToString()) ? hdDetail.Ngay16.ToString() : "";
+                        worksheet.Cells[rowIndex, 21].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 21].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 21].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 21].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 21].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 21].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                        //worksheet.Cells[rowIndex, 23].Value = !string.IsNullOrEmpty(hdDetail.PhanLoaiSucKhoe) ? hdDetail.PhanLoaiSucKhoe.ToString() : "";
-                        //worksheet.Cells[rowIndex, 23].Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 23].Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 23].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
-                        //worksheet.Cells[rowIndex, 23].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        if (hdDetail.Ngay17.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 22].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 22].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 22].Value = !string.IsNullOrEmpty(hdDetail.Ngay17.ToString()) ? hdDetail.Ngay17.ToString() : "";
+                        worksheet.Cells[rowIndex, 22].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 22].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 22].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 22].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 22].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 22].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                        //worksheet.Cells[rowIndex, 24].Value = !string.IsNullOrEmpty(hdDetail.HuongDieuTri) ? hdDetail.HuongDieuTri.ToString() : "";
-                        //worksheet.Cells[rowIndex, 24].Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                        //worksheet.Cells[rowIndex, 24].Style.Border.Right.Style = ExcelBorderStyle.Medium;
-                        //worksheet.Cells[rowIndex, 24].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
-                        //worksheet.Cells[rowIndex, 24].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        if (hdDetail.Ngay18.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 23].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 23].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 23].Value = !string.IsNullOrEmpty(hdDetail.Ngay18.ToString()) ? hdDetail.Ngay18.ToString() : "";
+                        worksheet.Cells[rowIndex, 23].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 23].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 23].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 23].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 23].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 23].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                        if (hdDetail.Ngay19.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 24].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 24].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 24].Value = !string.IsNullOrEmpty(hdDetail.Ngay19.ToString()) ? hdDetail.Ngay19.ToString() : "";
+                        worksheet.Cells[rowIndex, 24].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 24].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 24].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 24].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 24].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 24].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                        if (hdDetail.Ngay20.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 25].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 25].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 25].Value = !string.IsNullOrEmpty(hdDetail.Ngay20.ToString()) ? hdDetail.Ngay20.ToString() : "";
+                        worksheet.Cells[rowIndex, 25].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 25].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 25].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 25].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 25].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 25].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                        if (hdDetail.Ngay21.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 26].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 26].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 26].Value = !string.IsNullOrEmpty(hdDetail.Ngay21.ToString()) ? hdDetail.Ngay21.ToString() : "";
+                        worksheet.Cells[rowIndex, 26].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 26].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 26].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 26].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 26].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 26].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                        if (hdDetail.Ngay22.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 27].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 27].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 27].Value = !string.IsNullOrEmpty(hdDetail.Ngay22.ToString()) ? hdDetail.Ngay22.ToString() : "";
+                        worksheet.Cells[rowIndex, 27].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 27].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 27].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 27].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 27].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 27].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                        if (hdDetail.Ngay23.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 28].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 28].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 28].Value = !string.IsNullOrEmpty(hdDetail.Ngay23.ToString()) ? hdDetail.Ngay23.ToString() : "";
+                        worksheet.Cells[rowIndex, 28].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 28].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 28].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 28].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 28].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 28].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                        if (hdDetail.Ngay24.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 29].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 29].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 29].Value = !string.IsNullOrEmpty(hdDetail.Ngay24.ToString()) ? hdDetail.Ngay24.ToString() : "";
+                        worksheet.Cells[rowIndex, 29].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 29].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 29].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 29].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 29].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 29].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                        if (hdDetail.Ngay25.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 30].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 30].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 30].Value = !string.IsNullOrEmpty(hdDetail.Ngay25.ToString()) ? hdDetail.Ngay25.ToString() : "";
+                        worksheet.Cells[rowIndex, 30].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 30].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 30].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 30].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 30].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 30].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                        if (hdDetail.Ngay26.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 31].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 31].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 31].Value = !string.IsNullOrEmpty(hdDetail.Ngay26.ToString()) ? hdDetail.Ngay26.ToString() : "";
+                        worksheet.Cells[rowIndex, 31].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 31].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 31].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 31].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 31].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 31].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                        if (hdDetail.Ngay27.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 32].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 32].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 32].Value = !string.IsNullOrEmpty(hdDetail.Ngay27.ToString()) ? hdDetail.Ngay27.ToString() : "";
+                        worksheet.Cells[rowIndex, 32].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 32].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 32].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 32].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 32].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 32].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                        if (hdDetail.Ngay28.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 33].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 33].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        worksheet.Cells[rowIndex, 33].Value = !string.IsNullOrEmpty(hdDetail.Ngay28.ToString()) ? hdDetail.Ngay28.ToString() : "";
+                        worksheet.Cells[rowIndex, 33].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 33].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 33].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 33].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 33].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 33].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                        if (hdDetail.Ngay29.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 34].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 34].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        else if (hdDetail.Ngay29.ToString() == "KO")
+                        {
+                            worksheet.Cells[rowIndex, 34].Value = "";
+                        }
+                        else
+                        {
+                            worksheet.Cells[rowIndex, 34].Value = !string.IsNullOrEmpty(hdDetail.Ngay29.ToString()) ? hdDetail.Ngay29.ToString() : "";
+                        }
+                        worksheet.Cells[rowIndex, 34].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 34].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 34].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 34].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 34].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 34].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                        if (hdDetail.Ngay30.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 35].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 35].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        else if (hdDetail.Ngay30.ToString() == "KO")
+                        {
+                            worksheet.Cells[rowIndex, 35].Value = "";
+                        }
+                        else
+                        {
+                            worksheet.Cells[rowIndex, 35].Value = !string.IsNullOrEmpty(hdDetail.Ngay30.ToString()) ? hdDetail.Ngay30.ToString() : "";
+                        }
+                        worksheet.Cells[rowIndex, 35].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 35].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 35].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 35].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 35].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 35].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                        if (hdDetail.Ngay31.ToString() == "CN")
+                        {
+                            worksheet.Cells[rowIndex, 36].Style.Fill.PatternType = ExcelFillStyle.Solid; // 
+                            worksheet.Cells[rowIndex, 36].Style.Fill.BackgroundColor.SetColor(colFromHex);
+                        }
+                        else if (hdDetail.Ngay31.ToString() == "KO")
+                        {
+                            worksheet.Cells[rowIndex, 36].Value = "";
+                        }
+                        else
+                        {
+                            worksheet.Cells[rowIndex, 36].Value = !string.IsNullOrEmpty(hdDetail.Ngay31.ToString()) ? hdDetail.Ngay31.ToString() : "";
+                        }
+                        worksheet.Cells[rowIndex, 36].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 36].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 36].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 36].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 36].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 36].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                        worksheet.Cells[rowIndex, 37].Value = !string.IsNullOrEmpty(hdDetail.SoNgay.ToString()) ? Convert.ToInt32(hdDetail.SoNgay) : 0;
+                        worksheet.Cells[rowIndex, 37].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 37].Style.Border.Right.Style = ExcelBorderStyle.Medium;
+                        worksheet.Cells[rowIndex, 37].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 37].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 37].Style.Font.Size = 7;
+                        worksheet.Cells[rowIndex, 37].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
                         //worksheet.Cells[rowIndex, 6].Value = hdDetail.NgayHetHan != null ? hdDetail.NgayHetHan.Date.ToString("dd/M/yyyy", CultureInfo.InvariantCulture) : "";
                         //worksheet.Cells[rowIndex, 5].Value = hdDetail.NgaySinh != null ? hdDetail.NgaySinh.Date.ToString("dd/M/yyyy", CultureInfo.InvariantCulture) : "";
