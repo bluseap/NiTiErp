@@ -28,9 +28,9 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
         public DateTime LockDate { get; set; }
 
-        public bool IsLockLuongDotInKy { get; set; }
+        public string IsLockLuongDotInKy { get; set; }
         
-        public bool IsLockKhoiTao { get; set; }
+        public string IsLockKhoiTao { get; set; }
         
 
 

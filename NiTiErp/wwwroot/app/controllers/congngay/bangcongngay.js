@@ -34,7 +34,28 @@ $('#btnTimNhanVien').on('click', function () {
         },
         onClickRow: onClickRow,
         onBeginEdit: onBeginEdit
-    });
+    });   
+});
+
+$('#txtTimNhanVien').on('keypress', function (e) {
+    if (e.which === 13) {
+        var datakv = loadTableCongNgay();
+        var dg = $('#dg').datagrid({
+            singleSelect: true,
+            //collapsible: true,
+            //fitColumns: true,
+            rownumbers: true,
+            //toolbar: '#tb',
+            data: datakv,
+            view: groupview,
+            groupField: 'TenPhong',
+            groupFormatter: function (value, rows) {
+                return value + ' - ' + rows.length + ' Nhân viên ';
+            },
+            onClickRow: onClickRow,
+            onBeginEdit: onBeginEdit
+        });  
+    }
 });
 
 var editIndex = undefined;
@@ -127,18 +148,19 @@ function onBeginEdit(index) {
                 SaveLuongBaoHiemNgay(congngayId, ngay01, '1');
                 loadLuongBaoHiemId(congngayId);
 
+                //alert($('#hidLuongBaoHiemMucLuong').val());
+
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
-                var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
+                var songayid = $('#hidLuongBaoHiemSoNgay').val();                
                 songay.numberbox('setValue', songayid);               
 
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue',$('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue',$('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue',$('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue',$('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue',$('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue',$('#hidTongTienThucLinh').val());
                 
             }
             else {
@@ -159,13 +181,13 @@ function onBeginEdit(index) {
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();             
                 songay.numberbox('setValue', songayid);
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
             }
             else {
                 tedu.confirmOk('Nhập sai mã ký hiệu bảng chấm công? Kiểm tra lại.', function () {
@@ -185,13 +207,13 @@ function onBeginEdit(index) {
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
                 songay.numberbox('setValue', songayid);
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
             }
             else {
                 tedu.confirmOk('Nhập sai mã ký hiệu bảng chấm công? Kiểm tra lại.', function () {
@@ -212,16 +234,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -243,16 +263,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -274,16 +292,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -305,16 +321,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -336,16 +350,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -367,16 +379,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -398,16 +408,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -429,16 +437,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -460,16 +466,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -491,16 +495,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -522,16 +524,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -553,16 +553,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -584,16 +582,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -615,16 +611,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -646,16 +640,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -677,16 +669,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -708,16 +698,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -739,16 +727,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -770,16 +756,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -801,16 +785,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -832,16 +814,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -863,16 +843,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -894,16 +872,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -925,16 +901,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -956,16 +930,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -987,16 +959,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -1018,16 +988,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -1049,16 +1017,14 @@ function onBeginEdit(index) {
 
                 sogiocong.numberbox('setValue', $('#hidLuongBaoHiemSoGio').val());
                 var songayid = $('#hidLuongBaoHiemSoNgay').val();
-                //console.log(songayid + 'fff');
                 songay.numberbox('setValue', songayid);
-
-                mucluong.numberbox($('#hidLuongBaoHiemMucLuong').val());
-                tienbaohiem.numberbox($('#hidLuongBaoHiemThanhTien').val());
-                tienbaohiemyte.numberbox($('#hidChiPhiGiamBHYT').val());
-                tienbaohiemthatnghiep.numberbox($('#hidChiPhiGiamBHTN').val());
-                tienbaohiemxahoi.numberbox($('#hidChiPhiGiamBHXH').val());
-                tongtiendongbaohiem.numberbox($('#hidChiPhiBHXH').val());
-                tongtienthuclinh.numberbox($('#hidTongTienThucLinh').val());
+                mucluong.numberbox('setValue', $('#hidLuongBaoHiemMucLuong').val());
+                tienbaohiem.numberbox('setValue', $('#hidLuongBaoHiemThanhTien').val());
+                tienbaohiemyte.numberbox('setValue', $('#hidChiPhiGiamBHYT').val());
+                tienbaohiemthatnghiep.numberbox('setValue', $('#hidChiPhiGiamBHTN').val());
+                tienbaohiemxahoi.numberbox('setValue', $('#hidChiPhiGiamBHXH').val());
+                tongtiendongbaohiem.numberbox('setValue', $('#hidChiPhiBHXH').val());
+                tongtienthuclinh.numberbox('setValue', $('#hidTongTienThucLinh').val());
 
             }
             else {
@@ -1094,30 +1060,39 @@ function SaveLuongBaoHiemNgay(luongbaohiemid, ngaynao, isngay) {
     //tedu.notify("vao hop dong", "success");  
     //var ngayhethan = tedu.getFormatDateYYMMDD($('#txtNgayHetHanMoi').val());
 
-    $.ajax({
-        type: "POST",
-        url: "/Admin/congngay/AddUpdateLuongBaoHiem",
-        data: {
-            Id: luongbaohiemid,    
-            InsertLuongBaoHiemId: '2',
-            Ngay01: ngaynao,
-            IsNgay: isngay           
-        },
-        dataType: "json",
-        beforeSend: function () {
-            tedu.startLoading();
-        },
-        success: function (response) {
-            if (response.Success === false) {
-                tedu.notify(response.Message, "error");
-            }            
-            tedu.stopLoading();
-        },
-        error: function () {
-            tedu.notify('Có lỗi! Không thể lưu Bảng chấm công ngày nhân viên', 'error');
-            tedu.stopLoading();
-        }
-    });
+    var khoasoluongthang = $('#hidKhoaSoLuongThangDotIn').val();
+
+    if (khoasoluongthang === "True") {
+        tedu.notify("Kỳ này đã khóa sổ. Không có lưu. Kiểm tra lại.", "error");
+    }
+
+    if (khoasoluongthang === "False") {
+        $.ajax({
+            type: "POST",
+            url: "/Admin/congngay/AddUpdateLuongBaoHiem",
+            data: {
+                Id: luongbaohiemid,
+                InsertLuongBaoHiemId: '2',
+                Ngay01: ngaynao,
+                IsNgay: isngay
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Success === false) {
+                    tedu.notify(response.Message, "error");
+                }
+                tedu.stopLoading();
+            },
+            error: function () {
+                tedu.notify('Có lỗi! Không thể lưu Bảng chấm công ngày nhân viên', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
+
 }
 
 function loadLuongBaoHiemId(luongbaohiemid) {
@@ -1201,7 +1176,9 @@ function loadTableCongNgay() {
         },
         success: function (response) {
             moi = response.Result;
-            
+
+            $('#hidKhoaSoLuongThangDotIn').val('');
+            khoasoLuongThangDotIn(makhuvuc, thang1, nam1, dotinluongid);
         },
         error: function (status) {
             console.log(status);
@@ -1210,6 +1187,36 @@ function loadTableCongNgay() {
     });
     return moi;
 } 
+
+function khoasoLuongThangDotIn(makhuvucLock, thangLock, namLock, dotinluongidLock) {    
+    $.ajax({
+        type: 'GET',
+        url: '/admin/khoaso/GetLockLuongKyId',
+        data: {
+            makhuvuc: makhuvucLock,
+            thang: thangLock,
+            nam: namLock,
+            dotinluongid: dotinluongidLock
+        },
+        dataType: "json",
+        beforeSend: function () {
+            tedu.startLoading();
+        },
+        success: function (response) {
+            lockluong = response.Result[0];           
+
+            if (lockluong !== null) {                
+                $('#hidKhoaSoLuongThangDotIn').val(lockluong.IsLockLuongDotInKy);
+                //alert($('#hidKhoaSoLuongThangDotIn').val());
+            }
+        },
+        error: function (status) {
+            console.log(status);
+            tedu.notify('Không có danh mục Phòng.', 'error');
+        }
+    });
+
+}
 
 
 

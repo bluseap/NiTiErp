@@ -158,6 +158,8 @@
                 <input type="hidden" id="hidChiPhiBHXH" value="" />
                 <input type="hidden" id="hidTongTienThucLinh" value="" />
 
+                <input type="hidden" id="hidKhoaSoLuongThangDotIn" value="" />
+
                 <table id="dg" class="easyui-datagrid" title="Bảng chấm công nhân viên" style="width:1000px;height:auto" cellspacing="0">
 
                     <thead data-options="frozen: true">
@@ -220,11 +222,11 @@
                                  editor:'text' ">29</th>
                             <th data-options="field:'Ngay30',width:60,  formatter: formatNgayCN,
                                  editor:'text' ">30</th>
-                            
+
                             <th data-options="field:'Ngay31',width:60,  formatter: formatNgayCN,
                                  editor:'text' ">31</th>
 
-                            <th data-options="field:'SoGioCong',width:80, align:'right', editor:'text' ">Số giờ</th>
+                            <th data-options="field:'SoGioCong',width:80, align:'right', editor:'numberbox' ">Số giờ</th>
                             <th data-options="field:'SoNgay',width:80, align:'right', editor:'numberbox' ">Số ngày</th>
                             <th data-options="field:'MucLuong',width:100,  align:'right', formatter:formatPrice2, editor:{type:'numberbox', options:{min:0,precision:0,groupSeparator:','}}   ">Mức lương</th>
                             <th data-options="field:'TienBaoHiem',width:100,  align:'right', formatter:formatPrice2, editor:{type:'numberbox', options:{min:0,precision:0,groupSeparator:','}}  ">Thành tiền</th>

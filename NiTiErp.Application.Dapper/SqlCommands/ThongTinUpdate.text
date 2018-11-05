@@ -1,5 +1,8 @@
 ﻿
 
+create procedure [LockLuongDotInAUD]
+
+create procedure LockLuongDotInGetList
 
 create procedure [LuongBaoHiemAUD]
 
@@ -59,6 +62,8 @@ create table LuongTongHopAll
 create table LockLuongThang
 
 create table LockLuongDotIn
+
+create table LockLuongDotInHis
 
 
 r
@@ -202,6 +207,7 @@ INSERT INTO [dbo].[LuongDotInKy]           ([Id]           ,[Nam]           ,[Th
      VALUES           ( 2           , 2018,            10            , N'CT'
            , N'Đợt 1'      ,           1           ,1, 1 		   , 'admin', getdate() )
 
+		   /*
 INSERT INTO [dbo].[LuongDotInKy]           ([Id]           ,[Nam]           ,[Thang]           ,[CorporationId]
            ,[TenDotIn]                   ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
      VALUES           ( 3           , 2018,            10            , N'CT'
@@ -211,7 +217,7 @@ INSERT INTO [dbo].[LuongDotInKy]           ([Id]           ,[Nam]           ,[Th
            ,[TenDotIn]                   ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
      VALUES           ( 4           , 2018,            10            , N'PO'
            , N'Đợt 2'      ,           1           ,1, 2 		   , 'admin', getdate() )
-
+*/
 
 
 
