@@ -265,7 +265,35 @@
     }
 
     function ExcelLuongDongBHXH() {
+        var thang = $('#ddlThang').val();
+        var nam = $('#txtNam').val();
+        var dotinluongid = $('#ddlLuongDotIn').val();
+        var makhuvuc = $('#ddlKhuVuc').val();
+        var maphong = $('#ddlPhongBan').val();
+        var keyword = $('#txtTimNhanVien').val();
 
+        var dieukien = $('#ddlDieuKienKhac').val();
+
+        $.ajax({
+            type: 'POST',
+            url: '/admin/congngay/ExportExcelBangLuong',
+            data: {
+                thangChamCong: thang,
+                namChamCong: nam,
+                luongDotInId: dotinluongid,
+                makvChamCong: makhuvuc,
+                madphongChamCong: maphong,
+                keywordChamCong: keyword,
+                dieukienChamCong: dieukien
+            },
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                window.location.href = response;
+                tedu.stopLoading();
+            }
+        });
     }
 
    
