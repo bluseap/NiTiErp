@@ -51,6 +51,8 @@ create table ChiPhi
 
 create table ChiPhiLoai
 
+create table ChiPhiBangDanhMuc
+
 create table LuongCPGiam
 
 create table LuongCPTang
@@ -184,13 +186,16 @@ VALUES           ( 'KO','KO', N'Không'		, 1, 1, 99, 'admin', Getdate()	 )
 
 insert value genegic value from [ChiPhi] database
 
+insert value genegic value from [ChiPhiLoai] database
+
+insert value genegic value from [ChiPhiBangDanhMuc] database
 
 
-INSERT INTO [dbo].[ChiPhiLoai]    ([Id]    ,[TenLoai]     ,[Status]     ,[Active]      ,[Stt]       ,[CreateDate]      ,[CreateBy]      )
-     VALUES ( 1, N'Bảo hiểm xã hội', 1, 1, 1	 , getdate(), 'admin'	 )
+//INSERT INTO [dbo].[ChiPhiLoai]    ([Id]    ,[TenLoai]     ,[Status]     ,[Active]      ,[Stt]       ,[CreateDate]      ,[CreateBy]      )
+//     VALUES ( 1, N'Bảo hiểm xã hội', 1, 1, 1	 , getdate(), 'admin'	 )
 
-INSERT INTO [dbo].[ChiPhiLoai]    ([Id]    ,[TenLoai]     ,[Status]     ,[Active]      ,[Stt]       ,[CreateDate]      ,[CreateBy]      )
-     VALUES ( 2, N'Tiền ăn', 1, 1, 2	 , getdate(), 'admin'	 )
+//INSERT INTO [dbo].[ChiPhiLoai]    ([Id]    ,[TenLoai]     ,[Status]     ,[Active]      ,[Stt]       ,[CreateDate]      ,[CreateBy]      )
+//     VALUES ( 2, N'Tiền ăn', 1, 1, 2	 , getdate(), 'admin'	 )
 
 
 

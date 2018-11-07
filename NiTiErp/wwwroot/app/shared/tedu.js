@@ -240,10 +240,8 @@
             return '<span class="badge bg-blue">Về hưu</span>';
         else if (status === 4)
             return '<span class="badge bg-orange">Hết hạn</span>';
-
         else if (status === 30)
             return '<span class="badge bg-green">Đang học</span>';
-
         else if (status === 41)
             return '<span class="badge bg-green">Online</span>';
         else if (status === 42)
