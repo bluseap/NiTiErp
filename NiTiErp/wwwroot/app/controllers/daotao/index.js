@@ -486,7 +486,7 @@
                    
                 },
                 error: function (status) {
-                    tedu.notify('Xóa Quết định Kỷ luật lỗi! Kiểm tra lại.', 'error');
+                    tedu.notify('Xóa Quyết định Kỷ luật lỗi! Kiểm tra lại.', 'error');
                     tedu.stopLoading();
                 }
             });

@@ -67,6 +67,8 @@ namespace NiTiErp.Areas.Admin.Controllers
             {
                 var username = User.GetSpecificClaim("UserName");
 
+                chiphiVm.CorporationId = "PO";
+
                 chiphiVm.CreateBy = username;
                 chiphiVm.CreateDate = DateTime.Now;
                 chiphiVm.UpdateBy = username;
@@ -98,7 +100,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult DeleteChiPHi(ChiPhiViewModel chiphiVm)
+        public IActionResult DeleteChiPhi(ChiPhiViewModel chiphiVm)
         {
             if (!ModelState.IsValid)
             {
@@ -118,9 +120,9 @@ namespace NiTiErp.Areas.Admin.Controllers
                     chiphiVm.CreateDate = DateTime.Now;
                     chiphiVm.UpdateDate = DateTime.Now;
 
-                    var daotao = _chiphiService.ChiPhiAUD(chiphiVm, "DelChiPhi");
+                    var chiphi = _chiphiService.ChiPhiAUD(chiphiVm, "DelChiPhi");
 
-                    return new OkObjectResult(daotao);
+                    return new OkObjectResult(chiphi);
                 }
                 else
                 {
