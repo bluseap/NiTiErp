@@ -1,5 +1,9 @@
 ﻿
 
+create procedure [ChiPhiAUD]
+
+create procedure [ChiPhiGetList]
+
 create procedure [LockLuongDotInAUD]
 
 create procedure LockLuongDotInGetList

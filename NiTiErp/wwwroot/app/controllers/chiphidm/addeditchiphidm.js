@@ -46,55 +46,8 @@
         for (var i = 0; i < ischiphitang.length; i++) {
             render += "<option value='" + ischiphitang[i].value + "'>" + ischiphitang[i].ten + "</option>";
         }
-        $('#ddlAddEditIsChiPhiTang').html(render);
-
-        loadChiPhiLoai();
-        loadChiPhiBang();
-    }
-
-    function loadChiPhiLoai() {
-        $.ajax({
-            type: 'GET',
-            url: '/admin/chiphidm/ChiPhiLoaiGetList',
-            dataType: "json",
-            beforeSend: function () {
-                tedu.startLoading();
-            },
-            success: function (response) {
-                var render = "<option value='%' >--- Lựa chọn ---</option>";
-                $.each(response.Result, function (i, item) {
-                    render += "<option value='" + item.Id + "'>" + item.TenLoai + "</option>";
-                });
-                $('#ddlAddEditTenLoaiChiPhi').html(render);                
-            },
-            error: function (status) {
-                console.log(status);
-                tedu.notify('Không có tên loại chi phí.', 'error');
-            }
-        });
-    }
-
-    function loadChiPhiBang() {
-        $.ajax({
-            type: 'GET',
-            url: '/admin/chiphidm/ChiPhiBangGetList',
-            dataType: "json",
-            beforeSend: function () {
-                tedu.startLoading();
-            },
-            success: function (response) {
-                var render = "<option value='%' >--- Lựa chọn ---</option>";
-                $.each(response.Result, function (i, item) {
-                    render += "<option value='" + item.Id + "'>" + item.TenChiPhiBang + "</option>";
-                });
-                $('#ddlAddEditTenChiPhiBang').html(render);
-            },
-            error: function (status) {
-                console.log(status);
-                tedu.notify('Không có tên bảng chi phí.', 'error');
-            }
-        });
-    }
+        $('#ddlAddEditIsChiPhiTang').html(render);        
+    }   
 
     function isFormMainValidate() {
         if ($('#frmMainChiPhiDM').valid() ) {
@@ -140,6 +93,9 @@
                 },
                 txtAddEditSoTienHeSo: {
                     required: true, number: true
+                },
+                txtAddEditSoThuTu: {
+                    required: true, number: true
                 }
             },
             messages: {
@@ -150,7 +106,7 @@
                     required: "Chọn loại chi phí nào!"
                 },
                 ddlAddEditTenChiPhiBang: {
-                    required: "Chọn tên bảng chi phí!", number: "Chỉ nhập số.."
+                    required: "Chọn tên bảng chi phí!"
                 }
             }
         });
