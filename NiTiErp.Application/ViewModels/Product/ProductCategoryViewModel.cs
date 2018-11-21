@@ -11,6 +11,8 @@ namespace NiTiErp.Application.ViewModels.Product
 
         public string Name { get; set; }
 
+        public string CorporationServiceId { get; set; }
+
         public string Description { get; set; }
 
         public int? ParentId { get; set; }

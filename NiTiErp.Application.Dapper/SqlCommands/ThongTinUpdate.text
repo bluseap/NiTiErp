@@ -51,6 +51,8 @@ create table LuongThemGio
 
 create table LuongCaBa
 
+create table ChiPhiKhoiTao
+
 create table ChiPhi
 
 create table ChiPhiLoai
@@ -203,7 +205,8 @@ insert value genegic value from [ChiPhiBangDanhMuc] database
 
 
 
-update DieuKienTim set TenDieuKien = N'DS Bảng lương Nhân viên đóng BHXH' where Id=9
+update DieuKienTim set TenDieuKien = N'DS Bảng lương Nhân viên đóng BHXH', BangDieuKien = N'LuongBaoHiem', Active = 1, Stt = 9 where Id=9
+update DieuKienTim set TenDieuKien = N'DS Bảng chi phí lương', BangDieuKien = N'ChiPhi', Active = 1, Stt = 10 where Id=10
 
 
 INSERT INTO [dbo].[LuongDotInKy]           ([Id]           ,[Nam]           ,[Thang]           ,[CorporationId]

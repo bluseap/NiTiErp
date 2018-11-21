@@ -1,9 +1,11 @@
 ﻿var productCategoryController = function () {
+
     this.initialize = function () {
         loadData();
         loadCorporation();
         registerEvents();
     }
+
     function registerEvents() {
         $('#frmMaintainance').validate({
             errorClass: 'red',
@@ -20,9 +22,11 @@
             initTreeDropDownCategory();
             $('#modal-add-edit').modal('show');
         });
+
         $('#btnSelectImg').on('click', function () {
             $('#fileInputImage').click();
         });
+
         $("#fileInputImage").on('change', function () {
             var fileUpload = $(this).get(0);
             var files = fileUpload.files;
@@ -46,6 +50,7 @@
                 }
             });
         });
+
         $('body').on('click', '#btnEdit', function (e) {
             e.preventDefault();
             var that = $('#hidIdM').val();
@@ -66,16 +71,18 @@
                     $('#txtDescM').val(data.Description);
 
                     $('#txtImageM').val(data.ThumbnailImage);
-
+                    
                     $('#txtSeoKeywordM').val(data.SeoKeywords);
                     $('#txtSeoDescriptionM').val(data.SeoDescription);
                     $('#txtSeoPageTitleM').val(data.SeoPageTitle);
                     $('#txtSeoAliasM').val(data.SeoAlias);
 
-                    $('#ckStatusM').prop('checked', data.Status ==1);
+                    $('#ckStatusM').prop('checked', data.Status === 1);
                     $('#ckShowHomeM').prop('checked', data.HomeFlag);
                     $('#txtOrderM').val(data.SortOrder);
                     $('#txtHomeOrderM').val(data.HomeOrder);
+
+                    $('#ddlCorporation').val(data.CorporationServiceId);
 
                     $('#modal-add-edit').modal('show');
                     tedu.stopLoading();
@@ -129,7 +136,7 @@
                 var seoMetaDescription = $('#txtSeoDescriptionM').val();
                 var seoPageTitle = $('#txtSeoPageTitleM').val();
                 var seoAlias = $('#txtSeoAliasM').val();
-                var status = $('#ckStatusM').prop('checked') == true ? 1 : 0;
+                var status = $('#ckStatusM').prop('checked') !== true ? 1 : 0;
                 var showHome = $('#ckShowHomeM').prop('checked');
 
                 $.ajax({
@@ -173,9 +180,11 @@
 
         });
     }
+
     function resetFormMaintainance() {
         $('#hidIdM').val(0);
         $('#txtNameM').val('');
+
         initTreeDropDownCategory('');
 
         $('#txtDescM').val('');
@@ -191,6 +200,7 @@
         $('#ckStatusM').prop('checked', true);
         $('#ckShowHomeM').prop('checked', false);
     }
+
     function initTreeDropDownCategory(selectedId) {
         $.ajax({
             url: "/Admin/ProductCategory/GetAll",
@@ -211,12 +221,13 @@
                 $('#ddlCategoryIdM').combotree({
                     data: arr
                 });
-                if (selectedId != undefined) {
+                if (selectedId !== undefined) {
                     $('#ddlCategoryIdM').combotree('setValue', selectedId);
                 }
             }
         });
     }
+
     function loadData() {
         $.ajax({
             url: '/Admin/ProductCategory/GetAll',

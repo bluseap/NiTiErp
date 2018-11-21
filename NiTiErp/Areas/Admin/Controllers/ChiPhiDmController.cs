@@ -143,6 +143,17 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult ListChiPhi(string corporationId, string keyword, bool IsChiPhiTang, int page, int pageSize)
+        {
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+
+            var model = _chiphiService.ChiPhiGetList(1, khuvuc, keyword, page, pageSize, IsChiPhiTang, 1, 1, "", "", "GetAllChiPhi");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
         public IActionResult GetKhenThuongId(int chiphiId)
         {
             var model = _chiphiService.GetAllChiPhiPaging(chiphiId, "", "", 1, 1000, false, 1, 1, "", "", "GetChiPhiId");

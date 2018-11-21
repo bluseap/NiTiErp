@@ -86,9 +86,7 @@
         $('#txtNam').val(namNow);
         loadThang(thangNow);
         
-        loadDieuKienTim();
-
-        //loadLuongDotInKy(corporationId);
+        loadDieuKienTim();        
     }
 
     function loadLuongDotInKy(corporationId) { 
@@ -134,9 +132,7 @@
         render += "<option value='12'>Tháng 12 </option>";
         
         $('#ddlThang').html(render);
-        $('#ddlThang').val(thangnow);
-
-        tedu.notify(thangnow,"success");
+        $('#ddlThang').val(thangnow);        
     }
 
     function loadDieuKienTim() {
@@ -156,7 +152,7 @@
             },
             error: function (status) {
                 console.log(status);
-                tedu.notify('Không có danh Loại hợp đồng.', 'error');
+                tedu.notify('Không có danh bảng chấm công ngày.', 'error');
             }
         });
     }   

@@ -1,1 +1,166 @@
-﻿<h1>Chi phí lương</h1>
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@section Styles{
+
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+}
+@section Scripts{
+
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+
+    <script src="~/lib/jQuery-EasyUI/datagrid-groupview.js" asp-append-version="true"></script>
+    <script src="~/lib/jQuery-EasyUI/jquery.edatagrid.js" asp-append-version="true"></script>
+    <script src="~/lib/jQuery-EasyUI/datagrid-cellediting.js" asp-append-version="true"></script>
+    <script src="~/lib/jQuery-EasyUI/datagrid-export.js" asp-append-version="true"></script>
+
+
+    <script src="~/app/controllers/chiphi/addeditchiphi.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/chiphi/index.js" asp-append-version="true"></script>
+    <script>
+        var chiphi = new chiphiController();
+        chiphi.initialize();
+
+            //var congngay = new congngaymoi.loadDataData();
+            //var data = congngay.datatablecongngay;
+
+    </script>
+    @*<script src="~/app/controllers/congngay/bangcongngay.js" asp-append-version="true"></script>*@
+
+}
+
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link ">
+                    Tiền lương
+                </a>
+                >>
+                <a class="btn btn-link btnBangChiPhiLuong">
+                    Bảng chi phí lương
+                </a>
+            </small>
+        </div>
+        <div class="title_right">
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <button class="btn btn-round btn-warning" id="btn-create" type="button">Tạo mới Chi phí</button>
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="x_content">
+        <div class="">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>  <small>Danh sách Bảng chi phí lương nhân viên</small></h3>
+                </div>
+
+                <div class="title_right">
+                    <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="txtNam" placeholder="Năm ">
+                        </div>
+                    </div>
+                    @*<div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right top_search">
+                            <div class="input-group">
+                                <label for="lbNam" class="control-label  ">Năm </label>
+                            </div>
+                        </div>*@
+                    <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right">
+                        <div class="input-group">
+                            <select id="ddlThang" class="form-control"></select>
+                        </div>
+                    </div>
+                    @*<div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right top_search">
+                            <div class="input-group">
+                                <label for="lbThang" class="control-label  ">Tháng </label>
+                            </div>
+                        </div>*@
+
+                </div>
+            </div>
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>  <small></small></h3>
+                </div>
+                <div class="title_right">
+                    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right">
+                        <select id="ddlChiPhiDanhMuc" class="form-control"></select>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right">
+                        <label class="control-label pull-right">Loại chi phí</label>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right">
+                        <select id="ddlLuongDotIn" class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>  <small></small></h3>
+                </div>
+                <div class="title_right">
+                    <div class="col-md-5 col-sm-2 col-xs-12 form-group pull-right">
+                        <div class="input-group">
+                            <input type="text" id="txtTimNhanVien" class="form-control" placeholder="Từ khóa...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" id="btnTimNhanVien" type="button">Tìm !</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-2 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                            <select id="ddlPhongBan" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                            <select id="ddlKhuVuc" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-md-2 col-sm-12 col-xs-12 form-group pull-right">
+                    <button class="btn btn-info pull-right" id="btnXuatExcelChiPhi" style="margin-right: 5px;">
+                        <i class="fa fa-download"></i>
+                        Xuất Excel
+                    </button>
+                </div>
+                <div class="col-md-3 col-sm-12 col-xs-12 form-group pull-right">
+                    <select id="ddlDieuKienKhac" class="form-control"></select>
+                </div>
+                <div class="col-md-3 col-sm-12 col-xs-12 form-group pull-right">
+                    <label class="control-label pull-right">Điều kiện khác</label>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+
+
+        </div>
+    </div>
+
+
+</div>
+
+<partial name="_AddEditModel.cshtml" />
+
+
+
+
