@@ -18,7 +18,7 @@
 
         $("#btn-create").on('click', function () {
             resetFormAddEditChiPhi();
-            $('#hidInsertChiPhiId').val(1); // insert
+            $('#hidInsertChiPhiKhoiTaoId').val(1); // insert
             $('#modal-add-edit-ChiPhi').modal('show');
         });    
 
@@ -43,7 +43,9 @@
     }
 
     function resetFormAddEditChiPhi() {      
-        $('#hidInsertChiPhiId').val('');
+        $('#hidChiPhiKhoiTaoId').val('');
+        $('#hidInsertChiPhiKhoiTaoId').val('');
+        $('#hidKhoaSoLuongThangDotIn').val('');
 
         $("#ddlAddEditLoaiChiPhi")[0].selectedIndex = 0;        
         $('#ckAddEditChuyenKySau').prop('checked', false);
@@ -251,5 +253,6 @@
             }
         });
     }
+    
 
 }

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace NiTiErp.Application.Dapper.Implementation
 {
-    public class ChiPhiKhoiTaoService
+    public class ChiPhiKhoiTaoService : IChiPhiKhoiTaoService
     {
         private readonly IConfiguration _configuration;
 

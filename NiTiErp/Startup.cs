@@ -239,6 +239,7 @@ namespace NiTiErp
             services.AddTransient<IChiPhiLoaiService, ChiPhiLoaiService>();
             services.AddTransient<IChiPhiBangDanhMucService, ChiPhiBangDanhMucService>();
             services.AddTransient<IChiPhiService, ChiPhiService>();
+            services.AddTransient<IChiPhiKhoiTaoService, ChiPhiKhoiTaoService>();
 
 
             services.AddTransient<IQDKhenThuongService, QDKhenThuongService>();

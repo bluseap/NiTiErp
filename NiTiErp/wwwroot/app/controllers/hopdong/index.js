@@ -108,7 +108,7 @@
 
             //tedu.notify(hosoId, "success");
 
-            LoadAddEditHoSoNoHopDong(hosoId);      
+            LoadAddEditHoSoNoHopDong(hosoId);               
 
             $('#modal-add-edit-HopDong').modal('show');
         });
@@ -202,7 +202,7 @@
     function loadDieuKienTim() {
         $.ajax({
             type: 'GET',
-            url: '/admin/congngay/DieuKienGetList',
+            url: '/admin/hopdong/DieuKienGetList',
             dataType: "json",
             beforeSend: function () {
                 tedu.startLoading();
@@ -469,7 +469,28 @@
     }
 
     function LoadAddEditHoSoNoHopDong(hosoid) {
-        resetHopDongChiTiet();
+        $.ajax({
+            type: "GET",
+            url: "/Admin/Hoso/GetHoSoId",
+            data: { hosoId: hosoid },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var hoso = response.Result.Results[0];
+
+                loadChucVuChiTietKhuVuc(hoso.CorporationId);
+
+                tedu.stopLoading();
+            },
+            error: function (status) {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
+        });        
+
+        resetHopDongChiTiet();        
 
         var template = $('#table-HopDongChiTiet').html();
         var render = "";        

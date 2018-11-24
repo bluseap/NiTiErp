@@ -73,6 +73,9 @@ create table LockLuongDotIn
 
 create table LockLuongDotInHis
 
+create table TrangThaiChiPhiBang
+
+
 
 r
 update table functions

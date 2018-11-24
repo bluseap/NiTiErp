@@ -26,6 +26,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         private readonly NiTiErp.Application.Interfaces.IUserService _userService;
         private readonly IAuthorizationService _authorizationService;
 
+        private readonly IChiPhiKhoiTaoService _chiphikhoitaoService;
         private readonly IDieuKienTimService _dieukientimService;
 
         private readonly Application.Dapper.Interfaces.ICorporationService _corporationsService;
@@ -34,6 +35,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             NiTiErp.Application.Interfaces.IUserService userService,
             IAuthorizationService authorizationService,
 
+            IChiPhiKhoiTaoService chiphikhoitaoService,
             IDieuKienTimService dieukientimService,
 
             Application.Dapper.Interfaces.ICorporationService corporationsService
@@ -43,6 +45,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             _userService = userService;
             _authorizationService = authorizationService;
 
+            _chiphikhoitaoService = chiphikhoitaoService;
             _dieukientimService = dieukientimService;
 
             _corporationsService = corporationsService;
@@ -55,6 +58,48 @@ namespace NiTiErp.Areas.Admin.Controllers
 
         #region AJAX API
 
+        public IActionResult AddUpdateChiPhi(ChiPhiKhoiTaoViewModel chiphikhoitaoVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+
+                chiphikhoitaoVm.CreateBy = username;
+                chiphikhoitaoVm.CreateDate = DateTime.Now;
+                chiphikhoitaoVm.UpdateBy = username;
+                chiphikhoitaoVm.UpdateDate = DateTime.Now;
+
+                if (chiphikhoitaoVm.InsertChiPhiKhoiTaoId == 1)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "LUONGCHIPHI", Operations.Create); // nhap chi phi
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
+                    }                   
+
+                    var chiphikhoitao = _chiphikhoitaoService.ChiPhiKhoiTaoAUD(chiphikhoitaoVm, "InChiPhiKhoiTao");                   
+
+                    return new OkObjectResult(chiphikhoitao);
+                }
+                else
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "LUONGCHIPHI", Operations.Update); // chi phi
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền sửa."));
+                    }
+
+                    var chiphikhoitao = _chiphikhoitaoService.ChiPhiKhoiTaoAUD(chiphikhoitaoVm, "UpChiPhiKhoiTao");                   
+
+                    return new OkObjectResult(chiphikhoitao);
+                }
+            }
+        }
 
 
         #region Danh mục chi phi luong
