@@ -66,7 +66,7 @@
                     var data = response;
                     $('#hidIdM').val(data.Id);
                     $('#txtNameM').val(data.Name);
-                    initTreeDropDownCategory(data.CategoryId);
+                    initTreeDropDownCategory(data.ParentId);                   
 
                     $('#txtDescM').val(data.Description);
 
@@ -82,7 +82,7 @@
                     $('#txtOrderM').val(data.SortOrder);
                     $('#txtHomeOrderM').val(data.HomeOrder);
 
-                    $('#ddlCorporation').val(data.CorporationServiceId);
+                    $('#ddlCorporation').val(data.CorporationId);                    
 
                     $('#modal-add-edit').modal('show');
                     tedu.stopLoading();
@@ -139,6 +139,8 @@
                 var status = $('#ckStatusM').prop('checked') !== true ? 1 : 0;
                 var showHome = $('#ckShowHomeM').prop('checked');
 
+                var corporationid = $('#ddlCorporation').val();
+
                 $.ajax({
                     type: "POST",
                     url: "/Admin/ProductCategory/SaveEntity",
@@ -155,7 +157,8 @@
                         SeoPageTitle: seoPageTitle,
                         SeoAlias: seoAlias,
                         SeoKeywords: seoKeyword,
-                        SeoDescription: seoMetaDescription
+                        SeoDescription: seoMetaDescription,
+                        CorporationId: corporationid
                     },
                     dataType: "json",
                     beforeSend: function () {

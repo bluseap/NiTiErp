@@ -20,7 +20,7 @@ namespace NiTiErp.Data.Entities
 
         public ProductCategory(string name, string description, int? parentId,int? homeOrder,
             string image,bool? homeFlag,int sortOrder,Status status,string seoPageTitle,string seoAlias,
-            string seoKeywords, string seoDescription)
+            string seoKeywords, string seoDescription, string corporationId)
         {
             Name = name;           
             Description = description;
@@ -34,6 +34,7 @@ namespace NiTiErp.Data.Entities
             SeoAlias = seoAlias;
             SeoKeywords = seoKeywords;
             SeoDescription = seoDescription;
+            CorporationId = corporationId;
         }
         public string Name { get; set; }      
 

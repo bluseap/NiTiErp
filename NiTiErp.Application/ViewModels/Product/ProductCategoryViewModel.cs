@@ -11,7 +11,7 @@ namespace NiTiErp.Application.ViewModels.Product
 
         public string Name { get; set; }
 
-        public string CorporationServiceId { get; set; }
+        public string CorporationId { get; set; }
 
         public string Description { get; set; }
 
