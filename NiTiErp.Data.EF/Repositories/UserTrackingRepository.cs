@@ -6,7 +6,7 @@ using NiTiErp.Data.IRepositories;
 
 namespace NiTiErp.Data.EF.Repositories
 {
-    public class UserTrackingRepository : EFRepository<UserTracking, int>, IUserTrackingRepository
+    public class UserTrackingRepository : EFRepository<UserTracking, int>//, IUserTrackingRepository
     {
         public UserTrackingRepository(AppDbContext context) : base(context)
         {

@@ -6,6 +6,8 @@ using System.Linq.Expressions;
 using System.Text;
 using NiTiErp.Infrastructure.Interfaces;
 using NiTiErp.Infrastructure.SharedKernel;
+using NiTiErp.Data.Interfaces;
+using NiTiErp.Utilities.Extensions;
 
 namespace NiTiErp.Data.EF
 {
@@ -82,9 +84,36 @@ namespace NiTiErp.Data.EF
             _context.Set<T>().RemoveRange(entities);
         }
 
-        public void Update(T entity)
+        //public void Update(T entity)
+        //{
+        //    _context.Set<T>().Update(entity);
+        //}
+        public T Update(T entity)
         {
-            _context.Set<T>().Update(entity);
+            var dbEntity = _context.Set<T>().AsNoTracking().Single(p => p.Id.Equals(entity.Id));
+            var databaseEntry = _context.Entry(dbEntity);
+            var inputEntry = _context.Entry(entity);
+
+            //no items mentioned, so find out the updated entries
+            IEnumerable<string> dateProperties = typeof(IDateTracking).GetPublicProperties().Select(x => x.Name);
+
+            var allProperties = databaseEntry.Metadata.GetProperties().Where(x => !dateProperties.Contains(x.Name));
+
+            foreach (var property in allProperties)
+            {
+                var proposedValue = inputEntry.Property(property.Name).CurrentValue;
+                var originalValue = databaseEntry.Property(property.Name).OriginalValue;
+
+                if (proposedValue != null && !proposedValue.Equals(originalValue))
+                {
+                    databaseEntry.Property(property.Name).IsModified = true;
+                    databaseEntry.Property(property.Name).CurrentValue = proposedValue;
+                }
+            }
+
+            var result = _context.Set<T>().Update(dbEntity);
+            return result.Entity;
         }
+
     }
 }

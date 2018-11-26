@@ -25,6 +25,10 @@ namespace NiTiErp.Application.ViewModels.Product
 
         public DateTime DateCreated { set; get; }
         public DateTime DateModified { set; get; }
+
+        public string UserCreated { set; get; }
+        public string UserModified { set; get; }
+
         public int SortOrder { set; get; }
         public Status Status { set; get; }
         public string SeoPageTitle { set; get; }

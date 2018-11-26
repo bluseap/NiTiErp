@@ -104,10 +104,13 @@ namespace NiTiErp.Data.EF
                 if (changedOrAddedItem != null)
                 {
                     if (item.State == EntityState.Added)
-                    {
+                    {                        
                         changedOrAddedItem.DateCreated = DateTime.Now;
                     }
-                    changedOrAddedItem.DateModified = DateTime.Now;
+                    else
+                    {
+                        changedOrAddedItem.DateModified = DateTime.Now;
+                    }                    
                 }
             }
             return base.SaveChanges();

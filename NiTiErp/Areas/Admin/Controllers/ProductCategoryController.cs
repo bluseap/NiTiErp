@@ -7,6 +7,7 @@ using NiTiErp.Application.Interfaces;
 using NiTiErp.Application.ViewModels.Product;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using NiTiErp.Utilities.Helpers;
+using NiTiErp.Extensions;
 
 namespace NiTiErp.Areas.Admin.Controllers
 {
@@ -41,13 +42,17 @@ namespace NiTiErp.Areas.Admin.Controllers
             }
             else
             {
+                var username = User.GetSpecificClaim("UserName");   
+
                 productVm.SeoAlias = TextHelper.ToUnsignString(productVm.Name);
                 if (productVm.Id == 0)
                 {
+                    productVm.UserCreated = username;
                     _productCategoryService.Add(productVm);
                 }
                 else
                 {
+                    productVm.UserModified = username;
                     _productCategoryService.Update(productVm);
                 }
                 _productCategoryService.Save();
