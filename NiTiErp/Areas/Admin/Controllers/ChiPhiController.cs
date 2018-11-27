@@ -26,6 +26,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         private readonly NiTiErp.Application.Interfaces.IUserService _userService;
         private readonly IAuthorizationService _authorizationService;
 
+        private readonly IChiPhiLuongService _chiphiluongService;
         private readonly IChiPhiKhoiTaoService _chiphikhoitaoService;
         private readonly IDieuKienTimService _dieukientimService;
 
@@ -35,6 +36,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             NiTiErp.Application.Interfaces.IUserService userService,
             IAuthorizationService authorizationService,
 
+            IChiPhiLuongService chiphiluongService,
             IChiPhiKhoiTaoService chiphikhoitaoService,
             IDieuKienTimService dieukientimService,
 
@@ -45,6 +47,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             _userService = userService;
             _authorizationService = authorizationService;
 
+            _chiphiluongService = chiphiluongService;
             _chiphikhoitaoService = chiphikhoitaoService;
             _dieukientimService = dieukientimService;
 
@@ -101,6 +104,35 @@ namespace NiTiErp.Areas.Admin.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult ChiPhiLuongGetList(int nam, int thang, string corporationId, string phongdanhmucId, string keyword, int chiphiid,
+            bool IsChiPhiTang, int page, int pageSize)
+        {
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var maphong = !string.IsNullOrEmpty(phongdanhmucId) ? phongdanhmucId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+
+            var hosoId = new Guid();
+
+            var model = _chiphiluongService.GetAllChiPhiLuongPaging(1, nam, thang, khuvuc, maphong, keyword, hosoId, chiphiid, 1, 1
+                , IsChiPhiTang, 1, 1, true, "", page, pageSize, "LoaiChiPhiTangGiamGetList");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult ChiPhiKhoiTaGetList(int nam, int thang, string corporationId, string keyword, int page, int pageSize)
+        {
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";           
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+
+            var kynay = new DateTime(nam, thang, 1);
+
+            var model = _chiphikhoitaoService.GetAllChiPhiKhoiTaoPaging(1, khuvuc, tukhoa, page, pageSize, 1, false,
+                kynay, false, "", "ChiPhiKhoiTaoKyList");
+
+            return new OkObjectResult(model);
+        }
 
         #region Danh mục chi phi luong
 

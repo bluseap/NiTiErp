@@ -240,6 +240,7 @@ namespace NiTiErp
             services.AddTransient<IChiPhiBangDanhMucService, ChiPhiBangDanhMucService>();
             services.AddTransient<IChiPhiService, ChiPhiService>();
             services.AddTransient<IChiPhiKhoiTaoService, ChiPhiKhoiTaoService>();
+            services.AddTransient<IChiPhiLuongService, ChiPhiLuongService>();
 
 
             services.AddTransient<IQDKhenThuongService, QDKhenThuongService>();

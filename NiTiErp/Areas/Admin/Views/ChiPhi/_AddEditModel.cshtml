@@ -52,9 +52,14 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
+                            <label for="lbAddEdit01" class="control-label col-md-2 col-sm-2 col-xs-12 "> </label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
                                 <button type="button" id="btnSaveChiPhi" class="btn btn-warning">Khởi tạo chi phí</button>
                                 <button type="button" id="btnCanceChiPhi" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            </div>
+                            <label for="lbAddEdit0s2" class="control-label col-md-2 col-sm-2 col-xs-12 "> </label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <button type="button" id="btnTimChiPhi" class="btn btn-info pull-right">Tìm</button>
                             </div>
                         </div>
                     </form>
@@ -67,8 +72,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Kỳ khởi tạo</th>
-                                                <th>Loại chi phí</th>
-                                                <th>Loại đào tạo</th>
+                                                <th>Loại chi phí</th>                                              
                                                 <th>Chuyển kỳ sau</th>                                           
                                                 <th width="=20%"> </th>
                                             </tr>
@@ -102,11 +106,9 @@
 
                     <script id="table-KhoiTaoChiPhi" type="x-tmpl-mustache">
                         <tr>
-                            <td>{{TenLoaiBang}}</td>
-                            <td>{{ChuyenNganh}}</td>
-                            <td>{{TenLoaiHinhDaoTao}}</td>
-                            <td>{{{HinhBangMatPath1}}}</td>
-                            <td>{{{HinhBangMatPath2}}}</td>
+                            <td>{{KyKhoiTao}}</td>
+                            <td>{{TenChiPhi}}</td>                           
+                            <td>{{IsChuyenKy}}</td>                            
                             <th scope="row">
                                 <a class="btn btn-success btn-editKhoiTaoChiPhi" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Khởi tạo lại">
                                     <i class="fa fa-pencil"></i>

@@ -81,7 +81,7 @@
     function loadData() {
         var newdate = new Date();
         var namNow = newdate.getFullYear();
-        var thangNow = newdate.getMonth();
+        var thangNow = newdate.getMonth() + 1;
 
         $('#txtNam').val(namNow);
         loadThang(thangNow);

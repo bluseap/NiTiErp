@@ -28,22 +28,28 @@
             tedu.notify('Danh mục phòng theo khu vực.', 'success');
         }); 
 
-        $('#btnTimNhanVien').on('click', function () {
-            tedu.notify('Tìm nhan viedn.', 'success');
+        $('#btnTimNhanVien').on('click', function () {          
+            loadTableChiPhiLuongTangGiam();
         });
 
-        $('#txtTimNhanVien').on('keypress', function (e) {
-            tedu.notify('enter nha vien', 'success');
+        $('#txtTimNhanVien').on('keypress', function (e) {            
+            loadTableChiPhiLuongTangGiam();
+        });
+
+        $("#ddl-show-pageChiPhi").on('change', function () {
+            tedu.configs.pageSize = $(this).val();
+            tedu.configs.pageIndex = 1;
+            loadTableChiPhiLuongTangGiam(true);
         });
 
         $('#btnXuatExcelChiPhi').on('click', function () {
             tedu.notify('Xuất excel.', 'success');
-        });              
+        });          
 
     }
 
     function resetFormAddEditChiPhi() {      
-        $('#hidChiPhiKhoiTaoId').val('');
+        $('#hidChiPhiKhoiTaoId').val('0');
         $('#hidInsertChiPhiKhoiTaoId').val('');
         $('#hidKhoaSoLuongThangDotIn').val('');
 
@@ -143,7 +149,7 @@
     function loadData() {
         var newdate = new Date();
         var namNow = newdate.getFullYear();
-        var thangNow = newdate.getMonth();
+        var thangNow = newdate.getMonth() + 1;
 
         $('#txtNam').val(namNow);
         $('#txtAddEditNam').val(namNow);
@@ -253,6 +259,94 @@
             }
         });
     }
-    
+
+    function loadTableChiPhiLuongTangGiam(isPageChanged) {
+        var template = $('#table-ChiPhi').html();
+        var render = "";
+
+        var nammoi = $('#txtNam').val();
+        var thangmoi = $('#ddlThang').val();   
+        var makv = $('#ddlKhuVuc').val();  
+        var maphong = $('#ddlPhongBan').val();  
+        var chiphiidmoi = $('#ddlChiPhiDanhMuc').val();  
+
+        $.ajax({
+            type: 'GET',
+            data: {
+                nam: nammoi,
+                thang: thangmoi,
+                corporationId: makv,
+                phongdanhmucId: maphong,
+                keyword: "%",
+                chiphiid: chiphiidmoi,
+                IsChiPhiTang: "True",
+                page: tedu.configs.pageIndex,
+                pageSize: tedu.configs.pageSize
+            },
+            url: '/admin/chiphi/ChiPhiLuongGetList',
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                }
+                else {
+                    $.each(response.Result.Results, function (i, item) {
+                        render += Mustache.render(template, {
+                            KyChiPhi: item.KyChiPhi,
+                            TenNhanVien: item.TenNhanVien,
+                            TenKhuVuc: item.TenKhuVuc,
+                            TenPhong: item.TenPhong,
+                            TenChiPhi: item.TenChiPhi,
+                            TongTienChiPhi: tedu.formatNumberKhongLe(item.TongTienChiPhitangGiam)
+                            //IsChiPhiTang: item.IsChiPhiTang === true ? 'Tăng' : 'Giảm',                            
+                            //CreateDate: tedu.getFormattedDate(item.CreateDate),
+                            //Status: tedu.getHoSoNhanVienStatus(item.Status)
+                            // Price: tedu.formatNumber(item.Price, 0),  //NgaySinh: tedu.getFormattedDate(item.NgaySinh),
+                        });
+                    });
+                }
+
+                $('#lblChiPhiTotalRecords').text(response.Result.RowCount);
+
+                if (render !== '') {
+                    $('#tblContentChiPhi').html(render);
+                }
+
+                if (response.Result.RowCount !== 0) {
+                    wrapPagingChiPhi(response.Result.RowCount, function () {
+                        loadTableChiPhiLuongTangGiam();
+                    },
+                        isPageChanged);
+                }
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+    function wrapPagingChiPhi(recordCount, callBack, changePageSize) {
+        var totalsize = Math.ceil(recordCount / tedu.configs.pageSize);
+        if ($('#paginationULChiPhi a').length === 0 || changePageSize === true) {
+            $('#paginationULChiPhi').empty();
+            $('#paginationULChiPhi').removeData("twbs-pagination");
+            $('#paginationULChiPhi').unbind("page");
+        }
+        //Bind Pagination Event
+        $('#paginationULChiPhi').twbsPagination({
+            totalPages: totalsize,
+            visiblePages: 7,
+            first: 'Đầu',
+            prev: 'Trước',
+            next: 'Tiếp',
+            last: 'Cuối',
+            onPageClick: function (event, p) {
+                if (tedu.configs.pageIndex !== p) {
+                    tedu.configs.pageIndex = p;
+                    setTimeout(callBack(), 200);
+                }
+            }
+        });
+    }   
 
 }
