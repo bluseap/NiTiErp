@@ -14,6 +14,10 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
         public int InsertChiPhiKhoiTaoId { set; get; }
 
+        public int Nam { set; get; }
+
+        public int Thang { set; get; }
+
 
         public int ChiPhiId { set; get; }
 

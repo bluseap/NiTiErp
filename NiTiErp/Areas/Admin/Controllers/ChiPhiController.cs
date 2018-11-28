@@ -134,6 +134,34 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        [HttpGet]
+        public IActionResult ChiPhiKhoiTaKyId(int chiphikhoitaoId, int nam, int thang, string corporationId, string keyword, int page, int pageSize)
+        {
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+
+            var kynay = new DateTime(nam, thang, 1);
+
+            var model = _chiphikhoitaoService.GetAllChiPhiKhoiTaoPaging(chiphikhoitaoId, khuvuc, tukhoa, 1, 100, 1, false,
+                kynay, false, "", "GetChiPhiKhoiTaoKyId");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult ChiPhiKhoiTaKy(int chiphiId, int nam, int thang, string corporationId, string keyword, int page, int pageSize)
+        {
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+
+            var kynay = new DateTime(nam, thang, 1);
+
+            var model = _chiphikhoitaoService.GetAllChiPhiKhoiTaoPaging(1, khuvuc, tukhoa, 1, 100, chiphiId, false,
+                kynay, false, "", "GetChiPhiKhoiTaoKy");
+
+            return new OkObjectResult(model);
+        }
+
         #region Danh mục chi phi luong
 
         [HttpGet]

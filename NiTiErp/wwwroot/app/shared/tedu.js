@@ -160,12 +160,38 @@
        
     },
 
+    getFormattedDateYYYYMM: function (datetime) {
+        if (datetime === null || datetime === '')
+            return '';
+
+        var newdate = new Date(datetime);
+
+        var month = newdate.getMonth() + 1;
+        var day = newdate.getDate();
+        var year = newdate.getFullYear();
+
+        var hh = newdate.getHours();
+        var mm = newdate.getMinutes();
+
+        if (month < 10)
+            month = "0" + month;
+        if (day < 10)
+            day = "0" + day;
+        if (hh < 10)
+            hh = "0" + hh;
+        if (mm < 10)
+            mm = "0" + mm;
+        //return day + "/" + month + "/" + year + "    " + hh + ":" + mm;
+        return year + " / " + month;
+
+    },
+
     getFormatDateYYMMDD: function (datetime) {    
         var ngaysinh = datetime.split("/");
         var f = new Date(ngaysinh[2], ngaysinh[1] - 1, ngaysinh[0]).toDateString("yyyy/MM/dd");
 
         return f;
-    },
+    },    
 
     dateFormatJson: function (datetime) {
         if (datetime === null || datetime === '')

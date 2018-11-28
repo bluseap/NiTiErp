@@ -17,7 +17,7 @@
     function registerEvents() {
 
         $("#btn-create").on('click', function () {
-            resetFormAddEditChiPhi();
+            //resetFormAddEditChiPhi();
             $('#hidInsertChiPhiKhoiTaoId').val(1); // insert
             $('#modal-add-edit-ChiPhi').modal('show');
         });    
@@ -46,17 +46,7 @@
             tedu.notify('Xuất excel.', 'success');
         });          
 
-    }
-
-    function resetFormAddEditChiPhi() {      
-        $('#hidChiPhiKhoiTaoId').val('0');
-        $('#hidInsertChiPhiKhoiTaoId').val('');
-        $('#hidKhoaSoLuongThangDotIn').val('');
-
-        $("#ddlAddEditLoaiChiPhi")[0].selectedIndex = 0;        
-        $('#ckAddEditChuyenKySau').prop('checked', false);
-
-    }
+    }   
 
     function loadKhuVuc() {
         return $.ajax({
