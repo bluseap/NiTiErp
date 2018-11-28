@@ -74,7 +74,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             var kylock = new DateTime(nam, thang, 1);
 
             var model = _lockluongdotinService.LockLuongDotInGetList(1, makhuvuc, dotinluongid, kylock, true, true, "",
-                "LuongDotInGetId");
+                "LuongDotInKyKhuVuc");
             return new OkObjectResult(model);
         }
 

@@ -41,11 +41,16 @@
                     success: function (response) {
                         lockluong = response.Result[0];
 
-                        if (lockluong.IsLockLuongDotInKy === "False") {
-                            SaveKhoiTaoChiPhi();
+                        if (response.Result.length === 0) {
+                            tedu.notify("Kỳ này chưa khởi tạo. Kiểm tra lại.", "error");
                         }
-                        if (lockluong.IsLockLuongDotInKy === "True") {
-                            tedu.notify('Lương tháng đã khóa sổ. Kiểm tra lại.', 'error');
+                        else {
+                            if (lockluong.IsLockLuongDotInKy === "False") {
+                                SaveKhoiTaoChiPhi();
+                            }
+                            else if (lockluong.IsLockLuongDotInKy === "True") {
+                                tedu.notify('Lương tháng đã khóa sổ. Kiểm tra lại.', 'error');
+                            }
                         }
                         
                     },
@@ -82,9 +87,10 @@
         });  
 
         $('body').on('click', '.btn-deleteKhoiTaoChiPhi', function (e) {
-            e.preventDefault();
-            tedu.notify('Xóa khởi tạo lại.', 'success');
-            
+            e.preventDefault();          
+            $('#hidInsertChiPhiKhoiTaoId').val(3); // delete   
+            var khoitaochiphi = $(this).data('id');
+            loadDeleteChiPhiKhoiTao(khoitaochiphi);
         }); 
 
     }
@@ -170,10 +176,7 @@
                 tedu.notify('Có lỗi xảy ra', 'error');
                 tedu.stopLoading();
             }
-        });
-
-
-        
+        });        
 
     }
 
@@ -199,7 +202,7 @@
             dataType: 'json',
             success: function (response) {
                 if (response.Result.Results.length === 0) {
-                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th></tr>";
                 }
                 else {
                     $.each(response.Result.Results, function (i, item) {
@@ -338,6 +341,38 @@
                 tedu.notify('Có lỗi xảy ra', 'error');
                 tedu.stopLoading();
             }
+        });
+    }
+
+    function loadDeleteChiPhiKhoiTao(chiphikhoitaoid) {
+        var insertchiphikhoitao = $('#hidInsertChiPhiKhoiTaoId').val(); // 3
+        //tedu.notify(inserkhenthuong);
+
+        tedu.confirm('Bạn có chắc chắn xóa bằng này?', function () {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/chiphi/DeleteKhenThuong",
+                data: {
+                    Id: chiphikhoitaoid,
+                    InsertChiPhiKhoiTaoId: insertchiphikhoitao // 3
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    tedu.notify('Xóa thành công', 'success');
+                    tedu.stopLoading();
+
+                    $('#hidInsertQDKTIdId').val(0);
+
+                    loadTableKhenThuong(true);
+                },
+                error: function (status) {
+                    tedu.notify('Xóa Quyết định Khen thưởng lỗi! Kiểm tra lại.', 'error');
+                    tedu.stopLoading();
+                }
+            });
         });
     }
 
