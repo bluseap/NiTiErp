@@ -7519,3 +7519,627 @@ WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
 2018-11-28T15:52:15.9973151+07:00 0HLIL1QT210TO:00000008 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[NiTiErp.Application.Dapper.ViewModels.LockLuongDotInViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[NiTiErp.Application.Dapper.Implementation.LockLuongDotInService+<LockLuongDotInGetList>d__3, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
 2018-11-28T15:52:16.0126070+07:00 0HLIL1QT210TO:00000008 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.KhoaSoController.GetLockLuongKyId (NiTiErp)" in 15.8379ms (afa2e885)
 2018-11-28T15:52:16.0274669+07:00 0HLIL1QT210TO:00000008 [INF] Request finished in 31.8809ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T15:55:58.9884509+07:00 0HLIL1QT210TT:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/index   (ca22a1cb)
+2018-11-28T15:55:58.9896962+07:00 0HLIL1QT210TT:00000001 [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.Index (NiTiErp)" (a44c0341)
+2018-11-28T15:55:58.9898433+07:00 0HLIL1QT210TT:00000001 [INF] Authorization was successful. (0d575a54)
+2018-11-28T15:55:58.9900187+07:00 0HLIL1QT210TT:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.Index (NiTiErp)" - Validation state: Valid (dad538d7)
+2018-11-28T15:55:58.9901403+07:00 0HLIL1QT210TT:00000001 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.Index (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.0562ms. (50a9e262)
+2018-11-28T15:55:58.9905452+07:00 0HLIL1QT210TT:00000001 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2018-11-28T15:55:59.1134977+07:00 0HLIL1QT210TT:00000001 [INF] Executed ViewResult - view "Index" executed in 122.8468ms. (f66409e9)
+2018-11-28T15:55:59.1137652+07:00 0HLIL1QT210TT:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.Index (NiTiErp)" in 123.9838ms (afa2e885)
+2018-11-28T15:55:59.1296023+07:00 0HLIL1QT210TT:00000001 [INF] Request finished in 141.2073ms 200 text/html; charset=utf-8 (791a596a)
+2018-11-28T15:55:59.1657107+07:00 0HLIL1QT210TT:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/nprogress/nprogress.css   (ca22a1cb)
+2018-11-28T15:55:59.1666188+07:00 0HLIL1QT210TT:00000002 [INF] Sending file. Request path: '"/lib/nprogress/nprogress.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\nprogress\nprogress.css"' (27b0a520)
+2018-11-28T15:55:59.1667255+07:00 0HLIL1QT210TT:00000002 [INF] Request finished in 1.179ms 200 text/css (791a596a)
+2018-11-28T15:55:59.1669883+07:00 0HLIL1QT210TU:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/font-awesome/css/font-awesome.css   (ca22a1cb)
+2018-11-28T15:55:59.1675606+07:00 0HLIL1QT210TU:00000001 [INF] Sending file. Request path: '"/lib/font-awesome/css/font-awesome.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\font-awesome\css\font-awesome.css"' (27b0a520)
+2018-11-28T15:55:59.1676508+07:00 0HLIL1QT210TU:00000001 [INF] Request finished in 0.6727ms 200 text/css (791a596a)
+2018-11-28T15:55:59.1680964+07:00 0HLIL1QT210TV:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/bootstrap/dist/css/bootstrap.css   (ca22a1cb)
+2018-11-28T15:55:59.1736013+07:00 0HLIL1QT210TT:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/bootstrap-daterangepicker/daterangepicker.css   (ca22a1cb)
+2018-11-28T15:55:59.1766977+07:00 0HLIL1QT210TT:00000003 [INF] Sending file. Request path: '"/lib/bootstrap-daterangepicker/daterangepicker.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\bootstrap-daterangepicker\daterangepicker.css"' (27b0a520)
+2018-11-28T15:55:59.1768700+07:00 0HLIL1QT210TT:00000003 [INF] Request finished in 3.282ms 200 text/css (791a596a)
+2018-11-28T15:55:59.1858042+07:00 0HLIL1QT210U0:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/notifyjs/dist/styles/metro/notify-metro.css   (ca22a1cb)
+2018-11-28T15:55:59.1865042+07:00 0HLIL1QT210U0:00000001 [INF] Sending file. Request path: '"/lib/notifyjs/dist/styles/metro/notify-metro.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\notifyjs\dist\styles\metro\notify-metro.css"' (27b0a520)
+2018-11-28T15:55:59.1866585+07:00 0HLIL1QT210U0:00000001 [INF] Request finished in 0.9159ms 200 text/css (791a596a)
+2018-11-28T15:55:59.1881933+07:00 0HLIL1QT210U1:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/ckeditor/skins/moono/editor.css   (ca22a1cb)
+2018-11-28T15:55:59.1890850+07:00 0HLIL1QT210U1:00000001 [INF] Sending file. Request path: '"/lib/ckeditor/skins/moono/editor.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\ckeditor\skins\moono\editor.css"' (27b0a520)
+2018-11-28T15:55:59.1892240+07:00 0HLIL1QT210U1:00000001 [INF] Request finished in 1.0851ms 200 text/css (791a596a)
+2018-11-28T15:55:59.1896180+07:00 0HLIL1QT210TV:00000001 [INF] Sending file. Request path: '"/lib/bootstrap/dist/css/bootstrap.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\bootstrap\dist\css\bootstrap.css"' (27b0a520)
+2018-11-28T15:55:59.1897160+07:00 0HLIL1QT210TV:00000001 [INF] Request finished in 21.6606ms 200 text/css (791a596a)
+2018-11-28T15:55:59.1900345+07:00 0HLIL1QT210U0:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin-side/css/custom.css   (ca22a1cb)
+2018-11-28T15:55:59.1916104+07:00 0HLIL1QT210U0:00000002 [INF] Sending file. Request path: '"/admin-side/css/custom.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\admin-side\css\custom.css"' (27b0a520)
+2018-11-28T15:55:59.1917130+07:00 0HLIL1QT210U0:00000002 [INF] Request finished in 1.7307ms 200 text/css (791a596a)
+2018-11-28T15:55:59.1999559+07:00 0HLIL1QT210TR:00000002 [INF] Request finished in 249740.9943ms 101  (791a596a)
+2018-11-28T15:55:59.2002203+07:00 0HLIL1QT210TT:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css   (ca22a1cb)
+2018-11-28T15:55:59.2007393+07:00 0HLIL1QT210U2:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/jQuery-EasyUI/themes/bootstrap/easyui.css   (ca22a1cb)
+2018-11-28T15:55:59.2012320+07:00 0HLIL1QT210U3:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/jQuery-EasyUI/themes/icon.css   (ca22a1cb)
+2018-11-28T15:55:59.2017032+07:00 0HLIL1QT210TT:00000004 [INF] Sending file. Request path: '"/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\bootstrap-datepicker\dist\css\bootstrap-datepicker.css"' (27b0a520)
+2018-11-28T15:55:59.2017803+07:00 0HLIL1QT210TT:00000004 [INF] Request finished in 1.578ms 200 text/css (791a596a)
+2018-11-28T15:55:59.2019921+07:00 0HLIL1QT210U3:00000001 [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/themes/icon.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\jQuery-EasyUI\themes\icon.css"' (27b0a520)
+2018-11-28T15:55:59.2020664+07:00 0HLIL1QT210U3:00000001 [INF] Request finished in 0.8642ms 200 text/css (791a596a)
+2018-11-28T15:55:59.2026526+07:00 0HLIL1QT210U2:00000001 [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/themes/bootstrap/easyui.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\jQuery-EasyUI\themes\bootstrap\easyui.css"' (27b0a520)
+2018-11-28T15:55:59.2027382+07:00 0HLIL1QT210U2:00000001 [INF] Request finished in 2.0193ms 200 text/css (791a596a)
+2018-11-28T15:55:59.2171878+07:00 0HLIL1QT210U4:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/app/controllers/chiphi/addeditchiphi.js?v=XvxF7Zs8uzcSmwz9tOHDB4Sg3dCH6ZQ8kpS6DlKEvaI   (ca22a1cb)
+2018-11-28T15:55:59.2224728+07:00 0HLIL1QT210U4:00000001 [INF] Sending file. Request path: '"/app/controllers/chiphi/addeditchiphi.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\app\controllers\chiphi\addeditchiphi.js"' (27b0a520)
+2018-11-28T15:55:59.2225592+07:00 0HLIL1QT210U4:00000001 [INF] Request finished in 5.4202ms 200 application/javascript (791a596a)
+2018-11-28T15:55:59.5092762+07:00 0HLIL1QT210TU:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/Admin/appuserlogin/GetUserName?username=lenguyen   (ca22a1cb)
+2018-11-28T15:55:59.5104390+07:00 0HLIL1QT210TU:00000002 [INF] Route matched with "{area = \"Admin\", action = \"GetUserName\", controller = \"AppUserLogin\"}". Executing action "NiTiErp.Areas.Admin.Controllers.AppUserLoginController.GetUserName (NiTiErp)" (a44c0341)
+2018-11-28T15:55:59.5105479+07:00 0HLIL1QT210TU:00000002 [INF] Authorization was successful. (0d575a54)
+2018-11-28T15:55:59.5107786+07:00 0HLIL1QT210TU:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.AppUserLoginController.GetUserName (NiTiErp)" with arguments (["lenguyen"]) - Validation state: Valid (4e3479ed)
+2018-11-28T15:55:59.5111409+07:00 0HLIL1QT210TU:00000002 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.AppUserLoginController.GetUserName (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.2771ms. (50a9e262)
+2018-11-28T15:55:59.5112566+07:00 0HLIL1QT210TU:00000002 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.AppUserLoginViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.AppUserLoginService+<GetAllAppUserPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T15:55:59.5367990+07:00 0HLIL1QT210TU:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.AppUserLoginController.GetUserName (NiTiErp)" in 26.2483ms (afa2e885)
+2018-11-28T15:55:59.5403176+07:00 0HLIL1QT210TU:00000002 [INF] Request finished in 31.0539ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T15:55:59.5894029+07:00 0HLIL1QT210U0:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/GetListCorNhanSu   (ca22a1cb)
+2018-11-28T15:55:59.5910997+07:00 0HLIL1QT210U3:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/DieuKienGetList   (ca22a1cb)
+2018-11-28T15:55:59.5911666+07:00 0HLIL1QT210U0:00000003 [INF] Route matched with "{area = \"Admin\", action = \"GetListCorNhanSu\", controller = \"Hoso\"}". Executing action "NiTiErp.Areas.Admin.Controllers.HosoController.GetListCorNhanSu (NiTiErp)" (a44c0341)
+2018-11-28T15:55:59.5913613+07:00 0HLIL1QT210U0:00000003 [INF] Authorization was successful. (0d575a54)
+2018-11-28T15:55:59.5916045+07:00 0HLIL1QT210U0:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetListCorNhanSu (NiTiErp)" - Validation state: Valid (dad538d7)
+2018-11-28T15:55:59.5921201+07:00 0HLIL1QT210U0:00000003 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetListCorNhanSu (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.4195ms. (50a9e262)
+2018-11-28T15:55:59.5922538+07:00 0HLIL1QT210U0:00000003 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[NiTiErp.Application.Dapper.ViewModels.CorporationViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[NiTiErp.Application.Dapper.Implementation.CorporationService+<CorporationGetList>d__3, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T15:55:59.5925586+07:00 0HLIL1QT210U3:00000002 [INF] Route matched with "{area = \"Admin\", action = \"DieuKienGetList\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.DieuKienGetList (NiTiErp)" (a44c0341)
+2018-11-28T15:55:59.5926634+07:00 0HLIL1QT210U3:00000002 [INF] Authorization was successful. (0d575a54)
+2018-11-28T15:55:59.5927832+07:00 0HLIL1QT210U3:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.DieuKienGetList (NiTiErp)" - Validation state: Valid (dad538d7)
+2018-11-28T15:55:59.5931965+07:00 0HLIL1QT210U3:00000002 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.DieuKienGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.3464ms. (50a9e262)
+2018-11-28T15:55:59.5933035+07:00 0HLIL1QT210U3:00000002 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[NiTiErp.Application.Dapper.ViewModels.DieuKienTimViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[NiTiErp.Application.Dapper.Implementation.DieuKienTimService+<DieuKienTimGetList>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T15:55:59.6034212+07:00 0HLIL1QT210U1:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphidm/ListChiPhi?corporationId=%25&keyword=%25&IsChiPhiTang=True&page=1&pageSize=1000   (ca22a1cb)
+2018-11-28T15:55:59.6045464+07:00 0HLIL1QT210U1:00000002 [INF] Route matched with "{area = \"Admin\", action = \"ListChiPhi\", controller = \"ChiPhiDm\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiDmController.ListChiPhi (NiTiErp)" (a44c0341)
+2018-11-28T15:55:59.6046745+07:00 0HLIL1QT210U1:00000002 [INF] Authorization was successful. (0d575a54)
+2018-11-28T15:55:59.6050088+07:00 0HLIL1QT210U1:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiDmController.ListChiPhi (NiTiErp)" with arguments (["%", "%", "True", "1", "1000"]) - Validation state: Valid (4e3479ed)
+2018-11-28T15:55:59.6053391+07:00 0HLIL1QT210U1:00000002 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiDmController.ListChiPhi (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.2534ms. (50a9e262)
+2018-11-28T15:55:59.6054451+07:00 0HLIL1QT210U1:00000002 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[NiTiErp.Application.Dapper.ViewModels.ChiPhiViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[NiTiErp.Application.Dapper.Implementation.ChiPhiService+<ChiPhiGetList>d__3, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T15:55:59.6294716+07:00 0HLIL1QT210U0:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.GetListCorNhanSu (NiTiErp)" in 38.1956ms (afa2e885)
+2018-11-28T15:55:59.6334877+07:00 0HLIL1QT210U0:00000003 [INF] Request finished in 44.6872ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T15:55:59.6362693+07:00 0HLIL1QT210TT:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/ChiPhiKhoiTaGetList?nam=2018&thang=11&corporationId=&keyword=%25&page=1&pageSize=10   (ca22a1cb)
+2018-11-28T15:55:59.6374051+07:00 0HLIL1QT210TT:00000005 [INF] Route matched with "{area = \"Admin\", action = \"ChiPhiKhoiTaGetList\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" (a44c0341)
+2018-11-28T15:55:59.6375233+07:00 0HLIL1QT210TT:00000005 [INF] Authorization was successful. (0d575a54)
+2018-11-28T15:55:59.6378443+07:00 0HLIL1QT210TT:00000005 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" with arguments (["2018", "11", "", "%", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-28T15:55:59.6381979+07:00 0HLIL1QT210TT:00000005 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.2652ms. (50a9e262)
+2018-11-28T15:55:59.6383207+07:00 0HLIL1QT210TT:00000005 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.ChiPhiKhoiTaoViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.ChiPhiKhoiTaoService+<GetAllChiPhiKhoiTaoPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T15:55:59.6979508+07:00 0HLIL1QT210TT:00000005 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" in 60.425ms (afa2e885)
+2018-11-28T15:55:59.7016642+07:00 0HLIL1QT210TT:00000005 [INF] Request finished in 65.5007ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T15:55:59.7030753+07:00 0HLIL1QT210U1:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiDmController.ListChiPhi (NiTiErp)" in 98.0726ms (afa2e885)
+2018-11-28T15:55:59.7075545+07:00 0HLIL1QT210U1:00000002 [INF] Request finished in 104.1646ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T15:55:59.7936733+07:00 0HLIL1QT210U4:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:44352/chat/negotiate text/plain;charset=UTF-8 0 (ca22a1cb)
+2018-11-28T15:55:59.7954261+07:00 0HLIL1QT210U4:00000002 [INF] Request finished in 1.8719ms 200 application/json (791a596a)
+2018-11-28T15:55:59.8118373+07:00 0HLIL1QT210U3:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.DieuKienGetList (NiTiErp)" in 219.1166ms (afa2e885)
+2018-11-28T15:55:59.8162924+07:00 0HLIL1QT210U3:00000002 [INF] Request finished in 225.2431ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T15:55:59.8202484+07:00 0HLIL1QT210U2:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/congngay/LuongDotInGetList?makv=PO   (ca22a1cb)
+2018-11-28T15:55:59.8215233+07:00 0HLIL1QT210U2:00000002 [INF] Route matched with "{area = \"Admin\", action = \"LuongDotInGetList\", controller = \"CongNgay\"}". Executing action "NiTiErp.Areas.Admin.Controllers.CongNgayController.LuongDotInGetList (NiTiErp)" (a44c0341)
+2018-11-28T15:55:59.8216492+07:00 0HLIL1QT210U2:00000002 [INF] Authorization was successful. (0d575a54)
+2018-11-28T15:55:59.8219238+07:00 0HLIL1QT210U2:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.CongNgayController.LuongDotInGetList (NiTiErp)" with arguments (["PO"]) - Validation state: Valid (4e3479ed)
+2018-11-28T15:55:59.8223490+07:00 0HLIL1QT210U2:00000002 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.CongNgayController.LuongDotInGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.3169ms. (50a9e262)
+2018-11-28T15:55:59.8224793+07:00 0HLIL1QT210U2:00000002 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[NiTiErp.Application.Dapper.ViewModels.LuongDotInKyViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[NiTiErp.Application.Dapper.Implementation.LuongDotInKyService+<LuongDotInKyGetList>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T15:55:59.8231246+07:00 0HLIL1QT210TV:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/GetListPhongKhuVuc?makv=PO   (ca22a1cb)
+2018-11-28T15:55:59.8251269+07:00 0HLIL1QT210TV:00000002 [INF] Route matched with "{area = \"Admin\", action = \"GetListPhongKhuVuc\", controller = \"Hoso\"}". Executing action "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)" (a44c0341)
+2018-11-28T15:55:59.8252578+07:00 0HLIL1QT210TV:00000002 [INF] Authorization was successful. (0d575a54)
+2018-11-28T15:55:59.8254939+07:00 0HLIL1QT210TV:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)" with arguments (["PO"]) - Validation state: Valid (4e3479ed)
+2018-11-28T15:55:59.8258052+07:00 0HLIL1QT210TV:00000002 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.2407ms. (50a9e262)
+2018-11-28T15:55:59.8259032+07:00 0HLIL1QT210TV:00000002 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[NiTiErp.Application.Dapper.ViewModels.PhongDanhMucViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[NiTiErp.Application.Dapper.Implementation.PhongDanhMucService+<PhongDanhMucGetList>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T15:55:59.9072216+07:00 0HLIL1QT210U2:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.CongNgayController.LuongDotInGetList (NiTiErp)" in 85.5438ms (afa2e885)
+2018-11-28T15:55:59.9317753+07:00 0HLIL1QT210U2:00000002 [INF] Request finished in 111.5806ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T15:55:59.9497707+07:00 0HLIL1QT210TV:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)" in 124.5243ms (afa2e885)
+2018-11-28T15:55:59.9624159+07:00 0HLIL1QT210TV:00000002 [INF] Request finished in 139.2122ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T15:55:59.9720612+07:00 0HLIL1QT210TU:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/chat?id=d4p5esW5JuRlmDQ4foDbCQ   (ca22a1cb)
+2018-11-28T15:55:59.9878111+07:00 0HLIL1QT210TU:00000003 [INF] Completed connection handshake. Using HubProtocol '"json"'. (421947a1)
+2018-11-28T15:56:13.1213445+07:00 0HLIL1QT210U0:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/ChiPhiKhoiTaGetList?nam=2018&thang=11&corporationId=PO&keyword=%25&page=1&pageSize=10   (ca22a1cb)
+2018-11-28T15:56:13.1226040+07:00 0HLIL1QT210U0:00000004 [INF] Route matched with "{area = \"Admin\", action = \"ChiPhiKhoiTaGetList\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" (a44c0341)
+2018-11-28T15:56:13.1227359+07:00 0HLIL1QT210U0:00000004 [INF] Authorization was successful. (0d575a54)
+2018-11-28T15:56:13.1230830+07:00 0HLIL1QT210U0:00000004 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" with arguments (["2018", "11", "PO", "%", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-28T15:56:13.1234120+07:00 0HLIL1QT210U0:00000004 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.2419ms. (50a9e262)
+2018-11-28T15:56:13.1235429+07:00 0HLIL1QT210U0:00000004 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.ChiPhiKhoiTaoViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.ChiPhiKhoiTaoService+<GetAllChiPhiKhoiTaoPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T15:56:13.1456178+07:00 0HLIL1QT210U0:00000004 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" in 22.8978ms (afa2e885)
+2018-11-28T15:56:13.1481933+07:00 0HLIL1QT210U0:00000004 [INF] Request finished in 27.3498ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T15:56:15.8146662+07:00 0HLIL1QT210TT:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/ChiPhiKhoiTaGetList?nam=2018&thang=10&corporationId=PO&keyword=%25&page=1&pageSize=10   (ca22a1cb)
+2018-11-28T15:56:15.8161152+07:00 0HLIL1QT210TT:00000006 [INF] Route matched with "{area = \"Admin\", action = \"ChiPhiKhoiTaGetList\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" (a44c0341)
+2018-11-28T15:56:15.8162405+07:00 0HLIL1QT210TT:00000006 [INF] Authorization was successful. (0d575a54)
+2018-11-28T15:56:15.8165550+07:00 0HLIL1QT210TT:00000006 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" with arguments (["2018", "10", "PO", "%", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-28T15:56:15.8169120+07:00 0HLIL1QT210TT:00000006 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.278ms. (50a9e262)
+2018-11-28T15:56:15.8170255+07:00 0HLIL1QT210TT:00000006 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.ChiPhiKhoiTaoViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.ChiPhiKhoiTaoService+<GetAllChiPhiKhoiTaoPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T15:56:15.8393137+07:00 0HLIL1QT210TT:00000006 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" in 23.0909ms (afa2e885)
+2018-11-28T15:56:15.8481557+07:00 0HLIL1QT210TT:00000006 [INF] Request finished in 33.713ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T15:56:18.0406713+07:00 0HLIL1QT210U1:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/Admin/chiphi/ChiPhiKhoiTaKyId?chiphikhoitaoId=7&nam=2018&thang=10&corporationId=PO&keyword=%25&page=1&pageSize=10   (ca22a1cb)
+2018-11-28T15:56:18.0451423+07:00 0HLIL1QT210U1:00000003 [INF] Route matched with "{area = \"Admin\", action = \"ChiPhiKhoiTaKyId\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaKyId (NiTiErp)" (a44c0341)
+2018-11-28T15:56:18.0453619+07:00 0HLIL1QT210U1:00000003 [INF] Authorization was successful. (0d575a54)
+2018-11-28T15:56:18.0458738+07:00 0HLIL1QT210U1:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaKyId (NiTiErp)" with arguments (["7", "2018", "10", "PO", "%", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-28T15:56:18.0470370+07:00 0HLIL1QT210U1:00000003 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaKyId (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.9834ms. (50a9e262)
+2018-11-28T15:56:18.0472351+07:00 0HLIL1QT210U1:00000003 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.ChiPhiKhoiTaoViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.ChiPhiKhoiTaoService+<GetAllChiPhiKhoiTaoPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T15:56:18.0667305+07:00 0HLIL1QT210U1:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaKyId (NiTiErp)" in 21.4115ms (afa2e885)
+2018-11-28T15:56:18.0696956+07:00 0HLIL1QT210U1:00000003 [INF] Request finished in 29.0675ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T16:18:47.4914794+07:00 0HLIL2A08J2IB:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/index   (ca22a1cb)
+2018-11-28T16:18:47.4914794+07:00 0HLIL2A08J2IA:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/ChiPhiKhoiTaGetList?nam=2018&thang=11&corporationId=PO&keyword=%25&page=1&pageSize=10   (ca22a1cb)
+2018-11-28T16:18:47.6046431+07:00 0HLIL2A08J2IA:00000001 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-11-28T16:18:47.6046191+07:00 0HLIL2A08J2IB:00000001 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-11-28T16:18:47.7199972+07:00 0HLIL2A08J2IB:00000001 [INF] Executed DbCommand ("12"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[CorporationId], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserCreated], [e].[UserModified], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2018-11-28T16:18:47.7199972+07:00 0HLIL2A08J2IA:00000001 [INF] Executed DbCommand ("18"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[CorporationId], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserCreated], [e].[UserModified], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2018-11-28T16:18:47.9148273+07:00 0HLIL2A08J2IB:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-11-28T16:18:47.9151669+07:00 0HLIL2A08J2IA:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-11-28T16:18:47.9801837+07:00 0HLIL2A08J2IB:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-11-28T16:18:47.9858051+07:00 0HLIL2A08J2IA:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-11-28T16:18:48.0089229+07:00 0HLIL2A08J2IA:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CorporationId], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-11-28T16:18:48.0089804+07:00 0HLIL2A08J2IB:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CorporationId], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-11-28T16:18:48.0411742+07:00 0HLIL2A08J2IB:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2018-11-28T16:18:48.0450484+07:00 0HLIL2A08J2IA:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2018-11-28T16:18:48.0495352+07:00 0HLIL2A08J2IA:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-11-28T16:18:48.0495794+07:00 0HLIL2A08J2IB:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-11-28T16:18:48.3197123+07:00 0HLIL2A08J2IB:00000001 [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.Index (NiTiErp)" (a44c0341)
+2018-11-28T16:18:48.3317911+07:00 0HLIL2A08J2IA:00000001 [INF] Route matched with "{area = \"Admin\", action = \"ChiPhiKhoiTaGetList\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" (a44c0341)
+2018-11-28T16:18:48.3415741+07:00 0HLIL2A08J2IB:00000001 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:18:48.3416227+07:00 0HLIL2A08J2IA:00000001 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:18:48.3602712+07:00 0HLIL2A08J2IB:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.Index (NiTiErp)" - Validation state: Valid (dad538d7)
+2018-11-28T16:18:48.3681135+07:00 0HLIL2A08J2IB:00000001 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.Index (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.8126ms. (50a9e262)
+2018-11-28T16:18:48.3806095+07:00 0HLIL2A08J2IA:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" with arguments (["2018", "11", "PO", "%", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-28T16:18:48.4034239+07:00 0HLIL2A08J2IB:00000001 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2018-11-28T16:18:48.4701395+07:00 0HLIL2A08J2IA:00000001 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 89.2584ms. (50a9e262)
+2018-11-28T16:18:48.4788610+07:00 0HLIL2A08J2IA:00000001 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.ChiPhiKhoiTaoViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.ChiPhiKhoiTaoService+<GetAllChiPhiKhoiTaoPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T16:18:48.7910154+07:00 0HLIL2A08J2IA:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" in 453.5254ms (afa2e885)
+2018-11-28T16:18:48.8481139+07:00 0HLIL2A08J2IA:00000001 [INF] Request finished in 1364.8136ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T16:18:48.8612425+07:00 0HLIL2A08J2ID:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/ChiPhiKhoiTaGetList?nam=2018&thang=11&corporationId=PO&keyword=%25&page=1&pageSize=10   (ca22a1cb)
+2018-11-28T16:18:48.8642030+07:00 0HLIL2A08J2ID:00000001 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-11-28T16:18:48.8672116+07:00 0HLIL2A08J2IC:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/ChiPhiKhoiTaGetList?nam=2018&thang=11&corporationId=PO&keyword=%25&page=1&pageSize=10   (ca22a1cb)
+2018-11-28T16:18:48.8682746+07:00 0HLIL2A08J2IC:00000001 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-11-28T16:18:48.8697660+07:00 0HLIL2A08J2IE:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/ChiPhiKhoiTaGetList?nam=2018&thang=11&corporationId=PO&keyword=%25&page=1&pageSize=10   (ca22a1cb)
+2018-11-28T16:18:48.8710339+07:00 0HLIL2A08J2IE:00000001 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-11-28T16:18:48.8725948+07:00 0HLIL2A08J2IA:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/ChiPhiKhoiTaGetList?nam=2018&thang=11&corporationId=PO&keyword=%25&page=1&pageSize=10   (ca22a1cb)
+2018-11-28T16:18:48.8728212+07:00 0HLIL2A08J2IF:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/ChiPhiKhoiTaGetList?nam=2018&thang=11&corporationId=PO&keyword=%25&page=1&pageSize=10   (ca22a1cb)
+2018-11-28T16:18:48.8736190+07:00 0HLIL2A08J2IF:00000001 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-11-28T16:18:48.8736361+07:00 0HLIL2A08J2IA:00000002 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-11-28T16:18:48.8845820+07:00 0HLIL2A08J2ID:00000001 [INF] Executed DbCommand ("18"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[CorporationId], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserCreated], [e].[UserModified], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2018-11-28T16:18:48.8853785+07:00 0HLIL2A08J2IC:00000001 [INF] Executed DbCommand ("16"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[CorporationId], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserCreated], [e].[UserModified], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2018-11-28T16:18:48.8857308+07:00 0HLIL2A08J2IG:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/ChiPhiKhoiTaGetList?nam=2018&thang=11&corporationId=PO&keyword=%25&page=1&pageSize=10   (ca22a1cb)
+2018-11-28T16:18:48.8863441+07:00 0HLIL2A08J2IH:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/ChiPhiKhoiTaGetList?nam=2018&thang=11&corporationId=PO&keyword=%25&page=1&pageSize=10   (ca22a1cb)
+2018-11-28T16:18:48.8868112+07:00 0HLIL2A08J2IG:00000001 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-11-28T16:18:48.8872441+07:00 0HLIL2A08J2IH:00000001 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2018-11-28T16:18:48.8891553+07:00 0HLIL2A08J2IC:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-11-28T16:18:48.8891569+07:00 0HLIL2A08J2ID:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-11-28T16:18:48.8916005+07:00 0HLIL2A08J2IC:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-11-28T16:18:48.8916123+07:00 0HLIL2A08J2ID:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-11-28T16:18:48.8935635+07:00 0HLIL2A08J2ID:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CorporationId], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-11-28T16:18:48.8942253+07:00 0HLIL2A08J2IC:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CorporationId], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-11-28T16:18:48.8972325+07:00 0HLIL2A08J2ID:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2018-11-28T16:18:48.8972972+07:00 0HLIL2A08J2IC:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2018-11-28T16:18:48.8997774+07:00 0HLIL2A08J2IC:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-11-28T16:18:48.8997752+07:00 0HLIL2A08J2ID:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-11-28T16:18:48.9008003+07:00 0HLIL2A08J2IC:00000001 [INF] Route matched with "{area = \"Admin\", action = \"ChiPhiKhoiTaGetList\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" (a44c0341)
+2018-11-28T16:18:48.9011287+07:00 0HLIL2A08J2IC:00000001 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:18:48.9016475+07:00 0HLIL2A08J2ID:00000001 [INF] Route matched with "{area = \"Admin\", action = \"ChiPhiKhoiTaGetList\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" (a44c0341)
+2018-11-28T16:18:48.9017476+07:00 0HLIL2A08J2IC:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" with arguments (["2018", "11", "PO", "%", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-28T16:18:48.9017719+07:00 0HLIL2A08J2ID:00000001 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:18:48.9019920+07:00 0HLIL2A08J2ID:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" with arguments (["2018", "11", "PO", "%", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-28T16:18:48.9021192+07:00 0HLIL2A08J2IC:00000001 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.2761ms. (50a9e262)
+2018-11-28T16:18:48.9022206+07:00 0HLIL2A08J2ID:00000001 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.1561ms. (50a9e262)
+2018-11-28T16:18:48.9024539+07:00 0HLIL2A08J2ID:00000001 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.ChiPhiKhoiTaoViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.ChiPhiKhoiTaoService+<GetAllChiPhiKhoiTaoPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T16:18:48.9024617+07:00 0HLIL2A08J2IC:00000001 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.ChiPhiKhoiTaoViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.ChiPhiKhoiTaoService+<GetAllChiPhiKhoiTaoPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T16:18:48.9233725+07:00 0HLIL2A08J2ID:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" in 21.5779ms (afa2e885)
+2018-11-28T16:18:48.9770982+07:00 0HLIL2A08J2IC:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" in 76.1455ms (afa2e885)
+2018-11-28T16:18:48.9810773+07:00 0HLIL2A08J2ID:00000001 [INF] Request finished in 119.8683ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T16:18:48.9820059+07:00 0HLIL2A08J2IC:00000001 [INF] Request finished in 114.7908ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T16:18:48.9825642+07:00 0HLIL2A08J2IA:00000002 [INF] Executed DbCommand ("9"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[CorporationId], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserCreated], [e].[UserModified], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2018-11-28T16:18:48.9845449+07:00 0HLIL2A08J2IE:00000001 [INF] Executed DbCommand ("24"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[CorporationId], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserCreated], [e].[UserModified], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2018-11-28T16:18:48.9864741+07:00 0HLIL2A08J2IA:00000002 [INF] Executed DbCommand ("3"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-11-28T16:18:48.9886095+07:00 0HLIL2A08J2IE:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-11-28T16:18:48.9907222+07:00 0HLIL2A08J2IA:00000002 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-11-28T16:18:48.9937912+07:00 0HLIL2A08J2IA:00000002 [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CorporationId], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-11-28T16:18:48.9941781+07:00 0HLIL2A08J2IE:00000001 [INF] Executed DbCommand ("5"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-11-28T16:18:48.9972330+07:00 0HLIL2A08J2IA:00000002 [INF] Executed DbCommand ("3"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2018-11-28T16:18:48.9972334+07:00 0HLIL2A08J2IE:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CorporationId], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-11-28T16:18:49.0075693+07:00 0HLIL2A08J2IA:00000002 [INF] Executed DbCommand ("10"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-11-28T16:18:49.0081431+07:00 0HLIL2A08J2IA:00000002 [INF] Route matched with "{area = \"Admin\", action = \"ChiPhiKhoiTaGetList\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" (a44c0341)
+2018-11-28T16:18:49.0082457+07:00 0HLIL2A08J2IA:00000002 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:18:49.0085257+07:00 0HLIL2A08J2IA:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" with arguments (["2018", "11", "PO", "%", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-28T16:18:49.0088013+07:00 0HLIL2A08J2IA:00000002 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.2111ms. (50a9e262)
+2018-11-28T16:18:49.0088930+07:00 0HLIL2A08J2IA:00000002 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.ChiPhiKhoiTaoViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.ChiPhiKhoiTaoService+<GetAllChiPhiKhoiTaoPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T16:18:49.0131861+07:00 0HLIL2A08J2IE:00000001 [INF] Executed DbCommand ("15"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2018-11-28T16:18:49.0390205+07:00 0HLIL2A08J2IE:00000001 [INF] Executed DbCommand ("25"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-11-28T16:18:49.0395585+07:00 0HLIL2A08J2IE:00000001 [INF] Route matched with "{area = \"Admin\", action = \"ChiPhiKhoiTaGetList\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" (a44c0341)
+2018-11-28T16:18:49.0396817+07:00 0HLIL2A08J2IE:00000001 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:18:49.0399519+07:00 0HLIL2A08J2IE:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" with arguments (["2018", "11", "PO", "%", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-28T16:18:49.0402639+07:00 0HLIL2A08J2IE:00000001 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.2292ms. (50a9e262)
+2018-11-28T16:18:49.0403914+07:00 0HLIL2A08J2IE:00000001 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.ChiPhiKhoiTaoViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.ChiPhiKhoiTaoService+<GetAllChiPhiKhoiTaoPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T16:18:49.0425050+07:00 0HLIL2A08J2IA:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" in 34.2598ms (afa2e885)
+2018-11-28T16:18:49.0456972+07:00 0HLIL2A08J2IB:00000001 [INF] Executed ViewResult - view "Index" executed in 666.5951ms. (f66409e9)
+2018-11-28T16:18:49.0464547+07:00 0HLIL2A08J2IA:00000002 [INF] Request finished in 173.8807ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T16:18:49.0569123+07:00 0HLIL2A08J2IE:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" in 17.2477ms (afa2e885)
+2018-11-28T16:18:49.0609996+07:00 0HLIL2A08J2IE:00000001 [INF] Request finished in 191.3614ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T16:18:49.0636310+07:00 0HLIL2A08J2IB:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.Index (NiTiErp)" in 743.5386ms (afa2e885)
+2018-11-28T16:18:49.0943715+07:00 0HLIL2A08J2IH:00000001 [INF] Executed DbCommand ("7"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[CorporationId], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserCreated], [e].[UserModified], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2018-11-28T16:18:49.1140647+07:00 0HLIL2A08J2IG:00000001 [INF] Executed DbCommand ("27"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[CorporationId], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserCreated], [e].[UserModified], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2018-11-28T16:18:49.1150195+07:00 0HLIL2A08J2IF:00000001 [INF] Executed DbCommand ("29"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[CorporationId], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserCreated], [e].[UserModified], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2018-11-28T16:18:49.1263311+07:00 0HLIL2A08J2IH:00000001 [INF] Executed DbCommand ("31"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-11-28T16:18:49.1267892+07:00 0HLIL2A08J2IG:00000001 [INF] Executed DbCommand ("12"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-11-28T16:18:49.1272287+07:00 0HLIL2A08J2IF:00000001 [INF] Executed DbCommand ("12"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-11-28T16:18:49.1380150+07:00 0HLIL2A08J2IH:00000001 [INF] Executed DbCommand ("11"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-11-28T16:18:49.1387592+07:00 0HLIL2A08J2IG:00000001 [INF] Executed DbCommand ("10"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-11-28T16:18:49.1391265+07:00 0HLIL2A08J2IF:00000001 [INF] Executed DbCommand ("10"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-11-28T16:18:49.1410162+07:00 0HLIL2A08J2IG:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CorporationId], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-11-28T16:18:49.1410908+07:00 0HLIL2A08J2IF:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CorporationId], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-11-28T16:18:49.1412669+07:00 0HLIL2A08J2IH:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CorporationId], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-11-28T16:18:49.1505986+07:00 0HLIL2A08J2IH:00000001 [INF] Executed DbCommand ("8"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2018-11-28T16:18:49.1516078+07:00 0HLIL2A08J2IG:00000001 [INF] Executed DbCommand ("10"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2018-11-28T16:18:49.1525085+07:00 0HLIL2A08J2IF:00000001 [INF] Executed DbCommand ("11"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2018-11-28T16:18:49.1608018+07:00 0HLIL2A08J2IH:00000001 [INF] Executed DbCommand ("9"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-11-28T16:18:49.1617342+07:00 0HLIL2A08J2IH:00000001 [INF] Route matched with "{area = \"Admin\", action = \"ChiPhiKhoiTaGetList\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" (a44c0341)
+2018-11-28T16:18:49.1618605+07:00 0HLIL2A08J2IH:00000001 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:18:49.1621494+07:00 0HLIL2A08J2IH:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" with arguments (["2018", "11", "PO", "%", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-28T16:18:49.1624768+07:00 0HLIL2A08J2IH:00000001 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.246ms. (50a9e262)
+2018-11-28T16:18:49.1625872+07:00 0HLIL2A08J2IH:00000001 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.ChiPhiKhoiTaoViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.ChiPhiKhoiTaoService+<GetAllChiPhiKhoiTaoPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T16:18:49.1763350+07:00 0HLIL2A08J2IG:00000001 [INF] Executed DbCommand ("24"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-11-28T16:18:49.1768526+07:00 0HLIL2A08J2IG:00000001 [INF] Route matched with "{area = \"Admin\", action = \"ChiPhiKhoiTaGetList\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" (a44c0341)
+2018-11-28T16:18:49.1768858+07:00 0HLIL2A08J2IF:00000001 [INF] Executed DbCommand ("24"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-11-28T16:18:49.1769589+07:00 0HLIL2A08J2IG:00000001 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:18:49.1773162+07:00 0HLIL2A08J2IF:00000001 [INF] Route matched with "{area = \"Admin\", action = \"ChiPhiKhoiTaGetList\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" (a44c0341)
+2018-11-28T16:18:49.1773345+07:00 0HLIL2A08J2IG:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" with arguments (["2018", "11", "PO", "%", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-28T16:18:49.1773989+07:00 0HLIL2A08J2IF:00000001 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:18:49.1775902+07:00 0HLIL2A08J2IF:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" with arguments (["2018", "11", "PO", "%", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-28T16:18:49.1776029+07:00 0HLIL2A08J2IG:00000001 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.2058ms. (50a9e262)
+2018-11-28T16:18:49.1776972+07:00 0HLIL2A08J2IG:00000001 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.ChiPhiKhoiTaoViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.ChiPhiKhoiTaoService+<GetAllChiPhiKhoiTaoPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T16:18:49.1777746+07:00 0HLIL2A08J2IF:00000001 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.1296ms. (50a9e262)
+2018-11-28T16:18:49.1778769+07:00 0HLIL2A08J2IF:00000001 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.ChiPhiKhoiTaoViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.ChiPhiKhoiTaoService+<GetAllChiPhiKhoiTaoPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T16:18:49.2246349+07:00 0HLIL2A08J2IG:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" in 47.6753ms (afa2e885)
+2018-11-28T16:18:49.2321643+07:00 0HLIL2A08J2IH:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" in 70.2842ms (afa2e885)
+2018-11-28T16:18:49.2342033+07:00 0HLIL2A08J2IF:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" in 56.7573ms (afa2e885)
+2018-11-28T16:18:49.2601428+07:00 0HLIL2A08J2IF:00000001 [INF] Request finished in 387.281ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T16:18:49.2636164+07:00 0HLIL2A08J2IG:00000001 [INF] Request finished in 377.8831ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T16:18:49.2712818+07:00 0HLIL2A08J2IH:00000001 [INF] Request finished in 384.9323ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T16:18:49.8520619+07:00 0HLIL2A08J2IB:00000001 [INF] Request finished in 2369.0275ms 200 text/html; charset=utf-8 (791a596a)
+2018-11-28T16:18:49.8837425+07:00 0HLIL2A08J2IC:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/font-awesome/css/font-awesome.css   (ca22a1cb)
+2018-11-28T16:18:49.8864570+07:00 0HLIL2A08J2ID:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/nprogress/nprogress.css   (ca22a1cb)
+2018-11-28T16:18:49.8864692+07:00 0HLIL2A08J2IE:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/bootstrap/dist/css/bootstrap.css   (ca22a1cb)
+2018-11-28T16:18:49.8943805+07:00 0HLIL2A08J2IA:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin-side/css/custom.css   (ca22a1cb)
+2018-11-28T16:18:49.8964167+07:00 0HLIL2A08J2IC:00000002 [INF] Sending file. Request path: '"/lib/font-awesome/css/font-awesome.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\font-awesome\css\font-awesome.css"' (27b0a520)
+2018-11-28T16:18:49.8965072+07:00 0HLIL2A08J2IC:00000002 [INF] Request finished in 12.8551ms 200 text/css (791a596a)
+2018-11-28T16:18:49.8972032+07:00 0HLIL2A08J2IG:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/jQuery-EasyUI/themes/icon.css   (ca22a1cb)
+2018-11-28T16:18:49.8978461+07:00 0HLIL2A08J2ID:00000002 [INF] Sending file. Request path: '"/lib/nprogress/nprogress.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\nprogress\nprogress.css"' (27b0a520)
+2018-11-28T16:18:49.8979334+07:00 0HLIL2A08J2ID:00000002 [INF] Request finished in 11.524ms 200 text/css (791a596a)
+2018-11-28T16:18:49.8980535+07:00 0HLIL2A08J2IB:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/jQuery-EasyUI/themes/bootstrap/easyui.css   (ca22a1cb)
+2018-11-28T16:18:49.9061169+07:00 0HLIL2A08J2IG:00000002 [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/themes/icon.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\jQuery-EasyUI\themes\icon.css"' (27b0a520)
+2018-11-28T16:18:49.9062628+07:00 0HLIL2A08J2IG:00000002 [INF] Request finished in 9.0984ms 200 text/css (791a596a)
+2018-11-28T16:18:49.9063996+07:00 0HLIL2A08J2IF:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/bootstrap-daterangepicker/daterangepicker.css   (ca22a1cb)
+2018-11-28T16:18:49.9070385+07:00 0HLIL2A08J2IF:00000002 [INF] Sending file. Request path: '"/lib/bootstrap-daterangepicker/daterangepicker.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\bootstrap-daterangepicker\daterangepicker.css"' (27b0a520)
+2018-11-28T16:18:49.9071290+07:00 0HLIL2A08J2IF:00000002 [INF] Request finished in 0.7355ms 200 text/css (791a596a)
+2018-11-28T16:18:49.9072565+07:00 0HLIL2A08J2IH:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/notifyjs/dist/styles/metro/notify-metro.css   (ca22a1cb)
+2018-11-28T16:18:49.9078026+07:00 0HLIL2A08J2IH:00000002 [INF] Sending file. Request path: '"/lib/notifyjs/dist/styles/metro/notify-metro.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\notifyjs\dist\styles\metro\notify-metro.css"' (27b0a520)
+2018-11-28T16:18:49.9079659+07:00 0HLIL2A08J2IH:00000002 [INF] Request finished in 0.7019ms 200 text/css (791a596a)
+2018-11-28T16:18:49.9102866+07:00 0HLIL2A08J2II:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css   (ca22a1cb)
+2018-11-28T16:18:49.9108731+07:00 0HLIL2A08J2IJ:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/app/controllers/chiphi/addeditchiphi.js?v=QO-mcMnjTdu_QVsGwXqBC3LekTqOQVed9ZZZ2yVkYgw   (ca22a1cb)
+2018-11-28T16:18:49.9113822+07:00 0HLIL2A08J2II:00000001 [INF] Sending file. Request path: '"/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\bootstrap-datepicker\dist\css\bootstrap-datepicker.css"' (27b0a520)
+2018-11-28T16:18:49.9114507+07:00 0HLIL2A08J2II:00000001 [INF] Request finished in 1.2085ms 200 text/css (791a596a)
+2018-11-28T16:18:49.9115359+07:00 0HLIL2A08J2IJ:00000001 [INF] Sending file. Request path: '"/app/controllers/chiphi/addeditchiphi.js"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\app\controllers\chiphi\addeditchiphi.js"' (27b0a520)
+2018-11-28T16:18:49.9115838+07:00 0HLIL2A08J2IJ:00000001 [INF] Request finished in 0.7492ms 200 application/javascript (791a596a)
+2018-11-28T16:18:49.9218153+07:00 0HLIL2A08J2IA:00000003 [INF] Sending file. Request path: '"/admin-side/css/custom.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\admin-side\css\custom.css"' (27b0a520)
+2018-11-28T16:18:49.9218682+07:00 0HLIL2A08J2IK:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/lib/ckeditor/skins/moono/editor.css   (ca22a1cb)
+2018-11-28T16:18:49.9218971+07:00 0HLIL2A08J2IA:00000003 [INF] Request finished in 27.584ms 200 text/css (791a596a)
+2018-11-28T16:18:49.9225396+07:00 0HLIL2A08J2IK:00000001 [INF] Sending file. Request path: '"/lib/ckeditor/skins/moono/editor.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\ckeditor\skins\moono\editor.css"' (27b0a520)
+2018-11-28T16:18:49.9226236+07:00 0HLIL2A08J2IK:00000001 [INF] Request finished in 0.7638ms 200 text/css (791a596a)
+2018-11-28T16:18:49.9226295+07:00 0HLIL2A08J2IB:00000002 [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/themes/bootstrap/easyui.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\jQuery-EasyUI\themes\bootstrap\easyui.css"' (27b0a520)
+2018-11-28T16:18:49.9226768+07:00 0HLIL2A08J2IB:00000002 [INF] Request finished in 24.6403ms 200 text/css (791a596a)
+2018-11-28T16:18:49.9228699+07:00 0HLIL2A08J2IE:00000002 [INF] Sending file. Request path: '"/lib/bootstrap/dist/css/bootstrap.css"'. Physical path: '"D:\netCore\NiTiErp\NiTiErp\wwwroot\lib\bootstrap\dist\css\bootstrap.css"' (27b0a520)
+2018-11-28T16:18:49.9229271+07:00 0HLIL2A08J2IE:00000002 [INF] Request finished in 36.5338ms 200 text/css (791a596a)
+2018-11-28T16:18:50.2869861+07:00 0HLIL2A08J2IC:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/Admin/appuserlogin/GetUserName?username=lenguyen   (ca22a1cb)
+2018-11-28T16:18:50.2917307+07:00 0HLIL2A08J2IC:00000003 [INF] Route matched with "{area = \"Admin\", action = \"GetUserName\", controller = \"AppUserLogin\"}". Executing action "NiTiErp.Areas.Admin.Controllers.AppUserLoginController.GetUserName (NiTiErp)" (a44c0341)
+2018-11-28T16:18:50.2918688+07:00 0HLIL2A08J2IC:00000003 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:18:50.2927611+07:00 0HLIL2A08J2IC:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.AppUserLoginController.GetUserName (NiTiErp)" with arguments (["lenguyen"]) - Validation state: Valid (4e3479ed)
+2018-11-28T16:18:50.2987212+07:00 0HLIL2A08J2IC:00000003 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.AppUserLoginController.GetUserName (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 5.8288ms. (50a9e262)
+2018-11-28T16:18:50.2989293+07:00 0HLIL2A08J2IC:00000003 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.AppUserLoginViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.AppUserLoginService+<GetAllAppUserPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T16:18:50.3846376+07:00 0HLIL2A08J2IH:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/GetListCorNhanSu   (ca22a1cb)
+2018-11-28T16:18:50.3934332+07:00 0HLIL2A08J2IH:00000003 [INF] Route matched with "{area = \"Admin\", action = \"GetListCorNhanSu\", controller = \"Hoso\"}". Executing action "NiTiErp.Areas.Admin.Controllers.HosoController.GetListCorNhanSu (NiTiErp)" (a44c0341)
+2018-11-28T16:18:50.3935716+07:00 0HLIL2A08J2IH:00000003 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:18:50.4069172+07:00 0HLIL2A08J2IH:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetListCorNhanSu (NiTiErp)" - Validation state: Valid (dad538d7)
+2018-11-28T16:18:50.4126605+07:00 0HLIL2A08J2IH:00000003 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetListCorNhanSu (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 5.6043ms. (50a9e262)
+2018-11-28T16:18:50.4129090+07:00 0HLIL2A08J2IH:00000003 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[NiTiErp.Application.Dapper.ViewModels.CorporationViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[NiTiErp.Application.Dapper.Implementation.CorporationService+<CorporationGetList>d__3, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T16:18:50.4143313+07:00 0HLIL2A08J2IC:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.AppUserLoginController.GetUserName (NiTiErp)" in 122.4848ms (afa2e885)
+2018-11-28T16:18:50.4227241+07:00 0HLIL2A08J2IC:00000003 [INF] Request finished in 135.7881ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T16:18:50.4346683+07:00 0HLIL2A08J2IG:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/DieuKienGetList   (ca22a1cb)
+2018-11-28T16:18:50.4419548+07:00 0HLIL2A08J2IG:00000003 [INF] Route matched with "{area = \"Admin\", action = \"DieuKienGetList\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.DieuKienGetList (NiTiErp)" (a44c0341)
+2018-11-28T16:18:50.4420851+07:00 0HLIL2A08J2IG:00000003 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:18:50.4421909+07:00 0HLIL2A08J2IG:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.DieuKienGetList (NiTiErp)" - Validation state: Valid (dad538d7)
+2018-11-28T16:18:50.4467244+07:00 0HLIL2A08J2IG:00000003 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.DieuKienGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 4.4417ms. (50a9e262)
+2018-11-28T16:18:50.4469306+07:00 0HLIL2A08J2IG:00000003 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[NiTiErp.Application.Dapper.ViewModels.DieuKienTimViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[NiTiErp.Application.Dapper.Implementation.DieuKienTimService+<DieuKienTimGetList>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T16:18:50.4700931+07:00 0HLIL2A08J2IF:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphidm/ListChiPhi?corporationId=%25&keyword=%25&IsChiPhiTang=True&page=1&pageSize=1000   (ca22a1cb)
+2018-11-28T16:18:50.4702402+07:00 0HLIL2A08J2ID:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/ChiPhiKhoiTaGetList?nam=2018&thang=11&corporationId=&keyword=%25&page=1&pageSize=10   (ca22a1cb)
+2018-11-28T16:18:50.4749523+07:00 0HLIL2A08J2IF:00000003 [INF] Route matched with "{area = \"Admin\", action = \"ListChiPhi\", controller = \"ChiPhiDm\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiDmController.ListChiPhi (NiTiErp)" (a44c0341)
+2018-11-28T16:18:50.4751053+07:00 0HLIL2A08J2IF:00000003 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:18:50.4756906+07:00 0HLIL2A08J2ID:00000003 [INF] Route matched with "{area = \"Admin\", action = \"ChiPhiKhoiTaGetList\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" (a44c0341)
+2018-11-28T16:18:50.4758078+07:00 0HLIL2A08J2ID:00000003 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:18:50.4762047+07:00 0HLIL2A08J2ID:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" with arguments (["2018", "11", "", "%", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-28T16:18:50.4765203+07:00 0HLIL2A08J2ID:00000003 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.2372ms. (50a9e262)
+2018-11-28T16:18:50.4766255+07:00 0HLIL2A08J2ID:00000003 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.ChiPhiKhoiTaoViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.ChiPhiKhoiTaoService+<GetAllChiPhiKhoiTaoPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T16:18:50.4766391+07:00 0HLIL2A08J2IF:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiDmController.ListChiPhi (NiTiErp)" with arguments (["%", "%", "True", "1", "1000"]) - Validation state: Valid (4e3479ed)
+2018-11-28T16:18:50.4835068+07:00 0HLIL2A08J2IH:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.GetListCorNhanSu (NiTiErp)" in 89.9582ms (afa2e885)
+2018-11-28T16:18:50.4899431+07:00 0HLIL2A08J2IF:00000003 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiDmController.ListChiPhi (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 13.2053ms. (50a9e262)
+2018-11-28T16:18:50.4901599+07:00 0HLIL2A08J2IF:00000003 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[NiTiErp.Application.Dapper.ViewModels.ChiPhiViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[NiTiErp.Application.Dapper.Implementation.ChiPhiService+<ChiPhiGetList>d__3, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T16:18:50.5458265+07:00 0HLIL2A08J2IH:00000003 [INF] Request finished in 162.4018ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T16:18:50.5737116+07:00 0HLIL2A08J2ID:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" in 97.9143ms (afa2e885)
+2018-11-28T16:18:50.5766081+07:00 0HLIL2A08J2ID:00000003 [INF] Request finished in 106.3227ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T16:18:50.6665168+07:00 0HLIL2A08J2II:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:44352/chat/negotiate text/plain;charset=UTF-8 0 (ca22a1cb)
+2018-11-28T16:18:50.6998822+07:00 0HLIL2A08J2II:00000002 [INF] Request finished in 33.8645ms 200 application/json (791a596a)
+2018-11-28T16:18:50.7000766+07:00 0HLIL2A08J2IF:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiDmController.ListChiPhi (NiTiErp)" in 225.0235ms (afa2e885)
+2018-11-28T16:18:50.7064780+07:00 0HLIL2A08J2IJ:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/congngay/LuongDotInGetList?makv=PO   (ca22a1cb)
+2018-11-28T16:18:50.7184406+07:00 0HLIL2A08J2IJ:00000002 [INF] Route matched with "{area = \"Admin\", action = \"LuongDotInGetList\", controller = \"CongNgay\"}". Executing action "NiTiErp.Areas.Admin.Controllers.CongNgayController.LuongDotInGetList (NiTiErp)" (a44c0341)
+2018-11-28T16:18:50.7186029+07:00 0HLIL2A08J2IJ:00000002 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:18:50.7197598+07:00 0HLIL2A08J2IJ:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.CongNgayController.LuongDotInGetList (NiTiErp)" with arguments (["PO"]) - Validation state: Valid (4e3479ed)
+2018-11-28T16:18:50.7198528+07:00 0HLIL2A08J2IK:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/hoso/GetListPhongKhuVuc?makv=PO   (ca22a1cb)
+2018-11-28T16:18:50.7242834+07:00 0HLIL2A08J2IJ:00000002 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.CongNgayController.LuongDotInGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 4.3889ms. (50a9e262)
+2018-11-28T16:18:50.7244840+07:00 0HLIL2A08J2IJ:00000002 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[NiTiErp.Application.Dapper.ViewModels.LuongDotInKyViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[NiTiErp.Application.Dapper.Implementation.LuongDotInKyService+<LuongDotInKyGetList>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T16:18:50.7250130+07:00 0HLIL2A08J2IF:00000003 [INF] Request finished in 254.9448ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T16:18:50.7287529+07:00 0HLIL2A08J2IK:00000002 [INF] Route matched with "{area = \"Admin\", action = \"GetListPhongKhuVuc\", controller = \"Hoso\"}". Executing action "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)" (a44c0341)
+2018-11-28T16:18:50.7288833+07:00 0HLIL2A08J2IK:00000002 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:18:50.7291818+07:00 0HLIL2A08J2IK:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)" with arguments (["PO"]) - Validation state: Valid (4e3479ed)
+2018-11-28T16:18:50.7341150+07:00 0HLIL2A08J2IK:00000002 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 4.8212ms. (50a9e262)
+2018-11-28T16:18:50.7343868+07:00 0HLIL2A08J2IK:00000002 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[NiTiErp.Application.Dapper.ViewModels.PhongDanhMucViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[NiTiErp.Application.Dapper.Implementation.PhongDanhMucService+<PhongDanhMucGetList>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T16:18:50.7804359+07:00 0HLIL2A08J2IG:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.DieuKienGetList (NiTiErp)" in 338.3694ms (afa2e885)
+2018-11-28T16:18:50.7840986+07:00 0HLIL2A08J2IG:00000003 [INF] Request finished in 349.4443ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T16:18:50.7947235+07:00 0HLIL2A08J2IE:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/chat?id=g5mK2Xpu9HgrdaDuYi4-Cw   (ca22a1cb)
+2018-11-28T16:18:50.8172585+07:00 0HLIL2A08J2IJ:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.CongNgayController.LuongDotInGetList (NiTiErp)" in 98.6978ms (afa2e885)
+2018-11-28T16:18:50.8216909+07:00 0HLIL2A08J2IJ:00000002 [INF] Request finished in 115.3503ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T16:18:50.8438678+07:00 0HLIL2A08J2IK:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.HosoController.GetListPhongKhuVuc (NiTiErp)" in 114.9932ms (afa2e885)
+2018-11-28T16:18:50.8486115+07:00 0HLIL2A08J2IK:00000002 [INF] Request finished in 142.0128ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T16:18:50.9427789+07:00 0HLIL2A08J2IE:00000003 [INF] Completed connection handshake. Using HubProtocol '"json"'. (421947a1)
+2018-11-28T16:18:55.9687707+07:00 0HLIL2A08J2IA:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/ChiPhiKhoiTaGetList?nam=2018&thang=11&corporationId=PO&keyword=%25&page=1&pageSize=10   (ca22a1cb)
+2018-11-28T16:18:55.9707219+07:00 0HLIL2A08J2IA:00000004 [INF] Route matched with "{area = \"Admin\", action = \"ChiPhiKhoiTaGetList\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" (a44c0341)
+2018-11-28T16:18:55.9708790+07:00 0HLIL2A08J2IA:00000004 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:18:55.9712025+07:00 0HLIL2A08J2IA:00000004 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" with arguments (["2018", "11", "PO", "%", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-28T16:18:55.9715828+07:00 0HLIL2A08J2IA:00000004 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.2655ms. (50a9e262)
+2018-11-28T16:18:55.9717001+07:00 0HLIL2A08J2IA:00000004 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.ChiPhiKhoiTaoViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.ChiPhiKhoiTaoService+<GetAllChiPhiKhoiTaoPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T16:18:55.9847872+07:00 0HLIL2A08J2IA:00000004 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" in 13.9588ms (afa2e885)
+2018-11-28T16:18:55.9974395+07:00 0HLIL2A08J2IA:00000004 [INF] Request finished in 28.6996ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T16:18:56.6815036+07:00 0HLIL2A08J2IB:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/ChiPhiKhoiTaGetList?nam=2018&thang=11&corporationId=PO&keyword=%25&page=1&pageSize=10   (ca22a1cb)
+2018-11-28T16:18:56.6830537+07:00 0HLIL2A08J2IB:00000003 [INF] Route matched with "{area = \"Admin\", action = \"ChiPhiKhoiTaGetList\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" (a44c0341)
+2018-11-28T16:18:56.6833124+07:00 0HLIL2A08J2IB:00000003 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:18:56.6838533+07:00 0HLIL2A08J2IB:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" with arguments (["2018", "11", "PO", "%", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-28T16:18:56.6842290+07:00 0HLIL2A08J2IB:00000003 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.278ms. (50a9e262)
+2018-11-28T16:18:56.6843540+07:00 0HLIL2A08J2IB:00000003 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.ChiPhiKhoiTaoViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.ChiPhiKhoiTaoService+<GetAllChiPhiKhoiTaoPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T16:18:56.6996396+07:00 0HLIL2A08J2IB:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" in 16.4488ms (afa2e885)
+2018-11-28T16:18:56.7023383+07:00 0HLIL2A08J2IB:00000003 [INF] Request finished in 20.9095ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T16:18:56.8322890+07:00 0HLIL2A08J2IC:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/ChiPhiKhoiTaGetList?nam=2018&thang=11&corporationId=PO&keyword=%25&page=1&pageSize=10   (ca22a1cb)
+2018-11-28T16:18:56.8335698+07:00 0HLIL2A08J2IC:00000004 [INF] Route matched with "{area = \"Admin\", action = \"ChiPhiKhoiTaGetList\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" (a44c0341)
+2018-11-28T16:18:56.8337175+07:00 0HLIL2A08J2IC:00000004 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:18:56.8341106+07:00 0HLIL2A08J2IC:00000004 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" with arguments (["2018", "11", "PO", "%", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-28T16:18:56.8346551+07:00 0HLIL2A08J2IC:00000004 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.4512ms. (50a9e262)
+2018-11-28T16:18:56.8348035+07:00 0HLIL2A08J2IC:00000004 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.ChiPhiKhoiTaoViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.ChiPhiKhoiTaoService+<GetAllChiPhiKhoiTaoPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T16:18:56.8455823+07:00 0HLIL2A08J2IC:00000004 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" in 11.905ms (afa2e885)
+2018-11-28T16:18:56.8582071+07:00 0HLIL2A08J2IC:00000004 [INF] Request finished in 25.9316ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T16:18:56.9521950+07:00 0HLIL2A08J2IH:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/ChiPhiKhoiTaGetList?nam=2018&thang=11&corporationId=PO&keyword=%25&page=1&pageSize=10   (ca22a1cb)
+2018-11-28T16:18:56.9533700+07:00 0HLIL2A08J2IH:00000004 [INF] Route matched with "{area = \"Admin\", action = \"ChiPhiKhoiTaGetList\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" (a44c0341)
+2018-11-28T16:18:56.9537351+07:00 0HLIL2A08J2IH:00000004 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:18:56.9541192+07:00 0HLIL2A08J2IH:00000004 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" with arguments (["2018", "11", "PO", "%", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-28T16:18:56.9544510+07:00 0HLIL2A08J2IH:00000004 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.2363ms. (50a9e262)
+2018-11-28T16:18:56.9546047+07:00 0HLIL2A08J2IH:00000004 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.ChiPhiKhoiTaoViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.ChiPhiKhoiTaoService+<GetAllChiPhiKhoiTaoPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T16:18:56.9690860+07:00 0HLIL2A08J2IH:00000004 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" in 15.6022ms (afa2e885)
+2018-11-28T16:18:56.9729696+07:00 0HLIL2A08J2IH:00000004 [INF] Request finished in 20.8016ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T16:18:57.0880481+07:00 0HLIL2A08J2ID:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/ChiPhiKhoiTaGetList?nam=2018&thang=11&corporationId=PO&keyword=%25&page=1&pageSize=10   (ca22a1cb)
+2018-11-28T16:18:57.0893127+07:00 0HLIL2A08J2ID:00000004 [INF] Route matched with "{area = \"Admin\", action = \"ChiPhiKhoiTaGetList\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" (a44c0341)
+2018-11-28T16:18:57.0894386+07:00 0HLIL2A08J2ID:00000004 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:18:57.0899005+07:00 0HLIL2A08J2ID:00000004 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" with arguments (["2018", "11", "PO", "%", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-28T16:18:57.0924918+07:00 0HLIL2A08J2ID:00000004 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.4329ms. (50a9e262)
+2018-11-28T16:18:57.0928192+07:00 0HLIL2A08J2ID:00000004 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.ChiPhiKhoiTaoViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.ChiPhiKhoiTaoService+<GetAllChiPhiKhoiTaoPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T16:18:57.1108188+07:00 0HLIL2A08J2ID:00000004 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" in 21.2678ms (afa2e885)
+2018-11-28T16:18:57.1151041+07:00 0HLIL2A08J2ID:00000004 [INF] Request finished in 27.0945ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T16:18:57.2266384+07:00 0HLIL2A08J2II:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/ChiPhiKhoiTaGetList?nam=2018&thang=11&corporationId=PO&keyword=%25&page=1&pageSize=10   (ca22a1cb)
+2018-11-28T16:18:57.2279215+07:00 0HLIL2A08J2II:00000003 [INF] Route matched with "{area = \"Admin\", action = \"ChiPhiKhoiTaGetList\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" (a44c0341)
+2018-11-28T16:18:57.2280391+07:00 0HLIL2A08J2II:00000003 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:18:57.2284419+07:00 0HLIL2A08J2II:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" with arguments (["2018", "11", "PO", "%", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-28T16:18:57.2288795+07:00 0HLIL2A08J2II:00000003 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.3508ms. (50a9e262)
+2018-11-28T16:18:57.2291196+07:00 0HLIL2A08J2II:00000003 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.ChiPhiKhoiTaoViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.ChiPhiKhoiTaoService+<GetAllChiPhiKhoiTaoPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T16:18:57.2433618+07:00 0HLIL2A08J2II:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" in 15.326ms (afa2e885)
+2018-11-28T16:18:57.2572162+07:00 0HLIL2A08J2II:00000003 [INF] Request finished in 30.5616ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T16:18:57.3361642+07:00 0HLIL2A08J2IF:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/ChiPhiKhoiTaGetList?nam=2018&thang=11&corporationId=PO&keyword=%25&page=1&pageSize=10   (ca22a1cb)
+2018-11-28T16:18:57.3376492+07:00 0HLIL2A08J2IF:00000004 [INF] Route matched with "{area = \"Admin\", action = \"ChiPhiKhoiTaGetList\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" (a44c0341)
+2018-11-28T16:18:57.3377702+07:00 0HLIL2A08J2IF:00000004 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:18:57.3381559+07:00 0HLIL2A08J2IF:00000004 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" with arguments (["2018", "11", "PO", "%", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-28T16:18:57.3386532+07:00 0HLIL2A08J2IF:00000004 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.3968ms. (50a9e262)
+2018-11-28T16:18:57.3387779+07:00 0HLIL2A08J2IF:00000004 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.ChiPhiKhoiTaoViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.ChiPhiKhoiTaoService+<GetAllChiPhiKhoiTaoPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T16:18:57.3584848+07:00 0HLIL2A08J2IF:00000004 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" in 20.7294ms (afa2e885)
+2018-11-28T16:18:57.3612018+07:00 0HLIL2A08J2IF:00000004 [INF] Request finished in 25.0621ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T16:18:57.4716447+07:00 0HLIL2A08J2IG:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/ChiPhiKhoiTaGetList?nam=2018&thang=11&corporationId=PO&keyword=%25&page=1&pageSize=10   (ca22a1cb)
+2018-11-28T16:18:57.4729444+07:00 0HLIL2A08J2IG:00000004 [INF] Route matched with "{area = \"Admin\", action = \"ChiPhiKhoiTaGetList\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" (a44c0341)
+2018-11-28T16:18:57.4730532+07:00 0HLIL2A08J2IG:00000004 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:18:57.4732886+07:00 0HLIL2A08J2IG:00000004 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" with arguments (["2018", "11", "PO", "%", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-28T16:18:57.4737620+07:00 0HLIL2A08J2IG:00000004 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.4015ms. (50a9e262)
+2018-11-28T16:18:57.4738783+07:00 0HLIL2A08J2IG:00000004 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.ChiPhiKhoiTaoViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.ChiPhiKhoiTaoService+<GetAllChiPhiKhoiTaoPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T16:18:57.4875076+07:00 0HLIL2A08J2IG:00000004 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" in 14.4589ms (afa2e885)
+2018-11-28T16:18:57.4992266+07:00 0HLIL2A08J2IG:00000004 [INF] Request finished in 27.6008ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T16:18:57.5991846+07:00 0HLIL2A08J2IJ:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/ChiPhiKhoiTaGetList?nam=2018&thang=11&corporationId=PO&keyword=%25&page=1&pageSize=10   (ca22a1cb)
+2018-11-28T16:18:57.6002458+07:00 0HLIL2A08J2IJ:00000003 [INF] Route matched with "{area = \"Admin\", action = \"ChiPhiKhoiTaGetList\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" (a44c0341)
+2018-11-28T16:18:57.6003578+07:00 0HLIL2A08J2IJ:00000003 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:18:57.6006187+07:00 0HLIL2A08J2IJ:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" with arguments (["2018", "11", "PO", "%", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-28T16:18:57.6010447+07:00 0HLIL2A08J2IJ:00000003 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.2018ms. (50a9e262)
+2018-11-28T16:18:57.6011632+07:00 0HLIL2A08J2IJ:00000003 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.ChiPhiKhoiTaoViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.ChiPhiKhoiTaoService+<GetAllChiPhiKhoiTaoPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T16:18:57.6263790+07:00 0HLIL2A08J2IJ:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" in 26.02ms (afa2e885)
+2018-11-28T16:18:57.6301802+07:00 0HLIL2A08J2IJ:00000003 [INF] Request finished in 30.9802ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T16:18:57.7355748+07:00 0HLIL2A08J2IK:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/ChiPhiKhoiTaGetList?nam=2018&thang=11&corporationId=PO&keyword=%25&page=1&pageSize=10   (ca22a1cb)
+2018-11-28T16:18:57.7383804+07:00 0HLIL2A08J2IK:00000003 [INF] Route matched with "{area = \"Admin\", action = \"ChiPhiKhoiTaGetList\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" (a44c0341)
+2018-11-28T16:18:57.7385163+07:00 0HLIL2A08J2IK:00000003 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:18:57.7389247+07:00 0HLIL2A08J2IK:00000003 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" with arguments (["2018", "11", "PO", "%", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-28T16:18:57.7393019+07:00 0HLIL2A08J2IK:00000003 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.2475ms. (50a9e262)
+2018-11-28T16:18:57.7394133+07:00 0HLIL2A08J2IK:00000003 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.ChiPhiKhoiTaoViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.ChiPhiKhoiTaoService+<GetAllChiPhiKhoiTaoPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T16:18:57.7540250+07:00 0HLIL2A08J2IK:00000003 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" in 15.5266ms (afa2e885)
+2018-11-28T16:18:57.7655912+07:00 0HLIL2A08J2IK:00000003 [INF] Request finished in 30.0391ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-28T16:19:01.2343408+07:00 0HLIL2A08J2IA:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44352/admin/chiphi/ChiPhiKhoiTaGetList?nam=2018&thang=10&corporationId=PO&keyword=%25&page=1&pageSize=10   (ca22a1cb)
+2018-11-28T16:19:01.2363263+07:00 0HLIL2A08J2IA:00000005 [INF] Route matched with "{area = \"Admin\", action = \"ChiPhiKhoiTaGetList\", controller = \"ChiPhi\"}". Executing action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" (a44c0341)
+2018-11-28T16:19:01.2364491+07:00 0HLIL2A08J2IA:00000005 [INF] Authorization was successful. (0d575a54)
+2018-11-28T16:19:01.2372864+07:00 0HLIL2A08J2IA:00000005 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" with arguments (["2018", "10", "PO", "%", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-28T16:19:01.2377080+07:00 0HLIL2A08J2IA:00000005 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.2736ms. (50a9e262)
+2018-11-28T16:19:01.2380681+07:00 0HLIL2A08J2IA:00000005 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[NiTiErp.Utilities.Dtos.PagedResult`1[[NiTiErp.Application.Dapper.ViewModels.ChiPhiKhoiTaoViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], NiTiErp.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[NiTiErp.Application.Dapper.Implementation.ChiPhiKhoiTaoService+<GetAllChiPhiKhoiTaoPaging>d__2, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-28T16:19:01.2755923+07:00 0HLIL2A08J2IA:00000005 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.ChiPhiController.ChiPhiKhoiTaGetList (NiTiErp)" in 39.1348ms (afa2e885)
+2018-11-28T16:19:01.2799821+07:00 0HLIL2A08J2IA:00000005 [INF] Request finished in 45.6874ms 200 application/json; charset=utf-8 (791a596a)

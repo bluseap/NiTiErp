@@ -162,6 +162,43 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        [HttpPost]
+        public IActionResult DeleteChiPhiKhoiTao(ChiPhiKhoiTaoViewModel chiphikhoitaoVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                if (chiphikhoitaoVm.InsertChiPhiKhoiTaoId == 3)
+                {
+                    var username = User.GetSpecificClaim("UserName");
+                    chiphikhoitaoVm.CreateBy = username;
+                    chiphikhoitaoVm.CreateDate = DateTime.Now;
+                    chiphikhoitaoVm.UpdateBy = username;
+                    chiphikhoitaoVm.UpdateDate = DateTime.Now;
+                    chiphikhoitaoVm.KyKhoiTao = DateTime.Now;
+
+                    var result = _authorizationService.AuthorizeAsync(User, "LUONGCHIPHI", Operations.Delete); // xoa chi phi khoi tao
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền xóa."));
+                    }
+                  
+                    var chiphikhoitao = _chiphikhoitaoService.ChiPhiKhoiTaoAUD(chiphikhoitaoVm, "DelChiPhiKhoiTao");
+
+                    return new OkObjectResult(chiphikhoitao);
+                }
+                else
+                {
+                    return new OkObjectResult(chiphikhoitaoVm);
+                }
+            }
+        }
+
+
         #region Danh mục chi phi luong
 
         [HttpGet]

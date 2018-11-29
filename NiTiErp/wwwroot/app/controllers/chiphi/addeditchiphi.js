@@ -14,6 +14,7 @@
         
         $('#btnSaveChiPhi').on('click', function (e) {  
             e.preventDefault();            
+            var insertchiphikhoitaoidmoi = $('#hidInsertChiPhiKhoiTaoId').val();
 
             var makhuvuc = $("#ddlAddEditKhuVuc").val();
             var thang = $("#ddlAddEditThang").val();
@@ -21,45 +22,52 @@
             var loaichiphi = $("#ddlAddEditLoaiChiPhi").val();
             var dotin = $("#ddlAddEditDotIn").val();
 
-            if (loaichiphi === "%" || dotin === "%") {
-                tedu.notify("Chọn loại chi phí cho đúng. Kiểm tra lại!","error");
-            }
-            else {
-                $.ajax({
-                    type: 'GET',
-                    url: '/admin/khoaso/GetLockLuongKyId',
-                    data: {
-                        makhuvuc: makhuvuc,
-                        thang: thang,
-                        nam: nam,
-                        dotinluongid: dotin
-                    },
-                    dataType: "json",
-                    beforeSend: function () {
-                        tedu.startLoading();
-                    },
-                    success: function (response) {
-                        lockluong = response.Result[0];
+            if (insertchiphikhoitaoidmoi === "1") {
+                if (loaichiphi === "%" || dotin === "%") {
+                    tedu.notify("Chọn loại chi phí cho đúng. Kiểm tra lại!", "error");
+                }
+                else {
+                    $.ajax({
+                        type: 'GET',
+                        url: '/admin/khoaso/GetLockLuongKyId',
+                        data: {
+                            makhuvuc: makhuvuc,
+                            thang: thang,
+                            nam: nam,
+                            dotinluongid: dotin
+                        },
+                        dataType: "json",
+                        beforeSend: function () {
+                            tedu.startLoading();
+                        },
+                        success: function (response) {
+                            lockluong = response.Result[0];
 
-                        if (response.Result.length === 0) {
-                            tedu.notify("Kỳ này chưa khởi tạo. Kiểm tra lại.", "error");
-                        }
-                        else {
-                            if (lockluong.IsLockLuongDotInKy === "False") {
-                                SaveKhoiTaoChiPhi();
+                            if (response.Result.length === 0) {
+                                tedu.notify("Kỳ này chưa khởi tạo. Kiểm tra lại.", "error");
                             }
-                            else if (lockluong.IsLockLuongDotInKy === "True") {
-                                tedu.notify('Lương tháng đã khóa sổ. Kiểm tra lại.', 'error');
+                            else {
+                                if (lockluong.IsLockLuongDotInKy === "False") {
+                                    SaveKhoiTaoChiPhi();
+                                }
+                                else if (lockluong.IsLockLuongDotInKy === "True") {
+                                    tedu.notify('Lương tháng đã khóa sổ. Kiểm tra lại.', 'error');
+                                }
                             }
+
+                        },
+                        error: function (status) {
+                            console.log(status);
+                            tedu.notify('Khóa sổ lương tháng đợ in.', 'error');
                         }
-                        
-                    },
-                    error: function (status) {
-                        console.log(status);
-                        tedu.notify('Khóa sổ lương tháng đợ in.', 'error');
-                    }
-                });                
+                    });
+                }
             }
+
+            if (insertchiphikhoitaoidmoi === "2") {
+                UpdateKhoiTaoChiPhi();
+            }
+
         });
 
         $("#ddl-show-pageKhoiTaoChiPhi").on('change', function () {
@@ -90,7 +98,7 @@
             e.preventDefault();          
             $('#hidInsertChiPhiKhoiTaoId').val(3); // delete   
             var khoitaochiphi = $(this).data('id');
-            loadDeleteChiPhiKhoiTao(khoitaochiphi);
+            deleteChiPhiKhoiTao(khoitaochiphi);
         }); 
 
     }
@@ -158,6 +166,7 @@
                                 $('#modal-add-edit-ChiPhi').modal('hide');
                                 resetFormAddEditChiPhiKhoiTao();
                                 tedu.notify('Khởi tạo chi phí thành công.', 'success');
+                                loadTableChiPhiKhoiTao();
                             }
                         },
                         error: function () {
@@ -177,6 +186,53 @@
                 tedu.stopLoading();
             }
         });        
+
+    }
+
+    function UpdateKhoiTaoChiPhi() {
+        var insertchiphikhoitaoidmoi = $('#hidInsertChiPhiKhoiTaoId').val();
+
+        var chiphikhoitaoid = $('#hidChiPhiKhoiTaoId').val();
+        var makhuvuc = $("#ddlAddEditKhuVuc").val();
+        var thang = $("#ddlAddEditThang").val();
+        var nam = $("#txtAddEditNam").val();
+        var kykhoitao = tedu.getFormatDateYYMMDD("01/" + thang + "/" + nam);
+        //var dotin = $("#ddlAddEditDotIn").val();
+        var loaichiphi = $("#ddlAddEditLoaiChiPhi").val();
+        var chuyenkysau = $('#ckAddEditChuyenKySau').prop('checked') === true ? "True" : "False";
+
+        $.ajax({
+            type: "POST",
+            url: "/Admin/chiphi/AddUpdateChiPhi",
+            data: {
+                Id: chiphikhoitaoid,
+                InsertChiPhiKhoiTaoId: insertchiphikhoitaoidmoi,
+                CorporationId: makhuvuc,
+                KyKhoiTao: nam + "/" + thang + "/01",
+                ChiPhiId: loaichiphi,
+                IsChuyenKy: chuyenkysau
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Success === false) {
+                    tedu.notify(response.Message, "error");
+                }
+                else {
+                    tedu.stopLoading();
+                    $('#modal-add-edit-ChiPhi').modal('hide');
+                    resetFormAddEditChiPhiKhoiTao();
+                    tedu.notify('Sửa khởi tạo chi phí thành công.', 'success');
+                    loadTableChiPhiKhoiTao();
+                }
+            },
+            error: function () {
+                tedu.notify('Lỗi khởi tạo chi phí.', 'error');
+                tedu.stopLoading();
+            }
+        });
 
     }
 
@@ -347,11 +403,10 @@
     function loadDeleteChiPhiKhoiTao(chiphikhoitaoid) {
         var insertchiphikhoitao = $('#hidInsertChiPhiKhoiTaoId').val(); // 3
         //tedu.notify(inserkhenthuong);
-
-        tedu.confirm('Bạn có chắc chắn xóa bằng này?', function () {
+        tedu.confirm('Bạn có chắc chắn xóa này?', function () {
             $.ajax({
                 type: "POST",
-                url: "/Admin/chiphi/DeleteKhenThuong",
+                url: "/Admin/chiphi/DeleteChiPhiKhoiTao",
                 data: {
                     Id: chiphikhoitaoid,
                     InsertChiPhiKhoiTaoId: insertchiphikhoitao // 3
@@ -364,15 +419,62 @@
                     tedu.notify('Xóa thành công', 'success');
                     tedu.stopLoading();
 
-                    $('#hidInsertQDKTIdId').val(0);
+                    $('#hidInsertChiPhiKhoiTaoId').val(1);
 
-                    loadTableKhenThuong(true);
+                    loadTableChiPhiKhoiTao(true);
                 },
                 error: function (status) {
-                    tedu.notify('Xóa Quyết định Khen thưởng lỗi! Kiểm tra lại.', 'error');
+                    tedu.notify('Xóa chi phí khởi tạo lỗi! Kiểm tra lại.', 'error');
                     tedu.stopLoading();
                 }
             });
+        });
+    }
+
+    function deleteChiPhiKhoiTao(khoitaochiphi) {
+        var nammoi = $('#txtAddEditNam').val();
+        var thangmoi = $('#ddlAddEditThang').val();
+        var makv = $('#ddlAddEditKhuVuc').val();
+
+        $.ajax({
+            type: "GET",
+            url: "/Admin/chiphi/ChiPhiKhoiTaKyId",
+            data: {
+                chiphikhoitaoId: khoitaochiphi,
+                nam: nammoi,
+                thang: thangmoi,
+                corporationId: makv,
+                keyword: "%",
+                page: tedu.configs.pageIndex,
+                pageSize: tedu.configs.pageSize
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var chiphikhoitao = response.Result.Results[0];
+
+                if (response.Result.Results.length === 0) {
+                    tedu.notify("Lỗi! Chi phí khởi tạo. Kiểm tra lại.", "error");
+                }
+                else {                    
+                    var chiphiid = chiphikhoitao.ChiPhiId;
+                    loadDeleteChiPhiKhoiTao(khoitaochiphi);
+                    //if (chiphiid === 1 || chiphiid === 2 || chiphiid === 3) {
+                    //    tedu.notify("Không được xóa. Chi phí Bảo hiễm xã hội.", "error");
+                    //}
+                    //else {
+                    //    loadDeleteChiPhiKhoiTao(khoitaochiphi);
+                    //}                   
+                }
+
+                tedu.stopLoading();
+            },
+            error: function (status) {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
         });
     }
 

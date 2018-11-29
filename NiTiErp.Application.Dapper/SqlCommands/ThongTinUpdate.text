@@ -47,13 +47,19 @@ create table LuongKyHieuChamCong
 
 create table LuongBaoHiem
 
+create table LuongBaoHiemHis
+
 create table LuongThemGio
 
 create table LuongCaBa
 
 create table ChiPhiKhoiTao
 
+create table ChiPhiKhoiTaoHis
+
 create table ChiPhi
+
+create table ChiPhiHis
 
 create table ChiPhiLoai
 
@@ -61,7 +67,11 @@ create table ChiPhiBangDanhMuc
 
 create table LuongCPGiam
 
+create table LuongCPGiamHis
+
 create table LuongCPTang
+
+create table LuongCPTangHis
 
 create table LuongTongHop
 
