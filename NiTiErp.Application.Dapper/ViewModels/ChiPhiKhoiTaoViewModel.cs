@@ -7,12 +7,14 @@ namespace NiTiErp.Application.Dapper.ViewModels
 {
     public class ChiPhiKhoiTaoViewModel
     {
-        public int Id { set; get; }
+        public Int64 Id { set; get; }
 
         [StringLength(50)]
         public string KETQUA { set; get; }
 
         public int InsertChiPhiKhoiTaoId { set; get; }
+
+        public int InsertChiPhiTangGiamId { set; get; }
 
         public int Nam { set; get; }
 
@@ -23,6 +25,8 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
         [StringLength(200)]
         public string TenChiPhi { get; set; }
+
+        public decimal ChiPhiKhac { get; set; }
 
 
         [StringLength(150)]

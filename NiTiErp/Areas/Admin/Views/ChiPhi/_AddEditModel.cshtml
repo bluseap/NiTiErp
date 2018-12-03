@@ -72,8 +72,9 @@
                                         <thead>
                                             <tr>
                                                 <th>Kỳ khởi tạo</th>
-                                                <th>Loại chi phí</th>                                              
-                                                <th>Chuyển kỳ sau</th>                                           
+                                                <th>Loại chi phí</th>
+                                                <th>Số tiền / Hệ số</th>
+                                                <th>Chuyển kỳ sau</th>
                                                 <th width="=20%"> </th>
                                             </tr>
                                         </thead>
@@ -107,8 +108,9 @@
                     <script id="table-KhoiTaoChiPhi" type="x-tmpl-mustache">
                         <tr>
                             <td>{{KyKhoiTao}}</td>
-                            <td>{{TenChiPhi}}</td>                           
-                            <td>{{IsChuyenKy}}</td>                            
+                            <td>{{TenChiPhi}}</td>
+                            <td>{{ChiPhiKhac}}</td>
+                            <td>{{IsChuyenKy}}</td>
                             <th scope="row">
                                 <a class="btn btn-success btn-editKhoiTaoChiPhi" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa chi phí khởi tạo">
                                     <i class="fa fa-pencil"></i>
@@ -117,7 +119,7 @@
                                 <a class="btn btn-danger btn-deleteKhoiTaoChiPhi" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xóa Khởi tạo ">
                                     <i class="fa fa-trash-o"></i>
                                     Xóa
-                                </a>                                
+                                </a>
                             </th>
                         </tr>
                     </script>

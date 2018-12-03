@@ -266,6 +266,7 @@
                             Id: item.Id,
                             KyKhoiTao: tedu.getFormattedDateYYYYMM(item.KyKhoiTao),
                             TenChiPhi: item.TenChiPhi,
+                            ChiPhiKhac: item.ChiPhiKhac,
                             IsChuyenKy: item.IsChuyenKy === true ? 'Có' : 'Không'    
                             //CreateDate: tedu.getFormattedDate(item.CreateDate),
                             //Status: tedu.getHoSoNhanVienStatus(item.Status)

@@ -121,6 +121,22 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult ChiPhiLuongId(Int64 Id, int nam, int thang, string corporationId, string phongdanhmucId, string keyword, int chiphiid,
+            bool IsChiPhiTang, int page, int pageSize)
+        {
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var maphong = !string.IsNullOrEmpty(phongdanhmucId) ? phongdanhmucId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+
+            var hosoId = new Guid();
+
+            var model = _chiphiluongService.GetAllChiPhiLuongPaging(Id, nam, thang, khuvuc, maphong, keyword, hosoId, chiphiid, 1, 1
+                , IsChiPhiTang, 1, 1, true, "", page, pageSize, "LoaiChiPhiTangGiamId");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
         public IActionResult ChiPhiKhoiTaGetList(int nam, int thang, string corporationId, string keyword, int page, int pageSize)
         {
             var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";           

@@ -161,6 +161,14 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        [HttpGet]
+        public IActionResult GetChiPhiId(int chiphiId)
+        {
+            var model = _chiphiService.GetAllChiPhiPaging(chiphiId, "", "", 1, 1000, false, 1, 1, "", "", "GetChiPhiId");
+
+            return new OkObjectResult(model);
+        }
+
 
         #region Danh muc
 

@@ -42,6 +42,24 @@
             loadTableChiPhiLuongTangGiam(true);
         });
 
+        $('body').on('click', '.btn-editChiPhi', function (e) {
+            e.preventDefault();           
+
+            $('#hidInsertChiPhiTangGiamId').val(2); // update         
+
+            var chiphitanggiamid = $(this).data('id');
+
+            $('#hidChiPhiTangGiamId').val(chiphitanggiamid);
+
+            loadChiPhiTangGiam(chiphitanggiamid);
+            
+        });
+
+        $('body').on('click', '.btnSaveChiPhiSoTien', function (e) {
+            e.preventDefault();
+            SaveChiPhiSoTien();
+        });
+
         $('#btnXuatExcelChiPhi').on('click', function () {
             tedu.notify('Xuất excel.', 'success');
         });          
@@ -275,13 +293,18 @@
             },
             url: '/admin/chiphi/ChiPhiLuongGetList',
             dataType: 'json',
-            success: function (response) {
+            success: function (response) {                
                 if (response.Result.Results.length === 0) {
                     render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
                 }
                 else {
+                    $('#hidFormThang').val(thangmoi);
+                    $('#hidFormNam').val(nammoi);
+                    $('#hidChiPhiId').val(chiphiidmoi);
+
                     $.each(response.Result.Results, function (i, item) {
                         render += Mustache.render(template, {
+                            Id: item.Id,
                             KyChiPhi: item.KyChiPhi,
                             TenNhanVien: item.TenNhanVien,
                             TenKhuVuc: item.TenKhuVuc,
@@ -338,5 +361,79 @@
             }
         });
     }   
+
+    function loadChiPhiTangGiam(chiphitanggiamid) {
+        var thangform = $('#hidFormThang').val();
+        var namform = $('#hidFormNam').val();
+        var chiphiform = $('#hidChiPhiId').val();
+
+        $.ajax({
+            type: 'GET',
+            data: {
+                Id: chiphitanggiamid,
+                nam: namform,
+                thang: thangform,
+                corporationId: '%',
+                phongdanhmucId: '%',
+                keyword: "%",
+                chiphiid: chiphiform,
+                IsChiPhiTang: "True",
+                page: tedu.configs.pageIndex,
+                pageSize: tedu.configs.pageSize
+            },
+            url: '/admin/chiphi/ChiPhiLuongId',
+            dataType: 'json',
+            success: function (response) {
+                var chiphitanggiam = response.Result.Results[0];
+
+                $('#txtChiPhiSoTienSoTien').val('');
+
+                if (response.Result.Results.length === 0) {
+                    tedu.notify("Không có dữ liệu.", "error");
+                }
+                else {
+                    //tedu.notify("ok ok","success");
+                    $.ajax({
+                        type: "GET",
+                        url: "/Admin/chiphidm/GetChiPhiId",
+                        data: { chiphiId: chiphiform },
+                        dataType: "json",
+                        beforeSend: function () {
+                            tedu.startLoading();
+                        },
+                        success: function (response) {
+                            var chiphi = response.Result.Results[0];
+
+                            if (chiphi.ChiPhiBangDanhMucId === 1) {
+                                tedu.notify("ok ok222", "success");
+                                $('#hidInsertChiPhiTangGiamId').val(2); // update chi phi luong tang giam
+
+                                $('#hidChiPhiTangGiamId').val(chiphitanggiam.Id);
+                                $('#txtChiPhiSoTienSoTien').val(chiphitanggiam.TongTienChiPhitangGiam);
+                                $('#modal-add-edit-ChiPhiSoTien').modal('show');
+                            }
+                            else {
+                                tedu.notify("Chi phí không được sửa. Kiểm tra lại.", "error");
+                            }
+
+                            tedu.stopLoading();
+                        },
+                        error: function (status) {
+                            tedu.notify('Có lỗi xảy ra', 'error');
+                            tedu.stopLoading();
+                        }
+                    });
+                }                
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+
+    function SaveChiPhiSoTien() {
+
+    }
 
 }

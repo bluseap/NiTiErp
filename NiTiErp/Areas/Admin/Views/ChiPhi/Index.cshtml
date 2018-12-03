@@ -49,8 +49,8 @@
                 </small>
             </div>
             <div class="title_right">
-                <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
-                    <button class="btn btn-round btn-warning" id="btn-create" type="button">Tạo mới Chi phí</button>
+                <div class="col-md-4 col-sm-4 col-xs-12 form-group pull-right top_search">
+                    <button class="btn btn-round btn-warning" id="btn-create" type="button">Tạo mới / Sửa Chi phí</button>
                 </div>
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                     <div class="input-group">
@@ -151,10 +151,18 @@
                 <div class="clearfix"></div>
                 <div class="row">
                     <div class="x_panel">
+                        <input type="hidden" id="hidFormHoSoId" value="" />
+                        <input type="hidden" id="hidFormThang" value="" />
+                        <input type="hidden" id="hidFormNam" value="" />
+                        <input type="hidden" id="hidChiPhiId" value="" />
+                        <input type="hidden" id="hidChiPhiTangGiamId" value="" />
+
+                        <input type="hidden" id="hidInsertChiPhiTangGiamId" value="" />
+
                         <div class="row no-print">
                             @*<div class="col-xs-12">
-                                <button class="btn btn-info pull-right" id="btnXuatExcel" style="margin-right: 5px;"><i class="fa fa-download"></i> Xuất Excel</button>
-                            </div>*@
+                <button class="btn btn-info pull-right" id="btnXuatExcel" style="margin-right: 5px;"><i class="fa fa-download"></i> Xuất Excel</button>
+            </div>*@
                         </div>
                         <div class="table-responsive" id="table-responsiveChiPhi">
                             <table id="tblChiPhi" class="table table-striped jambo_table bulk_action" cellspacing="0">
@@ -221,6 +229,7 @@
     </div>
 
 <partial name="_AddEditModel.cshtml" />
+<partial name="_ChiPhiSoTien.cshtml" />
 
 
 
