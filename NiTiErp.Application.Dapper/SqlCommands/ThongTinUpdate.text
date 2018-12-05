@@ -4,13 +4,25 @@ create procedure [ChiPhiAUD]
 
 create procedure [ChiPhiGetList]
 
+create procedure [ChiPhiKhoiTaoAUD]
+
+create procedure [ChiPhiKhoiTaoGetList]
+
+create procedure [ChiPhiLuongAUD]
+
+create procedure [ChiPhiLuongGetList]
+
+create procedure [LockBangGetList]
+
 create procedure [LockLuongDotInAUD]
 
-create procedure LockLuongDotInGetList
+create procedure [LockLuongDotInGetList]
 
 create procedure [LuongBaoHiemAUD]
 
 create procedure [LuongBaoHiemGetList]
+
+create procedure [LuongCongNgayPara]
 
 
 update procedure [BangDanhMucGetList]
@@ -76,6 +88,14 @@ create table LuongCPTangHis
 create table LuongTongHop
 
 create table LuongTongHopAll
+
+create table LuongDotInKy
+
+create table LuongKyHieuChamCong
+
+create table LuongPhepNam
+
+create table LuongPhepGio
 
 create table LockLuongThang
 
@@ -219,7 +239,7 @@ insert value genegic value from [ChiPhiBangDanhMuc] database
 
 
 update DieuKienTim set TenDieuKien = N'DS Bảng lương Nhân viên đóng BHXH', BangDieuKien = N'LuongBaoHiem', Active = 1, Stt = 9 where Id=9
-update DieuKienTim set TenDieuKien = N'DS Bảng chi phí lương', BangDieuKien = N'ChiPhi', Active = 1, Stt = 10 where Id=10
+update DieuKienTim set TenDieuKien = N'DS Bảng chi phí lương (theo loại chi phí)', BangDieuKien = N'ChiPhi', Active = 1, Stt = 10 where Id=10
 
 
 INSERT INTO [dbo].[LuongDotInKy]           ([Id]           ,[Nam]           ,[Thang]           ,[CorporationId]

@@ -58,7 +58,7 @@
                         },
                         error: function (status) {
                             console.log(status);
-                            tedu.notify('Khóa sổ lương tháng đợ in.', 'error');
+                            tedu.notify('Khóa sổ lương tháng đợt in.', 'error');
                         }
                     });
                 }

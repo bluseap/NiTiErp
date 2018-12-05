@@ -79,5 +79,84 @@ namespace NiTiErp.Application.Dapper.Implementation
             }
         }
 
+        public List<ChiPhiLuongViewModel> GetListChiPhiLuong(Int64 chiphitanggiamId, int nam, int thang, string corporationId
+            , string phongdanhmucId, string keyword, Guid hosonhanvienId, int chiphiId, int luongdotinkyId, decimal tongtienchiphitanggiam
+            , bool IsChiPhiTang, int ChiPhiLoaiId, int ChiPhiBangDanhMucId, bool IsChuyenKy, string ghichu, int page, int pageSize, string parameters)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+               
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@chiphitanggiamId", chiphitanggiamId);
+                dynamicParameters.Add("@nam", nam);
+                dynamicParameters.Add("@thang", thang);
+                dynamicParameters.Add("@corporationId", corporationId);
+
+                dynamicParameters.Add("@phongdanhmucId", phongdanhmucId);
+                dynamicParameters.Add("@keyword", keyword);
+                dynamicParameters.Add("@hosonhanvienId", hosonhanvienId);
+                dynamicParameters.Add("@chiphiId", chiphiId);
+                dynamicParameters.Add("@luongdotinkyid", luongdotinkyId);
+                dynamicParameters.Add("@tongtienchiphitanggiam", tongtienchiphitanggiam);
+
+                dynamicParameters.Add("@IsChiPhiTang", IsChiPhiTang);
+                dynamicParameters.Add("@ChiPhiLoaiId", ChiPhiLoaiId);
+                dynamicParameters.Add("@ChiPhiBangDanhMucId", ChiPhiBangDanhMucId);
+                dynamicParameters.Add("@IsChuyenKy", IsChuyenKy);
+                dynamicParameters.Add("@ghichu", ghichu);
+
+                dynamicParameters.Add("@parameters", parameters);
+                try
+                {
+                    var chiphiluong = sqlConnection.Query<ChiPhiLuongViewModel>(
+                        "ChiPhiLuongGetList", dynamicParameters, commandType: CommandType.StoredProcedure);
+
+                    return chiphiluong.ToList();
+
+                    //_productRepository.FindAll(x => x.ProductCategory).ProjectTo<ProductViewModel>().ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<Boolean> ChiPhiTangGiamAUD(ChiPhiLuongViewModel chiphiluong, string parameters)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@chiphitanggiamId", chiphiluong.Id);
+
+                dynamicParameters.Add("@Nam", chiphiluong.Nam);
+                dynamicParameters.Add("@Thang", chiphiluong.Thang);
+                dynamicParameters.Add("@HoSoNhanVienId", chiphiluong.HoSoNhanVienId);                
+                dynamicParameters.Add("@ChiPhiId", chiphiluong.ChiPhiId);
+                dynamicParameters.Add("@TienChiPhiTangGiam", chiphiluong.TongTienChiPhitangGiam);
+
+                dynamicParameters.Add("@CreateDate", chiphiluong.CreateDate);
+                dynamicParameters.Add("@CreateBy", chiphiluong.CreateBy);
+                dynamicParameters.Add("@UpdateDate", chiphiluong.UpdateDate);
+                dynamicParameters.Add("@UpdateBy", chiphiluong.UpdateBy);
+
+                dynamicParameters.Add("@parameters", parameters);
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<ChiPhiLuongViewModel>(
+                        "ChiPhiLuongAUD", dynamicParameters, commandType: CommandType.StoredProcedure);
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
     }
 }

@@ -13,6 +13,8 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
         public int Thang { set; get; }
 
+        public int InsertChiPhiTangGiamId { set; get; }
+
         public Guid HoSoNhanVienId { set; get; }
         
 
@@ -32,7 +34,13 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
         [StringLength(1000)]
         public string TenPhong { get; set; }
-               
+
+        [StringLength(20)]
+        public string ChucVuNhanVienId { get; set; }
+
+        [StringLength(1000)]
+        public string TenChucVu { get; set; }
+
         public int ChiPhiId { get; set; }
 
         [StringLength(200)]
