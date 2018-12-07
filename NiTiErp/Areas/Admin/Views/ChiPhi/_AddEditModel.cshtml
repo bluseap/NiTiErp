@@ -112,9 +112,13 @@
                             <td>{{ChiPhiKhac}}</td>
                             <td>{{IsChuyenKy}}</td>
                             <th scope="row">
+                                <a class="btn btn-primary btn-ChiPhiDanhSach" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Danh sách nhân viên">
+                                    <i class="fa fa-list"></i>
+                                    Danh sách
+                                </a>
                                 <a class="btn btn-success btn-editKhoiTaoChiPhi" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa chi phí khởi tạo">
                                     <i class="fa fa-pencil"></i>
-                                    Sửa chi phí khởi tạo
+                                    Sửa chi phí 
                                 </a>
                                 <a class="btn btn-danger btn-deleteKhoiTaoChiPhi" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xóa Khởi tạo ">
                                     <i class="fa fa-trash-o"></i>
@@ -128,3 +132,6 @@
         </div>
     </div>
 </div>
+
+<partial name="_ChiPhiDanhSach.cshtml" />
+

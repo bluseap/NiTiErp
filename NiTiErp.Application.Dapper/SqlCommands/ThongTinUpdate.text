@@ -221,8 +221,6 @@ INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[T
 VALUES           ( 'KO','KO', N'Không'		, 1, 1, 99, 'admin', Getdate()	 )
 
 
-
-
 insert value genegic value from [ChiPhi] database
 
 insert value genegic value from [ChiPhiLoai] database
@@ -235,7 +233,6 @@ insert value genegic value from [ChiPhiBangDanhMuc] database
 
 //INSERT INTO [dbo].[ChiPhiLoai]    ([Id]    ,[TenLoai]     ,[Status]     ,[Active]      ,[Stt]       ,[CreateDate]      ,[CreateBy]      )
 //     VALUES ( 2, N'Tiền ăn', 1, 1, 2	 , getdate(), 'admin'	 )
-
 
 
 update DieuKienTim set TenDieuKien = N'DS Bảng lương Nhân viên đóng BHXH', BangDieuKien = N'LuongBaoHiem', Active = 1, Stt = 9 where Id=9
@@ -263,7 +260,6 @@ INSERT INTO [dbo].[LuongDotInKy]           ([Id]           ,[Nam]           ,[Th
      VALUES           ( 4           , 2018,            10            , N'PO'
            , N'Đợt 2'      ,           1           ,1, 2 		   , 'admin', getdate() )
 */
-
 
 
 

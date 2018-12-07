@@ -468,6 +468,9 @@ namespace NiTiErp.Areas.Admin.Controllers
                         var tongtienchiphigiam = chiphiluongDetail.Sum(p => p.TongTienChiPhitangGiam);
                         worksheet.Cells[13, 2].Value = "Bằng chữ: " + TextHelper.ToString(tongtienchiphigiam).Trim();
 
+
+                        worksheet.Cells[11, 5].Value = chiphiluongDetail.Count().ToString() + " người";
+
                         worksheet.InsertRow(10, chiphiluongDetail.Count());
 
                         foreach (var dtlnvDetail in chiphiluongDetail)
@@ -505,18 +508,32 @@ namespace NiTiErp.Areas.Admin.Controllers
                             worksheet.Cells[rowIndex, 5].Style.Font.Size = 9;
                             worksheet.Cells[rowIndex, 5].Value = !string.IsNullOrEmpty(dtlnvDetail.TenChucVu) ? dtlnvDetail.TenChucVu.ToString() : "";
 
-                            worksheet.Cells[rowIndex, 6].Value = dtlnvDetail.TongTienChiPhitangGiam;
                             worksheet.Cells[rowIndex, 6].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 6].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 6].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 6].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
-                            worksheet.Cells[rowIndex, 6].Style.Font.Size = 10;
+                            worksheet.Cells[rowIndex, 6].Style.Font.Size = 9;
+                            worksheet.Cells[rowIndex, 6].Value = dtlnvDetail.SoNgayAn;
 
-                            //worksheet.Cells[rowIndex, 23].Value = !string.IsNullOrEmpty(hdDetail.HuongDieuTri) ? hdDetail.HuongDieuTri.ToString() : "";
                             worksheet.Cells[rowIndex, 7].Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                            worksheet.Cells[rowIndex, 7].Style.Border.Right.Style = ExcelBorderStyle.Medium;
+                            worksheet.Cells[rowIndex, 7].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                             worksheet.Cells[rowIndex, 7].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                             worksheet.Cells[rowIndex, 7].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                            worksheet.Cells[rowIndex, 7].Style.Font.Size = 9;
+                            worksheet.Cells[rowIndex, 7].Value = dtlnvDetail.TienChiPhiKhac;
+
+                            worksheet.Cells[rowIndex, 8].Value = dtlnvDetail.TongTienChiPhitangGiam;
+                            worksheet.Cells[rowIndex, 8].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                            worksheet.Cells[rowIndex, 8].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                            worksheet.Cells[rowIndex, 8].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                            worksheet.Cells[rowIndex, 8].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                            worksheet.Cells[rowIndex, 8].Style.Font.Size = 10;
+
+                            //worksheet.Cells[rowIndex, 23].Value = !string.IsNullOrEmpty(hdDetail.HuongDieuTri) ? hdDetail.HuongDieuTri.ToString() : "";
+                            worksheet.Cells[rowIndex, 9].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                            worksheet.Cells[rowIndex, 9].Style.Border.Right.Style = ExcelBorderStyle.Medium;
+                            worksheet.Cells[rowIndex, 9].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                            worksheet.Cells[rowIndex, 9].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
 
                             //worksheet.Cells[rowIndex, 6].Value = hdDetail.NgayHetHan != null ? hdDetail.NgayHetHan.Date.ToString("dd/M/yyyy", CultureInfo.InvariantCulture) : "";
                             //worksheet.Cells[rowIndex, 5].Value = hdDetail.NgaySinh != null ? hdDetail.NgaySinh.Date.ToString("dd/M/yyyy", CultureInfo.InvariantCulture) : "";

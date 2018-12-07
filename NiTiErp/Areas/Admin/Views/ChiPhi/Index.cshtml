@@ -19,15 +19,15 @@
     <script src="~/lib/jQuery-EasyUI/datagrid-cellediting.js" asp-append-version="true"></script>
     <script src="~/lib/jQuery-EasyUI/datagrid-export.js" asp-append-version="true"></script>
 
-
+    <script src="~/app/controllers/chiphi/chiphidanhsach.js" asp-append-version="true"></script>
     <script src="~/app/controllers/chiphi/addeditchiphi.js" asp-append-version="true"></script>
     <script src="~/app/controllers/chiphi/index.js" asp-append-version="true"></script>
     <script>
         var chiphi = new chiphiController();
         chiphi.initialize();
 
-            //var congngay = new congngaymoi.loadDataData();
-            //var data = congngay.datatablecongngay;
+                //var congngay = new congngaymoi.loadDataData();
+                //var data = congngay.datatablecongngay;
 
     </script>
     @*<script src="~/app/controllers/congngay/bangcongngay.js" asp-append-version="true"></script>*@
@@ -35,200 +35,200 @@
 }
 
 
-    <div class="">
-        <div class="page-title">
-            <div class="title_left">
-                <small>
-                    <a class="btn btn-link ">
-                        Tiền lương
-                    </a>
-                    >>
-                    <a class="btn btn-link btnBangChiPhiLuong">
-                        Bảng chi phí lương
-                    </a>
-                </small>
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link ">
+                    Tiền lương
+                </a>
+                >>
+                <a class="btn btn-link btnBangChiPhiLuong">
+                    Bảng chi phí lương
+                </a>
+            </small>
+        </div>
+        <div class="title_right">
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group pull-right top_search">
+                <button class="btn btn-round btn-warning" id="btn-create" type="button">Tạo mới / Sửa Chi phí</button>
             </div>
-            <div class="title_right">
-                <div class="col-md-4 col-sm-4 col-xs-12 form-group pull-right top_search">
-                    <button class="btn btn-round btn-warning" id="btn-create" type="button">Tạo mới / Sửa Chi phí</button>
-                </div>
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                    <div class="input-group">
-                    </div>
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
                 </div>
             </div>
         </div>
-        <div class="clearfix"></div>
-        <div class="x_content">
-            <div class="">
-                <div class="page-title">
-                    <div class="title_left">
-                        <h3>  <small>Danh sách Bảng chi phí lương nhân viên</small></h3>
-                    </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="x_content">
+        <div class="">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>  <small>Danh sách Bảng chi phí lương nhân viên</small></h3>
+                </div>
 
-                    <div class="title_right">
-                        <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right">
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="txtNam" placeholder="Năm ">
-                            </div>
+                <div class="title_right">
+                    <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="txtNam" placeholder="Năm ">
                         </div>
-                        @*<div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right top_search">
+                    </div>
+                    @*<div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right top_search">
                             <div class="input-group">
                                 <label for="lbNam" class="control-label  ">Năm </label>
                             </div>
                         </div>*@
-                        <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right">
-                            <div class="input-group">
-                                <select id="ddlThang" class="form-control"></select>
-                            </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right">
+                        <div class="input-group">
+                            <select id="ddlThang" class="form-control"></select>
                         </div>
-                        @*<div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right top_search">
+                    </div>
+                    @*<div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right top_search">
                             <div class="input-group">
                                 <label for="lbThang" class="control-label  ">Tháng </label>
                             </div>
                         </div>*@
 
+                </div>
+            </div>
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>  <small></small></h3>
+                </div>
+                <div class="title_right">
+                    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right">
+                        <select id="ddlChiPhiDanhMuc" class="form-control"></select>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right">
+                        <label class="control-label pull-right">Loại chi phí</label>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right">
+                        <select id="ddlLuongDotIn" class="form-control"></select>
                     </div>
                 </div>
-                <div class="page-title">
-                    <div class="title_left">
-                        <h3>  <small></small></h3>
+            </div>
+            <div class="clearfix"></div>
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>  <small></small></h3>
+                </div>
+                <div class="title_right">
+                    <div class="col-md-5 col-sm-2 col-xs-12 form-group pull-right">
+                        <div class="input-group">
+                            <input type="text" id="txtTimNhanVien" class="form-control" placeholder="Từ khóa...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" id="btnTimNhanVien" type="button">Tìm !</button>
+                            </span>
+                        </div>
                     </div>
-                    <div class="title_right">
-                        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right">
-                            <select id="ddlChiPhiDanhMuc" class="form-control"></select>
+                    <div class="col-md-4 col-sm-2 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                            <select id="ddlPhongBan" class="form-control"></select>
                         </div>
-                        <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right">
-                            <label class="control-label pull-right">Loại chi phí</label>
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right">
-                            <select id="ddlLuongDotIn" class="form-control"></select>
+                    </div>
+                    <div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                            <select id="ddlKhuVuc" class="form-control"></select>
                         </div>
                     </div>
                 </div>
-                <div class="clearfix"></div>
-                <div class="page-title">
-                    <div class="title_left">
-                        <h3>  <small></small></h3>
-                    </div>
-                    <div class="title_right">
-                        <div class="col-md-5 col-sm-2 col-xs-12 form-group pull-right">
-                            <div class="input-group">
-                                <input type="text" id="txtTimNhanVien" class="form-control" placeholder="Từ khóa...">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-primary" id="btnTimNhanVien" type="button">Tìm !</button>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-2 col-xs-12 form-group pull-right top_search">
-                            <div class="input-group">
-                                <select id="ddlPhongBan" class="form-control"></select>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
-                            <div class="input-group">
-                                <select id="ddlKhuVuc" class="form-control"></select>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-md-2 col-sm-12 col-xs-12 form-group pull-right">
+                    <button class="btn btn-info pull-right" id="btnXuatExcelChiPhi" style="margin-right: 5px;">
+                        <i class="fa fa-download"></i>
+                        Xuất Excel
+                    </button>
                 </div>
-                <div class="clearfix"></div>
-                <div class="row">
-                    <div class="col-md-2 col-sm-12 col-xs-12 form-group pull-right">
-                        <button class="btn btn-info pull-right" id="btnXuatExcelChiPhi" style="margin-right: 5px;">
-                            <i class="fa fa-download"></i>
-                            Xuất Excel
-                        </button>
-                    </div>
-                    <div class="col-md-3 col-sm-12 col-xs-12 form-group pull-right">
-                        <select id="ddlDieuKienKhac" class="form-control"></select>
-                    </div>
-                    <div class="col-md-3 col-sm-12 col-xs-12 form-group pull-right">
-                        <label class="control-label pull-right">Điều kiện khác</label>
-                    </div>
+                <div class="col-md-3 col-sm-12 col-xs-12 form-group pull-right">
+                    <select id="ddlDieuKienKhac" class="form-control"></select>
+                </div>
+                <div class="col-md-3 col-sm-12 col-xs-12 form-group pull-right">
+                    <label class="control-label pull-right">Điều kiện khác</label>
+                </div>
 
-                </div>
-                <div class="clearfix"></div>
-                <div class="row">
-                    <div class="x_panel">
-                        <input type="hidden" id="hidFormHoSoId" value="" />
-                        <input type="hidden" id="hidFormThang" value="" />
-                        <input type="hidden" id="hidFormNam" value="" />
-                        <input type="hidden" id="hidChiPhiId" value="" />
-                        <input type="hidden" id="hidChiPhiTangGiamId" value="" />
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="x_panel">
+                    <input type="hidden" id="hidFormHoSoId" value="" />
+                    <input type="hidden" id="hidFormThang" value="" />
+                    <input type="hidden" id="hidFormNam" value="" />
+                    <input type="hidden" id="hidChiPhiId" value="" />
+                    <input type="hidden" id="hidChiPhiTangGiamId" value="" />
 
-                        <input type="hidden" id="hidInsertChiPhiTangGiamId" value="" />
-                        <input type="hidden" id="hidMaKhuVucId" value="" />
-                        <input type="hidden" id="hidDotInId" value="" />
+                    <input type="hidden" id="hidInsertChiPhiTangGiamId" value="" />
+                    <input type="hidden" id="hidMaKhuVucId" value="" />
+                    <input type="hidden" id="hidDotInId" value="" />
 
-                        <div class="row no-print">
-                            @*<div class="col-xs-12">
-                <button class="btn btn-info pull-right" id="btnXuatExcel" style="margin-right: 5px;"><i class="fa fa-download"></i> Xuất Excel</button>
-            </div>*@
-                        </div>
-                        <div class="table-responsive" id="table-responsiveChiPhi">
-                            <table id="tblChiPhi" class="table table-striped jambo_table bulk_action" cellspacing="0">
-                                <thead>
-                                    <tr>
-                                        <th width="=20%">#</th>
-                                        <th>Kỳ lương</th>
-                                        <th>Tên nhân viên</th>
-                                        <th>Khu vực</th>
-                                        <th>Phòng, tổ</th>
-                                        <th>Tên loại chi phí</th>
-                                        <th>Tổng tiền</th>
-                                        @*<th>Trạng thái</th>*@
-                                    </tr>
-                                </thead>
-                                <tbody id="tblContentChiPhi"></tbody>
-                            </table>
-                            <div class="row">
-                                <div class="col-sm-5">
-                                    <div class="dataTables_info" id="datatable-checkbox_infoChiPhi" role="status" aria-live="polite">
-                                        <select id="ddl-show-pageChiPhi">
-                                            <option value="10" selected="selected">10</option>
-                                            <option value="20">20</option>
-                                            <option value="30">30</option>
-                                            <option value="50">50</option>
-                                        </select>
-                                        <span class="item-per-page">
-                                            dòng/trang.
-                                        </span>
-                                        Tổng cộng: <strong id="lblChiPhiTotalRecords"></strong>
-                                    </div>
-                                </div><div class="col-sm-7">
-                                    <div class="dataTables_paginate" id="datatable-checkbox_paginateChiPhi">
-                                        <ul id="paginationULChiPhi"></ul>
-                                    </div>
+                    <div class="row no-print">
+                        @*<div class="col-xs-12">
+                                <button class="btn btn-info pull-right" id="btnXuatExcel" style="margin-right: 5px;"><i class="fa fa-download"></i> Xuất Excel</button>
+                            </div>*@
+                    </div>
+                    <div class="table-responsive" id="table-responsiveChiPhi">
+                        <table id="tblChiPhi" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th width="=20%">#</th>
+                                    <th>Kỳ lương</th>
+                                    <th>Tên nhân viên</th>
+                                    <th>Khu vực</th>
+                                    <th>Phòng, tổ</th>
+                                    <th>Tên loại chi phí</th>
+                                    <th>Tổng tiền</th>
+                                    @*<th>Trạng thái</th>*@
+                                </tr>
+                            </thead>
+                            <tbody id="tblContentChiPhi"></tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <div class="dataTables_info" id="datatable-checkbox_infoChiPhi" role="status" aria-live="polite">
+                                    <select id="ddl-show-pageChiPhi">
+                                        <option value="10" selected="selected">10</option>
+                                        <option value="20">20</option>
+                                        <option value="30">30</option>
+                                        <option value="50">50</option>
+                                    </select>
+                                    <span class="item-per-page">
+                                        dòng/trang.
+                                    </span>
+                                    Tổng cộng: <strong id="lblChiPhiTotalRecords"></strong>
+                                </div>
+                            </div><div class="col-sm-7">
+                                <div class="dataTables_paginate" id="datatable-checkbox_paginateChiPhi">
+                                    <ul id="paginationULChiPhi"></ul>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
 
         </div>
 
-        <script id="table-ChiPhi" type="x-tmpl-mustache">
-            <tr>
-                <th scope="row">
-                    <a class="btn btn-lg btn-editChiPhi" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa chi phí"><i class="fa fa-pencil"></i> </a>
-                    @*<a class="btn btn-lg btn-deleteChiPhiDM" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xóa chi phí">
-                <i class="fa fa-bitbucket"></i>
-            </a>*@
-                </th>
-                <td>{{KyChiPhi}}</td>
-                <td>{{TenNhanVien}}</td>
-                <td>{{TenKhuVuc}}</td>
-                <td>{{TenPhong}}</td>
-                <td>{{TenChiPhi}}</td>
-                <td>{{TongTienChiPhi}}</td>
-                @*<td>{{{Status}}}</td>*@
-            </tr>
-        </script>
-
     </div>
+
+    <script id="table-ChiPhi" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row">
+                <a class="btn btn-lg btn-editChiPhi" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa chi phí"><i class="fa fa-pencil"></i> </a>
+                @*<a class="btn btn-lg btn-deleteChiPhiDM" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xóa chi phí">
+                        <i class="fa fa-bitbucket"></i>
+                    </a>*@
+            </th>
+            <td>{{KyChiPhi}}</td>
+            <td>{{TenNhanVien}}</td>
+            <td>{{TenKhuVuc}}</td>
+            <td>{{TenPhong}}</td>
+            <td>{{TenChiPhi}}</td>
+            <td>{{TongTienChiPhi}}</td>
+            @*<td>{{{Status}}}</td>*@
+        </tr>
+    </script>
+
+</div>
 
 <partial name="_AddEditModel.cshtml" />
 <partial name="_ChiPhiSoTien.cshtml" />

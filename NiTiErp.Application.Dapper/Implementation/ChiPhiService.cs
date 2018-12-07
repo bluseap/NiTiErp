@@ -118,6 +118,7 @@ namespace NiTiErp.Application.Dapper.Implementation
                 dynamicParameters.Add("@ChiPhiBangDanhMucId", chiphi.ChiPhiBangDanhMucId);
                 dynamicParameters.Add("@GhiChu", chiphi.GhiChu);
 
+                dynamicParameters.Add("@SoNgayGio", chiphi.SoNgayCongXMucLuongNgay);
                 dynamicParameters.Add("@Stt", chiphi.Stt);
 
                 dynamicParameters.Add("@CreateDate", chiphi.CreateDate);

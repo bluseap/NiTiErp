@@ -77,28 +77,57 @@
                 });
                 $('#ddlKhuVuc').html(render);
                 $('#ddlAddEditKhuVuc').html(render);
+                $('#ddlChiPhiDanhSachTrucKhuVuc').html(render);
 
                 var userCorporationId = $("#hidUserCorporationId").val();
                 if (userCorporationId !== "PO") {
                     $('#ddlKhuVuc').prop('disabled', true);
                     $('#ddlAddEditKhuVuc').prop('disabled', true);
+                    $('#ddlChiPhiDanhSachTrucKhuVuc').prop('disabled', true);
                 }
                 else {
                     $('#ddlKhuVuc').prop('disabled', false);
                     $('#ddlAddEditKhuVuc').prop('disabled', false);
+                    $('#ddlChiPhiDanhSachTrucKhuVuc').prop('disabled', false);
                 }
 
                 $("#ddlKhuVuc")[0].selectedIndex = 1;
                 $("#ddlAddEditKhuVuc")[0].selectedIndex = 1;
+                $("#ddlChiPhiDanhSachTrucKhuVuc")[0].selectedIndex = 1;
 
                 loadPhongKhuVuc($("#ddlKhuVuc").val());
 
                 loadLuongDotInKy($("#ddlKhuVuc").val());
 
+                loadPhongKhuVucChiPhiDanhSach($("#ddlChiPhiDanhSachTrucKhuVuc").val());
+
             },
             error: function (status) {
                 console.log(status);
                 tedu.notify('Không có danh mục Công Ty.', 'error');
+            }
+        });
+    }
+
+    function loadPhongKhuVucChiPhiDanhSach(makhuvuc) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/hoso/GetListPhongKhuVuc',
+            data: { makv: makhuvuc },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >-- Lựa chọn --</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.TenPhong + "</option>";
+                });
+                $('#ddlChiPhiDanhSachTrucPhongBan').html(render);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh mục Phòng.', 'error');
             }
         });
     }

@@ -86,6 +86,9 @@
         $('#ddlAddEditTenChiPhiBang')[0].selectedIndex = 0;
         $('#txtAddEditSoTienHeSo').val(''); 
         $('#txtAddEditSoThuTu').val('1'); 
+
+        $('#txtAddEditSoTienHeSo').val('0'); 
+        $('#txtAddEditSoNgayGio').val('0'); 
     }
 
     function loadData() {
@@ -286,6 +289,7 @@
         var tenloaichiphi = $('#ddlAddEditTenLoaiChiPhi').val();
         var tenchiphi = $('#txtAddEditTenChiPhi').val();
         var tenchiphibangid = $('#ddlAddEditTenChiPhiBang').val();
+        var songaysogio = $('#txtAddEditSoNgayGio').val();
         var sotienheso = $('#txtAddEditSoTienHeSo').val();
         var sothutu = $('#txtAddEditSoThuTu').val();
 
@@ -305,6 +309,7 @@
                     ChiPhiLoaiId: tenloaichiphi,
                     TenChiPhi: tenchiphi,
                     ChiPhiBangDanhMucId: tenchiphibangid,
+                    SoNgayCongXMucLuongNgay: songaysogio,
                     ChiPhiKhac: sotienheso,
                     Stt: sothutu
                 },
@@ -344,6 +349,9 @@
         var tenloaichiphi = $('#ddlAddEditTenLoaiChiPhi').val();
         var tenchiphi = $('#txtAddEditTenChiPhi').val();
         var tenchiphibangid = $('#ddlAddEditTenChiPhiBang').val();
+
+        var songaysogio = $('#txtAddEditSoNgayGio').val();
+
         var sotienheso = $('#txtAddEditSoTienHeSo').val();
         var sothutu = $('#txtAddEditSoThuTu').val();
 
@@ -363,6 +371,7 @@
                     ChiPhiLoaiId: tenloaichiphi,
                     TenChiPhi: tenchiphi,
                     ChiPhiBangDanhMucId: tenchiphibangid,
+                    SoNgayCongXMucLuongNgay: songaysogio,
                     ChiPhiKhac: sotienheso,
                     Stt: sothutu
                 },
@@ -411,6 +420,7 @@
                 $('#txtAddEditTenChiPhi').val(chiphi.TenChiPhi);
                 $('#ddlAddEditTenChiPhiBang').val(chiphi.ChiPhiBangDanhMucId);
                 $('#txtAddEditSoTienHeSo').val(chiphi.ChiPhiKhac);
+                $('#txtAddEditSoNgayGio').val(chiphi.SoNgayCongXMucLuongNgay);
                 $('#txtAddEditSoThuTu').val(chiphi.Stt);             
                
                 tedu.stopLoading();

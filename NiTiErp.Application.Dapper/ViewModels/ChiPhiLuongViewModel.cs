@@ -52,6 +52,13 @@ namespace NiTiErp.Application.Dapper.ViewModels
         
         public int LuongDotInKyId { get; set; }
 
+        public decimal SoNgayCong { get; set; }
+
+        public decimal SoNgayAn { get; set; }
+
+        public decimal TienChiPhiKhac { get; set; }
+
+        public decimal SoNgayTrucLe { get; set; }
 
 
         public int Status { get; set; }
