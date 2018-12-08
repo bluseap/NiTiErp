@@ -8,12 +8,7 @@
             <div class="modal-body">
                 <div id="horizontal-form">
                     <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainChiPhiDanhSachTruc">
-                        <input type="hidden" id="hidDaoTaoDangKyId" value="" />
-
-                        <input type="hidden" id="hidDangKyDaoTaoNoiId" value="" />
-                        <input type="hidden" id="hidDangKyDaoTaoLopId" value="" />
-                        <input type="hidden" id="hidDangKyInserUpdate" value="" />
-
+                        <input type="hidden" id="hidChiPhiDanhSachChiPhiId" value="" />                        
                         
                         @*<div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
@@ -26,9 +21,9 @@
                 <div id="formChiPhiDanhSachTruc">
                     <form class="form-horizontal" role="form" id="frmMaintainanceChiPhiDanhSachTruc">
                         <div class="row no-print">
-                            <div class="col-xs-12">
+                            @*<div class="col-xs-12">
                                 <button type="button" class="btn btn-info pull-right" id="btnExcelChiPhiDanhSachTruc">Xuất Excel</button>
-                            </div>
+                            </div>*@
                         </div>
                         <table class="table table-bordered">
                             <thead>
@@ -70,11 +65,11 @@
                             <td>{{TenKhuVuc}}</td>
                             <td>{{TenPhong}}</td>
                             <td>{{TenChucVu}}</td>
-                            <td>{{SoNgayTrucLe}}</td>
+                            <td><input type="number" id="txtCPDSSoNgayTrucLe" class="txtCPDSSoNgayTrucLe form-control" value="{{SoNgayTrucLe}}" data-id="{{Id}}" /></td>                          
                             <th scope="row">
-                                <a class="btn btn-danger btn-deleteChiPhiDanhSachTruc" data-id="{{hosoId}}" data-toggle="tooltip" data-placement="top" title="Hủy nhân viên"><i class="fa fa-trash-o"></i> </a>
+                                <a class="btn btn-danger btn-deleteChiPhiDanhSachTruc" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Hủy nhân viên"><i class="fa fa-trash-o"></i> </a>
                             </th>
-                            <td><input type="hidden" class="hosoId form-control" value="{{hosoId}}" /></td>
+                            <td><input type="hidden" class="hosoId form-control" value="{{Id}}" /></td>
                         </tr>
                     </script>
                 </div>

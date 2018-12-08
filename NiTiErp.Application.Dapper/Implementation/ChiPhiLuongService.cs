@@ -158,5 +158,41 @@ namespace NiTiErp.Application.Dapper.Implementation
             }
         }
 
+        public async Task<List<ChiPhiLuongViewModel>> ChiPhiLuongListAUD(string Id, Guid HoSoNhanVienId, string userId, DateTime createDate,
+            string parameters)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@chiphitanggiamId", Id);
+
+                dynamicParameters.Add("@Nam", 2111);
+                dynamicParameters.Add("@Thang", 11);
+                dynamicParameters.Add("@HoSoNhanVienId", HoSoNhanVienId);
+                dynamicParameters.Add("@ChiPhiId", 0);
+                dynamicParameters.Add("@TienChiPhiTangGiam", 0);
+
+                dynamicParameters.Add("@CreateDate", createDate);
+                dynamicParameters.Add("@CreateBy", userId);
+                dynamicParameters.Add("@UpdateDate", createDate);
+                dynamicParameters.Add("@UpdateBy", userId);
+
+                dynamicParameters.Add("@parameters", parameters);
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<ChiPhiLuongViewModel>(
+                        "ChiPhiLuongAUD", dynamicParameters, commandType: CommandType.StoredProcedure);
+
+                    return query.AsList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
     }
 }

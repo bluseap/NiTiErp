@@ -9,6 +9,8 @@ namespace NiTiErp.Application.Dapper.ViewModels
     {
         public string Id { set; get; }
 
+        public string KETQUA { set; get; }
+
         public int Nam { set; get; }
 
         public int Thang { set; get; }

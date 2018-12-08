@@ -109,6 +109,42 @@ namespace NiTiErp.Areas.Admin.Controllers
             }
         }
 
+        public IActionResult AddUpdateChiPhiDanhSachTruc(ChiPhiLuongViewModel chiphiluongVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+
+                chiphiluongVm.CreateBy = username;
+                chiphiluongVm.CreateDate = DateTime.Now;
+                chiphiluongVm.UpdateBy = username;
+                chiphiluongVm.UpdateDate = DateTime.Now;
+
+                if (chiphiluongVm.InsertChiPhiTangGiamId == 5)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "LUONGCHIPHI", Operations.Create); // nhap chi phi
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
+                    }
+
+                    var chiphiluong = _chiphiluongService.ChiPhiLuongListAUD(chiphiluongVm.Id, chiphiluongVm.HoSoNhanVienId,
+                        chiphiluongVm.CreateBy, chiphiluongVm.CreateDate, "UpChiPhiDanhSachTruc");
+
+                    return new OkObjectResult(chiphiluong);
+                }
+                else
+                {                  
+                    return new OkObjectResult(chiphiluongVm);
+                }
+            }
+        }
+
         public IActionResult AddUpdateChiPhiTangGiam(ChiPhiLuongViewModel chiphiluongVm)
         {
             if (!ModelState.IsValid)
@@ -261,6 +297,44 @@ namespace NiTiErp.Areas.Admin.Controllers
                 }
             }
         }
+
+        [HttpPost]
+        public IActionResult DeleteChiPhiDanhSach(ChiPhiLuongViewModel chiphiluongVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                if (chiphiluongVm.InsertChiPhiTangGiamId == 3)
+                {
+                    var username = User.GetSpecificClaim("UserName");
+
+                    chiphiluongVm.CreateBy = username;
+                    chiphiluongVm.CreateDate = DateTime.Now;
+                    chiphiluongVm.UpdateBy = username;
+                    chiphiluongVm.UpdateDate = DateTime.Now;                    
+
+                    var result = _authorizationService.AuthorizeAsync(User, "LUONGCHIPHI", Operations.Delete); // xoa chi phi khoi tao
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền xóa."));
+                    }
+
+                    var chiphidanhsach = _chiphiluongService.ChiPhiTangGiamAUD(chiphiluongVm, "DelChiPhiLuongTruc");
+
+                    return new OkObjectResult(chiphidanhsach);
+                }
+                else
+                {
+                    return new OkObjectResult(chiphiluongVm);
+                }
+            }
+        }
+
+        #region Export Excel 
 
         [HttpPost]
         public IActionResult ExportExcelChiPhi(string CorporationId, int Nam, int Thang, string PhongDanhMucId, int ChiPhiId, int DotInId, int DieuKienId)
@@ -553,6 +627,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             }
         }
 
+        #endregion
 
         #region Danh mục chi phi luong
 

@@ -455,6 +455,10 @@
 
                             if (chiphi.ChiPhiLoaiId === 5) {
                                 $('#hidChiPhiKhoiTaoId').val(khoitaochiphi);
+                                $('#hidChiPhiDanhSachChiPhiId').val(chiphikhoitao.ChiPhiId);
+
+                                chiphidanhsach.chiphidanhsachTableChiPhiTruc();
+
                                 $('#modal-add-edit-ChiPhiDanhSach').modal('show');
                             }
                             else {

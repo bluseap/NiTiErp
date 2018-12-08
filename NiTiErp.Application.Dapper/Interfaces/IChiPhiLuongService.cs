@@ -17,6 +17,8 @@ namespace NiTiErp.Application.Dapper.Interfaces
             , string phongdanhmucId, string keyword, Guid hosonhanvienId, int chiphiId, int luongdotinkyId, decimal tongtienchiphitanggiam
             , bool IsChiPhiTang, int ChiPhiLoaiId, int ChiPhiBangDanhMucId, bool IsChuyenKy, string ghichu, int page, int pageSize, string parameters);
 
+        Task<List<ChiPhiLuongViewModel>> ChiPhiLuongListAUD(string Id, Guid HoSoNhanVienId, string userId, DateTime createDate, string parameters);
+
         Task<Boolean> ChiPhiTangGiamAUD(ChiPhiLuongViewModel chiphiluong, string parameters);
 
     }

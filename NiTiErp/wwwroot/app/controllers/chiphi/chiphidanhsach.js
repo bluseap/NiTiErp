@@ -10,6 +10,10 @@
         
     }
 
+    this.chiphidanhsachTableChiPhiTruc = function () {
+        loadTableChiPhiDanhSach(true);
+    }
+
     function registerEvents() {
 
         $('#btnChiPhiDanhSachTrucTimNhanVien').on('click', function () {
@@ -35,15 +39,25 @@
         }); 
 
         $('body').on('click', '.btn-editHoSoChiPhiDanhSachTruc', function (e) {
+            e.preventDefault();            
+            
+            var hosoId = $(this).data('id');
+            addChiPhiDanhSachTruc(hosoId);
+        });
+
+        $('body').on('change', '.txtCPDSSoNgayTrucLe', function (e) {
             e.preventDefault();
+            var songaytruc = $('#txtCPDSSoNgayTrucLe').val();
+            var cptangid = $(this).data('id');
+            //tedu.notify(cptangid, "success");
+            tedu.notify(songaytruc, "success");
+        });    
 
-            var chiphoikhoitaoid = $('#hidChiPhiKhoiTaoId').val();
-
-            tedu.notify(chiphoikhoitaoid, "success");
-
-
-            //var hosoId = $(this).data('id');
-            //addChiPhiDanhSachTruc(hosoId);
+        $('body').on('click', '.btn-deleteChiPhiDanhSachTruc', function (e) {
+            e.preventDefault();          
+            var cptangid = $(this).data('id');
+            $('#hidInsertChiPhiTangGiamId').val(3);
+            deleteChiPhiDanhSach(cptangid);
         });
 
         $('#btnExcelChiPhiDanhSachTruc').on('click', function () {
@@ -164,34 +178,37 @@
     }      
 
     function addChiPhiDanhSachTruc(hosoid) {
-
-        var daotaolopid = $('#hidDangKyDaoTaoLopId').val();
+        var chiphoikhoitaoid = $('#hidChiPhiKhoiTaoId').val();        
 
         $.ajax({
-            type: "GET",
-            url: "/Admin/daotao/SaveDaoTaoNhanVien",
+            type: "POST",
+            url: "/Admin/chiphi/AddUpdateChiPhiDanhSachTruc",
             data: {
-                InsertDaoTaoNhanVienId: 1,
-                HoSoNhanVienId: hosoid,
-                DaoTaoLopId: daotaolopid,
-                Ten: ""
+                Id: chiphoikhoitaoid,
+                InsertChiPhiTangGiamId: 5,
+                HoSoNhanVienId: hosoid
             },
             dataType: "json",
             beforeSend: function () {
                 tedu.startLoading();
             },
             success: function (response) {
-                var query = response.Result[0];
-                if (query.KETQUA === "SAI") {
-                    tedu.notify('Nhân viên đăng ký rồi! Kiểm tra lại.', 'error');
+                if (response.Success === false) {
+                    tedu.notify(response.Message, "error");
                 }
-                else {
-                    loadHoSoId(hosoid);
+                else {                   
+                    var query = response.Result[0];
+                    if (query.KETQUA === "SAI") {
+                        tedu.notify('Nhân viên tính tiền trực rồi! Kiểm tra lại.', 'error');
+                    }
+                    else {
+                        loadHoSoId(hosoid);
+                    }
+                    tedu.stopLoading();
                 }
-                tedu.stopLoading();
             },
-            error: function (status) {
-                tedu.notify('Nhân viên đã đăng ký rồi! Kiểm tra lại.', 'error');
+            error: function () {
+                tedu.notify('Lỗi khởi tạo chi phí.', 'error');
                 tedu.stopLoading();
             }
         });
@@ -199,7 +216,6 @@
 
     function loadHoSoId(hosoid) {
         //tedu.notify(hosoid, "success");
-
         $.ajax({
             type: "GET",
             url: "/Admin/Hoso/GetHoSoId",
@@ -234,6 +250,106 @@
     }
 
     function loadchiphidanhsachData() {
+        //loadTableChiPhiDanhSach();
+    }
+
+    function loadTableChiPhiDanhSach(isPageChanged) {
+        var template = $('#template-table-ChiPhiDanhSachTruc').html();
+        var render = "";
+
+        var nammoi = $('#txtAddEditNam').val();
+        var thangmoi = $('#ddlAddEditThang').val();
+        var makv = $('#ddlAddEditKhuVuc').val();       
+        var chiphiidmoi = $('#hidChiPhiDanhSachChiPhiId').val();
+
+        var maphong = '%';     
+        var dotin = $('#ddlAddEditDotIn').val();
+
+        $.ajax({
+            type: 'GET',
+            data: {
+                nam: nammoi,
+                thang: thangmoi,
+                corporationId: makv,
+                phongdanhmucId: maphong,
+                keyword: "%",
+                chiphiid: chiphiidmoi,
+                IsChiPhiTang: "True",
+                page: tedu.configs.pageIndex,
+                pageSize: tedu.configs.pageSize
+            },
+            url: '/admin/chiphi/ChiPhiLuongGetList',
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                }
+                else {       
+                    $.each(response.Result.Results, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+                            HoSoNhanVienId: item.HoSoNhanVienId,
+                            KyChiPhi: item.KyChiPhi,
+
+                            Ten: item.TenNhanVien,
+                            TenKhuVuc: item.TenKhuVuc,
+                            TenPhong: item.TenPhong,
+                            TenChucVu: item.TenChucVu,
+                            SoNgayTrucLe: item.SoNgayTrucLe,
+
+                            TenChiPhi: item.TenChiPhi,
+                            TongTienChiPhi: tedu.formatNumberKhongLe(item.TongTienChiPhitangGiam)
+                            
+                            // Price: tedu.formatNumber(item.Price, 0),  //NgaySinh: tedu.getFormattedDate(item.NgaySinh),
+                        });
+                    });
+                }
+
+                $('#lblChiPhiDanhSachTrucTotalRecords').text(response.Result.RowCount);
+
+                if (render !== '') {
+                    $('#table-contentChiPhiDanhSachTruc').html(render);
+                }
+
+                if (response.Result.RowCount !== 0) {
+                    wrapPagingChiPhiDanhSachTruc(response.Result.RowCount, function () {
+                        loadTableChiPhiDanhSach();
+                    },
+                        isPageChanged);
+                }
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+    function wrapPagingChiPhiDanhSachTruc(recordCount, callBack, changePageSize) {
+        var totalsize = Math.ceil(recordCount / tedu.configs.pageSize);
+        //Unbind pagination if it existed or click change pagesize
+        if ($('#paginationULChiPhiDanhSachTruc a').length === 0 || changePageSize === true) {
+            $('#paginationULChiPhiDanhSachTruc').empty();
+            $('#paginationULChiPhiDanhSachTruc').removeData("twbs-pagination");
+            $('#paginationULChiPhiDanhSachTruc').unbind("page");
+        }
+        //Bind Pagination Event
+        $('#paginationULChiPhiDanhSachTruc').twbsPagination({
+            totalPages: totalsize,
+            visiblePages: 7,
+            first: 'Đầu',
+            prev: 'Trước',
+            next: 'Tiếp',
+            last: 'Cuối',
+            onPageClick: function (event, p) {
+                if (tedu.configs.pageIndex !== p) {
+                    tedu.configs.pageIndex = p;
+                    setTimeout(callBack(), 200);
+                }
+            }
+        });
+    }      
+
+    function deleteChiPhiDanhSach(chiphitangid) {
 
     }
 
