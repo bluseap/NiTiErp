@@ -51,6 +51,8 @@
             var cptangid = $(this).data('id');
             //tedu.notify(cptangid, "success");
             tedu.notify(songaytruc, "success");
+            $('#hidInsertChiPhiTangGiamId').val(2);
+            updateChiPhiTrucLe(cptangid, songaytruc);
         });    
 
         $('body').on('click', '.btn-deleteChiPhiDanhSachTruc', function (e) {
@@ -350,7 +352,104 @@
     }      
 
     function deleteChiPhiDanhSach(chiphitangid) {
+        var insertchiphidanhsach = $('#hidInsertChiPhiTangGiamId').val(); // 3
+        //tedu.notify(inserkhenthuong);
+        tedu.confirm('Bạn có chắc chắn xóa này?', function () {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/chiphi/DeleteChiPhiDanhSach",
+                data: {
+                    Id: chiphitangid,
+                    InsertChiPhiTangGiamId: insertchiphidanhsach // 3
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    tedu.notify('Xóa thành công', 'success');
+                    tedu.stopLoading();
 
+                    $('#hidInsertChiPhiTangGiamId').val(0);
+
+                    loadTableChiPhiDanhSach(true);
+                },
+                error: function (status) {
+                    tedu.notify('Xóa danh sách chi phí! Kiểm tra lại.', 'error');
+                    tedu.stopLoading();
+                }
+            });
+        });
+    }
+
+    function updateChiPhiTrucLe(cptangid, songaytruc) {
+        var insertchiphitanggiam = $('#hidInsertChiPhiTangGiamId').val();
+
+        var nammoi = $('#txtAddEditNam').val();
+        var thangmoi = $('#ddlAddEditThang').val();
+
+        var makv = $('#ddlAddEditKhuVuc').val();       
+        var dotin = $('#hidDotInId').val();
+
+        $.ajax({
+            type: 'GET',
+            url: '/admin/khoaso/GetLockLuongKyId',
+            data: {
+                makhuvuc: makv,
+                thang: thangmoi,
+                nam: nammoi,
+                dotinluongid: dotin
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                lockluong = response.Result[0];
+
+                if (response.Result.length === 0) {
+                    tedu.notify("Kỳ này chưa khởi tạo. Kiểm tra lại.", "error");
+                }
+                else {
+                    if (lockluong.IsLockLuongDotInKy === "False") {
+                        //tedu.notify("ookokokokok.", "success");
+                        $.ajax({
+                            type: "POST",
+                            url: "/Admin/chiphi/AddUpdateChiPhiTrucLe",
+                            data: {
+                                Id: cptangid,
+                                InsertChiPhiTangGiamId: insertchiphitanggiam,
+                                TongTienChiPhitangGiam: songaytruc
+                            },
+                            dataType: "json",
+                            beforeSend: function () {
+                                tedu.startLoading();
+                            },
+                            success: function (response) {
+                                if (response.Success === false) {
+                                    tedu.notify(response.Message, "error");
+                                }
+                                else {                                    
+                                    tedu.notify('Update ngày trực lễ thành công.', 'success');                                   
+                                    tedu.stopLoading();
+                                }
+                            },
+                            error: function () {
+                                tedu.notify('Lỗi khởi tạo chi phí.', 'error');
+                                tedu.stopLoading();
+                            }
+                        });
+                    }
+                    else if (lockluong.IsLockLuongDotInKy === "True") {
+                        tedu.notify('Lương tháng đã khóa sổ. Kiểm tra lại.', 'error');
+                    }
+                }
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Khóa sổ lương tháng đợt in.', 'error');
+            }
+        });
     }
 
 

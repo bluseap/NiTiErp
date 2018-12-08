@@ -418,68 +418,101 @@
         var nammoi = $('#txtAddEditNam').val();
         var thangmoi = $('#ddlAddEditThang').val();
         var makv = $('#ddlAddEditKhuVuc').val();
+        var dotin = $("#ddlAddEditDotIn").val();
 
         $.ajax({
-            type: "GET",
-            url: "/Admin/chiphi/ChiPhiKhoiTaKyId",
+            type: 'GET',
+            url: '/admin/khoaso/GetLockLuongKyId',
             data: {
-                chiphikhoitaoId: khoitaochiphi,
-                nam: nammoi,
+                makhuvuc: makv,
                 thang: thangmoi,
-                corporationId: makv,
-                keyword: "%",
-                page: tedu.configs.pageIndex,
-                pageSize: tedu.configs.pageSize
+                nam: nammoi,
+                dotinluongid: dotin
             },
             dataType: "json",
             beforeSend: function () {
                 tedu.startLoading();
             },
             success: function (response) {
-                var chiphikhoitao = response.Result.Results[0];
+                lockluong = response.Result[0];
 
-                if (response.Result.Results.length === 0) {
-                    tedu.notify("Lỗi! Chi phí khởi tạo. Kiểm tra lại.", "error");
+                if (response.Result.length === 0) {
+                    tedu.notify("Kỳ này chưa khởi tạo. Kiểm tra lại.", "error");
                 }
                 else {
-                    $.ajax({
-                        type: "GET",
-                        url: "/Admin/chiphidm/GetKhenThuongId",
-                        data: { chiphiId: chiphikhoitao.ChiPhiId },
-                        dataType: "json",
-                        beforeSend: function () {
-                            tedu.startLoading();
-                        },
-                        success: function (response) {
-                            var chiphi = response.Result.Results[0];
+                    if (lockluong.IsLockLuongDotInKy === "False") {
+                        $.ajax({
+                            type: "GET",
+                            url: "/Admin/chiphi/ChiPhiKhoiTaKyId",
+                            data: {
+                                chiphikhoitaoId: khoitaochiphi,
+                                nam: nammoi,
+                                thang: thangmoi,
+                                corporationId: makv,
+                                keyword: "%",
+                                page: tedu.configs.pageIndex,
+                                pageSize: tedu.configs.pageSize
+                            },
+                            dataType: "json",
+                            beforeSend: function () {
+                                tedu.startLoading();
+                            },
+                            success: function (response) {
+                                var chiphikhoitao = response.Result.Results[0];
 
-                            if (chiphi.ChiPhiLoaiId === 5) {
-                                $('#hidChiPhiKhoiTaoId').val(khoitaochiphi);
-                                $('#hidChiPhiDanhSachChiPhiId').val(chiphikhoitao.ChiPhiId);
+                                if (response.Result.Results.length === 0) {
+                                    tedu.notify("Lỗi! Chi phí khởi tạo. Kiểm tra lại.", "error");
+                                }
+                                else {
+                                    $.ajax({
+                                        type: "GET",
+                                        url: "/Admin/chiphidm/GetKhenThuongId",
+                                        data: { chiphiId: chiphikhoitao.ChiPhiId },
+                                        dataType: "json",
+                                        beforeSend: function () {
+                                            tedu.startLoading();
+                                        },
+                                        success: function (response) {
+                                            var chiphi = response.Result.Results[0];
 
-                                chiphidanhsach.chiphidanhsachTableChiPhiTruc();
+                                            if (chiphi.ChiPhiLoaiId === 5) {
+                                                $('#hidChiPhiKhoiTaoId').val(khoitaochiphi);
+                                                $('#hidChiPhiDanhSachChiPhiId').val(chiphikhoitao.ChiPhiId);
 
-                                $('#modal-add-edit-ChiPhiDanhSach').modal('show');
+                                                chiphidanhsach.chiphidanhsachTableChiPhiTruc();
+
+                                                $('#modal-add-edit-ChiPhiDanhSach').modal('show');
+                                            }
+                                            else {
+                                                tedu.notify("Chọn loại chi phí trực. Kiểm tra lại!", "error");
+                                            }
+
+                                            tedu.stopLoading();
+                                        },
+                                        error: function (status) {
+                                            tedu.notify('Có lỗi xảy ra', 'error');
+                                            tedu.stopLoading();
+                                        }
+                                    });
+                                }
+                                tedu.stopLoading();
+                            },
+                            error: function (status) {
+                                tedu.notify('Có lỗi xảy ra', 'error');
+                                tedu.stopLoading();
                             }
-                            else {
-                                tedu.notify("Chọn loại chi phí trực. Kiểm tra lại!","error");
-                            }                            
-
-                            tedu.stopLoading();
-                        },
-                        error: function (status) {
-                            tedu.notify('Có lỗi xảy ra', 'error');
-                            tedu.stopLoading();
-                        }
-                    });                    
+                        });
+                    }
+                    else if (lockluong.IsLockLuongDotInKy === "True") {
+                        tedu.notify('Lương tháng đã khóa sổ. Kiểm tra lại.', 'error');
+                    }
                 }
-                tedu.stopLoading();
             },
             error: function (status) {
-                tedu.notify('Có lỗi xảy ra', 'error');
-                tedu.stopLoading();
+                console.log(status);
+                tedu.notify('Khóa sổ lương tháng đợt in.', 'error');
             }
-        });
+        });        
     }
 
     function loadDeleteChiPhiKhoiTao(chiphikhoitaoid) {

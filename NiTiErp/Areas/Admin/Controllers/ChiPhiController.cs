@@ -188,6 +188,42 @@ namespace NiTiErp.Areas.Admin.Controllers
             }
         }
 
+        public IActionResult AddUpdateChiPhiTrucLe(ChiPhiLuongViewModel chiphiluongVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+
+                chiphiluongVm.CreateBy = username;
+                chiphiluongVm.CreateDate = DateTime.Now;
+                chiphiluongVm.UpdateBy = username;
+                chiphiluongVm.UpdateDate = DateTime.Now;
+
+                if (chiphiluongVm.InsertChiPhiTangGiamId == 2)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "LUONGCHIPHI", Operations.Update); // chi phi
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền sửa."));
+                    }
+
+                    var chiphiluong = _chiphiluongService.ChiPhiTangGiamAUD(chiphiluongVm, "UpLuongCPTangTrucLe");
+
+                    return new OkObjectResult(chiphiluong);
+                }
+                else
+                {
+                    return new OkObjectResult(chiphiluongVm);
+                }
+                
+            }
+        }
+
         [HttpGet]
         public IActionResult ChiPhiLuongGetList(int nam, int thang, string corporationId, string phongdanhmucId, string keyword, int chiphiid,
             bool IsChiPhiTang, int page, int pageSize)
