@@ -583,11 +583,32 @@
                 }
             });
         }
-
-        if (chiphiidmoi === '4') { // chi phi tien an giua ca
+        else if (chiphiidmoi === '4') { // chi phi tien an giua ca
             $.ajax({
                 type: 'POST',
                 url: '/admin/chiphi/ExportExcelChiPhiAn',
+                data: {
+                    CorporationId: makv,
+                    Nam: nammoi,
+                    Thang: thangmoi,
+                    PhongDanhMucId: maphong,
+                    ChiPhiId: chiphiidmoi,
+                    DotInId: dotin,
+                    DieuKienId: dieukien
+                },
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    window.location.href = response;
+                    tedu.stopLoading();
+                }
+            });
+        }
+        else if (chiphiidmoi === '9' || chiphiidmoi === '10' || chiphiidmoi === '11' || chiphiidmoi === '12') { // chi phi tien truc le tet
+            $.ajax({
+                type: 'POST',
+                url: '/admin/chiphi/ExportExcelTienTrucLe',
                 data: {
                     CorporationId: makv,
                     Nam: nammoi,
