@@ -395,11 +395,11 @@
         else return '';
     }
     function getBillStatusName(status) {
-        var status = $.grep(cachedObj.billStatuses, function (element, index) {
+        var status2 = $.grep(cachedObj.billStatuses, function (element, index) {
             return element.Value === status;
         });
-        if (status.length > 0)
-            return status[0].Name;
+        if (status2.length > 0)
+            return status2[0].Name;
         else return '';
     }
     function wrapPaging(recordCount, callBack, changePageSize) {

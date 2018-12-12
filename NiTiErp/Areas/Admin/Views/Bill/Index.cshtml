@@ -3,8 +3,8 @@
     ViewData["Title"] = "Bill management";
 }
 @section Scripts{
-    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
-    <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
     <script src="~/app/controllers/bill/index.js" asp-append-version="true"></script>
     <script>
         var billObj = new BillController();
@@ -14,30 +14,31 @@
 @section Styles{
     <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
 }
+
 <input type="hidden" id="hid-category-id" value="0" />
 <div class="">
     <div class="page-title">
         <div class="title_left">
-            <h3>Bill management</h3>
+            <h3>Quản lý Hóa đơn</h3>
         </div>
 
         <div class="title_right">
 
             <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                <input type="text" id="txtFromDate" class="form-control" placeholder="From Date">
+                <input type="text" id="txtFromDate" class="form-control" placeholder="Từ ngày">
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                <input type="text" id="txtToDate" class="form-control" placeholder="To date">
+                <input type="text" id="txtToDate" class="form-control" placeholder="đến ngày">
             </div>
             <div class="col-md-2 col-sm-3 col-xs-12 form-group">
                 <input type="text" id="txtSearchKeyword" class="form-control" placeholder="Tìm kiếm...">
 
             </div>
             <div class="col-md-2 col-sm-2 col-xs-12 form-group">
-                <button class="btn btn-default" id="btn-search" type="button">Search!</button>
+                <button class="btn btn-default" id="btn-search" type="button">Tìm kiếm!</button>
             </div>
             <div class="col-md-2 col-sm-2 col-xs-12 form-group">
-                <button class="btn btn-success" id="btn-create" type="button">Create</button>
+                <button class="btn btn-success" id="btn-create" type="button">Tạo mới</button>
             </div>
         </div>
     </div>
@@ -52,11 +53,11 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Customer name</th>
-                                <th>Payment method</th>
-                                <th>Order date</th>
-                                <th>Status</th>
-                                <th>Detail</th>
+                                <th>Tên khách hàng</th>
+                                <th>Phương thức thanh toán</th>
+                                <th>Ngày tạo</th>
+                                <th>Trạng thái</th>
+                                <th>#</th>
                             </tr>
                         </thead>
                         <tbody id="tbl-content"></tbody>
@@ -72,9 +73,9 @@
                                     <option value="50">50</option>
                                 </select>
                                 <span class="item-per-page">
-                                    recors/page.
+                                    dòng/trang.
                                 </span>
-                                Total records: <strong id="lbl-total-records"></strong>
+                                Tổng cộng dòng: <strong id="lbl-total-records"></strong>
                             </div>
                         </div><div class="col-sm-7">
                             <div class="dataTables_paginate" id="datatable-checkbox_paginate">
@@ -100,4 +101,5 @@
         </tr>
     </script>
 </div>
-@Html.Partial("_DetailModal.cshtml")
+
+<Partial name="_DetailModal.cshtml" />

@@ -627,6 +627,9 @@
                 }
             });
         }
+        else {
+            tedu.notify("Chọn chi phí cho đúng. Kiểm tra lại.", "error");
+        }
 
                
     }
