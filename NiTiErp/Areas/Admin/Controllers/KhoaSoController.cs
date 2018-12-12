@@ -68,6 +68,18 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        public IActionResult KhoaSoGetList2(string corporationId, string dotinId, int nam, int thang, string keyword, int page, int pageSize)
+        {
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var dotinid = !string.IsNullOrEmpty(dotinId) ? dotinId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+            var lockDate = new DateTime(nam, thang, 1);
+
+            var model = _lockluongdotinService.LockLuongDotInGetList(1, khuvuc, dotinid, lockDate, true, true, tukhoa, "LuongDotInKVKyList");
+
+            return new OkObjectResult(model);
+        }
+
         [HttpGet]
         public IActionResult GetLockLuongKyId(string makhuvuc, int thang, int nam, string dotinluongid)
         {

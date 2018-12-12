@@ -47,11 +47,16 @@
         });
         //Grant permission
         $('body').on('click', '.btn-grant', function () {
-            $('#hidRoleId').val($(this).data('id'));
+            //$('#hidRoleId').val($(this).data('id'));
+            //$.when(loadFunctionList())
+            //    .done(fillPermission($('#hidRoleId').val()));
+            //$('#modal-grantpermission').modal('show');
 
-            //$.when(loadFunctionList()).done(fillPermission($('#hidRoleId').val()));
-            //loadFunctionList();
-            fillPermission($('#hidRoleId').val());
+            $('#hidRoleId').val($(this).data('id'));   
+            
+            var roleid = $('#hidRoleId').val();
+            tedu.notify(roleid, "success");
+            fillPermission(roleid);
 
             $('#modal-grantpermission').modal('show');
         });
@@ -204,7 +209,7 @@
                         AllowEdit: item.AllowEdit ? "checked" : "",
                         AllowView: item.AllowView ? "checked" : "",
                         AllowDelete: item.AllowDelete ? "checked" : "",
-                        Status: tedu.getStatus(item.Status),
+                        Status: tedu.getStatus(item.Status)
                     });
                 });
                 if (render !== undefined) {
@@ -266,6 +271,11 @@
     }
 
     function fillPermission(roleId) {
+        $('#ckCheckAllView').prop('checked', false);
+        $('#ckCheckAllCreate').prop('checked', false);
+        $('#ckCheckAllEdit').prop('checked', false);
+        $('#ckCheckAllDelete').prop('checked', false);
+
         var strUrl = "/Admin/Role/ListAllFunction";
         return $.ajax({
             type: "POST",
@@ -290,33 +300,33 @@
                     });
                 });
 
-                if ($('.ckView:checked').length === $('#tblFunction tbody tr .ckView').length) {
-                    $('#ckCheckAllView').prop('checked', true);
-                }
-                else {
-                    $('#ckCheckAllView').prop('checked', false);
-                }
+                //if ($('.ckView:checked').length === $('#tblFunction tbody tr .ckView').length) {
+                //    $('#ckCheckAllView').prop('checked', true);
+                //}
+                //else {
+                //    $('#ckCheckAllView').prop('checked', false);
+                //}
 
-                if ($('.ckAdd:checked').length === $('#tblFunction tbody tr .ckAdd').length) {
-                    $('#ckCheckAllCreate').prop('checked', true);
-                }
-                else {
-                    $('#ckCheckAllCreate').prop('checked', false);
-                }
+                //if ($('.ckAdd:checked').length === $('#tblFunction tbody tr .ckAdd').length) {
+                //    $('#ckCheckAllCreate').prop('checked', true);
+                //}
+                //else {
+                //    $('#ckCheckAllCreate').prop('checked', false);
+                //}
 
-                if ($('.ckEdit:checked').length === $('#tblFunction tbody tr .ckEdit').length) {
-                    $('#ckCheckAllEdit').prop('checked', true);
-                }
-                else {
-                    $('#ckCheckAllEdit').prop('checked', false);
-                }
+                //if ($('.ckEdit:checked').length === $('#tblFunction tbody tr .ckEdit').length) {
+                //    $('#ckCheckAllEdit').prop('checked', true);
+                //}
+                //else {
+                //    $('#ckCheckAllEdit').prop('checked', false);
+                //}
 
-                if ($('.ckDelete:checked').length === $('#tblFunction tbody tr .ckDelete').length) {
-                    $('#ckCheckAllDelete').prop('checked', true);
-                }
-                else {
-                    $('#ckCheckAllDelete').prop('checked', false);
-                }
+                //if ($('.ckDelete:checked').length === $('#tblFunction tbody tr .ckDelete').length) {
+                //    $('#ckCheckAllDelete').prop('checked', true);
+                //}
+                //else {
+                //    $('#ckCheckAllDelete').prop('checked', false);
+                //}
 
                 tedu.stopLoading();
             },
