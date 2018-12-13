@@ -234,34 +234,103 @@
     }
 
     function SaveLockLuongDotInXML(stringXML) {
-        var insertlockluongid = $('#hidInsertLockLuongDotInId').val(1);
-        $.ajax({
-            type: "POST",
-            url: "/Admin/khoaso/SaveLockLuong",
-            data: {
-                StringXML: stringXML,
-                InsertLockLuongDotInId: 1
-            },
-            dataType: "json",
-            beforeSend: function () {
-                tedu.startLoading();
-            },
-            success: function (response) {
-                if (response.Success === false) {
-                    tedu.notify(response.Message, "error");
-                }
-                else {
-                    loadLockLuongDotIn();
-                    tedu.notify('Lưu lock khóa sổ.', 'success');
+        var makhuvuc = $("#ddlKhuVuc").val();
+        var thang = $("#ddlThang").val();
+        var nam = $("#txtNam").val();             
+
+        if (makhuvuc === "%") {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/khoaso/SaveLockLuong",
+                data: {
+                    StringXML: stringXML,
+                    InsertLockLuongDotInId: 1
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    if (response.Success === false) {
+                        tedu.notify(response.Message, "error");
+                    }
+                    else {
+                        loadLockLuongDotIn();
+                        tedu.notify('Lưu lock khóa sổ.', 'success');
+                        tedu.stopLoading();
+
+                    }
+                },
+                error: function () {
+                    tedu.notify('Có lỗi! Không thể lưu ', 'error');
                     tedu.stopLoading();
-                    
                 }
-            },
-            error: function () {
-                tedu.notify('Có lỗi! Không thể lưu ', 'error');
-                tedu.stopLoading();
-            }
-        }); 
+            });
+        }
+        else {
+            $.ajax({
+                type: 'GET',
+                url: '/admin/khoaso/GetLockLuongKyId',
+                data: {
+                    makhuvuc: makhuvuc,
+                    thang: thang,
+                    nam: nam,
+                    dotinluongid: "1"
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    lockluong = response.Result[0];
+
+                    if (response.Result.length === 0) {
+                        tedu.notify("Kỳ này chưa khởi tạo. Kiểm tra lại.", "error");
+                    }
+                    else {
+                        if (lockluong.IsLockKhoiTao === "False") {
+                            $.ajax({
+                                type: "POST",
+                                url: "/Admin/khoaso/SaveLockLuong",
+                                data: {
+                                    StringXML: stringXML,
+                                    InsertLockLuongDotInId: 1
+                                },
+                                dataType: "json",
+                                beforeSend: function () {
+                                    tedu.startLoading();
+                                },
+                                success: function (response) {
+                                    if (response.Success === false) {
+                                        tedu.notify(response.Message, "error");
+                                    }
+                                    else {
+                                        loadLockLuongDotIn();
+                                        tedu.notify('Lưu lock khóa sổ.', 'success');
+                                        tedu.stopLoading();
+
+                                    }
+                                },
+                                error: function () {
+                                    tedu.notify('Có lỗi! Không thể lưu ', 'error');
+                                    tedu.stopLoading();
+                                }
+                            });
+                        }
+                        else if (lockluong.IsLockKhoiTao === "True") {
+                            tedu.notify('Lương tháng đã khởi tạo kỳ mới. Kiểm tra lại.', 'error');
+                        }
+                    }
+
+                },
+                error: function (status) {
+                    console.log(status);
+                    tedu.notify('Khóa sổ lương tháng đợt in.', 'error');
+                }
+            });
+        }
+        
+        
     }
 
 }
