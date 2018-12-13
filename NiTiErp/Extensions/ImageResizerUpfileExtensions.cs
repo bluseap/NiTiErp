@@ -16,7 +16,7 @@ namespace NiTiErp.Extensions
         {
             using (Image<Rgba32> image = Image.Load(stream))
             {
-                image.Mutate(x => x.Resize(70, 90));
+                image.Mutate(x => x.Resize(90, 90));
                 image.Save(filename); // Automatic encoder selected based on extension.
             }
         }

@@ -15,12 +15,11 @@
 
         $("#btnTimNhanVien").on('click', function () {          
             loadTableLockLuongDotIn();
-            //loadLockLuongDotIn();
+            loadLockLuongDotIn();
         });   
 
-        $("#btnLuu").on('click', function () {
-            tedu.notify("luu khoa so", "success");
-            loadLockLuongDotIn();
+        $("#btnLuu").on('click', function () {            
+            SaveLockLuongDotIn();
         });   
 
     }
@@ -165,7 +164,7 @@
                 var render = "";
                 $.each(response.Result, function (i, item) {
                     render += Mustache.render(template, {
-                        KyLockLuong: item.LockDate,
+                        KyLockLuong: tedu.getFormattedDateYYYYMM(item.LockDate),
                         TenKhuVuc: item.TenKhuVuc,
                         IsLockLuongDotInKy: item.IsLockLuongDotInKy ? "checked" : "",
                         //treegridparent: item.ParentId !== null ? "treegrid-parent-" + item.ParentId : "",
@@ -201,6 +200,68 @@
                 console.log(status);
             }
         });
+    }
+
+    function SaveLockLuongDotIn() {        
+        var listlockluong = [];
+
+        $.each($('#tblLockLuongDotIn tbody tr'), function (i, item) {
+            listlockluong.push({                
+                Id: $(item).data('id'),
+                IsLockLuongDotInKy: $(item).find('.ckDotIn').first().prop('checked')                
+            });
+        });        
+
+        var xml = '';
+        xml = xml + "<tables>";
+
+        for (var i = 0; i < listlockluong.length; i++) {
+            var field = listlockluong[i];
+            xml += "<items>";
+            for (var prop in field) {
+                //tedu.notify(prop, "success");
+                //tedu.notify(field[prop], "success");
+                xml += '<' + prop + '>' + field[prop] + '</' + prop + '>';
+            }     
+            xml += "</items>";
+        }        
+       
+        xml = xml + '</tables>';        
+
+        //tedu.notify(xml, "success");
+
+        SaveLockLuongDotInXML(xml);
+    }
+
+    function SaveLockLuongDotInXML(stringXML) {
+        var insertlockluongid = $('#hidInsertLockLuongDotInId').val(1);
+        $.ajax({
+            type: "POST",
+            url: "/Admin/khoaso/SaveLockLuong",
+            data: {
+                StringXML: stringXML,
+                InsertLockLuongDotInId: 1
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Success === false) {
+                    tedu.notify(response.Message, "error");
+                }
+                else {
+                    loadLockLuongDotIn();
+                    tedu.notify('Lưu lock khóa sổ.', 'success');
+                    tedu.stopLoading();
+                    
+                }
+            },
+            error: function () {
+                tedu.notify('Có lỗi! Không thể lưu ', 'error');
+                tedu.stopLoading();
+            }
+        }); 
     }
 
 }

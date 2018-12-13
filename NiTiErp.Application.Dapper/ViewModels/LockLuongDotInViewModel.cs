@@ -14,6 +14,8 @@ namespace NiTiErp.Application.Dapper.ViewModels
         [StringLength(50)]
         public string KETQUA { get; set; }
 
+        public string StringXML { get; set; }
+
 
         [StringLength(150)]
         public string CorporationId { get; set; }

@@ -57,6 +57,41 @@ namespace NiTiErp.Areas.Admin.Controllers
 
         #region ajax API
 
+        public IActionResult SaveLockLuong(LockLuongDotInViewModel lockluongVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+
+                lockluongVm.CreateBy = username;
+                lockluongVm.CreateDate = DateTime.Now;
+                lockluongVm.UpdateBy = username;
+                lockluongVm.UpdateDate = DateTime.Now;
+
+                if (lockluongVm.InsertLockLuongDotInId == 1)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "LUONGLOCK", Operations.Create); // nhap khoa so luong LockLuongOotIn
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
+                    }
+
+                    var lockluong = _lockluongdotinService.LockLuongDotInAUDXML(lockluongVm, "UpLockLuongXML");
+                    return new OkObjectResult(lockluong);
+                }
+                else 
+                {                   
+                    return new OkObjectResult(lockluongVm);
+                }
+                
+            }
+        }
+
         public IActionResult KhoaSoGetList(string corporationId, string dotinId, DateTime lockDate, string keyword, int page,  int pageSize)
         {
             var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";

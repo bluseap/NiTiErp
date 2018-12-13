@@ -16,6 +16,8 @@ create procedure [LockBangGetList]
 
 create procedure [LockLuongDotInAUD]
 
+create procedure [LockLuongDotInAUDXML]
+
 create procedure [LockLuongDotInGetList]
 
 create procedure [LuongBaoHiemAUD]
