@@ -12,5 +12,6 @@ namespace NiTiErp.Areas.Admin.Controllers
         {
             return View();
         }
+
     }
 }
