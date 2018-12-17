@@ -27,6 +27,8 @@ namespace NiTiErp.Application.ViewModels.System
 
         public string Gender { get; set; }
 
+        public Guid HoSoNhanVienId { get; set; }
+
         public DateTime DateCreated { get; set; }
         public string UserCreated { get; set; }
         public DateTime DateModified { get; set; }

@@ -12,6 +12,8 @@
     }
 
     function registerEvents() {
+        $('#txtFullName').prop('disabled', true);
+
         //Init validation
         $('#frmMaintainance').validate({
             errorClass: 'red',
@@ -71,8 +73,8 @@
         $("#btn-create").on('click', function () {
             resetFormMaintainance();
             initRoleList();
+            $('#hidHoSoNhanVienId').val('00000000-0000-0000-0000-000000000000');
             $('#modal-add-edit').modal('show');
-
         });
 
         $('body').on('click', '.btn-edit', function (e) {
@@ -96,6 +98,13 @@
                     $('#txtPhoneNumber').val(data.PhoneNumber);
                     $('#ddlCorporation').val(data.CorporationId);
                     $('#ckStatus').prop('checked', data.Status === 1);
+
+                    if (data.HoSoNhanVienId !== "00000000-0000-0000-0000-000000000000") {
+                        loadHoSoNhanVien(data.HoSoNhanVienId);
+                    }
+                    else {
+                        $('#hidHoSoNhanVienId').val('00000000-0000-0000-0000-000000000000');
+                    }
 
                     initRoleList(data.Roles);
 
@@ -147,6 +156,7 @@
 
                 var id = $('#hidId').val();
                 var fullName = $('#txtFullName').val();
+                var hosoid = $('#hidHoSoNhanVienId').val();
                 var userName = $('#txtUserName').val();
                 var password = $('#txtPassword').val();
                 var email = $('#txtEmail').val();
@@ -165,6 +175,7 @@
                     data: {
                         Id: id,
                         FullName: fullName,
+                        HoSoNhanVienId: hosoid, 
                         UserName: userName,
                         Password: password,
                         Email: email,
@@ -253,6 +264,34 @@
                 });
             });
         });
+
+        $('#btnTimNhanVienAddEdit').on('click', function () {
+            LoadTableHoSo();
+        });
+
+        $('#txtTimNhanVienAddEdit').on('keypress', function (e) {
+            if (e.which === 13) {
+                LoadTableHoSo();
+            }
+        });
+
+        $("#ddl-show-pageHoSoTimNhanVien").on('change', function () {
+            tedu.configs.pageSize = $(this).val();
+            tedu.configs.pageIndex = 1;
+            LoadTableHoSo(true);
+        });
+
+        $("#btnTimHoSo").on('click', function () {
+            $('#modal-add-edit-TimNhanVien').modal('show');
+        });
+
+        $('body').on('click', '.btn-editHoSoTimNhanVien', function (e) {
+            e.preventDefault();
+            var hosoid = $(this).data('id');      
+            $('#hidHoSoNhanVienId').val(hosoid);
+            loadHoSoNhanVien(hosoid);                   
+        });
+
     }
 
     function disableFieldEdit(disabled) {
@@ -279,6 +318,8 @@
 
         $('#txtCurrentPassword').val('');
         $('#txtNewPassword').val('');
+
+        $('#hidHoSoNhanVienId').val('00000000-0000-0000-0000-000000000000');
     }
 
     function initRoleList(selectedRoles) {
@@ -440,21 +481,23 @@
                     render += "<option value='" + item.Id + "'>" + item.Name + "</option>";
                 });
                 $('#ddlKhuVuc').html(render);
-                //$('#ddlCongTyXiNghiep').html(render);
+                $('#ddlKhuVucAddEdit').html(render);
 
                 var userCorporationId = $("#hidUserCorporationId").val();
                 if (userCorporationId !== "PO") {
                     $('#ddlKhuVuc').prop('disabled', true);
-                    //$('#ddlCongTyXiNghiep').prop('disabled', true);
+                    $('#ddlKhuVucAddEdit').prop('disabled', true);
                 }
                 else {
                     $('#ddlKhuVuc').prop('disabled', false);
-                    //$('#ddlCongTyXiNghiep').prop('disabled', false);
+                    $('#ddlKhuVucAddEdit').prop('disabled', false);
                 }
 
                 $("#ddlKhuVuc")[0].selectedIndex = 1;
-                //$("#ddlCongTyXiNghiep")[0].selectedIndex = 1;
+                loadData();
 
+                $("#ddlKhuVucAddEdit")[0].selectedIndex = 1;
+                loadPhongKhuVucAddEdit($("#ddlKhuVucAddEdit").val());
                 //loadPhongKhuVuc($("#ddlKhuVuc").val());
 
             },
@@ -465,5 +508,139 @@
         });
     }
 
+    function loadPhongKhuVucAddEdit(makhuvuc) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/hoso/GetListPhongKhuVuc',
+            data: { makv: makhuvuc },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >-- Lựa chọn --</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.TenPhong + "</option>";
+                });
+                $('#ddlPhongBanAddEdit').html(render);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh mục Phòng.', 'error');
+            }
+        });
+    }  
+
+    function LoadTableHoSo(isPageChanged) {
+        var template = $('#table-HoSoTimNhanVien').html();
+        var render = "";
+
+        var makhuvuc = $('#ddlKhuVucAddEdit').val();
+        var phongId = $('#ddlPhongBanAddEdit').val();
+        var timnhanvien = $('#txtTimNhanVienAddEdit').val();
+
+        tedu.notify(timnhanvien, "success");
+
+        $.ajax({
+            type: 'GET',
+            data: {
+                corporationId: makhuvuc,
+                phongId: phongId,
+                keyword: timnhanvien,
+                page: tedu.configs.pageIndex,
+                pageSize: tedu.configs.pageSize
+            },
+            url: '/admin/hoso/GetAllPaging',
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                }
+                else {
+                    $.each(response.Result.Results, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+                            Ten: item.Ten,
+                            HinhNhanVien: item.Image === null ? '<img src="/admin-side/images/user.png?h=90"' : '<img src="' + item.HinhNhanVien + '?h=90" />',
+                            TenKhuVuc: item.CorporationName,
+                            TenPhong: item.TenPhong,
+                            TenChucVu: item.TenChucVu,
+                            NgaySinh: tedu.getFormattedDate(item.NgaySinh),
+                            CreateDate: tedu.getFormattedDate(item.CreateDate),
+                            Status: tedu.getHoSoNhanVienStatus(item.Status)
+                            // Price: tedu.formatNumber(item.Price, 0),                          
+                        });
+                    });
+                }
+
+                $('#lblHoSoTimNhanVienTotalRecords').text(response.Result.RowCount);
+
+                if (render !== '') {
+                    $('#tblContentHoSoTimNhanVien').html(render);
+                }
+
+                if (response.Result.RowCount !== 0) {
+                    wrapPagingHoSo(response.Result.RowCount, function () {
+                        LoadTableHoSo();
+                    },
+                        isPageChanged);
+                }
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+    function wrapPagingHoSo(recordCount, callBack, changePageSize) {
+        var totalsize = Math.ceil(recordCount / tedu.configs.pageSize);
+        //Unbind pagination if it existed or click change pagesize
+        if ($('#paginationULHoSoTimNhanVien a').length === 0 || changePageSize === true) {
+            $('#paginationULHoSoTimNhanVien').empty();
+            $('#paginationULHoSoTimNhanVien').removeData("twbs-pagination");
+            $('#paginationULHoSoTimNhanVien').unbind("page");
+        }
+        //Bind Pagination Event
+        $('#paginationULHoSoTimNhanVien').twbsPagination({
+            totalPages: totalsize,
+            visiblePages: 7,
+            first: 'Đầu',
+            prev: 'Trước',
+            next: 'Tiếp',
+            last: 'Cuối',
+            onPageClick: function (event, p) {
+                //tedu.configs.pageIndex = p;
+                //setTimeout(callBack(), 200);
+                if (tedu.configs.pageIndex !== p) {
+                    tedu.configs.pageIndex = p;
+                    setTimeout(callBack(), 200);
+                }
+            }
+        });
+    }
+
+    function loadHoSoNhanVien(hosoid) {
+        $.ajax({
+            type: "GET",
+            url: "/Admin/Hoso/GetHoSoId",
+            data: { hosoId: hosoid },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var hoso = response.Result.Results[0];
+                $('#hidHoSoNhanVienId').val(hoso.Id);
+                $('#txtFullName').val(hoso.Ten);
+
+                $('#modal-add-edit-TimNhanVien').modal('hide');
+                tedu.stopLoading();
+            },
+            error: function (status) {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
 
 }

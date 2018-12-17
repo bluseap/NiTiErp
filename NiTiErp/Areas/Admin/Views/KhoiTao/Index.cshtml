@@ -81,15 +81,50 @@
                 </div>
             </div>
             <div class="clearfix"></div>
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>  <small></small></h3>
+                </div>
+                <div class="title_right">
+                    <div class="col-md-4 col-sm-4 col-xs-12 form-group pull-right">
+                        <div class="input-group">
+                            <button class="btn btn-round btn-warning" id="btnKhoiTaoKyLuong" type="button">Khởi tạo kỳ lương</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="x_panel">
+                    <input type="hidden" id="hidLockLuongDotInId" value="" />
+                    <input type="hidden" id="hidInsertLockLuongDotInId" value="" />
 
-            <div class="example col-lg-4 col-sm-6">
+                    <table class="table table-hover tree" id="tblLockLuongDotIn">
+                        <thead class="bordered-darkorange">
+                            <tr>
+                                <th>Kỳ khởi tạo</th>
+                                <th>Tên khu vực</th>                               
+                            </tr>
+                        </thead>
+                        <tbody id="lst-data-LockLuongDotIn"></tbody>
+                    </table>
+                    <script id="result-data-LockLuongDotIn" type="x-tmpl-mustache">
+                        <tr data-id="{{Id}}">
+                            <td>{{KyLockLuong}}</td>
+                            <td>{{TenKhuVuc}}</td>                           
+                        </tr>
+                    </script>
+                </div>
+            </div>
+
+            @*<div class="example col-lg-4 col-sm-6">
                 <h3>Body loading</h3>
                 <div>
                     <button id="loading-body-btn" class="btn btn-primary btn-block">Click me to add a loading state to the page's body</button>
                     <button id="loading-body2-btn" class="btn btn-primary btn-block">Second body loading, different configs</button>
                 </div>
-               
-            </div>
+
+            </div>*@
 
         </div>
 

@@ -18,6 +18,8 @@ create procedure [LockLuongDotInAUD]
 
 create procedure [LockLuongDotInAUDXML]
 
+create procedure [LockLuongDotInKhoiTao]
+
 create procedure [LockLuongDotInGetList]
 
 create procedure [LuongBaoHiemAUD]
@@ -30,6 +32,11 @@ create procedure [LuongCongNgayPara]
 update procedure [BangDanhMucGetList]
 
 update procedure [QDNangNgachAUD]
+
+
+CREATE FUNCTION [dbo].[udf_GetNumDaysInMonth]
+
+CREATE FUNCTION [dbo].[afCountOfWeekday] 
 
 
 r
@@ -52,6 +59,16 @@ r
 copy file template SucKhoeTK.xlsx 
 r
 copy file template SucKhoe.xlsx 
+
+copy file template ChamCongNgay.xlsx
+
+copy file template BangLuongThang.xlsx
+
+copy file template HieuQuaKinhDoanh.xlsx
+
+copy file template TienAn.xlsx
+
+copy file template TienTrucLe.xlsx
 
 
 
@@ -92,6 +109,10 @@ create table LuongTongHop
 create table LuongTongHopAll
 
 create table LuongDotInKy
+
+create table LuongKhoan
+
+create table LuongKhoanHis
 
 create table LuongKyHieuChamCong
 
@@ -228,6 +249,9 @@ insert value genegic value from [ChiPhi] database
 insert value genegic value from [ChiPhiLoai] database
 
 insert value genegic value from [ChiPhiBangDanhMuc] database
+
+
+insert column ( HoSoNhanVienId	uniqueidentifier	Checked  ) in table AppUsers
 
 
 //INSERT INTO [dbo].[ChiPhiLoai]    ([Id]    ,[TenLoai]     ,[Status]     ,[Active]      ,[Stt]       ,[CreateDate]      ,[CreateBy]      )

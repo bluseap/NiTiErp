@@ -35,6 +35,8 @@ namespace NiTiErp.Application.Implementation
                 Avatar = userVm.Avatar,
                 Email = userVm.Email,
                 FullName = userVm.FullName,
+                HoSoNhanVienId = userVm.HoSoNhanVienId,
+
                 DateCreated = DateTime.Now,
                 UserCreated = userVm.UserCreated,
                 PhoneNumber = userVm.PhoneNumber,
@@ -176,7 +178,12 @@ namespace NiTiErp.Application.Implementation
                 user.Status = userVm.Status;
                 user.Email = userVm.Email;
                 user.PhoneNumber = userVm.PhoneNumber;
-                user.CorporationId = userVm.CorporationId;                
+                user.CorporationId = userVm.CorporationId;
+
+                user.DateModified = DateTime.Now;
+                user.UserModified = userVm.UserModified;
+
+                user.HoSoNhanVienId = userVm.HoSoNhanVienId;
               
                 await _userManager.UpdateAsync(user);
             }

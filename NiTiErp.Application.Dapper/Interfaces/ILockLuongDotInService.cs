@@ -16,5 +16,8 @@ namespace NiTiErp.Application.Dapper.Interfaces
 
         Task<Boolean> LockLuongDotInAUDXML(LockLuongDotInViewModel lockluongVm, string parameters);
 
+        Task<Boolean> LockLuongDotInKhoiTao(LockLuongDotInViewModel lockluongVm, string parameters);
+       
+
     }
 }

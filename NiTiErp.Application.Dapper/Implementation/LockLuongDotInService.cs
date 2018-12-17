@@ -76,6 +76,35 @@ namespace NiTiErp.Application.Dapper.Implementation
             }
         }
 
+        public async Task<Boolean> LockLuongDotInKhoiTao(LockLuongDotInViewModel lockluongVm, string parameters)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();                
+
+                dynamicParameters.Add("@CorporationId", lockluongVm.CorporationId);
+                dynamicParameters.Add("@LockDate", lockluongVm.LockDate);
+
+                dynamicParameters.Add("@CreateDate", lockluongVm.CreateDate);
+                dynamicParameters.Add("@CreateBy", lockluongVm.CreateBy);
+                dynamicParameters.Add("@UpdateDate", lockluongVm.UpdateDate);
+                dynamicParameters.Add("@UpdateBy", lockluongVm.UpdateBy);
+
+                dynamicParameters.Add("@parameters", parameters);
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<LockLuongDotInViewModel>(
+                        "LockLuongDotInKhoiTao", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         public async Task<List<LockLuongDotInViewModel>> LockLuongDotInGetList(int lockluongId, string corporationId, string dotinId, DateTime lockDate, 
             bool IsLockLuongDotInKy, bool IsLockKhoiTao, string keyWord, string parameters)
         {

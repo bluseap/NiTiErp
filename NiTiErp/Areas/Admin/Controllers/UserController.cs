@@ -118,12 +118,20 @@ namespace NiTiErp.Areas.Admin.Controllers
             }
             else
             {
+                var username = User.GetSpecificClaim("UserName");    
+
                 if (userVm.Id == null)
                 {
+                    userVm.UserCreated = username;
+                    userVm.DateCreated = DateTime.Now;
+
                     await _userService.AddAsync(userVm);
                 }
                 else
                 {
+                    userVm.UserModified = username;
+                    userVm.DateModified = DateTime.Now;
+
                     await _userService.UpdateAsync(userVm);
                 }
                 return new OkObjectResult(userVm);

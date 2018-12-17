@@ -27,6 +27,8 @@ namespace NiTiErp.Data.Entities
         }
         public string FullName { get; set; }
 
+        public Guid HoSoNhanVienId { get; set; }
+
         public DateTime? BirthDay { set; get; }
 
         public decimal Balance { get; set; }
