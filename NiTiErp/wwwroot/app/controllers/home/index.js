@@ -593,7 +593,7 @@
                             response,
                         xkey: 'TenPhong',
                         ykeys: ['SoNguoi'],
-                        labels: ['Nhân viên: '],
+                        labels: ['Số lượng: '],
                         barRatio: 0.4,
                         barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
                         xLabelAngle: 35,
