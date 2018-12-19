@@ -11,6 +11,9 @@
     <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+
+    <script src="~/app/controllers/hoso/nghiviec.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/hoso/filehoso.js" asp-append-version="true"></script>
     <script src="~/app/controllers/hoso/index.js" asp-append-version="true"></script>
     <script>
         var hoso = new hosoController();
@@ -82,11 +85,10 @@
                         <div class="col-xs-12">
                             <button class="btn btn-info pull-right" id="btnXuatExcel" style="margin-right: 5px;"><i class="fa fa-download"></i> Xuất Excel</button>
                             <button class="btn btn-default pull-right" id="btnInHoSo"><i class="fa fa-print"></i> Print</button>
-
                         </div>
                     </div>
                     <div class="table-responsive" id="table-responsiveHoSo">
-                        <table id="tblHoSoNhanVien" class="table table-striped jambo_table bulk_action" cellspacing="0">                       
+                        <table id="tblHoSoNhanVien" class="table table-striped jambo_table bulk_action" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th width="=20%">#</th>
@@ -98,6 +100,7 @@
                                     <th>Ngày sinh</th>
                                     <th>Ngày tạo</th>
                                     <th>Trạng thái</th>
+                                    <th width="=5%"></th>
                                 </tr>
                             </thead>
                             <tbody id="tblContentHoSoNhanVien"></tbody>
@@ -132,6 +135,7 @@
         <tr>
             <th scope="row">
                 <a class="btn btn-lg btn-edit" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa hồ sơ"><i class="fa fa-pencil"></i> </a>
+                <a class="btn btn-lg btn-fileHoSo" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="File hồ sơ"><i class="fa fa-file-archive-o"></i> </a>
             </th>
             <td>{{Ten}}</td>
             <td>{{{HinhNhanVien}}}</td>
@@ -141,7 +145,9 @@
             <td>{{NgaySinh}}</td>
             <td>{{CreateDate}}</td>
             <td>{{{Status}}}</td>
-
+            <th scope="row">
+                <a class="btn btn-lg btn-editNghiViec" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Nghĩ việc"><i class="fa fa-location-arrow"></i> </a>
+            </th>
         </tr>
     </script>
 
@@ -149,6 +155,9 @@
 
 <partial name="_AddEditModel.cshtml" />
 <partial name="_InHoSoNhanVien.cshtml" />
+<partial name="_FileHoSo.cshtml" />
+<partial name="_NghiViec" />
 
 @*@Html.Partial("_AddEditModel.cshtml")
-@Html.Partial("_InHoSoNhanVien.cshtml")*@
+    @Html.Partial("_InHoSoNhanVien.cshtml")*@
+

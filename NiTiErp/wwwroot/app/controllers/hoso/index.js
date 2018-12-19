@@ -1,6 +1,9 @@
 ﻿var hosoController = function () {
     var userCorporationId = $("#hidUserCorporationId").val();
 
+    var nghiviec = new nghiviecController();
+    var filehoso = new filehosoController();
+
     var imageNhanVien = [];
     var imageBang1 = [];
     var imageBang2 = [];
@@ -16,16 +19,36 @@
         loadTieuDe();
 
         LoadHopDongDangCongViec();
+
+        filehoso.initialize();
+        nghiviec.initialize();
     }
 
     function registerEvents() {   
 
+        $('body').on('click', '.btn-fileHoSo', function (e) {
+            e.preventDefault();
+            var hosoId = $(this).data('id');           
+
+            filehoso.loadSaveFileHoSo(hosoId);
+
+            $('#modal-add-edit-FileHoSo').modal('show');
+        });
+
+        $('body').on('click', '.btn-editNghiViec', function (e) {
+            e.preventDefault();
+            var hosoId = $(this).data('id');
+
+            nghiviec.loadSaveNghiViec(hosoId);
+
+            $('#modal-add-edit-NghiViec').modal('show');
+        });
+
         $("#ddlLoaiHopDong").on('change', function () {
             //tedu.notify("Loai hop dong sjhfjkweh", "success");
-            if ($('#ddlLoaiHopDong').val() == "KX") {
+            if ($('#ddlLoaiHopDong').val() === "KX") {
                 $('#txtNgayHetHan').val("01/01/2100");
-            }            
-            
+            } 
         });
 
         $("#ddlThanhPhoTinhQueQuan").on('change', function () {
@@ -131,11 +154,11 @@
             var trinhdoId = $('#hidTrinhDoId').val(); // sua la bang = 1     
 
             //tedu.notify("Chưa lưu được Save Trình độ. Kiểm tra và vào Hợp đồng nhập mới.", "error");
-            if (hosoInserId == 1 && trinhdoId == 0) {  // tao moi ho so, trinh do
+            if (hosoInserId === 1 && trinhdoId === 0) {  // tao moi ho so, trinh do
                 SaveHoSoNhanVienTrinhDo2(e);
                 SaveTrinhDoNhanVien(e);
             }
-            else if (hosoInserId == 1 && trinhdoId == 1) {// add trinh do    
+            else if (hosoInserId === 1 && trinhdoId === 1) {// add trinh do    
                 UpdateTrinhDo(e);
             }
         });
@@ -4005,5 +4028,11 @@
             }
         });
     }
+
+    function loadFileHoSo(hosoId) {
+
+    }
+
+    
 
 }
