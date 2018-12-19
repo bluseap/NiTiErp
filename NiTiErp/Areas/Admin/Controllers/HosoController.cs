@@ -569,7 +569,9 @@ namespace NiTiErp.Areas.Admin.Controllers
                         worksheet.Cells[rowIndex, 5].Value = orderDetail.NgaySinh != null ? orderDetail.NgaySinh.Date.ToString("dd/M/yyyy", CultureInfo.InvariantCulture) : "";
 
                         worksheet.Cells[rowIndex, 6].Value = orderDetail.SoDienThoai != null ? orderDetail.SoDienThoai.ToString() : "";
-                                              
+
+                        worksheet.Cells[rowIndex, 7].Value = orderDetail.Id != null ? orderDetail.Id.ToString() : "";
+
                         rowIndex++;
                         count++;
                     }

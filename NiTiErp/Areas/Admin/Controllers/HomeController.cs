@@ -44,11 +44,38 @@ namespace NiTiErp.Areas.Admin.Controllers
                 "", "", "", "", "", "TKNhanVienKhuVuc"));
         }
 
+        public async Task<IActionResult> TKChucVuCot(string corporationId, string phongId, string chucvuId, string trinhdoId)
+        {
+            return new OkObjectResult(await _reportService.SumHoSoNhanVienPara(corporationId, phongId, chucvuId, trinhdoId,
+                "", "", "", "", "", "TKChucVuCot"));
+        }
+
         public async Task<IActionResult> TKSLChucVu(string corporationId, string phongId, string chucvuId, string trinhdoId)
         {
             return new OkObjectResult(await _reportService.SumHoSoNhanVienPara(corporationId, phongId, chucvuId, trinhdoId,
                 "", "", "", "", "", "TKChucVuKhuVuc"));
         }
+
+        public async Task<IActionResult> TKSLChucVuTron(string corporationId, string phongId, string chucvuId, string trinhdoId)
+        {
+            return new OkObjectResult(await _reportService.SumHoSoNhanVienPara(corporationId, phongId, chucvuId, trinhdoId,
+                "", "", "", "", "", "TKChucVuKhuVucTron"));
+        }
+
+        public async Task<IActionResult> TKSLNhanVienTron(string corporationId, string phongId, string chucvuId, string trinhdoId)
+        {
+            return new OkObjectResult(await _reportService.SumHoSoNhanVienPara(corporationId, phongId, chucvuId, trinhdoId,
+                "", "", "", "", "", "TKNhanVienKhuVucTron"));
+        }
+
+        //public async Task<IActionResult> SumTKSLNhanVienTron(string corporationId, string phongId, string chucvuId, string trinhdoId)
+        //{
+        //    var sumsonguoi = _reportService.SumHoSoNhanVienPara(corporationId, phongId, chucvuId, trinhdoId,
+        //        "", "", "", "", "", "TKNhanVienKhuVucTron");
+
+        //    return new OkObjectResult(sumsonguoi.Result.Sum(p => Convert.ToInt32(p.value)));
+
+        //}
 
         public IActionResult CountUserLogin()
         {

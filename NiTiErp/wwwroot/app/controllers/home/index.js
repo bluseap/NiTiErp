@@ -7,6 +7,12 @@
         loadData();      
 
         registerEvents();
+
+        $('#divThongKeTatCa').show();
+        $('#divThongKeKhuVuc').hide();     
+
+        chartThongKeNhanVienTron();
+        chartThongKeChucVuCot();
     }
 
     function registerEvents() {
@@ -20,12 +26,32 @@
         });
 
         $('#btnTimNhanVien').on('click', function () {
-            loadChart();
+            var makhuvuc = $('#ddlKhuVuc').val();
+            if (makhuvuc === "%") {
+                $('#divThongKeTatCa').show();
+                $('#divThongKeKhuVuc').hide();
+
+            }
+            else {
+                $('#divThongKeTatCa').hide();
+                $('#divThongKeKhuVuc').show();
+                loadChart();
+            }
         });
 
         $('#txtTimNhanVien').on('keypress', function (e) {
             if (e.which === 13) {
-                loadChart();
+                var makhuvuc = $('#ddlKhuVuc').val();
+                if (makhuvuc === "%") {
+                    $('#divThongKeTatCa').show();
+                    $('#divThongKeKhuVuc').hide
+
+                }
+                else {
+                    $('#divThongKeTatCa').hide();
+                    $('#divThongKeKhuVuc').show();
+                    loadChart();
+                }
             }
         });
     }
@@ -118,7 +144,7 @@
                 else {
                     $('#ddlKhuVuc').prop('disabled', false);                   
                 }
-                $("#ddlKhuVuc")[0].selectedIndex = 1;   
+                //$("#ddlKhuVuc")[0].selectedIndex = 1;   
 
                 var makv = $('#ddlKhuVuc').val();
                 thongbao();
@@ -536,5 +562,99 @@
         });
     }
 
+    function visibleDiv() {
+        $('#divThongKeKhuVuc').hide();
+    }
+
+    function unVisibleDiv() {
+        $('#divThongKeTatCa').unnhide();        
+    }
+
+    function chartThongKeChucVuCot(form, to) {
+        var khuvuc = userCorporationId;
+        $.ajax({
+            type: "GET",
+            url: "/Admin/Home/TKChucVuCot",
+            data: {
+                corporationId: "%",
+                phongId: "",
+                chucvuId: "",
+                trinhdoId: ""
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                $(document).ready(function () {
+                    Morris.Bar({
+                        element: 'graph_bar2All',
+                        data:
+                            response,
+                        xkey: 'TenPhong',
+                        ykeys: ['SoNguoi'],
+                        labels: ['Nhân viên: '],
+                        barRatio: 0.4,
+                        barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
+                        xLabelAngle: 35,
+                        hideHover: 'auto',
+                        resize: true
+                    });
+
+                });
+
+            },
+            error: function (status) {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function chartThongKeNhanVienTron(formDate, toDate) {
+        var khuvuc = "%";
+
+        $.ajax({
+            type: "GET",
+            url: "/Admin/Home/TKSLNhanVienTron",
+            data: {
+                corporationId: khuvuc,
+                phongId: "",
+                chucvuId: "",
+                trinhdoId: ""
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {                
+                Morris.Donut({
+                    element: 'graph_donut2All',
+                    data: response,
+                    colors: ['#E74C3C', '#F660AB', '#ECD872', '#BA55D3', '#26B99A', '#34495E', '#ACADAC', '#3498DB', '#F7CA18',  '#7FFF00'],
+                    formatter: function (y) {
+                        //return y;
+                        return y + " người";
+                    },
+                    resize: true
+                });  
+
+                var sumsonguoi = 0;
+                $.each(response, function (i, item) {
+                    sumsonguoi = sumsonguoi + parseInt(item.value);
+                });
+
+                tedu.notify(sumsonguoi, "success");
+
+                var sumnhanvien = "Tổng cộng: " + parseInt(sumsonguoi).toString() + " Nhân viên";
+                $('#lbSumNhanVien').text(sumnhanvien);
+
+            },
+            error: function (status) {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
 
 }

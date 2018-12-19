@@ -29,6 +29,8 @@ create procedure [LuongBaoHiemGetList]
 create procedure [LuongCongNgayPara]
 
 
+update procedure SumHoSoNhanVienPara
+
 update procedure [BangDanhMucGetList]
 
 update procedure [QDNangNgachAUD]

@@ -54,107 +54,157 @@
     </div>*@
 <!-- /top tiles -->
 
-<div class="row">
-    <div class="page-title">
-        <div class="title_left">
-            <small>
-                <a class="btn btn-link btnTrangChu">
-                    Trang chủ
-                </a>
-            </small>
-        </div>
-        <div class="title_right">
-            <div class="col-md-5 col-sm-2 col-xs-12 form-group pull-right">
-                <div class="input-group">
-                    <input type="text" id="txtTimNhanVien" class="form-control" placeholder="Từ khóa...">
-                    <span class="input-group-btn">
-                        <button class="btn btn-primary" id="btnTimNhanVien" type="button">Tìm !</button>
-                    </span>
-                </div>
+    <div class="row">
+        <div class="page-title">
+            <div class="title_left">
+                <small>
+                    <a class="btn btn-link btnTrangChu">
+                        Trang chủ
+                    </a>
+                </small>
             </div>
-            <div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
-                <div class="input-group">
-                    <select id="ddlKhuVuc" class="form-control"></select>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-9 col-sm-12 col-xs-12">
-        <div class="x_panel">
-            <div class="x_title">
-                <h2>Thống kê nhân viên <small>Phòng, tổ, nhà máy</small></h2>
-                <ul class="nav navbar-right panel_toolbox">
-                    <li>
-                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li>
-                    @*<li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        </li>
-                        <li>
-                            <a class="close-link"><i class="fa fa-close"></i></a>
-                        </li>*@
-                </ul>
-                <div class="clearfix"></div>
-            </div>
-            <div class="x_content">
-                <div id="graphBar">
-                    <div id="graph_bar2" style="width:100%; height:280px;"></div>
-                </div>
-            </div>
-        </div>
-        <div class="x_panel">
-            <div class="x_title">
-                <h2>Thống kê Chức danh nhân viên <small>Công ty, xí nghiệp</small></h2>
-                <ul class="nav navbar-right panel_toolbox">
-                    <li>
-                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li>
-                    @*<li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        </li>
-                        <li>
-                            <a class="close-link"><i class="fa fa-close"></i></a>
-                        </li>*@
-                </ul>
-                <div class="clearfix"></div>
-            </div>
-            <div class="x_content">
-                <div id="graphDonut">
-                    <div id="graph_donut2" style="width:100%; height:300px;"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-3 col-sm-12 col-xs-12">
-        <div class="x_panel">
-            <div class="x_title">
-                <h2>Thông báo</h2>
-                <ul class="nav navbar-right panel_toolbox">
-                    <li>
-                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li>
-                    @*<li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        </li>
-                        <li>
-                            <a class="close-link"><i class="fa fa-close"></i></a>
-                        </li>*@
-                </ul>
-                <div class="clearfix"></div>
-            </div>
-            <div class="x_content">
-                <ul class="list-unstyled top_profiles scroll-view">
-                    <div class="row" id="tblContentThongBao">
+            <div class="title_right">
+                <div class="col-md-5 col-sm-2 col-xs-12 form-group pull-right">
+                    <div class="input-group">
+                        <input type="text" id="txtTimNhanVien" class="form-control" placeholder="Từ khóa...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" id="btnTimNhanVien" type="button">Tìm !</button>
+                        </span>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="dataTables_paginate" id="datatable-checkbox_paginateThongBaoHome">
-                                <ul id="paginationULThongBaoHome"></ul>
-                            </div>
+                </div>
+                <div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                        <select id="ddlKhuVuc" class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9 col-sm-12 col-xs-12" id="divThongKeTatCa">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Thống kê số lượng nhân viên <small> Công ty, Xí nghiệp </small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        @*<li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    </li>
+                    <li>
+                        <a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>*@
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div id="graphDonutAll">
+                    </div>
+                    <div id="graph_donut2All" style="width:100%; height:300px;">
+                    </div>                   
+                    <div class="form-group">                        
+                        <h3><label id="lbSumNhanVien" class="control-label col-md-12 col-sm-12 col-xs-12 text-center"> </label></h3>
+                    </div>                   
+                </div>
+            </div>
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Thống kê chức vụ nhân viên <small> Công ty, Xí nghiệp</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        @*<li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    </li>
+                    <li>
+                        <a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>*@
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div id="graphBarAll">
+                        <div id="graph_bar2All" style="width:100%; height:280px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 col-sm-12 col-xs-12" id="divThongKeKhuVuc">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Thống kê nhân viên <small>Phòng, tổ, nhà máy</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        @*<li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        </li>
+                        <li>
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>*@
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div id="graphBar">
+                        <div id="graph_bar2" style="width:100%; height:280px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Thống kê Chức danh nhân viên <small>Công ty, xí nghiệp</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        @*<li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        </li>
+                        <li>
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>*@
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div id="graphDonut">
+                        <div id="graph_donut2" style="width:100%; height:300px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Thông báo</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        @*<li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        </li>
+                        <li>
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>*@
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <ul class="list-unstyled top_profiles scroll-view">
+                        <div class="row" id="tblContentThongBao">
                         </div>
-                        @*<div class="col-sm-5">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="dataTables_paginate" id="datatable-checkbox_paginateThongBaoHome">
+                                    <ul id="paginationULThongBaoHome"></ul>
+                                </div>
+                            </div>
+                            @*<div class="col-sm-5">
                                 <div class="dataTables_info" id="datatable-checkbox_infoThongBaoHome" role="status" aria-live="polite">
                                     <select id="ddl-show-pageThongBaoHome">
                                         <option value="10" selected="selected">10</option>
@@ -173,13 +223,13 @@
                                     <ul id="paginationULThongBaoHome"></ul>
                                 </div>
                             </div>*@
-                    </div>
-                </ul>
+                        </div>
+                    </ul>
 
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 <script id="table-ThongBao" type="x-tmpl-mustache">
     @*<ul class="list-unstyled top_profiles scroll-view">*@
