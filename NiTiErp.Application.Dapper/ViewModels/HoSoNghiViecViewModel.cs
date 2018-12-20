@@ -1,0 +1,67 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
+
+namespace NiTiErp.Application.Dapper.ViewModels
+{
+    public class HoSoNghiViecViewModel
+    {
+        public int Id { set; get; }            
+
+        public int InsertHoSoNghiViecId { set; get; }
+
+        public string KETQUA { get; set; }
+
+        public Guid HoSoNhanVienId { get; set; }
+
+        [StringLength(1000)]
+        public string Ten { get; set; }
+
+        [StringLength(50)]
+        public string CorporationId { get; set; }
+
+        [StringLength(500)]
+        public string TenKhuVuc { get; set; }
+
+        [StringLength(20)]
+        public string PhongBanDanhMucId { get; set; }
+
+        [StringLength(1000)]
+        public string TenPhong { get; set; }
+
+        [StringLength(20)]
+        public string ChucVuNhanVienId { get; set; }
+
+        [StringLength(500)]
+        public string TenChucVu { get; set; }
+
+        public DateTime NgayNghiViec { get; set; }
+
+        [StringLength(1000)]
+        public string LyDoNghiViec { get; set; }
+
+        [StringLength(1000)]
+        public string GhiChu { get; set; }
+
+
+        public int Status { get; set; }
+
+        public bool Active { get; set; }
+
+        public int Stt { get; set; }
+
+        public DateTime CreateDate { get; set; }
+
+        [StringLength(20)]
+        public string CreateBy { get; set; }
+
+        public DateTime UpdateDate { get; set; }
+
+        [StringLength(20)]
+        public string UpdateBy { get; set; }
+
+
+
+    }
+}

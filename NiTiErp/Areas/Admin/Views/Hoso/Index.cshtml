@@ -51,6 +51,19 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
+                    <h3>  <small> </small></h3>
+                </div>
+                <div class="title_right">
+                    <div class="col-md-5 col-sm-2 col-xs-12 form-group pull-right">
+                        <div class="input-group">
+                            <select id="ddlDieuKienTim" class="form-control"></select>
+                        </div>
+                    </div>                    
+
+                </div>
+            </div>
+            <div class="page-title">
+                <div class="title_left">
                     <h3>  <small>Danh sách nhân viên</small></h3>
                 </div>
                 <div class="title_right">
@@ -98,7 +111,7 @@
                                     <th>Phòng, tổ</th>
                                     <th>Chức vụ</th>
                                     <th>Ngày sinh</th>
-                                    <th>Ngày tạo</th>
+                                    @*<th>Ngày tạo</th>*@
                                     <th>Trạng thái</th>
                                     <th width="=5%"></th>
                                 </tr>
@@ -134,8 +147,8 @@
     <script id="table-HoSoNhanVien" type="x-tmpl-mustache">
         <tr>
             <th scope="row">
-                <a class="btn btn-lg btn-edit" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa hồ sơ"><i class="fa fa-pencil"></i> </a>
-                <a class="btn btn-lg btn-fileHoSo" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="File hồ sơ"><i class="fa fa-file-archive-o"></i> </a>
+                <a class="btn btn-lg btn-edit" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa hồ sơ"><i class="fa fa-pencil-square-o" style='color:#5bb96d'></i> </a>
+                <a class="btn btn-lg btn-fileHoSo" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="File hồ sơ"><i class="fa fa-file-archive-o" style='color:deepskyblue'></i> </a>
             </th>
             <td>{{Ten}}</td>
             <td>{{{HinhNhanVien}}}</td>
@@ -143,10 +156,10 @@
             <td>{{TenPhong}}</td>
             <td>{{TenChucVu}}</td>
             <td>{{NgaySinh}}</td>
-            <td>{{CreateDate}}</td>
+            @*<td>{{CreateDate}}</td>*@
             <td>{{{Status}}}</td>
             <th scope="row">
-                <a class="btn btn-lg btn-editNghiViec" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Nghĩ việc"><i class="fa fa-location-arrow"></i> </a>
+                <a class="btn btn-lg btn-editNghiViec" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Nghĩ việc"><i class="fa fa-location-arrow" ></i> </a>
             </th>
         </tr>
     </script>

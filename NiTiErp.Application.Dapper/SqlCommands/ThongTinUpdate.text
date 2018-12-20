@@ -1,5 +1,9 @@
 ﻿
 
+create procedure [HoSoNghiViecAUD]
+
+create procedure [HoSoNghiViecGetList]
+
 create procedure [ChiPhiAUD]
 
 create procedure [ChiPhiGetList]
@@ -29,16 +33,19 @@ create procedure [LuongBaoHiemGetList]
 create procedure [LuongCongNgayPara]
 
 
+
+CREATE FUNCTION [dbo].[udf_GetNumDaysInMonth]
+
+CREATE FUNCTION [dbo].[afCountOfWeekday] 
+
+
+
 update procedure SumHoSoNhanVienPara
 
 update procedure [BangDanhMucGetList]
 
 update procedure [QDNangNgachAUD]
 
-
-CREATE FUNCTION [dbo].[udf_GetNumDaysInMonth]
-
-CREATE FUNCTION [dbo].[afCountOfWeekday] 
 
 
 r
@@ -73,6 +80,10 @@ copy file template TienAn.xlsx
 copy file template TienTrucLe.xlsx
 
 
+
+create table HoSoNghiViec
+
+create table HoSoNghiViecHis
 
 create table LuongDotInKy
 

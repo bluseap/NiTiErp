@@ -5,10 +5,9 @@
     //var images = [];
 
     this.initialize = function () {
-        loadKhuVuc();        
-
+        loadKhuVuc(); 
         registerEvents();
-
+        //loadDieuKienTim();
         addeditKhenThuong.initialize(); 
     }
 
@@ -491,6 +490,30 @@
             });
         });
     }
+
+    function loadDieuKienTim() {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/hoso/DieuKienGetList',
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >--- Lựa chọn ---</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.TenDieuKien + "</option>";
+                });
+                $('#ddlDieuKienKhac').html(render);
+                $('#ddlDieuKienKhac')[0].selectedIndex = 1;           
+
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh Loại hợp đồng.', 'error');
+            }
+        });
+    }  
 
 
 }

@@ -42,6 +42,8 @@ namespace NiTiErp.Areas.Admin.Controllers
         private IHonNhanService _honnhandanhmucService;
         private IPhongDanhMucService _phongdanhmucService;
         private ICorporationService _corporationService;
+        private IHoSoNghiViecService _hosonghiviecService;
+        private IDieuKienTimService _dieukientimService;
 
         private IThanhPhoTinhService _thanhphotinhService;
         private IQuanHuyenService _quanhuyenService;
@@ -59,6 +61,8 @@ namespace NiTiErp.Areas.Admin.Controllers
             IThanhPhoTinhService thanhphotinhService,
             IQuanHuyenService quanhuyenService,
             IPhuongXaService phuongxaService,
+            IHoSoNghiViecService hosonghiviecService,
+            IDieuKienTimService dieukientimService,
 
             ILockService lockService,
             ICongViecService congviecService,
@@ -83,6 +87,8 @@ namespace NiTiErp.Areas.Admin.Controllers
             _thanhphotinhService = thanhphotinhService;
             _quanhuyenService = quanhuyenService;
             _phuongxaService = phuongxaService;
+            _hosonghiviecService = hosonghiviecService;
+            _dieukientimService = dieukientimService;
 
             _lockService = lockService;
             _congviecService = congviecService;
@@ -114,6 +120,96 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         #region AJAX API
+
+        #region HoSoNghiViec
+
+        [HttpPost]
+        public IActionResult AddUpdateNghiViec(HoSoNghiViecViewModel hosonghiviecVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+
+                hosonghiviecVm.CreateBy = username;
+                hosonghiviecVm.CreateDate = DateTime.Now;
+                hosonghiviecVm.UpdateBy = username;
+                hosonghiviecVm.UpdateDate = DateTime.Now;
+
+                if (hosonghiviecVm.InsertHoSoNghiViecId == 1)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "NLLNV", Operations.Create); // nhap nhan vien
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
+                    }
+
+                    hosonghiviecVm.Id = 1;
+                    var congviec = _hosonghiviecService.HoSoNghiViecAUD(hosonghiviecVm, "InHoSoNghiViec");
+
+                    return new OkObjectResult(congviec);
+                }               
+                else
+                {
+                    return new OkObjectResult(hosonghiviecVm);
+                }
+            }
+        }
+
+        [HttpGet]
+        public IActionResult GetHoSoNghiViecId(string hosonhanvienid)
+        {
+            //var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            //var phong = !string.IsNullOrEmpty(phongId) ? phongId : "%";
+            //var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+
+            var model = _hosonghiviecService.GetAllHoSoNghiViecPaging("", "", "", 1, 1000, hosonhanvienid, "", "", "", "GetNghiViecId");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteNghiViec(HoSoNghiViecViewModel hosonghiviecVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+
+                hosonghiviecVm.CreateBy = username;
+                hosonghiviecVm.CreateDate = DateTime.Now;
+                hosonghiviecVm.UpdateBy = username;
+                hosonghiviecVm.UpdateDate = DateTime.Now;
+
+                if (hosonghiviecVm.InsertHoSoNghiViecId == 5)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "NLLNV", Operations.Create); // nhap nhan vien
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
+                    }
+
+                    hosonghiviecVm.Id = 1;
+                    var congviec = _hosonghiviecService.HoSoNghiViecAUD(hosonghiviecVm, "DeleteHoSoNghiViec");
+
+                    return new OkObjectResult(congviec);
+                }
+                else
+                {
+                    return new OkObjectResult(hosonghiviecVm);
+                }
+            }
+        }
+
+        #endregion
 
         #region Cong viec
 
@@ -690,7 +786,43 @@ namespace NiTiErp.Areas.Admin.Controllers
             var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
 
             var model = _hosonhanvienService.GetAllHoSoNhanVienPaging(corporationId, phong, tukhoa, page, pageSize,
-                "", "1", "", "GetAllHoSoNhanVien");
+                "", "1", "", "GetAllHoSoNhanVien"); // tim nhung nhan vien dang lam viec
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetAllHoSoNghiViecPaging(string corporationId, string phongId, string keyword, int page, int pageSize)
+        {
+            var phong = !string.IsNullOrEmpty(phongId) ? phongId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+
+            var model = _hosonhanvienService.GetAllHoSoNhanVienPaging(corporationId, phong, tukhoa, page, pageSize,
+                "", "1", "", "GetAllHoSoNhanVienNghiViec"); // tim nhung nhan vien nghi viec
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetAllHoSoVeHuuPaging(string corporationId, string phongId, string keyword, int page, int pageSize)
+        {
+            var phong = !string.IsNullOrEmpty(phongId) ? phongId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+
+            var model = _hosonhanvienService.GetAllHoSoNhanVienPaging(corporationId, phong, tukhoa, page, pageSize,
+                "", "1", "", "GetAllHoSoNhanVienVeHuu"); // tim nhung nhan vien ve huu
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetAllHoSoAllPaging(string corporationId, string phongId, string keyword, int page, int pageSize)
+        {
+            var phong = !string.IsNullOrEmpty(phongId) ? phongId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+
+            var model = _hosonhanvienService.GetAllHoSoNhanVienPaging(corporationId, phong, tukhoa, page, pageSize,
+                "", "1", "", "GetAllHoSoNhanVienAll"); // tim tat ca nhan vien
 
             return new OkObjectResult(model);
         }
@@ -903,6 +1035,13 @@ namespace NiTiErp.Areas.Admin.Controllers
         public IActionResult PhuongXaGetListMaHuyen(string huyenId)
         {
             var model = _phuongxaService.PhuongXaGetList("", huyenId, "", "PhuongXaGetListMaQuanHuyen");
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult DieuKienGetList()
+        {
+            var model = _dieukientimService.DieuKienTimGetList("HoSoNhanVien", "", "", "BangDieuKienTimGetList");
             return new OkObjectResult(model);
         }
 
