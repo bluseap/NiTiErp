@@ -34,6 +34,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\lib\Chart.js\dist\" />
+    <Folder Include="wwwroot\uploaded\hoso\" />
   </ItemGroup>
 
 </Project>

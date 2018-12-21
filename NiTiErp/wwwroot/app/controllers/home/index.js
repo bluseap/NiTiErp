@@ -644,7 +644,7 @@
                     sumsonguoi = sumsonguoi + parseInt(item.value);
                 });
 
-                tedu.notify(sumsonguoi, "success");
+                //tedu.notify(sumsonguoi, "success");
 
                 var sumnhanvien = "Tổng cộng: " + parseInt(sumsonguoi).toString() + " Nhân viên";
                 $('#lbSumNhanVien').text(sumnhanvien);

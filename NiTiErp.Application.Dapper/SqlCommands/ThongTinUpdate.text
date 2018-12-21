@@ -1,5 +1,9 @@
 ﻿
 
+create procedure [HoSoFileAUD]
+
+create procedure [HoSoFileGetList]
+
 create procedure [HoSoNghiViecAUD]
 
 create procedure [HoSoNghiViecGetList]
@@ -80,6 +84,10 @@ copy file template TienAn.xlsx
 copy file template TienTrucLe.xlsx
 
 
+
+create table HoSoFile
+
+create table HoSoFileHis
 
 create table HoSoNghiViec
 

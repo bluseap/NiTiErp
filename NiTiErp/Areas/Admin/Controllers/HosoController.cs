@@ -44,6 +44,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         private ICorporationService _corporationService;
         private IHoSoNghiViecService _hosonghiviecService;
         private IDieuKienTimService _dieukientimService;
+        private IHoSoFileService _hosofileService;
 
         private IThanhPhoTinhService _thanhphotinhService;
         private IQuanHuyenService _quanhuyenService;
@@ -63,6 +64,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             IPhuongXaService phuongxaService,
             IHoSoNghiViecService hosonghiviecService,
             IDieuKienTimService dieukientimService,
+            IHoSoFileService hosofileService,
 
             ILockService lockService,
             ICongViecService congviecService,
@@ -89,6 +91,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             _phuongxaService = phuongxaService;
             _hosonghiviecService = hosonghiviecService;
             _dieukientimService = dieukientimService;
+            _hosofileService = hosofileService;
 
             _lockService = lockService;
             _congviecService = congviecService;
@@ -120,6 +123,100 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         #region AJAX API
+
+        #region HoSoFile
+
+        [HttpPost]
+        public IActionResult AddUpdateHoSoFile(HoSoFileViewModel hosofileVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+
+                hosofileVm.CreateBy = username;
+                hosofileVm.CreateDate = DateTime.Now;
+                hosofileVm.UpdateBy = username;
+                hosofileVm.UpdateDate = DateTime.Now;
+                hosofileVm.NgayNhap = DateTime.Now;                
+
+                if (hosofileVm.InsertHoSoFileId == 1)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "NLLNV", Operations.Create); // nhap nhan vien
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
+                    }
+                   
+                    var hosofile = _hosofileService.HoSoFileAUD(hosofileVm, "InHoSoFile");
+
+                    return new OkObjectResult(hosofile);
+                }
+                else
+                {
+                    return new OkObjectResult(hosofileVm);
+                }
+            }
+        }
+
+        [HttpGet]
+        public IActionResult GetListHoSoFile(string hosonhanvienid)
+        {           
+            var model = _hosofileService.GetAllHoSoFilePaging("", "", "", 1, 1000, hosonhanvienid, "", "", "", "GetAllHoSoFile");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetHoSoFileId(string hosofileId)
+        {      
+            var model = _hosofileService.GetAllHoSoFilePaging("", "", "", 1, 1000, "", "", "", hosofileId, "GetHoSoFileId");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteHoSoFile(HoSoFileViewModel hosofileVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                if (hosofileVm.InsertHoSoFileId == 3)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "NLLNV", Operations.Delete); // xoa ho so file
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền xóa."));
+                    }
+
+                    var username = User.GetSpecificClaim("UserName");
+
+                    hosofileVm.CreateBy = username;
+                    hosofileVm.CreateDate = DateTime.Now;
+                    hosofileVm.UpdateBy = username;
+                    hosofileVm.UpdateDate = DateTime.Now;
+                    hosofileVm.NgayNhap = DateTime.Now;
+
+                    var hosofile = _hosofileService.HoSoFileAUD(hosofileVm, "DelHoSoFile");
+
+                    return new OkObjectResult(hosofile);
+                }
+                else
+                {
+                    return new OkObjectResult(hosofileVm);
+                }
+            }
+        }
+
+        #endregion
 
         #region HoSoNghiViec
 
