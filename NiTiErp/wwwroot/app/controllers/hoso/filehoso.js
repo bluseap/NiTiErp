@@ -128,8 +128,7 @@
             ctrl.value = null;
             ctrl.value('');
         }
-        catch (ex) {            
-        }
+        catch  {  }
     }
 
     function loadTableFileHoSo(isPageChanged) {

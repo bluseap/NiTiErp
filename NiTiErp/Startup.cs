@@ -298,7 +298,6 @@ namespace NiTiErp
                 //routes.MapRoute(
                 //    name: "default",
                 //    template: "{controller=Home}/{action=Index}/{id?}");       // localhost: home to product
-
                 //routes.MapRoute(
                 //   name: "areaRoute",
                 //   template: "{area:exists}/{controller=Login}/{action=Index}/{id?}"); // localhost/admin: login to admin
@@ -307,7 +306,6 @@ namespace NiTiErp
                 routes.MapRoute(
                    name: "areaRoute",
                    template: "{area:exists}/{controller=Login}/{action=Index}/{id?}"); // localhost: login to admin
-
                 routes.MapAreaRoute(
                     name: "default",
                     areaName: "Admin",

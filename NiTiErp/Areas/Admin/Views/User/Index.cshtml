@@ -108,19 +108,19 @@
             <td>
                 @if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Update)).Succeeded)
                 {
-                    <a href="#" data-id="{{Id}}" class="btn-edit"><i class="fa fa-pencil-square-o"></i></a>
+                    <a href="#" data-id="{{Id}}" class="btn-edit"><i class="fa fa-pencil-square-o" style="color:blue"></i></a>
                 }
             </td>
             <td>
                 @if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Update)).Succeeded)
                 {
-                    <a href="#" data-id="{{Id}}" class="btn-editpass"><i class="fa fa-key"></i></a>
+                    <a href="#" data-id="{{Id}}" class="btn-editpass"><i class="fa fa-key" style="color:orange"></i></a>
                 }
             </td>
             <td>
                 @if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Delete)).Succeeded)
                 {
-                    <a href="#" data-id="{{Id}}" class="btn-delete"><i class="fa fa-trash-o"></i></a>
+                    <a href="#" data-id="{{Id}}" class="btn-delete"><i class="fa fa-trash-o" style="color:orangered"></i></a>
 
                 }
             </td>

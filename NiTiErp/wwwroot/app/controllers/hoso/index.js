@@ -611,7 +611,7 @@
             ctrl.value = null;
             ctrl.value('');
         }
-        catch (ex) { }
+        catch { }
     }
     function clearFileBang1Input(ctrl) {
         try {
@@ -619,7 +619,7 @@
             ctrl.value = null;
             ctrl.value('');
         }
-        catch (ex) { }
+        catch { } 
     }
     function clearFileBang2Input(ctrl) {
         try {
@@ -627,7 +627,7 @@
             ctrl.value = null;
             ctrl.value('');
         }
-        catch (ex) { }
+        catch { }
     }
 
     function isFormMainValidate()
