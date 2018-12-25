@@ -38,11 +38,14 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="/admin/home" class="site_title">
+                        @*<a href="/admin/home" class="site_title">
+                                <img src="/admin-side/images/powacmo.png" alt="...">
+                                <span> Nhân sự</span>
+                            </a>*@
 
+                        <a href="/admin/homevanban" class="site_title">
                             <img src="/admin-side/images/powacmo.png" alt="...">
-
-                            <span>  Nhân sự</span>
+                            <span>  Văn bản</span>
                         </a>
                     </div>
 
@@ -53,16 +56,16 @@
                     <input type="hidden" id="hidUserName" value=@User.GetSpecificClaim("UserName") />
                     <!-- menu profile quick info -->
                     @*<div class="profile clearfix">
-            <div class="profile_pic">
-                <img src="/admin-side/images/img.jpg" alt="..." class="img-circle profile_img">
-            </div>
-            <div class="profile_info">
-                <input type="hidden" id="hidUserCorporationId" value=@User.GetSpecificClaim("CorporationId") />
-                <input type="hidden" id="hidUserCorporationId" value=@User.GetSpecificClaim("FullName") />
-                <span> </span>
-                <h2>@User.GetSpecificClaim("FullName")</h2>
-            </div>
-        </div>*@
+                            <div class="profile_pic">
+                                <img src="/admin-side/images/img.jpg" alt="..." class="img-circle profile_img">
+                            </div>
+                            <div class="profile_info">
+                                <input type="hidden" id="hidUserCorporationId" value=@User.GetSpecificClaim("CorporationId") />
+                                <input type="hidden" id="hidUserCorporationId" value=@User.GetSpecificClaim("FullName") />
+                                <span> </span>
+                                <h2>@User.GetSpecificClaim("FullName")</h2>
+                            </div>
+                        </div>*@
                     <!-- /menu profile quick info -->
 
                     <br />
@@ -73,17 +76,17 @@
                     <!-- /menu footer buttons -->
                     <div class="sidebar-footer hidden-small">
                         @*<a data-toggle="tooltip" data-placement="top" title="Settings">
-                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-            </a>
-            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-            </a>
-            <a data-toggle="tooltip" data-placement="top" title="Lock">
-                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-            </a>
-            <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-            </a>*@
+                                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                            </a>
+                            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                            </a>
+                            <a data-toggle="tooltip" data-placement="top" title="Lock">
+                                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                            </a>
+                            <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                            </a>*@
                     </div>
                     <!-- /menu footer buttons -->
                 </div>
@@ -180,11 +183,11 @@
             <!-- /page content -->
             <!-- footer content -->
             <footer>
-               
+
                 <div class="pull-right">
                     Công Ty Cổ Phần Điện Nước An Giang - <a href="http://powaco.com.vn">HRM</a>
                     - Đang online <i class="fa fa-user"> <span id="users" class="badge bg-orange"> </span></i>
-                    
+
                 </div>
                 <div class="clearfix"></div>
             </footer>
@@ -226,6 +229,9 @@
     <script src="~/lib/gentelella/vendors/raphael/raphael.js" asp-append-version="true"></script>
     <script src="~/lib/gentelella/vendors/morris.js/morris.js" asp-append-version="true"></script>
 
+    <!-- jQuery Smart Wizard -->
+    @*<script src="~/lib/gentelella/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js" asp-append-version="true"></script>*@
+
     <!-- Custom Theme Scripts -->
     <script src="~/admin-side/js/custom.min.js" asp-append-version="true"></script>
 
@@ -257,7 +263,7 @@
             beforeSend: function () {
                 tedu.startLoading();
             },
-            success: function (response) {     
+            success: function (response) {
                 if (response.Result.Results.length === 1) {
                     const connection = new signalR.HubConnectionBuilder()
                         .withUrl("/chat")

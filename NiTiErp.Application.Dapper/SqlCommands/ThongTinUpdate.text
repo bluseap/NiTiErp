@@ -1,4 +1,47 @@
 ﻿
+
+
+insert table VanBanKhan
+
+insert table VanBanLinhVuc
+
+insert table VanBanLoai
+
+insert table VanBanLoaiThongTinDH
+
+insert table VanBanMat
+
+insert table VanBanNhomXuLy
+
+insert table VanBanPhoiHopXuLy
+
+
+
+
+table genericate VanBanKhan
+
+table genericate VanBanLinhVuc
+
+table genericate VanBanLoai
+
+table genericate VanBanLoaiThongTinDH
+
+table genericate VanBanMat
+
+table genericate VanBanNhomXuLy
+
+table genericate VanBanPhoiHopXuLy
+
+
+
+
+
+
+
+
+
+
+
 r
 create procedure [HoSoFileAUD]
 r
