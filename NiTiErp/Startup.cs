@@ -244,7 +244,6 @@ namespace NiTiErp
             services.AddTransient<IHoSoNghiViecService, HoSoNghiViecService>();
             services.AddTransient<IHoSoFileService, HoSoFileService>();
 
-
             services.AddTransient<IQDKhenThuongService, QDKhenThuongService>();
             services.AddTransient<IQDKyLuatService, QDKyLuatService>();
             services.AddTransient<IQDNangNgachService, QDNangNgachService>();
@@ -253,6 +252,12 @@ namespace NiTiErp
             services.AddTransient<IQDNghiHuuService, QDNghiHuuService>();
             services.AddTransient<IQDThoiViecService, QDThoiViecService>();
             services.AddTransient<IQDThuTuyenService, QDThuTuyenService>();
+
+
+            services.AddTransient<IVanBanKhanService, VanBanKhanService>();
+            services.AddTransient<IVanBanMatService, VanBanMatService>();
+
+
 
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 

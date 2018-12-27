@@ -1,1 +1,57 @@
-﻿<h1> Thêm mới Văn bản đến</h1>
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+}
+@section Scripts{
+
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+
+    <script src="~/app/controllers/vbdthem/themcoquan.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/vbdthem/filevanbanden.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/vbdthem/addeditvbdthem.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/vbdthem/index.js" asp-append-version="true"></script>
+    <script>
+        var vbdthem = new vbdthemController();
+        vbdthem.initialize();
+    </script>
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link ">
+                    Văn bản đến
+                </a>
+                >>
+                <a class="btn btn-link btnThemMoiVanBanDen">
+                    Thêm mới văn bản đến
+                </a>
+            </small>
+        </div>
+        <div class="title_right">
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <button class="btn btn-round btn-warning" id="btn-create" type="button">Tạo mới văn bản đến</button>
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+
+</div>
+
+<partial name="_AddEditModel.cshtml" />
+<partial name="_FileVanBanDen.cshtml" />
+<partial name="_ThemCoQuan.cshtml" />
+
+

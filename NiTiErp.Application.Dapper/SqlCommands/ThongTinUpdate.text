@@ -35,6 +35,8 @@ table genericate VanBanPhoiHopXuLy
 
 
 
+update  procedure [BangDanhMucGetList]
+
 
 
 

@@ -12,6 +12,12 @@
 
     function registerEvents() {
 
+        $('body').on('click', '.btnDenDienTu', function (e) {
+            e.preventDefault();
+            tedu.notify("văn bản đến điện tử", "success");
+
+        });
+
         $('body').on('click', '.btnDenChuaXuLy', function (e) {
             e.preventDefault();
             tedu.notify("Chưa xư ly", "success");
@@ -27,6 +33,12 @@
         $('body').on('click', '.btnDenChoDuyet', function (e) {
             e.preventDefault();
             tedu.notify("Chờ duyệt", "success");
+
+        });
+
+        $('body').on('click', '.btnDenChuPhatHanh', function (e) {
+            e.preventDefault();
+            tedu.notify("Chưa phát hành", "success");
 
         });
 
