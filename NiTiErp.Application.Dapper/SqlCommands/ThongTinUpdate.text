@@ -34,6 +34,10 @@ table genericate VanBanPhoiHopXuLy
 
 
 
+create procedure VanBanDenSoAUD
+
+create procedure [VanBanDenSoGetList]
+
 
 update  procedure [BangDanhMucGetList]
 

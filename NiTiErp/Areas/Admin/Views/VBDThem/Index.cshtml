@@ -22,33 +22,52 @@
     </script>
 }
 
-<div class="">
-    <div class="page-title">
-        <div class="title_left">
-            <small>
-                <a class="btn btn-link ">
-                    Văn bản đến
-                </a>
-                >>
-                <a class="btn btn-link btnThemMoiVanBanDen">
-                    Thêm mới văn bản đến
-                </a>
-            </small>
-        </div>
-        <div class="title_right">
-            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
-                <button class="btn btn-round btn-warning" id="btn-create" type="button">Tạo mới văn bản đến</button>
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <small>
+                    <a class="btn btn-link ">
+                        Văn bản đến
+                    </a>
+                    >>
+                    <a class="btn btn-link btnThemMoiVanBanDen">
+                        Thêm mới văn bản đến
+                    </a>
+                </small>
             </div>
-            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                <div class="input-group">
+            <div class="title_right">
+                <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                    <button class="btn btn-round btn-warning" id="btn-create" type="button">Tạo mới văn bản đến</button>
+                </div>
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="page-title">
+            <div class="title_left">
+                <h3>  <small></small></h3>
+            </div>
+            <div class="title_right">
+                <div class="col-md-5 col-sm-2 col-xs-12 form-group pull-right">
+                    <div class="input-group">
+                        <input type="text" id="txtTimNoiDung" class="form-control" placeholder="Từ khóa...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" id="btnTimNoiDung" type="button">Tìm !</button>
+                        </span>
+                    </div>
+                </div>                
+                <div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                        <select id="ddlKhuVuc" class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
     </div>
-    <div class="clearfix"></div>
-
-
-</div>
 
 <partial name="_AddEditModel.cshtml" />
 <partial name="_FileVanBanDen.cshtml" />

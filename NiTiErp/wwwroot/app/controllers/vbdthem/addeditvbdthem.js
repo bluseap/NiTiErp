@@ -14,9 +14,23 @@
     this.vanbandanhmuc = function () {
         loadVanBanKhanList();
         loadVanBanMatList();
+        loadVanBanLinhVucList();
+        loadVanBanLoaiList();
+        loadVanBanCoQuanList();
+        
+    }
+
+    this.sovanbanden = function () {
+        loadVanBanDenSoList();
     }
 
     function registerEvents() {
+        
+        $('#txtNgayBanHanh, #txtNgayDen ').datepicker({
+            autoclose: true,
+            format: 'dd/mm/yyyy',
+            language: 'vi'
+        });  
 
         $('body').on('click', '.btnFileVanBan', function (e) {            
             $('#modal-add-edit-FileVanBanDen').modal('show');  
@@ -34,7 +48,7 @@
         $('#txtSoVanBanDen').prop("disabled", true);
 
     }
-
+    
     function loadVanBanKhanList() {
         $.ajax({
             type: 'GET',
@@ -78,6 +92,104 @@
             }
         });
     }
+
+    function loadVanBanLinhVucList() {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/vblinhvuc/VanBanKhanGetList',
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >--- Lựa chọn ---</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.Ten + "</option>";
+                });
+                $('#ddlLinhVuc').html(render);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có văn bản mật.', 'error');
+            }
+        });
+    }
+
+    function loadVanBanLoaiList() {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/vbloai/VanBanLoaiGetList',
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >--- Lựa chọn ---</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.Ten + "</option>";
+                });
+                $('#ddlLoaiVanBan').html(render);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có văn bản mật.', 'error');
+            }
+        });
+    }
+
+    function loadVanBanCoQuanList() {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/vbcoquan/VanBanCoQuanGetList',
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >--- Lựa chọn ---</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.Ten + "</option>";
+                });
+                $('#ddlCoQuanBanHanh').html(render);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có văn bản mật.', 'error');
+            }
+        });
+    }
+
+    function loadVanBanDenSoList() {
+        var makv = $('#ddlKhuVuc').val();
+        var datetimeNow = new Date();
+        var namhientai = datetimeNow.getFullYear();
+
+        $.ajax({
+            type: 'GET',
+            url: '/admin/vbddmso/VanBanCoQuanGetList',
+            data: {
+                corporationid: makv,
+                nam: namhientai
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >--- Lựa chọn ---</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.Nam + " - " + item.TenSo + "</option>";
+                });
+                $('#ddlSoVanBanDen').html(render);
+                $('#ddlSoVanBanDen')[0].selectedIndex = 1;
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh mục sổ văn bản đến.', 'error');
+            }
+        });
+    }
+
 
     function ClearFormAddEdit() {
         $('#hidVanBanDenId').val('');
