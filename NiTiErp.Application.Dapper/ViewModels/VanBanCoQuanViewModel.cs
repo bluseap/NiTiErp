@@ -18,6 +18,16 @@ namespace NiTiErp.Application.Dapper.ViewModels
         [StringLength(200)]
         public string Ten { set; get; }
 
+        [StringLength(200)]
+        public string DiaChi { set; get; }      
+
+        [StringLength(100)]
+        public string SoDienThoai { set; get; }     
+
+        [StringLength(100)]
+        public string Email { set; get; }
+    
+
         [StringLength(500)]
         public string MoTa { set; get; }
 

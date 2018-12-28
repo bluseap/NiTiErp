@@ -1,19 +1,53 @@
 ﻿
 
 
-insert table VanBanKhan
+create table VanBanCoQuanBanHanh
 
-insert table VanBanLinhVuc
+create table VanBanCoQuanBanHanhHis
 
-insert table VanBanLoai
+create table VanBanDen
+ 
+create table VanBanDenDuyet
 
-insert table VanBanLoaiThongTinDH
+create table VanBanDenFile
+ 
+create table VanBanDenFileLienQuan
 
-insert table VanBanMat
+create table VanBanDenSo
+ 
+create table VanBanDenSoHis
+ 
+create table VanBanDenXuLy
 
-insert table VanBanNhomXuLy
+create table VanBanDenXuLyFile
 
-insert table VanBanPhoiHopXuLy
+create table VanBanDi
+ 
+create table VanBanDiDuyet
+ 
+create table VanBanDienTu
+
+create table VanBanDienTuPhatHanh
+
+create table VanBanDiFile
+
+create table VanBanDiSo
+
+create table VanBanKhan
+
+create table VanBanLinhVuc
+
+create table VanBanLoai
+
+create table VanBanLoaiThongTinDH
+
+create table VanBanMat
+
+create table VanBanNhomNhanVien
+
+create table VanBanNhomXuLy
+
+create table VanBanPhoiHopXuLy
 
 
 
@@ -34,9 +68,14 @@ table genericate VanBanPhoiHopXuLy
 
 
 
+create procedure [VanBanCoQuanAUD]
+
+create procedure [VanBanCoQuanGetList]
+
 create procedure VanBanDenSoAUD
 
 create procedure [VanBanDenSoGetList]
+
 
 
 update  procedure [BangDanhMucGetList]

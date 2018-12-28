@@ -1,8 +1,15 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using NiTiErp.Application.Dapper.Interfaces;
-
+using NiTiErp.Application.Dapper.ViewModels;
+using NiTiErp.Authorization;
+using NiTiErp.Extensions;
+using NiTiErp.Utilities.Dtos;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace NiTiErp.Areas.Admin.Controllers
 {
@@ -34,6 +41,48 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         #region AJAX API
+
+        [HttpPost]
+        public IActionResult AddUpdateVBCoQuan(VanBanCoQuanViewModel vanbancoquanVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+
+                vanbancoquanVm.CreateBy = username;
+                vanbancoquanVm.CreateDate = DateTime.Now;
+                vanbancoquanVm.UpdateBy = username;
+                vanbancoquanVm.UpdateDate = DateTime.Now;
+
+                if (vanbancoquanVm.InsertVanBanCoQuanId == 1)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "DANHMUCVANBANCOQUAN", Operations.Create); // nhap danh muc chi phi luong
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
+                    }
+
+                    var chiphi = _vanbancoquanService.VanBanCoQuanAUD(vanbancoquanVm, "InVanBanCoQuan");
+                    return new OkObjectResult(chiphi);
+                }
+                else
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "DANHMUCVANBANCOQUAN", Operations.Update); //  nhap danh muc chi phi luong
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền sửa."));
+                    }
+
+                    var chiphi = _vanbancoquanService.VanBanCoQuanAUD(vanbancoquanVm, "UpVanBanCoQuan");
+                    return new OkObjectResult(chiphi);
+                }
+            }
+        }
 
         [HttpGet]
         public IActionResult VanBanCoQuanGetList()

@@ -22,7 +22,7 @@
 
     this.sovanbanden = function () {
         loadVanBanDenSoList();
-    }
+    }    
 
     function registerEvents() {
         
