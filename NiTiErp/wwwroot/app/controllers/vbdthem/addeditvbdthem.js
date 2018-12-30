@@ -22,7 +22,7 @@
 
     this.sovanbanden = function () {
         loadVanBanDenSoList();
-    }    
+    }       
 
     function registerEvents() {
         
@@ -32,7 +32,8 @@
             language: 'vi'
         });  
 
-        $('body').on('click', '.btnFileVanBan', function (e) {            
+        $('body').on('click', '.btnFileVanBan', function (e) {   
+            $('#hidInsertFileVanBanDenId').val(1);
             $('#modal-add-edit-FileVanBanDen').modal('show');  
         });
 

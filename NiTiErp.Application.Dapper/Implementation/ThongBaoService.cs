@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using Dapper;
+﻿using Dapper;
 using Microsoft.Extensions.Configuration;
-using System.Data;
-using System.Data.SqlClient;
-using System.Threading.Tasks;
 using NiTiErp.Application.Dapper.Interfaces;
 using NiTiErp.Application.Dapper.ViewModels;
 using NiTiErp.Utilities.Dtos;
+using System;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace NiTiErp.Application.Dapper.Implementation
 {
@@ -135,6 +132,5 @@ namespace NiTiErp.Application.Dapper.Implementation
         //        }
         //    }
         //}
-
     }
 }

@@ -72,13 +72,12 @@
                             <div class="col-sm-12">
                                 <table id="tbl-FileVanBanDen" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0">
                                     <thead>
-                                        <tr>
-                                            <th>Stt</th>
+                                        <tr>                                           
                                             <th>Tên file văn bản</th>
                                             <th width="=10%">#</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="tbl-FileVanBanDen"></tbody>
+                                    <tbody id="tbl-contentFileVanBanDen"></tbody>
                                 </table>
                             </div>
                         </div>
@@ -128,8 +127,21 @@
                     </form>
                 </div>
                 <div class="ln_solid"></div>
-                
+
             </div>
         </div>
     </div>
+
+    <script id="table-FileVanBanDen" type="x-tmpl-mustache">
+        <tr>            
+            <td>{{TenFile}}</td>
+            <th scope="row">
+                <a class="btn btnDeleteFile" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xóa file văn bản đến">
+                    <i class="fa fa-trash-o" style="color:red"></i>
+                    Xóa
+                </a>
+            </th>           
+        </tr>
+    </script>
+
 </div>

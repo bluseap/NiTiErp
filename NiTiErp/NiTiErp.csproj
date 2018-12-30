@@ -35,6 +35,8 @@
   <ItemGroup>
     <Folder Include="wwwroot\lib\Chart.js\dist\" />
     <Folder Include="wwwroot\uploaded\hoso\" />
+    <Folder Include="wwwroot\uploaded\vanbandi\" />
+    <Folder Include="wwwroot\uploaded\vanbanden\" />
   </ItemGroup>
 
 </Project>
