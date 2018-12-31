@@ -113,7 +113,7 @@ namespace NiTiErp
             services.AddTransient<DbInitializer>();
 
             services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>();
-
+                        
             services.AddMvc(options =>
             {
                 options.CacheProfiles.Add("Default",
@@ -129,6 +129,8 @@ namespace NiTiErp
                     });
             })
                 .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+                       
+
 
             services.AddSignalR();
 
@@ -261,6 +263,7 @@ namespace NiTiErp
             services.AddTransient<IVanBanCoQuanService, VanBanCoQuanService>();
             services.AddTransient<IVanBanDenSoService, VanBanDenSoService>();
             services.AddTransient<IVanBanDenFileService, VanBanDenFileService>();
+            services.AddTransient<IVanBanNhomXuLyService, VanBanNhomXuLyService>();
 
 
 
@@ -302,8 +305,7 @@ namespace NiTiErp
             {
                 routes.MapHub<ChatHub>("/chat");
             });
-
-
+          
             app.UseMvc(routes =>
             {
                 //routes.MapRoute(

@@ -17,7 +17,7 @@
         loadVanBanLinhVucList();
         loadVanBanLoaiList();
         loadVanBanCoQuanList();
-        
+        loadNhomLanhDaoDuyet(1); // 1 là nhom lanh dao duyet
     }
 
     this.sovanbanden = function () {
@@ -191,6 +191,31 @@
         });
     }
 
+    function loadNhomLanhDaoDuyet(nhomxulyId) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/vbnhom/NhomLanhDaoDuyetGetList', //// nhom lanh dao để duyệt
+            data: {
+                nhomid: nhomxulyId
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >--- Lựa chọn ---</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.HoSoNhanVienId + "'>" + item.TenNhanVien + "</option>";
+                });
+                $('#ddlLanhDaoDuyet').html(render);
+                //$('#ddlLanhDaoDuyet')[0].selectedIndex = 1;
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có nhân viên nhóm lãnh đạo duyệt.', 'error');
+            }
+        });
+    }
 
     function ClearFormAddEdit() {
         $('#hidVanBanDenId').val('');

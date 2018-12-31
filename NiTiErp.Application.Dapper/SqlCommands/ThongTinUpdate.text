@@ -45,7 +45,11 @@ create table VanBanMat
 
 create table VanBanNhomNhanVien
 
+create table VanBanNhomNhanVienHis
+
 create table VanBanNhomXuLy
+
+create table VanBanNhomXuLyHis
 
 create table VanBanPhoiHopXuLy
 
@@ -67,6 +71,10 @@ table genericate VanBanNhomXuLy
 table genericate VanBanPhoiHopXuLy
 
 
+
+create procedure [VanBanNhomXuLyAUD]
+
+create procedure [VanBanNhomXuLyGetList]
 
 create procedure [VanBanDenFileAUD]
 
