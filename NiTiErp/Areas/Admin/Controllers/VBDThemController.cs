@@ -19,12 +19,14 @@ namespace NiTiErp.Areas.Admin.Controllers
         private readonly NiTiErp.Application.Interfaces.IUserService _userService;
         private readonly IAuthorizationService _authorizationService;
 
+        private readonly IVanBanDenService _vanbandenService;
         private readonly IVanBanDenFileService _vanbandenfileService;
 
         public VBDThemController(IHostingEnvironment hostingEnvironment,
             NiTiErp.Application.Interfaces.IUserService userService,
             IAuthorizationService authorizationService,
 
+            IVanBanDenService vanbandenService,
             IVanBanDenFileService vanbandenfileService
             )
         {
@@ -32,6 +34,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             _userService = userService;
             _authorizationService = authorizationService;
 
+            _vanbandenService = vanbandenService;
             _vanbandenfileService = vanbandenfileService;
         }
 
@@ -41,6 +44,48 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         #region AJAX API
+
+        public IActionResult AddUpdateVanBanDen(VanBanDenViewModel vanbandenVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+
+                vanbandenVm.CreateBy = username;
+                vanbandenVm.CreateDate = DateTime.Now;
+                vanbandenVm.UpdateBy = username;
+                vanbandenVm.UpdateDate = DateTime.Now;
+
+                if (vanbandenVm.InsertVanBanDenId == 1)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "VANBANDENTHEM", Operations.Create); // nhap van ban den
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
+                    }
+
+                    var thongbao = _vanbandenService.VanBanDenAUD(vanbandenVm, "InVanBanDen");
+                    return new OkObjectResult(thongbao);
+                }
+                else
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "VANBANDENTHEM", Operations.Update); //
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền sửa."));
+                    }
+
+                    var thongbao = _vanbandenService.VanBanDenAUD(vanbandenVm, "UpVanBanDen");
+                    return new OkObjectResult(thongbao);
+                }
+            }
+        }
+
 
         #region VanBanDenFile
         public IActionResult AddUpdateVanBanDenFile(VanBanDenFileViewModel vanbandenfileVm)

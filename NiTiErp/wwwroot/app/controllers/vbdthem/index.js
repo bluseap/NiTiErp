@@ -4,6 +4,7 @@
     var addeditvbdthem = new addeditvbdthemController();
     var themcoquan = new themcoquanController();
     var fielvanbanden = new filevanbandenController();
+    var vanbandendientu = new vanbandendientuController();
 
     this.initialize = function () {
         loadKhuVuc();
@@ -13,6 +14,7 @@
         themcoquan.initialize();
         fielvanbanden.initialize();
         addeditvbdthem.initialize();
+        vanbandendientu.initialize();
 
         loadData();
     }

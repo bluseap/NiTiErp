@@ -6,6 +6,8 @@ create table VanBanCoQuanBanHanh
 create table VanBanCoQuanBanHanhHis
 
 create table VanBanDen
+
+create table VanBanDenHis
  
 create table VanBanDenDuyet
 
@@ -71,6 +73,10 @@ table genericate VanBanNhomXuLy
 table genericate VanBanPhoiHopXuLy
 
 
+
+create procedure [VanBanDenAUD]
+
+create procedure VanBanDenGetList
 
 create procedure [VanBanNhomXuLyAUD]
 
