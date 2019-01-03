@@ -35,6 +35,8 @@
             e.preventDefault();
             tedu.notify("them moi van ban den", "success");
             $('#hidInsertVBDThemId').val(1);  // insert
+            $('#hidIsVanBanDenDienTuId').val("False"); // 1 la co; 0 la ko
+            $('#hidVanBanDenDienTuId').val(1);  
             
             CodeFileGuidId(); // CodeId
 
@@ -46,7 +48,7 @@
         ////$('body').on('click', '.btn-create', function (e) {           
         ////});
 
-    }
+    }    
 
     function CodeFileGuidId() {
         $.ajax({
@@ -58,7 +60,7 @@
             },
             success: function (response) {
                 var hosonhanvienId = response;
-                $('#hidCodeFileGuidId').val(hosonhanvienId);             
+                $('#hidCodeFileGuidId').val(hosonhanvienId);
             },
             error: function (status) {
                 console.log(status);

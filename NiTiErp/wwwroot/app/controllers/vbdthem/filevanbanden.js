@@ -94,10 +94,10 @@
                 else {
                     tedu.notify('Upload file.', 'success');
                     $('#hidInsertFileVanBanDenId').val(0);                 
-                    $('#hidTenFileVanBanDenId').val('');
-                    loadTableVanBanDenFile(codeid);
+                    $('#hidTenFileVanBanDenId').val('');                    
 
                     $('#modal-add-edit-FileVanBanDen').modal('hide');  
+                    loadTableVanBanDenFile(codeid);
                     tedu.stopLoading();
                 }
             },

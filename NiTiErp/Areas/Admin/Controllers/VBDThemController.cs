@@ -61,16 +61,18 @@ namespace NiTiErp.Areas.Admin.Controllers
                 vanbandenVm.UpdateBy = username;
                 vanbandenVm.UpdateDate = DateTime.Now;
 
+                vanbandenVm.NgayPhatHanh = DateTime.Now; 
+
                 if (vanbandenVm.InsertVanBanDenId == 1)
                 {
                     var result = _authorizationService.AuthorizeAsync(User, "VANBANDENTHEM", Operations.Create); // nhap van ban den
                     if (result.Result.Succeeded == false)
                     {
                         return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
-                    }
+                    }                                       
 
-                    var thongbao = _vanbandenService.VanBanDenAUD(vanbandenVm, "InVanBanDen");
-                    return new OkObjectResult(thongbao);
+                    var vanbanden = _vanbandenService.VanBanDenAUD(vanbandenVm, "InVanBanDen");
+                    return new OkObjectResult(vanbanden);
                 }
                 else
                 {
@@ -80,8 +82,8 @@ namespace NiTiErp.Areas.Admin.Controllers
                         return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền sửa."));
                     }
 
-                    var thongbao = _vanbandenService.VanBanDenAUD(vanbandenVm, "UpVanBanDen");
-                    return new OkObjectResult(thongbao);
+                    var vanbanden = _vanbandenService.VanBanDenAUD(vanbandenVm, "UpVanBanDen");
+                    return new OkObjectResult(vanbanden);
                 }
             }
         }

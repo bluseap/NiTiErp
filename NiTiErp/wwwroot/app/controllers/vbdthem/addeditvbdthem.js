@@ -8,7 +8,7 @@
         registerEvents();
 
         loadAddEditData();
-
+        
     }
 
     this.vanbandanhmuc = function () {
@@ -22,6 +22,7 @@
 
     this.sovanbanden = function () {
         loadVanBanDenSoList();
+        $('#tbl-contentFileVanBanDen').html('');
     }       
 
     function registerEvents() {
@@ -35,7 +36,8 @@
         formMainValidate();
 
         $('body').on('click', '.btnFileVanBan', function (e) {   
-            e.preventDefault();
+            e.preventDefault();           
+
             $('#hidInsertFileVanBanDenId').val(1);
             $('#modal-add-edit-FileVanBanDen').modal('show');  
         });
@@ -238,6 +240,7 @@
 
         $('#hidVanBanDenDienTuId').val('');
         $('#hidInsertVanBanDenDienTuId').val(0);
+        $('#hidIsVanBanDenDienTuId').val(0);
 
         $('#txtTrichYeu').val('');
         $('#ddlLinhVuc')[0].selectedIndex = 0;
@@ -259,6 +262,10 @@
     function SaveVanBanDen() {
         tedu.notify("save van ban den", "success");
 
+        var isvanbandientu = $('#hidIsVanBanDenDienTuId').val(); // 1 la co; 0 la ko  
+        var vanbandientuid = $('#hidVanBanDenDienTuId').val();
+        var makhuvuc = $('#ddlKhuVuc').val();
+
         var isMainValidate = isFormMainValidate();
         if (isMainValidate === true) {
             var insertvbdId = $('#hidInsertVBDThemId').val();
@@ -278,14 +285,15 @@
             var tenlanhdaoduyet = $('#ddlLanhDaoDuyet').val();
             var capdokhanvanban = $('#ddlCapDoKhan').val();
             var capdomatvanban = $('#ddlCapDoMat').val();
-            var ghichuvanban = $('#txtGhiChu').val();
-
+            var ghichuvanban = $('#txtGhiChu').val();          
+            
             $.ajax({
                 type: "POST",
                 url: "/Admin/vbdthem/AddUpdateVanBanDen",
                 data: {
                     InsertVanBanDenId: insertvbdId,
                     CodeFileGuidId: codefileguid, // update danh sách file van ban lien quan
+                    CorporationId: makhuvuc,
                     TrichYeuCuaVanBan: trichyeunoidung,
                     VanBanLinhVucId: linhvucid,
                     VanBanLoaiId: loaivanbanid,
@@ -293,15 +301,18 @@
                     NgayDenCuaVanBan: ngaydenvanban,
                     VanBanDenSoId: sovanbandenso,
                     SoVanBanDen: 1, // tu cho bang 1
-                    SoVanBanDenStt: sovanbanden,
+                    SoVanBanDenStt: 1, // tu tang trong sql
                     SoKyHieuCuaVanBan: sokyhieuvanban,
                     NguoiKyCuaVanBan: nguoikyvanbanden,
                     VanBanCoQuanBanHanhId: coquanbanhanh,
                     NoiLuuBanChinh: noiluubanchinh,
-                    TenLanhDaoDuyet: tenlanhdaoduyet,
+                    HoSoNhanVienId: tenlanhdaoduyet,                 
                     VanBanKhanId: capdokhanvanban,
                     VanBanMatId: capdomatvanban,
-                    GhiChu: ghichuvanban
+                    GhiChu: ghichuvanban,
+
+                    IsVanBanDienTu: isvanbandientu,
+                    VanBanDienTuId: vanbandientuid
 
                 },
                 dataType: "json",
@@ -417,6 +428,8 @@
             }
         });
     }
+
+    
 
 
 }

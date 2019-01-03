@@ -108,6 +108,7 @@ namespace NiTiErp.Application.Dapper.Implementation
                 var dynamicParameters = new DynamicParameters();
 
                 dynamicParameters.Add("@Id", vanbanden.Id);
+                dynamicParameters.Add("@CodeFileGuidId", vanbanden.CodeFileGuidId); 
                 dynamicParameters.Add("@CorporationId", vanbanden.CorporationId);
                 dynamicParameters.Add("@TrichYeuCuaVanBan", vanbanden.TrichYeuCuaVanBan);
                 dynamicParameters.Add("@VanBanLinhVucId", vanbanden.VanBanLinhVucId);
@@ -139,6 +140,12 @@ namespace NiTiErp.Application.Dapper.Implementation
                 dynamicParameters.Add("@IsLanhDaoXem", vanbanden.IsLanhDaoXem); 	
                 dynamicParameters.Add("@Stt", vanbanden.Stt);
 
+                dynamicParameters.Add("@CreateDate", vanbanden.CreateDate);
+                dynamicParameters.Add("@CreateBy", vanbanden.CreateBy);
+                dynamicParameters.Add("@UpdateDate", vanbanden.UpdateDate);
+                dynamicParameters.Add("@UpdateBy", vanbanden.UpdateBy);
+
+                dynamicParameters.Add("@parameters", parameters);
                 try                    	
                 {
                     var query = await sqlConnection.QueryAsync<VanBanDenViewModel>(
