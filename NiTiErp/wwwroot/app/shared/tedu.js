@@ -287,6 +287,47 @@
             return '<span class="badge bg-purple">Chưa biết</span>';
 
     },
+    getVanBanDenTTXuLy: function (trangthai) {
+        if (trangthai === "1")
+            return '<span class="badge bg-orange">Chưa chuyển</span>';
+        else if (trangthai === "2")
+            return '<span class="badge bg-blue">Đã chuyển</span>';
+        else if (trangthai === "3")
+            return '<span class="badge bg-green">Chờ phát hành</span>';       
+        else if (trangthai === "4")
+            return '<span class="badge bg-purple">Phát hành</span>';
+        else
+            return '<span class="badge bg-red">Không biết</span>';
+
+    },
+    getVanBanDenTTDuyet: function (trangthai) {
+        if (trangthai === "1")
+            return '<span class="badge bg-green">Chuyển chuyên môn</span>';
+        else if (trangthai === "2")
+            return '<span class="badge bg-orange">Chưa chuyển chuyên môn</span>';
+        else if (trangthai === "3")
+            return '<span class="badge bg-red">Sai chuyển lại</span>';
+        else if (trangthai === "4")
+            return '<span class="badge bg-blue">Duyệt văn thư</span>';
+        else
+            return '<span class="badge bg-red">Không biết</span>';
+
+    },
+    getVanBanDenTTDangXuLy: function (trangthai) {
+        if (trangthai === "1")
+            return '<span class="badge bg-orange">Nhập văn bản đến</span>';
+        else if (trangthai === "2")
+            return '<span class="badge bg-green">Chuyển lãnh đạo</span>';
+        else if (trangthai === "3")
+            return '<span class="badge bg-blue">Lãnh đạo duyệt</span>';
+        else if (trangthai === "4")
+            return '<span class="badge bg-purple">Kết thúc</span>';
+        else if (trangthai === "5")
+            return '<span class="badge bg-red">Xử lý lại</span>';
+        else
+            return '<span class="badge bg-red">Không biết</span>';
+
+    },
     formatNumber: function (number, precision) {
         if (!isFinite(number)) {
             return number.toString();

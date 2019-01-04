@@ -41,6 +41,13 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        [HttpGet]
+        public IActionResult VanBanCoQuanGetListKV(string corporationid)
+        {
+            var model = _vanbandensoService.VanBanDenSoGetList(corporationid, 1, "", 1, "", "GetAllVanBanDenSoKV");
+            return new OkObjectResult(model);
+        }
+
         #endregion AJAX API
 
 

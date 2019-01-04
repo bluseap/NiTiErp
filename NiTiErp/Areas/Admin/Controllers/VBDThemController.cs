@@ -88,6 +88,28 @@ namespace NiTiErp.Areas.Admin.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult GetListVBDen(string corporationId, string sovanbanden, string keyword, int page, int pageSize)
+        {
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var phong = !string.IsNullOrEmpty(sovanbanden) ? sovanbanden : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+            var newGuid = new Guid();
+
+            var model = _vanbandenService.GetAllVanBanDenPaging(corporationId, 1, 1, 1, DateTime.Now, DateTime.Now, 1, 1, 
+                sovanbanden, "", false, 1, false, DateTime.Now,  "", newGuid, 1, 1, false, "", "", "",
+                keyword, page, pageSize, 1, "", ""  , "GetAllVanBanDen");
+
+            return new OkObjectResult(model);
+        }
+
+        //[HttpGet]
+        //public IActionResult GetVeHuuId(string vehuuId)
+        //{
+        //    var model = _qdnghihuuService.GetAllNghiHuuPaging("", "", "", 1, 1000, "", "", "", vehuuId, "GetAllNghiHuuId");
+
+        //    return new OkObjectResult(model);
+        //}
 
         #region VanBanDenFile
         public IActionResult AddUpdateVanBanDenFile(VanBanDenFileViewModel vanbandenfileVm)
