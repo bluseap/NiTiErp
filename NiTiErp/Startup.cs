@@ -305,6 +305,7 @@ namespace NiTiErp
             app.UseSignalR(routes =>
             {
                 routes.MapHub<ChatHub>("/chat");
+                routes.MapHub<VanBanHub>("/vanban");
             });
           
             app.UseMvc(routes =>
