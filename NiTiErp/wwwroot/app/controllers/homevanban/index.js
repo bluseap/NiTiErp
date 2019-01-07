@@ -15,7 +15,7 @@
         $('body').on('click', '.btnDenDienTu', function (e) {
             e.preventDefault();
             tedu.notify("văn bản đến điện tử", "success");
-
+            
         });
 
         $('body').on('click', '.btnDenChuaXuLy', function (e) {

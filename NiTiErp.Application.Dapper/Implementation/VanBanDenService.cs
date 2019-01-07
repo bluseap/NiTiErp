@@ -157,9 +157,9 @@ namespace NiTiErp.Application.Dapper.Implementation
                     throw ex;
                 }
             }
-        }
+        }        
 
-        public async Task<List<VanBanDenViewModel>> VanBanCoQuanGetList(string corporationId, int vanbanlinhvucId,
+        public async Task<List<VanBanDenViewModel>> VanBanDennGetList(string corporationId, int vanbanlinhvucId,
             int vanbanloaiId, int vanbancoquanbanhanhId, DateTime ngaybanhanhvanbanden, DateTime ngaydencuavanban,
             int vanbandensoId, int sovanbanden, string sokyhieuvanbanden, string nguoikyvanbanden,
             bool isvanbandientu, int vanbandientuId, bool isphathanhvanbanden, DateTime ngayphathanhvanbanden,
@@ -219,6 +219,36 @@ namespace NiTiErp.Application.Dapper.Implementation
             }
         }
 
-        
+        public Int32 GetCountVanBan(string corporation, string parameter)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                sqlConnection.OpenAsync();                        
+
+                var paramaters = new DynamicParameters();
+
+                paramaters.Add("@corporationId", corporation);
+               
+                paramaters.Add("@parameters", parameter);
+
+                try
+                { 
+                    var query =  sqlConnection.QueryAsync<VanBanDenViewModel>
+                        ("VanBanDenCount", paramaters, commandType: CommandType.StoredProcedure);
+
+                    var ketqua = query.Result.ToList();
+
+                    return ketqua.Sum(p => Convert.ToInt32(p.KETQUA));
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+            }
+        }
+
+
+
     }
 }

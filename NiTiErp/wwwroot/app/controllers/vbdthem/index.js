@@ -17,17 +17,19 @@
         vanbandendientu.initialize();
 
         loadData();        
-    }
+    }    
 
     function registerEvents() {
 
         $('#btnTimNoiDung').on('click', function () {
             tedu.notify("tim noi dung nút", "success");
+            
         });
 
         $('#txtTimNoiDung').on('keypress', function (e) {
             if (e.which === 13) {
                 tedu.notify("txt tim noi dung nút", "success");
+
             }
         });
 

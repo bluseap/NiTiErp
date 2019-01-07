@@ -24,6 +24,9 @@
     <link href="~/lib/notifyjs/dist/styles/metro/notify-metro.css" rel="stylesheet" />
     <link href="~/lib/ckeditor/skins/moono/editor.css" rel="stylesheet" />
 
+
+    <link href="~/lib/gentelella/vendors/pnotify/dist/pnotify.css" rel="stylesheet" />
+
     @*<link href="~/lib/jquery-loading/loading.css" rel="stylesheet" />*@
 
     <!-- Custom Theme Style -->
@@ -232,8 +235,12 @@
     <!-- jQuery Smart Wizard -->
     @*<script src="~/lib/gentelella/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js" asp-append-version="true"></script>*@
 
+    <script src="~/lib/gentelella/vendors/pnotify/dist/pnotify.js" asp-append-version="true"></script>
+
+
     <!-- Custom Theme Scripts -->
-    <script src="~/admin-side/js/custom.min.js" asp-append-version="true"></script>
+    @*<script src="~/admin-side/js/custom.min.js" asp-append-version="true"></script>*@
+    <script src="~/admin-side/js/custom.js" asp-append-version="true"></script>
 
     @*<script src="~/lib/jquery-loading/jquery.loading.js"></script>*@
     <script src="~/lib/jQuery.print/jQuery.print.js" asp-append-version="true"></script>
@@ -242,12 +249,15 @@
 
     <script src="~/app/shared/tedu.js" asp-append-version="true"></script>
 
+    <script src="~/app/shared/tinnhanhub.js" asp-append-version="true"></script>
+
     @*<environment names="Development">
             <script src="~/app/shared/tedu.js"></script>
         </environment>
         <environment names="Staging,Production">
             <script src="~/bundled/site-admin.min.js"></script>
         </environment>*@
+
 
 
     <script>

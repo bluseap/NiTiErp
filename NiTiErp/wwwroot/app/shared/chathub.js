@@ -21,4 +21,3 @@ connection.on("broadcastMessage", (user, message) => {
 
 });
 
-connection.start().catch(err => console.error(err.toString()));

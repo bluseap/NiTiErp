@@ -306,6 +306,7 @@ namespace NiTiErp
             {
                 routes.MapHub<ChatHub>("/chat");
                 routes.MapHub<VanBanHub>("/vanban");
+                routes.MapHub<TinNhanHub>("/tinnhan");
             });
           
             app.UseMvc(routes =>

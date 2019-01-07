@@ -2,10 +2,12 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.SignalR;
 using NiTiErp.Application.Dapper.Interfaces;
 using NiTiErp.Application.Dapper.ViewModels;
 using NiTiErp.Authorization;
 using NiTiErp.Extensions;
+using NiTiErp.Hubs;
 using NiTiErp.Utilities.Dtos;
 using System;
 using System.Collections.Generic;
@@ -18,6 +20,8 @@ namespace NiTiErp.Areas.Admin.Controllers
         private readonly IHostingEnvironment _hostingEnvironment;
         private readonly NiTiErp.Application.Interfaces.IUserService _userService;
         private readonly IAuthorizationService _authorizationService;
+        private readonly IHubContext<VanBanHub> _hubContext;
+        private readonly IHubContext<TinNhanHub> _hubTinNhanContext;
 
         private readonly IVanBanDenService _vanbandenService;
         private readonly IVanBanDenFileService _vanbandenfileService;
@@ -25,6 +29,8 @@ namespace NiTiErp.Areas.Admin.Controllers
         public VBDThemController(IHostingEnvironment hostingEnvironment,
             NiTiErp.Application.Interfaces.IUserService userService,
             IAuthorizationService authorizationService,
+            IHubContext<VanBanHub> hubContext,
+            IHubContext<TinNhanHub> hubTinNhanContext,
 
             IVanBanDenService vanbandenService,
             IVanBanDenFileService vanbandenfileService
@@ -34,6 +40,8 @@ namespace NiTiErp.Areas.Admin.Controllers
             _userService = userService;
             _authorizationService = authorizationService;
 
+            _hubTinNhanContext = hubTinNhanContext;
+            _hubContext = hubContext;
             _vanbandenService = vanbandenService;
             _vanbandenfileService = vanbandenfileService;
         }
@@ -71,7 +79,8 @@ namespace NiTiErp.Areas.Admin.Controllers
                         return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
                     }                                       
 
-                    var vanbanden = _vanbandenService.VanBanDenAUD(vanbandenVm, "InVanBanDen");
+                    var vanbanden = _vanbandenService.VanBanDenAUD(vanbandenVm, "InVanBanDen");                                   
+
                     return new OkObjectResult(vanbanden);
                 }
                 else
@@ -84,8 +93,29 @@ namespace NiTiErp.Areas.Admin.Controllers
 
                     var vanbanden = _vanbandenService.VanBanDenAUD(vanbandenVm, "UpVanBanDen");
                     return new OkObjectResult(vanbanden);
-                }
+                }               
             }
+        }
+
+        [HttpGet]
+        public IActionResult GetCountVBDen(string corporationId)
+        {
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+
+            var count = _vanbandenService.GetCountVanBan(corporationId, "GetCountVBDenTTXL");
+
+            _hubContext.Clients.All.SendAsync("VanBanDenChuaXuLy", count.ToString());
+            //_hubContext.Clients.All.SendAsync("VanBanDenChuaXuLy", "999");
+
+            return new OkObjectResult(count);
+        }
+
+        [HttpGet]
+        public IActionResult TinNhanVBDen()
+        {   
+            _hubTinNhanContext.Clients.All.SendAsync("ThongBaoMauXanh", "fff");          
+
+            return new OkObjectResult(200);
         }
 
         [HttpGet]
@@ -99,6 +129,32 @@ namespace NiTiErp.Areas.Admin.Controllers
             var model = _vanbandenService.GetAllVanBanDenPaging(corporationId, 1, 1, 1, DateTime.Now, DateTime.Now, 1, 1, 
                 sovanbanden, "", false, 1, false, DateTime.Now,  "", newGuid, 1, 1, false, "", "", "",
                 keyword, page, pageSize, 1, "", ""  , "GetAllVanBanDen");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetListVBDenTTXL(string corporationId, string sovanbanden, string keyword, int page, int pageSize)
+        {
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var phong = !string.IsNullOrEmpty(sovanbanden) ? sovanbanden : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+            var newGuid = new Guid();
+
+            var model = _vanbandenService.VanBanDennGetList(corporationId, 1, 1, 1, DateTime.Now, DateTime.Now, 1, 1,
+                sovanbanden, "", false, 1, false, DateTime.Now, "", newGuid, 1, 1, false, "", "", "",
+                keyword, page, pageSize, 1, "", "", "GetAllVanBanDenTTXuLy");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetCountVBDenTTXL(string corporationId)
+        {
+            var newGuid = new Guid();
+            var model = _vanbandenService.VanBanDennGetList(corporationId, 1, 1, 1, DateTime.Now, DateTime.Now, 1, 1,""
+                , "", false, 1, false, DateTime.Now, "", newGuid, 1, 1, false, "", "", "",
+                "", 1, 1, 1, "", "", "GetCountVBDenTTXL");
 
             return new OkObjectResult(model);
         }
