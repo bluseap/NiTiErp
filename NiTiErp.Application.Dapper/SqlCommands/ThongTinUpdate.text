@@ -74,6 +74,8 @@ table genericate VanBanPhoiHopXuLy
 
 
 
+create procedure [VanBanDienTuGetList]
+
 create procedure [VanBanDenAUD]
 
 create procedure VanBanDenGetList

@@ -35,14 +35,27 @@
 
         $("#btn-create").on('click', function (e) {            
             e.preventDefault();
-            tedu.notify("them moi van ban den", "success");
+            //tedu.notify("them moi van ban den", "success");
             $('#hidInsertVBDThemId').val(1);  // insert
             $('#hidIsVanBanDenDienTuId').val("False"); // 1 la co; 0 la ko
             $('#hidVanBanDenDienTuId').val(1);  
             
             CodeFileGuidId(); // CodeId
 
+            var makv = $('#ddlKhuVuc').val();
+            addeditvbdthem.loadVanBanDienTuCount(makv);
             addeditvbdthem.sovanbanden();
+
+            $('#modal-add-edit-VBDThem').modal('show');  
+        });
+
+        $('body').on('click', '.btn-addeditVBDThem', function (e) {        
+            e.preventDefault();            
+            $('#hidInsertVBDThemId').val(2);  // update           
+
+            var vanbandenId = $(this).data('id');
+            fielvanbanden.vanbandenfileid(vanbandenId);
+            addeditvbdthem.loadVanBanDen(vanbandenId);            
 
             $('#modal-add-edit-VBDThem').modal('show');  
         });
@@ -50,6 +63,12 @@
         $('#ddlKhuVuc').on('change', function () {
             var corporationId = $('#ddlKhuVuc').val();
             loadVanBanDenSoGetList(corporationId);
+        });
+
+        $("#ddl-show-pageVBDThem").on('change', function () {
+            tedu.configs.pageSize = $(this).val();
+            tedu.configs.pageIndex = 1;
+            loadTableVanBanDen(true);
         });
 
         ////$('body').on('click', '.btn-create', function (e) {           

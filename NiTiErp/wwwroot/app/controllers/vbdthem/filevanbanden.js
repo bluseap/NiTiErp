@@ -12,6 +12,10 @@
 
     }
 
+    this.vanbandenfileid = function (vanbandenid) {
+        loadTableVanBanDenFileListId(vanbandenid);
+    }
+
     function registerEvents() {
 
         $("#btnSaveFileVanBanDen").on('click', function (e) {
@@ -110,9 +114,10 @@
     }
 
     function loadTableVanBanDenFile(codeid) {
+      
         var template = $('#table-FileVanBanDen').html();
         var render = "";
-        
+       
         $.ajax({
             type: 'GET',
             data: {
@@ -142,12 +147,6 @@
                     $('#tbl-contentFileVanBanDen').html(render);
                 }
 
-                //if (response.Result.RowCount !== 0) {
-                //    wrapPagingVanBanDenFile(response.Result.RowCount, function () {
-                //        loadTableThongBao();
-                //    },
-                //        isPageChanged);
-                //}
             },
             error: function (status) {
                 console.log(status);
@@ -155,30 +154,48 @@
             }
         });
     }
-    //function wrapPagingVanBanDenFile(recordCount, callBack, changePageSize) {
-    //    var totalsize = Math.ceil(recordCount / tedu.configs.pageSize);
-    //    //Unbind pagination if it existed or click change pagesize
-    //    if ($('#paginationULThongBao a').length === 0 || changePageSize === true) {
-    //        $('#paginationULThongBao').empty();
-    //        $('#paginationULThongBao').removeData("twbs-pagination");
-    //        $('#paginationULThongBao').unbind("page");
-    //    }
-    //    //Bind Pagination Event
-    //    $('#paginationULThongBao').twbsPagination({
-    //        totalPages: totalsize,
-    //        visiblePages: 7,
-    //        first: 'Đầu',
-    //        prev: 'Trước',
-    //        next: 'Tiếp',
-    //        last: 'Cuối',
-    //        onPageClick: function (event, p) {
-    //            if (tedu.configs.pageIndex !== p) {
-    //                tedu.configs.pageIndex = p;
-    //                setTimeout(callBack(), 200);
-    //            }
-    //        }
-    //    });
-    //}
+
+    function loadTableVanBanDenFileListId(vanbandenid) {
+        var template = $('#table-FileVanBanDen').html();
+        var render = "";
+
+        $.ajax({
+            type: 'GET',
+            data: {
+                vanbandenId: vanbandenid
+            },
+            url: '/admin/vbdthem/GetListVBDListIdPaging',
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th></tr>";
+                }
+                else {
+                    $.each(response.Result.Results, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+                            CodeId: item.CodeId,
+                            //HinhNhanVien: item.Image === null ? '<img src="/admin-side/images/user.png?h=90"' : '<img src="' + item.HinhNhanVien + '?h=90" />',
+                            TenFile: item.TenFile
+                            //CreateDate: tedu.getFormattedDate(item.CreateDate),
+                            //Status: tedu.getHoSoNhanVienStatus(item.Status)
+                            // Price: tedu.formatNumber(item.Price, 0),                          
+                        });
+                    });
+                    $('#hidCodeFileGuidId').val(response.Result.Results[0].CodeId);
+                }
+                //$('#lblThongBaoTotalRecords').text(response.Result.RowCount);
+                if (render !== '') {
+                    $('#tbl-contentFileVanBanDen').html(render);
+                }
+                
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
 
     function loadData() {
 

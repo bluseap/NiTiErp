@@ -22,6 +22,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         private readonly IAuthorizationService _authorizationService;
         private readonly IHubContext<VanBanHub> _hubContext;
         private readonly IHubContext<TinNhanHub> _hubTinNhanContext;
+        private readonly IVanBanDienTuService _vanbandientuService;
 
         private readonly IVanBanDenService _vanbandenService;
         private readonly IVanBanDenFileService _vanbandenfileService;
@@ -31,6 +32,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             IAuthorizationService authorizationService,
             IHubContext<VanBanHub> hubContext,
             IHubContext<TinNhanHub> hubTinNhanContext,
+            IVanBanDienTuService vanbandientuService,
 
             IVanBanDenService vanbandenService,
             IVanBanDenFileService vanbandenfileService
@@ -40,6 +42,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             _userService = userService;
             _authorizationService = authorizationService;
 
+            _vanbandientuService = vanbandientuService;
             _hubTinNhanContext = hubTinNhanContext;
             _hubContext = hubContext;
             _vanbandenService = vanbandenService;
@@ -134,6 +137,18 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetVanBanDenId(Int32 vanbandenId)
+        {            
+            var newGuid = new Guid();
+
+            var model = _vanbandenService.VanBanDennGetList("", 1, 1, 1, DateTime.Now, DateTime.Now, 1, 1,
+                "", "", false, 1, false, DateTime.Now, "", newGuid, 1, 1, false, "", "", "",
+                "", 1, 1000, vanbandenId, "", "", "GetVanBanDenId");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
         public IActionResult GetListVBDenTTXL(string corporationId, string sovanbanden, string keyword, int page, int pageSize)
         {
             var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
@@ -166,6 +181,19 @@ namespace NiTiErp.Areas.Admin.Controllers
 
         //    return new OkObjectResult(model);
         //}
+
+        #region VanBanDienTu
+
+        [HttpGet]
+        public IActionResult GetListVanBanDienTu(string makhuvuc)
+        {
+            var model = _vanbandientuService.VanBanDienTuGetList(makhuvuc, 1, DateTime.Now, DateTime.Now, 1
+                , "", "", "", "GetCountVBDTKVNo");
+
+            return new OkObjectResult(model);
+        }
+
+        #endregion
 
         #region VanBanDenFile
         public IActionResult AddUpdateVanBanDenFile(VanBanDenFileViewModel vanbandenfileVm)
@@ -209,10 +237,56 @@ namespace NiTiErp.Areas.Admin.Controllers
             }
         }
 
+        [HttpPost]
+        public IActionResult DeleteVanBanFile(VanBanDenFileViewModel vanbandenfileVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                if (vanbandenfileVm.InsertVanBanDenFileId == 3)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "VANBANDENTHEM", Operations.Delete); // xoa van ban den file
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền xóa."));
+                    }
+
+                    var username = User.GetSpecificClaim("UserName");
+
+                    vanbandenfileVm.CreateBy = username;
+                    vanbandenfileVm.CreateDate = DateTime.Now;
+                    vanbandenfileVm.UpdateBy = username;
+                    vanbandenfileVm.UpdateDate = DateTime.Now;
+
+                    var vanbandenfile = _vanbandenfileService.VanBanDenFileAUD(vanbandenfileVm, "DelVanBanDenFile");
+
+                    return new OkObjectResult(vanbandenfile);
+                }
+                else
+                {
+                    return new OkObjectResult(vanbandenfileVm);
+                }
+            }
+        }
+
         [HttpGet]
         public IActionResult GetListVanBanDenFilePaging(string CodeId)
         {           
             var model = _vanbandenfileService.GetAllVanBanDenFilePaging(1, CodeId, 1, "", "", 1, 1000, "GetAllVanBanDenFileCode");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetListVBDListIdPaging(Int32 vanbandenId)
+        {
+            var newGuid = new Guid();
+
+            var model = _vanbandenfileService.GetAllVanBanDenFilePaging(1, newGuid.ToString(), vanbandenId, "", "", 1, 1000, "GetAllVBDVanBanDenId");
 
             return new OkObjectResult(model);
         }
