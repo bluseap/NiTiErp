@@ -23,6 +23,8 @@ namespace NiTiErp.Application.Dapper.ViewModels
         
         public bool IsVanBanXem { set; get; }
 
+        public DateTime NgayVanBanXem { get; set; }
+
 
 
         [StringLength(50)]

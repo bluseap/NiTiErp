@@ -96,7 +96,8 @@ namespace NiTiErp.Application.Dapper.ViewModels
         public string TenKhuVucPhatHanh { get; set; }
 
         public bool IsLanhDaoXem { get; set; }
-         
+
+        public DateTime NgayLanhDaoXem  { get; set; }
 
 
 

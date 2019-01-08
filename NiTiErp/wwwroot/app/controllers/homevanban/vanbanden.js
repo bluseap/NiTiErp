@@ -1,8 +1,16 @@
 ﻿
-$(function () { 
 
-    loadVanBanDenTTXL();      
 
+$(function () {
+    //var connection = new signalR.HubConnectionBuilder()
+    //    .withUrl("/vanban")
+    //    .build();
+    //connection.start().catch(err => console.error(err.toString()));
+
+    //loadVanBanDenTTXL(connection);   
+
+    //var makhuvuc = $('#ddlKhuVuc').val();
+    //loadCountVanBanDenDangXL(makhuvuc, connection);
 });
 
 function onConnected(connection) {
@@ -18,7 +26,7 @@ function onConnectionError(error) {
 }
 
 
-function loadVanBanDenTTXL() {
+function loadVanBanDenTTXL(connection) {
     var template = $('#table-VBDThem').html();
     var render = "";
 
@@ -39,29 +47,64 @@ function loadVanBanDenTTXL() {
 
         dataType: 'json',
         success: function (response) {
-            const connection = new signalR.HubConnectionBuilder()
-                .withUrl("/vanban")
-                .build();
-
-            connection.start().catch(err => console.error(err.toString()));
+            //const connection = new signalR.HubConnectionBuilder()
+            //    .withUrl("/vanban")
+            //    .build();
+            //connection.start().catch(err => console.error(err.toString()));
 
             connection.on("VanBanDenChuaXuLy", (message) => {
-
                 $('#spanDenChuaXuLy').text(message);
             });
 
             if (response.Result.length === 0) {
                 connection.invoke("SendVanBanDenChuaXuLy", "9").catch(function (err) {
-                    $('#spanDenChuaXuLy').text("0");
-                });
+                    $('#spanDenChuaXuLy').text("0");                   
+                });              
             }
             else {
                 var tongttxl = response.Result.length;
                 connection.invoke("SendVanBanDenChuaXuLy", tongttxl).catch(function (err) {
-                    $('#spanDenChuaXuLy').text(tongttxl);
+                    $('#spanDenChuaXuLy').text(tongttxl);                    
                 });
-           
             }           
+        },
+        error: function (status) {
+            console.log(status);
+            tedu.notify('Không thể lấy dữ liệu về.', 'error');
+        }
+    });
+}
+
+function loadCountVanBanDenDangXL(makv, connection) {
+    $.ajax({
+        type: 'GET',
+        url: '/admin/vbdthem/GetCountVBDenDangXL',
+        data: {
+            corporationId: makv
+        },
+        dataType: 'json',
+        success: function (response) {
+            //const connection = new signalR.HubConnectionBuilder()
+            //    .withUrl("/vanban")
+            //    .build();
+            //connection.start().catch(err => console.error(err.toString()));
+
+            connection.on("VanBanDenDangXuLy", (response) => {
+                $('#spanDenDangXuLy').text(response);
+            });
+
+            //if (response.Result.length === 0) {
+            //    connection.invoke("SendVanBanDenDangXuLy", "9").catch(function (err) {
+            //        $('#spanDenDangXuLy').text("0");
+            //    });
+            //}
+            //else {
+            //    var tongttxl = response.Result.length;
+            //    connection.invoke("SendVanBanDenDangXuLy", tongttxl).catch(function (err) {
+            //        $('#spanDenDangXuLy').text(tongttxl);
+            //    });
+
+            //}         
         },
         error: function (status) {
             console.log(status);

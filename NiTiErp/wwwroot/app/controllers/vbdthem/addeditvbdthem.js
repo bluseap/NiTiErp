@@ -75,9 +75,17 @@
             }
         });
 
-        $("#btnVBDThemChuyenThay").on('click', function (e) {
+        $("#btnVBDThemChuyen").on('click', function (e) {
             e.preventDefault();
-            SaveVanBanDenChuyenThay();
+            var insertvanbanden = $('#hidInsertVBDThemId').val();
+
+            if (insertvanbanden === "1") {
+                //SaveVanBanDen();
+            }
+            else if (insertvanbanden === "2") {
+                SaveVanBanDenChuyen();
+            }
+            
         });
 
         $('body').on('click', '.btnDeleteFile', function (e) {
@@ -800,9 +808,41 @@
         });
     }
 
-    function SaveVanBanDenChuyenThay() {
-        tedu.notify("Luu chuyen thay lanh dao", "success");
+    function SaveVanBanDenChuyen() {       
+        var vanbandenId = $('#hidVanBanDenId').val();      
+        var insertvbdId = $('#hidInsertVBDThemId').val();        
 
+        $.ajax({
+            type: "POST",
+            url: "/Admin/vbdthem/InsertVanBanDenDuyet",
+            data: {
+                VanBanDenId: vanbandenId,
+                InsertVanBanDenDuyetId: insertvbdId
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Success === false) {
+                    tedu.notify(response.Message, "error");
+                }
+                else {
+                    tedu.notify('Lưu văn bản đến chuyển lãnh đạo.', 'success');
+
+                    loadTableVanBanDen(true);
+                    loadCountVanBanDen(makhuvuc);
+
+                    ClearFormAddEdit();
+                    $('#modal-add-edit-VBDThem').modal('hide');
+                    tedu.stopLoading();
+                }
+            },
+            error: function () {
+                tedu.notify('Có lỗi! Không thể lưu văn bản đến chuyển lãnh đạo.', 'error');
+                tedu.stopLoading();
+            }
+        }); 
     }
 
     function loadTableVanBanDienTu() {

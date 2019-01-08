@@ -20,5 +20,29 @@ namespace NiTiErp.Hubs
             await Clients.All.SendAsync("VanBanDenChuaXuLy", message);
         }
 
+        public async Task SendVanBanDenDangXuLy(string message)
+        {
+            // Call the broadcastMessage method to update clients.
+            await Clients.All.SendAsync("VanBanDenDangXuLy", message);
+        }
+
+        public async Task SendVanBanDenChoDuyet(string message)
+        {
+            // Call the broadcastMessage method to update clients.
+            await Clients.All.SendAsync("VanBanDenChoDuyet", message);
+        }
+
+        public async Task SendVanBanDenChuaPhatHanh(string message)
+        {
+            // Call the broadcastMessage method to update clients.
+            await Clients.All.SendAsync("VanBanDenChuaPhatHanh", message);
+        }
+
+        public async Task SendVanBanDenDienTu(string message)
+        {
+            // Call the broadcastMessage method to update clients.
+            await Clients.All.SendAsync("VanBanDenDienTu", message);
+        }
+
     }
 }

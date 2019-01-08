@@ -2,6 +2,11 @@
 
     var userCorporationId = $("#hidUserCorporationId").val();
 
+    var connection = new signalR.HubConnectionBuilder()
+        .withUrl("/vanban")
+        .build();
+    connection.start().catch(err => console.error(err.toString()));
+
     this.initialize = function () {
         loadKhuVuc();
 
@@ -110,13 +115,160 @@
                 else {
                     $('#ddlKhuVuc').prop('disabled', false);
                 }
-                //$("#ddlKhuVuc")[0].selectedIndex = 1;   
-                //var makv = $('#ddlKhuVuc').val();
+                $("#ddlKhuVuc")[0].selectedIndex = 1;   
+                var makv = $('#ddlKhuVuc').val();
                 //thongbao();
+
+                loadSumVanBan(makv);
             },
             error: function (status) {
                 console.log(status);
                 tedu.notify('Không có danh mục Công Ty.', 'error');
+            }
+        });
+    }
+
+    function loadSumVanBan(makv) {
+        loadVanBanDenTTXL(connection, makv);
+        loadCountVanBanDenDangXL(connection, makv);
+        loadCountVanBanDenChoDuyet(connection, makv);
+        loadCountVanBanDenChuaPhatHanh(connection, makv);
+        loadCountVanBanDenDienTu(connection, makv);
+    }
+
+    function loadVanBanDenTTXL(connection, makv) {
+        var template = $('#table-VBDThem').html();
+        var render = "";
+
+        //var makhuvuc = $('#ddlKhuVuc').val();
+        var sovanbanden = $('#ddlVanBanDenSoMoi').val();
+        var timnoidung = $('#txtTimNoiDung').val();
+
+        $.ajax({
+            type: 'GET',
+            url: '/admin/vbdthem/GetListVBDenTTXL',
+            data: {
+                corporationId: makv,
+                sovanbanden: sovanbanden,
+                keyword: timnoidung,
+                page: tedu.configs.pageIndex,
+                pageSize: tedu.configs.pageSize
+            },
+
+            dataType: 'json',
+            success: function (response) {
+                //const connection = new signalR.HubConnectionBuilder()
+                //    .withUrl("/vanban")
+                //    .build();
+                //connection.start().catch(err => console.error(err.toString()));
+
+                connection.on("VanBanDenChuaXuLy", (message) => {
+                    $('#spanDenChuaXuLy').text(message);
+                });
+
+                if (response.Result.length === 0) {
+                    connection.invoke("SendVanBanDenChuaXuLy", "9").catch(function (err) {
+                        $('#spanDenChuaXuLy').text("0");
+                    });
+                }
+                else {
+                    var tongttxl = response.Result.length;
+                    connection.invoke("SendVanBanDenChuaXuLy", tongttxl).catch(function (err) {
+                        $('#spanDenChuaXuLy').text(tongttxl);
+                    });
+                }
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+
+    function loadCountVanBanDenDangXL(connection, makv) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/vbdthem/GetCountVBDenDangXL',
+            data: {
+                corporationId: makv
+            },
+            dataType: 'json',
+            success: function (response) {      
+                connection.on("VanBanDenDangXuLy", (response) => {
+                    $('#spanDenDangXuLy').text(response);
+                });
+                connection.invoke("SendVanBanDenDangXuLy", response).catch(function (err) {                    
+                });                  
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+
+    function loadCountVanBanDenChoDuyet(connection, makv) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/vbdthem/GetCountVBDenChoDuyet',
+            data: {
+                corporationId: makv
+            },
+            dataType: 'json',
+            success: function (response) {                
+                connection.on("VanBanDenChoDuyet", (response) => {
+                    $('#spanDenChoDuyet').text(response);
+                });
+                connection.invoke("SendVanBanDenChoDuyet", response).catch(function (err) {
+                });
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+
+    function loadCountVanBanDenChuaPhatHanh(connection, makv) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/vbdthem/GetCountVBDenChuaPhatHanh',
+            data: {
+                corporationId: makv
+            },
+            dataType: 'json',
+            success: function (response) {
+                connection.on("VanBanDenChuaPhatHanh", (response) => {
+                    $('#spanDenChuaPhatHanh').text(response);
+                });
+                connection.invoke("SendVanBanDenChuaPhatHanh", response).catch(function (err) {
+                });
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+
+    function loadCountVanBanDenDienTu(connection, makv) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/vbdthem/GetCountVBDenDienTu',
+            data: {
+                corporationId: makv
+            },
+            dataType: 'json',
+            success: function (response) {
+                connection.on("VanBanDenDienTu", (response) => {
+                    $('#spanDenDienTu').text(response);
+                });
+                connection.invoke("SendVanBanDenDienTu", response).catch(function (err) {
+                });
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
             }
         });
     }
