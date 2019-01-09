@@ -48,6 +48,7 @@ namespace NiTiErp.Application.Dapper.Implementation
                 dynamicParameters.Add("@IsSaiChuyenMon", vanbandenduyet.IsSaiChuyenMon);
                 dynamicParameters.Add("@NgaySaiChuyenMon", vanbandenduyet.NgaySaiChuyenMon);
                 dynamicParameters.Add("@GhiChuSaiChuyenMon", vanbandenduyet.GhiChuSaiChuyenMon);
+                dynamicParameters.Add("@IsDuyetPhatHanh", vanbandenduyet.IsDuyetPhatHanh);
                 dynamicParameters.Add("@NgayDuyetPhatHanh", vanbandenduyet.NgayDuyetPhatHanh);
                 dynamicParameters.Add("@GhiChuPhatHanh", vanbandenduyet.GhiChuPhatHanh);
                 dynamicParameters.Add("@IsDangXuLyXem", vanbandenduyet.IsDangXuLyXem);

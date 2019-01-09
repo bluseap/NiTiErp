@@ -22,29 +22,29 @@
     function registerEvents() {
 
         $('#btnTimNoiDung').on('click', function () {
-            tedu.notify("tim noi dung nút", "success");
-            
+            //tedu.notify("tim noi dung nút", "success");
+            loadTableVanBanDen();
         });
 
         $('#txtTimNoiDung').on('keypress', function (e) {
             if (e.which === 13) {
-                tedu.notify("txt tim noi dung nút", "success");
-
+                //tedu.notify("txt tim noi dung nút", "success");
+                loadTableVanBanDen();
             }
         });
 
         $("#btn-create").on('click', function (e) {            
             e.preventDefault();
-            //tedu.notify("them moi van ban den", "success");
-            $('#hidInsertVBDThemId').val(1);  // insert
-            $('#hidIsVanBanDenDienTuId').val("False"); // 1 la co; 0 la ko
-            $('#hidVanBanDenDienTuId').val(1);  
+            //tedu.notify("them moi van ban den", "success");            
             
-            CodeFileGuidId(); // CodeId
-
             var makv = $('#ddlKhuVuc').val();
             addeditvbdthem.loadVanBanDienTuCount(makv);
             addeditvbdthem.sovanbanden();
+
+            $('#hidInsertVBDThemId').val(1);  // insert
+            $('#hidIsVanBanDenDienTuId').val("False"); // 1 la co; 0 la ko
+            $('#hidVanBanDenDienTuId').val(1);  
+            CodeFileGuidId(); // CodeId
 
             $('#modal-add-edit-VBDThem').modal('show');  
         });
@@ -71,10 +71,43 @@
             loadTableVanBanDen(true);
         });
 
-        ////$('body').on('click', '.btn-create', function (e) {           
-        ////});
+        $('body').on('click', '.btnPatchFileTrichYeu', function (e) {
+            e.preventDefault();
+            var vanbandenId = $(this).data('id');
+            loadPatchFile(vanbandenId);
+        });
+
+        $('body').on('click', '.btnPatchFileKyHieu', function (e) {
+            e.preventDefault();
+            var vanbandenId = $(this).data('id');
+            loadPatchFile(vanbandenId);
+        });
 
     }    
+
+    function loadPatchFile(vanbandenId) { 
+        $.ajax({
+            type: "GET",
+            url: "/Admin/vbdthem/GetVanBanDenId",
+            data: { vanbandenId: vanbandenId },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var vanbanden = response.Result[0];
+
+                var win = window.open(vanbanden.DuongDanFile, '_blank');
+                win.focus();
+
+                tedu.stopLoading();
+            },
+            error: function (status) {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
+        });        
+    }
 
     function CodeFileGuidId() {
         $.ajax({

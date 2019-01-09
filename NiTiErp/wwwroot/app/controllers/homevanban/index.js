@@ -1,13 +1,15 @@
 ﻿var homevanbanController = function () {
 
     var userCorporationId = $("#hidUserCorporationId").val();
+    var userName = $("#hidUserName").val();
 
     var connection = new signalR.HubConnectionBuilder()
         .withUrl("/vanban")
         .build();
     connection.start().catch(err => console.error(err.toString()));
 
-    this.initialize = function () {
+    this.initialize = function () {      
+
         loadKhuVuc();
 
         loadData();
@@ -136,9 +138,7 @@
         loadCountVanBanDenDienTu(connection, makv);
     }
 
-    function loadVanBanDenTTXL(connection, makv) {
-        var template = $('#table-VBDThem').html();
-        var render = "";
+    function loadVanBanDenTTXL(connection, makv) {       
 
         //var makhuvuc = $('#ddlKhuVuc').val();
         var sovanbanden = $('#ddlVanBanDenSoMoi').val();
@@ -274,8 +274,33 @@
     }
 
     function loadData() {
-     
+        ClewarData();
+        loadAppUser(userName); // load HoSoNhanVienId
     }
+
+    function ClewarData() {
+        $('#hidHoSoNhanVienId').val('');
+
+    }
+
+    function loadAppUser(tennguoidung) {
+        $.ajax({
+            type: 'POST',
+            url: '/admin/user/GetUserName',
+            data: {
+                username: tennguoidung
+            },
+            dataType: 'json',
+            success: function (response) {
+                $('#hidHoSoNhanVienId').val(response.HoSoNhanVienId);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+
 
 
 }

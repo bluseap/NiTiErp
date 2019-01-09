@@ -16,11 +16,29 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
         public Guid CodeFileGuidId { get; set; }
 
+        [StringLength(250)]
+        public string DuongDanFile { get; set; }
+
+
         [StringLength(500)]
         public string CorporationId { set; get; }
 
         [StringLength(500)]
         public string TenKhuVuc { set; get; }
+
+        [StringLength(20)]
+        public string PhongBanDanhMucId { get; set; }
+
+        [StringLength(1000)]
+        public string TenPhong { get; set; }
+
+        [StringLength(20)]
+        public string ChucVuNhanVienId { get; set; }
+
+        [StringLength(500)]
+        public string TenChucVu { get; set; }
+
+
 
         [StringLength(2000)]
         public string TrichYeuCuaVanBan { set; get; }

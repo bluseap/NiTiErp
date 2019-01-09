@@ -103,6 +103,44 @@ namespace NiTiErp.Areas.Admin.Controllers
             }
         }
 
+        public IActionResult AddVanBanDenChuyen(VanBanDenViewModel vanbandenVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+
+                vanbandenVm.CreateBy = username;
+                vanbandenVm.CreateDate = DateTime.Now;
+                vanbandenVm.UpdateBy = username;
+                vanbandenVm.UpdateDate = DateTime.Now;
+
+                vanbandenVm.NgayPhatHanh = DateTime.Now;
+
+                if (vanbandenVm.InsertVanBanDenId == 1)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "VANBANDENTHEM", Operations.Create); // nhap van ban den
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
+                    }
+                    vanbandenVm.Id = 1;
+
+                    var vanbanden = _vanbandenService.VanBanDenAUD(vanbandenVm, "InVanBanDenChuyen");
+
+                    return new OkObjectResult(vanbanden);
+                }
+                else
+                {                   
+                    return new OkObjectResult(vanbandenVm);
+                }
+            }
+        }
+
         public IActionResult InsertVanBanDenDuyet(VanBanDenDuyetViewModel vanbandenduyetVm)
         {
             if (!ModelState.IsValid)

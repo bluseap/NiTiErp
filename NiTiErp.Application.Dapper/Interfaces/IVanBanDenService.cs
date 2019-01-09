@@ -12,7 +12,7 @@ namespace NiTiErp.Application.Dapper.Interfaces
     {
         Task<Boolean> VanBanDenAUD(VanBanDenViewModel vanbanden, string parameters);
 
-        Int32 GetCountVanBan(string corporation, string parameter);
+        long GetCountVanBan(string corporation, string parameter);
 
         Task<PagedResult<VanBanDenViewModel>> GetAllVanBanDenPaging  ( string corporationId ,	int vanbanlinhvucId ,
     int vanbanloaiId ,    int vanbancoquanbanhanhId ,	DateTime ngaybanhanhvanbanden ,    DateTime ngaydencuavanban ,
