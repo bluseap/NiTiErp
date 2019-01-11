@@ -192,7 +192,8 @@
 
     function loadData() {
         addeditvbdthem.vanbandanhmuc();
-    }
+       
+    }    
 
     function loadTableVanBanDen(isPageChanged) {
         var template = $('#table-VBDThem').html();

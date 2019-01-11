@@ -197,7 +197,8 @@
                 connection.on("VanBanDenDangXuLy", (response) => {
                     $('#spanDenDangXuLy').text(response);
                 });
-                connection.invoke("SendVanBanDenDangXuLy", response).catch(function (err) {                    
+                connection.invoke("SendVanBanDenDangXuLy", response).catch(function (err) {    
+                    $('#spanDenDangXuLy').text(response);
                 });                  
             },
             error: function (status) {
@@ -220,6 +221,7 @@
                     $('#spanDenChoDuyet').text(response);
                 });
                 connection.invoke("SendVanBanDenChoDuyet", response).catch(function (err) {
+                    $('#spanDenChoDuyet').text(response);
                 });
             },
             error: function (status) {
@@ -242,6 +244,7 @@
                     $('#spanDenChuaPhatHanh').text(response);
                 });
                 connection.invoke("SendVanBanDenChuaPhatHanh", response).catch(function (err) {
+                    $('#spanDenChuaPhatHanh').text(response);
                 });
             },
             error: function (status) {
@@ -264,6 +267,7 @@
                     $('#spanDenDienTu').text(response);
                 });
                 connection.invoke("SendVanBanDenDienTu", response).catch(function (err) {
+                    $('#spanDenDienTu').text(response);
                 });
             },
             error: function (status) {

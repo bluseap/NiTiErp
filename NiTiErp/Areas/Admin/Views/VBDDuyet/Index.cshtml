@@ -1,1 +1,132 @@
-﻿<h1>Duyệt văn bản đến</h1>
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+}
+@section Scripts{
+
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+
+    <script src="~/app/controllers/vbdduyet/_quatrinhxuly.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/vbdduyet/_chuyenchuyenmon.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/vbdduyet/dathuchien.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/vbdduyet/daduyet.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/vbdduyet/choduyet.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/vbdduyet/dachuyenchuyenmon.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/vbdduyet/chochuyenchuyenmon.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/vbdduyet/index.js" asp-append-version="true"></script>
+    <script>
+        var vbdduyet = new vbdduyetController();
+        vbdduyet.initialize();
+    </script>
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link ">
+                    Văn bản đến
+                </a>
+                >>
+                <a class="btn btn-link ">
+                    Duyệt văn bản đến
+                </a>
+            </small>
+        </div>
+    </div>
+
+    <div class="x_content">
+        <div class="">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>  <small> </small></h3>
+                </div>
+                <div class="title_right">
+
+                    <div class="col-md-4 col-sm-4 col-xs-12 form-group pull-right">
+                        <div class="input-group">
+                            <select id="ddlKhuVuc" class="form-control "></select>
+                            @*<input type="text" id="txtTimNoiDung" class="form-control" placeholder="Từ khóa...">*@
+                            @*<span class="input-group-btn">
+                                    <button class="btn btn-warning" id="btnTimNhanVien" type="button">Tìm !</button>
+                                </span>*@
+                        </div>
+                    </div>
+                    @*<div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
+                            <div class="input-group">
+
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+            <partial name="/Areas/Admin/Views/Shared/_timVanBan.cshtml" />
+
+            <div class="clearfix"></div>
+
+            <div class="" role="tabpanel" id="tabpanelDuyetVanBan" data-example-id="togglable-tabs">
+                <ul id="myTabDuyetVanBan" class="nav nav-tabs bar_tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#tab_ChoChuyenChuyenMon" role="tab" id="tabChoChuyenChuyenMon" data-toggle="tab" aria-expanded="true">
+                            VB chờ chuyển chuyên môn
+                            <span id="spanChoChuyenChuyenMon" class="badge bg-orange" style="font-size:large">0</span>
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="#tab_DaChuyenChuyenMon" role="tab" id="tabDaChuyenChuyenMon" data-toggle="tab" aria-expanded="false">
+                            VB đã chuyển chuyên môn
+                            <span id="spanDaChuyenChuyenMon" class="badge bg-blue" style="font-size:large">0</span>
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="#tab_ChoDuyet" role="tab" id="tabChoDuyet" data-toggle="tab" aria-expanded="false">
+                            VB chờ duyệt
+                            <span id="spanChoDuyet" class="badge bg-orange" style="font-size:large">0</span>
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="#tab_DaDuyet" role="tab" id="tabDaDuyet" data-toggle="tab" aria-expanded="false">
+                            VB đã duyệt
+                            <span id="spanDaDuyet" class="badge bg-blue" style="font-size:large">0</span>
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="#tab_DaThucHien" role="tab" id="tabDaThucHien" data-toggle="tab" aria-expanded="false">
+                            VB đã thực hiện
+                            <span id="spanDaThucHien" class="badge bg-green" style="font-size:large">0</span>
+                        </a>
+                    </li>
+                </ul>
+                <div id="myTabContentDuyetVanBan" class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade active in" id="tab_ChoChuyenChuyenMon" aria-labelledby="home-tab">
+                        <partial name="_tabChoChuyenChuyenMon.cshtml" />
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="tab_DaChuyenChuyenMon" aria-labelledby="profile-tab">
+                        <partial name="_tabDaChuyenChuyenMon.cshtml" />
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="tab_ChoDuyet" aria-labelledby="profile-tab">
+                        <partial name="_tabChoDuyet.cshtml" />
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="tab_DaDuyet" aria-labelledby="profile-tab">
+                        <partial name="_tabDaDuyet.cshtml" />
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="tab_DaThucHien" aria-labelledby="profile-tab">
+                        <partial name="_tabDaThucHien.cshtml" />
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<partial name="_ChuyenChuyenMon.cshtml" />
+<partial name="_QuaTrinhXuLy.cshtml" />
+
+

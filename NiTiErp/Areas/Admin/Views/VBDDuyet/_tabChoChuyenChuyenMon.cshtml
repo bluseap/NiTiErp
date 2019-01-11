@@ -1,0 +1,98 @@
+﻿
+
+
+<div class="row">    
+    <div class="x_panel">
+        <div class="row no-print">           
+            <div class="col-sm-12" style="text-align: center">
+                <button type="button" id="btnTimChoChuyenChuyenMon" class="btn btn-default"  style="color:#f39c12;border-color:#f39c12">Tìm văn bản</button>
+            </div>
+        </div>
+        <br />
+        <div class="table-responsive" id="table-responsiveChoChuyenChuyenMon">
+            <table id="tblChoChuyenChuyenMon" class="table table-striped table-bordered dataTable no-footer" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th width="=5%">#</th>
+                        <th>Tên sổ</th>
+                        <th>Số đến, ký hiệu</th>
+                        <th>Trich yếu</th>
+                        <th>Tên cơ quan ban hành</th>
+                        <th>Ngày ban hành</th>
+                        <th>Ngày đến</th>
+                        <th>QT Xử lý</th>
+                    </tr>
+                </thead>
+                <tbody id="tblContentChoChuyenChuyenMon"></tbody>
+            </table>
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="dataTables_info" id="datatable-checkbox_infoChoChuyenChuyenMon" role="status" aria-live="polite">
+                        <select id="ddl-show-pageChoChuyenChuyenMon">
+                            <option value="10" selected="selected">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="50">50</option>
+                        </select>
+                        <span class="item-per-page">
+                            dòng/trang.
+                        </span>
+                        Tổng cộng: <strong id="lblChoChuyenChuyenMonTotalRecords"></strong>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="dataTables_paginate" id="datatable-checkbox_paginateChoChuyenChuyenMon">
+                        <ul id="paginationULChoChuyenChuyenMon"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="table-ChoChuyenChuyenMon" type="x-tmpl-mustache">
+    <tr>
+        <th scope="row">
+            <a class="btn btn-sm btnCCCMChuyen" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Chuyển chuyên môn">
+                <i class="fa fa-mail-forward"></i>
+                Chuyển
+            </a>
+        </th>
+        <td>
+            <a class="btn btn-sm">
+                {{TenSoVanBanDen}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-link btnCCCMPatchFileKyHieu" data-id="{{Id}}" data-toggle="tooltip">
+                {{SoKyHieuDen}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-link btnCCCMPatchFileTrichYeu" data-id="{{Id}}" data-toggle="tooltip">
+                {{TrichYeuCuaVanBan}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-sm">
+                {{TenCoQuanBanHanh}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-sm">
+                {{NgayBanHanhCuaVanBan}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-sm">
+                {{NgayDenCuaVanBan}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-lg btnQuaTrinhXL" data-id="{{Id}}" data-toggle="tooltip" style="color:green">
+                <i class="fa fa-sitemap"></i>
+            </a>
+        </td>
+        @*<td>{{{TTXuLy}}}</td>*@
+
+    </tr>
+</script>

@@ -9,13 +9,16 @@ using NiTiErp.Application.Interfaces;
 
 namespace NiTiErp.WebApi.Controllers
 {
-    public class ProductController : ApiController
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ProductController : Controller
     {
         IProductCategoryService _productCategoryService;
         public ProductController(IProductCategoryService productCategoryService)
         {
             _productCategoryService = productCategoryService;
         }
+
         // GET: api/values
         [HttpGet]
         public IActionResult Get()
