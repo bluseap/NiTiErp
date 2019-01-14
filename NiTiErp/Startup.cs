@@ -267,6 +267,8 @@ namespace NiTiErp
             services.AddTransient<IVanBanDenService, VanBanDenService>();
             services.AddTransient<IVanBanDienTuService, VanBanDienTuService>();
             services.AddTransient<IVanBanDenDuyetService, VanBanDenDuyetService>();
+            services.AddTransient<IVanBanDenDuyetNVXLService, VanBanDenDuyetNVXLService>();
+
 
 
 

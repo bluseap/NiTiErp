@@ -42,18 +42,24 @@
             e.preventDefault();
             var vanbandenId = $(this).data('id');
             loadPatchFile(vanbandenId);
+        });       
+
+        $('body').on('click', '.btnCCCMChuyen', function (e) {
+            e.preventDefault();
+            var vanbandenduyetId = $(this).data('id');
+            //tedu.notify(vanbandenduyetId, "success");
+           
+            $('#hidVanBanDenDuyetId').val(vanbandenduyetId);
+            $('#hidInsertVBDDNVXLId').val(1);
+
+            chuyenchuyenmon.loadNhanVienXuLyVanBanDen(vanbandenduyetId);
+
+            $('#modal-add-edit-ChuyenChuyenMon').modal('show');  
         });
 
         $('body').on('click', '.btnQuaTrinhXL', function (e) {
             e.preventDefault();
-            tedu.notify("Qua trinh xu ly","success");
-        });
-
-        $('body').on('click', '.btnCCCMChuyen', function (e) {
-            e.preventDefault();
-
-
-            $('#modal-add-edit-ChuyenChuyenMon').modal('show');  
+            $('#modal-add-edit-QuaTrinhXuLy').modal('show');
         });
 
     }    

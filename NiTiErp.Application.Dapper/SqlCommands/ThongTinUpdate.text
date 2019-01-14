@@ -13,6 +13,10 @@ create table VanBanDenDuyet
 
 create table VanBanDenDuyetHis
 
+create table VanBanDenDuyetNhanVienXL
+
+create table VanBanDenDuyetNhanVienXLHis
+
 create table VanBanDenFile
 
 create table VanBanDenFileHis
@@ -22,6 +26,10 @@ create table VanBanDenFileLienQuan
 create table VanBanDenSo
  
 create table VanBanDenSoHis
+
+create table VanBanDenXLNhanVienXL
+
+create table VanBanDenXLNhanVienXLHis
  
 create table VanBanDenXuLy
 
@@ -78,6 +86,10 @@ table genericate VanBanPhoiHopXuLy
 
 
 
+create procedure [VanBanDenDuyetNhanVienXLAUD]
+
+create procedure [VanBanDenDuyetNhanVienXLGetList]
+
 create procedure [VanBanDenDuyetAUD]
 
 create procedure [VanBanDenDuyetGetList]
@@ -107,6 +119,7 @@ create procedure [VanBanDenSoGetList]
 
 
 update  procedure [BangDanhMucGetList]
+
 
 
 
