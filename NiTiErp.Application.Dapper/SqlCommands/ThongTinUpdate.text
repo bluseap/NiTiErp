@@ -84,7 +84,13 @@ table genericate VanBanNhomXuLy
 
 table genericate VanBanPhoiHopXuLy
 
+table genericate VanBanPhoiHopXuLyHis
 
+
+
+create procedure [VanBanPHXLAUD]
+
+create procedure [VanBanPHXLGetList]
 
 create procedure [VanBanDenDuyetNhanVienXLAUD]
 

@@ -21,6 +21,8 @@ namespace NiTiErp.Areas.Admin.Controllers
         private readonly NiTiErp.Application.Interfaces.IUserService _userService;
         private readonly IAuthorizationService _authorizationService;
 
+        private readonly IVanBanPHXLService _vanbanphxlService;
+        private readonly IVanBanDenService _vanbandenService;
         private readonly IVanBanDenDuyetNVXLService _vanbandenduyetnvxlduyetService;
         private readonly IVanBanDenDuyetService _vanbandenduyetService;
 
@@ -28,6 +30,8 @@ namespace NiTiErp.Areas.Admin.Controllers
             NiTiErp.Application.Interfaces.IUserService userService,
             IAuthorizationService authorizationService,
 
+            IVanBanPHXLService vanbanphxlService,
+            IVanBanDenService vanbandenService,
             IVanBanDenDuyetNVXLService vanbandenduyetnvxlduyetService,
             IVanBanDenDuyetService vanbandenduyetService
             )
@@ -36,6 +40,8 @@ namespace NiTiErp.Areas.Admin.Controllers
             _userService = userService;
             _authorizationService = authorizationService;
 
+            _vanbanphxlService = vanbanphxlService;
+            _vanbandenService = vanbandenService;
             _vanbandenduyetnvxlduyetService = vanbandenduyetnvxlduyetService;
             _vanbandenduyetService = vanbandenduyetService;
         }
@@ -82,6 +88,25 @@ namespace NiTiErp.Areas.Admin.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult GetVanBanDenIdDuyet02(long vanbandenduyetId)
+        {
+            var newGuid = new Guid();
+
+            var model = _vanbandenService.VanBanDennGetList("", 1, 1, 1, DateTime.Now, DateTime.Now, 1, 1,
+                "", "", false, 1, false, DateTime.Now, "", newGuid, 1, 1, false, "", "", "",
+                "", 1, 1000, vanbandenduyetId, "", "", "GetVanBanDenIdDuyet02");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult VanBanCoQuanGetList()
+        {
+            var model = _vanbanphxlService.VanBanPHXLGetList("", "", "", "VanBanPhoiHopXuLyGetList");
+            return new OkObjectResult(model);
+        }        
+
         #region Nhan vien xu ly van ban den 
 
         public IActionResult InsertUpdateVBDDNVXL(VanBanDenDuyetNVXLViewModel vanbandenduyetnvxlVm)
@@ -115,6 +140,77 @@ namespace NiTiErp.Areas.Admin.Controllers
                 else
                 {                    
                     return new OkObjectResult(vanbandenduyetnvxlVm);
+                }
+            }
+        }
+
+        public IActionResult UpdateVBDDNVXL(VanBanDenDuyetNVXLViewModel vanbandenduyetnvxlVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+
+                vanbandenduyetnvxlVm.CreateBy = username;
+                vanbandenduyetnvxlVm.CreateDate = DateTime.Now;
+                vanbandenduyetnvxlVm.UpdateBy = username;
+                vanbandenduyetnvxlVm.UpdateDate = DateTime.Now;
+
+                if (vanbandenduyetnvxlVm.InsertVanBanDenDuyetNVXLId == 2)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "VANBANDENDUYET", Operations.Update);
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
+                    }
+
+                    var vanbanden = _vanbandenduyetnvxlduyetService.VanBanDenDuyetNVXLAUDList(vanbandenduyetnvxlVm, "UpVBDDNVXLPHXL");
+
+                    return new OkObjectResult(vanbanden);
+                }
+                else
+                {
+                    return new OkObjectResult(vanbandenduyetnvxlVm);
+                }
+            }
+        }
+
+        [HttpPost]
+        public IActionResult DeleteVBDDNVXL(VanBanDenDuyetNVXLViewModel vbddnvxlVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                if (vbddnvxlVm.InsertVanBanDenDuyetNVXLId == 3)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "VANBANDENDUYET", Operations.Delete);
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền xóa."));
+                    }
+
+                    var username = User.GetSpecificClaim("UserName");
+
+                    vbddnvxlVm.CreateBy = username;
+                    vbddnvxlVm.CreateDate = DateTime.Now;
+                    vbddnvxlVm.UpdateBy = username;
+                    vbddnvxlVm.UpdateDate = DateTime.Now;
+
+                    var vbddnvxl = _vanbandenduyetnvxlduyetService.VanBanDenDuyetNVXLAUD(vbddnvxlVm, "DelVBDDuyetNhanVienXL");
+
+                    return new OkObjectResult(vbddnvxl);
+                }
+                else
+                {
+                    return new OkObjectResult(vbddnvxlVm);
                 }
             }
         }

@@ -13,6 +13,7 @@
                         <input type="hidden" id="hidHoSoNhanVienId" value="" />
 
                         <input type="hidden" id="hidInsertVBDDNVXLId" value="" />
+                        <input type="hidden" id="hidVanBanDenIdDuyet" value="" />
 
                         <div class="form-group">
                             <div class="col-sm-12">
@@ -81,14 +82,21 @@
                     </form>
                     <script type="x-tmpl-mustache" id="template-table-NhanVienXuLy">
                         <tr>
-                            <td>{{TenNhanVien}}</td>
-                            <td>{{TenKhuVuc}}</td>
-                            <td>{{TenPhong}}</td>
-                            <td>{{TenChucVu}}</td>
+                            <td><a >{{TenNhanVien}}</a></td>
+                            <td><a >{{TenKhuVuc}}</a></td>
+                            <td><a >{{TenPhong}}</a></td>
+                            <td><a >{{TenChucVu}}</a></td>
+                            <td>
+                                <a class="btn btnPhoiHopXuLyId" data-id="{{VBDDNVXLId}}">
+                                    {{{PhoiHopXuLy}}}
+                                </a>                               
+                            </td>
                             <th scope="row">
-                                <a class="btn btn-danger btn-deleteNhanVienXuLy" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Hủy nhân viên Xử lý"><i class="fa fa-trash-o"></i> </a>
+                                <a class="btn btn-link btn-deleteNhanVienXuLy" data-id="{{VBDDNVXLId}}" data-toggle="tooltip" data-placement="top" title="Hủy nhân viên Xử lý">
+                                    <i class="fa fa-trash-o" style="color:red"></i> 
+                                </a>
                             </th>
-                            <td><input type="hidden" class="Id form-control" value="{{Id}}" /></td>
+                            <td><input type="hidden" id="vbdnvxlId" class="form-control" value="{{VBDDNVXLId}}" /></td>
                         </tr>
                     </script>
                 </div>
@@ -147,7 +155,7 @@
                 <script id="table-CCMHoSoNhanVien" type="x-tmpl-mustache">
                     <tr>
                         <th scope="row">
-                            <a class="btn btn-lg btn-editCCMHoSoNhanVien" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Tham gia xử lý"><i class="fa fa-arrow-up"></i> </a>
+                            <a class="btn btn-lg btn-editCCMHoSoNhanVien" data-id="{{HoSoId}}" data-toggle="tooltip" data-placement="top" title="Tham gia xử lý"><i class="fa fa-arrow-up"></i> </a>
                         </th>
                         <td>{{Ten}}</td>
                         <td>{{TenKhuVuc}}</td>
