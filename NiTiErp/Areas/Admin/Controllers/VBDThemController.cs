@@ -207,6 +207,15 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetCountVBDenDuyetCCM(string corporationId)
+        {
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var count = _vanbandenService.GetCountVanBan(corporationId, "GetCountVBDenDuyetCCM");
+            //_hubContext.Clients.All.SendAsync("VanBanDenDangXuLy", count.ToString());
+            return new OkObjectResult(count);
+        }
+
+        [HttpGet]
         public IActionResult GetCountVBDenChoDuyet(string corporationId)
         {
             var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";

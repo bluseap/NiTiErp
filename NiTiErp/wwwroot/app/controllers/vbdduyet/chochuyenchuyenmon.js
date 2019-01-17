@@ -16,7 +16,7 @@
 
     this.loadCountVanBanDen = function(makhuvuc) {
         loadCountVanBanDenDangXL(makhuvuc);
-
+        chuyenchuyenmon.loadCountVBChuyenChuyenMon(makhuvuc);
     }
 
     function registerEvents() {

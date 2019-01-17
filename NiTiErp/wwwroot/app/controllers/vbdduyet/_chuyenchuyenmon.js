@@ -14,8 +14,12 @@
     }
 
     this.loadNhanVienXuLyVanBanDen = function (vanbandenduyetid) {
-        loadNhanVienXLVanBan(vanbandenduyetid);       
+        loadNhanVienXLVanBan(vanbandenduyetid);
         loadVanBanDenId(vanbandenduyetid);
+    }
+
+    this.loadCountVBChuyenChuyenMon = function (makv) {
+        loadCountVanBanDenChuyenChuyenMon(makv);
     }
 
     function registerEvents() {
@@ -76,9 +80,106 @@
             var phxlid = $(this).find(":selected").val();           
 
             updateVBDNVXL(nhanvienxulyid, phxlid);
-        });        
+        });   
+
+        $('#btnSaveChuyenChuyenMon').on('click', function () {
+            SaveChuyenChuyenMon();
+        });
 
     }
+
+    function SaveChuyenChuyenMon() {
+        //tedu.notify("save chuyen chuyen mon", "success");
+        var vanbandenduyetId = $('#hidVanBanDenDuyetId').val();
+
+        var butphelanhdao = tedu.getFormatDateYYMMDD($('#txtButPheLanhDao').val());
+        var ngaychuyenchuyenmon = tedu.getFormatDateYYMMDD($('#txtNgayChuyenChuyenMon').val());
+
+        var datetimeNow = new Date();
+        var ngayhientai = datetimeNow.getFullYear().toString() + '/' + (datetimeNow.getMonth() + 1).toString() + '/' + datetimeNow.getDay().toString();
+
+        $.ajax({
+            type: "POST",
+            url: "/Admin/vbdduyet/UpdateVanBanDenDuyetCCM",
+            data: {
+                Id: vanbandenduyetId,                
+                InsertVanBanDenDuyetId: 2,
+                ButPheLanhDao: butphelanhdao,
+                NgayChuyenChuyenMon: ngaychuyenchuyenmon,
+
+                NgayNhanVanBan: ngayhientai,
+                NgaySaiNhanVanBan: ngayhientai,
+                NgayDuyet: ngayhientai,
+                HanXuLy: ngayhientai,
+                NgaySaiChuyenMon: ngayhientai,
+                NgayDuyetPhatHanh: ngayhientai
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Success === false) {
+                    tedu.notify(response.Message, "error");
+                }
+                else {
+                    tedu.notify('Văn bản đến chuyển chuyên môn.', 'success'); 
+
+                    $('#tblContentChoChuyenChuyenMon').html('');
+
+                    var makv = $('#ddlKhuVuc').val();
+                    loadCountVanBanDenDangXL(makv);
+                    loadCountVanBanDenChuyenChuyenMon(makv);
+
+                    $('#modal-add-edit-ChuyenChuyenMon').modal('hide');
+
+                    tedu.stopLoading();
+                }
+            },
+            error: function () {
+                tedu.notify('Có lỗi! Không thể lưu Văn bản đến chuyển chuyên môn', 'error');
+                tedu.stopLoading();
+            }
+        });
+
+    }
+
+    function loadCountVanBanDenDangXL(makv) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/vbdthem/GetCountVBDenDangXL',
+            data: {
+                corporationId: makv
+            },
+            dataType: 'json',
+            success: function (response) {
+                $('#spanChoChuyenChuyenMon').text(response);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+
+    function loadCountVanBanDenChuyenChuyenMon(makv) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/vbdthem/GetCountVBDenDuyetCCM',
+            data: {
+                corporationId: makv
+            },
+            dataType: 'json',
+            success: function (response) {
+                $('#spanDaChuyenChuyenMon').text(response);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+
 
     function deleteNhanVienXuLy(vbnvxlid) {
         //tedu.notify(vbnvxlid, "success");
