@@ -1,5 +1,6 @@
 ﻿var chochuyenchuyenmonController = function () {
 
+  
     var chuyenchuyenmon = new _chuyenchuyenmonController();
     var quatrinhxuly = new _quatrinhxulyController();
 
@@ -15,7 +16,7 @@
     }
 
     this.loadCountVanBanDen = function(makhuvuc) {
-        loadCountVanBanDenDangXL(makhuvuc);
+        loadCountVanBanDenChuaCCM(makhuvuc);
         chuyenchuyenmon.loadCountVBChuyenChuyenMon(makhuvuc);
     }
 
@@ -59,6 +60,8 @@
 
         $('body').on('click', '.btnQuaTrinhXL', function (e) {
             e.preventDefault();
+            var vanbandenId = $(this).data('id');
+            quatrinhxuly.loadQuaTrinhXuLy(vanbandenId);
             $('#modal-add-edit-QuaTrinhXuLy').modal('show');
         });
 
@@ -86,10 +89,10 @@
         });
     }
 
-    function loadCountVanBanDenDangXL(makv) {
+    function loadCountVanBanDenChuaCCM(makv) {
         $.ajax({
             type: 'GET',
-            url: '/admin/vbdthem/GetCountVBDenDangXL',
+            url: '/admin/vbdthem/GetCountVBDenDuyetChuaCCM',
             data: {
                 corporationId: makv
             },
@@ -148,7 +151,8 @@
                             TenCoQuanBanHanh: item.TenCoQuanBanHanh,
                             NgayBanHanhCuaVanBan: tedu.getFormattedDate(item.NgayBanHanhCuaVanBan),
                             NgayDenCuaVanBan: tedu.getFormattedDate(item.NgayDenCuaVanBan),
-                            TTXuLy: tedu.getVanBanDenTTXuLy(item.TTXuLy)
+                            TTXuLy: tedu.getVanBanDenTTXuLy(item.TTXuLy),
+                            VanBanDenId: item.VanBanDenId
                             // Price: tedu.formatNumber(item.Price, 0),                          
                         });
                     });

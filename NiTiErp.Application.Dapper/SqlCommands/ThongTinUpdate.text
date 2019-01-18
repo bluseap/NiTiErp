@@ -1,5 +1,6 @@
 ﻿
 
+create table VBDQuaTrinhXuLy
 
 create table VanBanCoQuanBanHanh
 
@@ -87,6 +88,10 @@ table genericate VanBanPhoiHopXuLy
 table genericate VanBanPhoiHopXuLyHis
 
 
+
+create procedure [VBDQuaTrinhXuLyAUD]
+
+create procedure [VanBanDenQTXL]
 
 create procedure [VanBanPHXLAUD]
 

@@ -128,7 +128,7 @@
                     $('#tblContentChoChuyenChuyenMon').html('');
 
                     var makv = $('#ddlKhuVuc').val();
-                    loadCountVanBanDenDangXL(makv);
+                    loadCountVanBanDenChuaCCM(makv);
                     loadCountVanBanDenChuyenChuyenMon(makv);
 
                     $('#modal-add-edit-ChuyenChuyenMon').modal('hide');
@@ -144,10 +144,10 @@
 
     }
 
-    function loadCountVanBanDenDangXL(makv) {
+    function loadCountVanBanDenChuaCCM(makv) {
         $.ajax({
             type: 'GET',
-            url: '/admin/vbdthem/GetCountVBDenDangXL',
+            url: '/admin/vbdthem/GetCountVBDenDuyetChuaCCM',
             data: {
                 corporationId: makv
             },

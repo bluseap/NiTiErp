@@ -63,12 +63,12 @@
             </a>
         </td>
         <td>
-            <a class="btn btn-link btnCCCMPatchFileKyHieu" data-id="{{Id}}" data-toggle="tooltip">
+            <a class="btn btn-link btnCCCMPatchFileKyHieu" data-id="{{VanBanDenId}}" data-toggle="tooltip">
                 {{SoKyHieuDen}}
             </a>
         </td>
         <td>
-            <a class="btn btn-link btnCCCMPatchFileTrichYeu" data-id="{{Id}}" data-toggle="tooltip">
+            <a class="btn btn-link btnCCCMPatchFileTrichYeu" data-id="{{VanBanDenId}}" data-toggle="tooltip">
                 {{TrichYeuCuaVanBan}}
             </a>
         </td>
@@ -88,11 +88,10 @@
             </a>
         </td>
         <td>
-            <a class="btn btn-lg btnQuaTrinhXL" data-id="{{Id}}" data-toggle="tooltip" style="color:green">
+            <a class="btn btn-lg btnQuaTrinhXL" data-id="{{VanBanDenId}}" data-toggle="tooltip" style="color:green">
                 <i class="fa fa-sitemap"></i>
             </a>
         </td>
-        @*<td>{{{TTXuLy}}}</td>*@
-
+        <td><input type="hidden" id="vanbandenid" class="form-control" value="{{VanBanDenId}}" /></td>
     </tr>
 </script>

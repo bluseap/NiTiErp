@@ -8,22 +8,27 @@
             <div class="modal-body">
                 <div id="horizontal-form">
                     <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainQuaTrinhXuLy">
-                        <input type="hidden" id="hidVanBanDenId" value="" />
 
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                <label for="lbFileVanBan">Chọn file văn bản đến </label>
-                                <div id="imagelistFileVanBanDen" class="col-md-12">
-                                </div>
-                                <div class="input-group">
-                                    <input type="file" id="fileFileVanBanDen" />
-                                </div>
-                            </div>
-                        </div>
-
-                    
-
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Họ và tên</th>
+                                    <th>Nội dung</th>   
+                                    <td>Ngày nhập</td>
+                                </tr>
+                            </thead>
+                            <tbody id="table-contentQuaTrinhXuLy"></tbody>
+                        </table>
+                       
                     </form>
+                    <script type="x-tmpl-mustache" id="template-table-QuaTrinhXuLy">
+                        <tr>
+                            <td><a>{{TenNhanVien}}</a></td>
+                            <td><a>{{MoTa}}</a></td>
+                            <td><a>{{NgayNhap}}</a></td>
+                            <td><input type="hidden" id="vbdnvxlId" class="form-control" value="{{Id}}" /></td>
+                        </tr>
+                    </script>
                 </div>
                 <div class="ln_solid"></div>
 

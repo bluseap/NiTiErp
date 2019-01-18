@@ -9,6 +9,9 @@ namespace NiTiErp.Application.Dapper.ViewModels
     {
         public Int64 Id { set; get; }
 
+        public long VanBanDenId { get; set; }
+        
+
         [StringLength(50)]
         public string KETQUA { set; get; }
 

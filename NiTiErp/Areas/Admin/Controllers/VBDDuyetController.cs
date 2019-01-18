@@ -21,6 +21,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         private readonly NiTiErp.Application.Interfaces.IUserService _userService;
         private readonly IAuthorizationService _authorizationService;
 
+        private readonly IVBDQuaTrinhXuLyService _vbdquatrinhxulyService;
         private readonly IVanBanPHXLService _vanbanphxlService;
         private readonly IVanBanDenService _vanbandenService;
         private readonly IVanBanDenDuyetNVXLService _vanbandenduyetnvxlduyetService;
@@ -30,6 +31,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             NiTiErp.Application.Interfaces.IUserService userService,
             IAuthorizationService authorizationService,
 
+            IVBDQuaTrinhXuLyService vbdquatrinhxulyService,
             IVanBanPHXLService vanbanphxlService,
             IVanBanDenService vanbandenService,
             IVanBanDenDuyetNVXLService vanbandenduyetnvxlduyetService,
@@ -40,6 +42,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             _userService = userService;
             _authorizationService = authorizationService;
 
+            _vbdquatrinhxulyService = vbdquatrinhxulyService;
             _vanbanphxlService = vanbanphxlService;
             _vanbandenService = vanbandenService;
             _vanbandenduyetnvxlduyetService = vanbandenduyetnvxlduyetService;
@@ -140,7 +143,17 @@ namespace NiTiErp.Areas.Admin.Controllers
         {
             var model = _vanbanphxlService.VanBanPHXLGetList("", "", "", "VanBanPhoiHopXuLyGetList");
             return new OkObjectResult(model);
-        }        
+        }
+
+        [HttpGet]
+        public IActionResult GetListVBDQTXL(long vanbandenid)
+        {
+            var newGuid = new Guid();
+
+            var model = _vbdquatrinhxulyService.GetListVBDQuaTrinhXuLy(newGuid, "", vanbandenid, "", 1, "", "GetVanBanDenQTXL");
+
+            return new OkObjectResult(model);
+        }
 
         #region Nhan vien xu ly van ban den 
 
@@ -260,6 +273,8 @@ namespace NiTiErp.Areas.Admin.Controllers
 
             return new OkObjectResult(model);
         }
+
+        
 
         #endregion
 
