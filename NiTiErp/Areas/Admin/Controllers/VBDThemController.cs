@@ -298,6 +298,49 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        [HttpGet]
+        public IActionResult GetListVBDenTTDuyetCCM(string corporationId, string keyword, int NamVanBan, int SoVanBan, string KyHieuVanBan,
+            string TrichYeu, string CoQuanBanHanh, int page, int pageSize)
+        {
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+            var newGuid = new Guid();
+
+            var kyhieuvanban = !string.IsNullOrEmpty(KyHieuVanBan) ? KyHieuVanBan : "%";
+            var trichyeu = !string.IsNullOrEmpty(TrichYeu) ? TrichYeu : "%";
+            var coquanbanhanh = CoQuanBanHanh == "%" ? 0 : Convert.ToInt32(CoQuanBanHanh);
+
+            var model = _vanbandenService.GetAllVanBanDenPaging(corporationId, 1, 1
+                , coquanbanhanh
+                , DateTime.Now, DateTime.Now
+                , NamVanBan, SoVanBan, kyhieuvanban
+                , "", false, 1, false, DateTime.Now, "", newGuid, 1, 1, false, "", "1", "",
+                trichyeu, page, pageSize, 1, "", "", "GetAllVBDTTDuyet03");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetListVBDenChuaXuLy(string corporationId, string keyword, int NamVanBan, int SoVanBan, string KyHieuVanBan,
+            string TrichYeu, string CoQuanBanHanh, int page, int pageSize)
+        {
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+            var newGuid = new Guid();
+
+            var kyhieuvanban = !string.IsNullOrEmpty(KyHieuVanBan) ? KyHieuVanBan : "%";
+            var trichyeu = !string.IsNullOrEmpty(TrichYeu) ? TrichYeu : "%";
+            var coquanbanhanh = CoQuanBanHanh == "%" ? 0 : Convert.ToInt32(CoQuanBanHanh);
+
+            var model = _vanbandenService.GetAllVanBanDenPaging(corporationId, 1, 1
+                , coquanbanhanh
+                , DateTime.Now, DateTime.Now
+                , NamVanBan, SoVanBan, kyhieuvanban
+                , "", false, 1, false, DateTime.Now, "", newGuid, 1, 1, false, "", "1", "",
+                trichyeu, page, pageSize, 1, "", "", "GetAllVBDChuaXuLy01");
+
+            return new OkObjectResult(model);
+        }
 
         [HttpGet]
         public IActionResult GetVanBanDenId(Int32 vanbandenId)

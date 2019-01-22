@@ -1,0 +1,100 @@
+﻿<div id="modal-add-edit-ChuaXuLyXuLy" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Văn bản đến - Xử lý </h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainChuaXuLyXuLy">
+                        <input type="hidden" id="hidVanBanDenXuLyId" value="" />
+                        <input type="hidden" id="hidVanBanDenId" value="" />
+                        <input type="hidden" id="hidHoSoNhanVienId" value="" />
+
+                        <input type="hidden" id="hidInsertVBDXuLyId" value="" />
+                        <input type="hidden" id="hidVanBanDenDuyetId" value="" />
+
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label for="lbGhiChuXuLy">Ghi chú xử lý </label>
+                                <textarea type="text" name="txtGhiChuXuLy" class="form-control has-feedback-right" id="txtGhiChuXuLy" placeholder="Ghi chú xử lý ">
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label for="lbNgayChuaXuLyXuLy">Ngày xử lý </label>
+                                <input type="text" name="txtNgayChuaXuLyXuLy" class="form-control has-feedback-right" id="txtNgayChuaXuLyXuLy" placeholder="Ngày xử lý">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnSaveChuaXuLyXuLy" class="btn btn-warning">Xử lý </button>
+                                <button type="button" id="btnCanceChuaXuLyXuLy" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="ln_solid"></div>
+                <div id="formNhanVienXuLy">
+                    <form class="form-horizontal" role="form" id="frmMaintainanceNhanVienXuLy">                       
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Họ và tên</th>
+                                    <th>Khu vực</th>
+                                    <th>Phòng, tổ</th>
+                                    <th>Chức vụ</th>
+                                    <th>TT Xử lý</th>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody id="table-contentNhanVienXuLy"></tbody>
+                        </table>
+                        <div class="row" id="row--infoNhanVienXuLy">
+                            <div class="col-sm-5">
+                                <div class="dataTables_info" id="datatable-checkbox_infoNhanVienXuLy" role="status" aria-live="polite">
+                                    <select id="ddl-show-pageNhanVienXuLy">
+                                        <option value="10" selected="selected">10</option>
+                                        <option value="20">20</option>
+                                        <option value="30">30</option>
+                                        <option value="50">50</option>
+                                    </select>
+                                    <span class="item-per-page">
+                                        dòng/trang.
+                                    </span>
+                                     <strong id="lblNhanVienXuLyTotalRecords"></strong>
+                                </div>
+                            </div><div class="col-sm-7">
+                                <div class="dataTables_paginate" id="datatable-checkbox_paginateNhanVienXuLy">
+                                    <ul id="paginationULNhanVienXuLy"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <script type="x-tmpl-mustache" id="template-table-NhanVienXuLy">
+                        <tr>
+                            <td><a>{{TenNhanVien}}</a></td>
+                            <td><a>{{TenKhuVuc}}</a></td>
+                            <td><a>{{TenPhong}}</a></td>
+                            <td><a>{{TenChucVu}}</a></td>
+                            <td>                               
+                                    {{TenPhoiHopXuLy}}                              
+                            </td>
+                            @*<th scope="row">
+                                <a class="btn btn-link btn-deleteNhanVienXuLy" data-id="{{VBDDNVXLId}}" data-toggle="tooltip" data-placement="top" title="Hủy nhân viên Xử lý">
+                                    <i class="fa fa-trash-o" style="color:red"></i>
+                                </a>
+                            </th>*@
+                            <td><input type="hidden" id="vbdnvxlId" class="form-control" value="{{VBDDNVXLId}}" /></td>
+                        </tr>
+                    </script>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

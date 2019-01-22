@@ -5,12 +5,12 @@
     <div class="x_panel">
         <div class="row no-print">
             <div class="col-sm-12" style="text-align: center">
-                <button type="button" id="btnTimDaDuyet" class="btn btn-default" style="color:#3498db;border-color:#3498db">Tìm văn bản</button>
+                <button type="button" id="btnTimChuaXuLy" class="btn btn-default" style="color:#f39c12;border-color:#f39c12">Tìm văn bản</button>
             </div>
         </div>
         <br />
-        <div class="table-responsive" id="table-responsiveDaDuyet">
-            <table id="tblChoDuyet" class="table table-striped table-bordered dataTable no-footer" cellspacing="0">
+        <div class="table-responsive" id="table-responsiveChuaXuLy">
+            <table id="tblChuaXuLy" class="table table-striped table-bordered dataTable no-footer" cellspacing="0">
                 <thead>
                     <tr>
                         <th width="=5%">#</th>
@@ -23,12 +23,12 @@
                         <th>QT Xử lý</th>
                     </tr>
                 </thead>
-                <tbody id="tblContentDaDuyet"></tbody>
+                <tbody id="tblContentChuaXuLy"></tbody>
             </table>
             <div class="row">
                 <div class="col-sm-5">
-                    <div class="dataTables_info" id="datatable-checkbox_infoDaDuyet" role="status" aria-live="polite">
-                        <select id="ddl-show-pageDaDuyet">
+                    <div class="dataTables_info" id="datatable-checkbox_infoChuaXuLy" role="status" aria-live="polite">
+                        <select id="ddl-show-pageChuaXuLy">
                             <option value="10" selected="selected">10</option>
                             <option value="20">20</option>
                             <option value="30">30</option>
@@ -37,24 +37,24 @@
                         <span class="item-per-page">
                             dòng/trang.
                         </span>
-                        Tổng cộng: <strong id="lblDaDuyetTotalRecords"></strong>
+                        Tổng cộng: <strong id="lblChuaXuLyTotalRecords"></strong>
                     </div>
                 </div>
                 <div class="col-sm-7">
-                    <div class="dataTables_paginate" id="datatable-checkbox_paginateDaDuyet">
-                        <ul id="paginationULDaDuyet"></ul>
+                    <div class="dataTables_paginate" id="datatable-checkbox_paginateChuaXuLy">
+                        <ul id="paginationULChuaXuLy"></ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<script id="table-DaDuyet" type="x-tmpl-mustache">
+<script id="table-ChuaXuLy" type="x-tmpl-mustache">
     <tr>
         <th scope="row">
-            <a class="btn btn-sm btnDaDuyet" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Chuyển chuyên môn">
+            <a class="btn btn-sm btnChuaXuLyXuLy" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xử lý">
                 <i class="fa fa-mail-forward"></i>
-                Chuyển
+                Xử lý
             </a>
         </th>
         <td>
@@ -63,12 +63,12 @@
             </a>
         </td>
         <td>
-            <a class="btn btn-link btnCCCMPatchFileKyHieu" data-id="{{VanBanDenId}}" data-toggle="tooltip">
+            <a class="btn btn-link btnChuaXuLyPatchFileKyHieu" data-id="{{VanBanDenId}}" data-toggle="tooltip">
                 {{SoKyHieuDen}}
             </a>
         </td>
         <td>
-            <a class="btn btn-link btnCCCMPatchFileTrichYeu" data-id="{{VanBanDenId}}" data-toggle="tooltip">
+            <a class="btn btn-link btnChuaXuLyPatchFileTrichYeu" data-id="{{VanBanDenId}}" data-toggle="tooltip">
                 {{TrichYeuCuaVanBan}}
             </a>
         </td>
@@ -88,10 +88,12 @@
             </a>
         </td>
         <td>
-            <a class="btn btn-lg btnQuaTrinhXL" data-id="{{VanBanDenId}}" data-toggle="tooltip" style="color:green">
+            <a class="btn btn-lg btnQTChuaXuLy" data-id="{{VanBanDenId}}" data-toggle="tooltip" style="color:green">
                 <i class="fa fa-sitemap"></i>
             </a>
         </td>
         <td><input type="hidden" id="vanbandenid" class="form-control" value="{{VanBanDenId}}" /></td>
     </tr>
 </script>
+
+<partial name="_ChuaXuLy.cshtml" />

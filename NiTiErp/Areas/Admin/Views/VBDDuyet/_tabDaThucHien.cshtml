@@ -1,6 +1,5 @@
 ﻿
 
-
 <div class="row">
     <div class="x_panel">
         <div class="row no-print">
@@ -9,6 +8,89 @@
             </div>
         </div>
         <br />
-        
+        <div class="table-responsive" id="table-responsiveDaThucHien">
+            <table id="tblDaThucHien" class="table table-striped table-bordered dataTable no-footer" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th width="=5%">#</th>
+                        <th>Tên sổ</th>
+                        <th>Số đến, ký hiệu</th>
+                        <th>Trich yếu</th>
+                        <th>Tên cơ quan ban hành</th>
+                        <th>Ngày ban hành</th>
+                        <th>Ngày đến</th>
+                        <th>QT Xử lý</th>
+                    </tr>
+                </thead>
+                <tbody id="tblContentDaThucHien"></tbody>
+            </table>
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="dataTables_info" id="datatable-checkbox_infoDaThucHien" role="status" aria-live="polite">
+                        <select id="ddl-show-pagDaThucHien">
+                            <option value="10" selected="selected">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="50">50</option>
+                        </select>
+                        <span class="item-per-page">
+                            dòng/trang.
+                        </span>
+                        Tổng cộng: <strong id="lblDaThucHienTotalRecords"></strong>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="dataTables_paginate" id="datatable-checkbox_paginateDaThucHien">
+                        <ul id="paginationULDaThucHien"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+<script id="table-DaThucHien" type="x-tmpl-mustache">
+    <tr>
+        <th scope="row">
+            <a class="btn btn-sm btnDaThucHien" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Chuyển chuyên môn">
+                <i class="fa fa-mail-forward"></i>
+                Chuyển
+            </a>
+        </th>
+        <td>
+            <a class="btn btn-sm">
+                {{TenSoVanBanDen}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-link btnCCCMPatchFileKyHieu" data-id="{{VanBanDenId}}" data-toggle="tooltip">
+                {{SoKyHieuDen}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-link btnCCCMPatchFileTrichYeu" data-id="{{VanBanDenId}}" data-toggle="tooltip">
+                {{TrichYeuCuaVanBan}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-sm">
+                {{TenCoQuanBanHanh}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-sm">
+                {{NgayBanHanhCuaVanBan}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-sm">
+                {{NgayDenCuaVanBan}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-lg btnQuaTrinhXL" data-id="{{VanBanDenId}}" data-toggle="tooltip" style="color:green">
+                <i class="fa fa-sitemap"></i>
+            </a>
+        </td>
+        <td><input type="hidden" id="vanbandenid" class="form-control" value="{{VanBanDenId}}" /></td>
+    </tr>
+</script>

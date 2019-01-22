@@ -32,7 +32,7 @@
             },
             success: function (response) {
                 if (response.Result.length === 0) {
-                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th></tr>";
                 }
                 else {
                     $.each(response.Result, function (i, item) {
@@ -40,7 +40,7 @@
                             Id: item.Id,
                             TenNhanVien: item.TenNhanVien,
                             MoTa: item.MoTa,
-                            NgayNhap: item.CreateDate
+                            NgayNhap: tedu.getFormattedDate(item.CreateDate)
                             // Price: tedu.formatNumber(item.Price, 0),                          
                         });
                     });

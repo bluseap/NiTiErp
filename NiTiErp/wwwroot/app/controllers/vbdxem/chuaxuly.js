@@ -1,69 +1,64 @@
-﻿var chochuyenchuyenmonController = function () {
-  
-    var chuyenchuyenmon = new _chuyenchuyenmonController();
+﻿var chuaxulyController = function () {
+
     var quatrinhxuly = new _quatrinhxulyController();
+
+    var dangxuly = new dangxulyController();
+    var daxuly = new daxulyController();
+    var tatcaxuly = new tatcaxulyController();
+    var _chuaxuly = new _chuaxulyController();
 
     this.initialize = function () {     
 
-        registerEvents();
-
-        quatrinhxuly.initialize();
-        chuyenchuyenmon.initialize();
-
-        loadCCCMData();
+        registerEvents();       
 
     }
 
-    this.loadCountVanBanDen = function(makhuvuc) {
-        loadCountVanBanDenChuaCCM(makhuvuc);
-        chuyenchuyenmon.loadCountVBChuyenChuyenMon(makhuvuc);
+    this.loadCountVanBanDenChuaXuLy = function (makv) {
+        loadCountVBDChuaXuLy(makv);
+        dangxuly.loadCountVanBanDenDangXuLy(makv);
+        daxuly.loadCountVanBanDenDaXuLy(makv);
+        tatcaxuly.loadCountVanBanDenTatCaXuLy(makv);
     }
 
     function registerEvents() {
 
-        $('#btnTimChoChuyenChuyenMon').on('click', function () {            
-            loadTableCCCM();
+        $('#btnTimChuaXuLy').on('click', function () {
+            loadTableVBDChuaXuLy();
         });
 
-        $("#ddl-show-pageChoChuyenChuyenMon").on('change', function () {
+        $("#ddl-show-pageChuaXuLy").on('change', function () {
             tedu.configs.pageSize = $(this).val();
             tedu.configs.pageIndex = 1;
-            loadTableCCCM(true);
+            loadTableVBDChuaXuLy(true);
         });
 
-        $('body').on('click', '.btnCCCMPatchFileKyHieu', function (e) {
+        $('body').on('click', '.btnChuaXuLyPatchFileKyHieu', function (e) {
             e.preventDefault();
             var vanbandenId = $(this).data('id');
             loadPatchFile(vanbandenId);
         });
 
-        $('body').on('click', '.btnCCCMPatchFileTrichYeu', function (e) {
+        $('body').on('click', '.btnChuaXuLyPatchFileTrichYeu', function (e) {
             e.preventDefault();
             var vanbandenId = $(this).data('id');
             loadPatchFile(vanbandenId);
-        });       
+        }); 
 
-        $('body').on('click', '.btnCCCMChuyen', function (e) {
-            e.preventDefault();
-            var vanbandenduyetId = $(this).data('id');
-            //tedu.notify(vanbandenduyetId, "success");
-           
-            $('#hidVanBanDenDuyetId').val(vanbandenduyetId);
-            $('#hidInsertVBDDNVXLId').val(1);
-
-            chuyenchuyenmon.loadNhanVienXuLyVanBanDen(vanbandenduyetId);
-
-            $('#modal-add-edit-ChuyenChuyenMon').modal('show');  
-        });
-
-        $('body').on('click', '.btnQuaTrinhXL', function (e) {
+        $('body').on('click', '.btnQTChuaXuLy', function (e) {
             e.preventDefault();
             var vanbandenId = $(this).data('id');
             quatrinhxuly.loadQuaTrinhXuLy(vanbandenId);
             $('#modal-add-edit-QuaTrinhXuLy').modal('show');
         });
 
-    }    
+        $('body').on('click', '.btnChuaXuLyXuLy', function (e) {
+            e.preventDefault();
+            var vanbandenduyetId = $(this).data('id');
+            _chuaxuly.loadNhanVienXuLyVanBanDen(vanbandenduyetId);
+            $('#modal-add-edit-ChuaXuLyXuLy').modal('show');
+        });
+
+    }
 
     function loadPatchFile(vanbandenId) {
         $.ajax({
@@ -87,16 +82,16 @@
         });
     }
 
-    function loadCountVanBanDenChuaCCM(makv) {
+    function loadCountVBDChuaXuLy(makv) {
         $.ajax({
             type: 'GET',
-            url: '/admin/vbdthem/GetCountVBDenDuyetChuaCCM',
+            url: '/admin/vbdthem/GetCountVBDenDuyetCCM',
             data: {
                 corporationId: makv
             },
             dataType: 'json',
             success: function (response) {
-                $('#spanChoChuyenChuyenMon').text(response);
+                $('#spanChuaXuLy').text(response);
             },
             error: function (status) {
                 console.log(status);
@@ -105,8 +100,8 @@
         });
     }
 
-    function loadTableCCCM(isPageChanged) {
-        var template = $('#table-ChoChuyenChuyenMon').html();
+    function loadTableVBDChuaXuLy(isPageChanged) {
+        var template = $('#table-ChuaXuLy').html();
         var render = "";
 
         var makhuvuc = $('#ddlKhuVuc').val();
@@ -118,9 +113,9 @@
 
         $.ajax({
             type: 'GET',
-            url: '/admin/vbdthem/GetListVBDenTTDuyet',
+            url: '/admin/vbdthem/GetListVBDenChuaXuLy',
             data: {
-                corporationId: makhuvuc,                
+                corporationId: makhuvuc,
                 keyword: "%",
 
                 NamVanBan: namvanban,
@@ -156,15 +151,15 @@
                     });
                 }
 
-                $('#lblChoChuyenChuyenMonTotalRecords').text(response.Result.RowCount);
+                $('#lblChuaXuLyTotalRecords').text(response.Result.RowCount);
 
                 if (render !== '') {
-                    $('#tblContentChoChuyenChuyenMon').html(render);
+                    $('#tblContentChuaXuLy').html(render);
                 }
 
                 if (response.Result.RowCount !== 0) {
-                    wrapPagingCCCM(response.Result.RowCount, function () {
-                        loadTableCCCM();
+                    wrapPagingVBDChuaXuLy(response.Result.RowCount, function () {
+                        loadTableVBDChuaXuLy();
                     },
                         isPageChanged);
                 }
@@ -175,25 +170,23 @@
             }
         });
     }
-    function wrapPagingCCCM(recordCount, callBack, changePageSize) {
+    function wrapPagingVBDChuaXuLy(recordCount, callBack, changePageSize) {
         var totalsize = Math.ceil(recordCount / tedu.configs.pageSize);
         //Unbind pagination if it existed or click change pagesize
-        if ($('#paginationULChoChuyenChuyenMon a').length === 0 || changePageSize === true) {
-            $('#paginationULChoChuyenChuyenMon').empty();
-            $('#paginationULChoChuyenChuyenMon').removeData("twbs-pagination");
-            $('#paginationULChoChuyenChuyenMon').unbind("page");
+        if ($('#paginationULChuaXuLy a').length === 0 || changePageSize === true) {
+            $('#paginationULChuaXuLy').empty();
+            $('#paginationULChuaXuLy').removeData("twbs-pagination");
+            $('#paginationULChuaXuLy').unbind("page");
         }
         //Bind Pagination Event
-        $('#paginationULChoChuyenChuyenMon').twbsPagination({
+        $('#paginationULChuaXuLy').twbsPagination({
             totalPages: totalsize,
             visiblePages: 7,
             first: 'Đầu',
             prev: 'Trước',
             next: 'Tiếp',
             last: 'Cuối',
-            onPageClick: function (event, p) {
-                //tedu.configs.pageIndex = p;
-                //setTimeout(callBack(), 200);
+            onPageClick: function (event, p) {             
                 if (tedu.configs.pageIndex !== p) {
                     tedu.configs.pageIndex = p;
                     setTimeout(callBack(), 200);
@@ -201,10 +194,6 @@
             }
         });
     }
-
-    function loadCCCMData() {
-
-    }
-
+   
 
 }
