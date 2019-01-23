@@ -47,9 +47,11 @@ var vbdxemController = function () {
                     $('#ddlKhuVuc').prop('disabled', false);
                 }
                 $("#ddlKhuVuc")[0].selectedIndex = 1;
+                $('#ddlKhuVuc').prop('disabled', true);
 
                 var makv = $('#ddlKhuVuc').val();
                 chuaxuly.loadCountVanBanDenChuaXuLy(makv);
+                _chuaxuly.loadCountVBDDangXuLy(makv);
 
             },
             error: function (status) {

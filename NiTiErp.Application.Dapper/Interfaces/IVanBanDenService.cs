@@ -14,6 +14,8 @@ namespace NiTiErp.Application.Dapper.Interfaces
 
         long GetCountVanBan(string corporation, string parameter);
 
+        long GetCountVanBanUser(string corporation, string username, string parameter);
+
         Task<PagedResult<VanBanDenViewModel>> GetAllVanBanDenPaging  ( string corporationId ,	int vanbanlinhvucId ,
     int vanbanloaiId ,    int vanbancoquanbanhanhId ,	DateTime ngaybanhanhvanbanden ,    DateTime ngaydencuavanban ,
     int vanbandensoId ,    int sovanbanden ,		string sokyhieuvanbanden ,	string nguoikyvanbanden ,

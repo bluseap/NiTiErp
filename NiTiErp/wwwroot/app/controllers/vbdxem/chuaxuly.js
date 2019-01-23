@@ -15,6 +15,7 @@
 
     this.loadCountVanBanDenChuaXuLy = function (makv) {
         loadCountVBDChuaXuLy(makv);
+
         dangxuly.loadCountVanBanDenDangXuLy(makv);
         daxuly.loadCountVanBanDenDaXuLy(makv);
         tatcaxuly.loadCountVanBanDenTatCaXuLy(makv);
@@ -54,6 +55,7 @@
         $('body').on('click', '.btnChuaXuLyXuLy', function (e) {
             e.preventDefault();
             var vanbandenduyetId = $(this).data('id');
+            $('#hidVanBanDenDuyetId').val(vanbandenduyetId);
             _chuaxuly.loadNhanVienXuLyVanBanDen(vanbandenduyetId);
             $('#modal-add-edit-ChuaXuLyXuLy').modal('show');
         });
@@ -85,7 +87,7 @@
     function loadCountVBDChuaXuLy(makv) {
         $.ajax({
             type: 'GET',
-            url: '/admin/vbdthem/GetCountVBDenDuyetCCM',
+            url: '/admin/vbdthem/GetCountVBDenDuyetCCMUser',
             data: {
                 corporationId: makv
             },

@@ -148,6 +148,7 @@
                     $('#ddlKhuVuc').prop('disabled', false);
                 }
                 $("#ddlKhuVuc")[0].selectedIndex = 1;
+                $('#ddlKhuVuc').prop('disabled', true);
 
                 var makv = $('#ddlKhuVuc').val();
                 loadVanBanDenSoGetList(makv);

@@ -11,7 +11,7 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
         public string KETQUA { get; set; }
 
-        public int InsertVBDXLId { get; set; }  
+        public int InsertVBDXuLyLId { get; set; }  
 
         public long VanBanDenDuyetId { get; set; }
 

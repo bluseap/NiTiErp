@@ -92,7 +92,7 @@
         //tedu.notify("save chuyen chuyen mon", "success");
         var vanbandenduyetId = $('#hidVanBanDenDuyetId').val();
 
-        var butphelanhdao = tedu.getFormatDateYYMMDD($('#txtButPheLanhDao').val());
+        var butphelanhdao = $('#txtButPheLanhDao').val();
         var ngaychuyenchuyenmon = tedu.getFormatDateYYMMDD($('#txtNgayChuyenChuyenMon').val());
 
         var datetimeNow = new Date();

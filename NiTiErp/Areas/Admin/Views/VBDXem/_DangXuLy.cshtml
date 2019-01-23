@@ -1,0 +1,78 @@
+﻿<div id="modal-add-edit-DangXuLyCLD" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Văn bản đến - Đang xử lý </h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainChuaXuLyXuLy">
+
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label for="lbGhiChuXuLyDXL">Ghi chú xử lý </label>
+                                <textarea type="text" name="txtGhiChuXuLyDXL" class="form-control has-feedback-right" id="txtGhiChuXuLyDXL" placeholder="Ghi chú xử lý ">
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label for="lbNgayChuaXuLyXuLyDXL">Ngày xử lý <a style="color:red">(*) </a> </label>
+                                <input type="text" name="txtNgayChuaXuLyXuLyDXL" class="form-control has-feedback-right" id="txtNgayChuaXuLyXuLyDXL" placeholder="Ngày xử lý">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <label for="lbFileVanBanDen">
+                                        File văn bản chuyên viên xử lý 
+                                        <a style="color:red">(*) </a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-6" style="text-align:right">
+                                    <a class="btn btn-lin btnFileVanBan" style="color:cornflowerblue"><i class="fa fa-chain-broken"></i> Chọn file văn bản đến xử lý đính kèm</a>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="table-wrapper-scroll-y">
+                                        <table id="tbl-FileVanBanDen" class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Tên file văn bản</th>
+                                                    <th width="=10%">#</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tbl-contentFileVanBanDen"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <script id="table-FileVanBanDen" type="x-tmpl-mustache">
+                                <tr>
+                                    <td>{{TenFile}}</td>
+                                    <th scope="row">
+                                        <a class="btn btnDeleteFile" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xóa file văn bản đến">
+                                            <i class="fa fa-trash-o" style="color:red"></i>
+                                            Xóa
+                                        </a>
+                                    </th>
+                                </tr>
+                            </script>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnSaveDangXuLyCLD" class="btn btn-warning">Xử lý chuyển lãnh đạo </button>
+                                <button type="button" id="btnCanceDangXuLyCLD" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="ln_solid"></div>
+                
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="_FileVanBanDenXuLy.cshtml" />

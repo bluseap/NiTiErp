@@ -38,6 +38,8 @@ create table VanBanDenXuLyHis
 
 create table VanBanDenXuLyFile
 
+create table VanBanDenXuLyFileHis
+
 create table VanBanDi
  
 create table VanBanDiDuyet
@@ -89,6 +91,12 @@ table genericate VanBanPhoiHopXuLy
 
 table genericate VanBanPhoiHopXuLyHis
 
+
+
+
+create procedure [VanBanDenXuLyFileAUD]
+
+create procedure [VanBanDenXuLyFileGetList]
 
 create procedure [VanBanDenDuyetAUD]
 

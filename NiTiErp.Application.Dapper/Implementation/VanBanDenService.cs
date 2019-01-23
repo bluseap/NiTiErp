@@ -252,6 +252,39 @@ namespace NiTiErp.Application.Dapper.Implementation
             }
         }
 
+        public long GetCountVanBanUser(string corporation, string username, string parameter)
+        {
+            var phongdanhmucid = "";
+            var chucvuid = username;
+
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                sqlConnection.Open();
+
+                var paramaters = new DynamicParameters();
+
+                paramaters.Add("@corporationId", corporation);
+                paramaters.Add("@phongdanhmucId", phongdanhmucid);
+                paramaters.Add("@chucvuId", chucvuid);
+
+                paramaters.Add("@parameters", parameter);
+                try
+                {
+                    var query = sqlConnection.Query<VanBanDenViewModel>
+                        ("VanBanDenCount", paramaters, commandType: CommandType.StoredProcedure);
+
+                    var ketqua = query.ToList();
+
+                    return ketqua.Sum(p => long.Parse(p.KETQUA));
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+            }
+        }
+
 
 
     }
