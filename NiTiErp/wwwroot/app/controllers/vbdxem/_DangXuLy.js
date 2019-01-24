@@ -28,6 +28,62 @@
             deleteVanBanDenXuLyFile(vanbandenxulyfileid);
         });
 
+        $("#btnSaveDangXuLyCLD").on('click', function (e) {
+            e.preventDefault();
+            SaveVanBanDenXuLy();
+        });
+
+    }
+
+    function SaveVanBanDenXuLy() {
+        
+        var vanbandenduyetId = $('#hidVanBanDenDuyetId').val();
+
+        var ghichuxuly = $('#txtGhiChuXuLyDXL').val();
+        var ngaychuaxuly = tedu.getFormatDateYYMMDD($('#txtNgayChuaXuLyXuLyDXL').val());
+
+        //var datetimeNow = new Date();
+        //var ngayhientai = datetimeNow.getFullYear().toString() + '/' + (datetimeNow.getMonth() + 1).toString() + '/' + datetimeNow.getDay().toString();
+
+        $.ajax({
+            type: "POST",
+            url: "/Admin/vbdxem/UpdateVanBanDenXuLy",
+            data: {
+                Id: vanbandenduyetId,
+                VanBanDenDuyetId: vanbandenduyetId,
+                InsertVBDXuLyLId: 2,
+                NgayBatDauXuLy: ngaychuaxuly
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Success === false) {
+                    tedu.notify(response.Message, "error");
+                }
+                else {
+                    tedu.notify('Văn bản xử lý.', 'success');
+
+                    //var makv = $('#ddlKhuVuc').val();
+                    //loadCountVBDChuaXuLy(makv);
+                    //loadCountVBDDangXuLy(makv);
+
+                    $('#hidVanBanDenDuyetId').val('');
+                    $('#txtGhiChuXuLy').val('');
+
+                    $('#tblContentChuaXuLy').html('');
+
+                    $('#modal-add-edit-ChuaXuLyXuLy').modal('hide');
+
+                    tedu.stopLoading();
+                }
+            },
+            error: function () {
+                tedu.notify('Có lỗi! Không thể lưu Văn bản xử lý', 'error');
+                tedu.stopLoading();
+            }
+        });
     }
 
     function deleteVanBanDenXuLyFile(vanbandenxulyfileid) {  

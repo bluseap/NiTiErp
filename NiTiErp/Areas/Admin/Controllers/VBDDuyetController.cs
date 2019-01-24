@@ -263,6 +263,42 @@ namespace NiTiErp.Areas.Admin.Controllers
             }
         }
 
+        [HttpPost]
+        public IActionResult DeleteVBDDNVXLCCMXL(VanBanDenDuyetNVXLViewModel vbddnvxlVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                if (vbddnvxlVm.InsertVanBanDenDuyetNVXLId == 3)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "VANBANDENXEM", Operations.Delete);
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền xóa."));
+                    }
+
+                    var username = User.GetSpecificClaim("UserName");
+
+                    vbddnvxlVm.CreateBy = username;
+                    vbddnvxlVm.CreateDate = DateTime.Now;
+                    vbddnvxlVm.UpdateBy = username;
+                    vbddnvxlVm.UpdateDate = DateTime.Now;
+
+                    var vbddnvxl = _vanbandenduyetnvxlduyetService.VanBanDenDuyetNVXLAUDList(vbddnvxlVm, "DelVBDDNhanVienXLCCMXL");
+
+                    return new OkObjectResult(vbddnvxl);
+                }
+                else
+                {
+                    return new OkObjectResult(vbddnvxlVm);
+                }
+            }
+        }
+
         [HttpGet]
         public IActionResult GetListVBDDNVXL(long vanbandenduyetid)
         {            

@@ -40,7 +40,7 @@
                 </div>
                 <div class="ln_solid"></div>
                 <div id="formNhanVienXuLy">
-                    <form class="form-horizontal" role="form" id="frmMaintainanceNhanVienXuLy">                       
+                    <form class="form-horizontal" role="form" id="frmMaintainanceNhanVienXuLy">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -54,7 +54,7 @@
                             </thead>
                             <tbody id="table-contentNhanVienXuLy"></tbody>
                         </table>
-                        <div class="row" id="row--infoNhanVienXuLy">
+                        @*<div class="row" id="row--infoNhanVienXuLy">
                             <div class="col-sm-5">
                                 <div class="dataTables_info" id="datatable-checkbox_infoNhanVienXuLy" role="status" aria-live="polite">
                                     <select id="ddl-show-pageNhanVienXuLy">
@@ -66,14 +66,14 @@
                                     <span class="item-per-page">
                                         dòng/trang.
                                     </span>
-                                     <strong id="lblNhanVienXuLyTotalRecords"></strong>
+                                    <strong id="lblNhanVienXuLyTotalRecords"></strong>
                                 </div>
                             </div><div class="col-sm-7">
                                 <div class="dataTables_paginate" id="datatable-checkbox_paginateNhanVienXuLy">
                                     <ul id="paginationULNhanVienXuLy"></ul>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                     </form>
                     <script type="x-tmpl-mustache" id="template-table-NhanVienXuLy">
                         <tr>
@@ -81,19 +81,82 @@
                             <td><a>{{TenKhuVuc}}</a></td>
                             <td><a>{{TenPhong}}</a></td>
                             <td><a>{{TenChucVu}}</a></td>
-                            <td>                               
-                                    {{TenPhoiHopXuLy}}                              
+                            <td>
+                                {{TenPhoiHopXuLy}}
                             </td>
-                            @*<th scope="row">
+                            <th scope="row">
                                 <a class="btn btn-link btn-deleteNhanVienXuLy" data-id="{{VBDDNVXLId}}" data-toggle="tooltip" data-placement="top" title="Hủy nhân viên Xử lý">
                                     <i class="fa fa-trash-o" style="color:red"></i>
                                 </a>
-                            </th>*@
+                            </th>
                             <td><input type="hidden" id="vbdnvxlId" class="form-control" value="{{VBDDNVXLId}}" /></td>
                         </tr>
                     </script>
                 </div>
-                
+                <div class="table-responsive" id="table-responsiveCCMHoSoNhanVien">
+                    <div class="row" id="row-CCMHoSoNhanVien">
+                        <div class="col-md-3 col-sm-12 col-xs-12 form-group">
+                            <select id="ddlCCMKhuVuc" class="form-control"></select>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12 form-group">
+                            <select id="ddlCCMPhong" class="form-control"></select>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12 form-group">
+                            <input type="text" id="txtCCMTimNhanVien" class="form-control" placeholder="Từ khóa...">
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12 form-group">
+                            <button class="btn btn-primary " id="btnCCMTimNhanVien" type="button">Tìm !</button>
+                        </div>
+                    </div>
+                    <table id="tblCCMHoSoNhanVien" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th width="=20%">#</th>
+                                <th>Họ và tên</th>
+                                <th>Khu vực</th>
+                                <th>Phòng, tổ</th>
+                                <th>Chức vụ</th>
+                                <th>Ngày tạo</th>
+                                <th>Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tblContentCCMHoSoNhanVien"></tbody>
+                    </table>
+                    <div class="row" id="row-infoCCMHoSoNhanVien">
+                        <div class="col-sm-5">
+                            <div class="dataTables_info" id="datatable-checkbox_infoCCMHoSoNhanVien" role="status" aria-live="polite">
+                                <select id="ddl-show-pageCCMHoSoNhanVien">
+                                    <option value="10" selected="selected">10</option>
+                                    <option value="20">20</option>
+                                    <option value="30">30</option>
+                                    <option value="50">50</option>
+                                </select>
+                                <span class="item-per-page">
+                                    dòng/trang.
+                                </span>
+                                Tổng cộng: <strong id="lblCCMHoSoNhanVienTotalRecords"></strong>
+                            </div>
+                        </div><div class="col-sm-7">
+                            <div class="dataTables_paginate" id="datatable-checkbox_paginateCCMHoSoNhanVien">
+                                <ul id="paginationULCCMHoSoNhanVien"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script id="table-CCMHoSoNhanVien" type="x-tmpl-mustache">
+                    <tr>
+                        <th scope="row">
+                            <a class="btn btn-lg btn-editCCMHoSoNhanVien" data-id="{{HoSoId}}" data-toggle="tooltip" data-placement="top" title="Tham gia xử lý"><i class="fa fa-arrow-up"></i> </a>
+                        </th>
+                        <td>{{Ten}}</td>
+                        <td>{{TenKhuVuc}}</td>
+                        <td>{{TenPhong}}</td>
+                        <td>{{TenChucVu}}</td>
+                        <td>{{CreateDate}}</td>
+                        <td>{{{Status}}}</td>
+                    </tr>
+                </script>
             </div>
         </div>
     </div>
