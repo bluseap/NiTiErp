@@ -17,7 +17,7 @@
         loadCountVBDChuaXuLy(makv);
 
         dangxuly.loadCountVanBanDenDangXuLy(makv);
-        daxuly.loadCountVanBanDenDaXuLy(makv);
+        daxuly.loadCountVBDDaXuLyCLD(makv);
         tatcaxuly.loadCountVanBanDenTatCaXuLy(makv);
     }
 

@@ -7,7 +7,7 @@ var vbdxemController = function () {
     var dangxuly = new dangxulyController();
     var daxuly = new daxulyController();
     var tatcaxuly = new tatcaxulyController();
-    var _chuaxuly = new _chuaxulyController();
+    var _chuaxuly = new _chuaxulyController();   
 
     this.initialize = function () {
         loadKhuVuc();
@@ -52,6 +52,7 @@ var vbdxemController = function () {
                 var makv = $('#ddlKhuVuc').val();
                 chuaxuly.loadCountVanBanDenChuaXuLy(makv);
                 _chuaxuly.loadCountVBDDangXuLy(makv);
+                daxuly.loadCountVBDDaXuLyCLD(makv);
 
             },
             error: function (status) {

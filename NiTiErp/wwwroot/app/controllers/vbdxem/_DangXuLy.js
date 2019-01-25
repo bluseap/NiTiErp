@@ -2,6 +2,8 @@
 
     var fileUpload1 = [];
 
+    var daxuly = new daxulyController();
+
     this.initialize = function () {
 
         registerEvents();
@@ -12,6 +14,7 @@
     this.loadTableVBDXuLyFile = function (vanbandenduyetid) {
         loadTableVanBanDenXuLyFileListId(vanbandenduyetid);
     }
+   
 
     function registerEvents() {
 
@@ -47,12 +50,13 @@
 
         $.ajax({
             type: "POST",
-            url: "/Admin/vbdxem/UpdateVanBanDenXuLy",
+            url: "/Admin/vbdxem/UpdateVanBanDenXuLyCLD",
             data: {
                 Id: vanbandenduyetId,
                 VanBanDenDuyetId: vanbandenduyetId,
                 InsertVBDXuLyLId: 2,
-                NgayBatDauXuLy: ngaychuaxuly
+                NgayBatDauXuLy: ngaychuaxuly,
+                GhiChuXuLy: ghichuxuly
             },
             dataType: "json",
             beforeSend: function () {
@@ -65,16 +69,16 @@
                 else {
                     tedu.notify('Văn bản xử lý.', 'success');
 
-                    //var makv = $('#ddlKhuVuc').val();
-                    //loadCountVBDChuaXuLy(makv);
-                    //loadCountVBDDangXuLy(makv);
+                    var makv = $('#ddlKhuVuc').val();                    
+                    loadCountVBDDangXuLy(makv);
+                    loadCountVBDDaXuLyCLD(makv);
 
                     $('#hidVanBanDenDuyetId').val('');
-                    $('#txtGhiChuXuLy').val('');
+                    $('#txtGhiChuXuLyDXL').val('');
 
-                    $('#tblContentChuaXuLy').html('');
+                    $('#tblContentDangXuLy').html('');
 
-                    $('#modal-add-edit-ChuaXuLyXuLy').modal('hide');
+                    $('#modal-add-edit-DangXuLyCLD').modal('hide');
 
                     tedu.stopLoading();
                 }
@@ -82,6 +86,42 @@
             error: function () {
                 tedu.notify('Có lỗi! Không thể lưu Văn bản xử lý', 'error');
                 tedu.stopLoading();
+            }
+        });
+    }
+
+    function loadCountVBDDaXuLyCLD(makv) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/vbdthem/GetCountVBDenDaXuLyCLDUser',
+            data: {
+                corporationId: makv
+            },
+            dataType: 'json',
+            success: function (response) {
+                $('#spanDaXuLy').text(response);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+
+    function loadCountVBDDangXuLy(makv) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/vbdthem/GetCountVBDenDuyetDangXuLyUser',
+            data: {
+                corporationId: makv
+            },
+            dataType: 'json',
+            success: function (response) {
+                $('#spanDangXuLy').text(response);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
             }
         });
     }
