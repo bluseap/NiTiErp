@@ -13,8 +13,9 @@
                             <thead>
                                 <tr>
                                     <th>Họ và tên</th>
-                                    <th>Nội dung</th>   
+                                    <th>Nội dung</th>
                                     <td>Ngày nhập</td>
+                                    <th width="=5%">#</th>
                                 </tr>
                             </thead>
                             <tbody id="table-contentQuaTrinhXuLy"></tbody>
@@ -26,6 +27,11 @@
                             <td><a>{{TenNhanVien}}</a></td>
                             <td><a>{{MoTa}}</a></td>
                             <td><a>{{NgayNhap}}</a></td>
+                            <th scope="row">
+                                <a class="btn btn-sm btnQTXLNhanVienXuLy" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Nhân viên xử lý ">
+                                    <i class="fa fa-mail-forward"></i>
+                                </a>
+                            </th>
                             <td><input type="hidden" id="vbdnvxlId" class="form-control" value="{{Id}}" /></td>
                         </tr>
                     </script>

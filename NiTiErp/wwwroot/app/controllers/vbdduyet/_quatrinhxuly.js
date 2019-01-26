@@ -12,7 +12,11 @@
     }
 
     function registerEvents() {
-
+        $('body').on('click', '.btnQTXLNhanVienXuLy', function (e) {
+            e.preventDefault();
+            var vanbandenqtxlId = $(this).data('id');
+            tedu.notify(vanbandenqtxlId , "success");
+        });
 
     }
 
