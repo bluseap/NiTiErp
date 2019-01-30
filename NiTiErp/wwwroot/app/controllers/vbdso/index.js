@@ -1,0 +1,73 @@
+﻿
+var vbdsoController = function () {
+
+    var userCorporationId = $("#hidUserCorporationId").val();
+
+    var sotatca = new sotatcaController();
+    var chuaphathanh = new chuaphathanhController();
+    var chuaduyet = new chuaduyetController();
+    var chuaxuly = new chuaxulyController();
+    var chuachuyen = new chuachuyenController();
+    var luutam = new luutamController();
+    var _quatrinhxuly = new _quatrinhxulyController();
+
+    this.initialize = function () {
+        loadKhuVuc();
+
+        registerEvents();
+
+        sotatca.initialize();
+        chuaphathanh.initialize();
+        chuaduyet.initialize();
+        chuaxuly.initialize();
+        chuachuyen.initialize();
+        luutam.initialize();
+        _quatrinhxuly.initialize();
+
+        loadData();
+    }
+
+    function registerEvents() {
+
+    }
+
+    function loadKhuVuc() {
+        return $.ajax({
+            type: 'GET',
+            url: '/admin/hoso/GetListCorNhanSu',
+            dataType: 'json',
+            success: function (response) {
+                var render = "<option value='%' >-- Tất cả --</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.Name + "</option>";
+                });
+                $('#ddlKhuVuc').html(render);
+                var userCorporationId = $("#hidUserCorporationId").val();
+                if (userCorporationId !== "PO") {
+                    $('#ddlKhuVuc').prop('disabled', true);
+                }
+                else {
+                    $('#ddlKhuVuc').prop('disabled', false);
+                }
+                $("#ddlKhuVuc")[0].selectedIndex = 1;
+                $('#ddlKhuVuc').prop('disabled', true);
+
+                var makv = $('#ddlKhuVuc').val();
+                //chuaxuly.loadCountVanBanDenChuaXuLy(makv);
+                //_chuaxuly.loadCountVBDDangXuLy(makv);
+                //daxuly.loadCountVBDDaXuLyCLD(makv);
+                //tatcaxuly.loadCountVanBanDenTatCaXuLy(makv);
+
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh mục Công Ty.', 'error');
+            }
+        });
+    }
+
+    function loadData() {
+        //loadVanBanCoQuanBanHanhList();
+    }
+
+}
