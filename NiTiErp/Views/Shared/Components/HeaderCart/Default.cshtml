@@ -1,6 +1,6 @@
 ﻿@model List<ShoppingCartViewModel>
 <div class="mini-cart" id="headerCart">
-    <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle">
+    @*<div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle">
         <a href="#">
             <div class="cart-icon"><i class="icon-basket-loaded icons"></i>
             @if (Model.Count > 0)
@@ -10,7 +10,7 @@
             </div>
             <div class="shoppingcart-inner hidden-xs"><span class="cart-title">Giỏ hàng</span> </div>
         </a>
-    </div>
+    </div>*@
     <div>
         <div class="top-cart-content">
             @if (Model.Count > 0)

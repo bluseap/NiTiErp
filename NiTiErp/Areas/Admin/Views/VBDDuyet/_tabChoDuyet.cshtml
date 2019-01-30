@@ -51,9 +51,9 @@
 <script id="table-ChoDuyet" type="x-tmpl-mustache">
     <tr>
         <th scope="row">
-            <a class="btn btn-sm btnChoDuyet" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Chuyển chuyên môn">
+            <a class="btn btn-sm btnChoDuyet" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Duyệt phát hành">
                 <i class="fa fa-mail-forward"></i>
-                Chuyển
+                Duyệt chuyển văn thư
             </a>
         </th>
         <td>
@@ -94,3 +94,5 @@
         <td><input type="hidden" id="vanbandenid" class="form-control" value="{{VanBanDenId}}" /></td>
     </tr>
 </script>
+
+<partial name="_ChoDuyet.cshtml" />

@@ -18,13 +18,9 @@
             loadTableDaCCM();
         });
 
-        $("#ddl-show-pageDaChuyenChuyenMon").on('change', function () {
-            tedu.configs.pageSize = $(this).val();
-            tedu.configs.pageIndex = 1;
-            loadTableDaCCM(true);
-        });
+        
 
-    }
+    }    
 
     function loadCountVanBanDenChuyenChuyenMon(makv) {
         $.ajax({

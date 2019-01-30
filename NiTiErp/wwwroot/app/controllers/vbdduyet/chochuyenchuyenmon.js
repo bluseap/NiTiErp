@@ -2,6 +2,7 @@
   
     var chuyenchuyenmon = new _chuyenchuyenmonController();
     var quatrinhxuly = new _quatrinhxulyController();
+    var choduyet = new choduyetController();
 
     this.initialize = function () {     
 
@@ -17,6 +18,7 @@
     this.loadCountVanBanDen = function(makhuvuc) {
         loadCountVanBanDenChuaCCM(makhuvuc);
         chuyenchuyenmon.loadCountVBChuyenChuyenMon(makhuvuc);
+        choduyet.loadCountVBDChoDuyet(makhuvuc);
     }
 
     function registerEvents() {
