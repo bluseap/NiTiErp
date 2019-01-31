@@ -54,7 +54,7 @@
         <th scope="row">
             <a class="btn btn-sm btnChuaPhatHanh" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xử lý">
                 <i class="fa fa-mail-forward"></i>
-
+                Phát hành
             </a>
         </th>
         <td>
@@ -63,12 +63,12 @@
             </a>
         </td>
         <td>
-            <a class="btn btn-link btnChuaXuLyPatchFileKyHieu" data-id="{{VanBanDenId}}" data-toggle="tooltip">
+            <a class="btn btn-link btnChuaPhatHanhPatchFileKyHieu" data-id="{{VanBanDenId}}" data-toggle="tooltip">
                 {{SoKyHieuDen}}
             </a>
         </td>
         <td>
-            <a class="btn btn-link btnChuaXuLyPatchFileTrichYeu" data-id="{{VanBanDenId}}" data-toggle="tooltip">
+            <a class="btn btn-link btnChuaPhatHanhPatchFileTrichYeu" data-id="{{VanBanDenId}}" data-toggle="tooltip">
                 {{TrichYeuCuaVanBan}}
             </a>
         </td>
@@ -88,10 +88,12 @@
             </a>
         </td>
         <td>
-            <a class="btn btn-lg btnQTChuaXuLy" data-id="{{VanBanDenId}}" data-toggle="tooltip" style="color:green">
+            <a class="btn btn-lg btnCPTQuaTrinhXL" data-id="{{VanBanDenId}}" data-toggle="tooltip" style="color:green">
                 <i class="fa fa-sitemap"></i>
             </a>
         </td>
         <td><input type="hidden" id="vanbandenid" class="form-control" value="{{VanBanDenId}}" /></td>
     </tr>
 </script>
+
+<partial name="_ChuaPhatHanh.cshtml" />

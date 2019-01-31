@@ -17,11 +17,14 @@ var vbdsoController = function () {
         registerEvents();
 
         sotatca.initialize();
-        chuaphathanh.initialize();
+        
         chuaduyet.initialize();
         chuaxuly.initialize();
         chuachuyen.initialize();
         luutam.initialize();
+
+        chuaphathanh.initialize();
+
         _quatrinhxuly.initialize();
 
         loadData();
@@ -53,10 +56,7 @@ var vbdsoController = function () {
                 $('#ddlKhuVuc').prop('disabled', true);
 
                 var makv = $('#ddlKhuVuc').val();
-                //chuaxuly.loadCountVanBanDenChuaXuLy(makv);
-                //_chuaxuly.loadCountVBDDangXuLy(makv);
-                //daxuly.loadCountVBDDaXuLyCLD(makv);
-                //tatcaxuly.loadCountVanBanDenTatCaXuLy(makv);
+                chuaphathanh.loadCountVBChuaPhatHanh(makv);
 
             },
             error: function (status) {
@@ -67,7 +67,29 @@ var vbdsoController = function () {
     }
 
     function loadData() {
-        //loadVanBanCoQuanBanHanhList();
+        loadVanBanCoQuanBanHanhList();
+    }
+
+    function loadVanBanCoQuanBanHanhList() {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/vbcoquan/VanBanCoQuanGetList',
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >--- Lựa chọn ---</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.Ten + "</option>";
+                });
+                $('#ddlCoQuanBanHanh').html(render);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có văn bản cơ quan ban hành.', 'error');
+            }
+        });
     }
 
 }
