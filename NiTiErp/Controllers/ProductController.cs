@@ -28,7 +28,7 @@ namespace NiTiErp.Controllers
         [Route("products.html")]
         public IActionResult Index()
         {
-            var categories = _productCategoryService.GetAll();
+            var categories = _productCategoryService.GetAllNoParent();//.GetAll();
             return View(categories);
         }
 

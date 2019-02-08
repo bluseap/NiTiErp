@@ -14,7 +14,7 @@
 
     this.loadCountVBChuaPhatHanh = function (makv) {
         loadCountVBChuaPhatHanh(makv);
-    }
+    }    
 
     function registerEvents() {
 
@@ -50,15 +50,9 @@
 
         $('body').on('click', '.btnChuaPhatHanh', function (e) {
             e.preventDefault();
-            var vanbandenduyetId = $(this).data('id');
-            //tedu.notify(vanbandenduyetId, "success");
-
-            //$('#hidVanBanDenDuyetId').val(vanbandenduyetId);
-            //$('#hidInsertVBDDNVXLId').val(1);
-
-            //chuyenchuyenmon.loadNhanVienXuLyVanBanDen(vanbandenduyetId);
-
-            $('#modal-add-edit-ChuaPhatHanh').modal('show');
+            //var vanbandenduyetId = $(this).data('id');
+            //loadTableVanBanDenXuLyFileListId(vanbandenduyetId);
+            //$('#modal-add-edit-ChuaPhatHanh').modal('show');
         });
 
         $('body').on('click', '.btnCPTQuaTrinhXL', function (e) {
@@ -84,6 +78,35 @@
 
         $("#checkChonNoiPhatHanh").on("click", checkChonNoiPhatHanh);
 
+        $('#btnSaveChuaPhatHanh').on('click', function () {
+            var isCheck = $("#checkChonNoiPhatHanh").is(':checked');
+            if (isCheck === true) {
+                SaveVBDPhatHanhDienTu();
+            }
+            else {
+                SaveVBDPhatHanh();
+            }   
+        });
+    }
+
+    function SaveVBDPhatHanh() {
+        var noiphathanh = $('#ddlVBDNoiPhatHanh').val();
+        if (noiphathanh === "%") {
+            tedu.notify("pat hanh van ban.", "success");
+        }
+        else {
+            tedu.notify("Chọn nơi phát hành văn bản điện tử cho đúng.", "error");
+        }
+    }
+
+    function SaveVBDPhatHanhDienTu() {
+        var noiphathanh = $('#ddlVBDNoiPhatHanh').val();
+        if (noiphathanh === "%") {
+            tedu.ntify("Chọn nơi phát hành văn bản điện tử cho đúng.", "error");
+        }
+        else {
+            tedu.ntify("pat hanh van ban ditn tu.", "success");
+        }
     }
 
     function checkChonNoiPhatHanh() {
@@ -93,8 +116,7 @@
         }
         else {
             $('#ddlVBDNoiPhatHanh').prop('disabled', true); 
-        }
-        //tedu.notify("chon noi phat hanh ok", "success");
+        }       
     }
 
     function loadDataChuaPhatHanh() {
@@ -115,8 +137,7 @@
                 tedu.notify('Không có danh mục Công Ty.', 'error');
             }
         });
-    }
-   
+    }   
 
     function SaveVanBanDenPhatHanhFile() {
         var vanbandenduyetid = $('#hidVanBanDenDuyetId').val();
@@ -146,7 +167,7 @@
                     $('#hidTenFileVanBanDenId').val('');
 
                     loadTableVanBanDenXuLyFileListId(vanbandenduyetid);
-                    $('#modal-add-edit-FileVanBanDenXuLy').modal('hide');
+                    $('#modal-add-edit-FileVanBanDenPhatHanh').modal('hide');
 
                     tedu.stopLoading();
                 }
@@ -154,6 +175,42 @@
             error: function () {
                 tedu.notify('Có lỗi! Không thể upload file văn bản đến.', 'error');
                 tedu.stopLoading();
+            }
+        });
+    }
+
+    function loadTableVanBanDenXuLyFileListId(vanbandenduyetId) {
+        var template = $('#table-FileVanBanDen').html();
+        var render = "";
+
+        $.ajax({
+            type: 'GET',
+            data: {
+                vanbandenduyetid: vanbandenduyetId
+            },
+            url: '/admin/vbdxem/GetListVBDXuLyFileListIdPaging',
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th></tr>";
+                }
+                else {
+                    $.each(response.Result.Results, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+                            //HinhNhanVien: item.Image === null ? '<img src="/admin-side/images/user.png?h=90"' : '<img src="' + item.HinhNhanVien + '?h=90" />',
+                            TenFile: item.TenFile                                                
+                        });
+                    });
+                }
+                //$('#lblThongBaoTotalRecords').text(response.Result.RowCount);
+                if (render !== '') {
+                    $('#tbl-contentFileVanBanDen').html(render);
+                }
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
             }
         });
     }

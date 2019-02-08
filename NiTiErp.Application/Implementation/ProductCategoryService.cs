@@ -44,6 +44,13 @@ namespace NiTiErp.Application.Implementation
                  .ProjectTo<ProductCategoryViewModel>().ToList();
         }
 
+        public List<ProductCategoryViewModel> GetAllNoParent()
+        {
+            return _productCategoryRepository.FindAll().Where(p => p.ParentId != null)
+                .OrderBy(x => x.ParentId)
+                .ProjectTo<ProductCategoryViewModel>().ToList();
+        }
+
         public List<ProductCategoryViewModel> GetAll(string keyword)
         {
             if (!string.IsNullOrEmpty(keyword))
@@ -55,7 +62,7 @@ namespace NiTiErp.Application.Implementation
                     .ProjectTo<ProductCategoryViewModel>()
                     .ToList();
         }
-
+        
         public List<ProductCategoryViewModel> GetAllByParentId(int parentId)
         {
             return _productCategoryRepository.FindAll(x => x.Status == Status.Active

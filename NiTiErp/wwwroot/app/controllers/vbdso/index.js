@@ -34,6 +34,10 @@ var vbdsoController = function () {
 
     }
 
+    function loadCountVanBanDen(makv) {
+        luutam.loadCountLuuTam(makv);
+    }
+
     function loadKhuVuc() {
         return $.ajax({
             type: 'GET',
@@ -58,6 +62,7 @@ var vbdsoController = function () {
                 var makv = $('#ddlKhuVuc').val();
                 chuaphathanh.loadCountVBChuaPhatHanh(makv);
 
+                loadCountVanBanDen(makv);
             },
             error: function (status) {
                 console.log(status);

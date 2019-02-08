@@ -15,6 +15,8 @@ namespace NiTiErp.Application.Interfaces
 
         List<ProductCategoryViewModel> GetAll();
 
+        List<ProductCategoryViewModel> GetAllNoParent();
+
         List<ProductCategoryViewModel> GetAll(string keyword);
 
         List<ProductCategoryViewModel> GetAllByParentId(int parentId);

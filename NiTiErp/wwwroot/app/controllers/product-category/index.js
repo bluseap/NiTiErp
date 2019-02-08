@@ -70,7 +70,7 @@
 
                     $('#txtDescM').val(data.Description);
 
-                    $('#txtImageM').val(data.ThumbnailImage);
+                    $('#txtImage').val(data.ThumbnailImage);
                     
                     $('#txtSeoKeywordM').val(data.SeoKeywords);
                     $('#txtSeoDescriptionM').val(data.SeoDescription);
@@ -128,7 +128,7 @@
                 var parentId = $('#ddlCategoryIdM').combotree('getValue');
                 var description = $('#txtDescM').val();
 
-                var image = $('#txtImageM').val();
+                var image = $('#txtImage').val();
                 var order = parseInt($('#txtOrderM').val());
                 var homeOrder = $('#txtHomeOrderM').val();
 
@@ -193,7 +193,7 @@
         $('#txtDescM').val('');
         $('#txtOrderM').val('');
         $('#txtHomeOrderM').val('');
-        $('#txtImageM').val('');
+        $('#txtImage').val('');
 
         $('#txtMetakeywordM').val('');
         $('#txtMetaDescriptionM').val('');
