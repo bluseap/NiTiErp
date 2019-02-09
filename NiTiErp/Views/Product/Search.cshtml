@@ -26,19 +26,19 @@
             <div class="col-main col-sm-12 col-xs-12">
                 <div class="shop-inner">
                     <div class="page-title">
-                        <h2>Search result: @Model.Keyword</h2>
+                        <h2>Kết quả tìm : @Model.Keyword</h2>
                     </div>
                     <div class="toolbar column">
                         <form action="/search.html" method="get">
                             <input type="hidden" name="keyword" value="@Model.Keyword" />
                             <div class="sorter">
                                 <div class="short-by">
-                                    <label>Sort By:</label>
+                                    <label>Sắp xếp theo:</label>
                                     <select name="sortBy" asp-for="SortType"
                                             onchange="this.form.submit()" asp-items="Model.SortTypes"></select>
                                 </div>
                                 <div class="short-by page">
-                                    <label>Show:</label>
+                                    <label>Xem được:</label>
                                     <select name="pageSize" asp-for="PageSize" onchange="this.form.submit()"
                                             asp-items="Model.PageSizes"></select>
                                 </div>

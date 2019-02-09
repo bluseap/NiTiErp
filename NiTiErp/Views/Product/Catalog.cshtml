@@ -32,12 +32,12 @@
                         <form action="/@Model.Category.SeoAlias-c.@(Model.Category.Id).html" method="get">
                             <div class="sorter">
                                 <div class="short-by">
-                                    <label>Sort By:</label>
+                                    <label>Sắp xếp theo:</label>
                                     <select name="sortBy" asp-for="SortType"
                                             onchange="this.form.submit()" asp-items="Model.SortTypes"></select>
                                 </div>
                                 <div class="short-by page">
-                                    <label>Show:</label>
+                                    <label>Xem được:</label>
                                     <select name="pageSize" asp-for="PageSize" onchange="this.form.submit()"
                                             asp-items="Model.PageSizes"></select>
                                 </div>
@@ -53,8 +53,8 @@
                                     <div class="product-item">
                                         <div class="item-inner">
                                             <div class="product-thumbnail">
-                                                <div class="icon-sale-label sale-left">Sale</div>
-                                                <div class="icon-new-label new-right">New</div>
+                                                <div class="icon-sale-label sale-left">Bán</div>
+                                                <div class="icon-new-label new-right">Mới</div>
                                                 <div class="pr-img-area">
                                                     <a title="Ipsums Dolors Untra" href="@url">
                                                         <figure> <img class="first-img" src="@item.Image" alt="@item.Name"> <img class="hover-img" src="@item.Image" alt="@item.Name"></figure>

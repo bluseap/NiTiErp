@@ -22,6 +22,7 @@ namespace NiTiErp.Application.Implementation
 {
     public class ProductService : IProductService
     {
+        IProductCategoryRepository _productCategory;
         IProductRepository _productRepository;
         ITagRepository _tagRepository;
         IProductTagRepository _productTagRepository;
@@ -30,7 +31,7 @@ namespace NiTiErp.Application.Implementation
         IWholePriceRepository _wholePriceRepository;
 
         IUnitOfWork _unitOfWork;
-        public ProductService(IProductRepository productRepository,
+        public ProductService(IProductRepository productRepository, IProductCategoryRepository productCategory,
             ITagRepository tagRepository,
             IProductQuantityRepository productQuantityRepository,
             IProductImageRepository productImageRepository,
@@ -39,6 +40,7 @@ namespace NiTiErp.Application.Implementation
             IProductTagRepository productTagRepository)
         {
             _productRepository = productRepository;
+            _productCategory = productCategory;
             _tagRepository = tagRepository;
             _productQuantityRepository = productQuantityRepository;
             _productTagRepository = productTagRepository;
@@ -120,7 +122,23 @@ namespace NiTiErp.Application.Implementation
             if (!string.IsNullOrEmpty(keyword))
                 query = query.Where(x => x.Name.Contains(keyword));
             if (categoryId.HasValue)
-                query = query.Where(x => x.CategoryId == categoryId.Value);
+            {
+                var query2 = query.Where(x => x.CategoryId == categoryId.Value);
+
+                var queryProductCategory = _productCategory.FindAll(p => p.Id.Equals(categoryId))
+                    .ProjectTo<ProductCategoryViewModel>().Select(x => x.Name).ToList();
+
+                var nameProduct = queryProductCategory[0];
+
+                if (query2.Count() == 0)
+                {
+                    query = query.Where(x => x.Name.Contains(nameProduct));
+                }
+                else
+                {
+                    query = query.Where(x => x.CategoryId == categoryId.Value);
+                }                
+            }
 
             int totalRow = query.Count();
 
