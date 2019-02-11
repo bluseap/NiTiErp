@@ -283,6 +283,39 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetCountVBDSoChuaXuLy(string corporationId)
+        {
+            var username = User.GetSpecificClaim("UserName");
+
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var count = _vanbandenService.GetCountVanBan(corporationId, "GetCountVBDSoChuaXuLy");
+            //_hubContext.Clients.All.SendAsync("VanBanDenDangXuLy", count.ToString());
+            return new OkObjectResult(count);
+        }
+
+        [HttpGet]
+        public IActionResult GetCountVBDChuaDuyet(string corporationId)
+        {
+            var username = User.GetSpecificClaim("UserName");
+
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var count = _vanbandenService.GetCountVanBan(corporationId, "GetCountVBDChuaDuyet");
+            //_hubContext.Clients.All.SendAsync("VanBanDenDangXuLy", count.ToString());
+            return new OkObjectResult(count);
+        }
+
+        [HttpGet]
+        public IActionResult GetCountVBDSoTatCa(string corporationId)
+        {
+            var username = User.GetSpecificClaim("UserName");
+
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var count = _vanbandenService.GetCountVanBan(corporationId, "GetCountVBDSoTatCa");
+            //_hubContext.Clients.All.SendAsync("VanBanDenDangXuLy", count.ToString());
+            return new OkObjectResult(count);
+        }
+
+        [HttpGet]
         public IActionResult GetCountVBDenDuyetCCMUser(string corporationId)
         {
             var username = User.GetSpecificClaim("UserName");
@@ -630,6 +663,78 @@ namespace NiTiErp.Areas.Admin.Controllers
                 , NamVanBan, SoVanBan, kyhieuvanban
                 , "", false, 1, false, DateTime.Now, "", newGuid, 1, 1, false, "", "1", "",
                 trichyeu, page, pageSize, 1, "", username, "GetAllVBDSoChuaChuyen0202");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetListVBDSoChuaXuLy(string corporationId, string keyword, int NamVanBan, int SoVanBan, string KyHieuVanBan,
+           string TrichYeu, string CoQuanBanHanh, int page, int pageSize)
+        {
+            var username = User.GetSpecificClaim("UserName");
+
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+            var newGuid = new Guid();
+
+            var kyhieuvanban = !string.IsNullOrEmpty(KyHieuVanBan) ? KyHieuVanBan : "%";
+            var trichyeu = !string.IsNullOrEmpty(TrichYeu) ? TrichYeu : "%";
+            var coquanbanhanh = CoQuanBanHanh == "%" ? 0 : Convert.ToInt32(CoQuanBanHanh);
+
+            var model = _vanbandenService.GetAllVanBanDenPaging(corporationId, 1, 1
+                , coquanbanhanh
+                , DateTime.Now, DateTime.Now
+                , NamVanBan, SoVanBan, kyhieuvanban
+                , "", false, 1, false, DateTime.Now, "", newGuid, 1, 1, false, "", "1", "",
+                trichyeu, page, pageSize, 1, "", username, "GetAllVBDSoChuaXuLy0301");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetListVBDSoChuaDuyet(string corporationId, string keyword, int NamVanBan, int SoVanBan, string KyHieuVanBan,
+           string TrichYeu, string CoQuanBanHanh, int page, int pageSize)
+        {
+            var username = User.GetSpecificClaim("UserName");
+
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+            var newGuid = new Guid();
+
+            var kyhieuvanban = !string.IsNullOrEmpty(KyHieuVanBan) ? KyHieuVanBan : "%";
+            var trichyeu = !string.IsNullOrEmpty(TrichYeu) ? TrichYeu : "%";
+            var coquanbanhanh = CoQuanBanHanh == "%" ? 0 : Convert.ToInt32(CoQuanBanHanh);
+
+            var model = _vanbandenService.GetAllVanBanDenPaging(corporationId, 1, 1
+                , coquanbanhanh
+                , DateTime.Now, DateTime.Now
+                , NamVanBan, SoVanBan, kyhieuvanban
+                , "", false, 1, false, DateTime.Now, "", newGuid, 1, 1, false, "", "1", "",
+                trichyeu, page, pageSize, 1, "", username, "GetAllVBDSoChuaDuyet0302");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetListVBDSoTatCa(string corporationId, string keyword, int NamVanBan, int SoVanBan, string KyHieuVanBan,
+           string TrichYeu, string CoQuanBanHanh, int page, int pageSize)
+        {
+            var username = User.GetSpecificClaim("UserName");
+
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+            var newGuid = new Guid();
+
+            var kyhieuvanban = !string.IsNullOrEmpty(KyHieuVanBan) ? KyHieuVanBan : "%";
+            var trichyeu = !string.IsNullOrEmpty(TrichYeu) ? TrichYeu : "%";
+            var coquanbanhanh = CoQuanBanHanh == "%" ? 0 : Convert.ToInt32(CoQuanBanHanh);
+
+            var model = _vanbandenService.GetAllVanBanDenPaging(corporationId, 1, 1
+                , coquanbanhanh
+                , DateTime.Now, DateTime.Now
+                , NamVanBan, SoVanBan, kyhieuvanban
+                , "", false, 1, false, DateTime.Now, "", newGuid, 1, 1, false, "", "1", "",
+                trichyeu, page, pageSize, 1, "", username, "GetAllVBDSoTatCa");
 
             return new OkObjectResult(model);
         }
