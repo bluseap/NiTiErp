@@ -36,6 +36,7 @@ var vbdsoController = function () {
 
     function loadCountVanBanDen(makv) {
         luutam.loadCountLuuTam(makv);
+        chuachuyen.loadCountChuaChuyen(makv);
     }
 
     function loadKhuVuc() {
