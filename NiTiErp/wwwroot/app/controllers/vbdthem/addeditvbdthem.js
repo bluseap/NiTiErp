@@ -115,7 +115,6 @@
     function loadAddEditData() {
         $('#ddlSoVanBanDen').prop("disabled", true);
         $('#txtSoVanBanDen').prop("disabled", true);
-
     }
     
     function loadVanBanKhanList() {
@@ -131,7 +130,8 @@
                 $.each(response.Result, function (i, item) {
                     render += "<option value='" + item.Id + "'>" + item.Ten + "</option>";
                 });
-                $('#ddlCapDoKhan').html(render);               
+                $('#ddlCapDoKhan').html(render);
+                $('#ddlCapDoKhan')[0].selectedIndex = 1;
             },
             error: function (status) {
                 console.log(status);
@@ -154,6 +154,7 @@
                     render += "<option value='" + item.Id + "'>" + item.Ten + "</option>";
                 });
                 $('#ddlCapDoMat').html(render);
+                $('#ddlCapDoMat')[0].selectedIndex = 1;
             },
             error: function (status) {
                 console.log(status);
@@ -341,8 +342,8 @@
         $('#ddlCoQuanBanHanh')[0].selectedIndex = 0;
         $('#txtNoiLuuBanChinh').val('');
         $('#ddlLanhDaoDuyet')[0].selectedIndex = 0;
-        $('#ddlCapDoKhan')[0].selectedIndex = 0;
-        $('#ddlCapDoMat')[0].selectedIndex = 0;
+        $('#ddlCapDoKhan')[0].selectedIndex = 1;
+        $('#ddlCapDoMat')[0].selectedIndex = 1;
         $('#txtGhiChu').val('');
     }
 
@@ -593,19 +594,9 @@
                     isDanhMuc: true
                 },    
                 txtGhiChu: { required: true }
-
-                //txtLuongCoBan: {
-                //    required: true,
-                //    number: true
-                //}
             },
             messages: {
-                txtTrichYeu: { required: "Nhập họ và tên.." }      
-               
-                //txtLuongCoBan: {
-                //    required: "Nhập lương cơ bản..",
-                //    number: "Chỉ nhập số.."
-                //}
+                txtTrichYeu: { required: "Nhập nội dung trích yếu của văn bản.." }                   
             }
         });
     }

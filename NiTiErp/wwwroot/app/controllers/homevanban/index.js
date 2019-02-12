@@ -27,26 +27,22 @@
 
         $('body').on('click', '.btnDenChuaXuLy', function (e) {
             e.preventDefault();
-            tedu.notify("Chưa xư ly", "success");
-
+            window.location.href = "vbdthem/index";
         });
 
         $('body').on('click', '.btnDenDangXuLy', function (e) {
             e.preventDefault();
-            tedu.notify("Đang xư ly", "success");
-
+            window.location.href = "vbdxem/index";
         });
 
         $('body').on('click', '.btnDenChoDuyet', function (e) {
             e.preventDefault();
-            tedu.notify("Chờ duyệt", "success");
-
+            window.location.href = "vbdduyet/index";
         });
 
         $('body').on('click', '.btnDenChuPhatHanh', function (e) {
             e.preventDefault();
             tedu.notify("Chưa phát hành", "success");
-
         });
 
         $('body').on('click', '.btnDiChoXuLy', function (e) {

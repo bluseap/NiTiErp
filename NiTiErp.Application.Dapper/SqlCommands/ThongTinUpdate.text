@@ -52,6 +52,8 @@ create table VanBanDiFile
 
 create table VanBanDiSo
 
+create table VanBanDiSoHis
+
 create table VanBanKhan
 
 create table VanBanLinhVuc
@@ -74,6 +76,9 @@ create table VanBanPhoiHopXuLy
 
 
 
+table genericate VanBanDenSo
+
+table genericate VanBanDiSo
 
 table genericate VanBanKhan
 
@@ -137,6 +142,11 @@ create procedure [VanBanCoQuanGetList]
 create procedure VanBanDenSoAUD
 
 create procedure [VanBanDenSoGetList]
+
+create procedure VanBanDiSoAUD
+
+create procedure [VanBanDiSoGetList]
+
 
 
 
