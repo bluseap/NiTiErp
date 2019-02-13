@@ -29,7 +29,7 @@
             //addeditvbdthem.loadVanBanDienTuCount(makv);
             addeditvbdithem.sovanbandi();
 
-            //$('#hidInsertVBDThemId').val(1);  // insert
+            $('#hidInsertVBDiThemId').val(1);  // insert
             //$('#hidIsVanBanDenDienTuId').val("False"); // 1 la co; 0 la ko
             //$('#hidVanBanDenDienTuId').val(1);
             CodeFileGuidId(); // CodeId

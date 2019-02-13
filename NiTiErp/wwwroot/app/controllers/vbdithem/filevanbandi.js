@@ -73,16 +73,16 @@
     function SaveVanBanDiFile() {
         tedu.notify("save van band en file", "success");
 
-        var insertvanbandenfile = $('#hidInsertFileVanBanDenId').val();
-        var tenfile = $('#hidTenFileVanBanDenId').val();
+        var insertvanbandifile = $('#hidInsertFileVanBanDiId').val();
+        var tenfile = $('#hidTenFileVanBanDiId').val();
         var codeid = $('#hidCodeFileGuidId').val();
 
         $.ajax({
             type: "POST",
-            url: "/Admin/vbdthem/AddUpdateVanBanDenFile",
+            url: "/Admin/vbdithem/AddUpdateVanBanDiFile",
             data: {
                 Id: 1,
-                InsertVanBanDenFileId: insertvanbandenfile,
+                InsertVanBanDiFileId: insertvanbandifile,
                 CodeId: codeid,
                 TenFile: tenfile,
                 DuongDan: fileUpload1
@@ -97,10 +97,10 @@
                 }
                 else {
                     tedu.notify('Upload file.', 'success');
-                    $('#hidInsertFileVanBanDenId').val(0);
-                    $('#hidTenFileVanBanDenId').val('');
+                    $('#hidInsertFileVanBanDiId').val(0);
+                    $('#hidTenFileVanBanDiId').val('');
 
-                    $('#modal-add-edit-FileVanBanDen').modal('hide');
+                    $('#modal-add-edit-FileVanBanDi').modal('hide');
                     loadTableVanBanDiFile(codeid);
                     tedu.stopLoading();
                 }
@@ -115,7 +115,7 @@
 
     function loadTableVanBanDiFile(codeid) {
 
-        var template = $('#table-FileVanBanDen').html();
+        var template = $('#table-FileVanBanDi').html();
         var render = "";
 
         $.ajax({
@@ -123,7 +123,7 @@
             data: {
                 CodeId: codeid
             },
-            url: '/admin/vbdthem/GetListVanBanDenFilePaging',
+            url: '/admin/vbdithem/GetListVanBanDiFilePaging',
             dataType: 'json',
             success: function (response) {
                 if (response.Result.Results.length === 0) {
@@ -135,10 +135,7 @@
                             Id: item.Id,
                             CodeId: item.CodeId,
                             //HinhNhanVien: item.Image === null ? '<img src="/admin-side/images/user.png?h=90"' : '<img src="' + item.HinhNhanVien + '?h=90" />',
-                            TenFile: item.TenFile
-                            //CreateDate: tedu.getFormattedDate(item.CreateDate),
-                            //Status: tedu.getHoSoNhanVienStatus(item.Status)
-                            // Price: tedu.formatNumber(item.Price, 0),                          
+                            TenFile: item.TenFile                                               
                         });
                     });
                 }
@@ -163,7 +160,7 @@
             data: {
                 vanbandiId: vanbandiid
             },
-            url: '/admin/vbdthem/GetListVBDListIdPaging',
+            url: '/admin/vbdithem/GetListVBDiListIdPaging',
             dataType: 'json',
             success: function (response) {
                 if (response.Result.Results.length === 0) {

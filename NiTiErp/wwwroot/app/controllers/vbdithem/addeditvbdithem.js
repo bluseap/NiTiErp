@@ -2,7 +2,7 @@
 
     var userCorporationId = $("#hidUserCorporationId").val();
 
-    //var fielvanbanden = new filevanbandenController();
+    var fielvanbandi = new filevanbandiController();
 
     this.initialize = function () {
         //loadThongBao();
@@ -52,12 +52,50 @@
             $('#modal-add-edit-FileVanBanDi').modal('show');
         });
 
+        $('body').on('click', '.btnDeleteFile', function (e) {
+            e.preventDefault();
+            var vanbandifileId = $(this).data('id');
+            $('#hidInsertFileVanBanDiId').val(3); // 3
+            deleteVanBanDiFile(vanbandifileId);
+        });
+
     }
 
     function loadAddEditData() {
         //$('#ddlSoVanBanDen').prop("disabled", true);
         //$('#txtSoVanBanDen').prop("disabled", true);
 
+    }
+
+    function deleteVanBanDiFile(vanbandifileId) {
+        var inservanbandifile = $('#hidInsertFileVanBanDiId').val(); // 3
+        var vanbandiId = $('#hidVanBanDiId').val();
+
+        tedu.confirm('Bạn có chắc chắn xóa bằng này?', function () {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/vbdithem/DeleteVanBanFile",
+                data: {
+                    Id: vanbandifileId,
+                    InsertVanBanDiFileId: inservanbandifile // 3
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    tedu.notify('Xóa thành công', 'success');
+
+                    fielvanbandi.vanbandifileid(vanbandiId);
+
+                    tedu.stopLoading();
+                },
+                error: function (status) {
+                    tedu.notify('Xóa file văn bản đi lỗi! Kiểm tra lại.', 'error');
+                    tedu.stopLoading();
+                }
+            });
+        });
     }
 
     function ClearFormAddEdit() {

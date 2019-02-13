@@ -50,6 +50,8 @@ create table VanBanDienTuPhatHanh
 
 create table VanBanDiFile
 
+create table VanBanDiFileHis
+
 create table VanBanDiSo
 
 create table VanBanDiSoHis
@@ -134,6 +136,10 @@ create procedure [VanBanNhomXuLyGetList]
 create procedure [VanBanDenFileAUD]
 
 create procedure [VanBanDenFileGetList]
+
+create procedure [VanBanDiFileAUD]
+
+create procedure [VanBanDiFileGetList]
 
 create procedure [VanBanCoQuanAUD]
 
