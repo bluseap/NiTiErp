@@ -1,6 +1,7 @@
 ﻿var addeditvbdithemController = function () {
 
     var userCorporationId = $("#hidUserCorporationId").val();
+    var userName = $("#hidUserName").val();    
 
     var fielvanbandi = new filevanbandiController();
 
@@ -62,8 +63,39 @@
     }
 
     function loadAddEditData() {
+        nhomXuLy();
+
         //$('#ddlSoVanBanDen').prop("disabled", true);
         //$('#txtSoVanBanDen').prop("disabled", true);
+    }
+
+    function nhomXuLy() {
+        
+        $.ajax({
+            type: 'GET',
+            url: '/admin/AppUserLogin/GetNhomXuLyHoSoNhanVien', //nhom xu ly van ban
+            data: {
+                username: userName
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var appuserlogin = response.Result.Results;
+
+                if (appuserlogin.length === 0) {
+                    $('#btnVBDiPhatHanh').hide();
+                }
+                else {
+                    $('#btnVBDiChuyenLD').hide();
+                }                
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh mục sổ văn bản đến.', 'error');
+            }
+        });        
 
     }
 
@@ -117,10 +149,11 @@
         $('#ddlSoVanBanDi')[0].selectedIndex = 0;
         $('#txtSoVanBanDi').val('');
         $('#txtSoKyHieu').val('');
-        $('#txtNguoiKyVanBan').val('');
+        $('#ddlNguoiKyVanBan')[0].selectedIndex = 0;
         $('#ddlCoQuanBanHanh')[0].selectedIndex = 1;
+        $('#ddlDonViNhanVanBan')[0].selectedIndex = 1;
         $('#txtNoiLuuBanChinh').val('');
-        $('#ddlLanhDaoDuyet')[0].selectedIndex = 0;
+        $('#ddlLanhDaoDuyet')[0].selectedIndex = 1;
         $('#ddlCapDoKhan')[0].selectedIndex = 1;
         $('#ddlCapDoMat')[0].selectedIndex = 1;
         $('#txtGhiChu').val('');
@@ -202,8 +235,15 @@
                 },
                 txtSoVanBanDi: { required: true },
                 txtSoKyHieu: { required: true },
-                txtNguoiKyVanBan: { required: true },
+                ddlNguoiKyVanBan: {
+                    required: true,
+                    isDanhMuc: true
+                },
                 ddlCoQuanBanHanh: {
+                    required: true,
+                    isDanhMuc: true
+                },
+                ddlDonViNhanVanBan: {
                     required: true,
                     isDanhMuc: true
                 },
@@ -335,7 +375,7 @@
                     render += "<option value='" + item.HoSoNhanVienId + "'>" + item.TenNhanVien + "</option>";
                 });
                 $('#ddlLanhDaoDuyet').html(render);
-                //$('#ddlLanhDaoDuyet')[0].selectedIndex = 1;
+                $('#ddlLanhDaoDuyet')[0].selectedIndex = 1;
             },
             error: function (status) {
                 console.log(status);

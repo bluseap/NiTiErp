@@ -285,7 +285,6 @@
             return '<span class="badge bg-green">Hoạt động</span>';    
         else 
             return '<span class="badge bg-purple">Chưa biết</span>';
-
     },
     getVanBanDenTTXuLy: function (trangthai) {
         if (trangthai === "1")
@@ -298,7 +297,6 @@
             return '<span class="badge bg-purple">Phát hành</span>';
         else
             return '<span class="badge bg-red">Không biết</span>';
-
     },
     getVanBanDenTTDuyet: function (trangthai) {
         if (trangthai === "1")
@@ -311,7 +309,6 @@
             return '<span class="badge bg-blue">Duyệt văn thư</span>';
         else
             return '<span class="badge bg-red">Không biết</span>';
-
     },
     getVanBanDenTTDangXuLy: function (trangthai) {
         if (trangthai === "1")
@@ -326,13 +323,62 @@
             return '<span class="badge bg-red">Xử lý lại</span>';
         else
             return '<span class="badge bg-red">Không biết</span>';
-
     },
+
+    getVanBanDiTTChoXuLy: function (trangthai) {
+        if (trangthai === "1")
+            return '<span class="badge bg-orange">Đang xử lý</span>';
+        else if (trangthai === "2")
+            return '<span class="badge bg-green">Chuyển lãnh đạo</span>';
+        else if (trangthai === "3")
+            return '<span class="badge bg-blue">Đã duyệt</span>';
+        //else if (trangthai === "4")
+        //    return '<span class="badge bg-blue">Chuyển văn thư</span>';
+        else if (trangthai === "5")
+            return '<span class="badge bg-red">Xử lý lại</span>';
+        else if (trangthai === "0")
+            return '<span class="badge bg-purple">Phát hành</span>';
+        else
+            return '<span class="badge bg-purple">Không biết</span>';
+    },
+    getVanBanDiTTChoDuyet: function (trangthai) {
+        if (trangthai === "1")
+            return '<span class="badge bg-orange">Chờ duyệt</span>';
+        //else if (trangthai === "2")
+        //    return '<span class="badge bg-green">Chuyển lãnh đạo</span>';
+        else if (trangthai === "3")
+            return '<span class="badge bg-red">Sai trả về</span>';
+        else if (trangthai === "4")
+            return '<span class="badge bg-blue">Chuyển văn thư</span>';
+        //else if (trangthai === "5")
+        //    return '<span class="badge bg-red">Xử lý lại</span>';
+        else if (trangthai === "0")
+            return '<span class="badge bg-purple">Phát hành</span>';
+        else
+            return '<span class="badge bg-purple">Không biết</span>';
+    },
+    getVanBanDiTTChuaPhatHanh: function (trangthai) {
+        if (trangthai === "1")
+            return '<span class="badge bg-orange">Chưa phát hành</span>';
+        //else if (trangthai === "2")
+        //    return '<span class="badge bg-green">Chuyển lãnh đạo</span>';
+        //else if (trangthai === "3")
+        //    return '<span class="badge bg-blue">Lãnh đạo duyệt</span>';
+        else if (trangthai === "4")
+            return '<span class="badge bg-purple">Phát hành</span>';
+        //else if (trangthai === "5")
+        //    return '<span class="badge bg-red">Xử lý lại</span>';
+
+        else if (trangthai === "0")
+            return '<span class="badge bg-purple">Phát hành</span>';
+        else
+            return '<span class="badge bg-red">Không biết</span>';
+    },
+
     formatNumber: function (number, precision) {
         if (!isFinite(number)) {
             return number.toString();
         }
-
         var a = number.toFixed(precision).split('.');
         a[0] = a[0].replace(/\d(?=(\d{3})+$)/g, '$&,');
         return a.join('.');

@@ -9,6 +9,8 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
         public Guid UserId { set; get; }
 
+        public Guid HoSoNhanVienId { get; set; }
+
         public string UserName { get; set; }
 
         public string FullName { get; set; }

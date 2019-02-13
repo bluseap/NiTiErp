@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="lbNguoiKyVanBan">Người ký văn bản đi <a style="color:red">(*)</a></label>
-                                    <input type="text" name="txtNguoiKyVanBan" class="form-control has-feedback-right" id="txtNguoiKyVanBan" placeholder="Người ký văn bản đi">
+                                    <select id="ddlNguoiKyVanBan" class="form-control" name="ddlNguoiKyVanBan"></select>                                   
                                 </div>
                             </div>
                         </form>
@@ -117,12 +117,28 @@
                         <form class="form-horizontal " role="form" id="frmMainVBDiThem3">
                             <div class="form-group">
                                 <div class="col-sm-6 ">
-                                    <label for="lbCoQuanBanHanh">Nơi ban hành văn bản <a style="color:red">(*)</a></label>                                    
-                                    <select id="ddlCoQuanBanHanh" class="form-control" name="ddlCoQuanBanHanh"></select>                                        
+                                    <label for="lbCoQuanBanHanh">Nơi ban hành văn bản <a style="color:red">(*)</a></label>
+                                    <select id="ddlCoQuanBanHanh" class="form-control" name="ddlCoQuanBanHanh"></select>
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="lbNoiLuuBanChinh">Nơi lưu bản chính <a style="color:red"> </a></label>
                                     <input type="text" name="txtNoiLuuBanChinh" class="form-control has-feedback-right" id="txtNoiLuuBanChinh" placeholder="Nơi lưu bản chính ">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-6 ">
+                                    <label for="lbDonViNhanVanBan">Đơn vị nhận văn bản <a style="color:red">(*)</a></label>
+                                    <select id="ddlDonViNhanVanBan" class="form-control" name="ddlDonViNhanVanBan"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-6 ">
+                                    <label for="lbTenNhanVienSoanVB">Tên nhân viên soạn Văn bản </label>
+                                    <input type="text" name="txtTenNhanVienSoanVB" class="form-control has-feedback-right" id="txtTenNhanVienSoanVB" placeholder="Tên nhân viên soạn Văn bản ">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="lbYKienNhanVienSoanVB">Ý kiến nhân viên soạn Văn bản </label>
+                                    <input type="text" name="txtYKienNhanVienSoanVB" class="form-control has-feedback-right" id="txtYKienNhanVienSoanVB" placeholder="Ý kiến nhân viên soạn Văn bản ">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -148,9 +164,9 @@
 
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="button" id="btnSaveVBDiThem" class="btn btn-success">Lưu tạm</button>
+                                    <button type="button" id="btnVBDiPhatHanh" class="btn btn-success">Phát hành</button>
                                     <button type="button" id="btnCancelVBDiThem" data-dismiss="modal" class="btn btn-default">Đóng</button>
-                                    <button type="button" id="btnVBDiThemChuyen" data-dismiss="modal" class="btn btn-warning">Lưu và chuyển lãnh đạo</button>
+                                    <button type="button" id="btnVBDiChuyenLD" data-dismiss="modal" class="btn btn-warning">Lưu và chuyển lãnh đạo</button>
                                 </div>
                             </div>
                         </form>
