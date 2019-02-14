@@ -28,6 +28,7 @@
             var makv = $('#ddlKhuVuc').val();
             //addeditvbdthem.loadVanBanDienTuCount(makv);
             addeditvbdithem.sovanbandi();
+            addeditvbdithem.loadLanhDaoKyVanBan(makv);
 
             $('#hidInsertVBDiThemId').val(1);  // insert
             //$('#hidIsVanBanDenDienTuId').val("False"); // 1 la co; 0 la ko

@@ -63,6 +63,14 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetNhomVanThuHoSoNhanVien(string username)
+        {
+            var model = _appuserloginService.GetAllAppUserPaging("", "", 1, 1000, "", username, "", "GetNhomVanThuHoSoNhanVien");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
         public IActionResult GetHoSoNhanVien(string username)
         {
             var model = _appuserloginService.GetAllAppUserPaging("", "", 1, 1000, "", username, "", "GetHoSoNhanVien");

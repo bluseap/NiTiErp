@@ -94,6 +94,17 @@ namespace NiTiErp.Areas.Admin.Controllers
 
             return new OkObjectResult(model);
         }
+
+        [HttpGet]
+        public IActionResult NhomLanhDaoKyGetList(string corporationId)
+        {
+            var hosonewguid = new Guid();
+
+            var model = _vanbannhomxulyService.VanBanNhomXuLyGetList("", hosonewguid, "", 1
+                , corporationId, "GetAllNhomXuLyLDKVB");
+
+            return new OkObjectResult(model);
+        }
         #endregion
 
 

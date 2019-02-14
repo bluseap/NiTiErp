@@ -18,7 +18,7 @@
         loadVanBanMatList();
         loadVanBanLinhVucList();
         loadVanBanLoaiList();
-        
+        loadVanBanCoQuanList(); // don vi nhan van ban di
         loadNhomLanhDaoDuyet(1); // 1 là nhom lanh dao duyet
     }
 
@@ -26,6 +26,10 @@
         loadVanBanDiSoList();
         $('#tbl-contentFileVanBanDi').html('');
         ClearFormAddEdit();
+    }
+
+    this.loadLanhDaoKyVanBan = function (makv) {
+        loadLanhDaoKyVanBan(makv);
     }
 
     //this.loadVanBanDienTuCount = function (makv) {
@@ -60,20 +64,54 @@
             deleteVanBanDiFile(vanbandifileId);
         });
 
+        $("#btnLaySoVBDi").on('click', function (e) {
+            e.preventDefault();
+            LaySoVanBanDi();
+        });
+
+        $("#btnVBDiPhatHanh").on('click', function (e) {
+            e.preventDefault();
+            savePhatHanh();
+        });        
+
+        $("#btnVBDiChuyenLD").on('click', function (e) {
+            e.preventDefault();
+            saveChuyenLanhDao();
+        });
+
+        $("#btnVBDiLDDPhatHanh").on('click', function (e) {
+            e.preventDefault();
+            tedu.notify("da duyet - phat hanh", "success");
+        });
+
+    }
+
+    function savePhatHanh() {
+        tedu.notify("phat hanh", "success");
+    }
+
+    function saveChuyenLanhDao() {
+        tedu.notify("chuyen lanh dao", "success");
+    }
+
+    function LaySoVanBanDi() {
+        tedu.notify("lay so van ban di", "success");
+
+        $('#txtSoVanBanDi').val(1);
     }
 
     function loadAddEditData() {
         nhomXuLy();
 
-        //$('#ddlSoVanBanDen').prop("disabled", true);
-        //$('#txtSoVanBanDen').prop("disabled", true);
+        $('#btnVBDiLDDPhatHanh').hide();     
+        $('#txtSoVanBanDi').prop("disabled", true);       
     }
 
     function nhomXuLy() {
         
         $.ajax({
             type: 'GET',
-            url: '/admin/AppUserLogin/GetNhomXuLyHoSoNhanVien', //nhom xu ly van ban
+            url: '/admin/AppUserLogin/GetNhomVanThuHoSoNhanVien', //nhom xu ly van ban, nhan vien van thu
             data: {
                 username: userName
             },
@@ -85,10 +123,11 @@
                 var appuserlogin = response.Result.Results;
 
                 if (appuserlogin.length === 0) {
-                    $('#btnVBDiPhatHanh').hide();
+                    $('#btnVBDiChuyenLD').hide();                    
                 }
                 else {
-                    $('#btnVBDiChuyenLD').hide();
+                    $('#btnVBDiPhatHanh').hide();
+                    $('#btnLaySoVBDi').hide();
                 }                
             },
             error: function (status) {
@@ -151,7 +190,7 @@
         $('#txtSoKyHieu').val('');
         $('#ddlNguoiKyVanBan')[0].selectedIndex = 0;
         $('#ddlCoQuanBanHanh')[0].selectedIndex = 1;
-        $('#ddlDonViNhanVanBan')[0].selectedIndex = 1;
+        $('#ddlDonViNhanVanBan')[0].selectedIndex = 0;
         $('#txtNoiLuuBanChinh').val('');
         $('#ddlLanhDaoDuyet')[0].selectedIndex = 1;
         $('#ddlCapDoKhan')[0].selectedIndex = 1;
@@ -380,6 +419,54 @@
             error: function (status) {
                 console.log(status);
                 tedu.notify('Không có nhân viên nhóm lãnh đạo duyệt.', 'error');
+            }
+        });
+    }
+
+    function loadLanhDaoKyVanBan(makv) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/vbnhom/NhomLanhDaoKyGetList', // nhom lanh dao ký văn bản
+            data: {
+                corporationId: makv
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >--- Lựa chọn ---</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.HoSoNhanVienId + "'>" + item.TenNhanVien + "</option>";
+                });
+                $('#ddlNguoiKyVanBan').html(render);
+                //$('#ddlNguoiKyVanBan')[0].selectedIndex = 1;
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có nhân viên nhóm lãnh đạo duyệt.', 'error');
+            }
+        });
+    }
+
+    function loadVanBanCoQuanList() {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/vbcoquan/VanBanCoQuanGetList',
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >--- Lựa chọn ---</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.Ten + "</option>";
+                });
+                $('#ddlDonViNhanVanBan').html(render);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có văn bản mật.', 'error');
             }
         });
     }

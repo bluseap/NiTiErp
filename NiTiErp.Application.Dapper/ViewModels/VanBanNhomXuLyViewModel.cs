@@ -7,7 +7,7 @@ namespace NiTiErp.Application.Dapper.ViewModels
 {
     public class VanBanNhomXuLyViewModel
     {
-        public int Id { set; get; }
+        public int Id { set; get; }       
 
         public string StringHoSoId  { get; set; }
 

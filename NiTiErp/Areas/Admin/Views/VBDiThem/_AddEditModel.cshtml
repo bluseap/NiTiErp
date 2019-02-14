@@ -55,7 +55,12 @@
                             <div class="form-group">
                                 <div class="col-sm-6">
                                     <label for="lbSoVanBanDi">Sổ văn bản đi <a style="color:red">(*)</a></label>
-                                    <select id="ddlSoVanBanDi" class="form-control" name="ddlSoVanBanDi"></select>
+                                    <div class="input-group">
+                                        <select id="ddlSoVanBanDi" class="form-control" name="ddlSoVanBanDi"></select>
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-warning" id="btnLaySoVBDi">Lấy số</button>
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="lbSoVanBanDi">Số văn bản đi <a style="color:red">(*)</a></label>
@@ -165,6 +170,7 @@
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <button type="button" id="btnVBDiPhatHanh" class="btn btn-success">Phát hành</button>
+                                    <button type="button" id="btnVBDiLDDPhatHanh" class="btn btn-success">Đã duyệt - Phát hành </button>
                                     <button type="button" id="btnCancelVBDiThem" data-dismiss="modal" class="btn btn-default">Đóng</button>
                                     <button type="button" id="btnVBDiChuyenLD" data-dismiss="modal" class="btn btn-warning">Lưu và chuyển lãnh đạo</button>
                                 </div>
