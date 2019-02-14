@@ -84,10 +84,24 @@
             tedu.notify("da duyet - phat hanh", "success");
         });
 
+        $('body').on('click', '.btnVBDChoPhatHanh', function (e) {
+            e.preventDefault();
+            $('#modal-add-edit-VBDChoPhatHanh').modal('show');
+        });
+
     }
 
     function savePhatHanh() {
-        tedu.notify("phat hanh", "success");
+        //tedu.notify("phat hanh", "success");
+        var vanbandenid = $('#hidVanBanDenId').val();
+
+        if (vanbandenid === "0") {
+            tedu.notify("phat hanh", "success");
+
+        }
+        else {
+            tedu.notify("Phát hành VB đi sai (CLĐ). Kiểm tra lại!", "error");
+        }
     }
 
     function saveChuyenLanhDao() {
@@ -97,7 +111,7 @@
     function LaySoVanBanDi() {
         tedu.notify("lay so van ban di", "success");
 
-        $('#txtSoVanBanDi').val(1);
+        $('#txtSoVanBanDi').val(0);
     }
 
     function loadAddEditData() {

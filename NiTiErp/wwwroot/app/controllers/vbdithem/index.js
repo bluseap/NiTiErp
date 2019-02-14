@@ -1,19 +1,19 @@
 ﻿var vbdithemController = function () {
 
     var userCorporationId = $("#hidUserCorporationId").val();
-    var addeditvbdithem = new addeditvbdithemController();
-    //var themcoquan = new themcoquanController();
+    var addeditvbdithem = new addeditvbdithemController();    
     var fielvanbandi = new filevanbandiController();
+    var vbdchophathanh = new vbdchophathanhController();
     //var vanbandendientu = new vanbandendientuController();
 
     this.initialize = function () {
         loadKhuVuc();
 
         registerEvents();
-
-        //themcoquan.initialize();
+        
         fielvanbandi.initialize();
         addeditvbdithem.initialize();
+        vbdchophathanh.initialize();
         //vanbandendientu.initialize();
 
         loadData();
