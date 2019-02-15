@@ -25,7 +25,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         //private readonly IVanBanDienTuService _vanbandientuService;
 
         //private readonly IVanBanDenDuyetService _vanbandenduyetService;
-        //private readonly IVanBanDenService _vanbandenService;
+        private readonly IVanBanDiService _vanbandiService;
         private readonly IVanBanDiFileService _vanbandifileService;
 
         public VBDiThemController(IHostingEnvironment hostingEnvironment,
@@ -36,7 +36,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             //IVanBanDienTuService vanbandientuService,
 
             //IVanBanDenDuyetService vanbandenduyetService,
-            //IVanBanDenService vanbandenService,
+            IVanBanDiService vanbandiService,
             IVanBanDiFileService vanbandifileService
             )
         {
@@ -48,7 +48,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             //_vanbandientuService = vanbandientuService;
             //_hubTinNhanContext = hubTinNhanContext;
             //_hubContext = hubContext;
-            //_vanbandenService = vanbandenService;
+            _vanbandiService = vanbandiService;
             _vanbandifileService = vanbandifileService;
         }
 
@@ -58,6 +58,65 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         #region AJAX API
+
+        public IActionResult AddUpdateVanBanDi(VanBanDiViewModel vanbandiVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+
+                vanbandiVm.CreateBy = username;
+                vanbandiVm.CreateDate = DateTime.Now;
+                vanbandiVm.UpdateBy = username;
+                vanbandiVm.UpdateDate = DateTime.Now;
+
+                vanbandiVm.NgayPhatHanh = DateTime.Now;
+
+                if (vanbandiVm.InsertVanBanDiId == 1)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "VANBANDITHEM", Operations.Create); // nhap van ban di
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
+                    }
+
+                    var vanbandi = _vanbandiService.VanBanDiAUD(vanbandiVm, "InVanBanDiPhatHanh");
+
+                    return new OkObjectResult(vanbandi);
+                }
+                else
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "VANBANDITHEM", Operations.Update); //
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền sửa."));
+                    }
+
+                    var vanbandi = _vanbandiService.VanBanDiAUD(vanbandiVm, "UpVanBanDi");
+                    return new OkObjectResult(vanbandi);
+                }
+            }
+        }
+
+        [HttpGet]
+        public IActionResult GetListVBDi(string corporationId, string sovanbandi, string keyword, int page, int pageSize)
+        {
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var phong = !string.IsNullOrEmpty(sovanbandi) ? sovanbandi : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+            var newGuid = new Guid();
+
+            var model = _vanbandiService.GetAllVanBanDiPaging(corporationId, 1, 1, 1, DateTime.Now, DateTime.Now, 1, 1,
+                sovanbandi, "", false, 1, false, DateTime.Now, "", newGuid, 1, 1, false, "", "", "",
+                keyword, page, pageSize, 1, "", "", "GetAllVanBanDi");
+
+            return new OkObjectResult(model);
+        }
 
         #region VanBanDiFile
         public IActionResult AddUpdateVanBanDiFile(VanBanDiFileViewModel vanbandifileVm)

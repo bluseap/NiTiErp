@@ -95,12 +95,12 @@
         //tedu.notify("phat hanh", "success");
         var vanbandenid = $('#hidVanBanDenId').val();
 
-        if (vanbandenid === "0") {
-            tedu.notify("phat hanh", "success");
-
+        if (vanbandenid === "0") {   // van ban den neu co = 0 thi phat hanh 
+            $('#hidInsertVBDiThemId').val(1);
+            PhatHanhVanBanDi();
         }
-        else {
-            tedu.notify("Phát hành VB đi sai (CLĐ). Kiểm tra lại!", "error");
+        else {            
+            DuyetToPhatHanhVanBanDi();
         }
     }
 
@@ -112,6 +112,108 @@
         tedu.notify("lay so van ban di", "success");
 
         $('#txtSoVanBanDi').val(0);
+    }
+
+    function PhatHanhVanBanDi() {
+        //tedu.notify("phat hanh", "success");
+        var isvanbandientu = $('#hidIsVanBanDenDienTuId').val(); // 1 la co; 0 la ko  
+        var vanbandientuid = $('#hidVanBanDenDienTuId').val();
+
+        var makhuvuc = $('#ddlKhuVuc').val();
+
+        var isMainValidate = isFormMainValidate();
+        if (isMainValidate === true) {
+            var insertvbdiId = $('#hidInsertVBDiThemId').val();
+            var codefileguid = $('#hidCodeFileGuidId').val();
+
+            var trichyeunoidung = $('#txtTrichYeu').val();
+            var linhvucid = $('#ddlLinhVuc').val();
+            var loaivanbanid = $('#ddlLoaiVanBan').val();
+            var ngaybanhanh = $('#txtNgayBanHanh').val();
+            var ngaydivanban = $('#txtNgayDi').val();
+            var sovanbandiso = $('#ddlSoVanBanDi').val();
+            var sovanbandi = $('#txtSoVanBanDi').val(); 
+            //var sovanbanden = $('#txtSoVanBanDen').val();
+
+            var sokyhieuvanban = $('#txtSoKyHieu').val();
+            var nguoikyvanbanden = $('#ddlNguoiKyVanBan').val();
+            //var coquanbanhanh = $('#ddlCoQuanBanHanh').val();
+            var noiluubanchinh = $('#txtNoiLuuBanChinh').val();
+            var donvinhanvanban = $('#ddlDonViNhanVanBan').val();
+
+            var tennhanviensoanvanban = $('#txtTenNhanVienSoanVB').val(); 
+            var ykiennhanviensoanvanban = $('#txtYKienNhanVienSoanVB').val();             
+
+            var lanhdaoduyet = $('#ddlLanhDaoDuyet').val();
+
+            var capdokhanvanban = $('#ddlCapDoKhan').val();
+            var capdomatvanban = $('#ddlCapDoMat').val();
+            var ghichuvanban = $('#txtGhiChu').val();
+
+            $.ajax({
+                type: "POST",
+                url: "/Admin/vbdithem/AddUpdateVanBanDi",
+                data: {
+                    InsertVanBanDiId: 1,
+                    CodeFileGuidId: codefileguid, // update danh sách file van ban lien quan
+                    CorporationId: makhuvuc,
+                    TrichYeuCuaVanBan: trichyeunoidung,
+                    VanBanLinhVucId: linhvucid,
+                    VanBanLoaiId: loaivanbanid,
+                    NgayBanHanhCuaVanBan: ngaybanhanh,
+                    NgayDiCuaVanBan: ngaydivanban,
+                    VanBanDiSoId: sovanbandiso,
+                    SoVanBanDen: 2, // tu cho bang 1
+                    SoVanBanDenStt: sovanbandi, 
+
+                    SoKyHieuCuaVanBan: sokyhieuvanban,
+                    NguoiKyCuaVanBan: nguoikyvanbanden,
+                   
+                    NoiLuuBanChinh: noiluubanchinh,
+                    VanBanCoQuanBanHanhId: donvinhanvanban, // don vi nhan van ban di
+
+                    TenNhanVienSoanVBDi: tennhanviensoanvanban,
+                    YKienSoanVB: ykiennhanviensoanvanban,
+
+                    LDDuyetHoSoNhanVienId: lanhdaoduyet,
+                    VanBanKhanId: capdokhanvanban,
+                    VanBanMatId: capdomatvanban,
+                    GhiChu: ghichuvanban,
+
+                    IsVanBanDienTu: "False",
+                    VanBanDienTuId: 0
+
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    if (response.Success === false) {
+                        tedu.notify(response.Message, "error");
+                    }
+                    else {
+                        tedu.notify('Lưu văn bản đi - phát hành.', 'success');
+
+                        loadTableVanBanDi(true);
+                        //loadCountVanBanDen(makhuvuc);
+
+                        ClearFormAddEdit();
+                        $('#modal-add-edit-VBDiThem').modal('hide');
+                        tedu.stopLoading();
+                    }
+                },
+                error: function () {
+                    tedu.notify('Có lỗi! Không thể lưu văn bản đến.', 'error');
+                    tedu.stopLoading();
+                }
+            });
+        }
+    }
+
+    function DuyetToPhatHanhVanBanDi() {
+        tedu.notify("Phát hành VB đi sai (CLĐ). Kiểm tra lại!", "error");
+
     }
 
     function loadAddEditData() {
@@ -243,6 +345,14 @@
         });
     }
 
+    function isFormMainValidate() {
+        if ($('#frmMainVBDiThem').valid()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
     function formMainValidate() {
         jQuery.validator.addMethod("isDanhMuc", function (value, element) {
             if (value === "%")
@@ -481,6 +591,94 @@
             error: function (status) {
                 console.log(status);
                 tedu.notify('Không có văn bản mật.', 'error');
+            }
+        });
+    }
+
+    function loadTableVanBanDi(isPageChanged) {
+        var template = $('#table-VBDiThem').html();
+        var render = "";
+
+        var makhuvuc = $('#ddlKhuVuc').val();
+        var sovanbandi = $('#ddlVanBanDiSoMoi').val();
+        var timnoidung = $('#txtTimNoiDung').val();
+
+        $.ajax({
+            type: 'GET',
+            url: '/admin/vbdithem/GetListVBDi',
+            data: {
+                corporationId: makhuvuc,
+                sovanbandi: sovanbandi,
+                keyword: timnoidung,
+                page: tedu.configs.pageIndex,
+                pageSize: tedu.configs.pageSize
+            },
+
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                }
+                else {
+                    $.each(response.Result.Results, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+                            TenSoVanBanDi: item.NamSoVanBan + '-' + item.TenSoVanBan,
+                            //HinhNhanVien: item.Image === null ? '<img src="/admin-side/images/user.png?h=90"' : '<img src="' + item.HinhNhanVien + '?h=90" />',
+                            TrichYeuCuaVanBan: item.TrichYeuCuaVanBan,
+                            SoKyHieuDi: item.SoVanBanDiStt + ' ' + item.SoKyHieuCuaVanBan,
+                            TenCoQuanBanHanh: item.TenCoQuanBanHanh,
+                            NgayBanHanhCuaVanBan: tedu.getFormattedDate(item.NgayBanHanhCuaVanBan),
+                            NgayDenCuaVanBan: tedu.getFormattedDate(item.NgayDenCuaVanBan),
+                            TTChuaPhatHanh: tedu.getVanBanDiTTChuaPhatHanh(item.TTChuaPhatHanh)
+                            // Price: tedu.formatNumber(item.Price, 0),                          
+                        });
+                    });
+                }
+
+                $('#lblVBDiThemTotalRecords').text(response.Result.RowCount);
+
+                if (render !== '') {
+                    $('#tblContentVBDiThem').html(render);
+                }
+
+                if (response.Result.RowCount !== 0) {
+                    wrapPagingVBDiThem(response.Result.RowCount, function () {
+                        loadTableVanBanDi();
+                    },
+                        isPageChanged);
+                }
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+
+    }
+    function wrapPagingVBDiThem(recordCount, callBack, changePageSize) {
+        var totalsize = Math.ceil(recordCount / tedu.configs.pageSize);
+        //Unbind pagination if it existed or click change pagesize
+        if ($('#paginationULVBDiThem a').length === 0 || changePageSize === true) {
+            $('#paginationULVBDiThem').empty();
+            $('#paginationULVBDiThem').removeData("twbs-pagination");
+            $('#paginationULVBDiThem').unbind("page");
+        }
+        //Bind Pagination Event
+        $('#paginationULVBDiThem').twbsPagination({
+            totalPages: totalsize,
+            visiblePages: 7,
+            first: 'Đầu',
+            prev: 'Trước',
+            next: 'Tiếp',
+            last: 'Cuối',
+            onPageClick: function (event, p) {
+                //tedu.configs.pageIndex = p;
+                //setTimeout(callBack(), 200);
+                if (tedu.configs.pageIndex !== p) {
+                    tedu.configs.pageIndex = p;
+                    setTimeout(callBack(), 200);
+                }
             }
         });
     }
