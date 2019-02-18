@@ -118,7 +118,8 @@ namespace NiTiErp.Application.Dapper.ViewModels
         public DateTime NgaySaiDuyet { get; set; }
 
         public string GhiChuSaiDuyet { get; set; }
-               
+
+        public string DuongDanFile { get; set; }
 
 
         public int Status { get; set; }

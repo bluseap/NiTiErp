@@ -41,6 +41,7 @@
     //}
 
     this.loadVanBanDi = function (vanbandiId) {
+        ClearFormAddEdit();
         loadAddEditVanBanDi(vanbandiId);
     }
 
@@ -56,7 +57,7 @@
 
         $('body').on('click', '.btnFileVanBan', function (e) {
             e.preventDefault();
-
+            CodeFileGuidId();
             $('#hidInsertFileVanBanDiId').val(1);
             $('#modal-add-edit-FileVanBanDi').modal('show');
         });
@@ -101,6 +102,25 @@
             $('#modal-add-edit-VBDChoPhatHanh').modal('show');
         });
 
+    }
+
+    function CodeFileGuidId() {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/hoso/GetHoSoNhanVienId',
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var hosonhanvienId = response;
+                $('#hidCodeFileGuidId').val(hosonhanvienId);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Tạo hồ sơ Nhân viên.', 'error');
+            }
+        });
     }
 
     function savePhatHanh() {
