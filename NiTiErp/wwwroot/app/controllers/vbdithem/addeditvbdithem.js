@@ -3,7 +3,7 @@
     var userCorporationId = $("#hidUserCorporationId").val();
     var userName = $("#hidUserName").val();    
 
-    var fielvanbandi = new filevanbandiController();
+    var fielvanbandi = new filevanbandiController();    
 
     this.initialize = function () {
         //loadThongBao();
@@ -11,6 +11,7 @@
 
         loadAddEditData();
 
+        
     }
 
     this.vanbandanhmuc = function () {
@@ -34,6 +35,10 @@
    
     this.loadLanhDaoKyVanBan = function (makv) {
         loadLanhDaoKyVanBan(makv);
+    }
+
+    this.loadCountVBDChoPhatHanh = function (makv) {
+        CountVanBanDenChoPhatHanh(makv);
     }
 
     //this.loadVanBanDienTuCount = function (makv) {
@@ -98,7 +103,7 @@
         });
 
         $('body').on('click', '.btnVBDChoPhatHanh', function (e) {
-            e.preventDefault();
+            e.preventDefault();            
             $('#modal-add-edit-VBDChoPhatHanh').modal('show');
         });
 
@@ -179,7 +184,7 @@
             var insertvbdiId = $('#hidInsertVBDiThemId').val();
             var codefileguid = $('#hidCodeFileGuidId').val();
 
-            var trichyeunoidung = $('#txtTrichYeu').val();
+            var trichyeunoidung = $('#txtTrichYeu99').val();
             var linhvucid = $('#ddlLinhVuc').val();
             var loaivanbanid = $('#ddlLoaiVanBan').val();
             var ngaybanhanh = $('#txtNgayBanHanh').val();
@@ -277,7 +282,7 @@
             var insertvbdiId = $('#hidInsertVBDiThemId').val();
             var codefileguid = $('#hidCodeFileGuidId').val();
 
-            var trichyeunoidung = $('#txtTrichYeu').val();
+            var trichyeunoidung = $('#txtTrichYeu99').val();
             var linhvucid = $('#ddlLinhVuc').val();
             var loaivanbanid = $('#ddlLoaiVanBan').val();
             var ngaybanhanh = $('#txtNgayBanHanh').val();
@@ -449,7 +454,7 @@
         $('#hidInsertVanBanDiDienTuId').val(0);
         $('#hidIsVanBanDiDienTuId').val(0);
 
-        $('#txtTrichYeu').val('');
+        $('#txtTrichYeu99').val('');
         $('#ddlLinhVuc')[0].selectedIndex = 0;
         $('#ddlLoaiVanBan')[0].selectedIndex = 0;
         $('#txtNgayBanHanh').val('');
@@ -458,7 +463,7 @@
         $('#txtSoVanBanDi').val('');
         $('#txtSoKyHieu').val('');
         $('#ddlNguoiKyVanBan')[0].selectedIndex = 0;
-        $('#ddlCoQuanBanHanh')[0].selectedIndex = 1;
+        $('#ddlCoQuanBanHanh99')[0].selectedIndex = 1;
         $('#ddlDonViNhanVanBan')[0].selectedIndex = 0;
         $('#txtNoiLuuBanChinh').val('');
         $('#ddlLanhDaoDuyet')[0].selectedIndex = 1;
@@ -528,7 +533,7 @@
             ignore: [],
             language: 'vi',
             rules: {
-                txtTrichYeu: { required: true },
+                txtTrichYeu99: { required: true },
                 ddlLinhVuc: {
                     required: true,
                     isDanhMuc: true
@@ -555,7 +560,7 @@
                     required: true,
                     isDanhMuc: true
                 },
-                ddlCoQuanBanHanh: {
+                ddlCoQuanBanHanh99: {
                     required: true,
                     isDanhMuc: true
                 },
@@ -579,7 +584,7 @@
                 txtGhiChu: { required: true }               
             },
             messages: {
-                txtTrichYeu: { required: "Nhập nội dung trích yếu của văn bản.." }
+                txtTrichYeu99: { required: "Nhập nội dung trích yếu của văn bản.." }
             }
         });
     }
@@ -865,7 +870,7 @@
 
                 $('#hidCodeFileGuidId').val(vanbandi.CodeFileGuidId);
 
-                $('#txtTrichYeu').val(vanbandi.TrichYeuCuaVanBan);
+                $('#txtTrichYeu99').val(vanbandi.TrichYeuCuaVanBan);
                 $('#ddlLinhVuc').val(vanbandi.VanBanLinhVucId);
                 $('#ddlLoaiVanBan').val(vanbandi.VanBanLoaiId);
                 $('#txtNgayBanHanh').val(tedu.getFormattedDate(vanbandi.NgayBanHanhCuaVanBan));
@@ -880,7 +885,7 @@
                 $('#ddlNguoiKyVanBan').val(vanbandi.HoSoNhanVienIdKyVB);
 
                 $('#txtNoiLuuBanChinh').val(vanbandi.NoiLuuBanChinh);
-                $('#ddlCoQuanBanHanh').val(vanbandi.CorporationId);
+                $('#ddlCoQuanBanHanh99').val(vanbandi.CorporationId);
                 $('#ddlDonViNhanVanBan').val(vanbandi.VanBanCoQuanBanHanhId);
                 $('#txtTenNhanVienSoanVB').val(vanbandi.TenNhanVienSoanVBDi);
                 $('#txtYKienNhanVienSoanVB').val(vanbandi.YKienSoanVB);
@@ -901,7 +906,29 @@
         });
     }
 
-
+    function CountVanBanDenChoPhatHanh(makv) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/vbdithem/GetCountVBDenDiChuaPhatHanh',
+            data: {
+                corporationId: makv
+            },
+            dataType: 'json',
+            success: function (response) {
+                $('#spanVBDChoPhatHanh').text(response);
+                //connection.on("VanBanDenChuaPhatHanh", (response) => {
+                //    $('#spanDenChuaPhatHanh').text(response);
+                //});
+                //connection.invoke("SendVanBanDenChuaPhatHanh", response).catch(function (err) {
+                //    $('#spanDenChuaPhatHanh').text(response);
+                //});
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
 
 
 }

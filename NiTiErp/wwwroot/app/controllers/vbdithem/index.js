@@ -138,27 +138,28 @@
                     render += "<option value='" + item.Id + "'>" + item.Name + "</option>";
                 });
                 $('#ddlKhuVuc').html(render);
-                $('#ddlCoQuanBanHanh').html(render);
+                $('#ddlCoQuanBanHanh99').html(render);
 
                 var userCorporationId = $("#hidUserCorporationId").val();
                 if (userCorporationId !== "PO") {
                     $('#ddlKhuVuc').prop('disabled', true);
-                    $('#ddlCoQuanBanHanh').prop('disabled', true);
+                    $('#ddlCoQuanBanHanh99').prop('disabled', true);
                 }
                 else {
                     $('#ddlKhuVuc').prop('disabled', false);
-                    $('#ddlCoQuanBanHanh').prop('disabled', false);
+                    $('#ddlCoQuanBanHanh99').prop('disabled', false);
                 }
                 $("#ddlKhuVuc")[0].selectedIndex = 1;
                 $('#ddlKhuVuc').prop('disabled', true);
 
-                $("#ddlCoQuanBanHanh")[0].selectedIndex = 1;
-                $('#ddlCoQuanBanHanh').prop('disabled', true);
+                $("#ddlCoQuanBanHanh99")[0].selectedIndex = 1;
+                $('#ddlCoQuanBanHanh99').prop('disabled', true);
 
                 var makv = $('#ddlKhuVuc').val();
                 loadVanBanDiSoGetList(makv);
                 addeditvbdithem.sovanbandiEdit(makv);
                 addeditvbdithem.loadLanhDaoKyVanBan(makv);
+                addeditvbdithem.loadCountVBDChoPhatHanh(makv);
 
                 loadTableVanBanDi();
             },

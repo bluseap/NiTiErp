@@ -11,7 +11,7 @@ namespace NiTiErp.Application.Dapper.Interfaces
     {
         Task<Boolean> VanBanDiAUD(VanBanDiViewModel vanbandi, string parameters);
 
-        //long GetCountVanBi(string corporation, string parameter);
+        long GetCountVanBanDi(string corporation, string parameter);
 
         //long GetCountVanBanUser(string corporation, string username, string parameter);
 

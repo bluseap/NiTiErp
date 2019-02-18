@@ -240,6 +240,15 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        [HttpGet]
+        public IActionResult GetCountVBDenDiChuaPhatHanh(string corporationId)
+        {
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var count = _vanbandiService.GetCountVanBanDi(corporationId, "GetCountVBDenDiChuaPhatHanh");
+            //_hubContext.Clients.All.SendAsync("VanBanDenChuaPhatHanh", count.ToString());
+            return new OkObjectResult(count);
+        }
+
         #endregion
 
     }

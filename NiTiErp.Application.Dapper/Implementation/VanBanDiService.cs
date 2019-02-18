@@ -218,38 +218,38 @@ namespace NiTiErp.Application.Dapper.Implementation
             }
         }
 
-        //public long GetCountVanBan(string corporation, string parameter)
-        //{
-        //    var phongdanhmucid = "";
-        //    var chucvuid = "";
+        public long GetCountVanBanDi(string corporation, string parameter)
+        {
+            var phongdanhmucid = "";
+            var chucvuid = "";
 
-        //    using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
-        //    {
-        //        sqlConnection.Open();
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                sqlConnection.Open();
 
-        //        var paramaters = new DynamicParameters();
+                var paramaters = new DynamicParameters();
 
-        //        paramaters.Add("@corporationId", corporation);
-        //        paramaters.Add("@phongdanhmucId", phongdanhmucid);
-        //        paramaters.Add("@chucvuId", chucvuid);
+                paramaters.Add("@corporationId", corporation);
+                paramaters.Add("@phongdanhmucId", phongdanhmucid);
+                paramaters.Add("@chucvuId", chucvuid);
 
-        //        paramaters.Add("@parameters", parameter);
-        //        try
-        //        {
-        //            var query = sqlConnection.Query<VanBanDenViewModel>
-        //                ("VanBanDenCount", paramaters, commandType: CommandType.StoredProcedure);
+                paramaters.Add("@parameters", parameter);
+                try
+                {
+                    var query = sqlConnection.Query<VanBanDenViewModel>
+                        ("VanBanDiCount", paramaters, commandType: CommandType.StoredProcedure);
 
-        //            var ketqua = query.ToList();
+                    var ketqua = query.ToList();
 
-        //            return ketqua.Sum(p => long.Parse(p.KETQUA));
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            throw ex;
-        //        }
+                    return ketqua.Sum(p => long.Parse(p.KETQUA));
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
 
-        //    }
-        //}
+            }
+        }
 
         //public long GetCountVanBanUser(string corporation, string username, string parameter)
         //{
