@@ -37,6 +37,8 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
         public int NamSoVanBan { get; set; }
 
+        public string TenSoVanBan { get; set; }
+
         public int SoVanBanDi { get; set; }
 
         public int SoVanBanDiStt { get; set; }

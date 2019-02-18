@@ -215,6 +215,31 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
         #endregion
 
+
+        [HttpGet]
+        public IActionResult GetVanBanDiId(Int32 vanbandiId)
+        {
+            var newGuid = new Guid();
+
+            var model = _vanbandiService.VanBanDiGetList("", 1, 1, 1, DateTime.Now, DateTime.Now, 1, 1,
+                "", "", false, 1, false, DateTime.Now, "", newGuid, 1, 1, false, "", "", "",
+                "", 1, 1000, vanbandiId, "", "", "GetVanBanDiId");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetSoSttVBDiKV(string makv, int sovanbandiId)
+        {
+            var newGuid = new Guid();
+
+            var model = _vanbandiService.VanBanDiGetList(makv, 1, 1, 1, DateTime.Now, DateTime.Now, sovanbandiId, 1,
+                "", "", false, 1, false, DateTime.Now, "", newGuid, 1, 1, false, "", "", "",
+                "", 1, 1000, 1, "", "", "GetSoSttSoVBDiKV");
+
+            return new OkObjectResult(model);
+        }
+
         #endregion
 
     }

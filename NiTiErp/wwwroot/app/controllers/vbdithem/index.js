@@ -37,6 +37,33 @@
             loadTableVanBanDi(true);
         });
 
+        $('body').on('click', '.btnPatchFileTrichYeu', function (e) {
+            e.preventDefault();
+            var vanbandiId = $(this).data('id');
+            loadPatchFile(vanbandiId);
+        });
+
+        $('body').on('click', '.btnPatchFileKyHieu', function (e) {
+            e.preventDefault();
+            var vanbandiId = $(this).data('id');
+            loadPatchFile(vanbandiId);
+        });
+
+        $('body').on('click', '.btn-addeditVBDiThem', function (e) {
+            e.preventDefault();
+            $('#hidInsertVBDiThemId').val(2);  // update           
+
+            //var dithamid = $('#hidInsertVBDiThemId').val();  
+            var vanbandiId = $(this).data('id');
+            //$('#ddlSoVanBanDi').prop('disabled', true);
+            
+            addeditvbdithem.loadVanBanDi(vanbandiId);
+            fielvanbandi.vanbandifileid(vanbandiId);
+            
+            $('#btnLaySoVBDi').hide();
+            $('#modal-add-edit-VBDiThem').modal('show');
+        });
+
         $("#btn-create").on('click', function (e) {
             e.preventDefault();
             //tedu.notify("them moi van ban den", "success");            
@@ -44,8 +71,9 @@
             var makv = $('#ddlKhuVuc').val();
             //addeditvbdthem.loadVanBanDienTuCount(makv);
             addeditvbdithem.sovanbandi();
-            addeditvbdithem.loadLanhDaoKyVanBan(makv);
+            //addeditvbdithem.loadLanhDaoKyVanBan(makv);
 
+            $('#btnLaySoVBDi').show();
             $('#hidInsertVBDiThemId').val(1);  // insert
             //$('#hidIsVanBanDenDienTuId').val("False"); // 1 la co; 0 la ko
             //$('#hidVanBanDenDienTuId').val(1);
@@ -54,6 +82,30 @@
             $('#modal-add-edit-VBDiThem').modal('show');
         });
 
+    }
+
+    function loadPatchFile(vanbandiid) {
+        $.ajax({
+            type: "GET",
+            url: "/Admin/vbdithem/GetVanBanDiId",
+            data: { vanbandiId: vanbandiid },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var vanbandi = response.Result[0];
+
+                var win = window.open(vanbandi.DuongDanFile, '_blank');
+                win.focus();
+
+                tedu.stopLoading();
+            },
+            error: function (status) {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
+        });
     }
 
     function CodeFileGuidId() {
@@ -105,6 +157,8 @@
 
                 var makv = $('#ddlKhuVuc').val();
                 loadVanBanDiSoGetList(makv);
+                addeditvbdithem.sovanbandiEdit(makv);
+                addeditvbdithem.loadLanhDaoKyVanBan(makv);
 
                 loadTableVanBanDi();
             },
@@ -167,7 +221,7 @@
             dataType: 'json',
             success: function (response) {
                 if (response.Result.Results.length === 0) {
-                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
                 }
                 else {
                     $.each(response.Result.Results, function (i, item) {
@@ -179,7 +233,7 @@
                             SoKyHieuDi: item.SoVanBanDiStt + ' ' + item.SoKyHieuCuaVanBan,
                             TenCoQuanBanHanh: item.TenCoQuanBanHanh,
                             NgayBanHanhCuaVanBan: tedu.getFormattedDate(item.NgayBanHanhCuaVanBan),
-                            NgayDenCuaVanBan: tedu.getFormattedDate(item.NgayDenCuaVanBan),
+                            NgayDiCuaVanBan: tedu.getFormattedDate(item.NgayDiCuaVanBan),
                             TTChuaPhatHanh: tedu.getVanBanDiTTChuaPhatHanh(item.TTChuaPhatHanh)
                             // Price: tedu.formatNumber(item.Price, 0),                          
                         });

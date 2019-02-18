@@ -21,39 +21,48 @@
                     <div id='rev_slider_4_wrapper' class='rev_slider_wrapper fullwidthbanner-container'>
                         <div id='rev_slider_4' class='rev_slider fullwidthabanner'>
                             <ul>
-                                @foreach (var slide in Model.HomeSlides)
-                                {
                                 <li data-transition='fade' data-slotamount='7' data-masterspeed='1000' data-thumb=''>
-                                    <img src='@slide.Image' data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' alt="@slide.Name" />
-                                    @Html.Raw(@slide.CaptionInner)
-
-                                    @*<div class="caption-inner">
-            <div class="tp-caption LargeTitle sft  tp-resizeme" data-x="250" data-y="110" data-endspeed="500"
-                 data-speed="500" data-start="1300" data-easing="Linear.easeNone" data-splitin="none" data-splitout="none"
-                 data-elementdelay="0.1" data-endelementdelay="0.1" style="z-index:3; white-space:nowrap;">
-                Template for your business
-            </div>
-            <div class="tp-caption ExtraLargeTitle sft  tp-resizeme" data-x="200" data-y="160" data-endspeed="500"
-                 data-speed="500" data-start="1100" data-easing="Linear.easeNone" data-splitin="none" data-splitout="none"
-                 data-elementdelay="0.1" data-endelementdelay="0.1"
-                 style="z-index:2; white-space:nowrap; color:#fff; text-shadow:none;">
-                Easy to modify
-            </div>
-            <div class="tp-caption" data-x="310" data-y="230" data-endspeed="500" data-speed="500" data-start="1100"
-                 data-easing="Linear.easeNone" data-splitin="none" data-splitout="none" data-elementdelay="0.1"
-                 data-endelementdelay="0.1" style="z-index:2; white-space:nowrap; color:#f8f8f8;">
-                Perfect website solution for your
-            </div>
-            <div class="tp-caption sfb  tp-resizeme" data-x="370" data-y="280" data-endspeed="500" data-speed="500"
-                 data-start="1500" data-easing="Linear.easeNone" data-splitin="none" data-splitout="none"
-                 data-elementdelay="0.1" data-endelementdelay="0.1" style="z-index:4; white-space:nowrap;">
-                    <a href="#" class="buy-btn">Get Started</a>
-            </div>
-        </div>*@
-
+                                    <img src='client-side/images/slider/slide-3.jpg' data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' alt="banner" />
+                                    <div class="caption-inner">
+                                        <div class="tp-caption LargeTitle sft  tp-resizeme" data-x="250" data-y="110" data-endspeed="500"
+                                             data-speed="500" data-start="1300" data-easing="Linear.easeNone" data-splitin="none" data-splitout="none"
+                                             data-elementdelay="0.1" data-endelementdelay="0.1" style="z-index:3; white-space:nowrap;">
+                                            Hình mẫu cho doanh nghiệp bạn
+                                        </div>
+                                        <div class="tp-caption ExtraLargeTitle sft  tp-resizeme" data-x="200" data-y="160" data-endspeed="500" data-speed="500" data-start="1100" data-easing="Linear.easeNone" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" style="z-index:2; white-space:nowrap; color:#fff; text-shadow:none;">Dễ dàng thay đổi</div>
+                                        <div class="tp-caption" data-x="310" data-y="230" data-endspeed="500" data-speed="500" data-start="1100" data-easing="Linear.easeNone" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" style="z-index:2; white-space:nowrap; color:#f8f8f8;">Giải pháp hoàn hảo trang Web của bạn</div>
+                                        <div class="tp-caption sfb  tp-resizeme" data-x="370" data-y="280" data-endspeed="500" data-speed="500" data-start="1500" data-easing="Linear.easeNone" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" style="z-index:4; white-space:nowrap;"><a href="#" class="buy-btn">Bắt đầu</a> </div>
+                                    </div>
                                 </li>
-                                }
+                                <li data-transition='fade' data-slotamount='7' data-masterspeed='1000' data-thumb=''>
+                                    <img src='client-side/images/slider/slide-1.jpg' data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' alt="banner" />
+                                    <div class="caption-inner left">
+                                        <div class="tp-caption LargeTitle sft  tp-resizeme" data-x="50" data-y="110" data-endspeed="500" data-speed="500" data-start="1300" data-easing="Linear.easeNone" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" style="z-index:3; white-space:nowrap;">Âm thanh mượt mà, êm ấm và to</div>
+                                        <div class="tp-caption ExtraLargeTitle sft  tp-resizeme" data-x="50" data-y="160" data-endspeed="500" data-speed="500" data-start="1100" data-easing="Linear.easeNone" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" style="z-index:2; white-space:nowrap;">Mang tai nghe vào</div>
+                                        <div class="tp-caption" data-x="72" data-y="230" data-endspeed="500" data-speed="500" data-start="1100" data-easing="Linear.easeNone" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" style="z-index:2; white-space:nowrap;">Tai nghe không dây tiên tiến nhất thế giới.</div>
+                                        <div class="tp-caption sfb  tp-resizeme" data-x="72" data-y="280" data-endspeed="500" data-speed="500" data-start="1500" data-easing="Linear.easeNone" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" style="z-index:4; white-space:nowrap;"><a href="#" class="buy-btn">KHÁM PHÁ NGAY</a> </div>
+                                    </div>
+                                </li>
+                                <li data-transition='fade' data-slotamount='7' data-masterspeed='1000' data-thumb=''>
+                                    <img src='client-side/images/slider/slide-2.jpg' data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' alt="banner" />
+                                    <div class="caption-inner left">
+                                        <div class="tp-caption LargeTitle sft  tp-resizeme" data-x="350" data-y="100" data-endspeed="500" data-speed="500" data-start="1300" data-easing="Linear.easeNone" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" style="z-index:3; white-space:nowrap;">Thời gian để nhìn</div>
+                                        <div class="tp-caption ExtraLargeTitle sft  tp-resizeme" data-x="350" data-y="140" data-endspeed="500" data-speed="500" data-start="1100" data-easing="Linear.easeNone" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" style="z-index:2; white-space:nowrap;">Cái mới</div>
+                                        <div class="tp-caption ExtraLargeTitle sft  tp-resizeme" data-x="350" data-y="185" data-endspeed="500" data-speed="500" data-start="1100" data-easing="Linear.easeNone" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" style="z-index:2; white-space:nowrap;">Tiêu chuẩn</div>
+                                        <div class="tp-caption" data-x="375" data-y="245" data-endspeed="500" data-speed="500" data-start="1100" data-easing="Linear.easeNone" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" style="z-index:2; white-space:nowrap;">Tiêu chuẩn mới, đồng hồ mới</div>
+                                        <div class="tp-caption sfb  tp-resizeme" data-x="375" data-y="290" data-endspeed="500" data-speed="500" data-start="1500" data-easing="Linear.easeNone" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" style="z-index:4; white-space:nowrap;"><a href="#" class="buy-btn">Bắt đầu mua </a> </div>
+                                    </div>
+                                </li>
                             </ul>
+                            @*<ul>
+            @foreach (var slide in Model.HomeSlides)
+            {
+            <li data-transition='fade' data-slotamount='7' data-masterspeed='1000' data-thumb=''>
+                <img src='@slide.Image' data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' alt="@slide.Name" />
+                @Html.Raw(@slide.CaptionInner)
+            </li>
+            }
+        </ul>*@
                             <div class="tp-bannertimer"></div>
                         </div>
                     </div>

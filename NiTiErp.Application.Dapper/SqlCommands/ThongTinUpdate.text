@@ -43,6 +43,8 @@ create table VanBanDenXuLyFile
 create table VanBanDenXuLyFileHis
 
 create table VanBanDi
+
+create table VanBanDiHis
  
 create table VanBanDiDuyet
  
@@ -131,9 +133,13 @@ create procedure [VanBanDienTuGetList]
 
 create procedure [VanBanDenAUD]
 
+create procedure VanBanDenCount
+
 create procedure VanBanDenGetList
 
 create procedure [VanBanDiAUD]
+
+create procedure VanBanDiCount
 
 create procedure VanBanDiGetList
 

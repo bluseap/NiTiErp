@@ -840,6 +840,7 @@
 
                 $('#txtNguoiKyVanBan').val(vanbanden.NguoiKyCuaVanBan);
                 $('#ddlCoQuanBanHanh').val(vanbanden.VanBanCoQuanBanHanhId);
+
                 $('#txtNoiLuuBanChinh').val(vanbanden.NoiLuuBanChinh);
                 $('#ddlLanhDaoDuyet').val(vanbanden.HoSoNhanVienId);
                 $('#ddlCapDoKhan').val(vanbanden.VanBanKhanId);
