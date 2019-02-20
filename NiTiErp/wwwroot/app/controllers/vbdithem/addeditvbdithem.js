@@ -1,7 +1,10 @@
 ﻿var addeditvbdithemController = function () {
 
     var userCorporationId = $("#hidUserCorporationId").val();
-    var userName = $("#hidUserName").val();    
+    var userName = $("#hidUserName").val();  
+    
+    var donvinhanArray = [];
+    var cacdonvivndinhan = [];
 
     var fielvanbandi = new filevanbandiController();    
 
@@ -11,7 +14,7 @@
 
         loadAddEditData();
 
-        
+       
     }
 
     this.vanbandanhmuc = function () {
@@ -90,6 +93,8 @@
         $("#btnVBDiPhatHanh").on('click', function (e) {
             e.preventDefault();
             savePhatHanh();
+            //var donvinhan = $('#txtCacDonViNhanVanBan').val();
+            //tedu.notify(donvinhan, "success");  
         });        
 
         $("#btnVBDiChuyenLD").on('click', function (e) {
@@ -107,6 +112,20 @@
             $('#modal-add-edit-VBDChoPhatHanh').modal('show');
         });
 
+        $('#txtCacDonViNhanVanBan').tagsInput({
+            width: 'auto'
+        });
+             
+        $("#ddlDonViNhanVanBan").on('change', function () {            
+
+            var donvinhan = $("#ddlDonViNhanVanBan").find(":selected").text();
+            //var donvinhanVal = $("#ddlDonViNhanVanBan").val();
+            //donvinhanArray.push(donvinhanVal);
+            //tedu.notify(donvinhan, "success");          
+            $('#txtCacDonViNhanVanBan').addTag(donvinhan);   
+
+        });
+        
     }
 
     function CodeFileGuidId() {
@@ -198,6 +217,7 @@
             //var coquanbanhanh = $('#ddlCoQuanBanHanh').val();
             var noiluubanchinh = $('#txtNoiLuuBanChinh').val();
             var donvinhanvanban = $('#ddlDonViNhanVanBan').val();
+            var cacdonvinhanvanban = $('#txtCacDonViNhanVanBan').val(); 
 
             var tennhanviensoanvanban = $('#txtTenNhanVienSoanVB').val(); 
             var ykiennhanviensoanvanban = $('#txtYKienNhanVienSoanVB').val();             
@@ -229,6 +249,7 @@
                    
                     NoiLuuBanChinh: noiluubanchinh,
                     VanBanCoQuanBanHanhId: donvinhanvanban, // don vi nhan van ban di
+                    CacDonViNhanVanBan: cacdonvinhanvanban,
 
                     TenNhanVienSoanVBDi: tennhanviensoanvanban,
                     YKienSoanVB: ykiennhanviensoanvanban,
@@ -444,6 +465,8 @@
     }
 
     function ClearFormAddEdit() {
+        donvinhanArray = [];
+
         $('#hidVanBanDiId').val('');
         $('#hidInsertVBDiThemId').val(0);
         $('#hidVanBanDiTTChuaPhatHanh').val('');
@@ -465,6 +488,12 @@
         $('#ddlNguoiKyVanBan')[0].selectedIndex = 0;
         $('#ddlCoQuanBanHanh99')[0].selectedIndex = 1;
         $('#ddlDonViNhanVanBan')[0].selectedIndex = 0;
+
+        //$('#txtCacDonViNhanVanBan').removeTag('UBND Huyện Thoại Sơn');
+        //$('#txtCacDonViNhanVanBan').html('');
+        //$('#txtCacDonViNhanVanBan').remove();
+        //$('#txtCacDonViNhanVanBan_tagsinput').html('');
+
         $('#txtNoiLuuBanChinh').val('');
         $('#ddlLanhDaoDuyet')[0].selectedIndex = 1;
         $('#ddlCapDoKhan')[0].selectedIndex = 1;
@@ -564,10 +593,11 @@
                     required: true,
                     isDanhMuc: true
                 },
-                ddlDonViNhanVanBan: {
-                    required: true,
-                    isDanhMuc: true
-                },
+                //ddlDonViNhanVanBan: {
+                //    required: true,
+                //    isDanhMuc: true
+                //},
+                txtCacDonViNhanVanBan: { required: true },
                 txtNoiLuuBanChinh: { required: true },
                 ddlLanhDaoDuyet: {
                     required: true,
@@ -886,7 +916,11 @@
 
                 $('#txtNoiLuuBanChinh').val(vanbandi.NoiLuuBanChinh);
                 $('#ddlCoQuanBanHanh99').val(vanbandi.CorporationId);
-                $('#ddlDonViNhanVanBan').val(vanbandi.VanBanCoQuanBanHanhId);
+                //$('#ddlDonViNhanVanBan').val(vanbandi.VanBanCoQuanBanHanhId);
+                //$('#txtCacDonViNhanVanBan').val(vanbandi.CacDonViNhanVanBan);
+                cacdonvivndinhan = vanbandi.CacDonViNhanVanBan;
+                $('#txtCacDonViNhanVanBan').importTags(vanbandi.CacDonViNhanVanBan);   
+
                 $('#txtTenNhanVienSoanVB').val(vanbandi.TenNhanVienSoanVBDi);
                 $('#txtYKienNhanVienSoanVB').val(vanbandi.YKienSoanVB);
                 

@@ -128,6 +128,8 @@ namespace NiTiErp.Application.Dapper.Implementation
                 dynamicParameters.Add("@GhiChu", vanbandi.GhiChu);
                 dynamicParameters.Add("@SoTo", vanbandi.SoTo);
                 dynamicParameters.Add("@VanBanCoQuanBanHanhId", vanbandi.VanBanCoQuanBanHanhId);
+                dynamicParameters.Add("@CacDonViNhanVanBan", vanbandi.CacDonViNhanVanBan);
+
                 dynamicParameters.Add("@NoiLuuBanChinh", vanbandi.NoiLuuBanChinh);               
                 dynamicParameters.Add("@TTChoXuLy", vanbandi.TTChoXuLy);
                 dynamicParameters.Add("@TTChoDuyet", vanbandi.TTChoDuyet);

@@ -75,6 +75,8 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
         public int VanBanCoQuanBanHanhId { get; set; }
 
+        public string CacDonViNhanVanBan { get; set; }
+
         public string TenCoQuanBanHanh { get; set; }
 
         public string NoiLuuBanChinh { get; set; }

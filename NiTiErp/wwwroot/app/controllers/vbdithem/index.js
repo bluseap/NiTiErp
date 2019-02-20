@@ -78,7 +78,7 @@
             //$('#hidIsVanBanDenDienTuId').val("False"); // 1 la co; 0 la ko
             //$('#hidVanBanDenDienTuId').val(1);
             CodeFileGuidId(); // CodeId
-
+           
             $('#modal-add-edit-VBDiThem').modal('show');
         });
 

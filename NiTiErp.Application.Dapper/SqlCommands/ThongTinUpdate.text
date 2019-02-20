@@ -1,5 +1,7 @@
 ﻿
 
+create table VanBanDiNoiNhan
+
 create table VBDQuaTrinhXuLy
 
 create table VBDiQuaTrinhXuLy
