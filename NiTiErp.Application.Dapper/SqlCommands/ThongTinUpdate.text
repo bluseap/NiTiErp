@@ -2,6 +2,8 @@
 
 create table VanBanDiNoiNhan
 
+create table VanBanDiNoiNhanHis
+
 create table VBDQuaTrinhXuLy
 
 create table VBDiQuaTrinhXuLy

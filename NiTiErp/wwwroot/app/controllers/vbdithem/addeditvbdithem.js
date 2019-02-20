@@ -92,9 +92,7 @@
 
         $("#btnVBDiPhatHanh").on('click', function (e) {
             e.preventDefault();
-            savePhatHanh();
-            //var donvinhan = $('#txtCacDonViNhanVanBan').val();
-            //tedu.notify(donvinhan, "success");  
+            savePhatHanh();            
         });        
 
         $("#btnVBDiChuyenLD").on('click', function (e) {
@@ -316,7 +314,8 @@
             var nguoikyvanbandi = $('#ddlNguoiKyVanBan').val();
             //var coquanbanhanh = $('#ddlCoQuanBanHanh').val();
             var noiluubanchinh = $('#txtNoiLuuBanChinh').val();
-            var donvinhanvanban = $('#ddlDonViNhanVanBan').val();
+            var donvinhanvanban = $('#ddlDonViNhanVanBan').val() === "%" ? 0 : $('#ddlDonViNhanVanBan').val();
+            var cacdonvinhanvanban = $('#txtCacDonViNhanVanBan').val(); 
 
             var tennhanviensoanvanban = $('#txtTenNhanVienSoanVB').val();
             var ykiennhanviensoanvanban = $('#txtYKienNhanVienSoanVB').val();
@@ -349,6 +348,7 @@
 
                     NoiLuuBanChinh: noiluubanchinh,
                     VanBanCoQuanBanHanhId: donvinhanvanban, // don vi nhan van ban di
+                    CacDonViNhanVanBan: cacdonvinhanvanban,
 
                     TenNhanVienSoanVBDi: tennhanviensoanvanban,
                     YKienSoanVB: ykiennhanviensoanvanban,
