@@ -287,13 +287,13 @@
             return '<span class="badge bg-purple">Chưa biết</span>';
     },
     getVanBanDenTTXuLy: function (trangthai) {
-        if (trangthai === 1)
+        if (trangthai === "1")
             return '<span class="badge bg-orange">Chưa chuyển</span>';
-        else if (trangthai === 2)
+        else if (trangthai === "2")
             return '<span class="badge bg-blue">Đã chuyển</span>';
-        else if (trangthai === 3)
-            return '<span class="badge bg-green">Chờ phát hành</span>';       
-        else if (trangthai === 4)
+        else if (trangthai === "3")
+            return '<span class="badge bg-green">Đã duyệt</span>';       
+        else if (trangthai === "4")
             return '<span class="badge bg-purple">Phát hành</span>';
         else
             return '<span class="badge bg-red">Không biết</span>';

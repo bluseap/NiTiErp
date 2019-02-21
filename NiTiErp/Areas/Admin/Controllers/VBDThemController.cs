@@ -752,6 +752,18 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetVanBanDenXuLyId(Int32 vanbandenId)
+        {
+            var newGuid = new Guid();
+
+            var model = _vanbandenService.VanBanDennGetList("", 1, 1, 1, DateTime.Now, DateTime.Now, 1, 1,
+                "", "", false, 1, false, DateTime.Now, "", newGuid, 1, 1, false, "", "", "",
+                "", 1, 1000, vanbandenId, "", "", "GetVanBanDenXuLyFileId");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
         public IActionResult GetListVBDenTTXL(string corporationId, string sovanbanden, string keyword, int page, int pageSize)
         {
             var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";

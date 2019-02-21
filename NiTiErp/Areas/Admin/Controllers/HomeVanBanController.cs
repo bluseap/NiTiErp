@@ -38,6 +38,22 @@ namespace NiTiErp.Areas.Admin.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult IsVanBanDen(string isVanBanDen)
+        {           
+                var username = User.GetSpecificClaim("UserName");                
+
+                var result = _authorizationService.AuthorizeAsync(User, isVanBanDen, Operations.Read); // nhap van ban di
+                if (result.Result.Succeeded == false)
+                {
+                    return new ObjectResult(new GenericResult(false, "Bạn không có quyền xem."));
+                }                
+                else
+                {
+                    return new ObjectResult(new GenericResult(true, "Thành công."));
+                }
+                
+        }
 
     }
 }

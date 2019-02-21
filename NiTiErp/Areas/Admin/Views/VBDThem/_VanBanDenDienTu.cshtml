@@ -13,33 +13,22 @@
                         <input type="hidden" id="hidIsVanBanDenDienTuId" value="" />
 
                         <div class="form-group">
-
                         </div>
-
                     </form>
 
-                    <div class="table-responsive" id="table-responsiveVanBanDienTu">               
-                        <div class="row" id="row-AddEditQDKT">
-                            <div class="col-md-3 col-sm-12 col-xs-12 form-group">
-                                <select id="ddlVBDTKhuVuc" class="form-control"></select>
-                            </div>                           
-                            <div class="col-md-3 col-sm-12 col-xs-12 form-group">
-                                <input type="text" id="txtVBDTNoiDung" class="form-control" placeholder="Từ khóa...">
-                            </div>
-                            <div class="col-md-3 col-sm-12 col-xs-12 form-group">
-                                <button class="btn btn-primary " id="btnVBDTNoiDung" type="button">Tìm !</button>
-                            </div>
+                    <div class="table-responsive" id="table-responsiveVanBanDienTu">
+                        <partial name="/Areas/Admin/Views/Shared/_shareTimVanBan.cshtml" />
+                        <div class="col-sm-12" style="text-align: center">
+                            <button type="button" id="btnTimVanBanDienTu" class="btn btn-warning" >Tìm văn bản</button>
                         </div>
                         <table id="tblVanBanDienTu" class="table table-striped jambo_table bulk_action" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th width="=10%">#</th>
-                                    <th>Tên sổ</th>
+                                    <th width="=10%">#</th>                                    
                                     <th>Trich yếu</th>
                                     <th>Số đến, ký hiệu</th>
                                     <th>Tên cơ quan ban hành</th>
-                                    <th>Ngày ban hành</th>
-                                    <th>Ngày đến</th>
+                                    <th>Ngày ban hành</th>                                    
                                     <th>Trạng thái</th>
                                 </tr>
                             </thead>
@@ -71,13 +60,11 @@
                         <tr>
                             <th scope="row">
                                 <a class="btn btn-lg btn-editVanBanDienTu" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa hồ sơ"><i class="fa fa-pencil"></i> </a>
-                            </th>
-                            <td>{{TenSoVanBanDen}}</td>
+                            </th>                           
                             <td>{{TrichYeuCuaVanBan}}</td>
-                            <td>{{SoKyHieuDen}}</td>
-                            <td>{{TenCoQuanBanHanh}}</td>
-                            <td>{{NgayBanHanhCuaVanBan}}</td>
-                            <td>{{NgayDenCuaVanBan}}</td>
+                            <td>{{SoKyHieuDi}}</td>
+                            <td>{{TenKhuVuc}}</td>
+                            <td>{{NgayBanHanhCuaVanBan}}</td>                            
                             <td>{{{TTXuLy}}}</td>
                         </tr>
                     </script>

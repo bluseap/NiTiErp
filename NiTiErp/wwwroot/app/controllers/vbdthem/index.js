@@ -35,8 +35,8 @@
 
         $("#btn-create").on('click', function (e) {            
             e.preventDefault();
-            //tedu.notify("them moi van ban den", "success");            
-            
+            $('#divbtnDenDienTu').show();
+
             var makv = $('#ddlKhuVuc').val();
             addeditvbdthem.loadVanBanDienTuCount(makv);
             addeditvbdthem.sovanbanden();
@@ -50,7 +50,9 @@
         });
 
         $('body').on('click', '.btn-addeditVBDThem', function (e) {        
-            e.preventDefault();            
+            e.preventDefault();           
+            $('#divbtnDenDienTu').hide();
+
             $('#hidInsertVBDThemId').val(2);  // update           
 
             var vanbandenId = $(this).data('id');

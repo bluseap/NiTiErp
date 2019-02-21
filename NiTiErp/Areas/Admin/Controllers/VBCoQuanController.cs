@@ -91,6 +91,13 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        [HttpGet]
+        public IActionResult VanBanDienTuGetList()
+        {
+            var model = _vanbancoquanService.VanBanCoQuanGetList("", "", "", "VanBanDienTuGetList");
+            return new OkObjectResult(model);
+        }
+
         #endregion AJAX API
     }
 }

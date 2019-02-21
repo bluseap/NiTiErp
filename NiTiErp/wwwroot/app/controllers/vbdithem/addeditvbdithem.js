@@ -115,11 +115,7 @@
         });
              
         $("#ddlDonViNhanVanBan").on('change', function () {            
-
-            var donvinhan = $("#ddlDonViNhanVanBan").find(":selected").text();
-            //var donvinhanVal = $("#ddlDonViNhanVanBan").val();
-            //donvinhanArray.push(donvinhanVal);
-            //tedu.notify(donvinhan, "success");          
+            var donvinhan = $("#ddlDonViNhanVanBan").find(":selected").text();                    
             $('#txtCacDonViNhanVanBan').addTag(donvinhan);   
 
         });
@@ -487,12 +483,7 @@
         $('#txtSoKyHieu').val('');
         $('#ddlNguoiKyVanBan')[0].selectedIndex = 0;
         $('#ddlCoQuanBanHanh99')[0].selectedIndex = 1;
-        $('#ddlDonViNhanVanBan')[0].selectedIndex = 0;
-
-        //$('#txtCacDonViNhanVanBan').removeTag('UBND Huyện Thoại Sơn');
-        //$('#txtCacDonViNhanVanBan').html('');
-        //$('#txtCacDonViNhanVanBan').remove();
-        //$('#txtCacDonViNhanVanBan_tagsinput').html('');
+        $('#ddlDonViNhanVanBan')[0].selectedIndex = 0;       
 
         $('#txtNoiLuuBanChinh').val('');
         $('#ddlLanhDaoDuyet')[0].selectedIndex = 1;

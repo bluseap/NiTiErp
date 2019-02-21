@@ -18,6 +18,7 @@
                         <th>Số đến, ký hiệu</th>
                         <th>Trich yếu</th>
                         <th>Tên cơ quan ban hành</th>
+                        <th>Tên File xử lý</th>
                         <th>Ngày ban hành</th>
                         <th>Ngày đến</th>
                         <th>QT Xử lý</th>
@@ -54,7 +55,7 @@
         <th scope="row">
             <a class="btn btn-sm btnDaDuyet" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Chuyển chuyên môn">
                 <i class="fa fa-mail-forward"></i>
-                
+
             </a>
         </th>
         <td>
@@ -75,6 +76,11 @@
         <td>
             <a class="btn btn-sm">
                 {{TenCoQuanBanHanh}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-link btnDaDuyetPatchVBDFileXuLy" data-id="{{VanBanDenId}}" data-toggle="tooltip">
+                {{TenFile}}
             </a>
         </td>
         <td>

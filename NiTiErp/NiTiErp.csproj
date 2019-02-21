@@ -39,4 +39,10 @@
     <Folder Include="wwwroot\uploaded\vanbanden\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Areas\Admin\Views\Shared\_shareTimVanBan.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
 </Project>

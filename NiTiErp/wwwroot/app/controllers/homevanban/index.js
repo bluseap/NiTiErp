@@ -2,7 +2,7 @@
 
     var userCorporationId = $("#hidUserCorporationId").val();
     var userName = $("#hidUserName").val();
-
+ 
     var connection = new signalR.HubConnectionBuilder()
         .withUrl("/vanban")
         .build();
@@ -21,23 +21,26 @@
 
         $('body').on('click', '.btnDenDienTu', function (e) {
             e.preventDefault();
-            tedu.notify("văn bản đến điện tử", "success");
-            
+            isVanBanDen("VANBANDENTHEM");
+            //window.location.href = "/vbdthem/index";
         });
 
         $('body').on('click', '.btnDenChuaXuLy', function (e) {
             e.preventDefault();
-            window.location.href = "vbdthem/index";
+            isVanBanDen("VANBANDENTHEM");  
+            //window.location.href = "/vbdthem/index";
         });
 
         $('body').on('click', '.btnDenDangXuLy', function (e) {
             e.preventDefault();
-            window.location.href = "vbdxem/index";
+            isVanBanDen("VANBANDENXEM");  
+            //window.location.href = "vbdxem/index";
         });
 
         $('body').on('click', '.btnDenChoDuyet', function (e) {
             e.preventDefault();
-            window.location.href = "vbdduyet/index";
+            isVanBanDen("VANBANDENDUYET");  
+            //window.location.href = "vbdduyet/index";
         });
 
         $('body').on('click', '.btnDenChuPhatHanh', function (e) {
@@ -61,8 +64,7 @@
             e.preventDefault();
             tedu.notify("Chưa phát hành", "success");
 
-        });       
-
+        }); 
 
         $('#btnTimNhanVien').on('click', function () {
             var makhuvuc = $('#ddlKhuVuc').val();
@@ -94,6 +96,42 @@
         //});
 
     }
+
+    function isVanBanDen(isvanbanden) {        
+        return $.ajax({
+            type: 'GET',
+            url: '/admin/homevanban/IsVanBanDen',
+            data: {
+                isVanBanDen: isvanbanden
+            },
+            dataType: 'json',
+            success: function (response) {
+                var ketqua = response.Success;
+                if (ketqua === true) {
+                    if (isvanbanden === "VANBANDENTHEM") {
+                        window.location.href = "/vbdthem/index";
+                    }
+                    if (isvanbanden === "VANBANDENXEM") {
+                        window.location.href = "/vbdxem/index";
+                    }
+                    if (isvanbanden === "VANBANDENDUYET") {                       
+                        window.location.href = "/vbdduyet/index";
+                    }
+                    if (isvanbanden === "VANBANDENDUYET") {
+                        window.location.href = "/vbdduyet/index";
+                    }
+            
+                }
+                else {
+                    tedu.notify("Không đủ quyền. Kiểm tra lại!", "error");
+                }
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Phân quyền có vấn đề?', 'error');
+            }
+        });  
+    }    
 
     function loadKhuVuc() {
         return $.ajax({

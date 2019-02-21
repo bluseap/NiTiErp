@@ -161,6 +161,41 @@ namespace NiTiErp.Areas.Admin.Controllers
             }
         }
 
+        public IActionResult UpdateVBDDuyetXuLy(VanBanDenDuyetViewModel vanbandenduyetVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+
+                vanbandenduyetVm.CreateBy = username;
+                vanbandenduyetVm.CreateDate = DateTime.Now;
+                vanbandenduyetVm.UpdateBy = username;
+                vanbandenduyetVm.UpdateDate = DateTime.Now;
+
+                if (vanbandenduyetVm.InsertVanBanDenDuyetId == 2)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "VANBANDENDUYET", Operations.Create);
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
+                    }
+
+                    var vanbanden = _vanbandenduyetService.VanBanDenDuyetAUD(vanbandenduyetVm, "UpVBDDuyetXuLy");
+
+                    return new OkObjectResult(vanbanden);
+                }
+                else
+                {
+                    return new OkObjectResult(vanbandenduyetVm);
+                }
+            }
+        }
+
         [HttpGet]
         public IActionResult GetVanBanDenIdDuyet02(long vanbandenduyetId)
         {

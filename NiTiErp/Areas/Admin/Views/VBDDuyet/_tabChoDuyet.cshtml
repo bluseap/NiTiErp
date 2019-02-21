@@ -17,6 +17,7 @@
                         <th>Số đến, ký hiệu</th>
                         <th>Trich yếu</th>
                         <th>Tên cơ quan ban hành</th>
+                        <th>Tên File xử lý</th>
                         <th>Ngày ban hành</th>
                         <th>Ngày đến</th>
                         <th>QT Xử lý</th>
@@ -53,7 +54,7 @@
         <th scope="row">
             <a class="btn btn-sm btnChoDuyet" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Duyệt phát hành">
                 <i class="fa fa-mail-forward"></i>
-                Duyệt chuyển văn thư
+                Duyệt VB đến đã xử lý
             </a>
         </th>
         <td>
@@ -74,6 +75,11 @@
         <td>
             <a class="btn btn-sm">
                 {{TenCoQuanBanHanh}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-link btnChoDuyetPatchVBDFileXuLy" data-id="{{VanBanDenId}}" data-toggle="tooltip">
+                {{TenFile}}
             </a>
         </td>
         <td>

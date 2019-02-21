@@ -60,7 +60,7 @@
 
         $('body').on('click', '.btnDenDienTu', function (e) {
             e.preventDefault();
-            tedu.notify("den dien tu", "success");
+            //tedu.notify("den dien tu", "success");
             loadTableVanBanDienTu();
             $('#modal-add-edit-DenDienTu').modal('show');  
         });
@@ -780,14 +780,14 @@
     function loadVanBanDienTuCout (makv) {
         $.ajax({
             type: 'GET',
-            url: '/admin/vbdthem/GetListVanBanDienTu',
+            url: '/admin/vbdithem/GetCountVBDiDienTuKV',
             data: {
-                makhuvuc: makv
+                corporationId: makv
             },
             dataType: 'json',
             success: function (response) {
-                var vbdientu = response.Result[0];
-                $('#spanDenVanBanDienTu').text(vbdientu.KETQUA);
+                var vbdientu = response;
+                $('#spanDenVanBanDienTu').text(vbdientu);
             },
             error: function (status) {
                 console.log(status);

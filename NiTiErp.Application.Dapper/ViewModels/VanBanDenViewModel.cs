@@ -120,6 +120,9 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
         public DateTime NgayLanhDaoXem  { get; set; }
 
+        public string TenFile { get; set; }
+
+        public string VBDXuLyFilePatch { get; set; }
 
 
         public int Status { get; set; }

@@ -20,6 +20,33 @@
             loadTableDaDuyet(true);
         });
 
+        $('body').on('click', '.btnDaDuyetPatchVBDFileXuLy', function (e) {
+            e.preventDefault();
+            var vanbandenId = $(this).data('id');
+            loadPatchFileVBDXuLy(vanbandenId);
+        }); 
+    }
+
+    function loadPatchFileVBDXuLy(vanbandenid) {
+        $.ajax({
+            type: "GET",
+            url: "/Admin/vbdthem/GetVanBanDenXuLyId",
+            data: { vanbandenId: vanbandenid },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var vanbanden = response.Result[0];
+                var win = window.open(vanbanden.VBDXuLyFilePatch, '_blank');
+                win.focus();
+                tedu.stopLoading();
+            },
+            error: function (status) {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
+        });
     }
 
     function loadTableDaDuyet(isPageChanged) {
@@ -67,7 +94,9 @@
                             NgayBanHanhCuaVanBan: tedu.getFormattedDate(item.NgayBanHanhCuaVanBan),
                             NgayDenCuaVanBan: tedu.getFormattedDate(item.NgayDenCuaVanBan),
                             TTXuLy: tedu.getVanBanDenTTXuLy(item.TTXuLy),
-                            VanBanDenId: item.VanBanDenId
+                            VanBanDenId: item.VanBanDenId,
+                            TenFile: item.TenFile,
+                            VBDXuLyFilePatch: item.VBDXuLyFilePatch
                             // Price: tedu.formatNumber(item.Price, 0),                          
                         });
                     });

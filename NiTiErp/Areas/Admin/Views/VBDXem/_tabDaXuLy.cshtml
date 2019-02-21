@@ -14,9 +14,10 @@
                     <tr>
                         <th width="=5%">#</th>
                         <th>Tên sổ</th>
-                        <th>Số đến, ký hiệu</th>
-                        <th>Trich yếu</th>
+                        <th>Ký hiệu VB đến</th>
+                        <th>Trich yếu VB đến</th>
                         <th>Tên cơ quan ban hành</th>
+                        <th>Tên File xử lý</th>
                         <th>Ngày ban hành</th>
                         <th>Ngày đến</th>
                         <th>QT Xử lý</th>
@@ -52,7 +53,7 @@
     <tr>
         <th scope="row">
             <a class="btn btn-sm btnDaXuLyXuLy" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Đã xử lý ">
-                <i class="fa fa-mail-forward"></i>                
+                <i class="fa fa-mail-forward"></i>
             </a>
         </th>
         <td>
@@ -73,6 +74,11 @@
         <td>
             <a class="btn btn-sm">
                 {{TenCoQuanBanHanh}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-link btnChuaXuLyPatchFileXuLy" data-id="{{VanBanDenId}}" data-toggle="tooltip">
+                {{TenFile}}
             </a>
         </td>
         <td>

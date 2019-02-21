@@ -113,7 +113,26 @@ namespace NiTiErp.Areas.Admin.Controllers
 
             var model = _vanbandiService.GetAllVanBanDiPaging(corporationId, 1, 1, 1, DateTime.Now, DateTime.Now, 1, 1,
                 sovanbandi, "", false, 1, false, DateTime.Now, "", newGuid, 1, 1, false, "", "", "",
-                keyword, page, pageSize, 1, "", "", "GetAllVanBanDi");
+                tukhoa, page, pageSize, 1, "", "", "GetAllVanBanDi");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetListVBDiDienTu(string corporationId, string keyword, int NamVanBan, int SoVanBan, 
+            string KyHieuVanBan, string TrichYeu, int CoQuanBanHanh, int page, int pageSize)
+        {
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            //var phong = !string.IsNullOrEmpty(sovanbandi) ? sovanbandi : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+            var trichyeu = !string.IsNullOrEmpty(TrichYeu) ? TrichYeu : "%";
+            var kyhieu = !string.IsNullOrEmpty(KyHieuVanBan) ? KyHieuVanBan : "%";
+            var newGuid = new Guid();
+
+            var model = _vanbandiService.GetAllVanBanDiPaging(corporationId, 1, 1, CoQuanBanHanh, DateTime.Now, DateTime.Now,
+                NamVanBan, SoVanBan,
+                kyhieu, "", false, 1, false, DateTime.Now, "", newGuid, 1, 1, false, "", "", "",
+                trichyeu, page, pageSize, 1, "", tukhoa, "GetListVBDiDienTu");
 
             return new OkObjectResult(model);
         }
@@ -245,6 +264,15 @@ namespace NiTiErp.Areas.Admin.Controllers
         {
             var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
             var count = _vanbandiService.GetCountVanBanDi(corporationId, "GetCountVBDenDiChuaPhatHanh");
+            //_hubContext.Clients.All.SendAsync("VanBanDenChuaPhatHanh", count.ToString());
+            return new OkObjectResult(count);
+        }
+
+        [HttpGet]
+        public IActionResult GetCountVBDiDienTuKV(string corporationId)
+        {
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var count = _vanbandiService.GetCountVanBanDi(corporationId, "GetCountVBDiDienTuKV");
             //_hubContext.Clients.All.SendAsync("VanBanDenChuaPhatHanh", count.ToString());
             return new OkObjectResult(count);
         }
