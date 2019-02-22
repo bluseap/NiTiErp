@@ -288,15 +288,15 @@
         });
     }
 
-    function loadCountVanBanDenDienTu(connection, makv) {
+    function loadCountVanBanDenDienTu(connection, makv) {     
         $.ajax({
             type: 'GET',
-            url: '/admin/vbdthem/GetCountVBDenDienTu',
+            url: '/admin/vbdithem/GetCountVBDiDienTuKV',
             data: {
                 corporationId: makv
             },
             dataType: 'json',
-            success: function (response) {
+            success: function (response) {      
                 connection.on("VanBanDenDienTu", (response) => {
                     $('#spanDenDienTu').text(response);
                 });

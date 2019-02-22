@@ -11,6 +11,8 @@ var vbdxemController = function () {
     var _quatrinhxuly = new _quatrinhxulyController();   
 
     this.initialize = function () {
+        tedu.isVanBanDen('VANBANDENXEM');
+
         loadKhuVuc();
 
         registerEvents();

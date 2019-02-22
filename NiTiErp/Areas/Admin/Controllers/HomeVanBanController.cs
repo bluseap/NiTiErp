@@ -43,7 +43,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         {           
                 var username = User.GetSpecificClaim("UserName");                
 
-                var result = _authorizationService.AuthorizeAsync(User, isVanBanDen, Operations.Read); // nhap van ban di
+                var result = _authorizationService.AuthorizeAsync(User, isVanBanDen, Operations.Read); // xem nhap van ban 
                 if (result.Result.Succeeded == false)
                 {
                     return new ObjectResult(new GenericResult(false, "Bạn không có quyền xem."));
@@ -51,8 +51,23 @@ namespace NiTiErp.Areas.Admin.Controllers
                 else
                 {
                     return new ObjectResult(new GenericResult(true, "Thành công."));
-                }
-                
+                }                
+        }
+
+        [HttpGet]
+        public IActionResult IsVanBanDi(string isVanBanDi)
+        {
+            var username = User.GetSpecificClaim("UserName");
+
+            var result = _authorizationService.AuthorizeAsync(User, isVanBanDi, Operations.Read); // xem nhap van ban 
+            if (result.Result.Succeeded == false)
+            {
+                return new ObjectResult(new GenericResult(false, "Bạn không có quyền xem."));
+            }
+            else
+            {
+                return new ObjectResult(new GenericResult(true, "Thành công."));
+            }
         }
 
     }

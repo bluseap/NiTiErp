@@ -9,6 +9,8 @@
     var dathuchien = new dathuchienController();
 
     this.initialize = function () {
+        tedu.isVanBanDen('VANBANDENDUYET');
+
         loadKhuVuc();
 
         registerEvents();           

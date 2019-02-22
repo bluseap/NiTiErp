@@ -7,6 +7,8 @@
     //var vanbandendientu = new vanbandendientuController();
 
     this.initialize = function () {
+        tedu.isVanBanDen('VANBANDITHEM');
+
         loadKhuVuc();
 
         registerEvents();

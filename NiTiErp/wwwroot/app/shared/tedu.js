@@ -409,7 +409,52 @@
             }
         }
         return roots;
-    }
+    },
+
+    isVanBanDen: function(isvanbanden) {
+        return $.ajax({
+            type: 'GET',
+            url: '/admin/homevanban/IsVanBanDen',
+            data: {
+                isVanBanDen: isvanbanden
+            },
+            dataType: 'json',
+            success: function (response) {
+                var ketqua = response.Success;
+                if (ketqua === false) {
+                    window.location.href = "/homevanban/index";
+                    tedu.notify("Không đủ quyền. Kiểm tra lại!", "error");
+                }
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Phân quyền có vấn đề?', 'error');
+            }
+        });
+    },    
+
+    isVanBanDi: function (isvanbandi) {
+        return $.ajax({
+            type: 'GET',
+            url: '/admin/homevanban/IsVanBanDi',
+            data: {
+                isVanBanDi: isvanbandi
+            },
+            dataType: 'json',
+            success: function (response) {
+                var ketqua = response.Success;
+                if (ketqua === false) {
+                    window.location.href = "/homevanban/index";
+                    tedu.notify("Không đủ quyền. Kiểm tra lại!", "error");
+                }
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Phân quyền có vấn đề?', 'error');
+            }
+        });
+    }   
+
 }
 
 $(document).ajaxSend(function(e, xhr, options) {

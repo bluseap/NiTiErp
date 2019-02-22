@@ -7,6 +7,8 @@
     var vanbandendientu = new vanbandendientuController();
 
     this.initialize = function () {
+        tedu.isVanBanDen('VANBANDENTHEM');
+
         loadKhuVuc();
 
         registerEvents();
@@ -290,5 +292,7 @@
             }
         });
     }
+
+      
 
 }
