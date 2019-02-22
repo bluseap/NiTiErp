@@ -350,6 +350,7 @@
     function SaveVanBanDen() {  
         var isvanbandientu = $('#hidIsVanBanDenDienTuId').val(); // 1 la co; 0 la ko  
         var vanbandientuid = $('#hidVanBanDenDienTuId').val();
+
         //if (isvanbandientu === "false") {
         //    vanbandientuid = 0;
         //}

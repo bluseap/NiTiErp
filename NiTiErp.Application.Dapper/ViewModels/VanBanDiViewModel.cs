@@ -123,6 +123,8 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
         public string DuongDanFile { get; set; }
 
+        public int VBDiCoQuanBanHanhId { get; set; }
+
 
         public int Status { get; set; }
 

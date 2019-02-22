@@ -43,8 +43,10 @@
 
             $('#hidInsertVBDThemId').val(1);  // insert
             $('#hidIsVanBanDenDienTuId').val("False"); // 1 la co; 0 la ko
-            $('#hidVanBanDenDienTuId').val(1);  
+            $('#hidVanBanDenDienTuId').val(0);  
             CodeFileGuidId(); // CodeId
+
+            $('#divbtnFileVanBan').show();
 
             $('#modal-add-edit-VBDThem').modal('show');  
         });
@@ -53,7 +55,10 @@
             e.preventDefault();           
             $('#divbtnDenDienTu').hide();
 
-            $('#hidInsertVBDThemId').val(2);  // update           
+            $('#hidInsertVBDThemId').val(2);  // update 
+            
+            $('#hidIsVanBanDenDienTuId').val("False"); // 1 la co; 0 la ko
+            $('#hidVanBanDenDienTuId').val(0);  
 
             var vanbandenId = $(this).data('id');
             fielvanbanden.vanbandenfileid(vanbandenId);
