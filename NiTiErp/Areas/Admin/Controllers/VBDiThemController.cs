@@ -124,6 +124,28 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetListVBDiSo(string corporationId, string keyword, int NamVanBan, int SoVanBan, string KyHieuVanBan,
+            string TrichYeu, string VanBanDiSoId, string CoQuanBanHanh, int page, int pageSize)
+        {
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            //var phong = !string.IsNullOrEmpty(sovanbandi) ? sovanbandi : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+            var newGuid = new Guid();
+
+            var kyhieuvanban = !string.IsNullOrEmpty(KyHieuVanBan) ? KyHieuVanBan : "%";
+            var trichyeu = !string.IsNullOrEmpty(TrichYeu) ? TrichYeu : "%";
+            var coquanbanhanh = CoQuanBanHanh == "%" ? 0 : Convert.ToInt32(CoQuanBanHanh);
+            var vanbandiso = VanBanDiSoId == "%" ? 0 : Convert.ToInt32(VanBanDiSoId);
+
+            var model = _vanbandiService.GetAllVanBanDiPaging(corporationId, 1, 1, coquanbanhanh, DateTime.Now, DateTime.Now
+                , vanbandiso, SoVanBan, kyhieuvanban
+                , "", false, NamVanBan, false, DateTime.Now, "", newGuid, 1, 1, false, "", "", "",
+                trichyeu, page, pageSize, 1, "", keyword, "GetListVBDiSo");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
         public IActionResult GetListVBDiDienTu(string corporationId, string keyword, int NamVanBan, int SoVanBan, 
             string KyHieuVanBan, string TrichYeu, int CoQuanBanHanh, int page, int pageSize)
         {
