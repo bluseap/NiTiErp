@@ -51,6 +51,11 @@ namespace NiTiErp.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
+            var username = User.GetSpecificClaim("UserName");
+            var result = _authorizationService.AuthorizeAsync(User, "VANBANDENDUYET", Operations.Read);
+            if (result.Result.Succeeded == false)
+                return new RedirectResult("/homevanban/Index");
+
             return View();
         }
 
