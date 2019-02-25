@@ -272,10 +272,12 @@ namespace NiTiErp
             services.AddTransient<IVanBanDenDuyetNVXLService, VanBanDenDuyetNVXLService>();
             services.AddTransient<IVanBanPHXLService, VanBanPHXLService>();
             services.AddTransient<IVBDQuaTrinhXuLyService, VBDQuaTrinhXuLyService>();
+            services.AddTransient<IVBDiQuaTrinhXuLyService, VBDiQuaTrinhXuLyService>();
             services.AddTransient<IVanBanDenXuLyService, VanBanDenXuLyService>();
             services.AddTransient<IVanBanDenXuLyFileService, VanBanDenXuLyFileService>();
             services.AddTransient<IVanBanDiSoService, VanBanDiSoService>();
             services.AddTransient<IVanBanDiService, VanBanDiService>();
+
 
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 

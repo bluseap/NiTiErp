@@ -15,8 +15,7 @@
                         <th>Tên sổ</th>
                         <th>Số đến, ký hiệu</th>
                         <th>Trich yếu</th>                        
-                        <th>Ngày ban hành</th>
-                        <th>Ngày đến</th>
+                        <th>Ngày ban hành</th>                       
                         <th>QT Xử lý</th>
                     </tr>
                 </thead>
@@ -59,12 +58,12 @@
             </a>
         </td>
         <td>
-            <a class="btn btn-link btnSoTatCaVBDiPatchFileKyHieu" data-id="{{VanBanDiId}}" data-toggle="tooltip">
+            <a class="btn btn-link btnSoTatCaVBDiPatchFileKyHieu" data-id="{{Id}}" data-toggle="tooltip">
                 {{SoKyHieuDi}}
             </a>
         </td>
         <td>
-            <a class="btn btn-link btnSoTatCaVBDiPatchFileTrichYeu" data-id="{{VanBanDiId}}" data-toggle="tooltip">
+            <a class="btn btn-link btnSoTatCaVBDiPatchFileTrichYeu" data-id="{{Id}}" data-toggle="tooltip">
                 {{TrichYeuCuaVanBan}}
             </a>
         </td>        
@@ -74,10 +73,11 @@
             </a>
         </td>
         <td>
-            <a class="btn btn-sm">
-                {{NgayDenCuaVanBan}}
+            <a class="btn btn-lg btnVBDiSoTatCaQTXL" data-id="{{Id}}" data-toggle="tooltip" style="color:green">
+                <i class="fa fa-sitemap"></i>
             </a>
-        </td>        
-        <td><input type="hidden" id="vanbandiid" class="form-control" value="{{VanBanDiId}}" /></td>
+        </td>    
+        @*<td><input type="hidden" id="vanbandiid" class="form-control" value="{{VanBanDiId}}" /></td>*@
     </tr>
 </script>
+

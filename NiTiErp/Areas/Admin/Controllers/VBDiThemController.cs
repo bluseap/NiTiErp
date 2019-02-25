@@ -25,6 +25,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         //private readonly IVanBanDienTuService _vanbandientuService;
 
         //private readonly IVanBanDenDuyetService _vanbandenduyetService;
+        private readonly IVBDiQuaTrinhXuLyService _vbdiquatrinhxulyService;
         private readonly IVanBanDiService _vanbandiService;
         private readonly IVanBanDiFileService _vanbandifileService;
 
@@ -36,6 +37,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             //IVanBanDienTuService vanbandientuService,
 
             //IVanBanDenDuyetService vanbandenduyetService,
+            IVBDiQuaTrinhXuLyService vbdiquatrinhxulyService,
             IVanBanDiService vanbandiService,
             IVanBanDiFileService vanbandifileService
             )
@@ -48,6 +50,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             //_vanbandientuService = vanbandientuService;
             //_hubTinNhanContext = hubTinNhanContext;
             //_hubContext = hubContext;
+            _vbdiquatrinhxulyService = vbdiquatrinhxulyService;
             _vanbandiService = vanbandiService;
             _vanbandifileService = vanbandifileService;
         }
@@ -129,7 +132,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         {
             var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
             //var phong = !string.IsNullOrEmpty(sovanbandi) ? sovanbandi : "%";
-            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+            var noidenvbdi = !string.IsNullOrEmpty(keyword) ? keyword : "%";
             var newGuid = new Guid();
 
             var kyhieuvanban = !string.IsNullOrEmpty(KyHieuVanBan) ? KyHieuVanBan : "%";
@@ -140,7 +143,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             var model = _vanbandiService.GetAllVanBanDiPaging(corporationId, 1, 1, coquanbanhanh, DateTime.Now, DateTime.Now
                 , vanbandiso, SoVanBan, kyhieuvanban
                 , "", false, NamVanBan, false, DateTime.Now, "", newGuid, 1, 1, false, "", "", "",
-                trichyeu, page, pageSize, 1, "", keyword, "GetListVBDiSo");
+                trichyeu, page, pageSize, 1, "", noidenvbdi, "GetListVBDiSo");
 
             return new OkObjectResult(model);
         }
@@ -261,7 +264,6 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
         #endregion
 
-
         [HttpGet]
         public IActionResult GetVanBanDiId(Int32 vanbandiId)
         {
@@ -302,6 +304,16 @@ namespace NiTiErp.Areas.Admin.Controllers
             var count = _vanbandiService.GetCountVanBanDi(corporationId, "GetCountVBDiDienTuKV");
             //_hubContext.Clients.All.SendAsync("VanBanDenChuaPhatHanh", count.ToString());
             return new OkObjectResult(count);
+        }
+
+        [HttpGet]
+        public IActionResult GetListVBDiQTXL(long vanbandiid)
+        {
+            var newGuid = new Guid();
+
+            var model = _vbdiquatrinhxulyService.GetListVBDiQuaTrinhXuLy(newGuid, "", vanbandiid, "", 1, "", "GetVanBanDiQTXL");
+
+            return new OkObjectResult(model);
         }
 
         #endregion

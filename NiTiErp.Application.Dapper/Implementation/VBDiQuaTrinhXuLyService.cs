@@ -14,35 +14,35 @@ using System.Linq;
 
 namespace NiTiErp.Application.Dapper.Implementation
 {
-    public class VBDQuaTrinhXuLyService : IVBDQuaTrinhXuLyService
+    public class VBDiQuaTrinhXuLyService : IVBDiQuaTrinhXuLyService
     {
         private readonly IConfiguration _configuration;
 
-        public VBDQuaTrinhXuLyService(IConfiguration configuration)
+        public VBDiQuaTrinhXuLyService(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
-        public async Task<List<VBDQuaTrinhXuLyViewModel>> GetListVBDQuaTrinhXuLy(Guid hosonhanvienId, string corporationId,
-            long vanbandenid, string keyword, long vbdquatrinhxulyId, string ghichu, string parameters)
+        public async Task<List<VBDiQuaTrinhXuLyViewModel>> GetListVBDiQuaTrinhXuLy(Guid hosonhanvienId, string corporationId,
+            long vanbandiid, string keyword, long vbdiquatrinhxulyId, string ghichu, string parameters)
         {
             using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
                 await sqlConnection.OpenAsync();
                 var dynamicParameters = new DynamicParameters();
-                dynamicParameters.Add("@Id", vbdquatrinhxulyId);
+                dynamicParameters.Add("@Id", vbdiquatrinhxulyId);
 
                 dynamicParameters.Add("@hosonhanvienId", hosonhanvienId);
                 dynamicParameters.Add("@corporationId", corporationId);
-                dynamicParameters.Add("@vanbandenId", vanbandenid);
+                dynamicParameters.Add("@vanbandiId", vanbandiid);
                 dynamicParameters.Add("@keyword", keyword);
                 dynamicParameters.Add("@ghichu", ghichu);
 
                 dynamicParameters.Add("@parameters", parameters);
                 try
                 {
-                    var query = await sqlConnection.QueryAsync<VBDQuaTrinhXuLyViewModel>(
-                        "VanBanDenQTXL", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    var query = await sqlConnection.QueryAsync<VBDiQuaTrinhXuLyViewModel>(
+                        "VanBanDiQTXL", dynamicParameters, commandType: CommandType.StoredProcedure);
 
                     return query.AsList();
                 }

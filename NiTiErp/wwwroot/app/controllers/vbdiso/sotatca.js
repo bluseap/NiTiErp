@@ -1,6 +1,6 @@
 ﻿var sotatcaController = function () {
 
-    //var _quatrinhxuly = new _quatrinhxulyController();
+    var _vbdithemqtxl = new _vbdiqtxlController();
 
     this.initialize = function () {
 
@@ -21,6 +21,47 @@
             loadTableVBDiSoTatCa(true);
         });
 
+        $('body').on('click', '.btnSoTatCaVBDiPatchFileKyHieu', function (e) {
+            e.preventDefault();
+            var vanbandiId = $(this).data('id');
+            loadPatchFile(vanbandiId);
+        });
+
+        $('body').on('click', '.btnSoTatCaVBDiPatchFileTrichYeu', function (e) {
+            e.preventDefault();
+            var vanbandiId = $(this).data('id');
+            loadPatchFile(vanbandiId);
+        });
+
+        $('body').on('click', '.btnVBDiSoTatCaQTXL', function (e) {
+            e.preventDefault();
+            var vanbandiId = $(this).data('id');
+            _vbdithemqtxl.loadVBDiQuaTrinhXuLy(vanbandiId);
+            $('#modal-add-edit-VBDiQuaTrinhXuLy').modal('show');
+        });
+
+    }    
+
+    function loadPatchFile(vanbandiid) {
+        $.ajax({
+            type: "GET",
+            url: "/Admin/vbdithem/GetVanBanDiId",
+            data: { vanbandiId: vanbandiid },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var vanbanden = response.Result[0];
+                var win = window.open(vanbanden.DuongDanFile, '_blank');
+                win.focus();
+                tedu.stopLoading();
+            },
+            error: function (status) {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
+        });
     }
 
     function loadTableVBDiSoTatCa(isPageChanged) {
@@ -35,6 +76,8 @@
         var kyhieuvanban = $('#txtShareKyHieuVanBanDi').val();
         var vanbandiso = $('#ddlShareVanBanDiSo').val();
         var trichyeu = $('#txtShareTrichYeuDi').val();
+
+        var noidenvbdi = $('#ddlShareCVBDiNoiDen').val();
         var coquanbanhanh = $('#ddlShareCoQuanBanHanhDi').val();
 
         $.ajax({
@@ -42,7 +85,7 @@
             url: '/admin/vbdithem/GetListVBDiSo',
             data: {
                 corporationId: makhuvuc,
-                keyword: "%",
+                keyword: noidenvbdi,
 
                 NamVanBan: namvanban,
                 SoVanBan: sovanban,

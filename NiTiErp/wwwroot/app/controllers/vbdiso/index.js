@@ -83,6 +83,7 @@ var vbdisoController = function () {
                 $.each(response.Result, function (i, item) {
                     render += "<option value='" + item.Id + "'>" + item.Ten + "</option>";
                 });
+                $('#ddlShareCVBDiNoiDen').html(render);
                 $('#ddlShareCoQuanBanHanhDi').html(render);
             },
             error: function (status) {
