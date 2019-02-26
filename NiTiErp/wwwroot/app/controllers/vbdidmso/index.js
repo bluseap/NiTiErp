@@ -48,6 +48,42 @@
             tedu.configs.pageIndex = 1;
             addeditvbdidmso.loadTableVBDiDMSo(true);     
         });
+
+        $('body').on('click', '.btn-deleteVBDiDMSo', function (e) {
+            e.preventDefault();
+            $('#hidVBDiSMSoId').val(3); 
+            var vbdidmsoid = $(this).data('id');
+            deleteVBDiDMSo(vbdidmsoid);
+        });
+    }
+
+    function deleteVBDiDMSo(vbdidmsoid) {
+        var insertvbdidmso = $('#hidVBDiSMSoId').val(); 
+
+        tedu.confirm('Bạn có chắc chắn xóa bằng này?', function () {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/VBDiDMSo/DeleteVBDiDMSo",
+                data: {
+                    Id: vbdidmsoid,
+                    InsertVanBanDiSoId: insertvbdidmso // 3
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    tedu.notify('Xóa thành công', 'success');
+                    tedu.stopLoading();
+                    $('#hidVBDiSMSoId').val(0);
+                    addeditvbdidmso.loadTableVBDiDMSo();     
+                },
+                error: function (status) {
+                    tedu.notify('Xóa Nơi khám Sức khỏe lỗi! Kiểm tra lại.', 'error');
+                    tedu.stopLoading();
+                }
+            });
+        });
     }
 
     function loadKhuVuc() {

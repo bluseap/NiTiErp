@@ -89,6 +89,38 @@ namespace NiTiErp.Areas.Admin.Controllers
             }
         }
 
+        [HttpPost]
+        public IActionResult DeleteVBDiDMSo(VanBanDiSoViewModel vbdidmsoVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                if (vbdidmsoVm.InsertVanBanDiSoId == 3)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "VANBANDISO", Operations.Delete); // xoa suc khoe nhan vien
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền xóa."));
+                    }
+
+                    vbdidmsoVm.CreateDate = DateTime.Now;
+                    vbdidmsoVm.UpdateDate = DateTime.Now;
+
+                    var suckhoe = _vanbandisoService.VanBanDiSoAUD(vbdidmsoVm, "DelVanBanDiSo");
+
+                    return new OkObjectResult(suckhoe);
+                }
+                else
+                {
+                    return new OkObjectResult(vbdidmsoVm);
+                }
+            }
+        }
+
         [HttpGet]
         public IActionResult VanBanCoQuanGetList(string corporationid, int nam)
         {
