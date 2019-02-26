@@ -108,8 +108,8 @@ namespace NiTiErp.Application.Dapper.Implementation
                 dynamicParameters.Add("@Nam", vanbandiso.Nam);
                 dynamicParameters.Add("@CorporationId", vanbandiso.CorporationId);
                 dynamicParameters.Add("@TenSo", vanbandiso.TenSo);
-                dynamicParameters.Add("@SoDenHienTai", vanbandiso.SoDiHienTai);
-                dynamicParameters.Add("@SoDenHet", vanbandiso.SoDiHet);
+                dynamicParameters.Add("@SoDiHienTai", vanbandiso.SoDiHienTai);
+                dynamicParameters.Add("@SoDiHet", vanbandiso.SoDiHet);
                 dynamicParameters.Add("@DoUuTien", vanbandiso.DoUuTien);
                 dynamicParameters.Add("@Stt", vanbandiso.Stt);
 
