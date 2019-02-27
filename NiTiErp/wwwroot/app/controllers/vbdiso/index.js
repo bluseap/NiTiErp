@@ -33,6 +33,10 @@ var vbdisoController = function () {
 
     }
 
+    function loadCountVanBanDi(makv) {
+        sotatca.loadCountSoTatCa(makv);
+    }
+
     function loadKhuVuc() {
         return $.ajax({
             type: 'GET',
@@ -56,7 +60,7 @@ var vbdisoController = function () {
 
                 var makv = $('#ddlKhuVuc').val();
                 //chuaphathanh.loadCountVBChuaPhatHanh(makv);
-                //loadCountVanBanDen(makv);
+                loadCountVanBanDi(makv);
                 loadVanBanDiSoList(makv);
             },
             error: function (status) {

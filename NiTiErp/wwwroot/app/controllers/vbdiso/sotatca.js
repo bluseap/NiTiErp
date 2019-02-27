@@ -9,6 +9,28 @@
         $('#ddlShareCoQuanBanHanhDi').prop("disabled", true);
     }    
 
+    this.loadCountSoTatCa = function (makv) {
+        loadCountSoTatCa(makv);
+    }
+
+    function loadCountSoTatCa(makv) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/vbdithem/GetCountVBDiSoTatCa',
+            data: {
+                corporationId: makv
+            },
+            dataType: 'json',
+            success: function (response) {
+                $('#spanSoTatCaVBDi').text(response);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+
     function registerEvents() {
 
         $('#btnTimSoTatCaVBDi').on('click', function () {

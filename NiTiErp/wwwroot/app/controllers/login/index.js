@@ -67,7 +67,7 @@
                     tedu.notify('Login failed', 'error');
                 }
             }
-        })
+        });
     }
 
     var thongbao = function () {

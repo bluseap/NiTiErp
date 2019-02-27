@@ -1,50 +1,50 @@
-﻿var addeidtvbdidmsoController = function () {
+﻿var addeidtvbddmsoController = function () {
 
     var userCorporationId = $("#hidUserCorporationId").val();
-   
 
-    this.initialize = function () {  
+
+    this.initialize = function () {
 
         registerEvents();
-       
+
     }
 
-    this.loadTableVBDiDMSo = function () {
-        loadTableVBDiDMSo();
+    this.loadTableVBDDMSo = function () {
+        loadTableVBDDMSo();
     }
 
-    this.loadVBDiDMSo = function (vbdidmsoid) {
-        loadVBDiDMSoId(vbdidmsoid);
+    this.loadVBDDMSo = function (vbddmsoid) {
+        loadVBDDMSoId(vbddmsoid);
     }
 
     function registerEvents() {
 
-        $("#btnLuuVBDiDMSo").on('click', function (e) {
+        $("#btnLuuVBDDMSo").on('click', function (e) {
             e.preventDefault();
-            LuuVBDiDMSo();
+            LuuVBDDMSo();
         });
 
     }
 
-    function loadVBDiDMSoId(vbdidmsoid){
+    function loadVBDDMSoId(vbddmsoid) {
         $.ajax({
             type: "GET",
-            url: "/Admin/VBDiDMSo/GetVBDiDMSoId",
-            data: { vbdidmsoId: vbdidmsoid },
+            url: "/Admin/VBDDMSo/GetVBDDMSoId",
+            data: { vbddmsoId: vbddmsoid },
             dataType: "json",
             beforeSend: function () {
                 tedu.startLoading();
             },
             success: function (response) {
-                var vbdidmso = response.Result[0];               
+                var vbddmso = response.Result[0];
 
-                $('#hidVBDiSMSoId').val(vbdidmso.Id);
-                $('#hidInsertVBDiSMSoId').val(2);
+                $('#hidVBDSMSoId').val(vbddmso.Id);
+                $('#hidInsertVBDSMSoId').val(2);
 
-                $('#ddlVBDiDMAddEditKhuVuc').val(vbdidmso.CorporationId);
-                $('#txtVBDiDMSoAddEditNam').val(vbdidmso.Nam);
-                $('#txtVBDiDMSoTen').val(vbdidmso.TenSo);
-              
+                $('#ddlVBDDMAddEditKhuVuc').val(vbddmso.CorporationId);
+                $('#txtVBDDMSoAddEditNam').val(vbddmso.Nam);
+                $('#txtVBDDMSoTen').val(vbddmso.TenSo);
+
                 tedu.stopLoading();
             },
             error: function (status) {
@@ -54,25 +54,25 @@
         });
     }
 
-    function LuuVBDiDMSo() {
+    function LuuVBDDMSo() {
         //tedu.notify("luu vao vb di so", "success");
 
-        var vbdidmsoId = $('#hidVBDiSMSoId').val();
-        var insertVBDiDMSoId = $('#hidInsertVBDiSMSoId').val();
+        var vbddmsoId = $('#hidVBDSMSoId').val();
+        var insertVBDDMSoId = $('#hidInsertVBDSMSoId').val();
 
-        var makhuvuc = $('#ddlVBDiDMAddEditKhuVuc').val();
-        var namSo = $('#txtVBDiDMSoAddEditNam').val();
-        var tenSo = $('#txtVBDiDMSoTen').val();
+        var makhuvuc = $('#ddlVBDDMAddEditKhuVuc').val();
+        var namSo = $('#txtVBDDMSoAddEditNam').val();
+        var tenSo = $('#txtVBDDMSoTen').val();
 
         $.ajax({
             type: "POST",
-            url: "/Admin/VBDiDMSo/AddUpdateVanBanDiDMSo",
+            url: "/Admin/VBDDMSo/AddUpdateVanBanDenDMSo",
             data: {
-                Id: vbdidmsoId,
-                InsertVanBanDiSoId: insertVBDiDMSoId,
+                Id: vbddmsoId,
+                InsertVanBanDenSoId: insertVBDDMSoId,
                 CorporationId: makhuvuc,
                 Nam: namSo,
-                TenSo: tenSo              
+                TenSo: tenSo
             },
             dataType: "json",
             beforeSend: function () {
@@ -83,38 +83,37 @@
                     tedu.notify(response.Message, "error");
                 }
                 else {
-                    tedu.notify('Danh mục sổ văn bản đi.', 'success');
-                    loadTableVBDiDMSo(true);
+                    tedu.notify('Danh mục sổ văn bản đến.', 'success');
+                    loadTableVBDDMSo(true);
                     clearAddEditData();
-                    $('#modal-add-edit-VBDiSMSo').modal('hide');         
+                    $('#modal-add-edit-VBDSMSo').modal('hide');
                     tedu.stopLoading();
                 }
             },
             error: function () {
-                tedu.notify('Có lỗi! Không thể lưu Danh mục sổ văn bản đi', 'error');
+                tedu.notify('Có lỗi! Không thể lưu Danh mục sổ văn bản đến', 'error');
                 tedu.stopLoading();
             }
         });
-
     }
 
     function clearAddEditData() {
         var namhientai = new Date().getFullYear();
 
-        $('#hidVBDiSMSoId').val(0);
-        $('#hidInsertVBDiSMSoId').val('');
+        $('#hidVBDSMSoId').val(0);
+        $('#hidInsertVBDSMSoId').val('');
 
-        $('#ddlVBDiDMAddEditKhuVuc')[0].selectIndex = 1;
-        $('#txtVBDiDMSoAddEditNam').val(namhientai);
-        $('#txtVBDiDMSoTen').val('');
+        $('#ddlVBDDMAddEditKhuVuc')[0].selectIndex = 1;
+        $('#txtVBDDMSoAddEditNam').val(namhientai);
+        $('#txtVBDDMSoTen').val('');
     }
 
-    function loadTableVBDiDMSo(isPageChanged) {
-        var template = $('#table-VBDiDMSo').html();
+    function loadTableVBDDMSo(isPageChanged) {
+        var template = $('#table-VBDDMSo').html();
         var render = "";
 
         var makhuvuc = $('#ddlKhuVuc').val();
-        var namSo = $('#txtVBDiDMSoNam').val();
+        var namSo = $('#txtVBDDMSoNam').val();
         var timnhanvien = $('#txtTimNoiDung').val();
 
         $.ajax({
@@ -126,7 +125,7 @@
                 page: tedu.configs.pageIndex,
                 pageSize: tedu.configs.pageSize
             },
-            url: '/admin/VBDiDMSo/GetAllVBDiDMSoPaging',
+            url: '/admin/VBDDMSo/GetAllVBDDMSoPaging',
             dataType: 'json',
             success: function (response) {
                 if (response.Result.Results.length === 0) {
@@ -136,10 +135,10 @@
                     $.each(response.Result.Results, function (i, item) {
                         render += Mustache.render(template, {
                             Id: item.Id,
-                            TenSoVanBanDi: item.TenSo,
+                            TenSoVanBanDen: item.TenSo,
                             //HinhNhanVien: item.Image === null ? '<img src="/admin-side/images/user.png?h=90"' : '<img src="' + item.HinhNhanVien + '?h=90" />',
                             Nam: item.Nam,
-                            TenKhuVuc: item.TenKhuVuc,                   
+                            TenKhuVuc: item.TenKhuVuc,
                             CreateDate: tedu.getFormattedDate(item.CreateDate),
                             Status: tedu.getHoSoNhanVienStatus(item.Status)
                             // Price: tedu.formatNumber(item.Price, 0),                          
@@ -147,15 +146,15 @@
                     });
                 }
 
-                $('#lblVBDiDMSoTotalRecords').text(response.Result.RowCount);
+                $('#lblVBDDMSoTotalRecords').text(response.Result.RowCount);
 
                 if (render !== '') {
-                    $('#tblContentVBDiDMSo').html(render);
+                    $('#tblContentVBDDMSo').html(render);
                 }
 
                 if (response.Result.RowCount !== 0) {
-                    wrapPagingVBDiDMSo(response.Result.RowCount, function () {
-                        loadTableVBDiDMSo();
+                    wrapPagingVBDDMSo(response.Result.RowCount, function () {
+                        loadTableVBDDMSo();
                     },
                         isPageChanged);
                 }
@@ -166,16 +165,16 @@
             }
         });
     }
-    function wrapPagingVBDiDMSo(recordCount, callBack, changePageSize) {
+    function wrapPagingVBDDMSo(recordCount, callBack, changePageSize) {
         var totalsize = Math.ceil(recordCount / tedu.configs.pageSize);
         //Unbind pagination if it existed or click change pagesize
-        if ($('#paginationULVBDiDMSo a').length === 0 || changePageSize === true) {
-            $('#paginationULVBDiDMSo').empty();
-            $('#paginationULVBDiDMSo').removeData("twbs-pagination");
-            $('#paginationULVBDiDMSo').unbind("page");
+        if ($('#paginationULVBDDMSo a').length === 0 || changePageSize === true) {
+            $('#paginationULVBDDMSo').empty();
+            $('#paginationULVBDDMSo').removeData("twbs-pagination");
+            $('#paginationULVBDDMSo').unbind("page");
         }
         //Bind Pagination Event
-        $('#paginationULVBDiDMSo').twbsPagination({
+        $('#paginationULVBDDMSo').twbsPagination({
             totalPages: totalsize,
             visiblePages: 7,
             first: 'Đầu',
@@ -192,6 +191,5 @@
             }
         });
     }
-    
 
 }

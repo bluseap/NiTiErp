@@ -38,7 +38,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         public IActionResult Index()
         {
             var username = User.GetSpecificClaim("UserName");
-            var result = _authorizationService.AuthorizeAsync(User, "VANBANDISO", Operations.Read);
+            var result = _authorizationService.AuthorizeAsync(User, "VANBANDIAMSO", Operations.Read);
             if (result.Result.Succeeded == false)
                 return new RedirectResult("/homevanban/Index");
 
@@ -65,7 +65,7 @@ namespace NiTiErp.Areas.Admin.Controllers
 
                 if (vanbandisoVm.InsertVanBanDiSoId == 1)
                 {
-                    var result = _authorizationService.AuthorizeAsync(User, "VANBANDISO", Operations.Create); // nhap van ban den
+                    var result = _authorizationService.AuthorizeAsync(User, "VANBANDIAMSO", Operations.Create); // nhap van ban den
                     if (result.Result.Succeeded == false)
                     {
                         return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
@@ -77,7 +77,7 @@ namespace NiTiErp.Areas.Admin.Controllers
                 }
                 else
                 {
-                    var result = _authorizationService.AuthorizeAsync(User, "VANBANDISO", Operations.Update); //
+                    var result = _authorizationService.AuthorizeAsync(User, "VANBANDIAMSO", Operations.Update); //
                     if (result.Result.Succeeded == false)
                     {
                         return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền sửa."));
@@ -101,7 +101,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             {
                 if (vbdidmsoVm.InsertVanBanDiSoId == 3)
                 {
-                    var result = _authorizationService.AuthorizeAsync(User, "VANBANDISO", Operations.Delete); // xoa suc khoe nhan vien
+                    var result = _authorizationService.AuthorizeAsync(User, "VANBANDIAMSO", Operations.Delete); // xoa suc khoe nhan vien
                     if (result.Result.Succeeded == false)
                     {
                         return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền xóa."));
