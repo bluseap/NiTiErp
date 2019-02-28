@@ -44,7 +44,8 @@
                             Id: item.Id,
                             TenNhanVien: item.TenNhanVien,
                             MoTa: item.MoTa,
-                            NgayNhap: tedu.getFormattedDate(item.CreateDate)
+                            NgayNhap: tedu.getFormattedDate(item.CreateDate),
+                            NhanVienXuLy: item.NhanVienXuLy
                             // Price: tedu.formatNumber(item.Price, 0),                          
                         });
                     });

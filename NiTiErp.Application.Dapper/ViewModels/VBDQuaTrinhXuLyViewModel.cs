@@ -30,6 +30,8 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
         public string GhiChu2 { get; set; }
 
+        public string NhanVienXuLy { get; set; }
+
 
 
         public int Status { get; set; }

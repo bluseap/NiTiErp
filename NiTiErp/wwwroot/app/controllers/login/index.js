@@ -53,8 +53,8 @@
             url: '/admin/login/authen',
             success: function (res) {
                 if (res.Success) {
-                    //window.location.href = "/Admin/Home/Index";
-                    window.location.href = "/Admin/HomeVanBan/Index";
+                    window.location.href = "/Admin/Home/Index";
+                    //window.location.href = "/Admin/HomeVanBan/Index";
 
                     $.getJSON("http://jsonip.com?callback=?", function (data) {
                         //$(".ip").text(data.ip);

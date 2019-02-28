@@ -1,11 +1,58 @@
 ﻿
 
+
+
+
+
+update procedure [VanBanDenQTXL]
+
+update procedure [ThongBaoGetList]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+r
 create table VanBanDiNoiNhan
-
+r
 create table VanBanDiNoiNhanHis
-
+r
 create table VBDQuaTrinhXuLy
-
+r
 create table VBDiQuaTrinhXuLy
 
 create table VanBanCoQuanBanHanh
