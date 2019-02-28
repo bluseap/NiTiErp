@@ -199,8 +199,8 @@
             var trichyeunoidung = $('#txtTrichYeu99').val();
             var linhvucid = $('#ddlLinhVuc').val();
             var loaivanbanid = $('#ddlLoaiVanBan').val();
-            var ngaybanhanh = $('#txtNgayBanHanh').val();
-            var ngaydivanban = $('#txtNgayDi').val();
+            var ngaybanhanh = tedu.getFormatDateYYMMDD($('#txtNgayBanHanh').val());
+            var ngaydivanban = tedu.getFormatDateYYMMDD($('#txtNgayDi').val());
             var sovanbandiso = $('#ddlSoVanBanDi').val();
             var sovanbandi = $('#txtSoVanBanDi').val(); 
             //var sovanbanden = $('#txtSoVanBanDen').val();
@@ -299,8 +299,8 @@
             var trichyeunoidung = $('#txtTrichYeu99').val();
             var linhvucid = $('#ddlLinhVuc').val();
             var loaivanbanid = $('#ddlLoaiVanBan').val();
-            var ngaybanhanh = $('#txtNgayBanHanh').val();
-            var ngaydivanban = $('#txtNgayDi').val();
+            var ngaybanhanh = tedu.getFormatDateYYMMDD($('#txtNgayBanHanh').val());
+            var ngaydivanban = tedu.getFormatDateYYMMDD($('#txtNgayDi').val());
             var sovanbandiso = $('#ddlSoVanBanDi').val();
             var sovanbandi = $('#txtSoVanBanDi').val();
             //var sovanbanden = $('#txtSoVanBanDen').val();
@@ -394,7 +394,8 @@
 
         $('#btnVBDiLDDPhatHanh').hide();     
         $('#txtSoVanBanDi').prop("disabled", true);     
-        
+
+        $('#btnVBDiChuyenLD').hide();
     }
 
     function nhomXuLy() {

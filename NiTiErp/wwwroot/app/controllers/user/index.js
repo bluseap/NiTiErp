@@ -29,10 +29,12 @@
                             userName: function() { return $("#txtUserName").val(); }
                         },
                         dataType: "json",
-                        success: function (response) {
+                        success: function (response) {                           
                             var username = $("#txtUserName").val();
-                            if (response.UserName === username) {
-                                tedu.notify('Trùng User name.', 'error');
+                            if (response !== undefined) {                                
+                                if (response.UserName === username) {
+                                    tedu.notify('Trùng User name.', 'error');
+                                }
                             }
                         }
                     }

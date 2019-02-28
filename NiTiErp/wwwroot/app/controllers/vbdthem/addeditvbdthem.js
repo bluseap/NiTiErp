@@ -368,8 +368,8 @@
             var trichyeunoidung = $('#txtTrichYeu').val();
             var linhvucid = $('#ddlLinhVuc').val();
             var loaivanbanid = $('#ddlLoaiVanBan').val();
-            var ngaybanhanh = $('#txtNgayBanHanh').val();
-            var ngaydenvanban = $('#txtNgayDen').val();
+            var ngaybanhanh = tedu.getFormatDateYYMMDD($('#txtNgayBanHanh').val());    
+            var ngaydenvanban = tedu.getFormatDateYYMMDD($('#txtNgayDen').val()); 
             var sovanbandenso = $('#ddlSoVanBanDen').val();
             var sovanbanden = $('#txtSoVanBanDen').val();
             var sokyhieuvanban = $('#txtSoKyHieu').val();
@@ -455,8 +455,8 @@
             var trichyeunoidung = $('#txtTrichYeu').val();
             var linhvucid = $('#ddlLinhVuc').val();
             var loaivanbanid = $('#ddlLoaiVanBan').val();
-            var ngaybanhanh = $('#txtNgayBanHanh').val();
-            var ngaydenvanban = $('#txtNgayDen').val();
+            var ngaybanhanh = tedu.getFormatDateYYMMDD($('#txtNgayBanHanh').val());  
+            var ngaydenvanban = tedu.getFormatDateYYMMDD($('#txtNgayDen').val());    
             var sovanbandenso = $('#ddlSoVanBanDen').val();
             var sovanbanden = $('#txtSoVanBanDen').val();
             var sokyhieuvanban = $('#txtSoKyHieu').val();
@@ -941,8 +941,8 @@
             var trichyeunoidung = $('#txtTrichYeu').val();
             var linhvucid = $('#ddlLinhVuc').val();
             var loaivanbanid = $('#ddlLoaiVanBan').val();
-            var ngaybanhanh = $('#txtNgayBanHanh').val();
-            var ngaydenvanban = $('#txtNgayDen').val();
+            var ngaybanhanh = tedu.getFormatDateYYMMDD($('#txtNgayBanHanh').val()); 
+            var ngaydenvanban = tedu.getFormatDateYYMMDD($('#txtNgayDen').val()); 
             var sovanbandenso = $('#ddlSoVanBanDen').val();
             var sovanbanden = $('#txtSoVanBanDen').val();
             var sokyhieuvanban = $('#txtSoKyHieu').val();
