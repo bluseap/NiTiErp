@@ -7,6 +7,7 @@
     var choduyet = new choduyetController();
     var daduyet = new daduyetController();
     var dathuchien = new dathuchienController();
+    var duyettatca = new duyettatcaController();
 
     this.initialize = function () {
         //tedu.isVanBanDen('VANBANDENDUYET');
@@ -19,7 +20,8 @@
         dachuyenchuyenmon.initialize();
         choduyet.initialize();
         daduyet.initialize();
-        dathuchien.initialize(); 
+        dathuchien.initialize();
+        duyettatca.initialize();
 
         loadData();
     }

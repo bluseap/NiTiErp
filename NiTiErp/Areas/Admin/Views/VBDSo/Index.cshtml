@@ -73,7 +73,7 @@
                     </li>
                     <li role="presentation" class="">
                         <a href="#tab_ChuaChuyen" role="tab" id="tabChuaChuyen" data-toggle="tab" aria-expanded="false">
-                            VB Chưa chuyển CM
+                            VB Chưa chuyển Chuyên môn
                             <span id="spanChuaChuyen" class="badge bg-blue" style="font-size:large">0</span>
                         </a>
                     </li>
@@ -83,12 +83,12 @@
                             <span id="spanChuaXuLy" class="badge bg-orange" style="font-size:large">0</span>
                         </a>
                     </li>
-                    <li role="presentation" class="">
+                    @*<li role="presentation" class="">
                         <a href="#tab_ChuaDuyet" role="tab" id="tabChuaDuyet" data-toggle="tab" aria-expanded="false">
                             VB Chưa duyệt
                             <span id="spanChuaDuyet" class="badge bg-blue" style="font-size:large">0</span>
                         </a>
-                    </li>
+                    </li>*@
                     @*<li role="presentation" class="">
                         <a href="#tab_ChuaPhatHanh" role="tab" id="tabChuaPhatHanh" data-toggle="tab" aria-expanded="false">
                             VB Chưa phát hành
@@ -97,13 +97,13 @@
                     </li>*@
                     <li role="presentation" class="">
                         <a href="#tab_SoTatCa" role="tab" id="tabSoTatCa" data-toggle="tab" aria-expanded="false">
-                            Tất cả
+                            Tất cả VB
                             <span id="spanSoTatCa" class="badge bg-green" style="font-size:large">0</span>
                         </a>
                     </li>
                 </ul>
                 <div id="myTabContentSoVanBanDen" class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade active in" id="tab_LuuTam" aria-labelledby="home-tab">
+                        <div role="tabpanel" class="tab-pane fade active in" id="tab_LuuTam" aria-labelledby="home-tab">
                         <partial name="_tabLuuTam.cshtml" />
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="tab_ChuaChuyen" aria-labelledby="profile-tab">
@@ -112,12 +112,12 @@
                     <div role="tabpanel" class="tab-pane fade" id="tab_ChuaXuLy" aria-labelledby="profile-tab">
                         <partial name="_tabChuaXuLy.cshtml" />
                     </div>
-                    <div role="tabpanel" class="tab-pane fade" id="tab_ChuaDuyet" aria-labelledby="profile-tab">
+                    @*<div role="tabpanel" class="tab-pane fade" id="tab_ChuaDuyet" aria-labelledby="profile-tab">
                         <partial name="_tabChuaDuyet.cshtml" />
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="tab_ChuaPhatHanh" aria-labelledby="profile-tab">
                         <partial name="_tabChuaPhatHanh.cshtml" />
-                    </div>
+                    </div>*@
                     <div role="tabpanel" class="tab-pane fade" id="tab_SoTatCa" aria-labelledby="profile-tab">
                         <partial name="_tabSoTatCa.cshtml" />
                     </div>

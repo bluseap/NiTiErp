@@ -1,86 +1,47 @@
-﻿var chochuyenchuyenmonController = function () {
-  
-    var chuyenchuyenmon = new _chuyenchuyenmonController();
-    var quatrinhxuly = new _quatrinhxulyController();
-    var choduyet = new choduyetController();
-    var duyettatca = new duyettatcaController();
+﻿var duyettatcaController = function () {
 
-    this.initialize = function () {     
+
+    this.loadCountVBDDuyetTatCa = function (makv) {
+        loadCountVBDDuyetTatCa(makv);
+    }
+
+    this.initialize = function () {
 
         registerEvents();
 
-        quatrinhxuly.initialize();
-        chuyenchuyenmon.initialize();
-
-        loadCCCMData();
-
-    }
-
-    this.loadCountVanBanDen = function(makhuvuc) {
-        loadCountVanBanDenChuaCCM(makhuvuc);
-        chuyenchuyenmon.loadCountVBChuyenChuyenMon(makhuvuc);
-        choduyet.loadCountVBDChoDuyet(makhuvuc);
-        duyettatca.loadCountVBDDuyetTatCa(makhuvuc);
     }
 
     function registerEvents() {
 
-        $('#btnTimChoChuyenChuyenMon').on('click', function () {            
-            loadTableCCCM();
+        $('#btnTimDuyetTatCa').on('click', function () {
+            loadTableDuyetTatCa();
         });
 
-        $("#ddl-show-pageChoChuyenChuyenMon").on('change', function () {
+        $("#ddl-show-pageDuyetTatCa").on('change', function () {
             tedu.configs.pageSize = $(this).val();
             tedu.configs.pageIndex = 1;
-            loadTableCCCM(true);
+            loadTableDuyetTatCa(true);
         });
 
-        $('body').on('click', '.btnCCCMPatchFileKyHieu', function (e) {
+        $('body').on('click', '.btnDuyetTatCaPatchVBDFileXuLy', function (e) {
             e.preventDefault();
             var vanbandenId = $(this).data('id');
-            loadPatchFile(vanbandenId);
+            loadPatchFileVBDXuLy(vanbandenId);
         });
+    }
 
-        $('body').on('click', '.btnCCCMPatchFileTrichYeu', function (e) {
-            e.preventDefault();
-            var vanbandenId = $(this).data('id');
-            loadPatchFile(vanbandenId);
-        });       
-
-        $('body').on('click', '.btnCCCMChuyen', function (e) {
-            e.preventDefault();
-            var vanbandenduyetId = $(this).data('id');
-            //tedu.notify(vanbandenduyetId, "success");
-           
-            $('#hidVanBanDenDuyetId').val(vanbandenduyetId);
-            $('#hidInsertVBDDNVXLId').val(1);
-
-            chuyenchuyenmon.loadNhanVienXuLyVanBanDen(vanbandenduyetId);
-
-            $('#modal-add-edit-ChuyenChuyenMon').modal('show');  
-        });
-
-        $('body').on('click', '.btnQuaTrinhXL', function (e) {
-            e.preventDefault();
-            var vanbandenId = $(this).data('id');
-            quatrinhxuly.loadQuaTrinhXuLy(vanbandenId);
-            $('#modal-add-edit-QuaTrinhXuLy').modal('show');
-        });
-
-    }    
-
-    function loadPatchFile(vanbandenId) {
+    function loadPatchFileVBDXuLy(vanbandenid) {
         $.ajax({
             type: "GET",
-            url: "/Admin/vbdthem/GetVanBanDenId",
-            data: { vanbandenId: vanbandenId },
+            url: "/Admin/vbdthem/GetVanBanDenXuLyId",
+            data: { vanbandenId: vanbandenid },
             dataType: "json",
             beforeSend: function () {
                 tedu.startLoading();
             },
             success: function (response) {
                 var vanbanden = response.Result[0];
-                var win = window.open(vanbanden.DuongDanFile, '_blank');
+                var win = window.open(vanbanden.VBDXuLyFilePatch, '_blank');
                 win.focus();
                 tedu.stopLoading();
             },
@@ -91,26 +52,8 @@
         });
     }
 
-    function loadCountVanBanDenChuaCCM(makv) {
-        $.ajax({
-            type: 'GET',
-            url: '/admin/vbdthem/GetCountVBDenDuyetChuaCCM',
-            data: {
-                corporationId: makv
-            },
-            dataType: 'json',
-            success: function (response) {
-                $('#spanChoChuyenChuyenMon').text(response);
-            },
-            error: function (status) {
-                console.log(status);
-                tedu.notify('Không thể lấy dữ liệu về.', 'error');
-            }
-        });
-    }
-
-    function loadTableCCCM(isPageChanged) {
-        var template = $('#table-ChoChuyenChuyenMon').html();
+    function loadTableDuyetTatCa(isPageChanged) {
+        var template = $('#table-DuyetTatCa').html();
         var render = "";
 
         var makhuvuc = $('#ddlKhuVuc').val();
@@ -122,9 +65,9 @@
 
         $.ajax({
             type: 'GET',
-            url: '/admin/vbdthem/GetListVBDenTTDuyet',
+            url: '/admin/vbdthem/GetListVBDDuyetTatCa',
             data: {
-                corporationId: makhuvuc,                
+                corporationId: makhuvuc,
                 keyword: "%",
 
                 NamVanBan: namvanban,
@@ -154,21 +97,23 @@
                             NgayBanHanhCuaVanBan: tedu.getFormattedDate(item.NgayBanHanhCuaVanBan),
                             NgayDenCuaVanBan: tedu.getFormattedDate(item.NgayDenCuaVanBan),
                             TTXuLy: tedu.getVanBanDenTTXuLy(item.TTXuLy),
-                            VanBanDenId: item.VanBanDenId
+                            VanBanDenId: item.VanBanDenId,
+                            TenFile: item.TenFile,
+                            VBDXuLyFilePatch: item.VBDXuLyFilePatch
                             // Price: tedu.formatNumber(item.Price, 0),                          
                         });
                     });
                 }
 
-                $('#lblChoChuyenChuyenMonTotalRecords').text(response.Result.RowCount);
+                $('#lblDuyetTatCaTotalRecords').text(response.Result.RowCount);
 
                 if (render !== '') {
-                    $('#tblContentChoChuyenChuyenMon').html(render);
+                    $('#tblContentDuyetTatCa').html(render);
                 }
 
                 if (response.Result.RowCount !== 0) {
-                    wrapPagingCCCM(response.Result.RowCount, function () {
-                        loadTableCCCM();
+                    wrapPagingDuyetTatCa(response.Result.RowCount, function () {
+                        loadTableDuyetTatCa();
                     },
                         isPageChanged);
                 }
@@ -179,16 +124,16 @@
             }
         });
     }
-    function wrapPagingCCCM(recordCount, callBack, changePageSize) {
+    function wrapPagingDuyetTatCa(recordCount, callBack, changePageSize) {
         var totalsize = Math.ceil(recordCount / tedu.configs.pageSize);
         //Unbind pagination if it existed or click change pagesize
-        if ($('#paginationULChoChuyenChuyenMon a').length === 0 || changePageSize === true) {
-            $('#paginationULChoChuyenChuyenMon').empty();
-            $('#paginationULChoChuyenChuyenMon').removeData("twbs-pagination");
-            $('#paginationULChoChuyenChuyenMon').unbind("page");
+        if ($('#paginationULDuyetTatCa a').length === 0 || changePageSize === true) {
+            $('#paginationULDuyetTatCa').empty();
+            $('#paginationULDuyetTatCa').removeData("twbs-pagination");
+            $('#paginationULDuyetTatCa').unbind("page");
         }
         //Bind Pagination Event
-        $('#paginationULChoChuyenChuyenMon').twbsPagination({
+        $('#paginationULDuyetTatCa').twbsPagination({
             totalPages: totalsize,
             visiblePages: 7,
             first: 'Đầu',
@@ -206,9 +151,22 @@
         });
     }
 
-    function loadCCCMData() {
-
+    function loadCountVBDDuyetTatCa(makv) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/vbdthem/GetCountVBDDuyetTatCa',
+            data: {
+                corporationId: makv
+            },
+            dataType: 'json',
+            success: function (response) {
+                $('#spanDuyetTatCa').text(response);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
     }
-
 
 }

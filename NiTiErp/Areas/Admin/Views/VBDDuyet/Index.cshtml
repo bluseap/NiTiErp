@@ -14,6 +14,7 @@
 
     <script src="~/app/controllers/vbdduyet/_quatrinhxuly.js" asp-append-version="true"></script>
     <script src="~/app/controllers/vbdduyet/_chuyenchuyenmon.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/vbdduyet/duyettatca.js" asp-append-version="true"></script>
     <script src="~/app/controllers/vbdduyet/dathuchien.js" asp-append-version="true"></script>
     <script src="~/app/controllers/vbdduyet/daduyet.js" asp-append-version="true"></script>
     <script src="~/app/controllers/vbdduyet/choduyet.js" asp-append-version="true"></script>
@@ -83,7 +84,7 @@
                             <span id="spanDaChuyenChuyenMon" class="badge bg-blue" style="font-size:large">0</span>
                         </a>
                     </li>
-                    <li role="presentation" class="">
+                    @*<li role="presentation" class="">
                         <a href="#tab_ChoDuyet" role="tab" id="tabChoDuyet" data-toggle="tab" aria-expanded="false">
                             VB chờ duyệt
                             <span id="spanChoDuyet" class="badge bg-orange" style="font-size:large">0</span>
@@ -94,13 +95,13 @@
                             VB đã duyệt
                             <span id="spanDaDuyet" class="badge bg-blue" style="font-size:large">0</span>
                         </a>
-                    </li>
-                    @*<li role="presentation" class="">
-                        <a href="#tab_DaThucHien" role="tab" id="tabDaThucHien" data-toggle="tab" aria-expanded="false">
-                            VB đã thực hiện
-                            <span id="spanDaThucHien" class="badge bg-green" style="font-size:large">0</span>
-                        </a>
                     </li>*@
+                    <li role="presentation" class="">
+                        <a href="#tab_DuyetTatCa" role="tab" id="tabDuyetTatCa" data-toggle="tab" aria-expanded="false">
+                            Tất cả VB
+                            <span id="spanDuyetTatCa" class="badge bg-orange" style="font-size:large">0</span>
+                        </a>
+                    </li>
                 </ul>
                 <div id="myTabContentDuyetVanBan" class="tab-content">
                     <div role="tabpanel" class="tab-pane fade active in" id="tab_ChoChuyenChuyenMon" aria-labelledby="home-tab">
@@ -109,15 +110,15 @@
                     <div role="tabpanel" class="tab-pane fade" id="tab_DaChuyenChuyenMon" aria-labelledby="profile-tab">
                         <partial name="_tabDaChuyenChuyenMon.cshtml" />
                     </div>
-                    <div role="tabpanel" class="tab-pane fade" id="tab_ChoDuyet" aria-labelledby="profile-tab">
+                    @*<div role="tabpanel" class="tab-pane fade" id="tab_ChoDuyet" aria-labelledby="profile-tab">
                         <partial name="_tabChoDuyet.cshtml" />
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="tab_DaDuyet" aria-labelledby="profile-tab">
                         <partial name="_tabDaDuyet.cshtml" />
-                    </div>
-                    @*<div role="tabpanel" class="tab-pane fade" id="tab_DaThucHien" aria-labelledby="profile-tab">
-                        <partial name="_tabDaThucHien.cshtml" />
                     </div>*@
+                    <div role="tabpanel" class="tab-pane fade" id="tab_DuyetTatCa" aria-labelledby="profile-tab">
+                        <partial name="_tabDuyetTatCa.cshtml" />
+                    </div>
                 </div>
             </div>
 
