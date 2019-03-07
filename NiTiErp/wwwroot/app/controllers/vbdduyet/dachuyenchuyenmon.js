@@ -1,6 +1,6 @@
 ﻿var dachuyenchuyenmonController = function () {
 
-   
+    var vanbandenduyetfile = new vbdduyetfileController();
 
     this.initialize = function () {
 
@@ -16,9 +16,15 @@
 
         $('#btnTimDaChuyenChuyenMon').on('click', function () {            
             loadTableDaCCM();
-        });
+        });   
 
-        
+        $('body').on('click', '.btnDaCCMButPheLD', function (e) {
+            e.preventDefault();
+            var vanbandenId = $(this).data('id');
+            vanbandenduyetfile.loadTableVBDDuyetFileVBDId(vanbandenId);
+            $('#btnVBDDUyetFileId').hide();
+            $('#modal-add-edit-VBDDuyetFile').modal('show');
+        });
 
     }    
 
@@ -85,7 +91,8 @@
                             NgayBanHanhCuaVanBan: tedu.getFormattedDate(item.NgayBanHanhCuaVanBan),
                             NgayDenCuaVanBan: tedu.getFormattedDate(item.NgayDenCuaVanBan),
                             TTXuLy: tedu.getVanBanDenTTXuLy(item.TTXuLy),
-                            VanBanDenId: item.VanBanDenId
+                            VanBanDenId: item.VanBanDenId,
+                            ButPheLanhDao: item.ButPheLanhDao === "Invalid Date" ? "" : item.ButPheLanhDao
                             // Price: tedu.formatNumber(item.Price, 0),                          
                         });
                     });

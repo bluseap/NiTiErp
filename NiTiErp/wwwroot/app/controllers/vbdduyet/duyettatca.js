@@ -1,5 +1,6 @@
 ﻿var duyettatcaController = function () {
 
+    var vanbandenduyetfile = new vbdduyetfileController();
 
     this.loadCountVBDDuyetTatCa = function (makv) {
         loadCountVBDDuyetTatCa(makv);
@@ -27,6 +28,14 @@
             e.preventDefault();
             var vanbandenId = $(this).data('id');
             loadPatchFileVBDXuLy(vanbandenId);
+        });
+
+        $('body').on('click', '.btnDuyetTatCaButPheLD', function (e) {
+            e.preventDefault();
+            var vanbandenId = $(this).data('id');
+            vanbandenduyetfile.loadTableVBDDuyetFileVBDId(vanbandenId);
+            $('#btnVBDDUyetFileId').hide();
+            $('#modal-add-edit-VBDDuyetFile').modal('show');
         });
     }
 
@@ -99,7 +108,8 @@
                             TTXuLy: tedu.getVanBanDenTTXuLy(item.TTXuLy),
                             VanBanDenId: item.VanBanDenId,
                             TenFile: item.TenFile,
-                            VBDXuLyFilePatch: item.VBDXuLyFilePatch
+                            VBDXuLyFilePatch: item.VBDXuLyFilePatch,
+                            ButPheLanhDao: item.ButPheLanhDao === "Invalid Date" ? "" : item.ButPheLanhDao
                             // Price: tedu.formatNumber(item.Price, 0),                          
                         });
                     });

@@ -125,6 +125,9 @@ namespace NiTiErp.Application.Dapper.ViewModels
         public string VBDXuLyFilePatch { get; set; }
 
 
+        public string ButPheLanhDao { get; set; }
+
+
         public int Status { get; set; }
 
         public bool Active { get; set; }

@@ -490,6 +490,16 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetListVBDDuyetFileVBDIdPaging(long vanbandenId)
+        {
+            var newGuid = new Guid();
+
+            var model = _vbdduyetfileService.GetAllVanBanDenDuyetFilePaging(1, newGuid.ToString(), vanbandenId, "", "", 1, 1000, "GetAllVBDVBDDuyetVBDId");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
         public IActionResult GetListVanBanDenDuyetFileIdPaging(long vanbandenduyetfileId)
         {
             var newGuid = new Guid();

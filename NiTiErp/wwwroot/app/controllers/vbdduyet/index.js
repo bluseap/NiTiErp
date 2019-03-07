@@ -2,6 +2,7 @@
 
     var userCorporationId = $("#hidUserCorporationId").val();
 
+    var vbdduyetfile = new vbdduyetfileController();
     var chochuyenchuyenmon = new chochuyenchuyenmonController();
     var dachuyenchuyenmon = new dachuyenchuyenmonController();
     var choduyet = new choduyetController();
@@ -22,12 +23,12 @@
         daduyet.initialize();
         dathuchien.initialize();
         duyettatca.initialize();
+        vbdduyetfile.initialize();
 
         loadData();
     }
 
-    function registerEvents() {
-        
+    function registerEvents() {        
 
     }
 

@@ -4,6 +4,14 @@
 
     var fileUpload1 = [];
 
+    this.loadTableVanBanDenDuyetFile = function () {
+        loadTableVanBanDenDuyetFile();
+    }
+
+    this.loadTableVBDDuyetFileVBDId = function (vanbandenid) {
+        loadTableVBDDuyetFileVBDId(vanbandenid);
+    }
+
     this.initialize = function () {
 
         registerEvents();
@@ -15,17 +23,80 @@
     function registerEvents() {
 
         $("#btnSaveVBDDuyetFile").on('click', function (e) {
-            e.preventDefault();
+            e.preventDefault();           
             SaveVanBanDenDuyetFile();
         });
 
         UploadVanBanDenDuyetFile();
 
+        $('body').on('click', '.btnDeleteVBDDuyetFile', function (e) {
+            e.preventDefault();
+            
+            var vbduyetfileId = $(this).data('id');           
+            $('#hidInsertVBDDuyetFileId').val(3); // 3
+            deleteVanBanDenDuyetFile(vbduyetfileId);
+        }); 
+
+        $('body').on('click', '.btnVBDDuyetFileTenFile', function (e) {
+            e.preventDefault();
+            var vanbandenduyetfileId = $(this).data('id');
+            loadPatchVBDDuyetFileTenFile(vanbandenduyetfileId);
+        });
+
     }
 
     function loadData() {
-        loadTableVanBanDenDuyetFile();
+        //loadTableVanBanDenDuyetFile();
+    }
 
+    function loadPatchVBDDuyetFileTenFile(vanbandenduyetfileid) {
+        $.ajax({
+            type: "GET",
+            url: "/Admin/vbdduyet/GetListVanBanDenDuyetFileIdPaging",
+            data: { vanbandenduyetfileId: vanbandenduyetfileid },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var vanbanden = response.Result.Results[0];
+                var win = window.open(vanbanden.DuongDan, '_blank');
+                win.focus();
+                tedu.stopLoading();
+            },
+            error: function (status) {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function deleteVanBanDenDuyetFile(vbduyetfileid) {
+        var inservanbandenduyetfile = $('#hidInsertVBDDuyetFileId').val(); // 3        
+
+        tedu.confirm('Bạn có chắc chắn xóa bằng này?', function () {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/vbdduyet/DeleteVanBanDuyetFile",
+                data: {
+                    Id: vbduyetfileid,
+                    InsertVBDDuyetFileId: inservanbandenduyetfile // 3
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    tedu.notify('Xóa thành công', 'success'); 
+                    loadTableVanBanDenDuyetFile();
+                    tedu.stopLoading();
+                },
+                error: function (status) {
+                    tedu.notify('Xóa file văn bản đến lỗi! Kiểm tra lại.', 'error');
+                    tedu.stopLoading();
+                }
+            });
+        });
     }
 
     function UploadVanBanDenDuyetFile() {
@@ -99,6 +170,7 @@
                 }
                 else {
                     tedu.notify('Upload file.', 'success');
+                    $('#hidVanBanDenDuyetId').val('');
                     $('#hidInsertVBDDuyetFileId').val(0);
                     $('#hidTenFileVBDDuyetFileId').val('');
                     
@@ -115,7 +187,7 @@
     }
 
     function loadTableVanBanDenDuyetFile() {
-        var template = $('#table-FileVBDDuyetFile').html();
+        var template = $('#table-VBDDuyetFile').html();
         var render = "";
 
         var vanbandenduyetid = $('#hidVanBanDenDuyetId').val();
@@ -129,7 +201,50 @@
             dataType: 'json',
             success: function (response) {
                 if (response.Result.Results.length === 0) {
-                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th></tr>";
+                }
+                else {
+                    $.each(response.Result.Results, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+                            CodeId: item.CodeId,
+                            //HinhNhanVien: item.Image === null ? '<img src="/admin-side/images/user.png?h=90"' : '<img src="' + item.HinhNhanVien + '?h=90" />',
+                            TenFile: item.TenFile
+                            //CreateDate: tedu.getFormattedDate(item.CreateDate),
+                            //Status: tedu.getHoSoNhanVienStatus(item.Status)
+                            // Price: tedu.formatNumber(item.Price, 0),                          
+                        });
+                    });
+                }
+                //$('#lblThongBaoTotalRecords').text(response.Result.RowCount);
+                if (render !== '') {
+                    $('#tbl-contentVBDDuyetFile').html(render);
+                }
+
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+
+    function loadTableVBDDuyetFileVBDId(vanbandenid) {
+        var template = $('#table-VBDDuyetFile').html();
+        var render = "";
+
+        //var vanbandenduyetid = $('#hidVanBanDenDuyetId').val();
+
+        $.ajax({
+            type: 'GET',
+            data: {
+                VanBanDenDuyetId: vanbandenid
+            },
+            url: '/admin/vbdduyet/GetListVBDDuyetFileVBDIdPaging',
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th></tr>";
                 }
                 else {
                     $.each(response.Result.Results, function (i, item) {

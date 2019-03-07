@@ -1,5 +1,7 @@
 ﻿var _chuyenchuyenmonController = function () {
 
+    var vbdduyetfile = new vbdduyetfileController();
+
     var cachedObj = {
         phoihopxuly: []
     }
@@ -88,6 +90,8 @@
 
         $('body').on('click', '.btnVBDDuyetFile', function (e) {
             e.preventDefault();
+            vbdduyetfile.loadTableVanBanDenDuyetFile();
+            $('#btnVBDDUyetFileId').show();
             loadTableVBDDuyetfile();
             $('#modal-add-edit-VBDDuyetFile').modal('show');  
         });
