@@ -13,6 +13,7 @@
     <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
 
     <script src="~/app/controllers/vbdduyet/_quatrinhxuly.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/vbdduyet/_vbdduyetfile.js" asp-append-version="true"></script>
     <script src="~/app/controllers/vbdduyet/_chuyenchuyenmon.js" asp-append-version="true"></script>
     <script src="~/app/controllers/vbdduyet/duyettatca.js" asp-append-version="true"></script>
     <script src="~/app/controllers/vbdduyet/dathuchien.js" asp-append-version="true"></script>
@@ -85,17 +86,17 @@
                         </a>
                     </li>
                     @*<li role="presentation" class="">
-                        <a href="#tab_ChoDuyet" role="tab" id="tabChoDuyet" data-toggle="tab" aria-expanded="false">
-                            VB chờ duyệt
-                            <span id="spanChoDuyet" class="badge bg-orange" style="font-size:large">0</span>
-                        </a>
-                    </li>
-                    <li role="presentation" class="">
-                        <a href="#tab_DaDuyet" role="tab" id="tabDaDuyet" data-toggle="tab" aria-expanded="false">
-                            VB đã duyệt
-                            <span id="spanDaDuyet" class="badge bg-blue" style="font-size:large">0</span>
-                        </a>
-                    </li>*@
+                            <a href="#tab_ChoDuyet" role="tab" id="tabChoDuyet" data-toggle="tab" aria-expanded="false">
+                                VB chờ duyệt
+                                <span id="spanChoDuyet" class="badge bg-orange" style="font-size:large">0</span>
+                            </a>
+                        </li>
+                        <li role="presentation" class="">
+                            <a href="#tab_DaDuyet" role="tab" id="tabDaDuyet" data-toggle="tab" aria-expanded="false">
+                                VB đã duyệt
+                                <span id="spanDaDuyet" class="badge bg-blue" style="font-size:large">0</span>
+                            </a>
+                        </li>*@
                     <li role="presentation" class="">
                         <a href="#tab_DuyetTatCa" role="tab" id="tabDuyetTatCa" data-toggle="tab" aria-expanded="false">
                             Tất cả VB
@@ -111,11 +112,11 @@
                         <partial name="_tabDaChuyenChuyenMon.cshtml" />
                     </div>
                     @*<div role="tabpanel" class="tab-pane fade" id="tab_ChoDuyet" aria-labelledby="profile-tab">
-                        <partial name="_tabChoDuyet.cshtml" />
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="tab_DaDuyet" aria-labelledby="profile-tab">
-                        <partial name="_tabDaDuyet.cshtml" />
-                    </div>*@
+                            <partial name="_tabChoDuyet.cshtml" />
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="tab_DaDuyet" aria-labelledby="profile-tab">
+                            <partial name="_tabDaDuyet.cshtml" />
+                        </div>*@
                     <div role="tabpanel" class="tab-pane fade" id="tab_DuyetTatCa" aria-labelledby="profile-tab">
                         <partial name="_tabDuyetTatCa.cshtml" />
                     </div>

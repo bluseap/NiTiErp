@@ -264,6 +264,7 @@ namespace NiTiErp
             services.AddTransient<IVanBanDenSoService, VanBanDenSoService>();
             services.AddTransient<IVanBanDiSoService, VanBanDiSoService>();
             services.AddTransient<IVanBanDenFileService, VanBanDenFileService>();
+            services.AddTransient<IVanBanDenDuyetFileService, VanBanDenDuyetFileService>();
             services.AddTransient<IVanBanDiFileService, VanBanDiFileService>();
             services.AddTransient<IVanBanNhomXuLyService, VanBanNhomXuLyService>();
             services.AddTransient<IVanBanDenService, VanBanDenService>();
@@ -317,6 +318,7 @@ namespace NiTiErp
                 routes.MapHub<ChatHub>("/chat");
                 routes.MapHub<VanBanHub>("/vanban");
                 routes.MapHub<TinNhanHub>("/tinnhan");
+                routes.MapHub<ChatUserHub>("/chatuser");
             });
           
             app.UseMvc(routes =>

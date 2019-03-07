@@ -5,8 +5,10 @@
 @inject SignInManager<AppUser> SignInManager
 @inject UserManager<AppUser> UserManager
 
+
 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-    <img src="@User.GetSpecificClaim("Avatar")" alt="">@User.GetSpecificClaim("FullName")
+    @*<img src="@User.GetSpecificClaim("Avatar")" alt="">@User.GetSpecificClaim("FullName")*@
+    <img src="~/admin-side/images/img.jpg" alt="">@User.GetSpecificClaim("FullName")
     <span class=" fa fa-angle-down"></span>
 </a>
 <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -19,11 +21,82 @@
     </li>
     <li><a href="javascript:;">Hướng dẫn</a></li>
     <li>
-        <form action="/Admin/Account/Logout" method="post" id="logoutForm" class="navbar-right">            
+        <form action="/Admin/Account/Logout" method="post" id="logoutForm" class="navbar-right">
             <i class="fa fa-mail-reply-all">
                 <button type="submit" class="btn btn-link navbar-btn navbar-link">Thoát</button>
             </i>
         </form>
     </li>
 </ul>
+<li role="presentation" class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+        <i class="fa fa-bell-o"></i>
+        <span class="badge bg-green">6</span>
+    </a>
+    <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+        @*<li>
+                <a class="btn btn-lg btnChatUserHub" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="mmm">
+                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                    <span>
+                        <span> </span>
+                        <span id="spanDenChuaXuLy22" >0</span>
+                    </span>
+                    <span class="message">
+                        ...
+                    </span>
+                </a>
+            </li>*@
+        <div class="box-footer box-comments" id="divusers">
+        </div>
+        @*<li>
+                <a>
+                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                    <span>
+                        <span>John Smith</span>
+                        <span class="time">3 mins ago</span>
+                    </span>
+                    <span class="message">
+                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                    <span>
+                        <span>John Smith</span>
+                        <span class="time">3 mins ago</span>
+                    </span>
+                    <span class="message">
+                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                    <span>
+                        <span>John Smith</span>
+                        <span class="time">3 mins ago</span>
+                    </span>
+                    <span class="message">
+                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                    </span>
+                </a>
+            </li>
+            <li>
+                <div class="text-center">
+                    <a>
+                        <strong>See All Alerts</strong>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+            </li>*@
+
+
+    </ul>
+
+
+
+</li>
 

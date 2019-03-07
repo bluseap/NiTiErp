@@ -42,14 +42,14 @@
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
                         @*<a href="/admin/home" class="site_title">
-            <img src="/admin-side/images/powacmo.png" alt="...">
-            <span> Nhân sự</span>
-        </a>*@
+                                <img src="/admin-side/images/powacmo.png" alt="...">
+                                <span> Nhân sự</span>
+                            </a>*@
 
                         @*<a href="/admin/homevanban" class="site_title">
-            <img src="/admin-side/images/powacmo.png" alt="...">
-            <span>  Văn bản</span>
-        </a>*@
+                                <img src="/admin-side/images/powacmo.png" alt="...">
+                                <span>  Văn bản</span>
+                            </a>*@
                         <a href="/admin/home" class="site_title">
                             <img src="/admin-side/images/powacmo.png" alt="...">
                             <span>  Văn bản - HRM</span>
@@ -253,7 +253,11 @@
 
     <script src="~/app/shared/tedu.js" asp-append-version="true"></script>
 
-    <script src="~/app/shared/tinnhanhub.js" asp-append-version="true"></script>
+    @*<script src="~/app/shared/tinnhanhub.js" asp-append-version="true"></script>*@
+    
+   
+    @*<script src="~/app/shared/chatuser.js" asp-append-version="true"></script>*@
+    <script src="~/app/shared/loginchat.js" asp-append-version="true"></script>
 
     @*<environment names="Development">
             <script src="~/app/shared/tedu.js"></script>
@@ -261,8 +265,6 @@
         <environment names="Staging,Production">
             <script src="~/bundled/site-admin.min.js"></script>
         </environment>*@
-
-
 
     <script>
         @*<input type="hidden" id="hidUserCorporationId" value=@User.GetSpecificClaim("UserName") />*@
@@ -282,6 +284,7 @@
                     const connection = new signalR.HubConnectionBuilder()
                         .withUrl("/chat")
                         .build();
+
                     bindConnectionMessage(connection);
 
                     connection.start()

@@ -86,6 +86,16 @@
             SaveChuyenChuyenMon();
         });
 
+        $('body').on('click', '.btnVBDDuyetFile', function (e) {
+            e.preventDefault();
+            loadTableVBDDuyetfile();
+            $('#modal-add-edit-VBDDuyetFile').modal('show');  
+        });
+
+    }
+
+    function loadTableVBDDuyetfile() {
+
     }
 
     function SaveChuyenChuyenMon() {

@@ -20,6 +20,7 @@
 
         chartThongKeNhanVienTron();
         chartThongKeChucVuCot();
+      
     }
 
     function registerEvents() {

@@ -12,7 +12,7 @@ namespace NiTiErp.Extensions
         public static string GetSpecificClaim(this ClaimsPrincipal claimsPrincipal, string claimType)
         {
             var claim = claimsPrincipal.Claims.FirstOrDefault(x => x.Type == claimType);
-            return (claim != null) ? claim.Value : string.Empty;
+            return (claim != null) ? claim.Value.ToString() : string.Empty;
         }
     }
 }

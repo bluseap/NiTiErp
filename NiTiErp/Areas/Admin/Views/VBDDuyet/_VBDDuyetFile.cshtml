@@ -1,0 +1,64 @@
+﻿<div id="modal-add-edit-VBDDuyetFile" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Thêm mới file văn bản đến duyệt</h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainVBDDuyetFile">
+                        <input type="hidden" id="hidVBDDuyetFileId" value="" />
+                        <input type="hidden" id="hidInsertVBDDuyetFileId" value="" />
+                        <input type="hidden" id="hidTenFileVBDDuyetFileId" value="" />
+                        <input type="hidden" id="hidCodeFileGuidId" value="" />
+
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label for="lbFileVBDDuyetFile">Chọn file văn bản đến duyệt </label>
+                                <div id="imagelistFileVBDDuyetFile" class="col-md-12">
+                                </div>
+                                <div class="input-group">
+                                    <input type="file" id="fileFileVBDDuyetFile" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnSaveVBDDuyetFile" class="btn btn-primary">Lưu </button>
+                                <button type="button" id="btnCanceVBDDuyetFile" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="table-wrapper-scroll-y">
+                                <table id="tbl-FileVBDDuyetFile" class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Tên file văn bản</th>
+                                            <th width="=10%">#</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbl-contentVBDDuyetFile"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <script id="table-VBDDuyetFile" type="x-tmpl-mustache">
+                        <tr>
+                            <td>{{TenFile}}</td>
+                            <th scope="row">
+                                <a class="btn btnDeleteVBDDuyetFile" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xóa file văn bản đến duyệt">
+                                    <i class="fa fa-trash-o" style="color:red"></i>
+                                    Xóa
+                                </a>
+                            </th>
+                        </tr>
+                    </script>
+                </div>
+                
+
+            </div>
+        </div>
+    </div>
+</div>

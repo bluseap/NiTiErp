@@ -18,7 +18,7 @@ namespace NiTiErp.Hubs
         {
             // Call the broadcastMessage method to update clients.
             await Clients.All.SendAsync("VanBanDenChuaXuLy", message);
-        }        
+        }
 
         private static int Count = 0;
         public override Task OnConnectedAsync()

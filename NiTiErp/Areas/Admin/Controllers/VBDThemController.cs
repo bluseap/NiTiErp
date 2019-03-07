@@ -21,8 +21,10 @@ namespace NiTiErp.Areas.Admin.Controllers
         private readonly NiTiErp.Application.Interfaces.IUserService _userService;
         private readonly IAuthorizationService _authorizationService;
         private readonly IHubContext<VanBanHub> _hubContext;
-        private readonly IHubContext<TinNhanHub> _hubTinNhanContext;
+        private readonly IHubContext<TinNhanHub> _hubTinNhanContext;       
         private readonly IVanBanDienTuService _vanbandientuService;
+
+        //private readonly IHubContext<ChatUserHub> _hubChatUserContext;
 
         private readonly IVanBanDenDuyetService _vanbandenduyetService;
         private readonly IVanBanDenService _vanbandenService;
@@ -35,6 +37,8 @@ namespace NiTiErp.Areas.Admin.Controllers
             IHubContext<TinNhanHub> hubTinNhanContext,
             IVanBanDienTuService vanbandientuService,
 
+           // IHubContext<ChatUserHub> hubChatUserContext,
+
             IVanBanDenDuyetService vanbandenduyetService,
             IVanBanDenService vanbandenService,
             IVanBanDenFileService vanbandenfileService
@@ -43,6 +47,8 @@ namespace NiTiErp.Areas.Admin.Controllers
             _hostingEnvironment = hostingEnvironment;
             _userService = userService;
             _authorizationService = authorizationService;
+
+            //_hubChatUserContext = hubChatUserContext;
 
             _vanbandenduyetService = vanbandenduyetService;
             _vanbandientuService = vanbandientuService;
@@ -192,6 +198,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         #region Sum Van Ban Den
+
         [HttpGet]
         public IActionResult GetCountVBDen(string corporationId)
         {
@@ -199,8 +206,8 @@ namespace NiTiErp.Areas.Admin.Controllers
             var count = _vanbandenService.GetCountVanBan(corporationId, "GetCountVBDenTTXL");
             _hubContext.Clients.All.SendAsync("VanBanDenChuaXuLy", count.ToString());
             //_hubContext.Clients.All.SendAsync("VanBanDenChuaXuLy", "999");
-            return new OkObjectResult(count);
-        }
+            return new OkObjectResult(count);           
+        }        
 
         [HttpGet]
         public IActionResult GetCountVBDenDangXL(string corporationId)

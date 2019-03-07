@@ -5,8 +5,13 @@
 
 
 
+Create Table VanBanDenDuyetFile
 
 
+
+create PROC [dbo].[VanBanDenDuyetFileAUD]
+
+create PROC [dbo].[VanBanDenDuyetFileGetList]
 
 
 

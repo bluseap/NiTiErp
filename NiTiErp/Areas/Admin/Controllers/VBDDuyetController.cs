@@ -21,6 +21,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         private readonly NiTiErp.Application.Interfaces.IUserService _userService;
         private readonly IAuthorizationService _authorizationService;
 
+        private readonly IVanBanDenDuyetFileService _vbdduyetfileService;
         private readonly IVBDQuaTrinhXuLyService _vbdquatrinhxulyService;
         private readonly IVanBanPHXLService _vanbanphxlService;
         private readonly IVanBanDenService _vanbandenService;
@@ -31,6 +32,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             NiTiErp.Application.Interfaces.IUserService userService,
             IAuthorizationService authorizationService,
 
+            IVanBanDenDuyetFileService vbdduyetfileService,
             IVBDQuaTrinhXuLyService vbdquatrinhxulyService,
             IVanBanPHXLService vanbanphxlService,
             IVanBanDenService vanbandenService,
@@ -42,6 +44,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             _userService = userService;
             _authorizationService = authorizationService;
 
+            _vbdduyetfileService = vbdduyetfileService;
             _vbdquatrinhxulyService = vbdquatrinhxulyService;
             _vanbanphxlService = vanbanphxlService;
             _vanbandenService = vanbandenService;
@@ -385,10 +388,117 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
-        
+
 
         #endregion
 
+        #region VanBanDenFile
+
+        public IActionResult AddUpdateVBDDuyetFile(VanBanDenDuyetFileViewModel vanbandenduyetfileVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+
+                vanbandenduyetfileVm.CreateBy = username;
+                vanbandenduyetfileVm.CreateDate = DateTime.Now;
+                vanbandenduyetfileVm.UpdateBy = username;
+                vanbandenduyetfileVm.UpdateDate = DateTime.Now;                
+
+                if (vanbandenduyetfileVm.InsertVBDDuyetFileId == 1)
+                {    
+                    var result = _authorizationService.AuthorizeAsync(User, "VANBANDENDUYET", Operations.Create); 
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
+                    }
+
+                    var thongbao = _vbdduyetfileService.VanBanDenDuyetFileAUD(vanbandenduyetfileVm, "InVanBanDenDuyetFile");
+                    return new OkObjectResult(thongbao);
+                }
+                else
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "VANBANDENDUYET", Operations.Update); //
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền sửa."));
+                    }
+
+                    var thongbao = _vbdduyetfileService.VanBanDenDuyetFileAUD(vanbandenduyetfileVm, "UpVanBanDenDuyetFile");
+                    return new OkObjectResult(thongbao);
+                }
+            }
+        }
+
+        [HttpPost]
+        public IActionResult DeleteVanBanDuyetFile(VanBanDenDuyetFileViewModel vanbandenduyetfileVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                if (vanbandenduyetfileVm.InsertVBDDuyetFileId == 3)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "VANBANDENDUYET", Operations.Delete); // xoa van ban den file
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền xóa."));
+                    }
+
+                    var username = User.GetSpecificClaim("UserName");
+
+                    vanbandenduyetfileVm.CreateBy = username;
+                    vanbandenduyetfileVm.CreateDate = DateTime.Now;
+                    vanbandenduyetfileVm.UpdateBy = username;
+                    vanbandenduyetfileVm.UpdateDate = DateTime.Now;
+
+                    var vanbandenfile = _vbdduyetfileService.VanBanDenDuyetFileAUD(vanbandenduyetfileVm, "DelVanBanDenDuyetFile");
+
+                    return new OkObjectResult(vanbandenfile);
+                }
+                else
+                {
+                    return new OkObjectResult(vanbandenduyetfileVm);
+                }
+            }
+        }
+
+        [HttpGet]
+        public IActionResult GetListVanBanDenDuyetFilePaging(string CodeId)
+        {
+            var model = _vbdduyetfileService.GetAllVanBanDenDuyetFilePaging(1, CodeId, 1, "", "", 1, 1000, "GetAllVanBanDenDuyetFileCode");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetListVBDDuyetFileListIdPaging(long vanbandenduyetId)
+        {
+            var newGuid = new Guid();
+
+            var model = _vbdduyetfileService.GetAllVanBanDenDuyetFilePaging(1, newGuid.ToString(), vanbandenduyetId, "", "", 1, 1000, "GetAllVBDVanBanDenDuyetId");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetListVanBanDenDuyetFileIdPaging(long vanbandenduyetfileId)
+        {
+            var newGuid = new Guid();
+            var model = _vbdduyetfileService.GetAllVanBanDenDuyetFilePaging(vanbandenduyetfileId, newGuid.ToString(), 1, "", "", 1, 1000, "GetVanBanDenDuyetFileId");
+
+            return new OkObjectResult(model);
+        }
+
+        #endregion
 
         #endregion
 

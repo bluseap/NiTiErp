@@ -60,5 +60,13 @@ namespace NiTiErp.Application.Dapper.ViewModels
         public string UserModified { get; set; }
 
 
+
+        public string ConnectionId { get; set; }
+        //public string UserName { get; set; }
+        public string UserImage { get; set; }
+        public string LoginTime { get; set; }
+
+
+
     }
 }

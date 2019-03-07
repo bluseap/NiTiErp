@@ -25,6 +25,7 @@ namespace NiTiErp.Data.Entities
             Status = status;
             CorporationId = corporationId;
         }
+        [StringLength(1000)]
         public string FullName { get; set; }
 
         public Guid HoSoNhanVienId { get; set; }
@@ -32,7 +33,7 @@ namespace NiTiErp.Data.Entities
         public DateTime? BirthDay { set; get; }
 
         public decimal Balance { get; set; }
-
+        [StringLength(1000)]
         public string Avatar { get; set; }
 
         public DateTime DateCreated { get; set; }
