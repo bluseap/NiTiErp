@@ -21,6 +21,7 @@
                         <th>Ngày ban hành</th>
                         <th>Ngày đến</th>
                         <th>QT Xử lý</th>
+                        <th>Bút phê LĐ</th>
                     </tr>
                 </thead>
                 <tbody id="tblContentChuaDuyet"></tbody>
@@ -90,6 +91,11 @@
         <td>
             <a class="btn btn-lg btnQTChuaDuyet" data-id="{{VanBanDenId}}" data-toggle="tooltip" style="color:green">
                 <i class="fa fa-sitemap"></i>
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-link btnChuaDuyetButPheLD" data-id="{{VanBanDenId}}" data-toggle="tooltip">
+                {{ButPheLanhDao}}
             </a>
         </td>
         <td><input type="hidden" id="vanbandenid" class="form-control" value="{{VanBanDenId}}" /></td>

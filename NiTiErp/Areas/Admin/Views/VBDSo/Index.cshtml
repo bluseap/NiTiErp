@@ -13,8 +13,8 @@
     <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
 
+    <script src="~/app/controllers/vbdduyet/_vbdduyetfile.js" asp-append-version="true"></script>
     <script src="~/app/controllers/vbdduyet/_quatrinhxuly.js" asp-append-version="true"></script>
-
 
     <script src="~/app/controllers/vbdso/sotatca.js" asp-append-version="true"></script>
     <script src="~/app/controllers/vbdso/chuaduyet.js" asp-append-version="true"></script>
@@ -55,9 +55,9 @@
 
                     <div class="col-md-4 col-sm-4 col-xs-12 form-group pull-right">
                         <div class="input-group">
-                            <select id="ddlKhuVuc" class="form-control "></select>                          
+                            <select id="ddlKhuVuc" class="form-control "></select>
                         </div>
-                    </div>                 
+                    </div>
                 </div>
             </div>
             <partial name="/Areas/Admin/Views/Shared/_timVanBan.cshtml" />
@@ -84,17 +84,17 @@
                         </a>
                     </li>
                     @*<li role="presentation" class="">
-                        <a href="#tab_ChuaDuyet" role="tab" id="tabChuaDuyet" data-toggle="tab" aria-expanded="false">
-                            VB Chưa duyệt
-                            <span id="spanChuaDuyet" class="badge bg-blue" style="font-size:large">0</span>
-                        </a>
-                    </li>*@
+                            <a href="#tab_ChuaDuyet" role="tab" id="tabChuaDuyet" data-toggle="tab" aria-expanded="false">
+                                VB Chưa duyệt
+                                <span id="spanChuaDuyet" class="badge bg-blue" style="font-size:large">0</span>
+                            </a>
+                        </li>*@
                     @*<li role="presentation" class="">
-                        <a href="#tab_ChuaPhatHanh" role="tab" id="tabChuaPhatHanh" data-toggle="tab" aria-expanded="false">
-                            VB Chưa phát hành
-                            <span id="spanChuaPhatHanh" class="badge bg-orange" style="font-size:large">0</span>
-                        </a>
-                    </li>*@
+                            <a href="#tab_ChuaPhatHanh" role="tab" id="tabChuaPhatHanh" data-toggle="tab" aria-expanded="false">
+                                VB Chưa phát hành
+                                <span id="spanChuaPhatHanh" class="badge bg-orange" style="font-size:large">0</span>
+                            </a>
+                        </li>*@
                     <li role="presentation" class="">
                         <a href="#tab_SoTatCa" role="tab" id="tabSoTatCa" data-toggle="tab" aria-expanded="false">
                             Tất cả VB
@@ -103,7 +103,7 @@
                     </li>
                 </ul>
                 <div id="myTabContentSoVanBanDen" class="tab-content">
-                        <div role="tabpanel" class="tab-pane fade active in" id="tab_LuuTam" aria-labelledby="home-tab">
+                    <div role="tabpanel" class="tab-pane fade active in" id="tab_LuuTam" aria-labelledby="home-tab">
                         <partial name="_tabLuuTam.cshtml" />
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="tab_ChuaChuyen" aria-labelledby="profile-tab">
@@ -113,11 +113,11 @@
                         <partial name="_tabChuaXuLy.cshtml" />
                     </div>
                     @*<div role="tabpanel" class="tab-pane fade" id="tab_ChuaDuyet" aria-labelledby="profile-tab">
-                        <partial name="_tabChuaDuyet.cshtml" />
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="tab_ChuaPhatHanh" aria-labelledby="profile-tab">
-                        <partial name="_tabChuaPhatHanh.cshtml" />
-                    </div>*@
+                            <partial name="_tabChuaDuyet.cshtml" />
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="tab_ChuaPhatHanh" aria-labelledby="profile-tab">
+                            <partial name="_tabChuaPhatHanh.cshtml" />
+                        </div>*@
                     <div role="tabpanel" class="tab-pane fade" id="tab_SoTatCa" aria-labelledby="profile-tab">
                         <partial name="_tabSoTatCa.cshtml" />
                     </div>
@@ -130,3 +130,4 @@
 </div>
 
 <partial name="~/Areas/Admin/Views/VBDDuyet/_QuaTrinhXuLy.cshtml" />
+<partial name="/Areas/Admin/Views/VBDDuyet/_VBDDuyetFile.cshtml" />
