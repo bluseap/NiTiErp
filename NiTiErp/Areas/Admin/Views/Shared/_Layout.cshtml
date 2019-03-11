@@ -32,6 +32,10 @@
     <!-- Custom Theme Style -->
     <link href="~/admin-side/css/custom.css" rel="stylesheet" />
 
+    @*<link href="~/admin-side/chatbox/chat-box.css" rel="stylesheet" />*@
+    <link href="~/admin-side/chatbox/style-chatbox.css" rel="stylesheet" />
+
+
     @RenderSection("Styles", required: false)
 </head>
 
@@ -200,6 +204,10 @@
             </footer>
             <!-- /footer content -->
         </div>
+
+        <div id="divChatBox">
+        </div>
+
     </div>
 
     <!-- jQuery -->
@@ -254,8 +262,11 @@
     <script src="~/app/shared/tedu.js" asp-append-version="true"></script>
 
     @*<script src="~/app/shared/tinnhanhub.js" asp-append-version="true"></script>*@
-    
-   
+
+    <input id="hdconnectId" type="hidden" />   
+    <input id="hdconnectUserName" type="hidden" />
+
+    @*<script src="~/app/shared/chatbox.js" asp-append-version="true"></script>*@
     @*<script src="~/app/shared/chatuser.js" asp-append-version="true"></script>*@
     <script src="~/app/shared/loginchat.js" asp-append-version="true"></script>
 

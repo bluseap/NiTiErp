@@ -13,7 +13,7 @@ namespace NiTiErp.Application.Dapper.Interfaces
             string userId, string userName, string fullName, string parameters);
 
         Task<List<AppUserLoginViewModel>> GetListAppUserPaging(string corporationId, string keyword, int page, int pageSize,
-            string userId, string userName, string fullName, string parameters);
+            string userId, string userName, string fullName, string parameters);        
 
         Task<Boolean> AppUserLoginAUD(AppUserLoginViewModel appuser, string parameters);
 

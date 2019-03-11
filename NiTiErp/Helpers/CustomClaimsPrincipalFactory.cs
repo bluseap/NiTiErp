@@ -27,7 +27,7 @@ namespace NiTiErp.Helpers
             ((ClaimsIdentity)principal.Identity).AddClaims(new[]
             {
                 new Claim("Email",user.Email),
-                new Claim("FullName",user.FullName),
+                new Claim("FullName",user.FullName.ToString()),
                 new Claim("Avatar",user.Avatar??string.Empty),
                 new Claim("Roles",string.Join(";",roles)),
                 new Claim("UserId",user.Id.ToString()),

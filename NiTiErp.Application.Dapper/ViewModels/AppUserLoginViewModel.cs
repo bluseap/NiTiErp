@@ -1,8 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace NiTiErp.Application.Dapper.ViewModels
 {
+    public static class ConnectionHelper
+    {
+        public static List<AppUserLoginViewModel> Connections = new List<AppUserLoginViewModel>();
+    }
+
     public class AppUserLoginViewModel
     {
         public Int64 Id { set; get; }
@@ -49,11 +55,37 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
 
 
+        public int OnOffId { get; set; }
+
+        public Guid OnOffAppUserId { get; set; }
+
+        public string OnOffUserName { get; set; }
+
+        public bool OnOff { get; set; }
+
+        public DateTime DateOn { get; set; }
+
+        public DateTime DateOff { get; set; }
+
+        public string OnOffMoTa { get; set; }
+
+        public int OnOffStatus { get; set; }
+
+
+        public ChatRoom ChatRoom { get; set; }
+        public string ConnectionId { get; set; }
+
 
         public DateTime CreateDate { get; set; }
 
         [StringLength(50)]
         public string CreateBy { get; set; }
 
+    }
+
+    public enum ChatRoom
+    {
+        chatroom1,
+        chatroom2
     }
 }

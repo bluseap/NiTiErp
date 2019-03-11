@@ -2,46 +2,46 @@
 
 
 
+create table AppUserOnOff
+
+create table AppUserOnOffHis
 
 
 
+
+
+update procedure [AppUserLoginAUD]
+
+update procedure [AppUserLoginGetList]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+r
 Create Table VanBanDenDuyetFile
-
-
-
+r
 create PROC [dbo].[VanBanDenDuyetFileAUD]
-
+r
 create PROC [dbo].[VanBanDenDuyetFileGetList]
-
-
-
+r
 update procedure [VanBanDenGetList]
-
+r
 update procedure [VanBanDenCount]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
