@@ -11,8 +11,9 @@ var arr = []; // List of users
 
 const connectionChatUser = new signalR.HubConnectionBuilder().withUrl("/chatuser").build();
 
-
+var user1user2 = '';
 var countdem22 = 0;
+var usernameBox = '';
 
 connectionChatUser.start()
     .then(function () {
@@ -20,6 +21,7 @@ connectionChatUser.start()
         connectionChatUser.invoke("GetChatRoom1Members");
         connectionChatUser.invoke("RegisterMember", userNameId, chatroom);
         connectionChatUser.invoke("GetChatRoom1Members");   
+        //connectionChatUser.invoke("SendMessageToUser2", userNameId, message);
     })
     .catch(function (error) {
         console.error(error.message);
@@ -36,8 +38,9 @@ connectionChatUser.on('ClientGetChatRoom1Members', (data) => {
         var connectid = data[chieudaidata - 1].connectionId;
         var usernamid = data[chieudaidata - 1].userName;
         $('#hdconnectId').val(connectid);
-        $('#hdconnectUserName').val(usernamid);
-        countdem22 = 100 *  chieudaidata ;
+        //$('#hdconnectUserName').val(usernamid);
+        $('#hdconnectUserName').val(userNameId);
+        countdem22 = 100 * (chieudaidata === 0 ? 1 : chieudaidata);
     }
     else {
         $('#hdconnectId').val(0);
@@ -49,17 +52,15 @@ connectionChatUser.on('ClientGetChatRoom1Members', (data) => {
 connectionChatUser.on("ClientSendMessageToUser2", function (message) {
     //var message = document.getElementById("txtSentMessToUser").value;
     //alert(message);
-    var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    //var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     var div = document.createElement("div");
-    div.innerHTML = msg + "<hr/>";
-    document.getElementById("bodyTinNhan").appendChild(div);
-    document.getElementById('msgbodyTinNhan').scrollTop = document.getElementById('msgbodyTinNhan').scrollHeight;
+    div.innerHTML = message;// + "<hr/>";
+    document.getElementById("bodyTinNhan" + user1user2).appendChild(div);
+    document.getElementById('msgbodyTinNhan' + user1user2).scrollTop = document.getElementById('msgbodyTinNhan' + user1user2).scrollHeight;    
 
-    document.getElementById("txtSentMessToUser").value = "";
-
-    var connectIdchinh = $('#hdconnectId').val();
-    var usernamchinh = $('#hdconnectUserName').val();
-    openChatBox(connectIdchinh, usernamchinh, countdem22);
+    //var connectIdchinh = $('#hdconnectId').val();
+    //var usernamchinh = $('#hdconnectUserName').val();
+    //openChatBox(connectIdchinh, usernamchinh, countdem22);
 });
 
 function AddUser(chatHub, username, connectionid, UserImage, date, countdem) {   
@@ -73,25 +74,35 @@ function AddUser(chatHub, username, connectionid, UserImage, date, countdem) {
     $("#divusers").append(code);    
     
     $(code).click(function () {
-        //tedu.notify(userNameId + " thành công..", "success");
-        if ($.inArray(countdem, arr) !== -1) {
-            arr.splice($.inArray(countdem, arr), 1);
+        if (userNameId !== username) {
+            //tedu.notify(userNameId + " thành công..", "success");
+            if ($.inArray(countdem, arr) !== -1) {
+                arr.splice($.inArray(countdem, arr), 1);
+            }
+            arr.unshift(countdem);
+            var usernamid = $('#hdconnectUserName').val();
+            usernameBox = username + usernamid;
+            openChatBox(connectionid, username, countdem);
         }
-        arr.unshift(countdem);
-
-        openChatBox(connectionid, username, countdem);        
+        else {
+            alert("Trùng tên.");
+        }
     });
 }
 
-function openChatBox(connectionid, username, countdem) {
+function openChatBox(connectionid, username, countdem) {  
+    var usernamid = $('#hdconnectUserName').val();
+    var user12 = username + usernamid;
+    var txtsentuser12 = "txtsent" + username + usernamid;
     var codechatbox =
-        $('<div class="msg_box" style="right:270px" rel="' + countdem + '">' +
+        $('<div class="msg_box" id="divmsgbox' + user12 + '" style="right:270px" rel="' + countdem + '">' +
                 '<div class="msg_head">' + username +
                     '<div class="close">x</div>' +
                 '</div > ' +
-                '<div class="msg_wrap"> <div class="msg_body" id="msgbodyTinNhan" >	<div class="msg_push" id="bodyTinNhan"></div></div >' +
+            '<div class="msg_wrap"> <div class="msg_body" id="msgbodyTinNhan' + user12 + '" >' +
+            '<div class="msg_push" id="bodyTinNhan' + user12 + '"></div></div >' +
                     '<div class="msg_footer">'+
-                        '<div class="col-xs-12"><input type="text" id="txtSentMessToUser" placeholder="Nhập tin..." ></input>' +
+            '<div class="col-xs-12"><input type="text" id="' + txtsentuser12 +'" placeholder="Nhập tin..." ></input>' +
             ' <button class="bg_none" id="btnSentMessToUser"><i class="fa fa-send-o"></i> </button>' +
                         '</div>' +
                         '<div class="col-xs-12">			' +          			
@@ -101,23 +112,34 @@ function openChatBox(connectionid, username, countdem) {
                 '</div>' +
             '</div > ');
 
-    $(document).on('keypress', '#txtSentMessToUser', function (e) {
-        e.preventDefault();
+    var txtsentuser123 = "#txtsent" + username + usernamid;
+    user1user2 = user12;
+    $(document).on('keypress', txtsentuser123, function (e) {        
         if (e.which === 13) {
-            var message = document.getElementById("txtSentMessToUser").value;
-            //alert(connectionid);                    
+            //var message = document.getElementById("txtSentMessToUser").value;
+            var message = document.getElementById(txtsentuser12).value;
+            //alert(connectionid);  
+            //var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            var div = document.createElement("div");
+            div.innerHTML = message;// + "<hr/>";
+            document.getElementById("bodyTinNhan" + user12).appendChild(div);
+            document.getElementById('msgbodyTinNhan' + user12).scrollTop = document.getElementById('msgbodyTinNhan' + user12).scrollHeight;    
 
+            //var connectIdchinh = $('#hdconnectId').val();  
             connectionChatUser.invoke("SendMessageToUser2", connectionid, message).catch(function (err) {
                 return console.error(err.toString());
-            });            
+            });   
+
+            document.getElementById(txtsentuser12).value = "";
         }
+        //e.preventDefault();
     });
 
-    //$(document).on('click', '#btnSentMessToUser', function (e) {
-    //    e.preventDefault();
+    //$(document).on('click', '#btnSentMessToUser', function (e) {      
     //    var message = document.getElementById("txtSentMessToUser").value;
     //    //alert(connectionid);
-    //    connectionChatUser.invoke("SendMessageToUser2", connectionid, message).catch(function (err) {
+    //    var connectIdchinh = $('#hdconnectId').val();       
+    //    connectionChatUser.invoke("NhanTinNhanToUser2", connectIdchinh, message).catch(function (err) {
     //        return console.error(err.toString());
     //    });  
     //});
@@ -142,8 +164,6 @@ function displayChatBox() {
     });
 }
 
-
-
 $('body').on('click', '.btnChatUserHub', function (e) {
     e.preventDefault();
     tedu.notify(" 4444444thành công..", "success"); 
@@ -156,9 +176,13 @@ $(document).on('click', '.msg_head', function () {
 });
 
 $(document).on('click', '.close', function () {
+    //$("#div-msg-box").html('');
+    var usernmameboxm = '#divmsgbox' + usernameBox;
+    $(usernmameboxm).remove();
+
     var chatbox = $(this).parents().parents().attr("rel");
     $('[rel="' + chatbox + '"]').hide();
-    arr.splice($.inArray(chatbox, arr), 1);
+    arr.splice($.inArray(chatbox, arr), 1);   
     displayChatBox();
     return false;
 });

@@ -18,7 +18,7 @@ namespace NiTiErp.Hubs
         public Task SendMessageToUser2(string connectionId, string message)
         {
             return Clients.Client(connectionId).SendAsync("ClientSendMessageToUser2", message);
-        }
+        }        
 
         public void RegisterMember(string name, string chatRoom)
         {
