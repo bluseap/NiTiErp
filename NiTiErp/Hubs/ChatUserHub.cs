@@ -15,6 +15,8 @@ namespace NiTiErp.Hubs
         static string UserImage = "/admin-side/images/img.jpg";
 
 
+          
+
         public Task SendMessageToUser2(string connectionId, string message)
         {
             return Clients.Client(connectionId).SendAsync("ClientSendMessageToUser2", message);
@@ -30,6 +32,18 @@ namespace NiTiErp.Hubs
                 client.ChatRoom = ChatRoom.chatroom1;
                 Groups.AddToGroupAsync(Context.ConnectionId, "chatRoom1");
             }            
+            ConnectionHelper.Connections.Add(client);
+        }
+
+        public void RegisterMemberPara(string name, string chatRoom)
+        {
+            var client = new AppUserLoginViewModel();
+            client.ConnectionId = Context.ConnectionId;
+            client.UserName = name;
+            
+            client.ChatRoom = ChatRoom.chatroom1;
+            Groups.AddToGroupAsync(Context.ConnectionId, chatRoom);
+            
             ConnectionHelper.Connections.Add(client);
         }
 
@@ -49,6 +63,15 @@ namespace NiTiErp.Hubs
             return base.OnDisconnectedAsync(exception);
         }
 
+        public Task SendMessageToGroup(string group, string message)
+        {
+            return Clients.Group(group).SendAsync("ClientMessageToGroup", message);
+        }
+
+        public Task JoinGroup(string group)
+        {
+            return Groups.AddToGroupAsync(Context.ConnectionId, group);
+        }
 
 
     }

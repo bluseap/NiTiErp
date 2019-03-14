@@ -19,7 +19,9 @@
             <span>Cấu hình</span>
         </a>
     </li>
-    <li><a href="javascript:;">Hướng dẫn</a></li>
+    <li>
+        <a href="#" class="btnDoiMatMaUser"><i class="fa fa-key" style="color:orange"></i>Đổi mật mã</a>
+    </li>
     <li>
         <form action="/Admin/Account/Logout" method="post" id="logoutForm" class="navbar-right">
             <i class="fa fa-mail-reply-all">
@@ -99,4 +101,6 @@
 
 
 </li>
+
+<partial name="/Areas/Admin/Views/User/_EditPassword.cshtml" />
 

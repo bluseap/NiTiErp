@@ -48,6 +48,14 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> GetByUserName2Id(string username)
+        {
+            var model = await _userService.GetByUserName2Id(username);
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
         public IActionResult GetAllPaging(string keyword, int page, int pageSize)
         {
             var model = _userService.GetAllPagingAsync(keyword, page, pageSize);

@@ -12,21 +12,30 @@ var arr = []; // List of users
 const connectionChatUser = new signalR.HubConnectionBuilder().withUrl("/chatuser").build();
 
 var user1user2 = '';
+var user2user1 = '';
 var countdem22 = 0;
 var usernameBox = '';
 
-connectionChatUser.start()
-    .then(function () {
-        var chatroom = "chatRoom1";
-        connectionChatUser.invoke("GetChatRoom1Members");
-        connectionChatUser.invoke("RegisterMember", userNameId, chatroom);
-        connectionChatUser.invoke("GetChatRoom1Members");   
-        //connectionChatUser.invoke("SendMessageToUser2", userNameId, message);
-    })
-    .catch(function (error) {
-        console.error(error.message);
-    });
+//connectionChatUser.on("ClientSendMessageToUser2", function (message) {
+//    var div = document.createElement("div");
+//    div.innerHTML = message;// + "<hr/>";
+//    document.getElementById("bodyTinNhan").appendChild(div);
+//    document.getElementById('msgbodyTinNhan').scrollTop = document.getElementById('msgbodyTinNhan').scrollHeight;
+//});
 
+//connectionChatUser.on("ClientSendMessageToUser2", function (message) {
+//    var div = document.createElement("div");
+//    div.innerHTML = message === null ? "" : message;// + "<hr/>";
+//    document.getElementById("bodyTinNhan").appendChild(div);
+//    document.getElementById('msgbodyTinNhan').scrollTop = document.getElementById('msgbodyTinNhan').scrollHeight;
+//});
+
+connectionChatUser.on("ClientMessageToGroup", function (message) {
+    var div = document.createElement("div");
+    div.innerHTML = message === null ? "" : message;// + "<hr/>";
+    document.getElementById("bodyTinNhan").appendChild(div);
+    document.getElementById('msgbodyTinNhan').scrollTop = document.getElementById('msgbodyTinNhan').scrollHeight;
+});
 
 connectionChatUser.on('ClientGetChatRoom1Members', (data) => {   
     $("#divusers").html('');
@@ -45,23 +54,22 @@ connectionChatUser.on('ClientGetChatRoom1Members', (data) => {
     else {
         $('#hdconnectId').val(0);
         $('#hdconnectUserName').val(0);
-    }
-  
+    } 
+    
 });
 
-connectionChatUser.on("ClientSendMessageToUser2", function (message) {
-    //var message = document.getElementById("txtSentMessToUser").value;
-    //alert(message);
-    //var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    var div = document.createElement("div");
-    div.innerHTML = message;// + "<hr/>";
-    document.getElementById("bodyTinNhan" + user1user2).appendChild(div);
-    document.getElementById('msgbodyTinNhan' + user1user2).scrollTop = document.getElementById('msgbodyTinNhan' + user1user2).scrollHeight;    
+connectionChatUser.start()
+    .then(function () {
+        var chatroom = "chatRoom1";
+        connectionChatUser.invoke("GetChatRoom1Members");
+        connectionChatUser.invoke("RegisterMember", userNameId, chatroom);
+        connectionChatUser.invoke("GetChatRoom1Members");
+        //connectionChatUser.invoke("SendMessageToUser2", userNameId, message);
 
-    //var connectIdchinh = $('#hdconnectId').val();
-    //var usernamchinh = $('#hdconnectUserName').val();
-    //openChatBox(connectIdchinh, usernamchinh, countdem22);
-});
+    })
+    .catch(function (error) {
+        console.error(error.message);
+    });
 
 function AddUser(chatHub, username, connectionid, UserImage, date, countdem) {   
     var code;
@@ -75,13 +83,26 @@ function AddUser(chatHub, username, connectionid, UserImage, date, countdem) {
     
     $(code).click(function () {
         if (userNameId !== username) {
+            var usernamid = $('#hdconnectUserName').val();
+            usernameBox = username + usernamid;           
+
             //tedu.notify(userNameId + " thành công..", "success");
             if ($.inArray(countdem, arr) !== -1) {
                 arr.splice($.inArray(countdem, arr), 1);
             }
-            arr.unshift(countdem);
-            var usernamid = $('#hdconnectUserName').val();
-            usernameBox = username + usernamid;
+            arr.unshift(countdem);            
+
+            user1user2 = userNameId + username;
+            user2user1 = username + userNameId;           
+
+
+            connectionChatUser.invoke("JoinGroup", user1user2).catch(function (err) {
+                return console.error(err.toString());
+            });
+            connectionChatUser.invoke("JoinGroup", user2user1).catch(function (err) {
+                return console.error(err.toString());
+            });
+
             openChatBox(connectionid, username, countdem);
         }
         else {
@@ -92,17 +113,17 @@ function AddUser(chatHub, username, connectionid, UserImage, date, countdem) {
 
 function openChatBox(connectionid, username, countdem) {  
     var usernamid = $('#hdconnectUserName').val();
-    var user12 = username + usernamid;
+    //var user12 = username + usernamid;
     var txtsentuser12 = "txtsent" + username + usernamid;
     var codechatbox =
-        $('<div class="msg_box" id="divmsgbox' + user12 + '" style="right:270px" rel="' + countdem + '">' +
+        $('<div class="msg_box" id="divmsgbox' + usernameBox+'" style="right:270px" rel="' + countdem + '">' +
                 '<div class="msg_head">' + username +
                     '<div class="close">x</div>' +
                 '</div > ' +
-            '<div class="msg_wrap"> <div class="msg_body" id="msgbodyTinNhan' + user12 + '" >' +
-            '<div class="msg_push" id="bodyTinNhan' + user12 + '"></div></div >' +
+            '<div class="msg_wrap"> <div class="msg_body" id="msgbodyTinNhan" >' +
+            '<div class="msg_push" id="bodyTinNhan"></div></div >' +
                     '<div class="msg_footer">'+
-            '<div class="col-xs-12"><input type="text" id="' + txtsentuser12 +'" placeholder="Nhập tin..." ></input>' +
+            '<div class="col-xs-12"><input type="text" id="txtsentuser12" placeholder="Nhập tin..." ></input>' +
             ' <button class="bg_none" id="btnSentMessToUser"><i class="fa fa-send-o"></i> </button>' +
                         '</div>' +
                         '<div class="col-xs-12">			' +          			
@@ -112,25 +133,28 @@ function openChatBox(connectionid, username, countdem) {
                 '</div>' +
             '</div > ');
 
-    var txtsentuser123 = "#txtsent" + username + usernamid;
-    user1user2 = user12;
-    $(document).on('keypress', txtsentuser123, function (e) {        
+    //var txtsentuser123 =  "#txtsent" + username + usernamid;
+    //user1user2 = user12;
+    $(document).on('keypress', "#txtsentuser12", function (e) {        
         if (e.which === 13) {
             //var message = document.getElementById("txtSentMessToUser").value;
-            var message = document.getElementById(txtsentuser12).value;
-            //alert(connectionid);  
-            //var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-            var div = document.createElement("div");
-            div.innerHTML = message;// + "<hr/>";
-            document.getElementById("bodyTinNhan" + user12).appendChild(div);
-            document.getElementById('msgbodyTinNhan' + user12).scrollTop = document.getElementById('msgbodyTinNhan' + user12).scrollHeight;    
+            var message = document.getElementById("txtsentuser12").value;
+            
+            //var div = document.createElement("div");
+            //div.innerHTML = message;// + "<hr/>";
+            //document.getElementById("bodyTinNhan").appendChild(div);
+            //document.getElementById('msgbodyTinNhan').scrollTop = document.getElementById('msgbodyTinNhan').scrollHeight;   
 
             //var connectIdchinh = $('#hdconnectId').val();  
-            connectionChatUser.invoke("SendMessageToUser2", connectionid, message).catch(function (err) {
+            //connectionChatUser.invoke("SendMessageToUser2", connectionid, message).catch(function (err) {
+            //    return console.error(err.toString());
+            //});   
+           
+            connectionChatUser.invoke("SendMessageToGroup", user1user2, message).catch(function (err) {
                 return console.error(err.toString());
-            });   
+            });
 
-            document.getElementById(txtsentuser12).value = "";
+            document.getElementById("txtsentuser12").value = "";
         }
         //e.preventDefault();
     });
@@ -167,6 +191,67 @@ function displayChatBox() {
 $('body').on('click', '.btnChatUserHub', function (e) {
     e.preventDefault();
     tedu.notify(" 4444444thành công..", "success"); 
+});
+
+var hidEditPassId = "";
+$('body').on('click', '.btnDoiMatMaUser', function (e) {
+    e.preventDefault();
+    //var that = $(this).data('id');
+
+    $('#txtCurrentPassword').prop('disabled', true);
+
+    $.ajax({
+        type: "GET",
+        url: "/Admin/User/GetByUserName2Id",
+        data: { username: userNameId },
+        dataType: "json",
+        beforeSend: function () {
+            tedu.startLoading();
+        },
+        success: function (response) {
+            var data = response;
+
+            //$('#hidEditPassId').val(data.Id);
+            hidEditPassId = data.Id;
+            $('#modal-edit-password').modal('show');
+
+            tedu.stopLoading();
+        },
+        error: function () {
+            tedu.notify('Có lỗi xảy ra', 'error');
+            tedu.stopLoading();
+        }
+    });
+});
+
+$(document).on('click', '#btnSaveEditPass', function () {
+    var id = hidEditPassId;
+    var currentpassword = $('#txtCurrentPassword').val();
+    var newpassword = $('#txtNewPassword').val();
+
+    $.ajax({
+        type: "POST",
+        url: "/Admin/User/SaveEditPass",
+        data: {
+            Id: id,
+            CurrentPassword: currentpassword,
+            NewPassword: newpassword
+        },
+        dataType: "json",
+        beforeSend: function () {
+            tedu.startLoading();
+        },
+        success: function () {
+            tedu.notify('Edit password user succesful', 'success');
+            $('#modal-edit-password').modal('hide');          
+
+            tedu.stopLoading();
+        },
+        error: function () {
+            tedu.notify('Has an error', 'error');
+            tedu.stopLoading();
+        }
+    });
 });
 
 $(document).on('click', '.msg_head', function () {
