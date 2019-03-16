@@ -11,16 +11,16 @@ using NiTiErp.Application.Dapper.Interfaces;
 namespace NiTiErp.Hubs
 {
     public class ChatUserHub : Hub
-    {        
+    {
         static string UserImage = "/admin-side/images/img.jpg";
 
 
-          
+
 
         public Task SendMessageToUser2(string connectionId, string message)
         {
             return Clients.Client(connectionId).SendAsync("ClientSendMessageToUser2", message);
-        }        
+        }
 
         public void RegisterMember(string name, string chatRoom)
         {
@@ -31,7 +31,7 @@ namespace NiTiErp.Hubs
             {
                 client.ChatRoom = ChatRoom.chatroom1;
                 Groups.AddToGroupAsync(Context.ConnectionId, "chatRoom1");
-            }            
+            }
             ConnectionHelper.Connections.Add(client);
         }
 
@@ -40,10 +40,10 @@ namespace NiTiErp.Hubs
             var client = new AppUserLoginViewModel();
             client.ConnectionId = Context.ConnectionId;
             client.UserName = name;
-            
+
             client.ChatRoom = ChatRoom.chatroom1;
             Groups.AddToGroupAsync(Context.ConnectionId, chatRoom);
-            
+
             ConnectionHelper.Connections.Add(client);
         }
 
@@ -72,6 +72,25 @@ namespace NiTiErp.Hubs
         {
             return Groups.AddToGroupAsync(Context.ConnectionId, group);
         }
+
+        public void SendToUserIdMessage(string fromUserId, string toUserId, string fromUserName, string message)
+        {
+            string CurrentDateTime = DateTime.Now.ToString();
+
+            // send to 
+            Clients.Client(toUserId).SendAsync("sendPrivateMessage", fromUserId, fromUserName, message, UserImage, CurrentDateTime);
+
+            // send to caller user
+            //Clients.Caller.SendAsync("sendPrivateMessage", toUserId, fromUserName, message, UserImage, CurrentDateTime);
+            Clients.Caller.SendAsync("sendPrivateMessage", toUserId, fromUserName, message, UserImage, CurrentDateTime);
+
+        }
+
+        public Task SendMessageToCaller(string message)
+        {
+            return Clients.Caller.SendAsync("sendPrivateMessage", message);
+        }
+
 
 
     }

@@ -102,7 +102,7 @@ body{
      clear: both;
      visibility: hidden;
 }
- img{
+ img-style-chatbox{
      width:35px;
      height:35px;
      border-radius:50%;

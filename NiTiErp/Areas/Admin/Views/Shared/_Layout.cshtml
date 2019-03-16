@@ -44,21 +44,23 @@
         <div class="main_container">
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
-                    <div class="navbar nav_title" style="border: 0;">
-                        @*<a href="/admin/home" class="site_title">
-                                <img src="/admin-side/images/powacmo.png" alt="...">
-                                <span> Nhân sự</span>
-                            </a>*@
+                    @*<div class="navbar nav_title" style="border: 0;">
+                    <a href="/admin/home" class="site_title">
+                        <img src="/admin-side/images/powacmo.png" alt="..." class="img-thumbnail profile_img">
+                        <span>  Văn bản - HRM</span>
+                    </a>
+                </div>*@
 
-                        @*<a href="/admin/homevanban" class="site_title">
-                                <img src="/admin-side/images/powacmo.png" alt="...">
-                                <span>  Văn bản</span>
-                            </a>*@
+                    <div class="navbar nav_title" style="border: 0;">
                         <a href="/admin/home" class="site_title">
-                            <img src="/admin-side/images/powacmo.png" alt="...">
-                            <span>  Văn bản - HRM</span>
+                            <img src="/admin-side/images/powacmo.png" alt="..." class="img-rounded profile_img" />
+                            <span style="color:white">  Văn bản - HRM</span>
                         </a>
                     </div>
+
+                    @*<div class="navbar nav_title" style="border: 0;">
+                    <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela Alela!</span></a>
+                </div>*@
 
                     <div class="clearfix"></div>
 
@@ -67,16 +69,16 @@
                     <input type="hidden" id="hidUserName" value=@User.GetSpecificClaim("UserName") />
                     <!-- menu profile quick info -->
                     @*<div class="profile clearfix">
-                            <div class="profile_pic">
-                                <img src="/admin-side/images/img.jpg" alt="..." class="img-circle profile_img">
-                            </div>
-                            <div class="profile_info">
-                                <input type="hidden" id="hidUserCorporationId" value=@User.GetSpecificClaim("CorporationId") />
-                                <input type="hidden" id="hidUserCorporationId" value=@User.GetSpecificClaim("FullName") />
-                                <span> </span>
-                                <h2>@User.GetSpecificClaim("FullName")</h2>
-                            </div>
-                        </div>*@
+                    <div class="profile_pic">
+                        <img src="/admin-side/images/img.jpg" alt="..." class="img-circle profile_img">
+                    </div>
+                    <div class="profile_info">
+                        <input type="hidden" id="hidUserCorporationId" value=@User.GetSpecificClaim("CorporationId") />
+                        <input type="hidden" id="hidUserCorporationId" value=@User.GetSpecificClaim("FullName") />
+                        <span> </span>
+                        <h2>@User.GetSpecificClaim("FullName")</h2>
+                    </div>
+                </div>*@
                     <!-- /menu profile quick info -->
 
                     <br />
@@ -87,17 +89,17 @@
                     <!-- /menu footer buttons -->
                     <div class="sidebar-footer hidden-small">
                         @*<a data-toggle="tooltip" data-placement="top" title="Settings">
-                                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                            </a>
-                            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-                            </a>
-                            <a data-toggle="tooltip" data-placement="top" title="Lock">
-                                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-                            </a>
-                            <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-                                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                            </a>*@
+                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="Lock">
+                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                    </a>*@
                     </div>
                     <!-- /menu footer buttons -->
                 </div>
@@ -117,69 +119,69 @@
                             </li>
 
                             @*<li role="presentation" class="dropdown">
-                                    <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa fa-envelope-o"></i>
-                                        <span class="badge bg-green">6</span>
+                            <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-envelope-o"></i>
+                                <span class="badge bg-green">6</span>
+                            </a>
+                            <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="/admin-side/images/img.jpg" alt="Profile Image" /></span>
+                                        <span>
+                                            <span>John Smith</span>
+                                            <span class="time">3 mins ago</span>
+                                        </span>
+                                        <span class="message">
+                                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                                        </span>
                                     </a>
-                                    <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                                        <li>
-                                            <a>
-                                                <span class="image"><img src="/admin-side/images/img.jpg" alt="Profile Image" /></span>
-                                                <span>
-                                                    <span>John Smith</span>
-                                                    <span class="time">3 mins ago</span>
-                                                </span>
-                                                <span class="message">
-                                                    Film festivals used to be do-or-die moments for movie makers. They were where...
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a>
-                                                <span class="image"><img src="/admin-side/images/img.jpg" alt="Profile Image" /></span>
-                                                <span>
-                                                    <span>John Smith</span>
-                                                    <span class="time">3 mins ago</span>
-                                                </span>
-                                                <span class="message">
-                                                    Film festivals used to be do-or-die moments for movie makers. They were where...
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a>
-                                                <span class="image"><img src="/admin-side/images/img.jpg" alt="Profile Image" /></span>
-                                                <span>
-                                                    <span>John Smith</span>
-                                                    <span class="time">3 mins ago</span>
-                                                </span>
-                                                <span class="message">
-                                                    Film festivals used to be do-or-die moments for movie makers. They were where...
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a>
-                                                <span class="image"><img src="/admin-side/images/img.jpg" alt="Profile Image" /></span>
-                                                <span>
-                                                    <span>@User.GetSpecificClaim("FullName")</span>
-                                                    <span class="time">3 mins ago</span>
-                                                </span>
-                                                <span class="message">
-                                                    Film festivals used to be do-or-die moments for movie makers. They were where...
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <div class="text-center">
-                                                <a>
-                                                    <strong>See All Alerts</strong>
-                                                    <i class="fa fa-angle-right"></i>
-                                                </a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>*@
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="/admin-side/images/img.jpg" alt="Profile Image" /></span>
+                                        <span>
+                                            <span>John Smith</span>
+                                            <span class="time">3 mins ago</span>
+                                        </span>
+                                        <span class="message">
+                                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="/admin-side/images/img.jpg" alt="Profile Image" /></span>
+                                        <span>
+                                            <span>John Smith</span>
+                                            <span class="time">3 mins ago</span>
+                                        </span>
+                                        <span class="message">
+                                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="/admin-side/images/img.jpg" alt="Profile Image" /></span>
+                                        <span>
+                                            <span>@User.GetSpecificClaim("FullName")</span>
+                                            <span class="time">3 mins ago</span>
+                                        </span>
+                                        <span class="message">
+                                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="text-center">
+                                        <a>
+                                            <strong>See All Alerts</strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>*@
                         </ul>
                     </nav>
                 </div>
@@ -203,12 +205,19 @@
                 <div class="clearfix"></div>
             </footer>
             <!-- /footer content -->
-        </div>
 
-        <div id="divChatBox">
+            <div class="row" id="PriChatDiv">
+            </div>
+            <span id="time"></span>
+            <input id="hdId" type="hidden" />
+            <input id="PWCount" type="hidden" value="info" />
+            <input id="hdUserName" type="hidden" />
+
         </div>
 
     </div>
+
+    
 
     <!-- jQuery -->
     <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -263,7 +272,7 @@
 
     @*<script src="~/app/shared/tinnhanhub.js" asp-append-version="true"></script>*@
 
-    <input id="hdconnectId" type="hidden" />   
+    <input id="hdconnectId" type="hidden" />
     <input id="hdconnectUserName" type="hidden" />
 
     @*<script src="~/app/shared/chatbox.js" asp-append-version="true"></script>*@
