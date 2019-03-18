@@ -56,7 +56,7 @@ connectionChatUser.on('sendPrivateMessage', (windowId, fromUserName, message, us
         '<span class="direct-chat-timestamp pull-' + TimeSide + '"">' + CurrentDateTime + '</span>' +
         '</div>' +
 
-        ' <img class="direct-chat-img" src="' + userimg + '" alt="Message User Image">' +
+        ' <img class="direct-chat-img" src="' + userimg + '?h=29" alt="Message User Image">' +
         ' <div class="direct-chat-text" >' + message + '</div> </div>';
 
     $('#' + ctrId).find('#divMessage').append(divChatP);
@@ -157,12 +157,14 @@ function OpenPrivateChatBox(chatHub, userId, ctrId, userName, countdem) {
     var div1 = '  <div  id="' + ctrId + '" class="msg_box" style="right:270px" rel="' + countdem + '">' +
         '<div class="msg_head">' + userName  +
 
-        ' <div class="box-tools pull-right">' +
+     //   ' <div class="box-tools pull-right">' +
         //' <span data-toggle="tooltip" id="MsgCountP" title="0 New Messages" class="badge bg-' + PWClass + '">0</span>' +
         //' <button type="button" class="btn btn-box-tool" data-widget="collapse">' +
         //'    <i class="fa fa-minus"></i>' +
         //'  </button>' +
-        '  <a id="imgDelete" type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></a></div></div>' +
+        '  <a id="imgDelete" type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></a>' +
+        //'</div >+'
+        '</div > ' +
 
         ' <div class="msg_wrap">' +
         ' <div id="divMessage" class="msg_body">' + 
@@ -181,8 +183,8 @@ function OpenPrivateChatBox(chatHub, userId, ctrId, userName, countdem) {
         '          <input type="button" id="btnSendMessage" class="btn btn-' + PWClass + ' btn-flat" value="send" />' +
         '   </span>' +
 
-        '<div id="divbtnFileVanBan" class="col-sm-6" style="text-align:right">' +
-        '<input type="file" id="fileFileVanBanDen" />' +
+        '<div id="divbtnFileVanBan" class="bg_none pull-left" >' +
+            '<input type="file" id="fileFileVanBanDen" />' +
         '</div>' +
         '  </div>' +
         '  </div>' +

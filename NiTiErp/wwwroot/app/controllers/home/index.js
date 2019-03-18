@@ -811,7 +811,8 @@
     function loadCountVanBanDenDangXL(connection, makv) {
         $.ajax({
             type: 'GET',
-            url: '/admin/vbdthem/GetCountVBDenDangXL',
+            //url: '/admin/vbdthem/GetCountVBDenDangXL',
+            url: '/admin/vbdthem/GetCountVBDSoChuaXuLy',
             data: {
                 corporationId: makv
             },
