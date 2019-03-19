@@ -7,6 +7,7 @@ using NiTiErp.Extensions;
 using NiTiErp.Application.Dapper.Interfaces;
 using System.Net;
 using NiTiErp.Application.Dapper.ViewModels;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace NiTiErp.Areas.Admin.Controllers
 {
@@ -15,13 +16,17 @@ namespace NiTiErp.Areas.Admin.Controllers
     {
         private readonly IReportService _reportService;
 
+        private readonly IMessageService _messageService;
         private readonly IAppUserLoginService _appuserloginService;
 
-        public HomeController(IReportService reportService, IAppUserLoginService appuserloginService)
+        public HomeController(IReportService reportService, IAppUserLoginService appuserloginService,
+            IMessageService messageService
+            )
         {
             _reportService = reportService;
 
             _appuserloginService = appuserloginService;
+            _messageService = messageService;
         }
 
         public IActionResult Index()
@@ -136,6 +141,41 @@ namespace NiTiErp.Areas.Admin.Controllers
 
             return new string[] { ip, "value2" };
         }
+
+        [HttpPost]
+        public IActionResult SentMessage(MessageViewModel messageVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+
+                messageVm.CreateBy = username;
+                messageVm.CreateDate = DateTime.Now;
+                messageVm.UpdateBy = username;
+                messageVm.UpdateDate = DateTime.Now;
+
+                messageVm.TimeMessage = DateTime.Now;
+
+                var message = _messageService.MessageAUD(messageVm, "InMessages");
+                return new OkObjectResult(message);
+
+                //if (messageVm.InsertMessageId == 1)
+                //{
+                //    var message = _messageService.MessageAUD(messageVm, "InMessages");
+                //    return new OkObjectResult(message);
+                //}
+                //else
+                //{                   
+                //    return new OkObjectResult(messageVm);
+                //}
+            }
+        }
+
 
 
     }

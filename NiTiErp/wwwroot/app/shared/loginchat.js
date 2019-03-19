@@ -72,6 +72,8 @@ connectionChatUser.on('sendPrivateMessage', (windowId, fromUserName, message, us
 
     var ScrollHeight = $('#' + ctrId).find('#divMessage').scrollHeight();
     $('#' + ctrId).find('#divMessage').scrollTop = ScrollHeight;
+
+    
 });
 
 connectionChatUser.on('ClientGetChatRoom1Members', (data) => {   
@@ -211,6 +213,8 @@ function OpenPrivateChatBox(chatHub, userId, ctrId, userName, countdem) {
             var fromuserId = $('#hdconnectId').val();
             chatHub.invoke("SendToUserIdMessage", fromuserId, userId, userNameId, msg);          
             $textBox.val('');
+
+            SaveMessage(userNameId, userName, msg);
         }
     });
 
@@ -252,9 +256,6 @@ $('body').on('click', '.msg_head', function () {
     $('[rel="' + chatbox + '"] .msg_wrap').slideToggle('slow');
     return false;
 });
-
-
-
 
 $('body').on('click', '.btnChatUserHub', function (e) {
     e.preventDefault();
@@ -322,7 +323,25 @@ $(document).on('click', '#btnSaveEditPass', function () {
     });
 });
 
-
+function SaveMessage(fromuserId, touserId, msg) {
+    $.ajax({
+        type: "POST",
+        url: "/Admin/home/SentMessage",
+        data: {
+            FormAppUserId: fromuserId,
+            ToAppUserId: touserId,
+            TextMessage: msg
+        },
+        dataType: "json",       
+        success: function () {          
+            tedu.stopLoading();
+        },
+        error: function () {
+            tedu.notify('Has an error', 'error');
+            tedu.stopLoading();
+        }
+    });
+}
 
 
 

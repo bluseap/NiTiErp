@@ -278,7 +278,7 @@ namespace NiTiErp
             services.AddTransient<IVanBanDenXuLyFileService, VanBanDenXuLyFileService>();
             services.AddTransient<IVanBanDiSoService, VanBanDiSoService>();
             services.AddTransient<IVanBanDiService, VanBanDiService>();
-
+            services.AddTransient<IMessageService, MessageService>();
 
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 

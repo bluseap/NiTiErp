@@ -1,6 +1,9 @@
 ﻿
 
 
+create table Messages
+
+create table Rooms 
 
 create table AppUserOnOff
 
@@ -9,6 +12,13 @@ create table AppUserOnOffHis
 
 
 
+create procedure [MessagesAUD]
+
+create procedure [MessagesGetList]
+
+
+
+update procedure [VanBanDenCount]
 
 update procedure [AppUserLoginAUD]
 
