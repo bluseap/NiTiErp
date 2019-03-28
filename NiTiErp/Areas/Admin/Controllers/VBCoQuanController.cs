@@ -10,6 +10,7 @@ using NiTiErp.Utilities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace NiTiErp.Areas.Admin.Controllers
 {
@@ -100,6 +101,27 @@ namespace NiTiErp.Areas.Admin.Controllers
         public IActionResult VanBanDienTuGetList()
         {
             var model = _vanbancoquanService.VanBanCoQuanGetList("", "", "", "VanBanDienTuGetList");
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetListVBCoQuan(string keyword, int page, int pageSize)
+        {
+            
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+
+            var model = _vanbancoquanService.GetAllVanBanCoQuanPaging(tukhoa, "", tukhoa, 
+                page, pageSize, 1, "", "GetAllVanBanCoQuan");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetVanBanCoQuanId(int vanbancoquanid)
+        {           
+            var model = _vanbancoquanService.GetAllVanBanCoQuanPaging("", "", "",
+                1, 1000, vanbancoquanid, "", "GetVanBanCoQuanId");
+
             return new OkObjectResult(model);
         }
 

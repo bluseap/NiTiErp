@@ -163,6 +163,7 @@
                 var password = $('#txtPassword').val();
                 var email = $('#txtEmail').val();
                 var phoneNumber = $('#txtPhoneNumber').val();
+                var hinhnhanvien = $('#hidHinhNhanVien').val();
                 var roles = [];
                 $.each($('input[name="ckRoles"]'), function (i, item) {
                     if ($(item).prop('checked') === true)
@@ -183,6 +184,7 @@
                         Email: email,
                         PhoneNumber: phoneNumber,
                         CorporationId: corporationId,
+                        Avatar: hinhnhanvien,
                         Status: status,
                         Roles: roles                        
                     },
@@ -322,6 +324,8 @@
         $('#txtNewPassword').val('');
 
         $('#hidHoSoNhanVienId').val('00000000-0000-0000-0000-000000000000');
+
+        $('#hidHinhNhanVien').val('');
     }
 
     function initRoleList(selectedRoles) {
@@ -634,6 +638,7 @@
                 var hoso = response.Result.Results[0];
                 $('#hidHoSoNhanVienId').val(hoso.Id);
                 $('#txtFullName').val(hoso.Ten);
+                $('#hidHinhNhanVien').val(hoso.HinhNhanVien);
 
                 $('#modal-add-edit-TimNhanVien').modal('hide');
                 tedu.stopLoading();

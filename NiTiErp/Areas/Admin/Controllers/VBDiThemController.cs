@@ -289,6 +289,18 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetSttHoSoVBDiKV(long quanlyvanbanid)
+        {
+            var newGuid = new Guid();
+
+            var model = _vanbandiService.VanBanDiGetList("", 1, 1, 1, DateTime.Now, DateTime.Now, 0, 1,
+                "", "", false, 1, false, DateTime.Now, "", newGuid, 1, 1, false, "", "", "",
+                "", 1, 1000, quanlyvanbanid, "", "", "GetSttHoSoVBDiKV");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
         public IActionResult GetCountVBDenDiChuaPhatHanh(string corporationId)
         {
             var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";

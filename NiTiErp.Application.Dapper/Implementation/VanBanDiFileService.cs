@@ -37,7 +37,7 @@ namespace NiTiErp.Application.Dapper.Implementation
                 dynamicParameters.Add("@VanBanDiId", vanbandifile.VanBanDiId);
                 dynamicParameters.Add("@TenFile", vanbandifile.TenFile);
                 dynamicParameters.Add("@DuongDan", vanbandifile.DuongDan);
-                dynamicParameters.Add("@Stt", vanbandifile.Stt);
+                dynamicParameters.Add("@Stt", vanbandifile.SoTrang);
 
                 dynamicParameters.Add("@CreateDate", vanbandifile.CreateDate);
                 dynamicParameters.Add("@CreateBy", vanbandifile.CreateBy);

@@ -97,6 +97,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Tên file văn bản</th>
+                                                    <th>Số trang</th>
                                                     <th width="=10%">#</th>
                                                 </tr>
                                             </thead>
@@ -109,6 +110,7 @@
                         <script id="table-FileVanBanDi" type="x-tmpl-mustache">
                             <tr>
                                 <td>{{TenFile}}</td>
+                                <td>{{SoTrang}}</td>
                                 <th scope="row">
                                     <a class="btn btnDeleteFile" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xóa file văn bản đi">
                                         <i class="fa fa-trash-o" style="color:red"></i>
@@ -137,19 +139,19 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="lbCacDonViNhanVanBan"> Các đơn vị nhận <a style="color:red"> (*) </a></label>
-                                    <input type="text" name="txtCacDonViNhanVanBan"  id="txtCacDonViNhanVanBan" placeholder="Đơn vị nhận văn bản " value="">
+                                    <input type="text" name="txtCacDonViNhanVanBan" id="txtCacDonViNhanVanBan" placeholder="Đơn vị nhận văn bản " value="">
                                 </div>
                             </div>
                             @*<div class="form-group">
-                                <div class="col-sm-6 ">
-                                    <label for="lbTenNhanVienSoanVB">Tên nhân viên soạn Văn bản </label>
-                                    <input type="text" name="txtTenNhanVienSoanVB" class="form-control has-feedback-right" id="txtTenNhanVienSoanVB" placeholder="Tên nhân viên soạn Văn bản ">
-                                </div>
-                                <div class="col-sm-6">
-                                    <label for="lbYKienNhanVienSoanVB">Ý kiến nhân viên soạn Văn bản </label>
-                                    <input type="text" name="txtYKienNhanVienSoanVB" class="form-control has-feedback-right" id="txtYKienNhanVienSoanVB" placeholder="Ý kiến nhân viên soạn Văn bản ">
-                                </div>
-                            </div>*@
+            <div class="col-sm-6 ">
+                <label for="lbTenNhanVienSoanVB">Tên nhân viên soạn Văn bản </label>
+                <input type="text" name="txtTenNhanVienSoanVB" class="form-control has-feedback-right" id="txtTenNhanVienSoanVB" placeholder="Tên nhân viên soạn Văn bản ">
+            </div>
+            <div class="col-sm-6">
+                <label for="lbYKienNhanVienSoanVB">Ý kiến nhân viên soạn Văn bản </label>
+                <input type="text" name="txtYKienNhanVienSoanVB" class="form-control has-feedback-right" id="txtYKienNhanVienSoanVB" placeholder="Ý kiến nhân viên soạn Văn bản ">
+            </div>
+        </div>*@
                             <div class="form-group">
                                 <div class="col-sm-6">
                                     <label for="lbLanhDaoDuyet">Tên lãnh đạo duyệt <a style="color:red">(*)</a></label>
@@ -162,6 +164,30 @@
                                 <div class="col-sm-3">
                                     <label for="lbCapDoMat">Cấp độ mật <a style="color:red">(*)</a></label>
                                     <select id="ddlCapDoMat" class="form-control" name="ddlCapDoMat"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-3">
+                                    <label for="lbNgonNguVanBan">Ngôn ngữ Văn bản </label>
+                                    <select id="ddlNgonNguVanBan" class="form-control" name="ddlNgonNguVanBan"></select>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="lbSoLuongVanBanPhatHanh">Số lượng Văn bản phát hành </label>
+                                    <input type="number" class="form-control has-feedback-right" name="txtSoLuongVanBanPhatHanh" id="txtSoLuongVanBanPhatHanh" value="2">
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="lbHanTraLoiVanBan">Hạn trả lời Văn bản </label>
+                                    <input type="text" name="txtHanTraLoiVanBan" class="form-control has-feedback-right" id="txtHanTraLoiVanBan">
+                                </div>                                
+                            </div>
+                            <div class="form-group">      
+                                <div class="col-sm-6">
+                                    <label for="lbNgonNguVanBan">Danh mục hồ sơ </label>
+                                    <select id="ddlDanhMucHoSo" class="form-control" name="ddlDanhMucHoSo"></select>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="lbHanTraLoiVanBan">Số thứ tự trong hồ sơ </label>
+                                    <input type="number" name="txtSoThuTuTrongHoSo" class="form-control has-feedback-right" id="txtSoThuTuTrongHoSo">
                                 </div>
                             </div>
                             <div class="form-group">

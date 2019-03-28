@@ -126,6 +126,23 @@ namespace NiTiErp.Application.Dapper.ViewModels
         public int VBDiCoQuanBanHanhId { get; set; }
 
 
+        public string DocCode { get; set; }
+
+        public long QuanLyVanBanId { get; set; }
+
+        public string LanguageId { get; set; }
+
+        public int SoLuongPhatHanh { get; set; }
+
+        public DateTime HanTraLoiVanBan { get; set; }
+
+        public int SoThuTuTrongHoSo { get; set; }
+
+
+        public int SoTrang { get; set; }
+
+
+
         public int Status { get; set; }
 
         public bool Active { get; set; }

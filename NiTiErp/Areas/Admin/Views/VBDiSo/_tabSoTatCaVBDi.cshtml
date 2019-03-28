@@ -7,6 +7,21 @@
             </div>
         </div>
         <br />
+        <div class="row">
+            <div class="col-sm-2">
+                <label for="lbSoTuNgay">Từ ngày </label>
+                <input type="text" name="txtSoTuNgay" class="form-control has-feedback-right" id="txtSoTuNgay" placeholder="Từ ngày">
+            </div>
+            <div class="col-sm-2">
+                <label for="lbSoDenNgay">Đến ngày </label>
+                <input type="text" name="txtSoDenNgay" class="form-control has-feedback-right" id="txtSoDenNgay" placeholder="Đến ngày">
+            </div>
+            <div class="col-sm-2">
+                <label for="lbSoDSExcelNgayBanHanh" style="color:white">Xuất Excel  </label>
+                <button type="button" id="btnSoDSExcel" class="form-control btn-default" style="color:#0094ff;border-color:#0094ff">Xuất Excel</button>
+            </div>
+        </div>
+        <br />
         <div class="table-responsive" id="table-responsiveSoTatCaVBDi">
             <table id="tblSoTatCaVBDi" class="table table-striped table-bordered dataTable no-footer" cellspacing="0">
                 <thead>
@@ -14,8 +29,8 @@
                         <th width="=5%">#</th>
                         <th>Tên sổ</th>
                         <th>Số đến, ký hiệu</th>
-                        <th>Trich yếu</th>                        
-                        <th>Ngày ban hành</th>                       
+                        <th>Trich yếu</th>
+                        <th>Ngày ban hành</th>
                         <th>QT Xử lý</th>
                     </tr>
                 </thead>

@@ -31,8 +31,8 @@ namespace NiTiErp.Application.Dapper.Implementation
                 await sqlConnection.OpenAsync();
                 var dynamicParameters = new DynamicParameters();
 
-                dynamicParameters.Add("@corporationId", tencoquan);
-                dynamicParameters.Add("@nam", diachi);
+                dynamicParameters.Add("@tencoquan", tencoquan);
+                dynamicParameters.Add("@diachi", diachi);
                 dynamicParameters.Add("@keyword", keyword);
                 dynamicParameters.Add("@vanbancoquanid", vanbancoquanid);
                 dynamicParameters.Add("@ghichu", ghichu);

@@ -9,47 +9,62 @@
             </div>
         </div>
         <br />
-        <div class="table-responsive" id="table-responsiveSoTatCa">
-            <table id="tblSoTatCa" class="table table-striped table-bordered dataTable no-footer" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th width="=5%">#</th>
-                        <th>Tên sổ</th>
-                        <th>Số đến, ký hiệu</th>
-                        <th>Trich yếu</th>
-                        <th>Tên cơ quan ban hành</th>
-                        <th>Ngày ban hành</th>
-                        <th>Ngày đến</th>
-                        <th>QT Xử lý</th>
-                        <th>Bút phê LĐ</th>
-                    </tr>
-                </thead>
-                <tbody id="tblContentSoTatCa"></tbody>
-            </table>
-            <div class="row">
-                <div class="col-sm-5">
-                    <div class="dataTables_info" id="datatable-checkbox_infoSoTatCa" role="status" aria-live="polite">
-                        <select id="ddl-show-pageSoTatCa">
-                            <option value="10" selected="selected">10</option>
-                            <option value="20">20</option>
-                            <option value="30">30</option>
-                            <option value="50">50</option>
-                        </select>
-                        <span class="item-per-page">
-                            dòng/trang.
-                        </span>
-                        Tổng cộng: <strong id="lblSoTatCaTotalRecords"></strong>
+        <div class="row">
+            <div class="col-sm-2">
+                <label for="lbSoTuNgay">Từ ngày </label>
+                <input type="text" name="txtSoTuNgay" class="form-control has-feedback-right" id="txtSoTuNgay" placeholder="Từ ngày">
+            </div>
+            <div class="col-sm-2">
+                <label for="lbSoDenNgay">Đến ngày </label>
+                <input type="text" name="txtSoDenNgay" class="form-control has-feedback-right" id="txtSoDenNgay" placeholder="Đến ngày">                
+            </div>
+            <div class="col-sm-2">
+                <label for="lbSoDSExcelNgayBanHanh" style="color:white">Xuất Excel  </label>
+                <button type="button" id="btnSoDSExcel" class="form-control btn-default" style="color:#0094ff;border-color:#0094ff">Xuất Excel</button>
+            </div>
+        </div>
+            <br />
+            <div class="table-responsive" id="table-responsiveSoTatCa">
+                <table id="tblSoTatCa" class="table table-striped table-bordered dataTable no-footer" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th width="=5%">#</th>
+                            <th>Tên sổ</th>
+                            <th>Số đến, ký hiệu</th>
+                            <th>Trich yếu</th>
+                            <th>Tên cơ quan ban hành</th>
+                            <th>Ngày ban hành</th>
+                            <th>Ngày đến</th>
+                            <th>QT Xử lý</th>
+                            <th>Bút phê LĐ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblContentSoTatCa"></tbody>
+                </table>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="dataTables_info" id="datatable-checkbox_infoSoTatCa" role="status" aria-live="polite">
+                            <select id="ddl-show-pageSoTatCa">
+                                <option value="10" selected="selected">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                            </select>
+                            <span class="item-per-page">
+                                dòng/trang.
+                            </span>
+                            Tổng cộng: <strong id="lblSoTatCaTotalRecords"></strong>
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-7">
-                    <div class="dataTables_paginate" id="datatable-checkbox_paginateSoTatCa">
-                        <ul id="paginationULSoTatCa"></ul>
+                    <div class="col-sm-7">
+                        <div class="dataTables_paginate" id="datatable-checkbox_paginateSoTatCa">
+                            <ul id="paginationULSoTatCa"></ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 <script id="table-SoTatCa" type="x-tmpl-mustache">
     <tr>
         <th scope="row">
