@@ -137,9 +137,14 @@ namespace NiTiErp.Application.Dapper.Implementation
                 dynamicParameters.Add("@VanBanDenId", vanbandi.VanBanDenId);                
                 dynamicParameters.Add("@GhiChuPhatHanh", vanbandi.GhiChuPhatHanh);
                 dynamicParameters.Add("@GhiChuChuyenLanhDao", vanbandi.GhiChuChuyenLanhDao);
-                dynamicParameters.Add("@GhiChuSaiDuyet", vanbandi.GhiChuSaiDuyet);
-               
+                dynamicParameters.Add("@GhiChuSaiDuyet", vanbandi.GhiChuSaiDuyet);               
                 dynamicParameters.Add("@Stt", vanbandi.Stt);
+
+                dynamicParameters.Add("@LanguageId", vanbandi.LanguageId);
+                dynamicParameters.Add("@SoLuongPhatHanh", vanbandi.SoLuongPhatHanh);
+                dynamicParameters.Add("@HanTraLoiVanBan", vanbandi.HanTraLoiVanBan);
+                dynamicParameters.Add("@QuanLyVanBanId", vanbandi.QuanLyVanBanId);
+                dynamicParameters.Add("@SoThuTuTrongHoSo", vanbandi.SoThuTuTrongHoSo);
 
                 dynamicParameters.Add("@CreateDate", vanbandi.CreateDate);
                 dynamicParameters.Add("@CreateBy", vanbandi.CreateBy);

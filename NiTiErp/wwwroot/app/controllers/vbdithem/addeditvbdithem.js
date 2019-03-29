@@ -234,6 +234,12 @@
 
             var sotrangvb = $('#txtFileSoTrang').val();
 
+            var soluongphathanh = $('#txtSoLuongVanBanPhatHanh').val();
+            var hantraloivb = tedu.getFormatDateYYMMDD($('#txtHanTraLoiVanBan').val()); 
+            var quanlyvanbanid = $('#ddlDanhMucHoSo').val() === "%" ? 0 : $('#ddlDanhMucHoSo').val();
+            var stttronghoso = $('#txtSoThuTuTrongHoSo').val();
+            var ngonnguid = $('#ddlNgonNguVanBan').val();
+
             $.ajax({
                 type: "POST",
                 url: "/Admin/vbdithem/AddUpdateVanBanDi",
@@ -249,21 +255,23 @@
                     VanBanDiSoId: sovanbandiso,
                     SoVanBanDi: 2, // tu cho bang 1
                     SoVanBanDiStt: sovanbandi, 
-
                     SoKyHieuCuaVanBan: sokyhieuvanban,
-                    HoSoNhanVienIdKyVB: nguoikyvanbandi,
-                   
+                    HoSoNhanVienIdKyVB: nguoikyvanbandi,                   
                     NoiLuuBanChinh: noiluubanchinh,
                     VanBanCoQuanBanHanhId: donvinhanvanban, // don vi nhan van ban di
                     CacDonViNhanVanBan: cacdonvinhanvanban,
-
                     TenNhanVienSoanVBDi: tennhanviensoanvanban,
                     YKienSoanVB: ykiennhanviensoanvanban,
-
                     LDDuyetHoSoNhanVienId: lanhdaoduyet,
                     VanBanKhanId: capdokhanvanban,
                     VanBanMatId: capdomatvanban,
                     GhiChu: ghichuvanban,
+
+                    LanguageId: ngonnguid,
+                    SoLuongPhatHanh: soluongphathanh,
+                    HanTraLoiVanBan: hantraloivb,
+                    QuanLyVanBanId: quanlyvanbanid,
+                    SoThuTuTrongHoSo: stttronghoso,
 
                     IsVanBanDienTu: "False",
                     VanBanDienTuId: 0
@@ -334,6 +342,12 @@
             var capdomatvanban = $('#ddlCapDoMat').val();
             var ghichuvanban = $('#txtGhiChu').val();
 
+            var soluongphathanh = $('#txtSoLuongVanBanPhatHanh').val();
+            var hantraloivb = tedu.getFormatDateYYMMDD($('#txtHanTraLoiVanBan').val());
+            var quanlyvanbanid = $('#ddlDanhMucHoSo').val() === "%" ? 0 : $('#ddlDanhMucHoSo').val();
+            var stttronghoso = $('#txtSoThuTuTrongHoSo').val();
+            //var ngonnguid = $('#ddlNgonNguVanBan').val();
+
             $.ajax({
                 type: "POST",
                 url: "/Admin/vbdithem/AddUpdateVanBanDi",
@@ -365,6 +379,11 @@
                     VanBanKhanId: capdokhanvanban,
                     VanBanMatId: capdomatvanban,
                     GhiChu: ghichuvanban,
+
+                    SoLuongPhatHanh: soluongphathanh,
+                    HanTraLoiVanBan: hantraloivb,
+                    QuanLyVanBanId: quanlyvanbanid,
+                    SoThuTuTrongHoSo: stttronghoso,
 
                     IsVanBanDienTu: "False",
                     VanBanDienTuId: 0
@@ -948,6 +967,11 @@
                 $('#ddlCapDoKhan').val(vanbandi.VanBanKhanId);
                 $('#ddlCapDoMat').val(vanbandi.VanBanMatId);
                 $('#txtGhiChu').val(vanbandi.GhiChu);
+
+                $('#txtSoLuongVanBanPhatHanh').val(vanbandi.SoLuongPhatHanh);
+                $('#txtHanTraLoiVanBan').val(tedu.getFormattedDate(vanbandi.HanTraLoiVanBan));
+                $('#ddlDanhMucHoSo').val(vanbandi.QuanLyVanBanId);
+                $('#txtSoThuTuTrongHoSo').val(vanbandi.SoThuTuTrongHoSo);
 
                 //$('#txtNgayHetHan').val(tedu.getFormattedDate(khenthuong.NgayKetThuc));
 

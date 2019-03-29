@@ -66,6 +66,8 @@ create procedure [MessagesGetList]
 
 
 
+update procedure [VanBanDiAUD]
+
 update procudure [VanBanDiGetList]
 
 update procedure [VanBanDiFileAUD]
