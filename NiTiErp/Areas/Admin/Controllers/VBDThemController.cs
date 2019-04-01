@@ -831,6 +831,18 @@ namespace NiTiErp.Areas.Admin.Controllers
 
             return new OkObjectResult(model);
         }
+        
+        [HttpGet]
+        public IActionResult GetSttHoSoVBDenKV(long quanlyvanbanid)
+        {
+            var newGuid = new Guid();
+
+            var model = _vanbandenService.VanBanDennGetList("", 1, 1, 1, DateTime.Now, DateTime.Now, 1, 1,
+                "", "", false, 1, false, DateTime.Now, "", newGuid, 1, 1, false, "", "", "",
+                "", 1, 1000, quanlyvanbanid, "", "", "GetSttHoSoVBDenKV");
+
+            return new OkObjectResult(model);
+        }
 
         //[HttpGet]
         //public IActionResult GetVeHuuId(string vehuuId)

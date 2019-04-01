@@ -64,7 +64,6 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
-
         [HttpGet]
         public IActionResult QLVBDenGetList(string corporationid)
         {

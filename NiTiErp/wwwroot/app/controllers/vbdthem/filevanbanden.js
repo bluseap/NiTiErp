@@ -77,6 +77,8 @@
         var tenfile = $('#hidTenFileVanBanDenId').val();
         var codeid = $('#hidCodeFileGuidId').val();
 
+        var sotrang = $("#txtFileSoTrang").val();
+
         $.ajax({
             type: "POST",
             url: "/Admin/vbdthem/AddUpdateVanBanDenFile",
@@ -85,7 +87,8 @@
                 InsertVanBanDenFileId: insertvanbandenfile,
                 CodeId: codeid,
                 TenFile: tenfile,
-                DuongDan: fileUpload1              
+                DuongDan: fileUpload1,
+                SoTrang: sotrang
             },
             dataType: "json",
             beforeSend: function () {
@@ -135,7 +138,8 @@
                             Id: item.Id,
                             CodeId: item.CodeId,
                             //HinhNhanVien: item.Image === null ? '<img src="/admin-side/images/user.png?h=90"' : '<img src="' + item.HinhNhanVien + '?h=90" />',
-                            TenFile: item.TenFile
+                            TenFile: item.TenFile,
+                            SoTrang: item.SoTrang
                             //CreateDate: tedu.getFormattedDate(item.CreateDate),
                             //Status: tedu.getHoSoNhanVienStatus(item.Status)
                             // Price: tedu.formatNumber(item.Price, 0),                          
@@ -176,7 +180,8 @@
                             Id: item.Id,
                             CodeId: item.CodeId,
                             //HinhNhanVien: item.Image === null ? '<img src="/admin-side/images/user.png?h=90"' : '<img src="' + item.HinhNhanVien + '?h=90" />',
-                            TenFile: item.TenFile
+                            TenFile: item.TenFile,
+                            SoTrang: item.SoTrang
                             //CreateDate: tedu.getFormattedDate(item.CreateDate),
                             //Status: tedu.getHoSoNhanVienStatus(item.Status)
                             // Price: tedu.formatNumber(item.Price, 0),                          

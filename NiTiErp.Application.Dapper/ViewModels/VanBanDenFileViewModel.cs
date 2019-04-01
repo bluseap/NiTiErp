@@ -26,7 +26,8 @@ namespace NiTiErp.Application.Dapper.ViewModels
         [StringLength(250)]
         public string DuongDan { set; get; }
 
-       
+        public int SoTrang { get; set; }
+
 
 
         public int Status { get; set; }

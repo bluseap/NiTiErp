@@ -161,7 +161,7 @@
 
                 var makv = $('#ddlKhuVuc').val();
                 loadVanBanDenSoGetList(makv);
-
+                addeditvbdthem.loadDanhMucHoSoAddEdit(makv);
                 loadTableVanBanDen();
             },
             error: function (status) {

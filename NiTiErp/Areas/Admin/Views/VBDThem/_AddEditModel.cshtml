@@ -67,9 +67,13 @@
                                     <label for="lbSoKyHieu">Số ký hiệu văn bản đến <a style="color:red">(*)</a></label>
                                     <input type="text" name="txtSoKyHieu" class="form-control has-feedback-right" id="txtSoKyHieu" placeholder="Số ký hiệu văn bản đến">
                                 </div>
-                                <div class="col-sm-6">
-                                    <label for="lbNguoiKyVanBan">Người ký văn bản đến <a style="color:red">(*)</a></label>
+                                <div class="col-sm-3">
+                                    <label for="lbNguoiKyVanBan">Tên người ký văn bản đến <a style="color:red">(*)</a></label>
                                     <input type="text" name="txtNguoiKyVanBan" class="form-control has-feedback-right" id="txtNguoiKyVanBan" placeholder="Người ký văn bản đến">
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="lbNguoiKyVanBan">Chức vụ người ký </label>
+                                    <input type="text" name="txtChucVuNguoiKy" class="form-control has-feedback-right" id="txtChucVuNguoiKy" placeholder="Chức vụ người ký">
                                 </div>
                             </div>
                         </form>
@@ -92,6 +96,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Tên file văn bản</th>
+                                                    <th>Số trang</th>
                                                     <th width="=10%">#</th>
                                                 </tr>
                                             </thead>
@@ -104,6 +109,7 @@
                         <script id="table-FileVanBanDen" type="x-tmpl-mustache">
                             <tr>
                                 <td>{{TenFile}}</td>
+                                <td>{{SoTrang}}</td>
                                 <th scope="row">
                                     <a class="btn btnDeleteFile" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xóa file văn bản đến">
                                         <i class="fa fa-trash-o" style="color:red"></i>
@@ -143,6 +149,24 @@
                                 <div class="col-sm-3">
                                     <label for="lbCapDoMat">Cấp độ mật <a style="color:red">(*)</a></label>
                                     <select id="ddlCapDoMat" class="form-control" name="ddlCapDoMat"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-3">
+                                    <label for="lbNgonNguVanBan">Ngôn ngữ Văn bản </label>
+                                    <select id="ddlNgonNguVanBan" class="form-control" name="ddlNgonNguVanBan"></select>
+                                </div>                               
+                                <div class="col-sm-3">
+                                    <label for="lbHanTraLoiVanBan">Thời hạn giải quyết</label>
+                                    <input type="text" name="txtThoiHanGiaiQuyet" class="form-control has-feedback-right" id="txtThoiHanGiaiQuyet">
+                                </div>                           
+                                <div class="col-sm-3">
+                                    <label for="lbNgonNguVanBan">Danh mục hồ sơ </label>
+                                    <select id="ddlDanhMucHoSo" class="form-control" name="ddlDanhMucHoSo"></select>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="lbHanTraLoiVanBan">Số thứ tự trong hồ sơ </label>
+                                    <input type="number" name="txtSoThuTuTrongHoSo" class="form-control has-feedback-right" id="txtSoThuTuTrongHoSo">
                                 </div>
                             </div>
                             <div class="form-group">
