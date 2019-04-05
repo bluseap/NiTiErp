@@ -33,7 +33,9 @@ var vbdsoController = function () {
     }
 
     function registerEvents() {
-
+        $('#boxContentVBDSoTim').slideToggle(200, function () {
+            $('#boxPanelVBDSoTim').removeAttr('style');
+        });
     }
 
     function loadCountVanBanDen(makv) {
@@ -69,6 +71,12 @@ var vbdsoController = function () {
                 chuaphathanh.loadCountVBChuaPhatHanh(makv);
 
                 loadCountVanBanDen(makv);
+
+                luutam.loadTableVBDSoLuuTam();
+                chuachuyen.loadTableVBDSoChuaChuyen();
+                chuaduyet.loadTableVBDChuaDuyet();
+                chuaxuly.loadTableVBDChuaXuLy();
+                sotatca.loadTableVBDSoTatCa();
             },
             error: function (status) {
                 console.log(status);

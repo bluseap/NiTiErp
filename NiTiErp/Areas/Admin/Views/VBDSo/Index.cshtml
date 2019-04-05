@@ -60,7 +60,25 @@
                     </div>
                 </div>
             </div>
-            <partial name="/Areas/Admin/Views/Shared/_timVanBan.cshtml" />
+            <div class="col-md-12 col-sm-12 col-xs-12" id="divVanBanDenSoTim">
+                <div class="x_panel" id="boxPanelVBDSoTim">
+                    <div class="x_title">
+                        <h2> <small>  </small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link btnVBDSoTim">Tìm Văn bản đến <i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content" id="boxContentVBDSoTim">
+                        <div class="row">
+                            <partial name="/Areas/Admin/Views/Shared/_timVanBan.cshtml" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="clearfix"></div>
 
             <div class="" role="tabpanel" id="tabpanelSoVanBanDen" data-example-id="togglable-tabs">
@@ -84,17 +102,17 @@
                         </a>
                     </li>
                     @*<li role="presentation" class="">
-                            <a href="#tab_ChuaDuyet" role="tab" id="tabChuaDuyet" data-toggle="tab" aria-expanded="false">
-                                VB Chưa duyệt
-                                <span id="spanChuaDuyet" class="badge bg-blue" style="font-size:large">0</span>
-                            </a>
-                        </li>*@
+                    <a href="#tab_ChuaDuyet" role="tab" id="tabChuaDuyet" data-toggle="tab" aria-expanded="false">
+                        VB Chưa duyệt
+                        <span id="spanChuaDuyet" class="badge bg-blue" style="font-size:large">0</span>
+                    </a>
+                </li>*@
                     @*<li role="presentation" class="">
-                            <a href="#tab_ChuaPhatHanh" role="tab" id="tabChuaPhatHanh" data-toggle="tab" aria-expanded="false">
-                                VB Chưa phát hành
-                                <span id="spanChuaPhatHanh" class="badge bg-orange" style="font-size:large">0</span>
-                            </a>
-                        </li>*@
+                    <a href="#tab_ChuaPhatHanh" role="tab" id="tabChuaPhatHanh" data-toggle="tab" aria-expanded="false">
+                        VB Chưa phát hành
+                        <span id="spanChuaPhatHanh" class="badge bg-orange" style="font-size:large">0</span>
+                    </a>
+                </li>*@
                     <li role="presentation" class="">
                         <a href="#tab_SoTatCa" role="tab" id="tabSoTatCa" data-toggle="tab" aria-expanded="false">
                             Tất cả VB
@@ -113,11 +131,11 @@
                         <partial name="_tabChuaXuLy.cshtml" />
                     </div>
                     @*<div role="tabpanel" class="tab-pane fade" id="tab_ChuaDuyet" aria-labelledby="profile-tab">
-                            <partial name="_tabChuaDuyet.cshtml" />
-                        </div>
-                        <div role="tabpanel" class="tab-pane fade" id="tab_ChuaPhatHanh" aria-labelledby="profile-tab">
-                            <partial name="_tabChuaPhatHanh.cshtml" />
-                        </div>*@
+                    <partial name="_tabChuaDuyet.cshtml" />
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="tab_ChuaPhatHanh" aria-labelledby="profile-tab">
+                    <partial name="_tabChuaPhatHanh.cshtml" />
+                </div>*@
                     <div role="tabpanel" class="tab-pane fade" id="tab_SoTatCa" aria-labelledby="profile-tab">
                         <partial name="_tabSoTatCa.cshtml" />
                     </div>

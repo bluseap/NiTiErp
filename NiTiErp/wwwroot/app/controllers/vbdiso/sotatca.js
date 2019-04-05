@@ -2,6 +2,8 @@
 
     var _vbdithemqtxl = new _vbdiqtxlController();
 
+    var bientimClick = 0;
+
     this.initialize = function () {
 
         registerEvents();
@@ -11,27 +13,26 @@
 
     this.loadCountSoTatCa = function (makv) {
         loadCountSoTatCa(makv);
-    }
+    }    
 
-    function loadCountSoTatCa(makv) {
-        $.ajax({
-            type: 'GET',
-            url: '/admin/vbdithem/GetCountVBDiSoTatCa',
-            data: {
-                corporationId: makv
-            },
-            dataType: 'json',
-            success: function (response) {
-                $('#spanSoTatCaVBDi').text(response);
-            },
-            error: function (status) {
-                console.log(status);
-                tedu.notify('Không thể lấy dữ liệu về.', 'error');
-            }
-        });
+    this.loadTableVBDiSoTatCa = function () {
+        loadTableVBDiSoTatCa();
+        $('#btnTimSoTatCaVBDi').hide();
     }
 
     function registerEvents() {
+
+        $('body').on('click', '.btnVBDiSoTim', function (e) {
+            e.preventDefault();
+            if (bientimClick === 0) {
+                $('#btnTimSoTatCaVBDi').show();
+                bientimClick = 1;
+            }
+            else if (bientimClick === 1) {
+                $('#btnTimSoTatCaVBDi').hide();
+                bientimClick = 0;
+            }
+        });
 
         $('#btnTimSoTatCaVBDi').on('click', function () {
             loadTableVBDiSoTatCa();
@@ -62,7 +63,25 @@
             $('#modal-add-edit-VBDiQuaTrinhXuLy').modal('show');
         });
 
-    }    
+    }  
+
+    function loadCountSoTatCa(makv) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/vbdithem/GetCountVBDiSoTatCa',
+            data: {
+                corporationId: makv
+            },
+            dataType: 'json',
+            success: function (response) {
+                $('#spanSoTatCaVBDi').text(response);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
 
     function loadPatchFile(vanbandiid) {
         $.ajax({

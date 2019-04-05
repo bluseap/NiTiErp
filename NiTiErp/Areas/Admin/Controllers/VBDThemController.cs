@@ -315,6 +315,17 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetCountVBDSoCXLUserName(string corporationId, string userNameId)
+        {
+            var username = User.GetSpecificClaim("UserName");
+
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var count = _vanbandenService.GetCountVanBanUser(corporationId, username, "GetCountVBDSoCXLUserName");
+            //_hubContext.Clients.All.SendAsync("VanBanDenDangXuLy", count.ToString());
+            return new OkObjectResult(count);
+        }
+
+        [HttpGet]
         public IActionResult GetCountVBDChuaDuyet(string corporationId)
         {
             var username = User.GetSpecificClaim("UserName");

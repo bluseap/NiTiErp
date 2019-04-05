@@ -9,10 +9,11 @@
 
     var vanbandenduyetfile = new vbdduyetfileController();
 
+    var bientimClick = 0;
+
     this.initialize = function () {     
-
-        registerEvents();       
-
+        registerEvents(); 
+        
     }
 
     this.loadCountVanBanDenChuaXuLy = function (makv) {
@@ -23,7 +24,24 @@
         tatcaxuly.loadCountVanBanDenTatCaXuLy(makv);
     }
 
+    this.loadTableVBDChuaXuLy = function () {
+        loadTableVBDChuaXuLy();
+        $('#btnTimChuaXuLy').hide();
+    }
+
     function registerEvents() {
+
+        $('body').on('click', '.btnVBDTim', function (e) {
+            e.preventDefault();
+            if (bientimClick === 0) {
+                $('#btnTimChuaXuLy').show();
+                bientimClick = 1;
+            }
+            else if (bientimClick === 1) {
+                $('#btnTimChuaXuLy').hide();
+                bientimClick = 0;
+            }            
+        }); 
 
         $('#btnTimChuaXuLy').on('click', function () {
             loadTableVBDChuaXuLy();

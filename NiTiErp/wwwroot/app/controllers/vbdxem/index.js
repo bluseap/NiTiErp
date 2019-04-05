@@ -17,7 +17,8 @@ var vbdxemController = function () {
 
         registerEvents();
         
-        chuaxuly.initialize();
+        chuaxuly.initialize();        
+
         dangxuly.initialize();
         daxuly.initialize();
         tatcaxuly.initialize();
@@ -29,6 +30,9 @@ var vbdxemController = function () {
 
     function registerEvents() {
 
+        $('#boxContentVBDTim').slideToggle(200, function () {
+            $('#boxPanelVBDTim').removeAttr('style');
+        });
 
     }
 
@@ -55,9 +59,14 @@ var vbdxemController = function () {
 
                 var makv = $('#ddlKhuVuc').val();
                 chuaxuly.loadCountVanBanDenChuaXuLy(makv);
+                chuaxuly.loadTableVBDChuaXuLy();
+
+                dangxuly.loadTableVBDDangXuLy();
+
                 _chuaxuly.loadCountVBDDangXuLy(makv);
                 daxuly.loadCountVBDDaXuLyCLD(makv);
                 tatcaxuly.loadCountVanBanDenTatCaXuLy(makv);
+                tatcaxuly.loadTableVBDTatCaXuLy();
 
             },
             error: function (status) {

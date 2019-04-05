@@ -2,6 +2,8 @@
 
     var vanbandenduyetfile = new vbdduyetfileController();
 
+    var bientimClick = 0;
+
     this.initialize = function () {
 
         registerEvents();
@@ -12,8 +14,24 @@
         loadCountVBDTatCaXuLy(makv);
     }
 
+    this.loadTableVBDTatCaXuLy = function () {
+        loadTableVBDTatCaXuLy();
+        $('#btnTimTatCa').hide();
+    }
 
     function registerEvents() {
+
+        $('body').on('click', '.btnVBDTim', function (e) {
+            e.preventDefault();
+            if (bientimClick === 0) {
+                $('#btnTimTatCa').show();
+                bientimClick = 1;
+            }
+            else if (bientimClick === 1) {
+                $('#btnTimTatCa').hide();
+                bientimClick = 0;
+            }
+        });
 
         $('#btnTimTatCa').on('click', function () {
             loadTableVBDTatCaXuLy();

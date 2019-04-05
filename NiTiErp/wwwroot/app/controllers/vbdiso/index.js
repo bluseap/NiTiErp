@@ -30,7 +30,9 @@ var vbdisoController = function () {
     }
 
     function registerEvents() {
-
+        $('#boxContentVBDiSoTim').slideToggle(200, function () {
+            $('#boxPanelVBDiSoTim').removeAttr('style');
+        });
     }
 
     function loadCountVanBanDi(makv) {
@@ -62,6 +64,8 @@ var vbdisoController = function () {
                 //chuaphathanh.loadCountVBChuaPhatHanh(makv);
                 loadCountVanBanDi(makv);
                 loadVanBanDiSoList(makv);
+
+                sotatca.loadTableVBDiSoTatCa();
             },
             error: function (status) {
                 console.log(status);

@@ -1,5 +1,95 @@
 ﻿
 
+
+update procedure VanBanDenCount
+
+
+
+
+
+
+
+
+
+
+
+r
+update procedure [VanBanDenAUD]
+r
+update procedure [VanBanDenGetList]
+r
+update procedure [VanBanDenFileAUD]
+r
+update procedure [VanBanDiAUD]
+r
+update procudure [VanBanDiGetList]
+r
+update procedure [VanBanDiFileAUD]
+r
+update procedure [VanBanDiFileGetList]
+r
+update procedure [HoSoNhanVienAUD]
+r
+update procedure [VanBanCoQuanGetList]
+r
+update procedure [VanBanDenCount]
+r
+update procedure [AppUserLoginAUD]
+r
+update procedure [AppUserLoginGetList]
+
+r
+create procedure [TableHisProPara]
+r
+create procedure [dbo].[QuanLyVanBanAUD]
+r
+create procedure [dbo].[QuanLyVanBanGetList]
+r
+create procedure [MessagesAUD]
+r
+create procedure [MessagesGetList]
+
+r
+insert column ( DocCode	nvarchar(25)	Checked  ) in table VanBanDi
+insert column ( QuanLyVanBanId	bigint	Checked  ) in table VanBanDi
+insert column ( LanguageId	nvarchar(30)	Checked  ) in table VanBanDi
+insert column ( SoLuongPhatHanh	int	Checked  ) in table VanBanDi
+insert column ( HanTraLoiVanBan datetime 	Checked  ) in table VanBanDi
+insert column ( SoThuTuTrongHoSo int 	Checked  ) in table VanBanDi
+
+r
+insert column ( DocCode	nvarchar(25)	Checked  ) in table VanBanDiHis
+insert column ( QuanLyVanBanId	bigint	Checked  ) in table VanBanDiHis
+insert column ( LanguageId	nvarchar(30)	Checked  ) in table VanBanDiHis
+insert column ( SoLuongPhatHanh	int	Checked  ) in table VanBanDiHis
+insert column ( HanTraLoiVanBan datetime 	Checked  ) in table VanBanDiHis
+insert column ( SoThuTuTrongHoSo int 	Checked  ) in table VanBanDiHis
+
+r
+insert column ( DocCode	nvarchar(25)	Checked  ) in table VanBanDen
+insert column ( QuanLyVanBanId	bigint	Checked  ) in table VanBanDen
+insert column ( LanguageId	nvarchar(30)	Checked  ) in table VanBanDen
+insert column ( ChucVuNguoiKy	nvarchar(100)	Checked  ) in table VanBanDen
+insert column ( ThoiHanGiaiQuyet datetime 	Checked  ) in table VanBanDen
+insert column ( SoThuTuTrongHoSo int 	Checked  ) in table VanBanDen
+
+r
+insert column ( DocCode	nvarchar(25)	Checked  ) in table VanBanDenHis
+insert column ( QuanLyVanBanId	bigint	Checked  ) in table VanBanDenHis
+insert column ( LanguageId	nvarchar(30)	Checked  ) in table VanBanDenHis
+insert column ( ChucVuNguoiKy	nvarchar(100)	Checked  ) in table VanBanDenHis
+insert column ( ThoiHanGiaiQuyet datetime 	Checked  ) in table VanBanDenHis
+insert column ( SoThuTuTrongHoSo int 	Checked  ) in table VanBanDenHis
+
+r
+insert column ( SoTrang int 	Checked  ) in table VanBanDenFile
+insert column ( SoTrang int 	Checked  ) in table VanBanDiFile
+
+r
+insert column ( SoTrang int 	Checked  ) in table VanBanDenFileHis
+insert column ( SoTrang int 	Checked  ) in table VanBanDiFileHis
+
+r
 create table Languages (data generic table)
 
 create table QuanLyVanBan (data generic table)
@@ -15,99 +105,6 @@ create table Rooms
 create table AppUserOnOff
 
 create table AppUserOnOffHis
-
-
-insert column ( DocCode	nvarchar(25)	Checked  ) in table VanBanDi
-insert column ( QuanLyVanBanId	bigint	Checked  ) in table VanBanDi
-insert column ( LanguageId	nvarchar(30)	Checked  ) in table VanBanDi
-insert column ( SoLuongPhatHanh	int	Checked  ) in table VanBanDi
-insert column ( HanTraLoiVanBan datetime 	Checked  ) in table VanBanDi
-insert column ( SoThuTuTrongHoSo int 	Checked  ) in table VanBanDi
-
-insert column ( DocCode	nvarchar(25)	Checked  ) in table VanBanDiHis
-insert column ( QuanLyVanBanId	bigint	Checked  ) in table VanBanDiHis
-insert column ( LanguageId	nvarchar(30)	Checked  ) in table VanBanDiHis
-insert column ( SoLuongPhatHanh	int	Checked  ) in table VanBanDiHis
-insert column ( HanTraLoiVanBan datetime 	Checked  ) in table VanBanDiHis
-insert column ( SoThuTuTrongHoSo int 	Checked  ) in table VanBanDiHis
-
-insert column ( DocCode	nvarchar(25)	Checked  ) in table VanBanDen
-insert column ( QuanLyVanBanId	bigint	Checked  ) in table VanBanDen
-insert column ( LanguageId	nvarchar(30)	Checked  ) in table VanBanDen
-insert column ( ChucVuNguoiKy	nvarchar(100)	Checked  ) in table VanBanDen
-insert column ( ThoiHanGiaiQuyet datetime 	Checked  ) in table VanBanDen
-insert column ( SoThuTuTrongHoSo int 	Checked  ) in table VanBanDen
-
-insert column ( DocCode	nvarchar(25)	Checked  ) in table VanBanDenHis
-insert column ( QuanLyVanBanId	bigint	Checked  ) in table VanBanDenHis
-insert column ( LanguageId	nvarchar(30)	Checked  ) in table VanBanDenHis
-insert column ( ChucVuNguoiKy	nvarchar(100)	Checked  ) in table VanBanDenHis
-insert column ( ThoiHanGiaiQuyet datetime 	Checked  ) in table VanBanDenHis
-insert column ( SoThuTuTrongHoSo int 	Checked  ) in table VanBanDenHis
-
-insert column ( SoTrang int 	Checked  ) in table VanBanDenFile
-insert column ( SoTrang int 	Checked  ) in table VanBanDiFile
-
-insert column ( SoTrang int 	Checked  ) in table VanBanDenFileHis
-insert column ( SoTrang int 	Checked  ) in table VanBanDiFileHis
-
-
-
-
-create procedure [dbo].[QuanLyVanBanAUD]
-
-create procedure [dbo].[QuanLyVanBanGetList]
-
-create procedure [TableHisProPara]
-
-create procedure [MessagesAUD]
-
-create procedure [MessagesGetList]
-
-
-
-update procedure [VanBanDenAUD]
-
-update procedure [VanBanDenGetList]
-
-update procedure [VanBanDenFileAUD]
-
-update procedure [VanBanDiAUD]
-
-update procudure [VanBanDiGetList]
-
-update procedure [VanBanDiFileAUD]
-
-update procedure [VanBanDiFileGetList]
-
-update procedure [HoSoNhanVienAUD]
-
-update procedure [VanBanCoQuanGetList]
-
-update procedure [VanBanDenCount]
-
-update procedure [AppUserLoginAUD]
-
-update procedure [AppUserLoginGetList]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 r
 Create Table VanBanDenDuyetFile
 r

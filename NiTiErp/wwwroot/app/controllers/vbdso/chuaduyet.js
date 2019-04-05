@@ -2,6 +2,8 @@
 
     var _quatrinhxuly = new _quatrinhxulyController();
 
+    var bientimClick = 0;
+
     this.initialize = function () {
 
         registerEvents();
@@ -12,7 +14,24 @@
         loadCountChuaDuyet(makv);
     }
 
+    this.loadTableVBDChuaDuyet = function () {
+        loadTableVBDChuaDuyet();
+        $('#btnTimChuaDuyet').hide();
+    }
+
     function registerEvents() {
+
+        $('body').on('click', '.btnVBDSoTim', function (e) {
+            e.preventDefault();
+            if (bientimClick === 0) {
+                $('#btnTimChuaDuyet').show();
+                bientimClick = 1;
+            }
+            else if (bientimClick === 1) {
+                $('#btnTimChuaDuyet').hide();
+                bientimClick = 0;
+            }
+        });
 
         $('#btnTimChuaDuyet').on('click', function () {            
             loadTableVBDChuaDuyet();

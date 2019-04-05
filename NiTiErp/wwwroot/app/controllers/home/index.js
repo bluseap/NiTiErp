@@ -1,7 +1,6 @@
 ﻿var HomeController = function () {
 
     var userCorporationId = $("#hidUserCorporationId").val();
-
     var userName = $("#hidUserName").val();
     var connection = new signalR.HubConnectionBuilder()
         .withUrl("/vanban")
@@ -755,7 +754,8 @@
 
     function loadSumVanBan(makv) {
         loadVanBanDenTTXL(connection, makv);
-        loadCountVanBanDenDangXL(connection, makv);
+        //loadCountVanBanDenDangXL(connection, makv);
+        loadCountVanBanDenDangXLUserId(connection, makv, userName);
         loadCountVanBanDenChoDuyet(connection, makv);
         loadCountVanBanDenChuaPhatHanh(connection, makv);
         loadCountVanBanDenDienTu(connection, makv);
@@ -800,6 +800,30 @@
                         $('#spanDenChuaXuLy').text(tongttxl);
                     });
                 }
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+
+    function loadCountVanBanDenDangXLUserId(connection, makv, userName){
+        $.ajax({
+            type: 'GET',            
+            url: '/admin/vbdthem/GetCountVBDSoCXLUserName',
+            data: {
+                corporationId: makv,
+                userNameId: userName
+            },
+            dataType: 'json',
+            success: function (response) {
+                connection.on("VanBanDenDangXuLy", (response) => {
+                    $('#spanDenDangXuLy').text(response);
+                });
+                connection.invoke("SendVanBanDenDangXuLy", response).catch(function (err) {
+                    $('#spanDenDangXuLy').text(response);
+                });
             },
             error: function (status) {
                 console.log(status);

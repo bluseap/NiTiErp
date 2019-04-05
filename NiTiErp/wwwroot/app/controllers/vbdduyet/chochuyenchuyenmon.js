@@ -5,6 +5,8 @@
     var choduyet = new choduyetController();
     var duyettatca = new duyettatcaController();
 
+    var bientimClick = 0;
+
     this.initialize = function () {     
 
         registerEvents();
@@ -23,7 +25,24 @@
         duyettatca.loadCountVBDDuyetTatCa(makhuvuc);
     }
 
+    this.loadTableCCCM = function () {
+        loadTableCCCM();
+        $('#btnTimChoChuyenChuyenMon').hide();
+    }
+
     function registerEvents() {
+
+        $('body').on('click', '.btnVBDDuyetTim', function (e) {
+            e.preventDefault();
+            if (bientimClick === 0) {
+                $('#btnTimChoChuyenChuyenMon').show();
+                bientimClick = 1;
+            }
+            else if (bientimClick === 1) {
+                $('#btnTimChoChuyenChuyenMon').hide();
+                bientimClick = 0;
+            }
+        });
 
         $('#btnTimChoChuyenChuyenMon').on('click', function () {            
             loadTableCCCM();

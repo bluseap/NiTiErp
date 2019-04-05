@@ -3,6 +3,8 @@
     var vanbandenduyetfile = new vbdduyetfileController();
     var _quatrinhxuly = new _quatrinhxulyController();
 
+    var bientimClick = 0;
+
     this.initialize = function () {
 
         registerEvents();
@@ -13,7 +15,24 @@
         loadCountChuuaChuyen(makv);
     }
 
+    this.loadTableVBDSoChuaChuyen = function () {
+        loadTableVBDSoChuaChuyen();
+        $('#btnTimChuaChuyen').hide();
+    }
+
     function registerEvents() {
+
+        $('body').on('click', '.btnVBDSoTim', function (e) {
+            e.preventDefault();
+            if (bientimClick === 0) {
+                $('#btnTimChuaChuyen').show();
+                bientimClick = 1;
+            }
+            else if (bientimClick === 1) {
+                $('#btnTimChuaChuyen').hide();
+                bientimClick = 0;
+            }
+        });
 
         $('#btnTimChuaChuyen').on('click', function () {            
             loadTableVBDSoChuaChuyen();

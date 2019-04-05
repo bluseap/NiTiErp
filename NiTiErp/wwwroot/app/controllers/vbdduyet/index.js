@@ -29,7 +29,9 @@
     }
 
     function registerEvents() {        
-
+        $('#boxContentVBDDuyetTim').slideToggle(200, function () {
+            $('#boxPanelVBDDuyetTim').removeAttr('style');
+        });
     }
 
     function loadKhuVuc() {
@@ -55,7 +57,9 @@
 
                 var makv = $('#ddlKhuVuc').val();
                 chochuyenchuyenmon.loadCountVanBanDen(makv);
-               
+                chochuyenchuyenmon.loadTableCCCM();
+                dachuyenchuyenmon.loadTableDaCCM();
+                duyettatca.loadTableDuyetTatCa();
             },
             error: function (status) {
                 console.log(status);

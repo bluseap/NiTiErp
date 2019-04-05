@@ -458,10 +458,11 @@
                 var appuserlogin = response.Result.Results;
 
                 if (appuserlogin.length === 0) {
-                    $('#btnVBDiChuyenLD').hide();                    
+                    $('#btnVBDiChuyenLD').hide();    
                 }
                 else {
-                    $('#btnVBDiPhatHanh').hide();
+                    //$('#btnVBDiPhatHanh').hide();
+                    $('#btnVBDiPhatHanh').show();
                     $('#btnLaySoVBDi').hide();
                 }                
             },

@@ -56,18 +56,35 @@
                             <select id="ddlKhuVuc" class="form-control "></select>
                             @*<input type="text" id="txtTimNoiDung" class="form-control" placeholder="Từ khóa...">*@
                             @*<span class="input-group-btn">
-                                    <button class="btn btn-warning" id="btnTimNhanVien" type="button">Tìm !</button>
-                                </span>*@
+                            <button class="btn btn-warning" id="btnTimNhanVien" type="button">Tìm !</button>
+                        </span>*@
                         </div>
                     </div>
                     @*<div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
-                            <div class="input-group">
+                    <div class="input-group">
 
-                            </div>
-                        </div>*@
+                    </div>
+                </div>*@
                 </div>
             </div>
-            <partial name="/Areas/Admin/Views/Shared/_timVanBan.cshtml" />
+            <div class="col-md-12 col-sm-12 col-xs-12" id="divVanBanDenDuyetTim">
+                <div class="x_panel" id="boxPanelVBDDuyetTim">
+                    <div class="x_title">
+                        <h2> <small>  </small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link btnVBDDuyetTim">Tìm Văn bản đến <i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content" id="boxContentVBDDuyetTim">
+                        <div class="row">
+                            <partial name="/Areas/Admin/Views/Shared/_timVanBan.cshtml" />
+                        </div>
+                    </div>
+                </div>
+            </div>            
 
             <div class="clearfix"></div>
 
@@ -86,17 +103,17 @@
                         </a>
                     </li>
                     @*<li role="presentation" class="">
-                            <a href="#tab_ChoDuyet" role="tab" id="tabChoDuyet" data-toggle="tab" aria-expanded="false">
-                                VB chờ duyệt
-                                <span id="spanChoDuyet" class="badge bg-orange" style="font-size:large">0</span>
-                            </a>
-                        </li>
-                        <li role="presentation" class="">
-                            <a href="#tab_DaDuyet" role="tab" id="tabDaDuyet" data-toggle="tab" aria-expanded="false">
-                                VB đã duyệt
-                                <span id="spanDaDuyet" class="badge bg-blue" style="font-size:large">0</span>
-                            </a>
-                        </li>*@
+                    <a href="#tab_ChoDuyet" role="tab" id="tabChoDuyet" data-toggle="tab" aria-expanded="false">
+                        VB chờ duyệt
+                        <span id="spanChoDuyet" class="badge bg-orange" style="font-size:large">0</span>
+                    </a>
+                </li>
+                <li role="presentation" class="">
+                    <a href="#tab_DaDuyet" role="tab" id="tabDaDuyet" data-toggle="tab" aria-expanded="false">
+                        VB đã duyệt
+                        <span id="spanDaDuyet" class="badge bg-blue" style="font-size:large">0</span>
+                    </a>
+                </li>*@
                     <li role="presentation" class="">
                         <a href="#tab_DuyetTatCa" role="tab" id="tabDuyetTatCa" data-toggle="tab" aria-expanded="false">
                             Tất cả VB
@@ -112,11 +129,11 @@
                         <partial name="_tabDaChuyenChuyenMon.cshtml" />
                     </div>
                     @*<div role="tabpanel" class="tab-pane fade" id="tab_ChoDuyet" aria-labelledby="profile-tab">
-                            <partial name="_tabChoDuyet.cshtml" />
-                        </div>
-                        <div role="tabpanel" class="tab-pane fade" id="tab_DaDuyet" aria-labelledby="profile-tab">
-                            <partial name="_tabDaDuyet.cshtml" />
-                        </div>*@
+                    <partial name="_tabChoDuyet.cshtml" />
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="tab_DaDuyet" aria-labelledby="profile-tab">
+                    <partial name="_tabDaDuyet.cshtml" />
+                </div>*@
                     <div role="tabpanel" class="tab-pane fade" id="tab_DuyetTatCa" aria-labelledby="profile-tab">
                         <partial name="_tabDuyetTatCa.cshtml" />
                     </div>

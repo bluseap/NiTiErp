@@ -2,6 +2,8 @@
 
     var _quatrinhxuly = new _quatrinhxulyController();
 
+    var bientimClick = 0;
+
     this.initialize = function () {
 
         registerEvents();        
@@ -12,7 +14,25 @@
         loadCountLuuTam(makv);
     }
 
+    this.loadTableVBDSoLuuTam = function () {
+        loadTableVBDSoLuuTam();
+        $('#btnTimLuuTam').hide();
+    }
+
     function registerEvents() {
+
+        $('body').on('click', '.btnVBDSoTim', function (e) {
+            e.preventDefault();
+            if (bientimClick === 0) {
+                $('#btnTimLuuTam').show();
+                bientimClick = 1;
+            }
+            else if (bientimClick === 1) {
+                $('#btnTimLuuTam').hide();
+                bientimClick = 0;
+            }
+        });
+
         $('#btnTimLuuTam').on('click', function () {
             //tedu.notify("luu tam", "success");
             loadTableVBDSoLuuTam();
