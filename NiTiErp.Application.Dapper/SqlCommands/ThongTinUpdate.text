@@ -3,6 +3,9 @@
 
 update procedure VanBanDenCount
 
+update procedure [VanBanDenAUD]
+
+update procedure [TableHisProPara]
 
 
 

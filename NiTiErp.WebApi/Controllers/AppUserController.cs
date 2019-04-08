@@ -1,113 +1,121 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Dapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using NiTiErp.Application.Dapper.ViewModels;
+using NiTiErp.Utilities.Constants;
+using NiTiErp.WebApi.Extensions;
+using NiTiErp.WebApi.Filters;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace NiTiErp.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [MiddlewareFilter(typeof(LocalizationPipeline))]
+    [Authorize]
     public class AppUserController : ControllerBase
     {
-        private readonly UserManager<AppUserViewModel> _userManager;       
+        private readonly IConfiguration _configuration;
+        private readonly SignInManager<AppUserViewModel> _signInManager;
+        private readonly UserManager<AppUserViewModel> _userManager;
+        private readonly string _connectionString;
 
-        //public AppUserController(UserManager<AppUserViewModel> userManager, 
-        //    IConfiguration configuration)
-        //{
-        //    _userManager = userManager;
-        //    _connectionString = configuration.GetConnectionString("DbConnectionString");
-        //}
+        public AppUserController(UserManager<AppUserViewModel> userManager,
+            IConfiguration configuration,
+            SignInManager<AppUserViewModel> signInManager)
+        {
+            _signInManager = signInManager;
+            _userManager = userManager;
+            _configuration = configuration;
+            _connectionString = configuration.GetConnectionString("DefaultConnection");
+        }
 
-        //// GET: api/Role
-        //[HttpGet]
-        //public async Task<IActionResult> Get()
-        //{
-        //    using (var conn = new SqlConnection(_connectionString))
-        //    {
-        //        if (conn.State == System.Data.ConnectionState.Closed)
-        //            await conn.OpenAsync();
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("login")]
+        [ValidateModel]
+        public async Task<IActionResult> Login([FromBody] LoginAPIViewModel model)
+        {
+            var user = await _userManager.FindByNameAsync(model.UserName);
+            if (user != null)
+            {
+                //var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+                var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, true);
+                if (!result.Succeeded)
+                    return BadRequest("Mật khẩu không đúng");
+                var roles = await _userManager.GetRolesAsync(user);
+                var permissions = await GetPermissionByUserId(user.Id.ToString());
+                var claims = new[]
+                {
+                    new Claim("Email", user.Email),
+                    new Claim(SystemConstants.UserClaim.Id, user.Id.ToString()),
+                    new Claim(ClaimTypes.Name, user.UserName),
+                    new Claim(SystemConstants.UserClaim.FullName, user.FullName??string.Empty),
+                    new Claim(SystemConstants.UserClaim.Roles, string.Join(";", roles)),
+                    new Claim(SystemConstants.UserClaim.Permissions, JsonConvert.SerializeObject(permissions)),
+                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                };
+                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Tokens:Key"]));
+                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-        //        var paramaters = new DynamicParameters();
-        //        var result = await conn.QueryAsync<AppUser>("Get_User_All", paramaters, null, null, System.Data.CommandType.StoredProcedure);
-        //        return Ok(result);
-        //    }
-        //}
+                var token = new JwtSecurityToken(_configuration["Tokens:Issuer"],
+                    _configuration["Tokens:Issuer"],
+                        claims,
+                    expires: DateTime.Now.AddDays(2),
+                    signingCredentials: creds);
 
-        //// GET: api/Role/5
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> Get(string id)
-        //{
-        //    return Ok(await _userManager.FindByIdAsync(id));
-        //}
+                return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token) });
+            }
+            return NotFound($"Không tìm thấy tài khoản {model.UserName}");
+        }
 
-        //[HttpGet("paging")]
-        //public async Task<IActionResult> GetPaging(string keyword, int pageIndex, int pageSize)
-        //{
-        //    using (var conn = new SqlConnection(_connectionString))
-        //    {
-        //        if (conn.State == System.Data.ConnectionState.Closed)
-        //            await conn.OpenAsync();
-
-        //        var paramaters = new DynamicParameters();
-        //        paramaters.Add("@keyword", keyword);
-        //        paramaters.Add("@pageIndex", pageIndex);
-        //        paramaters.Add("@pageSize", pageSize);
-        //        paramaters.Add("@totalRow", dbType: System.Data.DbType.Int32, direction: System.Data.ParameterDirection.Output);
-
-        //        var result = await conn.QueryAsync<AppUser>("Get_User_AllPaging", paramaters, null, null, System.Data.CommandType.StoredProcedure);
-
-        //        int totalRow = paramaters.Get<int>("@totalRow");
-
-        //        var pagedResult = new PagedResult<AppUser>()
-        //        {
-        //            Items = result.ToList(),
-        //            TotalRow = totalRow,
-        //            PageIndex = pageIndex,
-        //            PageSize = pageSize
-        //        };
-        //        return Ok(pagedResult);
-        //    }
-
-
-        //}
-
-        // POST: api/Role
         //[HttpPost]
+        //[AllowAnonymous]
+        //[Route("register")]
         //[ValidateModel]
-        //public async Task<IActionResult> Post([FromBody] AppUser user)
+        //public async Task<IActionResult> Register(RegisterViewModel model)
         //{
-        //    var result = await _userManager.CreateAsync(user);
+        //    var user = new AppUser { FullName = model.FullName, UserName = model.Email, Email = model.Email };
+
+        //    var result = await _userManager.CreateAsync(user, model.Password);
+
         //    if (result.Succeeded)
-        //        return Ok();
+        //    {
+        //        // User claim for write customers data
+        //        //await _userManager.AddClaimAsync(user, new Claim("Customers", "Write"));
+
+        //        //await _signInManager.SignInAsync(user, false);
+
+        //        return Ok(model);
+        //    }
+
         //    return BadRequest();
         //}
 
-        //// PUT: api/Role/5
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> Put([Required]Guid id, [FromBody] AppUser user)
-        //{
-        //    user.Id = id;
-        //    var result = await _userManager.UpdateAsync(user);
-        //    if (result.Succeeded)
-        //        return Ok();
-        //    return BadRequest();
-        //}
+        private async Task<List<string>> GetPermissionByUserId(string userId)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
 
-        //// DELETE: api/ApiWithActions/5
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> Delete(string id)
-        //{
-        //    var user = await _userManager.FindByIdAsync(id);
-        //    var result = await _userManager.DeleteAsync(user);
-        //    if (result.Succeeded)
-        //        return Ok();
-        //    return BadRequest();
-        //}
+                var paramaters = new DynamicParameters();
+                paramaters.Add("@userId", userId);
 
+                var result = await conn.QueryAsync<string>("Get_Permission_ByUserId", paramaters, null, null, System.Data.CommandType.StoredProcedure);
+                return result.ToList();
+            }
+        }
     }
 }

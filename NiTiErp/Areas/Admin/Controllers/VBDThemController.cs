@@ -114,6 +114,42 @@ namespace NiTiErp.Areas.Admin.Controllers
             }
         }
 
+        public IActionResult UpdateVBDSttHoSo(VanBanDenViewModel vanbandenVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+
+                vanbandenVm.CreateBy = username;
+                vanbandenVm.CreateDate = DateTime.Now;
+                vanbandenVm.UpdateBy = username;
+                vanbandenVm.UpdateDate = DateTime.Now;
+
+                vanbandenVm.NgayPhatHanh = DateTime.Now;
+
+                if (vanbandenVm.InsertVanBanDenId == 2)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "VANBANDENTHEM", Operations.Update); //
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền sửa."));
+                    }
+
+                    var vanbanden = _vanbandenService.VanBanDenAUD(vanbandenVm, "UpVBDSttHoSo");
+                    return new OkObjectResult(vanbanden);
+                }
+                else
+                {                   
+                    return new OkObjectResult(vanbandenVm);
+                }
+            }
+        }
+
         public IActionResult AddVanBanDenChuyen(VanBanDenViewModel vanbandenVm)
         {
             if (!ModelState.IsValid)
