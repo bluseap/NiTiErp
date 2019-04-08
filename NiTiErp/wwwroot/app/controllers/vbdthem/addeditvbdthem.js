@@ -1110,6 +1110,12 @@
             var capdomatvanban = $('#ddlCapDoMat').val();
             var ghichuvanban = $('#txtGhiChu').val();
 
+            var quanlyvanbanid = $('#ddlDanhMucHoSo').val() === "%" ? 0 : $('#ddlDanhMucHoSo').val();
+            var ngonnguid = $('#ddlNgonNguVanBan').val();
+            var chucvunguoiky = $('#txtChucVuNguoiKy').val();
+            var thoihangiaiquyet = tedu.getFormatDateYYMMDD($('#txtThoiHanGiaiQuyet').val());
+            var stttronghoso = $('#txtSoThuTuTrongHoSo').val();        
+
             $.ajax({
                 type: "POST",
                 url: "/Admin/vbdthem/AddVanBanDenChuyen",
@@ -1133,6 +1139,12 @@
                     VanBanKhanId: capdokhanvanban,
                     VanBanMatId: capdomatvanban,
                     GhiChu: ghichuvanban,
+
+                    QuanLyVanBanId: quanlyvanbanid,
+                    LanguageId: ngonnguid,
+                    ChucVuNguoiKy: chucvunguoiky,
+                    ThoiHanGiaiQuyet: thoihangiaiquyet,
+                    SoThuTuTrongHoSo: stttronghoso,
 
                     IsVanBanDienTu: isvanbandientu,
                     VanBanDienTuId: vanbandientuid

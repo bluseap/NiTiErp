@@ -6,8 +6,9 @@
     var bientimClick = 0;
 
     this.initialize = function () {
-
         registerEvents();
+
+        loadDataSoTatCa();
 
     }
 
@@ -21,6 +22,16 @@
     }
 
     function registerEvents() {
+
+        $('#txtSoTuNgay, #txtSoDenNgay  ').datepicker({
+            autoclose: true,
+            format: 'dd/mm/yyyy',
+            language: 'vi'
+        });
+
+        $('#btnSoDSExcel').on('click', function () {
+            ExcelVBDen();
+        });
 
         $('body').on('click', '.btnVBDSoTim', function (e) {
             e.preventDefault();
@@ -70,6 +81,13 @@
             $('#btnVBDDUyetFileId').hide();
             $('#modal-add-edit-VBDDuyetFile').modal('show');
         });
+
+    }
+
+    function loadDataSoTatCa() {
+        var datenow = new Date();
+        $('#txtSoTuNgay').val(tedu.getFormattedDate(datenow));
+        $('#txtSoDenNgay').val(tedu.getFormattedDate(datenow));
 
     }
 
@@ -207,6 +225,31 @@
                 tedu.notify('Không thể lấy dữ liệu về.', 'error');
             }
         });
+    }
+
+    function ExcelVBDen() {
+        //tedu.notify("Xuất excel van ban denndam,snd", "success");
+        var makhuvuc = $('#ddlKhuVuc').val();
+        var tungay2 = tedu.getFormatDateYYMMDD($('#txtSoTuNgay').val());
+        var dengay2 = tedu.getFormatDateYYMMDD($('#txtSoDenNgay').val());
+
+        $.ajax({
+            type: 'POST',
+            url: '/admin/vbdso/ExcelVBDenSo',
+            data: {
+                corporationId: makhuvuc,               
+                tungay: tungay2,
+                dengay: dengay2
+            },
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                window.location.href = response;
+                tedu.stopLoading();
+            }
+        });
+
     }
 
 

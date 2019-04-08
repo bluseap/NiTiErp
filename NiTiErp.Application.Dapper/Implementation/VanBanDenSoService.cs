@@ -96,6 +96,36 @@ namespace NiTiErp.Application.Dapper.Implementation
             }
         }
 
+        public async Task<List<VanBanDenViewModel>> VBDenSoExcel(string corporationid, DateTime tungay,
+            DateTime denngay, string trangthai, string ghichu, string makv, string parameters)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@corporationId", corporationid);
+                dynamicParameters.Add("@tungay", tungay);
+                dynamicParameters.Add("@denngay", denngay);
+                dynamicParameters.Add("@trangthai", trangthai);
+                dynamicParameters.Add("@ghichu", ghichu);
+                dynamicParameters.Add("@makv", makv);
+
+                dynamicParameters.Add("@parameters", parameters);
+
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<VanBanDenViewModel>(
+                        "VBDenSoExcel", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return query.AsList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         public async Task<Boolean> VanBanDenSoAUD(VanBanDenSoViewModel vanbandenso, string parameters)
         {
             using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
