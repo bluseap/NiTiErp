@@ -1,19 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using NiTiErp.Application.Dapper.Interfaces;
-using NiTiErp.Application.Dapper.ViewModels;
-using NiTiErp.Authorization;
-using NiTiErp.Extensions;
-using NiTiErp.Utilities.Dtos;
-using NiTiErp.Utilities.Helpers;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -74,8 +65,8 @@ namespace NiTiErp.Areas.Admin.Controllers
                     var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
                     //var phong = !string.IsNullOrEmpty(madphongChamCong) ? madphongChamCong : "%";
                     //var tukhoa = !string.IsNullOrEmpty(keywordChamCong) ? keywordChamCong : "%";
-                 
-                    var vbdDetail = _vanbandensoService.VBDenSoExcel(khuvuc, tungay, dengay, "", "", "", 
+
+                    var vbdDetail = _vanbandensoService.VBDenSoExcel(khuvuc, tungay, dengay, "", "", "",
                         "VBDenSoExcelKhuVuc");
 
                     int rowIndex = 13;
@@ -110,21 +101,22 @@ namespace NiTiErp.Areas.Admin.Controllers
                         // Cell 1, Carton Count
                         //worksheet.Cells[rowIndex, 2].Value = count.ToString();
                         worksheet.Cells[rowIndex, 2].Value = hdDetail.NgayDenCuaVanBan != null ? hdDetail.NgayDenCuaVanBan.Date.ToString("dd/M/yyyy", CultureInfo.InvariantCulture) : "";
-                        //worksheet.Cells[rowIndex, 2].Style.Border.Left.Style = ExcelBorderStyle.Thick; // to dam                        
+                        //worksheet.Cells[rowIndex, 2].Style.Border.Left.Style = ExcelBorderStyle.Thick; // to dam
                         //worksheet.Cells[rowIndex, 2].Style.Border.Top.Color.SetColor(Color.Red);
                         worksheet.Cells[rowIndex, 2].Style.Border.Left.Style = ExcelBorderStyle.Medium; // to dam vua
                         worksheet.Cells[rowIndex, 2].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
                         worksheet.Cells[rowIndex, 2].Style.Border.Top.Style = ExcelBorderStyle.Dotted; // khoan cach
                         worksheet.Cells[rowIndex, 2].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
                         worksheet.Cells[rowIndex, 2].Style.Font.Size = 9;
-                        worksheet.Row(rowIndex).Height = 32;
+                        worksheet.Cells[rowIndex, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet.Row(rowIndex).Height = 35;
 
                         worksheet.Cells[rowIndex, 3].Value = hdDetail.SoVanBanDenStt.ToString();
                         worksheet.Cells[rowIndex, 3].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                         worksheet.Cells[rowIndex, 3].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                         worksheet.Cells[rowIndex, 3].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                         worksheet.Cells[rowIndex, 3].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
-                        worksheet.Cells[rowIndex, 3].Style.Font.Size = 9;                      
+                        worksheet.Cells[rowIndex, 3].Style.Font.Size = 9;
 
                         worksheet.Cells[rowIndex, 4].Value = !string.IsNullOrEmpty(hdDetail.NguoiKyCuaVanBan) ? hdDetail.NguoiKyCuaVanBan.ToString() : "";
                         worksheet.Cells[rowIndex, 4].Style.Border.Left.Style = ExcelBorderStyle.Thin;
@@ -132,13 +124,13 @@ namespace NiTiErp.Areas.Admin.Controllers
                         worksheet.Cells[rowIndex, 4].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                         worksheet.Cells[rowIndex, 4].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
                         worksheet.Cells[rowIndex, 4].Style.Font.Size = 9;
-                        
+
                         worksheet.Cells[rowIndex, 5].Value = !string.IsNullOrEmpty(hdDetail.SoKyHieuCuaVanBan) ? hdDetail.SoKyHieuCuaVanBan.ToString() : "";
                         worksheet.Cells[rowIndex, 5].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                         worksheet.Cells[rowIndex, 5].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                         worksheet.Cells[rowIndex, 5].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                         worksheet.Cells[rowIndex, 5].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
-                        worksheet.Cells[rowIndex, 5].Style.Font.Size = 9;       
+                        worksheet.Cells[rowIndex, 5].Style.Font.Size = 9;
 
                         worksheet.Cells[rowIndex, 6].Value = hdDetail.NgayBanHanhCuaVanBan != null ? hdDetail.NgayBanHanhCuaVanBan.Date.ToString("dd/M/yyyy", CultureInfo.InvariantCulture) : "";
                         worksheet.Cells[rowIndex, 6].Style.Border.Left.Style = ExcelBorderStyle.Thin;
@@ -148,7 +140,7 @@ namespace NiTiErp.Areas.Admin.Controllers
                         worksheet.Cells[rowIndex, 6].Style.Font.Size = 9;
                         worksheet.Cells[rowIndex, 6].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
 
-                        worksheet.Cells[rowIndex, 7].Value = (!string.IsNullOrEmpty(hdDetail.TenLoaiVanBan.ToString()) ? hdDetail.TenLoaiVanBan.ToString() : "") + ", " + (!string.IsNullOrEmpty(hdDetail.TrichYeuCuaVanBan.ToString()) ? hdDetail.TrichYeuCuaVanBan.ToString() : "") ;
+                        worksheet.Cells[rowIndex, 7].Value = (!string.IsNullOrEmpty(hdDetail.TenLoaiVanBan.ToString()) ? hdDetail.TenLoaiVanBan.ToString() : "") + ", " + (!string.IsNullOrEmpty(hdDetail.TrichYeuCuaVanBan.ToString()) ? hdDetail.TrichYeuCuaVanBan.ToString() : "");
                         worksheet.Cells[rowIndex, 7].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                         worksheet.Cells[rowIndex, 7].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                         worksheet.Cells[rowIndex, 7].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
@@ -190,12 +182,10 @@ namespace NiTiErp.Areas.Admin.Controllers
                         count++;
                     }
 
-                    package.SaveAs(file); //Save the workbook.    
-
+                    package.SaveAs(file); //Save the workbook.
                 }
                 return new OkObjectResult(url);
             }
         }
-
     }
 }

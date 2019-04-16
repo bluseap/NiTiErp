@@ -16,7 +16,7 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
         public string Corporation { get; set; }
 
-        public string TenKhuVuc { get; set; }
+        public string TenKhuVuc { get; set; }        
 
         public int NamHinhThanh { get; set; }
 

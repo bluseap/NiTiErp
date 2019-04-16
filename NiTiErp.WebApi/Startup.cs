@@ -50,31 +50,9 @@ namespace NiTiErp.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<AppDbContext>(options =>
-            //       options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
-            //           b => b.MigrationsAssembly("NiTiErp.Data.EF")));
-
-            services.AddCors(o => o.AddPolicy("TeduCorsPolicy", builder =>
-            {
-                builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader();
-            }));
-            services.AddAutoMapper();
-
-
-            services.AddSingleton(Mapper.Configuration);
-            services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
-            services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
-
-            services.AddTransient<IProductRepository, ProductRepository>();
-
-            services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
-            services.AddTransient<IProductCategoryService, ProductCategoryService>();
-
             services.AddTransient<IUserStore<AppUserViewModel>, UserStore>();
             services.AddTransient<IRoleStore<AppRoleViewModel>, RoleStore>();
-                      
+            services.AddTransient<IProductRepository, ProductRepository>();
 
             services.AddIdentity<AppUserViewModel, AppRoleViewModel>()
                 .AddDefaultTokenProviders();
@@ -89,7 +67,6 @@ namespace NiTiErp.WebApi
                 opt.Password.RequiredLength = 6;
                 opt.Password.RequiredUniqueChars = 1;
             });
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddJsonOptions(opt =>
                 {
@@ -97,7 +74,7 @@ namespace NiTiErp.WebApi
                 });
 
             var supportedCultures = new[]
-              {
+               {
                     new CultureInfo("en-US"),
                     new CultureInfo("vi-VN"),
                 };
@@ -113,7 +90,8 @@ namespace NiTiErp.WebApi
                  new RouteDataRequestCultureProvider() { Options = options }
             };
             services.AddSingleton(options);
-            //services.AddSingleton<LocService>();
+            services.AddSingleton<LocService>();
+
 
             services.AddLocalization(otp => otp.ResourcesPath = "Resources");
             //Add authen fixbug cannot get Claims
@@ -146,43 +124,36 @@ namespace NiTiErp.WebApi
                      };
                  });
 
-
-
-
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info
                 {
                     Version = "v1",
-                    Title = "ToDo API",
-                    Description = "A simple example ASP.NET Core Web API",
-                    TermsOfService = "None",
+                    Title = "TEDU Project",
+                    Description = "TEDU API Swagger surface",
                     Contact = new Contact
                     {
-                        Name = "Shayne Boyer",
-                        Email = string.Empty,
-                        Url = "https://twitter.com/spboyer"
+                        Name = "ToanBN",
+                        Email = "tedu.international@gmail.com",
+                        Url = "https://www.tedu.com.vn"
                     },
-                    License = new License
-                    {
-                        Name = "Use under LICX",
-                        Url = "https://example.com/license"
-                    }
+                    License = new License { Name = "MIT", Url = "https://github.com/teduinternational/teducoreapp" }
                 });
-               
+
+                c.AddSecurityDefinition("Bearer", new ApiKeyScheme
+                {
+                    In = "header",
+                    Description = "Please insert JWT with Bearer into field",
+                    Name = "Authorization",
+                    Type = "apiKey"
+                });
+
+                c.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>>
+                {
+                    { "Bearer", new string[] { } }
+                });
             });
-            //services.AddSwaggerGen(s =>
-            //{
-            //    s.SwaggerDoc("v1", new Info
-            //    {
-            //        Version = "v1",
-            //        Title = "TEDU Project",
-            //        Description = "TEDU API Swagger surface",
-            //        Contact = new Contact { Name = "ToanBN", Email = "tedu.international@gmail.com", Url = "http://www.tedu.com.vn" },
-            //        License = new License { Name = "MIT", Url = "https://github.com/teduinternational/teducoreapp" }
-            //    });
-            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -218,31 +189,37 @@ namespace NiTiErp.WebApi
                     }
                 });
             });
-
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                //app.UseDeveloperExceptionPage();
             }
-
-            app.UseStaticFiles();
-            app.UseCors("TeduCorsPolicy");
-
-            app.UseSwagger();
-            app.UseSwaggerUI(s =>
+            else
             {
-                s.SwaggerEndpoint("/swagger/v1/swagger.json", "Project API v1.1");
-                
+                app.UseHsts();
+            }
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
+            // specifying the Swagger JSON endpoint.
+            app.UseSwagger(c =>
+            {
+                c.PreSerializeFilters.Add((document, request) =>
+                {
+                    var paths = document.Paths.ToDictionary(item => item.Key.ToLowerInvariant(), item => item.Value);
+                    document.Paths.Clear();
+                    foreach (var pathItem in paths)
+                    {
+                        document.Paths.Add(pathItem.Key, pathItem.Value);
+                    }
+                });
             });
-
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "TEDU REST API V1");
+            });
             app.UseHttpsRedirection();
             app.UseAuthentication();
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
+            app.UseMvc();
         }
+        
     }
 }

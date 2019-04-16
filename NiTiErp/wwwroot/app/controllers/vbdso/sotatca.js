@@ -9,7 +9,6 @@
         registerEvents();
 
         loadDataSoTatCa();
-
     }
 
     this.loadCountSoTatCa = function (makv) {
@@ -30,7 +29,13 @@
         });
 
         $('#btnSoDSExcel').on('click', function () {
-            ExcelVBDen();
+            var dieukienExcel = $('#ddlSoDieuKien').val();
+            if (dieukienExcel === "SODKVBD") { // so van ban den
+                ExcelVBDen();
+            }
+            else if (dieukienExcel === "BCGQVBD") { // tinh hinh giai quyet van ban den
+                ExcelBCVBDen();
+            }            
         });
 
         $('body').on('click', '.btnVBDSoTim', function (e) {
@@ -89,6 +94,12 @@
         $('#txtSoTuNgay').val(tedu.getFormattedDate(datenow));
         $('#txtSoDenNgay').val(tedu.getFormattedDate(datenow));
 
+        var dieukienExcel = [{ value: "SODKVBD", Name: "Sổ đăng ký VB Đến" }, { value: "BCGQVBD", Name: "BC Tình hình giải quyết VB Đến" }];
+        var render = "";
+        for (var i = 0; i < dieukienExcel.length; i++) {
+            render += "<option value='" + dieukienExcel[i].value + "'>" + dieukienExcel[i].Name + "</option>";
+        }
+        $('#ddlSoDieuKien').html(render);
     }
 
     function loadPatchFile(vanbandenId) {

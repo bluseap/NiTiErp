@@ -141,6 +141,8 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
         public int SoTrang { get; set; }
 
+        public string TenNoiNhan { get; set; }
+
 
 
         public int Status { get; set; }

@@ -16,5 +16,8 @@ namespace NiTiErp.Application.Dapper.Interfaces
 
         Task<List<VanBanDiSoViewModel>> VanBanDiSoGetList(string corporationid, int nam, string keyword,
             int vanbandiid, string ghichu, string parameters);
+
+        Task<List<VanBanDiViewModel>> VBDiSoExcel(string corporationid, DateTime tungay,
+           DateTime denngay, string trangthai, string ghichu, string makv, string parameters);
     }
 }

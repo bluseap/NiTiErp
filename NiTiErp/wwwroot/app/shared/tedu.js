@@ -266,12 +266,18 @@
             return '<span class="badge bg-blue">Về hưu</span>';
         else if (status === 4)
             return '<span class="badge bg-orange">Hết hạn</span>';
+
         else if (status === 30)
             return '<span class="badge bg-green">Đang học</span>';
+
         else if (status === 41)
             return '<span class="badge bg-green">Online</span>';
         else if (status === 42)
-            return '<span class="badge bg-red">Offline</span>';    
+            return '<span class="badge bg-red">Offline</span>'; 
+        else if (status === 43)
+            return '<span class="badge bg-orange">Chưa đầy</span>';   
+        else if (status === 44)
+            return '<span class="badge bg-blue">Tủ đầy</span>';   
 
         
         else if (status === 61)

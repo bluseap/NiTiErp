@@ -1,0 +1,146 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+}
+@section Scripts{
+
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+
+    <script src="~/app/controllers/quanlyvb/addeditqlvb.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/quanlyvb/index.js" asp-append-version="true"></script>
+    <script>
+        var quanlyvb = new quanlyvbController();
+        quanlyvb.initialize();
+    </script>
+
+}
+
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link ">
+                    Danh mục Văn bản
+                </a>
+                >>
+                <a class="btn btn-link btnThemMoiVBDDMSo">
+                    Quản lý Danh mục Văn bản
+                </a>
+            </small>
+        </div>
+        <div class="title_right">
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <button class="btn btn-round btn-warning" id="btn-create" type="button">Thêm mới</button>
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-title">
+        <div class="title_left">
+            <h3>  <small></small></h3>
+        </div>
+        <div class="title_right">
+            <div class="col-md-5 col-sm-2 col-xs-12 form-group pull-right">
+                <div class="input-group">
+                    <input type="text" id="txtTenDanhMucHoSo" class="form-control" placeholder="Từ khóa...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" id="btnTimNoiDung" type="button">Tìm !</button>
+                    </span>
+                </div>
+            </div>
+            @*<div class="col-md-4 col-sm-4 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <input type="number" id="txtNamHinhThanhQLVB" class="form-control" placeholder="Năm hình thành..">
+                </div>
+            </div>*@
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <select id="ddlKhuVuc" class="form-control"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="x_panel">
+            <div class="row no-print">
+                @*<div class="col-xs-12">
+                        <button class="btn btn-info pull-right" id="btnXuatExcel" style="margin-right: 5px;"><i class="fa fa-download"></i> Xuất Excel</button>
+                    </div>*@
+            </div>
+            <div class="table-responsive" id="table-responsiveQuanLyVanBan">
+                <table id="tblQuanLyVanBan" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th width="=10%">#</th>
+                            <th>Khu vực</th>
+                            <th>Năm</th>
+                            <th>Số ký hiệu</th>
+                            <th>Tiêu đề</th>
+                            <th>Thời hạn bảo quản (năm)</th>
+                            <th>Tổng số VB</th>
+                            <th>Tổng số trang</th>
+                            @*<th>Ngày tạo</th>*@
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblContentQuanLyVanBan"></tbody>
+                </table>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="dataTables_info" id="datatable-checkbox_infoQuanLyVanBan" role="status" aria-live="polite">
+                            <select id="ddl-show-pageQuanLyVanBan">
+                                <option value="10" selected="selected">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                            </select>
+                            <span class="item-per-page">
+                                dòng/trang.
+                            </span>
+                            Tổng cộng: <strong id="lblQuanLyVanBanTotalRecords"></strong>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="dataTables_paginate" id="datatable-checkbox_paginateQuanLyVanBan">
+                            <ul id="paginationULQuanLyVanBan"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script id="table-QuanLyVanBan" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row">
+                <a class="btn btn-lg btn-addeditQuanLyVanBan" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa "><i class="fa fa-pencil"></i> </a>
+                <a class="btn btn-lg btn-deleteQuanLyVanBan" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xóa ">
+                    <i class="fa fa-bitbucket"></i>
+                </a>
+            </th>
+            <td>{{TenKhuVuc}}</td>
+            <td>{{NamHinhThanh}}</td>
+            <td>{{SoVaKyHieu}}</td>
+            <td>{{TieuDe}}</td>
+            <td>{{ThoiHanBaoQuan}}</td>
+            <td>{{TongSoVBTrongHoSo}}</td>
+            <td>{{TongSoTrangTrongHoSo}}</td>
+            @*<td>{{CreateDate}}</td>*@
+            <td>{{{Status}}}</td>
+        </tr>
+    </script>
+</div>
+
+<partial name="_AddEditModel.cshtml" />
+
+

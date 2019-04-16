@@ -2,6 +2,8 @@
 
 create PROC [dbo].[VBDenSoExcel]
 
+create PROC [dbo].[VBDiSoExcel]
+
 
 
 update procedure VanBanDenCount
@@ -10,7 +12,7 @@ update procedure [VanBanDenAUD]
 
 update procedure [TableHisProPara]
 
-
+update procedure [QuanLyVanBanAUD]
 
 
 

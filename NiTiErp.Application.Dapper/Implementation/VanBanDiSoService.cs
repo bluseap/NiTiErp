@@ -66,6 +66,66 @@ namespace NiTiErp.Application.Dapper.Implementation
             }
         }
 
+        public async Task<List<VanBanDenSoViewModel>> VanBanDenSoGetList(string corporationid, int nam, string keyword,
+            int vanbandenid, string ghichu, string parameters)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@corporationId", corporationid);
+                dynamicParameters.Add("@nam", nam);
+                dynamicParameters.Add("@keyword", keyword);
+                dynamicParameters.Add("@vanbandenid", vanbandenid);
+                dynamicParameters.Add("@ghichu", ghichu);
+
+                dynamicParameters.Add("@parameters", parameters);
+
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<VanBanDenSoViewModel>(
+                        "VanBanDenSoGetList", dynamicParameters, commandType: CommandType.StoredProcedure);
+
+                    return query.AsList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<List<VanBanDiViewModel>> VBDiSoExcel(string corporationid, DateTime tungay,
+            DateTime denngay, string trangthai, string ghichu, string makv, string parameters)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@corporationId", corporationid);
+                dynamicParameters.Add("@tungay", tungay);
+                dynamicParameters.Add("@denngay", denngay);
+                dynamicParameters.Add("@trangthai", trangthai);
+                dynamicParameters.Add("@ghichu", ghichu);
+                dynamicParameters.Add("@makv", makv);
+
+                dynamicParameters.Add("@parameters", parameters);
+
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<VanBanDiViewModel>(
+                        "VBDiSoExcel", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return query.AsList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         public async Task<List<VanBanDiSoViewModel>> VanBanDiSoGetList(string corporationid, int nam, string keyword,
             int vanbandiid, string ghichu, string parameters)
         {

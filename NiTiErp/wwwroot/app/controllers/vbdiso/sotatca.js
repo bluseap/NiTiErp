@@ -5,8 +5,9 @@
     var bientimClick = 0;
 
     this.initialize = function () {
-
         registerEvents();
+
+        loadDataSoTatCa();
 
         $('#ddlShareCoQuanBanHanhDi').prop("disabled", true);
     }    
@@ -21,6 +22,22 @@
     }
 
     function registerEvents() {
+
+        $('#txtSoTuNgay, #txtSoDenNgay  ').datepicker({
+            autoclose: true,
+            format: 'dd/mm/yyyy',
+            language: 'vi'
+        });
+
+        $('#btnSoDSExcel').on('click', function () {
+            var dieukienExcel = $('#ddlSoDieuKien').val();
+            if (dieukienExcel === "SODKVBDI") { // so van ban di
+                ExcelVBDi();
+            }
+            else if (dieukienExcel === "BCGQVBDI") { // tinh hinh giai quyet van ban di
+                ExcelBCVBDi();
+            }
+        });
 
         $('body').on('click', '.btnVBDiSoTim', function (e) {
             e.preventDefault();
@@ -64,6 +81,19 @@
         });
 
     }  
+
+    function loadDataSoTatCa() {
+        var datenow = new Date();
+        $('#txtSoTuNgay').val(tedu.getFormattedDate(datenow));
+        $('#txtSoDenNgay').val(tedu.getFormattedDate(datenow));
+
+        var dieukienExcel = [{ value: "SODKVBDI", Name: "Sổ đăng ký VB Đi" }, { value: "BCGQVBDI", Name: "BC Tình hình Văn bản Đi" }];
+        var render = "";
+        for (var i = 0; i < dieukienExcel.length; i++) {
+            render += "<option value='" + dieukienExcel[i].value + "'>" + dieukienExcel[i].Name + "</option>";
+        }
+        $('#ddlSoDieuKien').html(render);
+    }
 
     function loadCountSoTatCa(makv) {
         $.ajax({
@@ -205,6 +235,31 @@
                 }
             }
         });
+    }
+
+    function ExcelVBDi() {
+        //tedu.notify("Xuất excel van ban denndam,snd", "success");
+        var makhuvuc = $('#ddlKhuVuc').val();
+        var tungay2 = tedu.getFormatDateYYMMDD($('#txtSoTuNgay').val());
+        var dengay2 = tedu.getFormatDateYYMMDD($('#txtSoDenNgay').val());
+
+        $.ajax({
+            type: 'POST',
+            url: '/admin/vbdiso/ExcelVBDenSo',
+            data: {
+                corporationId: makhuvuc,
+                tungay: tungay2,
+                dengay: dengay2
+            },
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                window.location.href = response;
+                tedu.stopLoading();
+            }
+        });
+
     }
 
 }
