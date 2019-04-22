@@ -178,16 +178,26 @@ function OpenPrivateChatBox(chatHub, userId, ctrId, userName, countdem) {
 
 
         '    <input type="text" id="txtPrivateMessage" name="message" placeholder="Type Message ..." class="form-control"  />' +
+     
+        '  <div class="input-group">' +      
 
-        '  <div class="input-group">' +
+            '<div id="divbtnFileVanBan" class="bg_none pull-left" >' +
+            '<label for="fileFileVanBanDen" class="fa fa-chain-broken" > </label>' +
+        '<input type="file" id="fileFileVanBanDen" name="fileFileVanBanDen" style="display:none;" /> &emsp; ' + 
+
+        '<label for="fileFileHinhVBD" class="fa fa-file-image-o" >  </label>' +
+        '<input type="file" id="fileFileHinhVBD" name="fileFileHinhVBD" style="display:none;" />' +
+
+            '</div>' +
+
+            '<div class="bg_none pull-right" >' +
+                '   <span class="input-group-btn">' +
+                '          <input type="button" id="btnSendMessage" class="btn btn-' + PWClass + ' btn-flat" value="send" />' +
+            '   </span>' +
+            '</div>' +
+
         '    <input type="text" name="message" placeholder="Type Message ..." class="form-control" style="visibility:hidden;" />' +
-        '   <span class="input-group-btn">' +
-        '          <input type="button" id="btnSendMessage" class="btn btn-' + PWClass + ' btn-flat" value="send" />' +
-        '   </span>' +
 
-        '<div id="divbtnFileVanBan" class="bg_none pull-left" >' +
-            '<input type="file" id="fileFileVanBanDen" />' +
-        '</div>' +
         '  </div>' +
         '  </div>' +
 
