@@ -8,6 +8,7 @@ var UserImage2 = $("#hidLoginUserImgae2").val();
 var dateNow = new Date();
 //var localdate = dateFormat(dateNow, "dddd, mmmm dS, yyyy, h:MM:ss TT");
 var arr = []; // List of users	
+var fileUploadHinh = [];
 
 const connectionChatUser = new signalR.HubConnectionBuilder().withUrl("/chatuser").build();
 
@@ -16,8 +17,6 @@ var user2user1 = '';
 var countdem22 = 0;
 var usernameBox = '';
 
-
-//chatHub.client.sendPrivateMessage = function (windowId, fromUserName, message, userimg, CurrentDateTime) {
 
 
 //chatHub.client.sendPrivateMessage = function (windowId, fromUserName, message, userimg, CurrentDateTime) {
@@ -28,8 +27,8 @@ connectionChatUser.on('sendPrivateMessage', (windowId, fromUserName, message, us
 
     var ctrId = 'private_' + windowId;
     if ($('#' + ctrId).length === 0) {
-        OpenPrivateChatBox(connectionChatUser, windowId, ctrId, fromUserName, userimg);
-        //OpenPrivateChatBox(chatHub, userId, ctrId, userName) {
+        //OpenPrivateChatBox(connectionChatUser, windowId, ctrId, fromUserName, userimg);
+        OpenPrivateChatBox(connectionChatUser, windowId, ctrId, fromUserName, countdem22);
     } 
 
     var CurrUser = $('#hdUserName').val();
@@ -130,8 +129,7 @@ function AddUser(chatHub, username, connectionid, UserImage, date, countdem) {
             if ($.inArray(countdem, arr) !== -1) {
                 arr.splice($.inArray(countdem, arr), 1);
             }
-            arr.unshift(countdem);            
-
+            arr.unshift(countdem);    
 
             var id = connectionid;//'Div' + connectionid;
             var ctrId = 'private_' + id ;   
@@ -183,7 +181,7 @@ function OpenPrivateChatBox(chatHub, userId, ctrId, userName, countdem) {
 
             '<div id="divbtnFileVanBan" class="bg_none pull-left" >' +
             '<label for="fileFileVanBanDen" class="fa fa-chain-broken" > </label>' +
-        '<input type="file" id="fileFileVanBanDen" name="fileFileVanBanDen" style="display:none;" /> &emsp; ' + 
+        '<input type="file" id="fileFileVanBanDen" name="fileFileVanBanDen" style="display:none;" /> &ensp; ' + 
 
         '<label for="fileFileHinhVBD" class="fa fa-file-image-o" >  </label>' +
         '<input type="file" id="fileFileHinhVBD" name="fileFileHinhVBD" style="display:none;" />' +
@@ -197,6 +195,7 @@ function OpenPrivateChatBox(chatHub, userId, ctrId, userName, countdem) {
             '</div>' +
 
         '    <input type="text" name="message" placeholder="Type Message ..." class="form-control" style="visibility:hidden;" />' +
+        '<input type="hidden" id="hidTenFileHinhVBDId" value="" />' +
 
         '  </div>' +
         '  </div>' +
@@ -228,6 +227,53 @@ function OpenPrivateChatBox(chatHub, userId, ctrId, userName, countdem) {
         }
     });
 
+    $div.find("#fileFileHinhVBD").on('change', function () {
+        var dateNow = new Date();
+        var yyyyMMDD = tedu.getFormattedDateYYYYMMDD(dateNow);
+        var datetimeNow = tedu.getFormattedDateTimeHour(dateNow);
+
+        var fileUpload = $(this).get(0);
+        var files = fileUpload.files;
+
+        //tedu.notify(files[0].name, "success");//ten file 
+        $('#hidTenFileHinhVBDId').val(datetimeNow + files[0].name);
+        var filename = datetimeNow + files[0].name;
+        var data = new FormData();
+
+        for (var i = 0; i < files.length; i++) {
+            data.append(datetimeNow + files[i].name, files[i]);
+        }
+      
+        $.ajax({
+            type: "POST",
+            url: "/Admin/Upload/UploadHinhChatUser",
+            contentType: false,
+            processData: false,
+            data: data,
+            success: function (path) {
+                clearFileInputHinh($("#fileFileHinhVBD"));
+                fileUploadHinh.push(path);
+                tedu.notify('Đã tải file lên thành công!', 'success');
+            },
+            error: function () {
+                tedu.notify('There was error uploading files!', 'error');
+            }
+        });
+        
+
+        var textBoxHinh = $('#hidTenFileHinhVBDId').val();
+
+        var msgHinh = '<img id="imgFileHinhChatUser" style="width:100px;" class="attachment-img" src="/uploaded/chatuser/' +
+            yyyyMMDD + '/' + textBoxHinh + '" alt="Attachment Image" >';
+        if (msgHinh.length > 0) {
+            var fromuserId = $('#hdconnectId').val();
+            chatHub.invoke("SendToUserIdMessage", fromuserId, userId, userNameId, msgHinh);
+            $('#hidTenFileHinhVBDId').val('');
+            //SaveMessage(userNameId, userName, msg);
+        }
+
+    });
+
     // Text Box event on Enter Button
     $div.find("#txtPrivateMessage").keypress(function (e) {
         if (e.which === 13) {
@@ -246,6 +292,9 @@ function OpenPrivateChatBox(chatHub, userId, ctrId, userName, countdem) {
     $('#PriChatDiv').append($div);
 
     displayChatBox();
+
+    
+
 }
 function displayChatBox() {
     i = 30; // start position
@@ -300,7 +349,8 @@ $('body').on('click', '.btnDoiMatMaUser', function (e) {
             tedu.notify('Có lỗi xảy ra', 'error');
             tedu.stopLoading();
         }
-    });
+    });    
+
 });
 
 $(document).on('click', '#btnSaveEditPass', function () {
@@ -353,7 +403,16 @@ function SaveMessage(fromuserId, touserId, msg) {
     });
 }
 
-
+function clearFileInputHinh(ctrl) {
+    try {
+        fileUploadHinh = [];
+        ctrl.value = null;
+        ctrl.value('');
+    }
+    catch (ex) {
+        tedu.notify(ex, 'error');
+    }
+}
 
 
    
