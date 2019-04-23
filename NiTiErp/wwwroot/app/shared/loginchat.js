@@ -51,8 +51,8 @@ connectionChatUser.on('sendPrivateMessage', (windowId, fromUserName, message, us
 
     var divChatP = '<div class="direct-chat-msg ' + Side + '">' +
         '<div class="direct-chat-info clearfix">' +
-        '<span class="direct-chat-name pull-' + Side + '">' + fromUserName + '</span>' +
-        '<span class="direct-chat-timestamp pull-' + TimeSide + '"">' + CurrentDateTime + '</span>' +
+        '<span class="direct-chat-name pull-' + Side + '">' + fromUserName + '  </span> &nbsp;' +
+        '<span class="direct-chat-timestamp pull-' + TimeSide + '""> ' + CurrentDateTime + '</span>' +
         '</div>' +
 
         ' <img class="direct-chat-img" src="' + userimg + '?h=29" alt="Message User Image">' +
@@ -69,8 +69,8 @@ connectionChatUser.on('sendPrivateMessage', (windowId, fromUserName, message, us
     //var ScrollHeight = $('#' + ctrId).find('#divMessage').scrollTop() + $('#' + ctrId).find('#divMessage')[0].scrollHeight;
     //$('#' + ctrId).find('#divMessage').scrollTop = ScrollHeight;
 
-    var ScrollHeight = $('#' + ctrId).find('#divMessage').scrollHeight();
-    $('#' + ctrId).find('#divMessage').scrollTop = ScrollHeight;
+    //var ScrollHeight = $('#' + ctrId).find('#divMessage')[0].scrollHeight();
+    //$('#' + ctrId).find('#divMessage').scrollTop = ScrollHeight;
 
     
 });
@@ -180,10 +180,10 @@ function OpenPrivateChatBox(chatHub, userId, ctrId, userName, countdem) {
         '  <div class="input-group">' +      
 
             '<div id="divbtnFileVanBan" class="bg_none pull-left" >' +
-            '<label for="fileFileVanBanDen" class="fa fa-chain-broken" > </label>' +
-        '<input type="file" id="fileFileVanBanDen" name="fileFileVanBanDen" style="display:none;" /> &ensp; ' + 
+        //    '<label for="fileFileVanBanDen" class="fa fa-chain-broken" > </label>' +
+        //'<input type="file" id="fileFileVanBanDen" name="fileFileVanBanDen" style="display:none;" /> &ensp; ' + 
 
-        '<label for="fileFileHinhVBD" class="fa fa-file-image-o" >  </label>' +
+        '<label for="fileFileHinhVBD" class="fa fa-chain-broken" >  </label>' +
         '<input type="file" id="fileFileHinhVBD" name="fileFileHinhVBD" style="display:none;" />' +
 
             '</div>' +
@@ -235,7 +235,6 @@ function OpenPrivateChatBox(chatHub, userId, ctrId, userName, countdem) {
         var fileUpload = $(this).get(0);
         var files = fileUpload.files;
 
-        //tedu.notify(files[0].name, "success");//ten file 
         $('#hidTenFileHinhVBDId').val(datetimeNow + files[0].name);
         var filename = datetimeNow + files[0].name;
         var data = new FormData();
@@ -243,7 +242,7 @@ function OpenPrivateChatBox(chatHub, userId, ctrId, userName, countdem) {
         for (var i = 0; i < files.length; i++) {
             data.append(datetimeNow + files[i].name, files[i]);
         }
-      
+
         $.ajax({
             type: "POST",
             url: "/Admin/Upload/UploadHinhChatUser",
@@ -254,23 +253,28 @@ function OpenPrivateChatBox(chatHub, userId, ctrId, userName, countdem) {
                 clearFileInputHinh($("#fileFileHinhVBD"));
                 fileUploadHinh.push(path);
                 tedu.notify('Đã tải file lên thành công!', 'success');
+
+                var textBoxHinh = $('#hidTenFileHinhVBDId').val();
+
+                //if (IsValidateFile(files[0].name)) {
+                //    if (IsImageFile(files[0].name)) {                
+                var msgHinh = '<img id="imgFileHinhChatUser" class="direct-chat-img" src="/uploaded/chatuser/' +
+                    yyyyMMDD + '/' + textBoxHinh + '?h=100" alt="Attachment Image" > ';
+                //  ' <img class="direct-chat-img" src="' + userimg + '?h=29" alt="Message User Image">' +
+                if (msgHinh.length > 0) {
+                    var fromuserId = $('#hdconnectId').val();
+                    chatHub.invoke("SendToUserIdMessage", fromuserId, userId, userNameId, msgHinh);
+                    $('#hidTenFileHinhVBDId').val('');
+                    //SaveMessage(userNameId, userName, msg);
+                }
+        //    }
+        //}
+
             },
             error: function () {
                 tedu.notify('There was error uploading files!', 'error');
             }
-        });
-        
-
-        var textBoxHinh = $('#hidTenFileHinhVBDId').val();
-
-        var msgHinh = '<img id="imgFileHinhChatUser" style="width:100px;" class="attachment-img" src="/uploaded/chatuser/' +
-            yyyyMMDD + '/' + textBoxHinh + '" alt="Attachment Image" >';
-        if (msgHinh.length > 0) {
-            var fromuserId = $('#hdconnectId').val();
-            chatHub.invoke("SendToUserIdMessage", fromuserId, userId, userNameId, msgHinh);
-            $('#hidTenFileHinhVBDId').val('');
-            //SaveMessage(userNameId, userName, msg);
-        }
+        });        
 
     });
 
@@ -412,6 +416,25 @@ function clearFileInputHinh(ctrl) {
     catch (ex) {
         tedu.notify(ex, 'error');
     }
+}
+
+function IsValidateFile(fileF) {
+    var allowedFiles = [".doc", ".docx", ".pdf", ".txt", ".xlsx", ".xls", ".png", ".jpg", ".gif"];
+    var regex = new RegExp("([a-zA-Z0-9\s_\\.\-:])+(" + allowedFiles.join('|') + ")$");
+    if (!regex.test(fileF.toLowerCase())) {
+        alert("Chọn những file có đuôi: " + allowedFiles.join(', ') + " chỉ.");
+        return false;
+    }
+    return true;
+}
+
+function IsImageFile(fileF) {
+    var ImageFiles = [".png", ".jpg", ".gif"];
+    var regex = new RegExp("(" + ImageFiles.join('|') + ")$");
+    if (!regex.test(fileF.toLowerCase())) {
+        return false;
+    }
+    return true;
 }
 
 
