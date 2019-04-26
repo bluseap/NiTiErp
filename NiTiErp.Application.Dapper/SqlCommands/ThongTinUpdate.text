@@ -5,6 +5,9 @@ create PROC [dbo].[VBDenSoExcel]
 create PROC [dbo].[VBDiSoExcel]
 
 
+update procedure [MessagesAUD]
+
+update procedure [MessagesGetList]
 
 update procedure VanBanDenCount
 

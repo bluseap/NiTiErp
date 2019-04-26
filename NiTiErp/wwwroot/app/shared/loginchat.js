@@ -4,6 +4,7 @@ var fullName = $("#hidUserFullName").val();
 var userNameId = $("#hidUserName").val();
 var UserImage = "/admin-side/images/img.jpg";
 var UserImage2 = $("#hidLoginUserImgae2").val();
+var avatarUser = $("#hidAvatarUserId").val();
 
 var dateNow = new Date();
 //var localdate = dateFormat(dateNow, "dddd, mmmm dS, yyyy, h:MM:ss TT");
@@ -54,9 +55,12 @@ connectionChatUser.on('sendPrivateMessage', (windowId, fromUserName, message, us
         '<span class="direct-chat-name pull-' + Side + '">' + fromUserName + '  </span> &nbsp;' +
         '<span class="direct-chat-timestamp pull-' + TimeSide + '""> ' + CurrentDateTime + '</span>' +
         '</div>' +
-
-        ' <img class="direct-chat-img" src="' + userimg + '?h=29" alt="Message User Image">' +
-        ' <div class="direct-chat-text" >' + message + '</div> </div>';
+        '<span class="chat-img1 pull-left">' +
+        ' <img class="img-circle profile_img" src="' + userimg + '?h=29" alt="Message User Image">' +
+        '</span> &nbsp; ' +
+        ' <div class="direct-chat-text" >' + message + '</div>' +
+    
+        '</div > ';
 
     $('#' + ctrId).find('#divMessage').append(divChatP);
 
@@ -69,8 +73,9 @@ connectionChatUser.on('sendPrivateMessage', (windowId, fromUserName, message, us
     //var ScrollHeight = $('#' + ctrId).find('#divMessage').scrollTop() + $('#' + ctrId).find('#divMessage')[0].scrollHeight;
     //$('#' + ctrId).find('#divMessage').scrollTop = ScrollHeight;
 
-    //var ScrollHeight = $('#' + ctrId).find('#divMessage')[0].scrollHeight();
-    //$('#' + ctrId).find('#divMessage').scrollTop = ScrollHeight;
+    $("#divMessage").animate({
+        scrollTop: $("#divMessage")[0].scrollHeight
+    }, 500);     
 
     
 });
@@ -78,7 +83,8 @@ connectionChatUser.on('sendPrivateMessage', (windowId, fromUserName, message, us
 connectionChatUser.on('ClientGetChatRoom1Members', (data) => {   
     $("#divusers").html('');
     for (var i = 0; i < data.length; i++) {      
-        AddUser(connectionChatUser, data[i].userName, data[i].connectionId, UserImage, dateNow, 100 * (i === 0 ? 1 : i+1));
+        //AddUser(connectionChatUser, data[i].userName, data[i].connectionId, UserImage, dateNow, 100 * (i === 0 ? 1 : i+1));
+        AddUser(connectionChatUser, data[i].userName, data[i].connectionId, data[i].avatarUser, dateNow, 100 * (i === 0 ? 1 : i + 1));
     }
     var chieudaidata = data.length;
     if (chieudaidata > 0) {
@@ -101,7 +107,8 @@ connectionChatUser.start()
     .then(function () {
         var chatroom = "chatRoom1";
         //connectionChatUser.invoke("GetChatRoom1Members");
-        connectionChatUser.invoke("RegisterMember", userNameId, chatroom);
+        //connectionChatUser.invoke("RegisterMember", userNameId, chatroom);
+        connectionChatUser.invoke("RegisterMemberParaLogin", userNameId, chatroom, fullName, avatarUser);
         connectionChatUser.invoke("GetChatRoom1Members");
         
     })
@@ -109,13 +116,14 @@ connectionChatUser.start()
         console.error(error.message);
     });
 
-
 function AddUser(chatHub, username, connectionid, UserImage, date, countdem) {   
     var code;
-    code = $('<div id="Div' + connectionid + '"><li><a>' +
-        '<span class="image"><img class="img-circle img-sm" src="' + UserImage + '?h=29" alt="User Image" /></span>' +
-        '<span> <span> </span> <span id="' + connectionid + '"  >' + username + ' </span> </span>' +
-        '<span >' + date + '</span> <span >' + countdem + '</span>' +
+    code = $('<div id="Div' + connectionid + '"  ><li><a>' +
+        '<span class="image"><img alt class="img-circle img-responsive" src="' + UserImage + '?h=29" alt="User Image" /></span>' +
+        '<span><span id="' + connectionid + '"  >' + username + ' </span> <span>  </span></span > ' +
+        //'<span class="message">ts for movie makers.They were where... </span >' +
+        //'<span >' + date + '</span>
+        //'<span> ' + countdem + '</span > ' +
         '</a >  </li > </div > ');
 
     $("#divusers").append(code);    
@@ -167,7 +175,11 @@ function OpenPrivateChatBox(chatHub, userId, ctrId, userName, countdem) {
         '</div > ' +
 
         ' <div class="msg_wrap">' +
+
         ' <div id="divMessage" class="msg_body">' + 
+
+       // '<img id="loader" src="http://opengraphicdesign.com/wp-content/uploads/2009/01/loader64.gif">' +
+
         '<div class="msg_push" ></div>' +
         '</div > ' +
 
@@ -220,10 +232,16 @@ function OpenPrivateChatBox(chatHub, userId, ctrId, userName, countdem) {
         var msg = $textBox.val();
         if (msg.length > 0) {
             var fromuserId = $('#hdconnectId').val();
-            chatHub.invoke("SendToUserIdMessage", fromuserId, userId, userNameId, msg);          
+            //chatHub.invoke("SendToUserIdMessage", fromuserId, userId, userNameId, msg);          
+            chatHub.invoke("SendToUserIdAvatarMessage", fromuserId, userId, userNameId, msg, avatarUser);          
             $textBox.val('');
 
             SaveMessage(userNameId, userName, msg);
+
+            //$("#divMessage").scrollTop($("#divMessage")[0].scrollHeight - 100);   // cuon den cuoi dong
+            $("#divMessage").animate({
+                scrollTop: $("#divMessage")[0].scrollHeight
+            }, 500);
         }
     });
 
@@ -255,20 +273,33 @@ function OpenPrivateChatBox(chatHub, userId, ctrId, userName, countdem) {
                 tedu.notify('Đã tải file lên thành công!', 'success');
 
                 var textBoxHinh = $('#hidTenFileHinhVBDId').val();
+                var fromuserId = $('#hdconnectId').val();
 
-                //if (IsValidateFile(files[0].name)) {
-                //    if (IsImageFile(files[0].name)) {                
-                var msgHinh = '<img id="imgFileHinhChatUser" class="direct-chat-img" src="/uploaded/chatuser/' +
-                    yyyyMMDD + '/' + textBoxHinh + '?h=100" alt="Attachment Image" > ';
-                //  ' <img class="direct-chat-img" src="' + userimg + '?h=29" alt="Message User Image">' +
-                if (msgHinh.length > 0) {
-                    var fromuserId = $('#hdconnectId').val();
-                    chatHub.invoke("SendToUserIdMessage", fromuserId, userId, userNameId, msgHinh);
-                    $('#hidTenFileHinhVBDId').val('');
-                    //SaveMessage(userNameId, userName, msg);
+                if (IsValidateFile(files[0].name)) {
+                    if (IsImageFile(files[0].name)) {
+                        var msgHinh = '<img id="imgFileHinhChatUser" class="direct-chat-img" src="/uploaded/chatuser/' +
+                            yyyyMMDD + '/' + textBoxHinh + '?h=100" alt="Attachment Image" > ';
+
+                        if (msgHinh.length > 0) {                            
+                            //chatHub.invoke("SendToUserIdMessage", fromuserId, userId, userNameId, msgHinh);
+                            chatHub.invoke("SendToUserIdAvatarMessage", fromuserId, userId, userNameId, msgHinh, avatarUser);          
+                            $('#hidTenFileHinhVBDId').val('');
+                            SaveFileMessage(userNameId, userName, msgHinh, files[0].name);
+                        }
+                    }
+                    else {
+                        var msgFile = '<a id="imgFileFileChatUser" class="btn btn-default btn-xs" href="/uploaded/chatuser/' +
+                            yyyyMMDD + '/' + textBoxHinh + '" target="_blank" >' + files[0].name +
+                            '<i class="fa fa-camera"></i> Xem</a> ';
+                        //  '<a href="' + imgDisplay.src + '" target="_blank" class="btn btn-default btn-xs"><i class="fa fa-camera"></i> View</a>'
+                        if (msgFile.length > 0) {                          
+                            //chatHub.invoke("SendToUserIdMessage", fromuserId, userId, userNameId, msgFile);
+                            chatHub.invoke("SendToUserIdAvatarMessage", fromuserId, userId, userNameId, msgFile, avatarUser);    
+                            $('#hidTenFileHinhVBDId').val('');
+                            SaveFileMessage(userNameId, userName, msgFile, files[0].name);
+                        }
+                    }
                 }
-        //    }
-        //}
 
             },
             error: function () {
@@ -282,12 +313,13 @@ function OpenPrivateChatBox(chatHub, userId, ctrId, userName, countdem) {
     $div.find("#txtPrivateMessage").keypress(function (e) {
         if (e.which === 13) {
             $div.find("#btnSendMessage").click();
+
+            //$("#divMessage").scrollTop($("#divMessage")[0].scrollHeight - 100);   // cuon den cuoi dong
         }
     });
 
     // Clear Message Count on Mouse over           
     $div.find("#divMessage").mouseover(function () {
-
         $("#MsgCountP").html('0');
         $("#MsgCountP").attr("title", '0 New Messages');
     });
@@ -297,8 +329,35 @@ function OpenPrivateChatBox(chatHub, userId, ctrId, userName, countdem) {
 
     displayChatBox();
 
-    
+    //SaveMessage(userNameId, userName, msg);
+    //loadChatUser(userNameId, userName);
+    GetPagingChatUserScroll(userNameId, userName, 1, 3);
 
+    //$("#divMessage").scrollTop($("#divMessage")[0].scrollHeight);
+    //$('#loader').hide();
+    var sotrang = 1;
+    $("#divMessage").scroll(function () {
+        if ($('#divMessage').scrollTop() === 0) {
+            // Display AJAX loader animation
+            //$('#loader').show();
+
+            //Simulate server delay;
+            setTimeout(function () {
+                // Simulate retrieving 4 messages
+                //for (var i = 0; i < 4; i++) {
+                //    $('#divMessage').prepend('<div class="messages">Newly Loaded messages<br/><span class="date">' + Date() + '</span> </div>');
+                //}
+
+                // Hide loader on success
+                //$('#loader').hide();
+                sotrang = sotrang + 1;
+                GetPagingChatUser(userNameId, userName, sotrang, 3);
+
+                // Reset scroll
+                $('#divMessage').scrollTop(30);
+            }, 780);
+        }
+    });
 }
 function displayChatBox() {
     i = 30; // start position
@@ -407,6 +466,27 @@ function SaveMessage(fromuserId, touserId, msg) {
     });
 }
 
+function SaveFileMessage(fromuserId, touserId, msg, tenfile) {
+    $.ajax({
+        type: "POST",
+        url: "/Admin/home/SentMessage",
+        data: {
+            FormAppUserId: fromuserId,
+            ToAppUserId: touserId,
+            TextMessage: msg,
+            Notes: tenfile
+        },
+        dataType: "json",
+        success: function () {
+            tedu.stopLoading();
+        },
+        error: function () {
+            tedu.notify('Has an error', 'error');
+            tedu.stopLoading();
+        }
+    });
+}
+
 function clearFileInputHinh(ctrl) {
     try {
         fileUploadHinh = [];
@@ -435,6 +515,190 @@ function IsImageFile(fileF) {
         return false;
     }
     return true;
+}
+
+function loadChatUser(fromuserid, touserid) {
+    var template = $('#table-VBDDMSo').html();
+    var render = "";
+
+    var makhuvuc = $('#ddlKhuVuc').val();
+    var namSo = $('#txtVBDDMSoNam').val();
+    var timnhanvien = $('#txtTimNoiDung').val();
+
+    $.ajax({
+        type: 'GET',
+        data: {
+            fromUserId: fromuserid,
+            toUserId: touserid
+        },
+        url: '/admin/home/GetAllChatUser',
+        dataType: 'json',
+        success: function (response) {
+            if (response.Result.length === 0) {
+                render = "<tr><th><a>Không có dữ liệu</a></th></tr>";
+            }
+            else {
+                //$('#hdId').val(windowId);
+                //$('#hdUserName').val(fromUserName);
+                //$('#spanUser').html(fromUserName);              
+
+                var CurrUser = $('#hdUserName').val();
+                var Side = 'right';
+                var TimeSide = 'left';
+
+                //if (CurrUser === fromUserName) {
+                //    Side = 'left';
+                //    TimeSide = 'right';
+                //}
+                //else {                  
+                //    var msgcount = $('#' + ctrId).find('#MsgCountP').html();
+                //    msgcount++;
+                //    $('#' + ctrId).find('#MsgCountP').html(msgcount);
+                //    $('#' + ctrId).find('#MsgCountP').attr("title", msgcount + ' New Messages');
+                //}
+
+                $.each(response.Result, function (i, item) {
+                    var divChatP = '<div class="direct-chat-msg ' + Side + '">' +
+                        '<div class="direct-chat-info clearfix">' +
+                        '<span class="direct-chat-name pull-' + Side + '">' + item.FromUserName + '  </span> &nbsp;' +
+                        '<span class="direct-chat-timestamp pull-' + TimeSide + '""> ' + item.TimeMessage + '</span>' +
+                        '</div>' +
+                        '<span class="chat-img1 pull-left">' +
+                        ' <img class="img-circle profile_img" src="' + item.FromAvatar + '?h=29" alt="Message User Image">' +
+                        '</span> &nbsp; ' +
+                        ' <div class="direct-chat-text" >' + item.TextMessage + '</div>' +
+                        '</div > ';
+
+                    $('#divMessage').prepend(divChatP);
+                });  
+
+                $("#divMessage").animate({
+                    scrollTop: $("#divMessage")[0].scrollHeight
+                }, 500);               
+            }           
+            
+        },
+        error: function (status) {
+            console.log(status);
+            tedu.notify('Không thể lấy dữ liệu về.', 'error');
+        }
+    });
+
+}
+
+function GetPagingChatUser(fromuserid, touserid, sotrang, trangtrendong) {
+    var template = $('#table-VBDDMSo').html();
+    var render = "";
+
+    var makhuvuc = $('#ddlKhuVuc').val();
+    var namSo = $('#txtVBDDMSoNam').val();
+    var timnhanvien = $('#txtTimNoiDung').val();
+
+    $.ajax({
+        type: 'GET',
+        data: {
+            fromUserId: fromuserid,
+            toUserId: touserid,
+            page: sotrang,
+            pageSize: trangtrendong
+        },
+        url: '/admin/home/GetPagingChatUser',
+        dataType: 'json',
+        success: function (response) {
+            if (response.Result.Results.length === 0) {
+                render = "<tr><th><a>Không có dữ liệu</a></th></tr>";
+            }
+            else {
+               
+                var CurrUser = $('#hdUserName').val();
+                var Side = 'right';
+                var TimeSide = 'left';              
+
+                $.each(response.Result.Results, function (i, item) {
+                    var divChatP = '<div class="direct-chat-msg ' + Side + '">' +
+                        '<div class="direct-chat-info clearfix">' +
+                        '<span class="direct-chat-name pull-' + Side + '">' + item.FromUserName + '  </span> &nbsp;' +
+                        '<span class="direct-chat-timestamp pull-' + TimeSide + '""> ' + item.TimeMessage + '</span>' +
+                        '</div>' +
+                        '<span class="chat-img1 pull-left">' +
+                        ' <img class="img-circle profile_img" src="' + item.FromAvatar + '?h=29" alt="Message User Image">' +
+                        '</span> &nbsp; ' +
+                        ' <div class="direct-chat-text" >' + item.TextMessage + '</div>' +
+                        '</div > ';
+
+                    $('#divMessage').prepend(divChatP);
+                });
+
+                //$("#divMessage").animate({
+                //    scrollTop: $("#divMessage")[0].scrollHeight
+                //}, 500);
+            }
+
+        },
+        error: function (status) {
+            console.log(status);
+            tedu.notify('Không thể lấy dữ liệu về.', 'error');
+        }
+    });
+
+}
+
+
+function GetPagingChatUserScroll(fromuserid, touserid, sotrang, trangtrendong) {
+    var template = $('#table-VBDDMSo').html();
+    var render = "";
+
+    var makhuvuc = $('#ddlKhuVuc').val();
+    var namSo = $('#txtVBDDMSoNam').val();
+    var timnhanvien = $('#txtTimNoiDung').val();
+
+    $.ajax({
+        type: 'GET',
+        data: {
+            fromUserId: fromuserid,
+            toUserId: touserid,
+            page: sotrang,
+            pageSize: trangtrendong
+        },
+        url: '/admin/home/GetPagingChatUser',
+        dataType: 'json',
+        success: function (response) {
+            if (response.Result.Results.length === 0) {
+                render = "<tr><th><a>Không có dữ liệu</a></th></tr>";
+            }
+            else {
+
+                var CurrUser = $('#hdUserName').val();
+                var Side = 'right';
+                var TimeSide = 'left';
+
+                $.each(response.Result.Results, function (i, item) {
+                    var divChatP = '<div class="direct-chat-msg ' + Side + '">' +
+                        '<div class="direct-chat-info clearfix">' +
+                        '<span class="direct-chat-name pull-' + Side + '">' + item.FromUserName + '  </span> &nbsp;' +
+                        '<span class="direct-chat-timestamp pull-' + TimeSide + '""> ' + item.TimeMessage + '</span>' +
+                        '</div>' +
+                        '<span class="chat-img1 pull-left">' +
+                        ' <img class="img-circle profile_img" src="' + item.FromAvatar + '?h=29" alt="Message User Image">' +
+                        '</span> &nbsp; ' +
+                        ' <div class="direct-chat-text" >' + item.TextMessage + '</div>' +
+                        '</div > ';
+
+                    $('#divMessage').prepend(divChatP);
+                });
+
+                $("#divMessage").animate({
+                    scrollTop: $("#divMessage")[0].scrollHeight
+                }, 500);
+            }
+
+        },
+        error: function (status) {
+            console.log(status);
+            tedu.notify('Không thể lấy dữ liệu về.', 'error');
+        }
+    });
+
 }
 
 

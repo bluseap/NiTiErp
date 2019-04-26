@@ -47,6 +47,20 @@ namespace NiTiErp.Hubs
             ConnectionHelper.Connections.Add(client);
         }
 
+        public void RegisterMemberParaLogin(string name, string chatRoom, string fullname, string avatarUser)
+        {
+            var client = new AppUserLoginViewModel();
+            client.ConnectionId = Context.ConnectionId;
+            client.UserName = name;
+            client.FullName = fullname;
+            client.AvatarUser = avatarUser;
+
+            client.ChatRoom = ChatRoom.chatroom1;
+            Groups.AddToGroupAsync(Context.ConnectionId, chatRoom);
+
+            ConnectionHelper.Connections.Add(client);
+        }
+
         public Task GetChatRoom1Members()
         {
             return Clients.All.SendAsync("ClientGetChatRoom1Members", ConnectionHelper.Connections.Where(c => c.ChatRoom == ChatRoom.chatroom1));
@@ -83,7 +97,18 @@ namespace NiTiErp.Hubs
             // send to caller user
             //Clients.Caller.SendAsync("sendPrivateMessage", toUserId, fromUserName, message, UserImage, CurrentDateTime);
             Clients.Caller.SendAsync("sendPrivateMessage", toUserId, fromUserName, message, UserImage, CurrentDateTime);
+        }
 
+        public void SendToUserIdAvatarMessage(string fromUserId, string toUserId, string fromUserName, string message, string avatarUser)
+        {
+            string CurrentDateTime = DateTime.Now.ToString();
+
+            // send to 
+            Clients.Client(toUserId).SendAsync("sendPrivateMessage", fromUserId, fromUserName, message, avatarUser, CurrentDateTime);
+
+            // send to caller user
+            //Clients.Caller.SendAsync("sendPrivateMessage", toUserId, fromUserName, message, UserImage, CurrentDateTime);
+            Clients.Caller.SendAsync("sendPrivateMessage", toUserId, fromUserName, message, avatarUser, CurrentDateTime);
         }
 
         public Task SendMessageToCaller(string message)

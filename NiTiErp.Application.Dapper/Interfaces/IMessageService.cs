@@ -11,11 +11,12 @@ namespace NiTiErp.Application.Dapper.Interfaces
     {
         Task<Boolean> MessageAUD(MessageViewModel message, string parameters);
 
-        Task<List<MessageViewModel>> MessageGetList(Guid fromUser, Guid toUser, long Id,
+        Task<List<MessageViewModel>> MessageGetList(string fromUser, string toUser, long Id,
             DateTime timeMessage, int totalBootomRow, string notes, string parameters);
 
-        //Task<PagedResult<MessageViewModel>> GetAllVanBanPHXLPaging(string tenphoihopxuly,
-        //    string keyword, int page, int pageSize, int phoihopxulyid, string ghichu, string parameters);
+        Task<PagedResult<MessageViewModel>> GetMessagePaging(string fromUser, string toUser,
+            DateTime timeMessage, int totalBootomRow, string notes,
+            string keyword, int page, int pageSize, long MessagesId, string ghichu, string parameters);
 
 
     }

@@ -61,7 +61,7 @@ namespace NiTiErp.Application.Dapper.Implementation
             }
         }
 
-        public async Task<List<MessageViewModel>> MessageGetList(Guid fromUser, Guid toUser, long Id,
+        public async Task<List<MessageViewModel>> MessageGetList(string fromUser, string toUser, long Id,
             DateTime timeMessage, int totalBootomRow, string notes, string parameters)
         {
             using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
@@ -81,8 +81,56 @@ namespace NiTiErp.Application.Dapper.Implementation
                 try
                 {
                     var query = await sqlConnection.QueryAsync<MessageViewModel>(
-                        "MessagesGetList", dynamicParameters, commandType: CommandType.StoredProcedure);
+                        "MessagesGetList", dynamicParameters, commandType: CommandType.StoredProcedure);                  
                     return query.AsList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<PagedResult<MessageViewModel>> GetMessagePaging(string fromUser, string toUser,
+            DateTime timeMessage, int totalBootomRow, string notes,
+            string keyword, int page, int pageSize, long MessagesId, string ghichu, string parameters)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@Id", MessagesId);
+                dynamicParameters.Add("@FormAppUserId", fromUser);
+                dynamicParameters.Add("@ToAppUserId", toUser);
+
+                dynamicParameters.Add("@TimeMessage", timeMessage);
+                dynamicParameters.Add("@totalBootomRow", totalBootomRow);
+                dynamicParameters.Add("@notes", notes);
+
+                dynamicParameters.Add("@parameters", parameters);
+                try
+                {
+                    var hoso = await sqlConnection.QueryAsync<MessageViewModel>(
+                        "MessagesGetList", dynamicParameters, commandType: CommandType.StoredProcedure);
+
+                    var query = hoso.AsQueryable();
+
+                    int totalRow = query.Count();
+
+                    query = query.OrderByDescending(x => x.CreateDate)
+                        .Skip((page - 1) * pageSize).Take(pageSize);
+
+                    var data = query.ToList();
+
+                    var paginationSet = new PagedResult<MessageViewModel>()
+                    {
+                        Results = data,
+                        CurrentPage = page,
+                        RowCount = totalRow,
+                        PageSize = pageSize
+                    };
+                    return paginationSet;
                 }
                 catch (Exception ex)
                 {

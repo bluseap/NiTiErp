@@ -74,6 +74,7 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
         public ChatRoom ChatRoom { get; set; }
         public string ConnectionId { get; set; }
+        public string AvatarUser { get; set; }
 
 
         public DateTime CreateDate { get; set; }

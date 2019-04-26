@@ -176,7 +176,24 @@ namespace NiTiErp.Areas.Admin.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult GetAllChatUser(string fromUserId, string toUserId)
+        {
+            var datetimeNow = DateTime.Now;
+            var model = _messageService.MessageGetList(fromUserId, toUserId, 0, datetimeNow, 1, "", "GetFromToUserMessages");
 
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetPagingChatUser(string fromUserId, string toUserId, int page, int pageSize)
+        {
+            var datetimeNow = DateTime.Now;
+            var model = _messageService.GetMessagePaging(fromUserId, toUserId,
+                datetimeNow, 0, "", "", page, pageSize, 0, "", "GetFromToUserMessages");
+
+            return new OkObjectResult(model);
+        }
 
     }
 }

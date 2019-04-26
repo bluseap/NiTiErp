@@ -16,7 +16,18 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
         public string FormAppUserId { get; set; }
 
+        public string FromUserName { get; set; }
+
+        public string FromAvatar { get; set; }
+
+
         public string ToAppUserId { get; set; }
+
+        public string ToUserName { get; set; }
+
+        public string ToAvatar { get; set; }
+
+
 
         public int RoomId { get; set; }
 
