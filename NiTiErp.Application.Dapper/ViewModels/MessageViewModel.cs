@@ -39,7 +39,8 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
         public string Notes { get; set; }
 
-                     
+        public int TongSoDongChatUser { get; set; }
+
 
         public int Status { get; set; }
 

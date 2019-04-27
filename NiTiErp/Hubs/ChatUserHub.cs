@@ -72,9 +72,15 @@ namespace NiTiErp.Hubs
             if (client != null)
             {
                 ConnectionHelper.Connections.Remove(client);
+                Clients.All.SendAsync("sendUserOffline", client.UserName, client.AvatarUser);
                 Clients.All.SendAsync("ClientGetChatRoom1Members", ConnectionHelper.Connections.Where(c => c.ChatRoom == ChatRoom.chatroom1));
             }
             return base.OnDisconnectedAsync(exception);
+        }
+
+        public Task SendUserOffline(string username, string userImg)
+        {
+            return Clients.All.SendAsync("sendUserOffline", username, userImg);
         }
 
         public Task SendMessageToGroup(string group, string message)

@@ -186,11 +186,11 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetPagingChatUser(string fromUserId, string toUserId, int page, int pageSize)
+        public IActionResult GetPagingChatUser(string fromUserId, string toUserId, int page, int pageSize, int tongdongChatUser)
         {
             var datetimeNow = DateTime.Now;
             var model = _messageService.GetMessagePaging(fromUserId, toUserId,
-                datetimeNow, 0, "", "", page, pageSize, 0, "", "GetFromToUserMessages");
+                datetimeNow, tongdongChatUser, "", "", page, pageSize, 0, "", "GetFromToUserMessages");
 
             return new OkObjectResult(model);
         }
