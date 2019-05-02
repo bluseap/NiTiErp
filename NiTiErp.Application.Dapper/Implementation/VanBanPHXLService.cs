@@ -78,7 +78,8 @@ namespace NiTiErp.Application.Dapper.Implementation
                 dynamicParameters.Add("@Id", vanbanphxl.Id);
 
                 dynamicParameters.Add("@Ten", vanbanphxl.Ten);
-                dynamicParameters.Add("@MoTa", vanbanphxl.MoTa);               
+                dynamicParameters.Add("@MoTa", vanbanphxl.MoTa);
+                dynamicParameters.Add("@Code", vanbanphxl.Code);
                 dynamicParameters.Add("@Stt", vanbanphxl.Stt);
 
                 dynamicParameters.Add("@CreateBy", vanbanphxl.CreateBy);

@@ -58,6 +58,7 @@ namespace NiTiErp.Hubs
             client.ChatRoom = ChatRoom.chatroom1;
             Groups.AddToGroupAsync(Context.ConnectionId, chatRoom);
 
+            Clients.All.SendAsync("SendUserOnline", client.UserName, client.AvatarUser);
             ConnectionHelper.Connections.Add(client);
         }
 
@@ -81,6 +82,11 @@ namespace NiTiErp.Hubs
         public Task SendUserOffline(string username, string userImg)
         {
             return Clients.All.SendAsync("sendUserOffline", username, userImg);
+        }
+
+        public Task SendUserOnline(string username, string userImg)
+        {
+            return Clients.All.SendAsync("SendUserOnline", username, userImg);
         }
 
         public Task SendMessageToGroup(string group, string message)

@@ -180,7 +180,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         public IActionResult GetAllChatUser(string fromUserId, string toUserId)
         {
             var datetimeNow = DateTime.Now;
-            var model = _messageService.MessageGetList(fromUserId, toUserId, 0, datetimeNow, 1, "", "GetFromToUserMessages");
+            var model = _messageService.MessageGetList(fromUserId, toUserId, 0, datetimeNow, 1, "", "GetAllChatUsers");
 
             return new OkObjectResult(model);
         }

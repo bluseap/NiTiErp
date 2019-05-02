@@ -1,0 +1,48 @@
+﻿
+<div id="modal-add-edit-VBPhoiHop" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Thêm mới danh mục phối hợp xử lý </h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainVBPhoiHop">
+                        <input type="hidden" id="hidVBPhoiHopId" value="" />
+
+                        <input type="hidden" id="hidInsertVBPhoiHopId" value="" />
+
+
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbVBPhoiHopTen">Tên danh mục phối hợp <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtVBPhoiHopTen" class="form-control has-feedback-right" id="txtVBPhoiHopTen" placeholder="Tên danh mục phối hợp">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbVBPhoiHopCode">Code </label>
+                                <input type="text" name="txtVBPhoiHopCode" class="form-control has-feedback-right" id="txtVBPhoiHopCode" placeholder="CodeXL">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbVBPhoiHopTen">Số thứ tự <a style="color:red">(*)</a></label>
+                                <input type="number" name="txtVBPhoiHopSoThuTu" class="form-control has-feedback-right" id="txtVBPhoiHopSoThuTu" >
+                            </div>
+                          
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnSaveVBPhoiHop" class="btn btn-primary">Lưu </button>
+                                <button type="button" id="btnCancelVBPhoiHop" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="ln_solid"></div>
+
+            </div>
+        </div>
+    </div>
+</div>

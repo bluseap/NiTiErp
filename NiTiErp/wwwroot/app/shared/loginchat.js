@@ -70,6 +70,10 @@ connectionChatUser.on('sendPrivateMessage', (windowId, fromUserName, message, us
 
     $('#' + ctrId).find('#divMessage').append(divChatP);
 
+   displayChatBox();
+
+   // var div1 = '  <div  id="' + ctrId + '" class="msg_box" style="right:270px" rel="' + countdem + '">' +
+
     // Apply Slim Scroll Bar in Private Chat Box
     //var ScrollHeight = $('#' + ctrId).find('#divMessage')[0].scrollHeight;
     //$('#' + ctrId).find('#divMessage').slimScroll({
@@ -79,7 +83,7 @@ connectionChatUser.on('sendPrivateMessage', (windowId, fromUserName, message, us
     //var ScrollHeight = $('#' + ctrId).find('#divMessage').scrollTop() + $('#' + ctrId).find('#divMessage')[0].scrollHeight;
     //$('#' + ctrId).find('#divMessage').scrollTop = ScrollHeight;
 
-    $("#divMessage").animate({
+    $('#' + ctrId).find("#divMessage").animate({
         scrollTop: $("#divMessage")[0].scrollHeight
     }, 500);     
 
@@ -106,12 +110,14 @@ connectionChatUser.on('ClientGetChatRoom1Members', (data) => {
         $('#hdconnectId').val(0);
         $('#hdconnectUserName').val(0);
     }  
+    
+});
 
-    var chieudai = data.length - 1;   
-    if (chieudai > 0 && userNameId !== usernamid) {
+connectionChatUser.on('SendUserOnline', (username, userImg) => {
+    if (userNameId !== username) {
         new PNotify({
-            title: data[chieudai].userName + ' Online.',
-            text: '<img src="' + data[chieudai].avatarUser +'?h=29" > Đăng nhập.',            
+            title: username + ' Online.',
+            text: '<img src="' + userImg + '?h=29" > Đăng nhập.',
             type: 'success',
             styling: 'bootstrap3'
         });
@@ -121,7 +127,7 @@ connectionChatUser.on('ClientGetChatRoom1Members', (data) => {
 connectionChatUser.on('sendUserOffline', (username, userImg) => {
     new PNotify({
         title: username + ' Offline',
-        text: '<img src="' + userImg +'?h=29" > Thoát.',
+        text: '<img src="' + userImg + '?h=29" > Thoát.',
         styling: 'bootstrap3'
     });
 });
@@ -263,7 +269,7 @@ function OpenPrivateChatBox(chatHub, userId, ctrId, userName, countdem) {
             SaveMessage(userNameId, userName, msg);
 
             //$("#divMessage").scrollTop($("#divMessage")[0].scrollHeight - 100);   // cuon den cuoi dong
-            $("#divMessage").animate({
+            $div.find("#divMessage").animate({
                 scrollTop: $("#divMessage")[0].scrollHeight
             }, 500);
         }
@@ -351,11 +357,11 @@ function OpenPrivateChatBox(chatHub, userId, ctrId, userName, countdem) {
     // Append private chat div inside the main div
     $('#PriChatDiv').append($div);
 
-    displayChatBox();
+    //displayChatdBox();
 
     //SaveMessage(userNameId, userName, msg);
     loadChatUser(userNameId, userName);
-    GetPagingChatUserScroll(userNameId, userName, 1, 10);
+    //GetPagingChatUserScroll(userNameId, userName, 1, 10, tongdongchatuser);
 
     //$("#divMessage").scrollTop($("#divMessage")[0].scrollHeight);
     //$('#loader').hide();
@@ -563,28 +569,8 @@ function loadChatUser(fromuserid, touserid) {
             }
             else {
                 tongdongchatuser = response.Result.length;
-
-                //var CurrUser = $('#hdUserName').val();
-                //var Side = 'right';
-                //var TimeSide = 'left';
-                //$.each(response.Result, function (i, item) {
-                //    var divChatP = '<div class="direct-chat-msg ' + Side + '">' +
-                //        '<div class="direct-chat-info clearfix">' +
-                //        '<span class="direct-chat-name pull-' + Side + '">' + item.FromUserName + '  </span> &nbsp;' +
-                //        '<span class="direct-chat-timestamp pull-' + TimeSide + '""> ' + item.TimeMessage + '</span>' +
-                //        '</div>' +
-                //        '<span class="chat-img1 pull-left">' +
-                //        ' <img class="img-circle profile_img" src="' + item.FromAvatar + '?h=29" alt="Message User Image">' +
-                //        '</span> &nbsp; ' +
-                //        ' <div class="direct-chat-text" >' + item.TextMessage + '</div>' +
-                //        '</div > ';
-                //    $('#divMessage').prepend(divChatP);
-                //});  
-                //$("#divMessage").animate({
-                //    scrollTop: $("#divMessage")[0].scrollHeight
-                //}, 500);               
-            }           
-            
+                GetPagingChatUserScroll(fromuserid, touserid, 1, 10, tongdongchatuser);           
+            }  
         },
         error: function (status) {
             console.log(status);
@@ -653,7 +639,7 @@ function GetPagingChatUser(fromuserid, touserid, sotrang, trangtrendong, tongdon
 }
 
 
-function GetPagingChatUserScroll(fromuserid, touserid, sotrang, trangtrendong) {
+function GetPagingChatUserScroll(fromuserid, touserid, sotrang, trangtrendong, tongdongchatuser) {
     var template = $('#table-VBDDMSo').html();
     var render = "";
 
@@ -667,7 +653,8 @@ function GetPagingChatUserScroll(fromuserid, touserid, sotrang, trangtrendong) {
             fromUserId: fromuserid,
             toUserId: touserid,
             page: sotrang,
-            pageSize: trangtrendong
+            pageSize: trangtrendong,
+            tongdongChatUser: tongdongchatuser
         },
         url: '/admin/home/GetPagingChatUser',
         dataType: 'json',

@@ -5,19 +5,27 @@ create PROC [dbo].[VBDenSoExcel]
 create PROC [dbo].[VBDiSoExcel]
 
 
+
+update procedure [TableHisProPara]
+
 update procedure [MessagesAUD]
 
 update procedure [MessagesGetList]
 
-update procedure VanBanDenCount
+update procedure [VanBanDenCount]
 
 update procedure [VanBanDenAUD]
-
-update procedure [TableHisProPara]
 
 update procedure [QuanLyVanBanAUD]
 
 update procedure [QuanLyVanBanGetList]
+
+update procedure [VanBanPHXLAUD]
+
+update procedure [VanBanPHXLGetList]
+
+
+
 
 
 
