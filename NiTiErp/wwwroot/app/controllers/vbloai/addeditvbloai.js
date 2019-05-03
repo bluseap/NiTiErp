@@ -195,7 +195,7 @@
                 }
                 else {
                     loadTableVanBanLoai();
-                    tedu.notify('Thêm mới danh mục loại văn bản thành công.', 'success');
+                    tedu.notify('Cập nhật danh mục loại văn bản thành công.', 'success');
                     ClearData();
                     $('#modal-add-edit-VanBanLoai').modal('hide');
                     tedu.stopLoading();

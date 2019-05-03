@@ -2,9 +2,12 @@
 
 create table VanBanLoaiHis
 
+create table VanBanLinhVucHis
 
 
+create procedure [VanBanLinhVucAUD]
 
+create procedure [VanBanLinhVucGetList]
 
 create procedure [dbo].[VanBanLoaiAUD]
 
@@ -33,6 +36,8 @@ update procedure [QuanLyVanBanGetList]
 update procedure [VanBanPHXLAUD]
 
 update procedure [VanBanPHXLGetList]
+
+
 
 
 

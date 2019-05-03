@@ -140,7 +140,7 @@
                     tedu.notify(response.Message, "error");
                 }
                 else {
-                    tedu.notify('Quản lý danh mục văn bản.', 'success');
+                    tedu.notify('Cập nhật Quản lý danh mục văn bản.', 'success');
                     loadTableQuanLyVanBan(true);
                     clearAddEditData();
                     $('#modal-add-edit-QuanLyVanBan').modal('hide');

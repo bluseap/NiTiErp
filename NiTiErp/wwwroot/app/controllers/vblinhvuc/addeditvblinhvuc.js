@@ -1,48 +1,48 @@
-﻿var addeditphoihopController = function () {
+﻿var addeditvblinhvucController = function () {
 
     var userCorporationId = $("#hidUserCorporationId").val();
 
-    this.loadAddEditPhoiHop = function (vbphoihopid) {
-        loadAddEditPhoiHop(vbphoihopid);
+    this.loadAddEditVanBanLinhVuc = function (vanbanlinhvucid) {
+        loadAddEditVanBanLinhVuc(vanbanlinhvucid);
     }
-    this.loadTablePhoiHop = function () {
-        loadTablePhoiHop();
+    this.loadTableVanBanLinhVuc = function () {
+        loadTableVanBanLinhVuc();
     }
     this.clearDataAddEdit = function () {
         ClearData();
     }
 
-    this.initialize = function () {        
+    this.initialize = function () {
         registerEvents();
         ClearData();
-    }    
+    }
 
     function registerEvents() {
 
-        $('#btnSaveVBPhoiHop').on('click', function () {
-            var insertvbphoihop = $('#hidInsertVBPhoiHopId').val();
+        $('#btnSaveVanBanLinhVuc').on('click', function () {
+            var insertvanbanlinhvuc = $('#hidInsertVanBanLinhVucId').val();
 
-            if (insertvbphoihop === 1) {
-                SaveVBPhoiHop();
+            if (insertvanbanlinhvuc === 1) {
+                SaveVanBanLinhVuc();
             }
             else {
-                UpdateVBPhoiHop();
+                UpdateVanBanLinhVuc();
             }
         });
 
     }
 
     function ClearData() {
-        $('#hidVBPhoiHopId').val("");
-        $('#hidInsertVBPhoiHopId').val(0);
+        $('#hidVanBanLinhVucId').val("");
+        $('#hidInsertVanBanLinhVucId').val(0);
 
-        $('#txtVBPhoiHopTen').val("");
-        $('#txtVBPhoiHopCode').val("");
-        $('#txtVBPhoiHopSoThuTu').val(1);
-    }   
+        $('#txtVanBanLinhVucTen').val("");
+        $('#txtVanBanLinhVucCode').val("");     
+        $('#txtVanBanLinhVucSoThuTu').val(1);
+    }
 
-    function loadTablePhoiHop(isPageChanged) {
-        var template = $('#table-VBPhoiHop').html();
+    function loadTableVanBanLinhVuc(isPageChanged) {
+        var template = $('#table-VanBanLinhVuc').html();
         var render = "";
 
         //var makhuvuc = $('#ddlKhuVuc').val();
@@ -55,7 +55,7 @@
                 page: tedu.configs.pageIndex,
                 pageSize: tedu.configs.pageSize
             },
-            url: '/admin/vbphoihop/GetListVBPhoiHop',
+            url: '/admin/vblinhvuc/GetListVanBanLinhVuc',
             dataType: 'json',
             success: function (response) {
                 if (response.Result.Results.length === 0) {
@@ -75,15 +75,15 @@
                     });
                 }
 
-                $('#lblVBPhoiHopTotalRecords').text(response.Result.RowCount);
+                $('#lblVanBanLinhVucTotalRecords').text(response.Result.RowCount);
 
                 if (render !== '') {
-                    $('#tblContentVBPhoiHop').html(render);
+                    $('#tblContentVanBanLinhVuc').html(render);
                 }
 
                 if (response.Result.RowCount !== 0) {
-                    wrapPagingVBPhoiHop(response.Result.RowCount, function () {
-                        loadTablePhoiHop();
+                    wrapPagingVanBanLinhVuc(response.Result.RowCount, function () {
+                        loadTableVanBanLinhVuc();
                     },
                         isPageChanged);
                 }
@@ -94,16 +94,16 @@
             }
         });
     }
-    function wrapPagingVBPhoiHop(recordCount, callBack, changePageSize) {
+    function wrapPagingVanBanLinhVuc(recordCount, callBack, changePageSize) {
         var totalsize = Math.ceil(recordCount / tedu.configs.pageSize);
         //Unbind pagination if it existed or click change pagesize
-        if ($('#paginationULVBPhoiHop a').length === 0 || changePageSize === true) {
-            $('#paginationULVBPhoiHop').empty();
-            $('#paginationULVBPhoiHop').removeData("twbs-pagination");
-            $('#paginationULVBPhoiHop').unbind("page");
+        if ($('#paginationULVanBanLinhVuc a').length === 0 || changePageSize === true) {
+            $('#paginationULVanBanLinhVuc').empty();
+            $('#paginationULVanBanLinhVuc').removeData("twbs-pagination");
+            $('#paginationULVanBanLinhVuc').unbind("page");
         }
         //Bind Pagination Event
-        $('#paginationULVBPhoiHop').twbsPagination({
+        $('#paginationULVanBanLinhVuc').twbsPagination({
             totalPages: totalsize,
             visiblePages: 7,
             first: 'Đầu',
@@ -121,21 +121,21 @@
         });
     }
 
-    function SaveVBPhoiHop() {
+    function SaveVanBanLinhVuc() {
         //tedu.notify("nut them co quan", "success");
-        var vbphoihopId = $('#hidVBPhoiHopId').val();
-        var tenvbph = $('#txtVBPhoiHopTen').val();
-        var codevbph = $('#txtVBPhoiHopCode').val();
-        var stt = $('#txtVBPhoiHopSoThuTu').val();
+        var vanbanlinhvucId = $('#hidVanBanLinhVucId').val();
+        var tenvblv = $('#txtVanBanLinhVucTen').val();
+        var codevblv = $('#txtVanBanLinhVucCode').val();      
+        var stt = $('#txtVanBanLinhVucSoThuTu').val();
 
         $.ajax({
             type: "POST",
-            url: "/Admin/vbphoihop/AddUpdateVBPhoiHop",
+            url: "/Admin/vblinhvuc/AddUpdateVanBanLinhVuc",
             data: {
-                Id: vbphoihopId,
-                InsertVBPHXLId: 1,
-                Ten: tenvbph,
-                Code: codevbph,
+                Id: vanbanlinhvucId,
+                InsertVanBanLinhVucId: 1,
+                Ten: tenvblv,
+                Code: codevblv,               
                 Stt: stt
             },
             dataType: "json",
@@ -147,36 +147,36 @@
                     tedu.notify(response.Message, "error");
                 }
                 else {
-                    loadTablePhoiHop();
-                    tedu.notify('Thêm mới danh mục phối hợp thành công.', 'success');
+                    loadTableVanBanLinhVuc();
+                    tedu.notify('Thêm mới danh mục lĩnh vực văn bản thành công.', 'success');
                     ClearData();
-                    $('#modal-add-edit-VBPhoiHop').modal('hide');
+                    $('#modal-add-edit-VanBanLinhVuc').modal('hide');
                     tedu.stopLoading();
                 }
             },
             error: function () {
-                tedu.notify('Lỗi thêm mới danh mục phối hợp.', 'error');
+                tedu.notify('Lỗi thêm mới danh mục lĩnh vực văn bản.', 'error');
                 tedu.stopLoading();
             }
         });
     }
 
-    function UpdateVBPhoiHop() {
-        var insertPhoiHopId = $('#hidInsertVBPhoiHopId').val();
+    function UpdateVanBanLinhVuc() {
+        var insertvblvId = $('#hidInsertVanBanLinhVucId').val();
 
-        var vbphoihopId = $('#hidVBPhoiHopId').val();
-        var tenvbph = $('#txtVBPhoiHopTen').val();
-        var codevbph = $('#txtVBPhoiHopCode').val();
-        var stt = $('#txtVBPhoiHopSoThuTu').val();
+        var vanbanlinhvucId = $('#hidVanBanLinhVucId').val();
+        var tenvblv = $('#txtVanBanLinhVucTen').val();
+        var codevblv = $('#txtVanBanLinhVucCode').val();
+        var stt = $('#txtVanBanLinhVucSoThuTu').val();
 
         $.ajax({
             type: "POST",
-            url: "/Admin/vbphoihop/AddUpdateVBPhoiHop",
+            url: "/Admin/vblinhvuc/AddUpdateVanBanLinhVuc",
             data: {
-                Id: vbphoihopId,
-                InsertVBPHXLId: insertPhoiHopId,
-                Ten: tenvbph,
-                Code: codevbph,
+                Id: vanbanlinhvucId,
+                InsertVanBanLinhVucId: insertvblvId,
+                Ten: tenvblv,
+                Code: codevblv,
                 Stt: stt
             },
             dataType: "json",
@@ -188,38 +188,38 @@
                     tedu.notify(response.Message, "error");
                 }
                 else {
-                    loadTablePhoiHop();
-                    tedu.notify('Cập nhật danh mục phối hợp thành công.', 'success');
+                    loadTableVanBanLinhVuc();
+                    tedu.notify('cập nhật danh mục lĩnh vực văn bản thành công.', 'success');
                     ClearData();
-                    $('#modal-add-edit-VBPhoiHop').modal('hide');
+                    $('#modal-add-edit-VanBanLinhVuc').modal('hide');
                     tedu.stopLoading();
                 }
             },
             error: function () {
-                tedu.notify('Lỗi thêm mới danh mục phối hợp.', 'error');
+                tedu.notify('Lỗi thêm mới danh mục lĩnh vực văn bản.', 'error');
                 tedu.stopLoading();
             }
         });
     }
 
-    function loadAddEditPhoiHop(vbphoihopid) {
+    function loadAddEditVanBanLinhVuc(vanbanlinhvucid) {
         $.ajax({
             type: "GET",
-            url: "/Admin/vbphoihop/GetVBPhoiHopId",
-            data: { vanbanphoihopId: vbphoihopid },
+            url: "/Admin/vblinhvuc/GetVanBanLinhVucId",
+            data: { vanbanlinhvucId: vanbanlinhvucid },
             dataType: "json",
             beforeSend: function () {
                 tedu.startLoading();
             },
             success: function (response) {
-                var vbphoihop = response.Result.Results[0];
+                var vanbanlinhvuc = response.Result.Results[0];
 
-                $('#hidVBPhoiHopId').val(vbphoihop.Id);
-                $('#hidInsertVBPhoiHopId').val(2);
+                $('#hidVanBanLinhVucId').val(vanbanlinhvuc.Id);
+                $('#hidInsertVanBanLinhVucId').val(2);
 
-                $('#txtVBPhoiHopTen').val(vbphoihop.Ten);
-                $('#txtVBPhoiHopCode').val(vbphoihop.Code);
-                $('#txtVBPhoiHopSoThuTu').val(vbphoihop.Stt);
+                $('#txtVanBanLinhVucTen').val(vanbanlinhvuc.Ten);
+                $('#txtVanBanLinhVucCode').val(vanbanlinhvuc.Code);             
+                $('#txtVanBanLinhVucSoThuTu').val(vanbanlinhvuc.Stt);
 
                 tedu.stopLoading();
             },
