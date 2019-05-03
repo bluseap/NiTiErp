@@ -43,7 +43,10 @@
         $('body').on('click', '.btn-addeditVBPhoiHop', function (e) {
             e.preventDefault();
             var vbphoihopid = $(this).data('id');
-            $('#hidVBPhoiHopId').val(1);
+
+            //$('#hidVBPhoiHopId').val(vbphoihopid);
+            $('#hidInsertVBPhoiHopId').val(2); // update
+
             addeditphoihop.loadAddEditPhoiHop(vbphoihopid);
             $('#modal-add-edit-VBPhoiHop').modal('show');
         });

@@ -27,6 +27,8 @@ namespace NiTiErp.Application.Dapper.ViewModels
         [StringLength(500)]
         public string IconCss { set; get; }
 
+        public decimal ThoiGianBaoQuan { get; set; }
+
 
         public int Status { get; set; }
 

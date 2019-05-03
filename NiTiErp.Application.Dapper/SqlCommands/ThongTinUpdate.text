@@ -1,5 +1,15 @@
 ﻿
 
+create table VanBanLoaiHis
+
+
+
+
+
+create procedure [dbo].[VanBanLoaiAUD]
+
+create procedure [dbo].[VanBanLoaiGetList]
+
 create PROC [dbo].[VBDenSoExcel]
 
 create PROC [dbo].[VBDiSoExcel]
