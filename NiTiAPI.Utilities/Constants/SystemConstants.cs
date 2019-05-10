@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NiTiErp.Utilities.Constants
+namespace NiTiAPI.Utilities.Constants
 {
     public class SystemConstants
     {
