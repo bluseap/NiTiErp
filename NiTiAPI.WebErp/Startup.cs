@@ -19,6 +19,9 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Options;
 using NiTiAPI.WebErp.Extensions;
 using NiTiAPI.WebErp.Services;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 //using TeduCoreApp.Services;
 //using TeduCoreApp.Data.EF;
@@ -188,7 +191,7 @@ namespace NiTiAPI.WebErp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddFile("Logs/tedu-{Date}.txt");
+            loggerFactory.AddFile("Logs/niti-{Date}.txt");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -203,7 +206,7 @@ namespace NiTiAPI.WebErp
             app.UseStaticFiles();
             app.UseMinResponse();
             app.UseAuthentication();
-            app.UseSession();
+            app.UseSession();          
 
             var options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(options.Value);
@@ -214,12 +217,21 @@ namespace NiTiAPI.WebErp
             //});
             app.UseMvc(routes =>
             {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
 
-                routes.MapRoute(name: "areaRoute",
-                    template: "{area:exists}/{controller=Login}/{action=Index}/{id?}");
+                //routes.MapRoute(
+                //    name: "default",
+                //    template: "{controller=Home}/{action=Index}/{id?}");       // localhost: home to product
+                //routes.MapRoute(
+                //   name: "areaRoute",
+                //   template: "{area:exists}/{controller=Login}/{action=Index}/{id?}"); // localhost/admin: login to admin
+
+                routes.MapRoute(
+                  name: "areaRoute",
+                  template: "{area:exists}/{controller=Login}/{action=Index}/{id?}"); // localhost: login to admin
+                routes.MapAreaRoute(
+                    name: "default",
+                    areaName: "Admin",
+                    template: "{controller=Login}/{action=Index}/{id?}");         //  localhost/admin: login to admin
 
 
             });
