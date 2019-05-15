@@ -34,6 +34,8 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Localization.Routing;
 using System.Reflection;
 using NiTiAPI.WebErp.Data;
+using NiTiAPI.WebErp.Helpers;
+using NiTiAPI.WebErp.Data.Model;
 
 namespace NiTiAPI.WebErp
 {
@@ -53,15 +55,26 @@ namespace NiTiAPI.WebErp
             //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
             //    o => o.MigrationsAssembly("TeduCoreApp.Data.EF")));
 
-            //services.AddIdentity<AppUser, AppRole>()
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DbConnectionString")));
+
+            services.AddIdentity<AppUser, AppRole>()
+                .AddEntityFrameworkStores<AppDbContext>()
+                .AddDefaultTokenProviders();
+
+            //services.AddDbContext<AppDbContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("DbConnectionString")));
+
+            //services.AddDbContext<AppDbContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("DbConnectionString")));
+
+            //services.AddIdentity<ApplicationUser, IdentityRole>()
             //    .AddEntityFrameworkStores<AppDbContext>()
             //    .AddDefaultTokenProviders();
 
-            services.AddTransient<IUserStore<AppUser>, UserStore>();
-            services.AddTransient<IRoleStore<AppRole>, RoleStore>();
 
-            services.AddIdentity<AppUser, AppRole>()
-                .AddDefaultTokenProviders();
+            services.AddTransient<IUserStore<AppUser>, UserStore>();
+            services.AddTransient<IRoleStore<AppRole>, RoleStore>();           
 
             services.AddMemoryCache();
 
@@ -120,24 +133,24 @@ namespace NiTiAPI.WebErp
 
             //  services.AddTransient<DbInitializer>();
             //services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>();
-            
-            //Add authen fixbug cannot get Claims
-            services.AddAuthentication(o =>
-            {
-                o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                o.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(cfg =>
-            {
-                cfg.RequireHttpsMetadata = false;
-                cfg.SaveToken = true;
 
-                cfg.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidIssuer = Configuration["Tokens:Issuer"],
-                    ValidAudience = Configuration["Tokens:Issuer"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:Key"]))
-                };
-            });
+            //Add authen fixbug cannot get Claims
+            //services.AddAuthentication(o =>
+            //{
+            //    o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            //    o.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            //}).AddJwtBearer(cfg =>
+            //{
+            //    cfg.RequireHttpsMetadata = false;
+            //    cfg.SaveToken = true;
+
+            //    cfg.TokenValidationParameters = new TokenValidationParameters
+            //    {
+            //        ValidIssuer = Configuration["Tokens:Issuer"],
+            //        ValidAudience = Configuration["Tokens:Issuer"],
+            //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:Key"]))
+            //    };
+            //});
 
             services.AddMvc(options =>
             {
@@ -236,6 +249,8 @@ namespace NiTiAPI.WebErp
             //{
             //    routes.MapHub<TeduHub>("/teduHub");
             //});
+
+
             app.UseMvc(routes =>
             {
                 //routes.MapRoute(

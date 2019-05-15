@@ -90,19 +90,19 @@ namespace NiTiAPI.WebErp.Areas.Admin.Controllers
                         expires: DateTime.Now.AddDays(2),
                         signingCredentials: creds);
 
-                    //return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token) });
-                    return new OkObjectResult(new GenericResult(true));
+                    return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token) });
+                    //return new OkObjectResult(new GenericResult(true));
                 }
                 return NotFound($"User name not found. {model.UserName}");
 
-                //// This doesn't count login failures towards account lockout
-                //// To enable password failures to trigger account lockout, set lockoutOnFailure: true
+                // This doesn't count login failures towards account lockout
+                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 //var result = await _signInManager.PasswordSignInAsync(model.UserName, model.PasswordHash, false, true);
                 //if (result.Succeeded)
                 //{
                 //    _logger.LogInformation("User logged in.");
 
-                //    //CountUserLogin(model.Email);
+                //    CountUserLogin(model.Email);
 
                 //    return new OkObjectResult(new GenericResult(true));
                 //}

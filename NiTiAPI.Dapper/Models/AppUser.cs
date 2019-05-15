@@ -1,12 +1,29 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace NiTiAPI.Dapper.Models
 {
-    public class AppUser
+    public class AppUser : IdentityUser<Guid>
     {
+        public AppUser() { }
+        public AppUser(Guid id, string fullName, string userName,
+            string email, string phoneNumber, string avatar
+            //, Status status
+            , int corporationId)
+        {
+            Id = id;
+            FullName = fullName;
+            UserName = userName;
+            Email = email;
+            PhoneNumber = phoneNumber;
+            Avatar = avatar;
+            //Status = status;
+            CorporationId = corporationId;
+        }
+
         public Guid Id { get; set; }
 
         public int CorporationId { get; set; }
@@ -39,4 +56,7 @@ namespace NiTiAPI.Dapper.Models
 
         public int AccessFailedCount { get; set; }
     }
+
+   
+
 }

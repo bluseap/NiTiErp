@@ -28,6 +28,9 @@ var deps = {
     "notifyjs": {
         "dist/**/*": ""
     },
+    "bootbox": {
+        "dist/**/*": ""
+    },
 
 };
 gulp.task("scripts", function () {
