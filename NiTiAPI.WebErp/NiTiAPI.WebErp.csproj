@@ -5,13 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Areas\Amin\**" />
-    <Content Remove="Areas\Amin\**" />
-    <EmbeddedResource Remove="Areas\Amin\**" />
-    <None Remove="Areas\Amin\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Areas\Admin\Components\" />
     <Folder Include="Areas\ClientNews\Components\" />
     <Folder Include="Areas\ClientNews\Controllers\" />
@@ -19,9 +12,9 @@
     <Folder Include="Areas\ClientShop\Components\" />
     <Folder Include="Areas\ClientShop\Controllers\" />
     <Folder Include="Areas\ClientShop\Views\" />
+    <Folder Include="Helpers\" />
     <Folder Include="Logs\" />
-    <Folder Include="wwwroot\admin-app\controllers\" />
-    <Folder Include="wwwroot\admin-app\shared\" />
+    <Folder Include="Middleware\" />
     <Folder Include="wwwroot\client-app\controllers\" />
     <Folder Include="wwwroot\client-app\shared\" />
     <Folder Include="wwwroot\clientnews-app\controllers\" />
@@ -59,6 +52,7 @@
   <ItemGroup>
     <ProjectReference Include="..\NiTiAPI.Dapper\NiTiAPI.Dapper.csproj" />
     <ProjectReference Include="..\NiTiAPI.Utilities\NiTiAPI.Utilities.csproj" />
+    <ProjectReference Include="..\NiTiAPI.Web\NiTiAPI.Web.csproj" />
   </ItemGroup>
 
   <ItemGroup>

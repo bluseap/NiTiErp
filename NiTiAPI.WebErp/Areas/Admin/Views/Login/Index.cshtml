@@ -11,25 +11,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="shortcut icon" href="/admin-side/images/powaco.ico" />
+    <link rel="shortcut icon" href="~/admin-side/images/logoniti.ico" />
 
     <title>Login </title>
 
     <!-- Bootstrap -->
-
     <link href="~/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
+
     <!-- Font Awesome -->
-
     <link href="~/vendor/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
     <!-- NProgress -->
-
     <link href="~/vendor/nprogress/nprogress.css" rel="stylesheet" />
-    <!-- Animate.css -->
 
+    <!-- Animate.css -->
     <link href="~/vendor/animate.css/animate.css" rel="stylesheet" />
-    <link href="~/vendor/notifyjs/styles/metro/notify-metro.css" rel="stylesheet" />
+    <link href="~/vendor/notifyjs/dist/styles/metro/notify-metro.css" rel="stylesheet" />
+
     <!-- Custom Theme Style -->
     <link href="~/admin-side/css/custom.css" rel="stylesheet" />
+
+
 </head>
 
 <body class="login">
@@ -44,47 +46,41 @@
                     <form id="frmLogin">
                         @Html.AntiForgeryToken()
                         <div>
-                            <img src="/admin-side/images/powaco148.png" alt="...">
+                            <img src="/admin-side/images/logoNiTi.png" alt="...">
                         </div>
                         <br />
                         <div>
-                            <input type="text" class="form-control" name="userName" placeholder="Tên người dùng" id="txtUserName" required="" />
+                            <input type="text" class="form-control" name="userName" placeholder="User name" id="txtUserName" required="" />
                         </div>
                         <div>
-                            <input type="password" class="form-control" name="password" id="txtPassword" placeholder="Mật mã" required="" />
+                            <input type="password" class="form-control" name="password" id="txtPassword" placeholder="Password" required="" />
                         </div>
                         <div>
-                            <a class="btn btn-default submit" href="#" id="btnLogin">Đăng nhập</a>
+                            <a class="btn btn-default submit" href="#" id="btnLogin" style="background-color:#74F87A; color:white ">Login</a>
 
                         </div>
-
-
                         <br />
                         <div>
 
                             <div class="clearfix"></div>
                             <br />
-                            <p> ©2019  Công Ty Cổ Phần Điện Nước An Giang - POWACO</p>
+                            <p> © 2019 NiTi App</p>
 
                         </div>
                     </form>
                 </section>
             </div>
-
         </div>
     </div>
     <script src="~/vendor/jquery/jquery.js"></script>
 
-    <script src="~/vendor/notifyjs/notify.js"></script>
-    <script src="~/vendor/notifyjs/styles/metro/notify-metro.js"></script>
+    <script src="~/vendor/notifyjs/dist/notify.js"></script>
+    <script src="~/vendor/notifyjs/dist/styles/metro/notify-metro.js"></script>
+
 
     <script src="~/vendor/jquery-validation/jquery.validate.js"></script>
     <script src="~/vendor/jquery-validation/additional-methods.js"></script>
     <script src="~/vendor/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
-
-    @*<script src="~/bundled/site-admin.min.js"></script>*@
-
-    @*<script src="~/app/shared/thongbao.js" asp-append-version="true"></script>*@
 
     <script src="~/admin-app/shared/niti.js" asp-append-version="true"></script>
 

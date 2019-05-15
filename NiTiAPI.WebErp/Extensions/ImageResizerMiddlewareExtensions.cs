@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using NiTiAPI.WebErp.Middleware;
 
 namespace NiTiAPI.WebErp.Extensions
 {
@@ -15,9 +14,9 @@ namespace NiTiAPI.WebErp.Extensions
             return services.AddMemoryCache();
         }
 
-        public static IApplicationBuilder UseImageResizer(this IApplicationBuilder builder)
-        {
-            return builder.UseMiddleware<ImageResizerMiddleware>();
-        }
+        //public static IApplicationBuilder UseImageResizer(this IApplicationBuilder builder)
+        //{
+        //    return builder.UseMiddleware<ImageResizerMiddleware>();
+        //}
     }
 }

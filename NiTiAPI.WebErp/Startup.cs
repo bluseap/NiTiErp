@@ -22,20 +22,18 @@ using NiTiAPI.WebErp.Services;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
 using Microsoft.AspNetCore.Http;
-
-//using TeduCoreApp.Services;
-//using TeduCoreApp.Data.EF;
-//using TeduCoreApp.Data.Entities;
-//using TeduCoreApp.Application.Interfaces;
-//using TeduCoreApp.Application.Implementation;
-//using TeduCoreApp.Helpers;
-//using TeduCoreApp.Infrastructure.Interfaces;
-//using TeduCoreApp.Authorization;
-//using PaulMiami.AspNetCore.Mvc.Recaptcha;
-//using TeduCoreApp.Extensions;
-//using TeduCoreApp.Application.Dapper.Interfaces;
-//using TeduCoreApp.Application.Dapper.Implementation;
-
+using NiTiAPI.Dapper.Models;
+using NiTiAPI.Dapper.Repositories;
+using NiTiAPI.Dapper.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Newtonsoft.Json;
+using System.Net;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Localization.Routing;
+using System.Reflection;
+using NiTiAPI.WebErp.Data;
 
 namespace NiTiAPI.WebErp
 {
@@ -58,6 +56,12 @@ namespace NiTiAPI.WebErp
             //services.AddIdentity<AppUser, AppRole>()
             //    .AddEntityFrameworkStores<AppDbContext>()
             //    .AddDefaultTokenProviders();
+
+            services.AddTransient<IUserStore<AppUser>, UserStore>();
+            services.AddTransient<IRoleStore<AppRole>, RoleStore>();
+
+            services.AddIdentity<AppUser, AppRole>()
+                .AddDefaultTokenProviders();
 
             services.AddMemoryCache();
 
@@ -94,19 +98,19 @@ namespace NiTiAPI.WebErp
             });
             services.AddImageResizer();
             services.AddAutoMapper();
-            services.AddAuthentication()
-                .AddFacebook(facebookOpts =>
-                {
-                    facebookOpts.AppId = Configuration["Authentication:Facebook:AppId"];
-                    facebookOpts.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
-                })
-                .AddGoogle(googleOpts => {
-                    googleOpts.ClientId = Configuration["Authentication:Google:ClientId"];
-                    googleOpts.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
-                });
+            //services.AddAuthentication()
+            //    .AddFacebook(facebookOpts =>
+            //    {
+            //        facebookOpts.AppId = Configuration["Authentication:Facebook:AppId"];
+            //        facebookOpts.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+            //    })
+            //    .AddGoogle(googleOpts => {
+            //        googleOpts.ClientId = Configuration["Authentication:Google:ClientId"];
+            //        googleOpts.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+            //    });
             // Add application services.
-            //services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
-            //services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>();
+            services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
+            services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>();
 
             services.AddSingleton(Mapper.Configuration);
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
@@ -114,9 +118,26 @@ namespace NiTiAPI.WebErp
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<IViewRenderService, ViewRenderService>();
 
-            //services.AddTransient<DbInitializer>();
-
+            //  services.AddTransient<DbInitializer>();
             //services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>();
+            
+            //Add authen fixbug cannot get Claims
+            services.AddAuthentication(o =>
+            {
+                o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                o.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(cfg =>
+            {
+                cfg.RequireHttpsMetadata = false;
+                cfg.SaveToken = true;
+
+                cfg.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidIssuer = Configuration["Tokens:Issuer"],
+                    ValidAudience = Configuration["Tokens:Issuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:Key"]))
+                };
+            });
 
             services.AddMvc(options =>
             {
@@ -164,9 +185,11 @@ namespace NiTiAPI.WebErp
                   opts.SupportedUICultures = supportedCultures;
               });
 
+            services.AddTransient<IAppUserLoginRepository, AppUserLoginRepository>();
+
             //services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
             //services.AddTransient(typeof(IRepository<,>), typeof(EFRepository<,>));
-            
+
             //Serrvices
             //services.AddTransient<IProductCategoryService, ProductCategoryService>();
             //services.AddTransient<IFunctionService, FunctionService>();
@@ -181,10 +204,8 @@ namespace NiTiAPI.WebErp
             //services.AddTransient<IPageService, PageService>();
             //services.AddTransient<IReportService, ReportService>();
             //services.AddTransient<IAnnouncementService, AnnouncementService>();
-
             //services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
-
-            services.AddSignalR();
+            //services.AddSignalR();
 
         }
 
@@ -202,11 +223,11 @@ namespace NiTiAPI.WebErp
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-            app.UseImageResizer();
+            //app.UseImageResizer();
             app.UseStaticFiles();
             app.UseMinResponse();
             app.UseAuthentication();
-            app.UseSession();          
+            app.UseSession();
 
             var options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(options.Value);
@@ -217,7 +238,6 @@ namespace NiTiAPI.WebErp
             //});
             app.UseMvc(routes =>
             {
-
                 //routes.MapRoute(
                 //    name: "default",
                 //    template: "{controller=Home}/{action=Index}/{id?}");       // localhost: home to product
@@ -225,13 +245,16 @@ namespace NiTiAPI.WebErp
                 //   name: "areaRoute",
                 //   template: "{area:exists}/{controller=Login}/{action=Index}/{id?}"); // localhost/admin: login to admin
 
+
                 routes.MapRoute(
-                  name: "areaRoute",
-                  template: "{area:exists}/{controller=Login}/{action=Index}/{id?}"); // localhost: login to admin
+                   name: "areaRoute",
+                   template: "{area:exists}/{controller=Login}/{action=Index}/{id?}"); // localhost: login to admin
                 routes.MapAreaRoute(
                     name: "default",
                     areaName: "Admin",
                     template: "{controller=Login}/{action=Index}/{id?}");         //  localhost/admin: login to admin
+
+
 
 
             });
