@@ -55,19 +55,18 @@ var loginController = function () {
             },
             dateType: 'json',
             url: '/admin/login/Authen',
-            success: function (res) {
-                window.location.href = "/Admin/Home/Index";          
-                //if (res.Success) {
-                //    window.location.href = "/Admin/Home/Index";                   
+            success: function (res) {                        
+                if (res.Success) {
+                    window.location.href = "/Admin/Home/Index";                   
 
-                //    //$.getJSON("http://jsonip.com?callback=?", function (data) {                   
-                //    //    var ipAddress = data.ip;
-                //    //    alert(ipAddress);
-                //    //});
-                //}
-                //else {
-                //    tedu.notify('Login failed', 'error');
-                //}
+                    //$.getJSON("http://jsonip.com?callback=?", function (data) {                   
+                    //    var ipAddress = data.ip;
+                    //    alert(ipAddress);
+                    //});
+                }
+                else {
+                    tedu.notify('Login failed', 'error');
+                }
             }
         });
     }

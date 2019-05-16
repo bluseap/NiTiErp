@@ -13,8 +13,6 @@ namespace NiTiAPI.Utilities.Constants
             public const string Id = "Id";
             public const string Permissions = "permissions";
             public const string FullName = "fullName";
-            public const string Avatar = "Avatar";
-            public const string CorporationId = "CorporationId";
         }
     }
 }

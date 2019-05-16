@@ -59,67 +59,68 @@ namespace NiTiAPI.WebErp.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await _userManager.FindByNameAsync(model.UserName);
-                if (user != null)
-                {
-                    var result = await _signInManager.PasswordSignInAsync(model.UserName, model.PasswordHash, false, true);
-                    if (!result.Succeeded)
-                        return BadRequest("Password failed");
-                    var roles = await _userManager.GetRolesAsync(user);
-                    var permissions = await GetPermissionByUserId(user.Id.ToString());
-                    var claims = new[]
-                    {
-                        new Claim("Email", user.Email),
-                        new Claim(SystemConstants.UserClaim.Id, user.Id.ToString()),
-                        new Claim(ClaimTypes.Name, user.UserName),
-                        new Claim(SystemConstants.UserClaim.FullName, user.FullName??string.Empty),
-                        new Claim(SystemConstants.UserClaim.Roles, string.Join(";", roles)),
-                        new Claim(SystemConstants.UserClaim.Permissions, JsonConvert.SerializeObject(permissions)),
-                        new Claim(SystemConstants.UserClaim.Avatar, user.Avatar ?? string.Empty),
-                        new Claim(SystemConstants.UserClaim.CorporationId, user.CorporationId.ToString()),
-                        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-                    };
-                    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Tokens:Key"]));
-                    var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-                    CountUserLogin(user.UserName);
-
-                    var token = new JwtSecurityToken(_configuration["Tokens:Issuer"],
-                        _configuration["Tokens:Issuer"],
-                         claims,
-                        expires: DateTime.Now.AddDays(2),
-                        signingCredentials: creds);
-
-                    return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token) });
-                    //return new OkObjectResult(new GenericResult(true));
-                }
-                return NotFound($"User name not found. {model.UserName}");
-
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                //var result = await _signInManager.PasswordSignInAsync(model.UserName, model.PasswordHash, false, true);
-                //if (result.Succeeded)
-                //{
-                //    _logger.LogInformation("User logged in.");
-
-                //    CountUserLogin(model.Email);
-
-                //    return new OkObjectResult(new GenericResult(true));
-                //}
-                //if (result.IsLockedOut)
-                //{
-                //    _logger.LogWarning("User account locked out.");
-                //    return new ObjectResult(new GenericResult(false, "Tài khoản đã bị khoá"));
-                //}
-                //else
-                //{
-                //    return new ObjectResult(new GenericResult(false, "Đăng nhập sai"));
-                //}
+                var result = await _signInManager.PasswordSignInAsync(model.UserName, model.PasswordHash, false, true);
+                if (result.Succeeded)
+                {
+                    _logger.LogInformation("User logged in.");
+                    return new OkObjectResult(new GenericResult(true));
+                }
+                if (result.IsLockedOut)
+                {
+                    _logger.LogWarning("User account locked out.");
+                    return new ObjectResult(new GenericResult(false, "User account locked."));
+                }
+                else
+                {
+                    return new ObjectResult(new GenericResult(false, "Login failed."));
+                }
             }
+
+            //if (ModelState.IsValid)
+            //{
+            //    var user = await _userManager.FindByNameAsync(model.UserName);
+            //    if (user != null)
+            //    {
+            //        var result = await _signInManager.PasswordSignInAsync(model.UserName, model.PasswordHash, false, true);
+            //        if (!result.Succeeded)
+            //            return BadRequest("Password failed");
+            //        var roles = await _userManager.GetRolesAsync(user);
+            //        var permissions = await GetPermissionByUserId(user.Id.ToString());                    
+
+            //        var claims = new[]
+            //        {
+            //            new Claim("Email", user.Email),
+            //            new Claim(SystemConstants.UserClaim.Id, user.Id.ToString()),
+            //            new Claim(ClaimTypes.Name, user.UserName),
+            //            new Claim(SystemConstants.UserClaim.FullName, user.FullName??string.Empty),
+            //            new Claim(SystemConstants.UserClaim.Roles, string.Join(";", roles)),
+            //            new Claim(SystemConstants.UserClaim.Permissions, JsonConvert.SerializeObject(permissions)),
+            //            new Claim(SystemConstants.UserClaim.Avatar, user.Avatar ?? string.Empty),
+            //            new Claim(SystemConstants.UserClaim.CorporationId, user.CorporationId.ToString()),
+            //            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+            //        };
+            //        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Tokens:Key"]));
+            //        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);                 
+
+            //        CountUserLogin(user.UserName);
+
+            //        var token = new JwtSecurityToken(_configuration["Tokens:Issuer"],
+            //            _configuration["Tokens:Issuer"],
+            //             claims,
+            //            expires: DateTime.Now.AddDays(2),
+            //            signingCredentials: creds);
+
+            //        //return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token) });
+            //        return new OkObjectResult(new GenericResult(true));
+            //    }
+            //    return NotFound($"User name not found. {model.UserName}");             
+            //}
 
             // If we got this far, something failed, redisplay form
             return new ObjectResult(new GenericResult(false, model));
-        }
+        }        
 
         private async Task<List<string>> GetPermissionByUserId(string userId)
         {

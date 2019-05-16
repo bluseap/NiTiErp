@@ -1,6 +1,5 @@
 ﻿
 @using NiTiAPI.WebErp.Extensions;
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,22 +11,24 @@
 
     <link rel="shortcut icon" href="/admin-side/images/logoniti.ico" />
 
-    <title>NiTiApp </title>
+    <title>NiTiCoApp </title>
 
     <!-- Bootstrap -->
-    <link href="~/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/vendor/gentelella/vendors/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <!-- Font Awesome -->
-    <link href="~/vendor/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/vendor/gentelella/vendors/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <!-- NProgress -->
-    <link href="~/vendor/nprogress/nprogress.css" rel="stylesheet" />
-    <!-- bootstrap-daterangepicker -->
-    <link href="~/vendor/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
-    <link href="~/vendor/notifyjs/dist/styles/metro/notify-metro.css" rel="stylesheet" />
-    <link href="~/vendor/ckeditor/skins/moono/editor.css" rel="stylesheet" />
+    <link href="~/vendor/gentelella/vendors/nprogress/nprogress.css" rel="stylesheet" />
+    <!-- iCheck -->
+    <link href="~/vendor/gentelella/vendors/iCheck/skins/flat/green.css" rel="stylesheet" />
 
-    <link href="~/vendor/gentelella/vendors/pnotify/dist/pnotify.css" rel="stylesheet" />>
-    <link href="~/vendor/gentelella/vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet" />
-    <link href="~/vendor/gentelella/vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet" />
+    <!-- bootstrap-progressbar -->
+    <link href="~/vendor/gentelella/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.css" rel="stylesheet" />
+    <!-- JQVMap -->
+    <link href="~/vendor/gentelella/vendors/jqvmap/dist/jqvmap.css" rel="stylesheet" />
+    <!-- bootstrap-daterangepicker -->
+    <link href="~/vendor/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+
 
     <!-- Custom Theme Style -->
     <link href="~/admin-side/css/custom.css" rel="stylesheet" />
@@ -35,34 +36,25 @@
 
     @RenderSection("Styles", required: false)
 </head>
-
 <body class="nav-md">
     <div class="container body">
         <div class="main_container">
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
-
                     <div class="navbar nav_title" style="border: 0;">
                         <a href="/admin/home" class="site_title">
                             <img src="/admin-side/images/logoniti.png" alt="..." class="img-rounded profile_img" />
                             <span style="color:white">  NiTiCoApp </span>
                         </a>
                     </div>
-
                     <div class="clearfix"></div>
-
-                    @*<input type="hidden" id="hidUserCorporationId" value=@User.GetSpecificClaim("CorporationId") />
-                        <input type="hidden" id="hidUserFullName" value=@User.GetSpecificClaim("FullName") />
-                        <input type="hidden" id="hidUserName" value=@User.GetSpecificClaim("UserName") />
-                        <input type="hidden" id="hidAvatarUserId" value=@User.GetSpecificClaim("Avatar") />*@
 
                     <!-- menu profile quick info -->
                     <!-- /menu profile quick info -->
-
                     <br />
-
                     <!-- sidebar menu -->
-                    @*@await Component.InvokeAsync("SideBar")*@
+                    @await Component.InvokeAsync("SideBar")
+
                     <!-- /sidebar menu -->
                     <!-- /menu footer buttons -->
                     <div class="sidebar-footer hidden-small">
@@ -110,71 +102,58 @@
             <!-- /footer content -->
 
         </div>
-
+        <a id="hidUserId" style="visibility:hidden">@User.GetSpecificClaim("UserId") </a>
+        <a id="hidUserName" style="visibility:hidden">@User.GetSpecificClaim("UserName") </a>
+        <a id="hidUserEmail" style="visibility:hidden"> @User.GetSpecificClaim("Email") </a>
+        <a id="hidUserFullName" style="visibility:hidden"> @User.GetSpecificClaim("FullName") </a>
+        <a id="hidUserCorporationId" style="visibility:hidden"> @User.GetSpecificClaim("CorporationId") </a>
+        <a id="hidUserAvatar" style="visibility:hidden"> @User.GetSpecificClaim("Avatar") </a>
+        <a id="hidUserRoles" style="visibility:hidden"> @User.GetSpecificClaim("Roles") </a>
     </div>
 
 
-
     <!-- jQuery -->
-    <script src="~/vendor/jquery/jquery.js"></script>
+    <script src="~/vendor/gentelella/vendors/jquery/dist/jquery.js"></script>
     <!-- Bootstrap -->
-    <script src="~/vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="~/vendor/gentelella/vendors/bootstrap/dist/js/bootstrap.js"></script>
     <!-- FastClick -->
-    <script src="~/vendor/fastclick/lib/fastclick.js"></script>
+    <script src="~/vendor/gentelella/vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
-    <script src="~/vendor/nprogress/nprogress.js"></script>
+    <script src="~/vendor/gentelella/vendors/nprogress/nprogress.js"></script>
     <!-- Chart.js -->
-    <script src="~/vendor/mustache/mustache.js"></script>
+    <script src="~/vendor/gentelella/vendors/Chart.js/dist/Chart.js"></script>
+    <!-- gauge.js -->
+    <script src="~/vendor/gentelella/vendors/gauge.js/dist/gauge.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="~/vendor/gentelella/vendors/bootstrap-progressbar/bootstrap-progressbar.js"></script>
+    <!-- iCheck -->
+    <script src="~/vendor/gentelella/vendors/iCheck/icheck.js"></script>
+    <!-- Skycons -->
+    <script src="~/vendor/gentelella/vendors/skycons/skycons.js"></script>
+    <!-- Flot -->
+    @*<script src="../vendors/Flot/jquery.flot.js"></script>
+        <script src="../vendors/Flot/jquery.flot.pie.js"></script>
+        <script src="../vendors/Flot/jquery.flot.time.js"></script>
+        <script src="../vendors/Flot/jquery.flot.stack.js"></script>
+        <script src="../vendors/Flot/jquery.flot.resize.js"></script>*@
+    <!-- Flot plugins -->
+    @*<script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+        <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+        <script src="../vendors/flot.curvedlines/curvedLines.js"></script>*@
 
-    <!-- jQuery Sparklines -->
-    <script src="~/vendor/twbs-pagination/jquery.twbsPagination.js"></script>
-    <script src="~/vendor/jquery-sparkline/jquery.sparkline.js"></script>
-
-    <script src="~/vendor/jquery-validation/jquery.validate.js"></script>
-    <script src="~/vendor/jquery-validation/additional-methods.js"></script>
-    <script src="~/vendor/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
-    <script src="~/vendor/ckeditor/ckeditor.js"></script>
-
+    <!-- DateJS -->
+    <script src="~/vendor/gentelella/vendors/DateJS/build/date.js"></script>
+    <!-- JQVMap -->
+    @*<script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
+        <script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+        <script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>*@
     <!-- bootstrap-daterangepicker -->
-    <script src="~/vendor/moment/moment.js"></script>
-    <script src="~/vendor/moment/locale/vi.js"></script>
-    <script src="~/vendor/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <script src="~/vendor/notifyjs/dist/notify.js"></script>
-    <script src="~/vendor/notifyjs/dist/styles/metro/notify-metro.js"></script>
-    <script src="~/vendor/bootbox/bootbox.min.js"></script>
+    <script src="~/vendor/gentelella/vendors/moment/min/moment.min.js"></script>
+    <script src="~/vendor/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>>
 
-    <!-- morris.js -->
-    @*<script src="~/lib/gentelella/vendors/raphael/raphael.js" asp-append-version="true"></script>
-        <script src="~/lib/gentelella/vendors/morris.js/morris.js" asp-append-version="true"></script>*@
 
-    <!-- jQuery Smart Wizard -->
-    @*<script src="~/lib/gentelella/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js" asp-append-version="true"></script>*@
-
-    <script src="~/vendor/gentelella/vendors/pnotify/dist/pnotify.js"></script>
-    <script src="~/vendor/gentelella/vendors/pnotify/dist/pnotify.buttons.js"></script>
-    <script src="~/vendor/gentelella/vendors/pnotify/dist/pnotify.nonblock.js"></script>
-
-    <!-- Custom Theme Scripts -->
-    @*<script src="~/admin-side/js/custom.min.js" asp-append-version="true"></script>*@
     <script src="~/admin-side/js/custom.js" asp-append-version="true"></script>
-
-    @*<script src="~/lib/jquery-loading/jquery.loading.js"></script>*@
-    @*<script src="~/lib/jQuery.print/jQuery.print.js" asp-append-version="true"></script>
-
-        <script src="~/lib/signalr/lib/signalr.min.js" asp-append-version="true"></script>*@
-
     <script src="~/admin-app/shared/niti.js" asp-append-version="true"></script>
-
-
-
-
-    @*<environment names="Development">
-            <script src="~/app/shared/tedu.js"></script>
-        </environment>
-        <environment names="Staging,Production">
-            <script src="~/bundled/site-admin.min.js"></script>
-        </environment>*@
-
     <script>
 
     </script>

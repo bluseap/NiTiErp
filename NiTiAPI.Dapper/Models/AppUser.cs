@@ -9,14 +9,14 @@ namespace NiTiAPI.Dapper.Models
     public class AppUser : IdentityUser<Guid>
     {
         public AppUser() { }
-        public AppUser(Guid id, string fullName, string userName,
+        public AppUser(Guid id, string fullName, string username,
             string email, string phoneNumber, string avatar
             //, Status status
             , int corporationId)
         {
             Id = id;
             FullName = fullName;
-            UserName = userName;
+            UserName = username;
             Email = email;
             PhoneNumber = phoneNumber;
             Avatar = avatar;

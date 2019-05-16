@@ -35,7 +35,6 @@ using Microsoft.AspNetCore.Localization.Routing;
 using System.Reflection;
 using NiTiAPI.WebErp.Data;
 using NiTiAPI.WebErp.Helpers;
-using NiTiAPI.WebErp.Data.Model;
 
 namespace NiTiAPI.WebErp
 {
@@ -132,7 +131,7 @@ namespace NiTiAPI.WebErp
             services.AddTransient<IViewRenderService, ViewRenderService>();
 
             //  services.AddTransient<DbInitializer>();
-            //services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>();
+            services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>();
 
             //Add authen fixbug cannot get Claims
             //services.AddAuthentication(o =>
@@ -200,12 +199,14 @@ namespace NiTiAPI.WebErp
 
             services.AddTransient<IAppUserLoginRepository, AppUserLoginRepository>();
 
+            services.AddTransient<IFunctionRepository, FunctionRepository>();
+
             //services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
             //services.AddTransient(typeof(IRepository<,>), typeof(EFRepository<,>));
 
             //Serrvices
             //services.AddTransient<IProductCategoryService, ProductCategoryService>();
-            //services.AddTransient<IFunctionService, FunctionService>();
+
             //services.AddTransient<IProductService, ProductService>();
             //services.AddTransient<IUserService, UserService>();
             //services.AddTransient<IRoleService, RoleService>();
