@@ -14,8 +14,12 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
+
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Localization;
+using Microsoft.Extensions.Localization;
+
 using Microsoft.Extensions.Options;
 using NiTiAPI.WebErp.Extensions;
 using NiTiAPI.WebErp.Services;
@@ -151,6 +155,8 @@ namespace NiTiAPI.WebErp
             //    };
             //});
 
+            services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
+
             services.AddMvc(options =>
             {
                 options.CacheProfiles.Add("Default",
@@ -170,32 +176,34 @@ namespace NiTiAPI.WebErp
                 .AddDataAnnotationsLocalization()
                 .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
-            services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
+            
 
             services.AddCors(options => options.AddPolicy("CorsPolicy",
-                builder =>
-                {
-                    builder.AllowAnyMethod()
-                        .AllowAnyHeader()
-                        .WithOrigins("http://localhost:3000")
-                        .AllowCredentials();
-                }));
+               builder =>
+               {
+                   builder.AllowAnyMethod()
+                       .AllowAnyHeader()
+                       .WithOrigins("http://localhost:3000")
+                       .AllowCredentials();
+               }));
 
             services.Configure<RequestLocalizationOptions>(
-              opts =>
-              {
-                  var supportedCultures = new List<CultureInfo>
-                  {
-                        new CultureInfo("en-US"),
-                        new CultureInfo("vi-VN")
-                  };
+             opts =>
+             {
+                 var supportedCultures = new List<CultureInfo>
+                 {
+                        new CultureInfo("vi-VN"),
+                        new CultureInfo("en-US")                       
+                 };
 
-                  opts.DefaultRequestCulture = new RequestCulture("en-US");
+                 opts.DefaultRequestCulture = new RequestCulture("vi-VN");
                   // Formatting numbers, dates, etc.
                   opts.SupportedCultures = supportedCultures;
                   // UI strings that we have localized.
                   opts.SupportedUICultures = supportedCultures;
-              });
+             });
+
+                 
 
             services.AddTransient<IAppUserLoginRepository, AppUserLoginRepository>();
 
@@ -245,7 +253,10 @@ namespace NiTiAPI.WebErp
 
             var options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(options.Value);
+            app.UseMvcWithDefaultRoute();
+
             app.UseCors("CorsPolicy");
+
             //app.UseSignalR(routes =>
             //{
             //    routes.MapHub<TeduHub>("/teduHub");

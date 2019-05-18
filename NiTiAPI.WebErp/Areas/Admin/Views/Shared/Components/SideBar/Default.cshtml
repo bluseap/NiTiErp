@@ -1,10 +1,10 @@
 ﻿@model List<NiTiAPI.Dapper.ViewModels.FunctionViewModel>
-
+@inject IViewLocalizer Localizer
 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
     <div class="menu_section">
-        <h3>Functions</h3>
+        <h3>@Localizer["AllCategories"]</h3>
         <ul class="nav side-menu">
-            @foreach (var item in Model.Where(x=>string.IsNullOrEmpty(x.ParentId)))
+            @foreach (var item in Model.Where(x => string.IsNullOrEmpty(x.ParentId)))
             {
                 <li>
                     <a><i class="fa @item.CssClass"></i> @item.Name <span class="fa fa-chevron-down"></span></a>
@@ -18,11 +18,11 @@
                             }
                         </ul>
                     }
-                   
+
                 </li>
 
             }
-           
+
         </ul>
     </div>
 </div>
