@@ -4,7 +4,6 @@
 @{
     var requestCulture = Context.Features.Get<IRequestCultureFeature>();
 }
-@inject IViewLocalizer Localizer
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +25,6 @@
     <link href="~/vendor/gentelella/vendors/nprogress/nprogress.css" rel="stylesheet" />
     <!-- iCheck -->
     <link href="~/vendor/gentelella/vendors/iCheck/skins/flat/green.css" rel="stylesheet" />
-
     <!-- bootstrap-progressbar -->
     <link href="~/vendor/gentelella/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.css" rel="stylesheet" />
     <!-- JQVMap -->
@@ -34,6 +32,7 @@
     <!-- bootstrap-daterangepicker -->
     <link href="~/vendor/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
 
+    <link href="~/vendor/notifyjs/dist/styles/metro/notify-metro.css" rel="stylesheet" />
 
     <!-- Custom Theme Style -->
     <link href="~/admin-side/css/custom.css" rel="stylesheet" />
@@ -83,7 +82,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="">
                                 @await Html.PartialAsync("_LoginPartial")
-                            </li>                          
+                            </li>
                         </ul>
                     </nav>
                 </div>
@@ -160,10 +159,14 @@
         <script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>*@
     <!-- bootstrap-daterangepicker -->
     <script src="~/vendor/gentelella/vendors/moment/min/moment.min.js"></script>
-    <script src="~/vendor/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>>
+    <script src="~/vendor/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="~/vendor/notifyjs/dist/notify.js"></script>
+    <script src="~/vendor/notifyjs/dist/styles/metro/notify-metro.js"></script>
 
+    <script src="~/admin-app/shared/localize/resources.@(requestCulture.RequestCulture.Culture.Name).js"></script>
 
     <script src="~/admin-side/js/custom.js" asp-append-version="true"></script>
+
     <script src="~/admin-app/shared/niti.js" asp-append-version="true"></script>
     <script>
 

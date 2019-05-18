@@ -3,8 +3,9 @@
 
     var userCorporationId = $("#hidUserCorporationId").val();
 
-    this.initialize = function () {
-        //loadKhuVuc();
+    this.initialize = function () {     
+      
+        //loadCorporation();
 
         //loadData();
 
@@ -414,38 +415,37 @@
         });
     }
 
-    function loadKhuVuc() {
+    function loadCorporation() {
         return $.ajax({
             type: 'GET',
             url: '/admin/hoso/GetListCorNhanSu',
             dataType: 'json',
             success: function (response) {
-                var render = "<option value='%' >-- Lựa chọn --</option>";
+                var choosen = resources["Choose"]; 
+                var render = "<option value='%' >-- " + choosen + " --</option>";
                 $.each(response.Result, function (i, item) {
                     render += "<option value='" + item.Id + "'>" + item.Name + "</option>";
                 });
-                $('#ddlKhuVuc').html(render);
-                $('#ddlCongTyXiNghiep').html(render);
+                $('#ddlCorporation').html(render);
+                $('#ddlAddUpdateCorporation').html(render);
 
                 var userCorporationId = $("#hidUserCorporationId").val();
                 if (userCorporationId !== "PO") {
-                    $('#ddlKhuVuc').prop('disabled', true);
-                    $('#ddlCongTyXiNghiep').prop('disabled', true);
+                    $('#ddlCorporation').prop('disabled', true);
+                    $('#ddlAddUpdateCorporation').prop('disabled', true);
                 }
                 else {
-                    $('#ddlKhuVuc').prop('disabled', false);
-                    $('#ddlCongTyXiNghiep').prop('disabled', false);
+                    $('#ddlCorporation').prop('disabled', false);
+                    $('#ddlAddUpdateCorporation').prop('disabled', false);
                 }
 
-                $("#ddlKhuVuc")[0].selectedIndex = 1;
-                $("#ddlCongTyXiNghiep")[0].selectedIndex = 1;
-
-                //loadPhongKhuVuc($("#ddlKhuVuc").val());
+                $("#ddlCorporation")[0].selectedIndex = 1;
+                $("#ddlAddUpdateCorporation")[0].selectedIndex = 1;              
 
             },
             error: function (status) {
                 console.log(status);
-                tedu.notify('Không có danh mục Công Ty.', 'error');
+                tedu.notify(resources['NotFound'], 'error');
             }
         });
     }
