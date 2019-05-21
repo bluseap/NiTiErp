@@ -17,14 +17,13 @@ namespace NiTiAPI.Dapper.Repositories
 {
     public class ProductRepository : IProductRepository
     {
-        private readonly string _connectionString;
-        private readonly ILogger<ProductRepository> _logger;
+        private readonly string _connectionString;       
 
-        public ProductRepository(IConfiguration configuration, ILogger<ProductRepository> logger)
-        {
-            _logger = logger;
+        public ProductRepository(IConfiguration configuration)
+        {         
             _connectionString = configuration.GetConnectionString("DbConnectionString");
         }
+
         public async Task<IEnumerable<Product>> GetAllAsync(string culture)
         {
             using (var conn = new SqlConnection(_connectionString))

@@ -8,6 +8,7 @@ namespace NiTiAPI.Dapper.Repositories.Interfaces
 {
     public interface IAppUserLoginRepository
     {
-        Task Create(AppUserLogin appuserlogin);
+        Task Create(AppUserLogin appuserlogin);     
+
     }
 }

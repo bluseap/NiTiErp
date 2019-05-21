@@ -31,7 +31,7 @@ namespace NiTiAPI.WebErp.Filters
                 var permissions = JsonConvert.DeserializeObject<List<string>>(permissionsClaim.Value);
                 var functionArr = _function.ToString().Split("_");
                 string functionId = string.Join(".", functionArr);
-                if (!permissions.Contains(functionId + "_" + _action))
+                if (!permissions.Contains(functionId + "_" + _action))                
                 {
                     context.Result = new ForbidResult();
                 }

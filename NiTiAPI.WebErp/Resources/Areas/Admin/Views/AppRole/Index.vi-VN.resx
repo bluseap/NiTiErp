@@ -117,11 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CorporationName" xml:space="preserve">
+    <value>Tên Công ty</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>Tạo mới</value>
   </data>
   <data name="Keyword" xml:space="preserve">
-    <value>Từ khóa ...</value>
+    <value>Từ khóa...</value>
   </data>
   <data name="ListRoles" xml:space="preserve">
     <value>Danh sách nhóm phân quyền</value>

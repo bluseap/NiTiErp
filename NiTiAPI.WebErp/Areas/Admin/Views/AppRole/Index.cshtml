@@ -7,6 +7,8 @@
 }
 @section Scripts{
     <script src="~/vendor/jquery-treegrid/js/jquery.treegrid.js"></script>
+
+    <script src="~/admin-app/controllers/approle/addedit-role.js" asp-append-version="true"></script>
     <script src="~/admin-app/controllers/approle/index.js" asp-append-version="true"></script>
     <script>
         var approle = new approleController();
@@ -36,7 +38,7 @@
         <div class="title_right">
             <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                 <div class="input-group">
-                    <input type="text" id="txt-search-keyword" class="form-control" placeholder=@Localizer["Keyword"]>
+                    <input type="text" id="txt-search-keyword" class="form-control" >
                     <span class="input-group-btn">
                         <button class="btn btn-default" id="btn-search" type="button">@Localizer["Search"]</button>
                     </span>
@@ -57,8 +59,8 @@
                     <table id="tbl-roles" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>@Localizer["RoleId"]</th>
                                 <th>@Localizer["RoleName"]</th>
+                                <th>@Localizer["CorporationName"]</th>
                                 <th width="15%"></th>
                             </tr>
                         </thead>
@@ -68,7 +70,7 @@
                     <div class="row">
                         <div class="col-sm-5">
                             <div class="dataTables_info" id="datatable-checkbox_info" role="status" aria-live="polite">
-                                <select id="ddl-show-page">
+                                <select id="ddl-show-pageRoles">
                                     <option value="10" selected="selected">10</option>
                                     <option value="20">20</option>
                                     <option value="30">30</option>
@@ -93,7 +95,7 @@
     <script id="table-templateRoles" type="x-tmpl-mustache">
         <tr>
             <td>{{Name}}</td>
-            <td>{{Description}}</td>
+            <td>{{CorporationName}}</td>
             <td>
                 <a href="#" data-id="{{Id}}" class="btn  btn-xs btn-primary btn-grant"><i class="fa fa-eye-slash"></i></a>
                 <a href="#" data-id="{{Id}}" class="btn  btn-xs btn-info btn-edit"><i class="fa fa-pencil-square-o"></i></a>

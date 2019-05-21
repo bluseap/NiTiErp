@@ -481,10 +481,28 @@
             },
             error: function (status) {
                 console.log(status);
-                tedu.notify('Phân quyền có vấn đề?', 'error');
+                niti.notify('Phân quyền có vấn đề?', 'error');
             }
         });
-    }   
+    },
+    
+    appUserLoginLogger: function (username, stattuscontent) {
+        return $.ajax({
+            type: 'GET',
+            url: '/admin/AppUserLogin/CountUserLogin',
+            data: {
+                userNameId: username,
+                statuscontent: stattuscontent
+            },
+            dateType: 'json',           
+            success: function (res) {
+            },
+            error: function (status) {
+                console.log(status);
+                niti.notify('User logger.', 'error');
+            }
+        });
+    }
 
 }
 

@@ -58,6 +58,7 @@ var loginController = function () {
             success: function (res) {                        
                 if (res.Success) {
                     window.location.href = "/Admin/Home/Index";                   
+                    niti.appUserLoginLogger(user, "In login.");
 
                     //$.getJSON("http://jsonip.com?callback=?", function (data) {                   
                     //    var ipAddress = data.ip;
@@ -65,12 +66,12 @@ var loginController = function () {
                     //});
                 }
                 else {
-                    tedu.notify('Login failed', 'error');
+                    niti.notify('Login failed', 'error');
                 }
             }
         });
+        
     }
-
    
 
 

@@ -206,8 +206,10 @@ namespace NiTiAPI.WebErp
                  
 
             services.AddTransient<IAppUserLoginRepository, AppUserLoginRepository>();
-
             services.AddTransient<IFunctionRepository, FunctionRepository>();
+
+            services.AddTransient<ICorporationRepository, CorporationRepository>();
+            services.AddTransient<IRoleRepository, RoleRepository>();
 
             //services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
             //services.AddTransient(typeof(IRepository<,>), typeof(EFRepository<,>));
