@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 namespace NiTiAPI.Dapper.ViewModels
 {
     public class FunctionActionViewModel
-    {
+    {      
+
         public string Id { get; set; }
+
+        public Guid RoleId { get; set; }
+
+        public string FunctionId { get; set; }
+
         public string Name { get; set; }
         public string ParentId { get; set; }
 

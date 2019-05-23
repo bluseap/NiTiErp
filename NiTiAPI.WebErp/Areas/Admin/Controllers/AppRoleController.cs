@@ -83,7 +83,7 @@ namespace NiTiAPI.WebErp.Areas.Admin.Controllers
 
         [HttpPost]
         [ClaimRequirement(FunctionCode.SYSTEM_ROLE, ActionCode.DELETE)]
-        public async Task<IActionResult> DeleteRole(Guid Id)
+        public async Task<IActionResult> DeleteRole(Guid Id, string userName)
         {
             if (!ModelState.IsValid)
             {
@@ -91,13 +91,60 @@ namespace NiTiAPI.WebErp.Areas.Admin.Controllers
                 return new BadRequestObjectResult(allErrors);
             }
             else
-            {
-                var username = User.GetSpecificClaim("UserName");               
-
-                var role = await _role.Delete(Id, username);
+            {         
+                var role = await _role.Delete(Id, userName);
                 return new OkObjectResult(role);
             }
         }
+
+        #region Function Permission Action       
+
+        [HttpPost]
+        public async Task<IActionResult> GetListFunPer(Guid roleId)
+        {          
+            var model = await _role.GetListFuntionPermissionByRole(roleId);
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var model = await _role.GetListFuntionPermission();
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllFunPer()
+        {
+            var model = await _role.GetListFuntionPermission();
+            var rootFunctions = model.Where(c => c.ParentId == null);
+            //var rootFunctions = model;
+            var items = new List<FunctionPermisionViewModel>();
+            foreach (var function in rootFunctions)
+            {
+                //add the parent category to the item list
+                items.Add(function);
+                //now get all its children (separate Category in case you need recursion)
+                GetByParentId(model.ToList(), function, items);
+            }
+            return new ObjectResult(items);
+        }
+
+        private void GetByParentId(IEnumerable<FunctionPermisionViewModel> allFunctions, FunctionPermisionViewModel parent, IList<FunctionPermisionViewModel> items)
+        {
+            var functionsEntities = allFunctions as FunctionPermisionViewModel[] ?? allFunctions.ToArray();
+            //var subFunctions = functionsEntities.Where(c => c.ParentId == parent.Id);
+            var subFunctions = functionsEntities.Where(c => c.ParentId == parent.FunctionId);
+            foreach (var cat in subFunctions)
+            {
+                //add this category
+                items.Add(cat);
+                //recursive call in case your have a hierarchy more than 1 level deep
+                GetByParentId(functionsEntities, cat, items);
+            }
+        }
+
+        #endregion
 
 
     }

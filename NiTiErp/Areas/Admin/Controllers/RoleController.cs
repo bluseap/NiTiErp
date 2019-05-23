@@ -97,5 +97,8 @@ namespace NiTiErp.Areas.Admin.Controllers
             _roleService.SavePermission(listPermmission, roleId);
             return new OkResult();
         }
+        
+
+
     }
 }

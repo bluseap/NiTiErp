@@ -8,5 +8,7 @@
     "PleaseSelect": "Please select..",
     "DD/MM/YYYY": "Input format dd/MM/YYYY",
     "CreateTableOK": "Save to row success.",
-    "CreateTableError": "Save to row error!"
+    "CreateTableError": "Save to row error!",
+    "DeleteSure": "Are you sure to delete?",
+    "DeleteTableOK": "Delete successful"
 }

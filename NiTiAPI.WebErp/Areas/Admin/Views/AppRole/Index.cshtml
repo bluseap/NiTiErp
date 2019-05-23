@@ -4,10 +4,12 @@
 @inject IViewLocalizer Localizer
 @section Styles{
     <link href="~/vendor/jquery-treegrid/css/jquery.treegrid.css" rel="stylesheet" />
-}
+    }
 @section Scripts{
-    <script src="~/vendor/jquery-treegrid/js/jquery.treegrid.js"></script>
+    <script src="~/vendor/jquery-treegrid/js/jquery.treegrid.js" asp-append-version="true"></script>
+    <script src="~/vendor/jquery-treegrid/js/jquery.treegrid.bootstrap3.js" asp-append-version="true"></script>
 
+    <script src="~/admin-app/controllers/approle/permission.js" asp-append-version="true"></script>
     <script src="~/admin-app/controllers/approle/addedit-role.js" asp-append-version="true"></script>
     <script src="~/admin-app/controllers/approle/index.js" asp-append-version="true"></script>
     <script>
@@ -38,7 +40,7 @@
         <div class="title_right">
             <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                 <div class="input-group">
-                    <input type="text" id="txt-search-keyword" class="form-control" >
+                    <input type="text" id="txt-search-keyword" class="form-control">
                     <span class="input-group-btn">
                         <button class="btn btn-default" id="btn-search" type="button">@Localizer["Search"]</button>
                     </span>

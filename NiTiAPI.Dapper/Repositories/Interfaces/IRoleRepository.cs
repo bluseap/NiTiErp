@@ -20,5 +20,9 @@ namespace NiTiAPI.Dapper.Repositories.Interfaces
         Task<Boolean> Update(RoleViewModel corporation);
 
         Task<Boolean> Delete(Guid id, string username);
+
+        Task<List<FunctionPermisionViewModel>> GetListFuntionPermissionByRole(Guid roleId);
+
+        Task<List<FunctionPermisionViewModel>> GetListFuntionPermission();
     }
 }

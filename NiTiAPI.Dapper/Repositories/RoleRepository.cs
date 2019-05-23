@@ -160,7 +160,7 @@ namespace NiTiAPI.Dapper.Repositories
                 try
                 {
                     await conn.QueryAsync<RoleViewModel>(
-                       "Delete_Role", paramaters, commandType: CommandType.StoredProcedure);
+                       "Delete_Role_ById", paramaters, commandType: CommandType.StoredProcedure);
                     return true;
                 }
                 catch (Exception ex)
@@ -169,6 +169,40 @@ namespace NiTiAPI.Dapper.Repositories
                 }
             }
         }
+
+        #region Function Permission Action
+
+        public async Task<List<FunctionPermisionViewModel>> GetListFuntionPermissionByRole(Guid roleId)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+                var paramaters = new DynamicParameters();
+                paramaters.Add("@roleId", roleId);
+
+                var result = await conn.QueryAsync<FunctionPermisionViewModel>("Get_Function_PermisionWithActions_ByRole",
+                    paramaters, null, null, System.Data.CommandType.StoredProcedure);
+                return result.AsList();
+            }
+        }
+
+
+        public async Task<List<FunctionPermisionViewModel>> GetListFuntionPermission()
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+                var paramaters = new DynamicParameters();
+
+                var result = await conn.QueryAsync<FunctionPermisionViewModel>("Get_Function_PermisionWithActions",
+                    paramaters, null, null, System.Data.CommandType.StoredProcedure);
+                return result.AsList();
+            }
+        }
+
+        #endregion
 
 
     }

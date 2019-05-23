@@ -8,5 +8,7 @@
     "PleaseSelect": "Xin chọn danh mục.",
     "DD/MM/YYYY": "Nhập theo định dạng ngày, tháng, năm.",
     "CreateTableOK": "Lưu thành công.",
-    "CreateTableError": "Lưu lỗi! Kiểm tra lại."
+    "CreateTableError": "Lưu lỗi! Kiểm tra lại.",
+    "DeleteSure": "Bạn có muốn xóa?",
+    "DeleteTableOK": "Xóa thành công"
 }
