@@ -202,6 +202,32 @@ namespace NiTiAPI.Dapper.Repositories
             }
         }
 
+        public async Task<Boolean> FunctionPermissionCreateXML(FunctionPermisionViewModel functionpermission)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+
+                var paramaters = new DynamicParameters();
+                
+                paramaters.Add("@FunctionPermissionXML", functionpermission.FunctionPermissionXML);
+                paramaters.Add("@CreateDate", functionpermission.CreateDate);
+                paramaters.Add("@CreateBy", functionpermission.CreateBy);
+
+                try
+                {
+                    await conn.QueryAsync<FunctionPermisionViewModel>(
+                        "Create_FunctionPermissionXML", paramaters, commandType: CommandType.StoredProcedure);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         #endregion
 
 

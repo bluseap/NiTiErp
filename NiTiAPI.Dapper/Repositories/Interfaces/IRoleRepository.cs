@@ -24,5 +24,7 @@ namespace NiTiAPI.Dapper.Repositories.Interfaces
         Task<List<FunctionPermisionViewModel>> GetListFuntionPermissionByRole(Guid roleId);
 
         Task<List<FunctionPermisionViewModel>> GetListFuntionPermission();
+
+        Task<Boolean> FunctionPermissionCreateXML(FunctionPermisionViewModel role);
     }
 }

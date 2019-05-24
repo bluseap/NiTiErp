@@ -100,6 +100,23 @@ namespace NiTiAPI.WebErp.Areas.Admin.Controllers
         #region Function Permission Action       
 
         [HttpPost]
+        //[ClaimRequirement(FunctionCode.SYSTEM_ROLE, ActionCode.CREATE)]
+        public async Task<IActionResult> SavePermission(FunctionPermisionViewModel functionPermissionVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                functionPermissionVm.CreateDate = DateTime.Now;
+                var functionPermission = await _role.FunctionPermissionCreateXML(functionPermissionVm);
+                return new OkObjectResult(functionPermission);
+            }
+        }
+
+        [HttpPost]
         public async Task<IActionResult> GetListFunPer(Guid roleId)
         {          
             var model = await _role.GetListFuntionPermissionByRole(roleId);

@@ -70,41 +70,8 @@
             permission.fillPermission(roleId);           
 
             $('#modal-grantpermission').modal('show');
-        });                
-
-        //$("#btnSavePermission").off('click').on('click', function () {
-        //    var listPermmission = [];
-        //    $.each($('#tblFunction tbody tr'), function (i, item) {
-        //        listPermmission.push({
-        //            RoleId: $('#hidRoleId').val(),
-        //            FunctionId: $(item).data('id'),
-        //            CanRead: $(item).find('.ckView').first().prop('checked'),
-        //            CanCreate: $(item).find('.ckAdd').first().prop('checked'),
-        //            CanUpdate: $(item).find('.ckEdit').first().prop('checked'),
-        //            CanDelete: $(item).find('.ckDelete').first().prop('checked'),
-        //        });
-        //    });
-        //    $.ajax({
-        //        type: "POST",
-        //        url: "/admin/role/SavePermission",
-        //        data: {
-        //            listPermmission: listPermmission,
-        //            roleId: $('#hidRoleId').val()
-        //        },
-        //        beforeSend: function () {
-        //            tedu.startLoading();
-        //        },
-        //        success: function (response) {
-        //            tedu.notify('Save permission successful', 'success');
-        //            $('#modal-grantpermission').modal('hide');
-        //            tedu.stopLoading();
-        //        },
-        //        error: function () {
-        //            tedu.notify('Has an error in save permission progress', 'error');
-        //            tedu.stopLoading();
-        //        }
-        //    });
-        //});
+        });  
+        
     };   
        
     function loadCorporation() {
@@ -182,6 +149,7 @@
                     niti.startLoading();
                 },
                 success: function (response) {
+                    niti.appUserLoginLogger(userName, "Delete Role.");
                     niti.notify(resources["DeleteTableOK"], 'success');
                     niti.stopLoading();
                     addeditRole.loadTableRole();

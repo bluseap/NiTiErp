@@ -17,7 +17,9 @@ var permissionController = function () {
     }
 
     function registerEvents() {
-
+        $("#btnSavePermission").off('click').on('click', function () {
+            savePermission();
+        });
     }
 
     function fillPermission(roleid) {
@@ -147,6 +149,62 @@ var permissionController = function () {
                 console.log(status);
             }
         });
+    }
+
+    function savePermission() {
+        var listPermmission = [];  
+        var roleid = $('#hidRoleId').val();
+
+        $.each($('#tblFunction tbody tr'), function (i, item) {
+            listPermmission.push({
+                RoleId: roleid,
+                FunctionId: $(item).data('id'),
+                HasView: $(item).find('.ckView').first().prop('checked'),
+                HasCreated: $(item).find('.ckAdd').first().prop('checked'),
+                HasUpdate: $(item).find('.ckEdit').first().prop('checked'),
+                HasDelete: $(item).find('.ckDelete').first().prop('checked')
+            });
+        });
+        //console.log(listPermmission);
+        
+        var xml = '';
+        xml = xml + "<tables>";  
+        for (var i = 0; i < listPermmission.length; i++) {                       
+            var listfield = listPermmission[i];           
+            xml += "<items>";
+            xml += '<RoleId>' + listfield.RoleId + '</RoleId>';
+            xml += '<FunctionId>' + listfield.FunctionId + '</FunctionId>';
+            xml += '<HasView>' + listfield.HasView + '</HasView>';
+            xml += '<HasCreated>' + listfield.HasCreated + '</HasCreated>';
+            xml += '<HasUpdate>' + listfield.HasUpdate + '</HasUpdate>';
+            xml += '<HasDelete>' + listfield.HasDelete + '</HasDelete>';
+            xml += "</items>";     
+        }         
+        xml = xml + '</tables>';       
+        //console.log(xml);
+
+        $.ajax({
+            type: "POST",
+            url: "/admin/AppRole/SavePermission",
+            data: {
+                FunctionPermissionXML: xml,
+                CreateBy: userName
+            },
+            beforeSend: function () {
+                niti.startLoading();
+            },
+            success: function (response) {
+                niti.appUserLoginLogger(userName, "Create Permissions.");
+                niti.notify(resources["CreateTableOK"], 'success');
+                $('#modal-grantpermission').modal('hide');
+                niti.stopLoading();
+            },
+            error: function () {
+                niti.notify(resources["CreateTableError"], 'error');
+                niti.stopLoading();
+            }
+        });
+
     }
 
 }
