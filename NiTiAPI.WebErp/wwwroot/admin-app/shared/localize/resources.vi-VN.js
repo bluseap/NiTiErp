@@ -10,5 +10,7 @@
     "CreateTableOK": "Lưu thành công.",
     "CreateTableError": "Lưu lỗi! Kiểm tra lại.",
     "DeleteSure": "Bạn có muốn xóa?",
-    "DeleteTableOK": "Xóa thành công"
+    "DeleteTableOK": "Xóa thành công",
+    "UploadFile": "Tải file lên thành công.",
+    "UploadFileError": "Tải file bị lỗi."
 }

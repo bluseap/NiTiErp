@@ -17,8 +17,7 @@ namespace NiTiAPI.WebErp.Areas.Admin.Controllers
 
         public AppRoleController(IRoleRepository role)
         {
-            _role = role;
-            
+            _role = role;            
         }
 
         public IActionResult Index()
@@ -30,6 +29,13 @@ namespace NiTiAPI.WebErp.Areas.Admin.Controllers
         public async Task<IActionResult> GetPaging(string keyword, int cororationId, int pageIndex, int pageSize)
         {
             var model = await _role.GetPaging(keyword, cororationId, pageIndex, pageSize);
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetCoporationId(int cororationId)
+        {
+            var model = await _role.GetPaging("%", cororationId, 1, 1000);
             return new OkObjectResult(model);
         }
 

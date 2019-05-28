@@ -10,5 +10,7 @@
     "CreateTableOK": "Save to row success.",
     "CreateTableError": "Save to row error!",
     "DeleteSure": "Are you sure to delete?",
-    "DeleteTableOK": "Delete successful"
+    "DeleteTableOK": "Delete successful",
+    "UploadFile": "Upload file successful",
+    "UploadFileError": "Upload file failed."
 }

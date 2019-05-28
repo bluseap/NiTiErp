@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using NiTiAPI.WebErp.Middleware;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,9 +16,11 @@ namespace NiTiAPI.WebErp.Extensions
             return services.AddMemoryCache();
         }
 
-        //public static IApplicationBuilder UseImageResizer(this IApplicationBuilder builder)
-        //{
-        //    return builder.UseMiddleware<ImageResizerMiddleware>();
-        //}
+        public static IApplicationBuilder UseImageResizer(this IApplicationBuilder builder)
+        {
+            return builder.UseMiddleware<ImageResizerMiddleware>();
+        }
+        
+
     }
 }

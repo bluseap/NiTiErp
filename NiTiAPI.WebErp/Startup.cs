@@ -39,6 +39,7 @@ using Microsoft.AspNetCore.Localization.Routing;
 using System.Reflection;
 using NiTiAPI.WebErp.Data;
 using NiTiAPI.WebErp.Helpers;
+using NiTiAPI.Dapper.ViewModels;
 
 namespace NiTiAPI.WebErp
 {
@@ -127,6 +128,7 @@ namespace NiTiAPI.WebErp
             // Add application services.
             services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>();
+            
 
             services.AddSingleton(Mapper.Configuration);
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
@@ -202,7 +204,6 @@ namespace NiTiAPI.WebErp
                   // UI strings that we have localized.
                   opts.SupportedUICultures = supportedCultures;
              });
-
                  
 
             services.AddTransient<IAppUserLoginRepository, AppUserLoginRepository>();
@@ -210,23 +211,12 @@ namespace NiTiAPI.WebErp
 
             services.AddTransient<ICorporationRepository, CorporationRepository>();
             services.AddTransient<IRoleRepository, RoleRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IUserRolesRepository, UserRolesRepository>();
 
             //services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
             //services.AddTransient(typeof(IRepository<,>), typeof(EFRepository<,>));
-
-            //Serrvices
-            //services.AddTransient<IProductCategoryService, ProductCategoryService>();
-
-            //services.AddTransient<IProductService, ProductService>();
-            //services.AddTransient<IUserService, UserService>();
-            //services.AddTransient<IRoleService, RoleService>();
-            //services.AddTransient<IBillService, BillService>();
-            //services.AddTransient<IBlogService, BlogService>();
-            //services.AddTransient<ICommonService, CommonService>();
-            //services.AddTransient<IFeedbackService, FeedbackService>();
-            //services.AddTransient<IContactService, ContactService>();
-            //services.AddTransient<IPageService, PageService>();
-            //services.AddTransient<IReportService, ReportService>();
+            
             //services.AddTransient<IAnnouncementService, AnnouncementService>();
             //services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
             //services.AddSignalR();
@@ -247,7 +237,7 @@ namespace NiTiAPI.WebErp
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-            //app.UseImageResizer();
+            app.UseImageResizer();
             app.UseStaticFiles();
             app.UseMinResponse();
             app.UseAuthentication();

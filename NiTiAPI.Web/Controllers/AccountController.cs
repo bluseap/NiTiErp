@@ -89,7 +89,12 @@ namespace NiTiAPI.Web.Controllers
         [ValidateModel]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            var user = new AppUser { FullName = model.FullName, UserName = model.Email, Email = model.Email };
+            var user = new AppUser
+            {
+                FullName = model.FullName,
+                UserName = model.Email,
+                Email = model.Email
+            };
 
             var result = await _userManager.CreateAsync(user, model.Password);
 

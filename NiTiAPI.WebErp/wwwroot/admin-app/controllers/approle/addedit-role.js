@@ -119,7 +119,6 @@ var addeditroleController = function () {
                     $("#lbl-total-recordsRoles").text(response.TotalRow);
                     if (render !== undefined) {
                         $('#tbl-contentRoles').html(render);
-
                     }
 
                     if (response.TotalRow !== 0) {
