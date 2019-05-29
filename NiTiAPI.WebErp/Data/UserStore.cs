@@ -26,17 +26,28 @@ namespace NiTiAPI.WebErp.Data
             cancellationToken.ThrowIfCancellationRequested();
 
             using (var connection = new SqlConnection(_connectionString))
-            {
-                await connection.OpenAsync(cancellationToken);
-                user.Id = Guid.NewGuid();
-                await connection.ExecuteAsync($@"INSERT INTO [AspNetUsers] ([Id],[UserName], [NormalizedUserName], [Email],
-                    [NormalizedEmail], [EmailConfirmed], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled],[LockoutEnabled],[AccessFailedCount])
-                    VALUES (@{nameof(AppUser.Id)},@{nameof(AppUser.UserName)}, @{nameof(AppUser.NormalizedUserName)}, @{nameof(AppUser.Email)},
+            {             
+                try
+                {
+                    await connection.OpenAsync(cancellationToken);
+                    //user.Id = Guid.NewGuid();
+                    await connection.ExecuteAsync($@"INSERT INTO [AspNetUsers] ( [Id], [UserName], [NormalizedUserName], [Email],
+                    [NormalizedEmail], [EmailConfirmed], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled],[LockoutEnabled],[AccessFailedCount], 
+                    [CorporationId], [Avatar], [FullName], [Status], [Active], [SortOrder], [CreateDate], [CreateBy]  )
+                    VALUES ( @{nameof(AppUser.Id)}, @{nameof(AppUser.UserName)}, @{nameof(AppUser.NormalizedUserName)}, @{nameof(AppUser.Email)},
                     @{nameof(AppUser.NormalizedEmail)}, @{nameof(AppUser.EmailConfirmed)}, @{nameof(AppUser.PasswordHash)},
-                    @{nameof(AppUser.PhoneNumber)}, @{nameof(AppUser.PhoneNumberConfirmed)}, @{nameof(AppUser.TwoFactorEnabled)},@{nameof(AppUser.LockoutEnabled)},@{nameof(AppUser.AccessFailedCount)});", user);
-            }
+                    @{nameof(AppUser.PhoneNumber)}, @{nameof(AppUser.PhoneNumberConfirmed)}, @{nameof(AppUser.TwoFactorEnabled)},@{nameof(AppUser.LockoutEnabled)},@{nameof(AppUser.AccessFailedCount)},
+                    @{nameof(AppUser.CorporationId)}, @{nameof(AppUser.Avatar)}, @{nameof(AppUser.FullName)},
+                    @{nameof(AppUser.Status)}, @{nameof(AppUser.Active)}, @{nameof(AppUser.SortOrder)},  
+                    @{nameof(AppUser.CreateDate)}, @{nameof(AppUser.CreateBy)}  );", user);
 
-            return IdentityResult.Success;
+                    return IdentityResult.Success;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }            
         }
 
         public async Task<IdentityResult> DeleteAsync(AppUser user, CancellationToken cancellationToken)

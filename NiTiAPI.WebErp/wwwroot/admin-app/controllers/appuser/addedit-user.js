@@ -1,7 +1,6 @@
 ﻿
 var addedituserController = function () {
-
-    var userCorporationId = $("#hidUserCorporationId").val();
+   
     var userName = $("#hidUserName").val();
 
     var imageUser = [];
@@ -23,7 +22,6 @@ var addedituserController = function () {
     }
    
     this.initialize = function () {
-
         registerEvents();        
     }
 
@@ -31,7 +29,7 @@ var addedituserController = function () {
         
         formMainValidate();
                 
-        $('#btnSave').on('click', function (e) {
+        $('#btnSaveUser').on('click', function (e) {
             var insertUser = $('#hidInsertUser').val();
             if (insertUser === "1") {
                 saveUser(e);
@@ -86,10 +84,11 @@ var addedituserController = function () {
         $('input[name="ckRoles"]').removeAttr('checked');
         $('#txtEmail').val('');
         $('#txtPhoneNumber').val('');
-        $('#ddlAddUpdateCorporation')[0].selectedIndex = 0;
+        $('#ddlAddUpdateCorporation')[0].selectedIndex = 1;
         $('#ckStatus').prop('checked', true);   
 
         clearfileUserImage($("#fileInputUserImage"));
+        imageUser = [];
     }
 
     function disableAddEdit(disabled) {
@@ -126,7 +125,6 @@ var addedituserController = function () {
                 txtConfirmPassword: { required: true },
                 txtEmail: { required: true },
                 txtPhoneNumber: { required: true },
-
                 ddlAddUpdateCorporation: {
                     isCompobox: true
                 }              
@@ -263,20 +261,14 @@ var addedituserController = function () {
 
     function saveUser(e) {
         e.preventDefault();
-
         if ($('#frmMaintainance').valid()) {          
 
             var fullName = $('#txtFullName').val();          
-            var userName = $('#txtUserName').val();
+            var username = $('#txtUserName').val();
             var password = $('#txtPassword').val();
             var email = $('#txtEmail').val();
-            var phoneNumber = $('#txtPhoneNumber').val();
-            
-            //var roles = [];
-            //$.each($('input[name="ckRoles"]'), function (i, item) {
-            //    if ($(item).prop('checked') === true)
-            //        roles.push($(item).prop('value'));
-            //});
+            var phoneNumber = $('#txtPhoneNumber').val();            
+         
             var status = $('#ckStatus').prop('checked') === true ? 1 : 0;
             var corporationId = $('#ddlCorporation').val();
 
@@ -286,21 +278,22 @@ var addedituserController = function () {
                 data: {             
                     Avatar: imageUser,
                     FullName: fullName,                 
-                    UserName: userName,
+                    UserName: username,
                     PasswordHash: password,
                     Email: email,
                     PhoneNumber: phoneNumber,
                     CorporationId: corporationId,                    
-                    Status: status                   
+                    Status: status,
+                    CreateBy: userName
                 },
                 dataType: "json",
                 beforeSend: function () {
                     niti.startLoading();
                 },
                 success: function () {
-                    niti.notify(resources["CreateTableError"], 'error');
+                    niti.notify(resources["CreateTableOK"], 'success');
                     $('#modal-add-edit').modal('hide');
-                    resetFormMaintainance();
+                    AddEditClearData();
 
                     niti.stopLoading();
                     loadTableUser(true);
@@ -315,9 +308,58 @@ var addedituserController = function () {
 
     function updateUser(e) {
         e.preventDefault();
+        if ($('#frmMaintainance').valid()) {
+            var userid = $('#hidUserId').val();
+            var fullName = $('#txtFullName').val();            
+            var email = $('#txtEmail').val();
+            var phoneNumber = $('#txtPhoneNumber').val();
+            var roles = [];
+            $.each($('input[name="ckRoles"]'), function (i, item) {
+                if ($(item).prop('checked') === true)
+                    roles.push($(item).prop('value'));
+            });
 
+            var userroles = [];
+            $.each(roles, function (i, item) {
+                userroles += item + ',';
+            });
+
+            var status = $('#ckStatus').prop('checked') === true ? true : false;
+            var corporationId = $('#ddlCorporation').val();
+
+            $.ajax({
+                type: "POST",
+                url: "/Admin/AppUser/UpdateUser",
+                data: {
+                    Id: userid,
+                    Avatar: imageUser,
+                    FullName: fullName,                                     
+                    Email: email,
+                    PhoneNumber: phoneNumber,
+                    CorporationId: corporationId,
+                    Active: status,
+                    UpdateBy: userName,
+                    Roles: userroles     
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    niti.startLoading();
+                },
+                success: function () {
+                    niti.appUserLoginLogger(userName, "Update User and Roles.");
+                    niti.notify(resources["CreateTableOK"], 'success');
+                    $('#modal-add-edit').modal('hide');
+                    AddEditClearData();
+
+                    niti.stopLoading();
+                    loadTableUser(true);
+                },
+                error: function () {
+                    niti.notify(resources["CreateTableError"], 'error');
+                    niti.stopLoading();
+                }
+            });
+        }  
     }
-
-    
 
 }

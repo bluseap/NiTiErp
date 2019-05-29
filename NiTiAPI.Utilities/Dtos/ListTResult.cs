@@ -22,5 +22,7 @@ namespace NiTiAPI.Utilities.Dtos
 
         public int Status { get; set; }
 
+        public string Avatar { get; set; }
+
     }
 }

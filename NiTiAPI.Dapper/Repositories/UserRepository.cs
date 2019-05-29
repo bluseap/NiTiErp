@@ -7,6 +7,7 @@ using NiTiAPI.Dapper.ViewModels;
 using NiTiAPI.Utilities.Dtos;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -114,15 +115,118 @@ namespace NiTiAPI.Dapper.Repositories
         {            
             var user = new AppUser()
             {
+                Id = userVm.Id,
                 Avatar = userVm.Avatar,
                 FullName = userVm.FullName,
                 UserName = userVm.UserName,               
                 Email = userVm.Email,     
                 PhoneNumber = userVm.PhoneNumber,
-                CorporationId = userVm.CorporationId
+                CorporationId = userVm.CorporationId,
+                Status = userVm.Status,
+                Active = userVm.Active,
+                SortOrder = userVm.SortOrder,
+                CreateDate = userVm.CreateDate,
+                CreateBy = userVm.CreateBy
             };
-            var result = await _userManager.CreateAsync(user, userVm.PasswordHash);
-            return true;
+            try
+            {
+                var result = await _userManager.CreateAsync(user, userVm.PasswordHash);
+                if (result.Succeeded)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }            
+        }
+
+        public async Task<bool> UpdateUser(UserViewModel userVm, string roles)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+
+                var paramaters = new DynamicParameters();
+
+                paramaters.Add("@Id", userVm.Id);
+                paramaters.Add("@Avatar", userVm.Avatar);
+                paramaters.Add("@FullName", userVm.FullName);
+                paramaters.Add("@Email", userVm.Email);
+                paramaters.Add("@PhoneNumber", userVm.PhoneNumber);
+                paramaters.Add("@CorporationId", userVm.CorporationId);
+                paramaters.Add("@Active", userVm.Active);
+                paramaters.Add("@Roles", roles);
+
+                paramaters.Add("@UpdateDate", userVm.UpdateDate);
+                paramaters.Add("@UpdateBy", userVm.UpdateBy);
+                try
+                {
+                    await conn.QueryAsync<UserViewModel>(
+                        "Update_UserRoles", paramaters, commandType: System.Data.CommandType.StoredProcedure);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<bool> UpdateUserPass(UserViewModel userVm)
+        {            
+            try
+            {
+                var user = await _userManager.FindByIdAsync(userVm.Id.ToString());                
+  
+                string token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+                var result = await _userManager.ResetPasswordAsync(user, token, userVm.PasswordHash);
+
+                if (result.Succeeded)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<bool> Delete(Guid id, string username)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+
+                var paramaters = new DynamicParameters();
+
+                paramaters.Add("@Id", id);
+                paramaters.Add("@UserName", username);
+
+                try
+                {
+                    await conn.QueryAsync<UserViewModel>(
+                       "Delete_User_ById", paramaters, commandType: CommandType.StoredProcedure);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
         }
 
     }

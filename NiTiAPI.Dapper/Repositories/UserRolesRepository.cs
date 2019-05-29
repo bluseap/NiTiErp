@@ -95,7 +95,8 @@ namespace NiTiAPI.Dapper.Repositories
                         Email = user.Email,
                         PhoneNumber = user.PhoneNumber,
                         CorporationId = user.CorporationId,
-                        Status = user.Status
+                        Status = user.Status,
+                        Avatar = user.Avatar
                     };
 
                     return userroles;

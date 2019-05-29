@@ -15,8 +15,7 @@
         registerEvents();
 
         addedituser.initialize();
-        editpass.initialize();
-        
+        editpass.initialize();        
     }
 
     function registerEvents() {
@@ -54,6 +53,16 @@
             $('#hidInsertUser').val(2);
 
             loadEditUser(userId);
+        });
+
+        $('body').on('click', '.btn-editpass', function (e) {
+            e.preventDefault();
+            
+            var userId = $(this).data('id');
+            $('#hidUserId').val(userId);
+            // 2 - Update User
+            $('#hidInsertUser').val(2);            
+            $('#modal-edit-password').modal('show');           
         });
 
         $('body').on('click', '.btn-delete', function (e) {
@@ -118,7 +127,7 @@
 
                 $('#imagelistUserImage').html('');
                 imageUser = [];
-                $('#imagelistUserImage').append('<div ><img width="100"  data-path="' + data.Avatar + '" src="' + hoso.HinhNhanVien + '" /></div>');
+                $('#imagelistUserImage').append('<div ><img width="100"  data-path="' + data.Avatar + '" src="' + data.Avatar + '" /></div>');
                 imageUser.push(data.Avatar);
 
                 $('#txtFullName').val(data.FullName);
@@ -141,29 +150,29 @@
     }
 
     function deleteUser(userid) {
-        //niti.confirm(resources["DeleteSure"], function () {
-        //    $.ajax({
-        //        type: "POST",
-        //        url: "/Admin/AppRole/DeleteRole",
-        //        data: {
-        //            Id: roleId,
-        //            userName: userName
-        //        },
-        //        beforeSend: function () {
-        //            niti.startLoading();
-        //        },
-        //        success: function (response) {
-        //            niti.appUserLoginLogger(userName, "Delete Role.");
-        //            niti.notify(resources["DeleteTableOK"], 'success');
-        //            niti.stopLoading();
-        //            addeditRole.loadTableRole();
-        //        },
-        //        error: function (status) {
-        //            niti.notify('Has an error in deleting progress', 'error');
-        //            niti.stopLoading();
-        //        }
-        //    });
-        //});
+        niti.confirm(resources["DeleteSure"], function () {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/AppUser/DeleteUser",
+                data: {
+                    Id: userid,
+                    userName: userName
+                },
+                beforeSend: function () {
+                    niti.startLoading();
+                },
+                success: function (response) {
+                    niti.appUserLoginLogger(userName, "Delete User.");
+                    niti.notify(resources["DeleteTableOK"], 'success');
+                    niti.stopLoading();
+                    addedituser.loadTableUser();
+                },
+                error: function (status) {
+                    niti.notify('Has an error in deleting progress', 'error');
+                    niti.stopLoading();
+                }
+            });
+        });
     }
 
 

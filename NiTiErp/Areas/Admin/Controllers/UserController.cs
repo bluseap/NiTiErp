@@ -32,6 +32,7 @@ namespace NiTiErp.Areas.Admin.Controllers
 
             return View();
         }
+
         public IActionResult GetAll()
         {
             var model = _userService.GetAllAsync();

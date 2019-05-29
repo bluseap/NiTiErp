@@ -260,13 +260,18 @@
         return day + "/" + month + "/" + year + " " + hh + ":" + mm + ":" + ss;
     },
     startLoading: function () {
-        if ($('.dv-loading').length > 0)
-            $('.dv-loading').removeClass('hide');
-        //$('#loading-always').loading();
+        //if ($('.dv-loading').length > 0)
+        //    $('.dv-loading').removeClass('hide');        
+        $('body').loading({
+            stoppable: true,
+            message: 'Loading...',
+            theme: 'dark'
+        });
     },
     stopLoading: function () {
-        if ($('.dv-loading').length > 0)
-            $('.dv-loading').addClass('hide');
+        //if ($('.dv-loading').length > 0)
+        //    $('.dv-loading').addClass('hide');
+        $(':loading').loading('stop');
     },
     getGoiTinh: function (gioitinh) {
         if (gioitinh === '1')
@@ -512,10 +517,3 @@ $(document).ajaxSend(function(e, xhr, options) {
         xhr.setRequestHeader("RequestVerificationToken", token);
     }
 });
-
-//$('body').on('click', '.btnfunctionId', function (e) {
-//    e.preventDefault();
-
-//    tedu.notify("sider bar", "success");
-
-//});

@@ -52,9 +52,69 @@ namespace NiTiAPI.WebErp.Areas.Admin.Controllers
             }
             else
             {
+                userVm.Id = Guid.NewGuid();
+                userVm.Status = 1;
+                userVm.Active = true;
+                userVm.SortOrder = 1; 
                 userVm.CreateDate = DateTime.Now;
+
                 var user = await _user.CreateUser(userVm);
                 return new OkObjectResult(user);                
+            }
+        }
+
+        [HttpPost]
+        [ClaimRequirement(FunctionCode.SYSTEM_USER, ActionCode.UPDATE)]
+        public async Task<IActionResult> UpdateUser(UserViewModel userVm, string Roles)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {                
+                userVm.Status = 1;                
+                userVm.SortOrder = 1;
+                userVm.UpdateDate = DateTime.Now;
+
+                var user = await _user.UpdateUser(userVm, Roles);
+                return new OkObjectResult(userVm);
+                
+            }
+        }
+
+        [HttpPost]
+        [ClaimRequirement(FunctionCode.SYSTEM_USER, ActionCode.UPDATE)]
+        public async Task<IActionResult> UpdateUserPass(UserViewModel userVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {                             
+                userVm.UpdateDate = DateTime.Now;
+
+                var user = await _user.UpdateUserPass(userVm);
+                return new OkObjectResult(user);
+            }
+        }
+
+        [HttpPost]
+        [ClaimRequirement(FunctionCode.SYSTEM_USER, ActionCode.DELETE)]
+        public async Task<IActionResult> DeleteUser(Guid Id, string userName)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var user = await _user.Delete(Id, userName);
+                return new OkObjectResult(user);
             }
         }
 

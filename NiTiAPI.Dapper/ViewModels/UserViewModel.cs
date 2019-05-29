@@ -5,7 +5,7 @@ using System.Text;
 namespace NiTiAPI.Dapper.ViewModels
 {
     public class UserViewModel
-    {
+    {       
         public Guid Id { get; set; }
 
         public int CorporationId { get; set; }
@@ -59,6 +59,8 @@ namespace NiTiAPI.Dapper.ViewModels
         public DateTime UpdateDate { get; set; }
 
         public string UpdateBy { get; set; }
+
+        
 
     }
 }

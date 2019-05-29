@@ -34,7 +34,7 @@
         <div class="title_right">
             <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                 <div class="input-group">
-                    <input type="text" id="txt-search-keyword" class="form-control" >
+                    <input type="text" id="txt-search-keyword" class="form-control">
                     <span class="input-group-btn">
                         <button class="btn btn-default" id="btn-search" type="button">@Localizer["Search"]</button>
                     </span>
@@ -48,7 +48,8 @@
         </div>
     </div>
     <div class="clearfix"></div>
-
+    <input type="hidden" id="hidUserId" value="" />
+    <input type="hidden" id="hidInsertUser" value="" />
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
@@ -59,9 +60,9 @@
                                 <th>@Localizer["UserName"]</th>
                                 <th>@Localizer["FullName"]</th>
                                 <th>@Localizer["CorporationName"]</th>
-                                <th>@Localizer["Avatar"]</th>                              
+                                <th>@Localizer["Avatar"]</th>
                                 <th>@Localizer["Status"]</th>
-                                <th></th>                                                        
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody id="tbl-contentUser"></tbody>
@@ -96,7 +97,7 @@
             <td>{{UserName}}</td>
             <td>{{FullName}}</td>
             <td>{{CorporationName}}</td>
-            <td>{{{Avatar}}}</td>          
+            <td>{{{Avatar}}}</td>
             <td>{{{Status}}}</td>
             <td>
                 <a href="#" data-id="{{Id}}" class="btn-edit"><i class="fa fa-pencil-square-o" style="color:#5cb85c;font-size:large"></i></a>

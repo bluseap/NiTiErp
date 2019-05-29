@@ -17,7 +17,11 @@ namespace NiTiAPI.Dapper.Repositories.Interfaces
 
         Task<bool> CreateUser(UserViewModel userVm);
 
-        //Task<Boolean> Delete(Guid id, string username);
+        Task<bool> UpdateUser(UserViewModel userVm, string roles);
+
+        Task<bool> UpdateUserPass(UserViewModel userVm);
+
+        Task<bool> Delete(Guid id, string username);
 
     }
 }

@@ -35,7 +35,6 @@
     <Folder Include="wwwroot\clientshop-side\images\" />
     <Folder Include="wwwroot\clientshop-side\shared\" />
     <Folder Include="wwwroot\lib\" />
-    <Folder Include="wwwroot\admin-side\" />
     <Folder Include="wwwroot\vendor\gentelella\" />
   </ItemGroup>
 

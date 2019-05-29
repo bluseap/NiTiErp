@@ -12,7 +12,8 @@ namespace NiTiAPI.Dapper.Models
         public AppUser(Guid id, string fullName, string username,
             string email, string phoneNumber, string avatar
             //, Status status
-            , int corporationId)
+            , int corporationId, int status, bool active, int sortOrder,
+            DateTime createDate, string createby)
         {
             Id = id;
             FullName = fullName;
@@ -22,19 +23,31 @@ namespace NiTiAPI.Dapper.Models
             Avatar = avatar;
             //Status = status;
             CorporationId = corporationId;
+            Status = status;
+            Active = active;
+            SortOrder = sortOrder;
+            CreateDate = createDate;
+            CreateBy = createby;
         }
 
-        public Guid Id { get; set; }
+        //public Guid Id { get; set; }
+
+        public int Status { get; set; }
+
+        public bool Active { get; set; }
+
+        public int SortOrder { get; set; }
+
 
         public int CorporationId { get; set; }
 
-        public string UserName { get; set; }
+        //public string UserName { get; set; }
 
         public string Avatar { get; set; }
 
         public string NormalizedUserName { get; set; }
 
-        public string Email { get; set; }
+        //public string Email { get; set; }
 
         public string NormalizedEmail { get; set; }
 
@@ -55,6 +68,11 @@ namespace NiTiAPI.Dapper.Models
         public string Adress { get; set; }
 
         public int AccessFailedCount { get; set; }
+
+        public DateTime CreateDate { get; set; }
+
+        public string CreateBy { get; set; }
+
     }
 
    
