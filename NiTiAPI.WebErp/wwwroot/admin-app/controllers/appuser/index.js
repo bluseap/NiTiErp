@@ -40,7 +40,7 @@
             addedituser.AddEditClearData();
             addedituser.initRoleList();
             addedituser.disableAddEdit(false);
-            // 1 - Update User
+            // 1 - Insert User
             $('#hidInsertUser').val(1);
             $('#modal-add-edit').modal('show');
         });

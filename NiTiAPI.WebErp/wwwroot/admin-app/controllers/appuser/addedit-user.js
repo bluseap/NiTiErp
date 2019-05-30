@@ -291,6 +291,7 @@ var addedituserController = function () {
                     niti.startLoading();
                 },
                 success: function () {
+                    niti.appUserLoginLogger(userName, "Save User and Roles.");
                     niti.notify(resources["CreateTableOK"], 'success');
                     $('#modal-add-edit').modal('hide');
                     AddEditClearData();

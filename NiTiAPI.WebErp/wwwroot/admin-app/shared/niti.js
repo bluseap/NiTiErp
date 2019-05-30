@@ -438,7 +438,7 @@
             var node = arr[i];
             node.children = [];
             map[node.id] = i; // use map to look-up the parents
-            if (node.parentId !== null) {
+            if (node.parentId !== null && node.parentId !== 0) {
                 arr[map[node.parentId]].children.push(node);
             } else {
                 roots.push(node);

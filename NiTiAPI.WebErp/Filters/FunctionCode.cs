@@ -8,6 +8,8 @@ namespace NiTiAPI.WebErp.Filters
     public enum FunctionCode
     {
         SYSTEM_USER,
-        SYSTEM_ROLE
+        SYSTEM_ROLE,
+
+        SALES_CATALOG
     }
 }

@@ -18,6 +18,7 @@
     <Folder Include="Resources\Areas\Admin\Controllers\" />
     <Folder Include="Resources\Areas\Admin\Models\AccountViewModels\" />
     <Folder Include="Resources\Areas\Admin\Views\Home\" />
+    <Folder Include="Resources\Areas\Admin\Views\Product\" />
     <Folder Include="Resources\Areas\Admin\Views\Shared\Components\SideBar\" />
     <Folder Include="wwwroot\client-app\controllers\" />
     <Folder Include="wwwroot\client-app\shared\" />

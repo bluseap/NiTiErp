@@ -213,10 +213,11 @@ namespace NiTiAPI.WebErp
             services.AddTransient<IRoleRepository, RoleRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IUserRolesRepository, UserRolesRepository>();
+            services.AddTransient<ICategoriesRepository, CategoriesRepository>();
 
             //services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
             //services.AddTransient(typeof(IRepository<,>), typeof(EFRepository<,>));
-            
+
             //services.AddTransient<IAnnouncementService, AnnouncementService>();
             //services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
             //services.AddSignalR();
