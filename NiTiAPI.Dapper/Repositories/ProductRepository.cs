@@ -24,6 +24,54 @@ namespace NiTiAPI.Dapper.Repositories
             _connectionString = configuration.GetConnectionString("DbConnectionString");
         }
 
+        public async Task<ProductViewModel> GetById(long id, string culture)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+                var paramaters = new DynamicParameters();
+                paramaters.Add("@id", id);
+                paramaters.Add("@language", culture);
+
+                var result = await conn.QueryAsync<ProductViewModel>("Get_Product_ById", paramaters, null, null, System.Data.CommandType.StoredProcedure);
+                return result.Single();
+            }
+        }
+
+        public async Task<PagedResult<ProductViewModel>> GetPagingProduct(string keyword, int corporationId, int categoryId,
+            int pageIndex, int pageSize, string culture)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+                var paramaters = new DynamicParameters();
+                paramaters.Add("@keyword", keyword);
+                paramaters.Add("@corporationId", corporationId);
+                paramaters.Add("@categoryId", categoryId);
+                paramaters.Add("@pageIndex", pageIndex);
+                paramaters.Add("@pageSize", pageSize);
+                paramaters.Add("@languageId", culture);
+
+                paramaters.Add("@totalRow", dbType: System.Data.DbType.Int32, direction: System.Data.ParameterDirection.Output);
+
+                var result = await conn.QueryAsync<ProductViewModel>("Get_Product_AllKey", paramaters, null, null, System.Data.CommandType.StoredProcedure);
+
+                int totalRow = paramaters.Get<int>("@totalRow");
+
+                var pagedResult = new PagedResult<ProductViewModel>()
+                {
+                    Items = result.ToList(),
+                    TotalRow = totalRow,
+                    PageIndex = pageIndex,
+                    PageSize = pageSize
+                };
+                return pagedResult;
+            }
+        }
+
+
         public async Task<IEnumerable<Product>> GetAllAsync(string culture)
         {
             using (var conn = new SqlConnection(_connectionString))
@@ -136,7 +184,6 @@ namespace NiTiAPI.Dapper.Repositories
                 paramaters.Add("@categoryIds", product.CategoryIds);
                 await conn.ExecuteAsync("Update_Product", paramaters, null, null, System.Data.CommandType.StoredProcedure);
             }
-
         }
 
         public async Task Delete(int id)
