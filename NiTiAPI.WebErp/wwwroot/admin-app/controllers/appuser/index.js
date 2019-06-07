@@ -125,10 +125,9 @@
                 var data = response;
                 $('#hidUserId').val(data.Id);
 
-                $('#imagelistUserImage').html('');
-                imageUser = [];
+                $('#imagelistUserImage').html('');               
                 $('#imagelistUserImage').append('<div ><img width="100"  data-path="' + data.Avatar + '" src="' + data.Avatar + '" /></div>');
-                imageUser.push(data.Avatar);
+                $('#hidAvatarUser').val(data.Avatar);
 
                 $('#txtFullName').val(data.FullName);
                 $('#txtUserName').val(data.UserName);

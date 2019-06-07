@@ -18,9 +18,9 @@ namespace NiTiAPI.Dapper.ViewModels
 
         public string Sku { get; set; }
 
-        public decimal OriginalPrice { get; set; }
-
         public decimal Price { get; set; }
+
+        public decimal OriginalPrice { get; set; }       
 
         public decimal DiscountPrice { get; set; }
 
@@ -35,6 +35,10 @@ namespace NiTiAPI.Dapper.ViewModels
         public DateTime UpdatedAt { get; set; }
 
         public bool IsActive { get; set; }
+
+        public bool HomeFlag { get; set; }
+
+        public bool HotFlag { get; set; }
 
         public int RateTotal { get; set; }
 
@@ -57,7 +61,12 @@ namespace NiTiAPI.Dapper.ViewModels
 
         public string SeoKeyword { get; set; }
 
-        
+        public string SeoTags { get; set; }
+
+
+        public string AttributeValueText { get; set; }
+
+
         public int Status { get; set; }
 
         public bool Active { get; set; }

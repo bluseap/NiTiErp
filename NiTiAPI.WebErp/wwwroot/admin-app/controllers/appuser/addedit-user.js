@@ -74,6 +74,7 @@ var addedituserController = function () {
     function AddEditClearData() {
         $('#hidUserId').val('');
         $('#hidInsertUser').val(0);
+        $('#hidAvatarUser').val("");
 
         initRoleList();
 
@@ -311,6 +312,8 @@ var addedituserController = function () {
         e.preventDefault();
         if ($('#frmMaintainance').valid()) {
             var userid = $('#hidUserId').val();
+            var avartarUser = $('#hidAvatarUser').val();
+
             var fullName = $('#txtFullName').val();            
             var email = $('#txtEmail').val();
             var phoneNumber = $('#txtPhoneNumber').val();
@@ -333,7 +336,7 @@ var addedituserController = function () {
                 url: "/Admin/AppUser/UpdateUser",
                 data: {
                     Id: userid,
-                    Avatar: imageUser,
+                    Avatar: imageUser.length > 0 ? imageUser : avartarUser,
                     FullName: fullName,                                     
                     Email: email,
                     PhoneNumber: phoneNumber,

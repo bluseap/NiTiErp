@@ -123,6 +123,9 @@
   <data name="Chosse" xml:space="preserve">
     <value>-- Chosse --</value>
   </data>
+  <data name="Corporation" xml:space="preserve">
+    <value>Corporation Name</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>Create</value>
   </data>

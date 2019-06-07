@@ -10,6 +10,8 @@ namespace NiTiAPI.WebErp.Filters
         SYSTEM_USER,
         SYSTEM_ROLE,
 
-        SALES_CATALOG
+        SALES_CATALOG,
+        SALES_PRODUCT
+
     }
 }

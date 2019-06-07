@@ -71,7 +71,127 @@ namespace NiTiAPI.Dapper.Repositories
             }
         }
 
+        public async Task<bool> CreateProduct(ProductViewModel product, string culture)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+                var paramaters = new DynamicParameters();
 
+                paramaters.Add("@CorporationId", product.CorporationId);
+                paramaters.Add("@CategoryId", product.CategoryId);
+                paramaters.Add("@name", product.Name);
+                paramaters.Add("@description", product.Description);
+                paramaters.Add("@AttributeValueText", product.AttributeValueText);
+                paramaters.Add("@Price", product.Price);
+                paramaters.Add("@OriginalPrice", product.OriginalPrice);
+                paramaters.Add("@DiscountPrice", product.DiscountPrice);
+                paramaters.Add("@ImageUrl", product.ImageUrl);
+                paramaters.Add("@contents", product.Contents);
+
+                paramaters.Add("@SeoTitle", product.SeoTitle);
+                paramaters.Add("@SeoAlias", product.SeoAlias);
+                paramaters.Add("@SeoKeyword", product.SeoKeyword);
+                paramaters.Add("@SeoDescription", product.SeoDescription);
+                paramaters.Add("@SeoTags", product.SeoTags);             
+               
+                paramaters.Add("@IsActive", product.IsActive);
+                paramaters.Add("@HomeFlag", product.HomeFlag);
+                paramaters.Add("@HotFlag", product.HotFlag);
+
+                paramaters.Add("@language", culture);
+
+                paramaters.Add("@CreateDate", product.CreateDate);
+                paramaters.Add("@CreateBy", product.CreateBy);
+                try
+                {
+                    await conn.QueryAsync<ProductViewModel>(
+                        "Create_Product", paramaters, commandType: CommandType.StoredProcedure);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<bool> UpdateProduct(ProductViewModel product, string culture)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+                var paramaters = new DynamicParameters();
+
+                paramaters.Add("@id", product.Id);
+
+                paramaters.Add("@CorporationId", product.CorporationId);
+                paramaters.Add("@CategoryId", product.CategoryId);
+                paramaters.Add("@name", product.Name);
+                paramaters.Add("@description", product.Description);
+                paramaters.Add("@AttributeValueText", product.AttributeValueText);
+                paramaters.Add("@Price", product.Price);
+                paramaters.Add("@OriginalPrice", product.OriginalPrice);
+                paramaters.Add("@DiscountPrice", product.DiscountPrice);
+                paramaters.Add("@ImageUrl", product.ImageUrl);
+                paramaters.Add("@contents", product.Contents);
+
+                paramaters.Add("@SeoTitle", product.SeoTitle);
+                paramaters.Add("@SeoAlias", product.SeoAlias);
+                paramaters.Add("@SeoKeyword", product.SeoKeyword);
+                paramaters.Add("@SeoDescription", product.SeoDescription);
+                paramaters.Add("@SeoTags", product.SeoTags);
+
+                paramaters.Add("@IsActive", product.IsActive);
+                paramaters.Add("@HomeFlag", product.HomeFlag);
+                paramaters.Add("@HotFlag", product.HotFlag);
+
+                paramaters.Add("@language", culture);
+
+                paramaters.Add("@UpdateDate", product.UpdateDate);
+                paramaters.Add("@UpdateBy", product.UpdateBy);
+                try
+                {
+                    await conn.QueryAsync<ProductViewModel>(
+                        "Update_Product", paramaters, commandType: CommandType.StoredProcedure);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<bool> DeleteProduct(long id, string username)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+
+                var paramaters = new DynamicParameters();
+
+                paramaters.Add("@id", id);
+                paramaters.Add("@UserName", username);
+
+                try
+                {
+                    await conn.QueryAsync<ProductViewModel>(
+                       "Delete_Product_ById", paramaters, commandType: CommandType.StoredProcedure);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }       
+
+
+        #region Product
         public async Task<IEnumerable<Product>> GetAllAsync(string culture)
         {
             using (var conn = new SqlConnection(_connectionString))
@@ -158,7 +278,6 @@ namespace NiTiAPI.Dapper.Repositories
                 int newId = paramaters.Get<int>("@id");
                 return newId;
             }
-
         }
 
         public async Task Update(string culture, int id, Product product)
@@ -247,5 +366,7 @@ namespace NiTiAPI.Dapper.Repositories
                 return pagedResult;
             }
         }
+        #endregion Propduct
+
     }
 }

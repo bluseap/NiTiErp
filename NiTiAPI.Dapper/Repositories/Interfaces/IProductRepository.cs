@@ -15,6 +15,14 @@ namespace NiTiAPI.Dapper.Repositories.Interfaces
         Task<PagedResult<ProductViewModel>> GetPagingProduct(string keyword, int corporationId, int categoryId,
             int pageIndex, int pageSize, string culture);
 
+        Task<bool> CreateProduct(ProductViewModel product, string culture);
+
+        Task<bool> UpdateProduct(ProductViewModel product, string culture);
+
+        Task<bool> DeleteProduct(long id, string username);     
+
+
+        #region Product
 
         Task<IEnumerable<Product>> GetAllAsync(string culture);
 
@@ -32,7 +40,8 @@ namespace NiTiAPI.Dapper.Repositories.Interfaces
 
         Task<PagedResult<Product>> SearchByAttributes(string keyword, string culture,
             int categoryId,string size, int pageIndex, int pageSize);
-
+        
+        #endregion Product
 
     }
 }

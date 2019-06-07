@@ -12,6 +12,10 @@ var addeditproductController = function () {
         AddEditClearData();
     }
 
+    this.loadProductCatelogies = function (selectedId) {
+        loadProductCatelog(selectedId);
+    }
+
     this.initialize = function () {
         loadAddEditData();
         registerEvents();
@@ -304,16 +308,148 @@ var addeditproductController = function () {
     }
 
     function saveProduct(e) {
-        e.preventDefault();
+        e.preventDefault();        
+        
+        if ($('#frmMaintainanceAddEdit').valid()) {          
+            var corporationId = $('#ddlAddEditCorporation').val();
+            var categoryId = $('#ddlAddEditCategories').combotree('getValue');
+            var name = $('#txtAddEditName').val();
+            var description = $('#txtAddEditDescription').val();
+            var unit = $('#ddlAddEditUnit').val();
+            var price = $('#txtSalePrice').val();
+            var originalPrice = $('#txtOriginalPrice').val();
+            var promotionPrice = $('#txtPromotionPrice').val();
 
-        var categoryId = $('#ddlAddEditCategories').combotree('getValue');
-        //niti.notify($('#ddlAddEditCategories').val(), "success");
-        console.log(categoryId);
+            //imageProduct
+
+            var content = CKEDITOR.instances.txtAddEditContent.getData();
+            var seoTitle = $('#txtSeoTitle').val();
+            var seoAlias = $('#txtSeoAlias').val();
+            var seoKeyword = $('#txtSeoKeyword').val();
+            var seoDescripts = $('#txtSeoDescription').val();
+            var seoTags = $('#txtSeoTag').val();  
+            
+            var activeProduct = $('#ckAddEditActive').prop('checked') === true ? true : false;
+            var hotProduct = $('#ckAddEditHot').prop('checked') === true ? true : false;
+            var homeProduct = $('#ckAddEditHome').prop('checked') === true ? true : false;
+
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Product/CreateProduct",
+                data: { 
+                    CorporationId: corporationId,
+                    CategoryId: categoryId,
+                    Name: name,
+                    Description: description,
+                    AttributeValueText: unit,
+                    Price: price,
+                    OriginalPrice: originalPrice,
+                    DiscountPrice: promotionPrice,
+                    ImageUrl: imageProduct,
+                    Contents: content,
+                    SeoTitle: seoTitle,
+                    SeoAlias: seoAlias,
+                    SeoKeyword: seoKeyword,
+                    SeoDescription: seoDescripts,
+                    SeoTags: seoTags,
+                    IsActive: activeProduct,
+                    HotFlag: hotProduct,
+                    HomeFlag: homeProduct,
+                    CreateBy: userName
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    niti.startLoading();
+                },
+                success: function () {
+                    niti.appUserLoginLogger(userName, "Save Product.");
+                    niti.notify(resources["CreateTableOK"], 'success');
+                    $('#modal-add-edit').modal('hide');
+                    AddEditClearData();
+
+                    niti.stopLoading();
+                    loadTableProduct(true);
+                },
+                error: function () {
+                    niti.notify(resources["CreateTableError"], 'error');
+                    niti.stopLoading();
+                }
+            });
+        }   
 
     }
 
     function updateProduct(e) {
         e.preventDefault();
+
+        if ($('#frmMaintainanceAddEdit').valid()) {
+            var productId = $('#hidProductId').val();
+            var corporationId = $('#ddlAddEditCorporation').val();
+            var categoryId = $('#ddlAddEditCategories').combotree('getValue');
+            var name = $('#txtAddEditName').val();
+            var description = $('#txtAddEditDescription').val();
+            var unit = $('#ddlAddEditUnit').val();
+            var price = $('#txtSalePrice').val();
+            var originalPrice = $('#txtOriginalPrice').val();
+            var promotionPrice = $('#txtPromotionPrice').val();
+
+            var hidimageProduct = $('#hidImageProduct').val();
+
+            var content = CKEDITOR.instances.txtAddEditContent.getData();
+            var seoTitle = $('#txtSeoTitle').val();
+            var seoAlias = $('#txtSeoAlias').val();
+            var seoKeyword = $('#txtSeoKeyword').val();
+            var seoDescripts = $('#txtSeoDescription').val();
+            var seoTags = $('#txtSeoTag').val();
+
+            var activeProduct = $('#ckAddEditActive').prop('checked') === true ? true : false;
+            var hotProduct = $('#ckAddEditHot').prop('checked') === true ? true : false;
+            var homeProduct = $('#ckAddEditHome').prop('checked') === true ? true : false;
+
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Product/UpdateProduct",
+                data: {
+                    Id: productId,
+                    CorporationId: corporationId,
+                    CategoryId: categoryId,
+                    Name: name,
+                    Description: description,
+                    AttributeValueText: unit,
+                    Price: price,
+                    OriginalPrice: originalPrice,
+                    DiscountPrice: promotionPrice,
+                    ImageUrl: imageProduct.length > 0 ? imageProduct : hidimageProduct,
+                    Contents: content,
+                    SeoTitle: seoTitle,
+                    SeoAlias: seoAlias,
+                    SeoKeyword: seoKeyword,
+                    SeoDescription: seoDescripts,
+                    SeoTags: seoTags,
+                    IsActive: activeProduct,
+                    HotFlag: hotProduct,
+                    HomeFlag: homeProduct,
+                    UpdateBy: userName
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    niti.startLoading();
+                },
+                success: function () {
+                    niti.appUserLoginLogger(userName, "Update Product.");
+                    niti.notify(resources["CreateTableOK"], 'success');
+                    $('#modal-add-edit').modal('hide');
+                    AddEditClearData();
+
+                    niti.stopLoading();
+                    loadTableProduct(true);
+                },
+                error: function () {
+                    niti.notify(resources["CreateTableError"], 'error');
+                    niti.stopLoading();
+                }
+            });
+        }   
 
     }
 
