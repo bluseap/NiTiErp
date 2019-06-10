@@ -11,46 +11,47 @@ using System.Threading.Tasks;
 
 namespace NiTiAPI.Dapper.Repositories
 {
-    public class ProductImagesRepository : IProductImagesRepository
+    public class ProductQuantitiesRepository : IProductQuantitiesRepository
     {
         private readonly string _connectionString;
 
-        public ProductImagesRepository(IConfiguration configuration)
+        public ProductQuantitiesRepository(IConfiguration configuration)
         {
             _connectionString = configuration.GetConnectionString("DbConnectionString");
         }
 
-        public async Task<List<ProductImagesViewModel>> GetListProductImages(long productId)
+        public async Task<List<ProductQuantitiesViewModel>> GetListProductQuantities(long productId)
         {
             using (var conn = new SqlConnection(_connectionString))
             {
                 if (conn.State == System.Data.ConnectionState.Closed)
                     conn.Open();
                 var paramaters = new DynamicParameters();
-                paramaters.Add("@productId", productId);
+                paramaters.Add("@productId ", productId);
 
-                var result = await conn.QueryAsync<ProductImagesViewModel>("Get_ProductImages_ByProductId",
+                var result = await conn.QueryAsync<ProductQuantitiesViewModel>("Get_ProductQuantities_ByProductId",
                     paramaters, null, null, System.Data.CommandType.StoredProcedure);
                 return result.AsList();
             }
         }
 
-        public async Task<bool> ProductImages(long productId, string images, string userName)
+        public async Task<bool> CreateProductQuantities(string productQuantiesXML, string userName, string languageId)
         {
             using (var conn = new SqlConnection(_connectionString))
             {
                 if (conn.State == System.Data.ConnectionState.Closed)
                     conn.Open();
+
                 var paramaters = new DynamicParameters();
 
-                paramaters.Add("@productId", productId);
-                paramaters.Add("@images", images);
-
+                paramaters.Add("@productQuantiesXML", productQuantiesXML);
                 paramaters.Add("@CreateBy", userName);
+                paramaters.Add("@languageId", languageId);
+
                 try
                 {
-                    await conn.QueryAsync<ProductImagesViewModel>(
-                        "Create_ProductImages", paramaters, commandType: CommandType.StoredProcedure);
+                    await conn.QueryAsync<ProductQuantitiesViewModel>(
+                        "Create_ProductQuantitiesXML", paramaters, commandType: CommandType.StoredProcedure);
                     return true;
                 }
                 catch (Exception ex)
@@ -60,7 +61,7 @@ namespace NiTiAPI.Dapper.Repositories
             }
         }
 
-        public async Task<bool> DeleteImage(long productImageId, string userName)
+        public async Task<bool> DeleteQuantities(long productQuantitiesId, string userName)
         {
             using (var conn = new SqlConnection(_connectionString))
             {
@@ -68,13 +69,13 @@ namespace NiTiAPI.Dapper.Repositories
                     conn.Open();
                 var paramaters = new DynamicParameters();
 
-                paramaters.Add("@Id", productImageId);      
+                paramaters.Add("@Id", productQuantitiesId);
                 paramaters.Add("@CreateBy", userName);
 
                 try
                 {
-                    await conn.QueryAsync<ProductImagesViewModel>(
-                        "Delete_ProductImages_ById", paramaters, commandType: CommandType.StoredProcedure);
+                    await conn.QueryAsync<ProductQuantitiesViewModel>(
+                        "Delete_ProductQuantities_ById", paramaters, commandType: CommandType.StoredProcedure);
                     return true;
                 }
                 catch (Exception ex)
@@ -83,7 +84,6 @@ namespace NiTiAPI.Dapper.Repositories
                 }
             }
         }
-
 
     }
 }

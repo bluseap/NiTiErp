@@ -15,11 +15,14 @@ namespace NiTiAPI.WebErp.Areas.Admin.Controllers
     {
         private readonly IProductRepository _product;
         private readonly IProductImagesRepository _productImages;
+        private readonly IProductQuantitiesRepository _productQuantities;
 
-        public ProductController(IProductRepository product, IProductImagesRepository productImages)
+        public ProductController(IProductRepository product, IProductImagesRepository productImages,
+            IProductQuantitiesRepository productQuantities)
         {
             _product = product;
             _productImages = productImages;
+            _productQuantities = productQuantities;
         }
 
         public IActionResult Index()
@@ -103,10 +106,53 @@ namespace NiTiAPI.WebErp.Areas.Admin.Controllers
 
         [HttpPost]
         [ClaimRequirement(FunctionCode.SALES_PRODUCT, ActionCode.CREATE)]
-        public IActionResult SaveImages(long productId, string images, string username)
+        public async Task<IActionResult> SaveImages(long productId, string images, string username)
         {
-            var productImages = _productImages.ProductImages(productId, images, username);            
+            var productImages = await _productImages.ProductImages(productId, images, username);            
             return new OkObjectResult(productImages);
+        }
+
+        [HttpPost]
+        [ClaimRequirement(FunctionCode.SALES_PRODUCT, ActionCode.DELETE)]
+        public async Task<IActionResult> DeleteImage(long productImageId, string username)
+        {
+            var productImages = await _productImages.DeleteImage(productImageId, username);
+            return new OkObjectResult(productImages);
+        }
+
+        #endregion
+
+        #region Product Quantities
+
+        [HttpGet]
+        public async Task<IActionResult> GetProductQuantities(long productId)
+        {
+            var productQuantities = await _productQuantities.GetListProductQuantities(productId);
+            return new OkObjectResult(productQuantities);
+        }
+
+        [HttpPost]
+        [ClaimRequirement(FunctionCode.SALES_PRODUCT, ActionCode.CREATE)]
+        public async Task<IActionResult> SaveQuantities(string productQuantiesXML, string username, string languageId)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {                
+                var productQuantities = await _productQuantities.CreateProductQuantities(productQuantiesXML, username, languageId);
+                return new OkObjectResult(productQuantities);
+            }            
+        }
+
+        [HttpPost]
+        [ClaimRequirement(FunctionCode.SALES_PRODUCT, ActionCode.DELETE)]
+        public async Task<IActionResult> DeleteQuantities(long productQuantitiesId, string username)
+        {
+            var productQuantities = await _productQuantities.DeleteQuantities(productQuantitiesId, username);
+            return new OkObjectResult(productQuantities);
         }
 
         #endregion

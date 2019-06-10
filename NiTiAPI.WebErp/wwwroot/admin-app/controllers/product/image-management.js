@@ -42,8 +42,30 @@ var imageproductController = function () {
                 error: function () {
                     niti.notify(resources["UploadFileError"], 'error');
                 }
-            });          
+            }); 
+        });
 
+        $('body').on('click', '.btn-delete-image', function (e) {
+            e.preventDefault();
+            $(this).closest('div').remove();           
+          
+            var productimageId = $(this).data("id");     
+           
+            $.ajax({
+                url: '/admin/Product/DeleteImage',
+                data: {
+                    productImageId: productimageId,                 
+                    username: userName
+                },
+                type: 'post',
+                dataType: 'json',
+                success: function (response) {
+                    niti.appUserLoginLogger(userName, "Delete Images at Image Management.");
+                    $('#modal-image-manage').modal('hide');
+                    $('#ImageManagement-list').html('');
+                    clearfileImageManagement($("#fileImageManagement"));
+                }
+            });
         });
 
     }
@@ -91,7 +113,8 @@ var imageproductController = function () {
             success: function (response) {
                 var render = '';
                 $.each(response, function (i, item) {
-                    render += '<div class="col-md-3"><img id="' + item.Id + '" width="100" src="' + item.Path + '" /><br/><a href="#" class="btn-delete-image">Xóa</a></div>';
+                   render += '<div class="col-md-3"><img width="100" src="' + item.Path
+                        + '" /><br/><a href="#" class="btn-delete-image" data-id="' + item.Id + '" >Xóa</a></div>';                    
                 });
 
                 $('#ImageManagement-list').html(render);

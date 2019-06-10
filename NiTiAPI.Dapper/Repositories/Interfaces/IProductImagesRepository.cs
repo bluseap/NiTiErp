@@ -11,5 +11,7 @@ namespace NiTiAPI.Dapper.Repositories.Interfaces
         Task<List<ProductImagesViewModel>> GetListProductImages(long productId);
 
         Task<bool> ProductImages(long productId, string images, string userName);
+
+        Task<bool> DeleteImage(long productImageId, string userName);
     }
 }
