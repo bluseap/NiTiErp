@@ -19,7 +19,6 @@ var quantityController = function () {
     }
 
     function registerEvents() {
-
         $("#btnSaveQuantity").on('click', function () {      
             var insertQuantites = $('#hidInsertProductQuantities').val(); 
 
@@ -51,12 +50,10 @@ var quantityController = function () {
             e.preventDefault();
             $(this).closest('tr').remove();            
         });
-
     }
 
     function quantitiesClearData() {
         $('#hidInsertProductQuantities').val(0);
-
     }
 
     function loadColors() {

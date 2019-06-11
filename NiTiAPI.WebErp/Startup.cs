@@ -219,11 +219,8 @@ namespace NiTiAPI.WebErp
             services.AddTransient<IProductImagesRepository, ProductImagesRepository>();
             services.AddTransient<IProductQuantitiesRepository, ProductQuantitiesRepository>();
 
-            //services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
-            //services.AddTransient(typeof(IRepository<,>), typeof(EFRepository<,>));
+            services.AddTransient<IProductWholePriceRepository, ProductWholePriceRepository>();
 
-            //services.AddTransient<IAnnouncementService, AnnouncementService>();
-            //services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
             //services.AddSignalR();
 
         }

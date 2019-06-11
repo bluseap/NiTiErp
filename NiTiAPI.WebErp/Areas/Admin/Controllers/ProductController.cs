@@ -16,13 +16,15 @@ namespace NiTiAPI.WebErp.Areas.Admin.Controllers
         private readonly IProductRepository _product;
         private readonly IProductImagesRepository _productImages;
         private readonly IProductQuantitiesRepository _productQuantities;
+        private readonly IProductWholePriceRepository _productWholePrice;
 
         public ProductController(IProductRepository product, IProductImagesRepository productImages,
-            IProductQuantitiesRepository productQuantities)
+            IProductQuantitiesRepository productQuantities, IProductWholePriceRepository productWholePrice)
         {
             _product = product;
             _productImages = productImages;
             _productQuantities = productQuantities;
+            _productWholePrice = productWholePrice;
         }
 
         public IActionResult Index()
@@ -157,6 +159,24 @@ namespace NiTiAPI.WebErp.Areas.Admin.Controllers
 
         #endregion
 
+        #region Product Whole Price
+
+        [HttpGet]
+        public async Task<IActionResult> GetProductWholePrice(long productId)
+        {
+            var productWholePrice = await _productWholePrice.GetListProductWholePrice(productId);
+            return new OkObjectResult(productWholePrice);
+        }
+
+        [HttpPost]
+        [ClaimRequirement(FunctionCode.SALES_PRODUCT, ActionCode.CREATE)]
+        public async Task<IActionResult> SaveWholePrice(string productWholePriceXML, string username, string languageId)
+        {            
+            var productWholePrice = await _productWholePrice.CreateProductWholePrice(productWholePriceXML, username, languageId);
+            return new OkObjectResult(productWholePrice);           
+        }       
+
+        #endregion
 
     }
 }
