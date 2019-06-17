@@ -1,0 +1,170 @@
+﻿
+@using NiTiAPI.WebErp.Extensions;
+@using Microsoft.AspNetCore.Localization
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic page needs -->
+    <meta charset="utf-8">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <![endif]-->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>ShopMart premium HTML5 &amp; CSS3 template</title>
+    <meta name="description" content="best template, template free, responsive theme, fashion store, responsive theme, responsive html theme, Premium website templates, web templates, Multi-Purpose Responsive HTML5 Template">
+    <meta name="keywords" content="bootstrap, ecommerce, fashion, layout, responsive, responsive template, responsive template download, responsive theme, retail, shop, shopping, store, Premium website templates, web templates, Multi-Purpose Responsive HTML5 Template" />
+
+    <!-- Mobile specific metas  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicons Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- CSS Style -->
+    <link href="~/clientshop-side/style.css" rel="stylesheet" />
+    <link href="~/vendor/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet" />
+
+
+    <link href="~/clientshop-side/css/selectlangue/selectlangue.css" rel="stylesheet" />
+
+    @RenderSection("Styles", required: false)
+</head>
+
+<body class="cms-index-index cms-home-page">
+
+    <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- mobile menu -->
+    @*@await Component.InvokeAsync("MobileMenu")*@
+    <!-- end mobile menu -->
+    <div id="page">
+
+        <!-- Header -->
+        <Partial name="_Header.cshtml" />
+        <!-- end header -->
+
+        <nav>
+            <div class="container">
+                <div class="row">
+                    <div class="mm-toggle-wrap">
+                        <div class="mm-toggle"><i class="fa fa-align-justify"></i> </div>
+                        <span class="mm-label">All Categories</span>
+                    </div>
+                    <div class="col-md-3 col-sm-3 mega-container hidden-xs">
+                        @*@await Component.InvokeAsync("CategoryMenu")*@
+                    </div>
+                    <div class="col-md-9 col-sm-9 jtv-megamenu">
+                        @*@await Component.InvokeAsync("MainMenu")*@
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        @RenderBody()
+
+        <!-- Footer -->
+        @*    <Partial name="_Footer.cshtml" />*@
+        <!-- End Footer -->
+
+    </div>
+
+    <!-- JS -->
+    <!-- jquery js -->
+    <script src="~/clientshop-side/js/jquery.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="~/clientshop-side/js/bootstrap.min.js"></script>
+    <script src="~/vendor/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!-- owl.carousel.min js -->
+    <script src="~/clientshop-side/js/owl.carousel.min.js"></script>
+    <!-- jquery.mobile-menu js -->
+    <script src="~/clientshop-side/js/mobile-menu.js"></script>
+    <!--jquery-ui.min js -->
+    <script src="~/clientshop-side/js/jquery-ui.js"></script>
+    <!-- main js -->
+    <script src="~/clientshop-side/js/main.js"></script>
+    <!-- countdown js -->
+    <script src="~/clientshop-side/js/countdown.js"></script>
+    <!-- Slider Js -->
+    <script src="~/clientshop-side/js/revolution-slider.js"></script>
+        
+
+    <script type='text/javascript'>
+        jQuery(document).ready(function () {
+            jQuery('#rev_slider_4').show().revolution({
+                dottedOverlay: 'none',
+                delay: 5000,
+                startwidth: 865,
+                startheight: 450,
+
+                hideThumbs: 200,
+                thumbWidth: 200,
+                thumbHeight: 50,
+                thumbAmount: 2,
+
+                navigationType: 'thumb',
+                navigationArrows: 'solo',
+                navigationStyle: 'round',
+
+                touchenabled: 'on',
+                onHoverStop: 'on',
+
+                swipe_velocity: 0.7,
+                swipe_min_touches: 1,
+                swipe_max_touches: 1,
+                drag_block_vertical: false,
+
+                spinner: 'spinner0',
+                keyboardNavigation: 'off',
+
+                navigationHAlign: 'center',
+                navigationVAlign: 'bottom',
+                navigationHOffset: 0,
+                navigationVOffset: 20,
+
+                soloArrowLeftHalign: 'left',
+                soloArrowLeftValign: 'center',
+                soloArrowLeftHOffset: 20,
+                soloArrowLeftVOffset: 0,
+
+                soloArrowRightHalign: 'right',
+                soloArrowRightValign: 'center',
+                soloArrowRightHOffset: 20,
+                soloArrowRightVOffset: 0,
+
+                shadow: 0,
+                fullWidth: 'on',
+                fullScreen: 'off',
+
+                stopLoop: 'off',
+                stopAfterLoops: -1,
+                stopAtSlide: -1,
+
+                shuffle: 'off',
+
+                autoHeight: 'off',
+                forceFullWidth: 'on',
+                fullScreenAlignForce: 'off',
+                minFullScreenHeight: 0,
+                hideNavDelayOnMobile: 1500,
+
+                hideThumbsOnMobile: 'off',
+                hideBulletsOnMobile: 'off',
+                hideArrowsOnMobile: 'off',
+                hideThumbsUnderResolution: 0,
+
+
+                hideSliderAtLimit: 0,
+                hideCaptionAtLimit: 0,
+                hideAllCaptionAtLilmit: 0,
+                startWithSlide: 0,
+                fullScreenOffsetContainer: ''
+            });
+        });
+    </script>
+</body>
+</html>

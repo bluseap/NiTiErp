@@ -10,15 +10,17 @@
     <Folder Include="Areas\ClientNews\Components\" />
     <Folder Include="Areas\ClientNews\Controllers\" />
     <Folder Include="Areas\ClientNews\Views\" />
-    <Folder Include="Areas\ClientShop\Components\" />
-    <Folder Include="Areas\ClientShop\Controllers\" />
-    <Folder Include="Areas\ClientShop\Views\" />
+    <Folder Include="Areas\Client\Components\" />
+    <Folder Include="Areas\Client\Controllers\" />
+    <Folder Include="Areas\Client\Views\" />
     <Folder Include="Logs\" />
     <Folder Include="Middleware\" />
     <Folder Include="Resources\Areas\Admin\Controllers\" />
-    <Folder Include="Resources\Areas\Admin\Models\AccountViewModels\" />
-    <Folder Include="Resources\Areas\Admin\Views\Home\" />
+    <Folder Include="Resources\Areas\Admin\Models\" />
     <Folder Include="Resources\Areas\Admin\Views\Shared\Components\SideBar\" />
+    <Folder Include="Resources\Areas\ClientShop\Controllers\" />
+    <Folder Include="Resources\Areas\ClientShop\Models\" />
+    <Folder Include="Resources\Areas\ClientShop\Views\Shared\Components\SideBar\" />
     <Folder Include="wwwroot\client-app\controllers\" />
     <Folder Include="wwwroot\client-app\shared\" />
     <Folder Include="wwwroot\clientnews-app\controllers\" />
@@ -29,11 +31,8 @@
     <Folder Include="wwwroot\clientnews-side\css\" />
     <Folder Include="wwwroot\clientnews-side\images\" />
     <Folder Include="wwwroot\clientnews-side\js\" />
-    <Folder Include="wwwroot\clientshop-app\controllers\" />
-    <Folder Include="wwwroot\clientshop-app\shared\" />
-    <Folder Include="wwwroot\clientshop-side\css\" />
     <Folder Include="wwwroot\clientshop-side\images\" />
-    <Folder Include="wwwroot\clientshop-side\shared\" />
+    <Folder Include="wwwroot\clientshop-side\js\" />
     <Folder Include="wwwroot\lib\" />
     <Folder Include="wwwroot\uploaded\ImageProduct\" />
     <Folder Include="wwwroot\vendor\gentelella\" />
@@ -69,6 +68,33 @@
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\Admin\Views\_ViewImports.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\ClientShop\Views\Shared\Components\Brand\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\ClientShop\Views\Shared\Components\CategoryMenu\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\ClientShop\Views\Shared\Components\MainMenu\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\ClientShop\Views\Shared\Components\MobileMenu\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\ClientShop\Views\Shared\_Footer.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\ClientShop\Views\Shared\_Header.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\ClientShop\Views\Shared\_SelectLanguagePartial.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\ClientShop\Views\_ViewImports.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\ClientShop\Views\_ViewStart.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
   </ItemGroup>

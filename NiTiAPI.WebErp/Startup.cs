@@ -172,12 +172,15 @@ namespace NiTiAPI.WebErp
                         Location = ResponseCacheLocation.None,
                         NoStore = true
                     });
-            }).AddViewLocalization(
-                    LanguageViewLocationExpanderFormat.Suffix,
+            })
+            .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix,
                     opts => { opts.ResourcesPath = "Resources"; })
-                .AddDataAnnotationsLocalization()
-                .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+            .AddDataAnnotationsLocalization()
 
+            .AddRazorPagesOptions(options => options.AllowAreas = true)
+
+            .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver()); 
+            
             
 
             services.AddCors(options => options.AddPolicy("CorsPolicy",
@@ -203,8 +206,7 @@ namespace NiTiAPI.WebErp
                   opts.SupportedCultures = supportedCultures;
                   // UI strings that we have localized.
                   opts.SupportedUICultures = supportedCultures;
-             });
-                 
+             });                 
 
             services.AddTransient<IAppUserLoginRepository, AppUserLoginRepository>();
             services.AddTransient<IFunctionRepository, FunctionRepository>();
@@ -261,22 +263,34 @@ namespace NiTiAPI.WebErp
             {
                 //routes.MapRoute(
                 //    name: "default",
-                //    template: "{controller=Home}/{action=Index}/{id?}");       // localhost: home to product
-                //routes.MapRoute(
-                //   name: "areaRoute",
-                //   template: "{area:exists}/{controller=Login}/{action=Index}/{id?}"); // localhost/admin: login to admin
-
+                //    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                //routes.MapAreaRoute(
+                //    name: "default2",
+                //    areaName: "ClientShop",
+                //    template: "{controller=Home}/{action=Index}/{id?}"); 
 
                 routes.MapRoute(
-                   name: "areaRoute",
-                   template: "{area:exists}/{controller=Login}/{action=Index}/{id?}"); // localhost: login to admin
-                routes.MapAreaRoute(
                     name: "default",
-                    areaName: "Admin",
-                    template: "{controller=Login}/{action=Index}/{id?}");         //  localhost/admin: login to admin
+                    template: "{area:exists}/{controller=login}/{action=Index}/{id?}");
+                routes.MapAreaRoute(
+                    name: "default2",
+                    areaName: "admin",
+                    template: "{controller=login}/{action=Index}/{id?}");
 
 
+                //routes.MapRoute(
+                //   name: "areaRoute",
+                //   template: "{area:exists}/{controller=Login}/{action=Index}/{id?}"); // localhost: login to admin
 
+                //routes.MapAreaRoute(
+                //    name: "default",
+                //    areaName: "Admin",
+                //    template: "{controller=Login}/{action=Index}/{id?}");         //  localhost/admin: login to admin
+
+                //routes.MapAreaRoute(
+                //    name: "ClientShop",
+                //    areaName: "ClientShop",
+                //    template: "{controller=Home}/{action=Index}/{id?}");         //  localhost/admin: login to client shop
 
             });
 
