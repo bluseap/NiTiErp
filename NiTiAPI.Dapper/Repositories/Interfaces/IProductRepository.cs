@@ -10,6 +10,10 @@ namespace NiTiAPI.Dapper.Repositories.Interfaces
 {
     public interface IProductRepository
     {
+        Task<List<ProductViewModel>> GetListProductCatelogCorName(string corporationName, string language);
+
+        Task<List<ProductViewModel>> GetListProductCorporationName(string corporationName, string language);
+
         Task<ProductViewModel> GetById(long id, string culture);
 
         Task<PagedResult<ProductViewModel>> GetPagingProduct(string keyword, int corporationId, int categoryId,

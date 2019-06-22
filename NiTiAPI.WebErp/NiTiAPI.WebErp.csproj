@@ -10,9 +10,6 @@
     <Folder Include="Areas\ClientNews\Components\" />
     <Folder Include="Areas\ClientNews\Controllers\" />
     <Folder Include="Areas\ClientNews\Views\" />
-    <Folder Include="Areas\Client\Components\" />
-    <Folder Include="Areas\Client\Controllers\" />
-    <Folder Include="Areas\Client\Views\" />
     <Folder Include="Logs\" />
     <Folder Include="Middleware\" />
     <Folder Include="Resources\Areas\Admin\Controllers\" />
@@ -21,11 +18,11 @@
     <Folder Include="Resources\Areas\ClientShop\Controllers\" />
     <Folder Include="Resources\Areas\ClientShop\Models\" />
     <Folder Include="Resources\Areas\ClientShop\Views\Shared\Components\SideBar\" />
-    <Folder Include="wwwroot\client-app\controllers\" />
-    <Folder Include="wwwroot\client-app\shared\" />
+    <Folder Include="Resources\Areas\Client\Controllers\" />
+    <Folder Include="Resources\Areas\Client\Models\" />
+    <Folder Include="Resources\Areas\Client\Views\Shared\Components\SideBar\" />
     <Folder Include="wwwroot\clientnews-app\controllers\" />
     <Folder Include="wwwroot\clientnews-app\shared\" />
-    <Folder Include="wwwroot\client-side\css\" />
     <Folder Include="wwwroot\client-side\images\" />
     <Folder Include="wwwroot\client-side\js\" />
     <Folder Include="wwwroot\clientnews-side\css\" />
@@ -56,6 +53,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NiTiAPI.Dapper\NiTiAPI.Dapper.csproj" />
+    <ProjectReference Include="..\NiTiAPI.Infrastructure\NiTiAPI.Infrastructure.csproj" />
     <ProjectReference Include="..\NiTiAPI.Utilities\NiTiAPI.Utilities.csproj" />
     <ProjectReference Include="..\NiTiAPI.Web\NiTiAPI.Web.csproj" />
   </ItemGroup>
@@ -95,6 +93,33 @@
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\ClientShop\Views\_ViewStart.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Client\Views\Home\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Client\Views\Shared\Components\ClientCategory\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Client\Views\Shared\Components\ClientMobile\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Client\Views\Shared\_Footer.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Client\Views\Shared\_Header.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Client\Views\Shared\_layout.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Client\Views\Shared\_SelectLanguagePartial.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Client\Views\_ViewImports.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Client\Views\_ViewStart.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
   </ItemGroup>

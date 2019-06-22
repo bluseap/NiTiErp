@@ -24,6 +24,40 @@ namespace NiTiAPI.Dapper.Repositories
             _connectionString = configuration.GetConnectionString("DbConnectionString");
         }
 
+        public async Task<List<ProductViewModel>> GetListProductCatelogCorName(string corporationName, string language)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+                var paramaters = new DynamicParameters();
+
+                paramaters.Add("@corporationName", corporationName);
+                paramaters.Add("@language", language);
+
+                var result = await conn.QueryAsync<ProductViewModel>("Get_ProductCatalog_ByCorName", paramaters, null, null, System.Data.CommandType.StoredProcedure);
+
+                return result.ToList();
+            }
+        }
+
+        public async Task<List<ProductViewModel>> GetListProductCorporationName(string corporationName, string language)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+                var paramaters = new DynamicParameters();
+               
+                paramaters.Add("@corporationName", corporationName);
+                paramaters.Add("@language", language);
+
+                var result = await conn.QueryAsync<ProductViewModel>("Get_Product_ByCorpoName", paramaters, null, null, System.Data.CommandType.StoredProcedure);
+               
+                return result.ToList();
+            }
+        }
+
         public async Task<ProductViewModel> GetById(long id, string culture)
         {
             using (var conn = new SqlConnection(_connectionString))

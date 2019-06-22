@@ -13,9 +13,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <![endif]-->
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>ShopMart premium HTML5 &amp; CSS3 template</title>
-    <meta name="description" content="best template, template free, responsive theme, fashion store, responsive theme, responsive html theme, Premium website templates, web templates, Multi-Purpose Responsive HTML5 Template">
-    <meta name="keywords" content="bootstrap, ecommerce, fashion, layout, responsive, responsive template, responsive template download, responsive theme, retail, shop, shopping, store, Premium website templates, web templates, Multi-Purpose Responsive HTML5 Template" />
+    <title>@ViewData["Title"]</title>
+    <meta name="description" content="@ViewData["MetaKeyword"]">
+    <meta name="keywords" content="@ViewData["MetaDescription"]" />
 
     <!-- Mobile specific metas  -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,13 +33,13 @@
     @RenderSection("Styles", required: false)
 </head>
 
-<body class="cms-index-index cms-home-page">
+<body class="@ViewData["BodyClass"]">
 
     <!--[if lt IE 8]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <!-- mobile menu -->
-    @*@await Component.InvokeAsync("MobileMenu")*@
+    @await Component.InvokeAsync("MobileMenu")
     <!-- end mobile menu -->
     <div id="page">
 
@@ -55,10 +55,10 @@
                         <span class="mm-label">All Categories</span>
                     </div>
                     <div class="col-md-3 col-sm-3 mega-container hidden-xs">
-                        @*@await Component.InvokeAsync("CategoryMenu")*@
+                        @await Component.InvokeAsync("CategoryMenu")
                     </div>
                     <div class="col-md-9 col-sm-9 jtv-megamenu">
-                        @*@await Component.InvokeAsync("MainMenu")*@
+                        @await Component.InvokeAsync("MainMenu")
                     </div>
                 </div>
             </div>
@@ -67,7 +67,7 @@
         @RenderBody()
 
         <!-- Footer -->
-        @*    <Partial name="_Footer.cshtml" />*@
+            <Partial name="_Footer.cshtml" />
         <!-- End Footer -->
 
     </div>

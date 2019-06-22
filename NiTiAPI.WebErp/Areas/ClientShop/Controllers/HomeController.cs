@@ -6,25 +6,47 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
+using NiTiAPI.Dapper.Repositories.Interfaces;
+using NiTiAPI.Dapper.ViewModels;
 
 namespace NiTiAPI.WebErp.Areas.ClientShop.Controllers
 {   
     public class HomeController : BaseController
     {
         private readonly IStringLocalizer<HomeController> _localizer;
+        private readonly IProductRepository _productRepository;
 
-        public HomeController(IStringLocalizer<HomeController> localizer)
+        public HomeController(IStringLocalizer<HomeController> localizer, IProductRepository productRepository)
         {
             _localizer = localizer;
+            _productRepository = productRepository;
         }
            
         public IActionResult Index(string id)
         {
             ViewData["CorporationName"] = id;
-            var result = id;
+            ViewData["BodyClass"] = "cms-index-index cms-home-page";
+           
+            if (id != null)
+            {
+                HttpContext.Session.SetString("corprationName", id);
+            }
+            else
+            {
+                HttpContext.Session.SetString("corprationName", "");
+            }
 
             var culture = HttpContext.Features.Get<IRequestCultureFeature>().RequestCulture.Culture.Name;
-            return View();
+
+            var homeVm = new ClientHomeViewModel();
+
+            homeVm.HomeCategories = _productRepository.GetListProductCatelogCorName(id, culture);
+            //homeVm.HotProducts = _productService.GetHotProduct(5);
+            //homeVm.TopSellProducts = _productService.GetLastest(10);
+            //homeVm.LastestBlogs = _blogService.GetLastest(5);
+            //homeVm.HomeSlides = _commonService.GetSlides("top");
+
+            return View(homeVm);
         }
 
         [HttpPost]

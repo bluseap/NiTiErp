@@ -1011,12 +1011,12 @@ select.cate-dropdown {
 	text-transform: none
 }
 .top-cart-contain {
-	padding: 0px;
-	color: #333;
-	margin-top: 0px;
-	float: right;
-	margin-left: 0px;
-	height: 40px;
+    padding: 0px;
+    color: #333;
+    margin-top: 0px;
+    float: initial;
+    margin-left: 0px;
+    height: 40px;
 }
 .mtmegamenu .top-cart-contain { display:none;}
 .top-cart-title p {

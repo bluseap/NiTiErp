@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace NiTiAPI.Dapper.ViewModels
 {
     public class ProductViewModel
     {
+        public ICollection<ProductViewModel> Products { set; get; }
+
         public long Id { get; set; }
+
+        public long ProductId { get; set; }
 
         public int CorporationId { get; set; }
 
@@ -15,6 +20,8 @@ namespace NiTiAPI.Dapper.ViewModels
         public int CategoryId { get; set; }
 
         public string CategoryName { get; set; }
+
+        public int ParentId { get; set; }        
 
         public string Sku { get; set; }
 
