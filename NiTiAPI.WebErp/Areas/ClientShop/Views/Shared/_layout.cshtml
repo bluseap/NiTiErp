@@ -21,7 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Favicons Icon -->
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/clientshop-side/images/favicon.ico">
 
     <!-- CSS Style -->
     <link href="~/clientshop-side/style.css" rel="stylesheet" />
@@ -67,7 +67,7 @@
         @RenderBody()
 
         <!-- Footer -->
-            <Partial name="_Footer.cshtml" />
+        <Partial name="_Footer.cshtml" />
         <!-- End Footer -->
 
     </div>
@@ -91,7 +91,7 @@
     <script src="~/clientshop-side/js/countdown.js"></script>
     <!-- Slider Js -->
     <script src="~/clientshop-side/js/revolution-slider.js"></script>
-        
+
 
     <script type='text/javascript'>
         jQuery(document).ready(function () {
@@ -166,5 +166,6 @@
             });
         });
     </script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

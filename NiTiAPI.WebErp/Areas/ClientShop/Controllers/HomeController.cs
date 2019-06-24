@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using NiTiAPI.Dapper.Repositories.Interfaces;
-using NiTiAPI.Dapper.ViewModels;
+using NiTiAPI.Dapper.ViewModels.ClientShop;
 
 namespace NiTiAPI.WebErp.Areas.ClientShop.Controllers
 {   
@@ -24,6 +24,7 @@ namespace NiTiAPI.WebErp.Areas.ClientShop.Controllers
            
         public IActionResult Index(string id)
         {
+            HttpContext.Session.Clear();
             ViewData["CorporationName"] = id;
             ViewData["BodyClass"] = "cms-index-index cms-home-page";
            

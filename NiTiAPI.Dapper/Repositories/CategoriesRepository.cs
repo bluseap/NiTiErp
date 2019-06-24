@@ -33,7 +33,7 @@ namespace NiTiAPI.Dapper.Repositories
 
                 var result = await conn.QueryAsync<CategoriesViewModel>("Get_Category_ById",
                     paramaters, null, null, System.Data.CommandType.StoredProcedure);
-                return result.Single();
+                return result.FirstOrDefault();
             }
         }
 

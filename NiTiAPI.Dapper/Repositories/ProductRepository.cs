@@ -69,7 +69,7 @@ namespace NiTiAPI.Dapper.Repositories
                 paramaters.Add("@language", culture);
 
                 var result = await conn.QueryAsync<ProductViewModel>("Get_Product_ById", paramaters, null, null, System.Data.CommandType.StoredProcedure);
-                return result.Single();
+                return result.FirstOrDefault();
             }
         }
 

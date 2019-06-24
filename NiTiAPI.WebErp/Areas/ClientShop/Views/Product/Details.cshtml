@@ -1,0 +1,238 @@
+﻿@inject IViewLocalizer Localizer
+@model ProductDetailViewModel
+@{
+    ViewData["Title"] = Model.Product.Result != null ? Model.Product.Result.Name : "";
+    ViewData["MetaKeyword"] = Model.Product.Result != null ? Model.Product.Result.SeoKeyword : "";
+    ViewData["MetaDescription"] = Model.Product.Result != null ? Model.Product.Result.SeoDescription : "";
+
+    var product = Model.Product.Result;
+    var category = Model.Category.Result;
+
+}
+<!-- Breadcrumbs -->
+@section Scripts{
+    <script src="~/clientshop-app/controllers/product/details.js" asp-append-version="true"></script>
+    <script>
+        var productObj = new ProductDetailController();
+        productObj.initialize();
+    </script>
+}
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    <li class="home"> <a title="Go to Home Page" href="index.html">Trang chủ</a><span>&raquo;</span></li>
+                    <li class=""> <a title="@category.Name" href="/@category.SeoAlias-c.@(category.Id).html">@category.Name</a><span>&raquo;</span></li>
+                    <li><strong>@product.Name</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs End -->
+<!-- Main Container -->
+<div class="main-container col1-layout">
+    <div class="container">
+        <div class="row">
+            <div class="col-main">
+                <div class="product-view-area">
+                    <div class="product-big-image col-xs-12 col-sm-5 col-lg-5 col-md-5">
+                        <div class="icon-sale-label sale-left">Bán</div>
+                        <div class="large-image"> <a href="@product.ImageUrl" class="cloud-zoom" id="zoom1" rel="useWrapper: false, adjustY:0, adjustX:20"> <img class="zoom-img" src="@product.ImageUrl" alt="@product.Name"> </a> </div>
+                        <div class="flexslider flexslider-thumb">
+                            <ul class="previews-list slides">
+                                @*@foreach (var item in Model.ProductImages)
+                                {
+                                    <li><a href='@item.Path' class='cloud-zoom-gallery' rel="useZoom: 'zoom1', smallImage: '@item.Path' "><img src="@item.Path" alt="@item.Caption" /></a></li>
+                                }*@
+
+                            </ul>
+                        </div>
+
+                        <!-- end: more-images -->
+
+                    </div>
+                    <div class="col-xs-12 col-sm-7 col-lg-7 col-md-7 product-details-area">
+                        <div class="product-name">
+                            <h1>@product.Name</h1>
+                        </div>
+                        <div class="price-box">
+                            @*@if (product.PromotionPrice.HasValue)
+                            {
+                                <p class="special-price">
+                                    <span class="price-label">Special Price</span>
+                                    <span class="price"> @product.PromotionPrice.Value.ToString("N0") </span>
+                                </p>
+                                <p class="old-price">
+                                    <span class="price-label">Regular Price:</span>
+                                    <span class="price"> @product.Price.ToString("N0") </span>
+                                </p>
+
+                            }
+                            else
+                            {
+                                <p class="special-price">
+                                    <span class="price-label">Special Price</span>
+                                    <span class="price"> @product.Price.ToString("N0") </span>
+                                </p>
+                            }*@
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="product-overview-tab">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="product-tab-inner">
+                                <ul id="product-detail-tab" class="nav nav-tabs product-tabs">
+                                    <li class="active"> <a href="#description" data-toggle="tab"> Mô tả </a> </li>
+                                </ul>
+                                <div id="productTabContent" class="tab-content">
+                                    <div class="tab-pane fade in active" id="description">
+                                        <div class="std">
+                                            @Html.Raw(product.Contents)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Container End -->
+<!-- Related Product Slider -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="related-product-area">
+                <div class="page-header">
+                    <h2>Sản phẩm liên quan</h2>
+                </div>
+                <div class="related-products-pro">
+                    <div class="slider-items-products">
+                        <div id="related-product-slider" class="product-flexslider hidden-buttons">
+                            <div class="slider-items slider-width-col4 fadeInUp">
+                                @*@foreach (var item in Model.RelatedProducts)
+                                {
+                                    var url = item.SeoAlias + "-" + "p." + item.Id + ".html";
+                                    <div class="product-item">
+                                        <div class="item-inner">
+                                            <div class="product-thumbnail">
+                                                <div class="pr-img-area">
+                                                    <a title="@item.Name" href="@url">
+                                                        <figure> <img class="first-img" src="@item.Image" alt="@item.Name"> <img class="hover-img" src="@item.Image" alt="@item.Name"></figure>
+                                                    </a>
+                                                </div>
+                                                <div class="pr-info-area">
+                                                    <div class="pr-button">
+                                                        <div class="mt-button add_to_wishlist"> <a href="#"> <i class="fa fa-heart-o"></i> </a> </div>
+                                                        <div class="mt-button quick-view"> <a href="#"> <i class="fa fa-search"></i> </a> </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="item-info">
+                                                <div class="info-inner">
+                                                    <div class="item-title"> <a title="@item.Name" href="@url">@item.Name</a> </div>
+                                                    <div class="item-content">
+                                                        <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                                        <div class="item-price">
+                                                            <div class="price-box">
+                                                                <span class="regular-price">
+                                                                    <span class="price">@item.Price.ToString("N0")</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="pro-action">
+                                                            <button type="button" class="add-to-cart" data-id="@item.Id"><span> Thêm vào giỏ</span> </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                }*@
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Related Product Slider End -->
+<!-- Upsell Product Slider -->
+@*@if (Model.UpsellProducts.Count > 0)
+{
+    <section class="upsell-product-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="page-header">
+                        <h2>Sản phẩm khác</h2>
+                    </div>
+                    <div class="slider-items-products">
+                        <div id="upsell-product-slider" class="product-flexslider hidden-buttons">
+                            <div class="slider-items slider-width-col4">
+                                @foreach (var item in Model.UpsellProducts)
+                                {
+                                    var url = item.SeoAlias + "-" + "p." + item.Id + ".html";
+                                    <div class="product-item">
+                                        <div class="item-inner">
+                                            <div class="product-thumbnail">
+                                                <div class="pr-img-area">
+                                                    <a title="@item.Name" href="@url">
+                                                        <figure> <img class="first-img" src="@item.Image" alt="@item.Name"> <img class="hover-img" src="@item.Image" alt="@item.Name"></figure>
+                                                    </a>
+                                                </div>
+                                                <div class="pr-info-area">
+                                                    <div class="pr-button">
+                                                        <div class="mt-button add_to_wishlist"> <a href="#"> <i class="fa fa-heart-o"></i> </a> </div>
+                                                        <div class="mt-button quick-view"> <a href="#"> <i class="fa fa-search"></i> </a> </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="item-info">
+                                                <div class="info-inner">
+                                                    <div class="item-title"> <a title="@item.Name" href="@url">@item.Name</a> </div>
+                                                    <div class="item-content">
+                                                        <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                                        <div class="item-price">
+                                                            <div class="price-box">
+                                                                <span class="regular-price">
+                                                                    <span class="price">@item.Price.ToString("N0")</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="pro-action">
+                                                            <button type="button" class="add-to-cart" data-id="@item.Id"><span> Thêm vào giỏ</span> </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+}*@
+
+<!-- Upsell Product Slider End -->

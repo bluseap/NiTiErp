@@ -31,7 +31,7 @@
                             @foreach (var subItem in categories.Where(x => x.ParentId == item.Id))
                             {
                                 <li class="menu-item">
-                                    <div class="title"> <a href="/ClientShop/product/index/@corname?productId=@subItem.ProductId">@subItem.Name</a></div>
+                                    <div class="title"> <a href="/ClientShop/product/Details/@corname?productId=@subItem.ProductId">@subItem.Name</a></div>
                                 </li>
                             }
                         </ul>

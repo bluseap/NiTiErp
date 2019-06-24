@@ -30,4 +30,9 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\ClientShop\" />
+    <Folder Include="Repositories\Interfaces\ClientShop\" />
+  </ItemGroup>
+
 </Project>

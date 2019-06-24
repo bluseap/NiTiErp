@@ -25,7 +25,7 @@
                                 <ul class="nav">
                                     @foreach (var subItem in categories.Where(x => x.ParentId == item.Id))
                                     {
-                                        <li><a href="/ClientShop/product/index/@corname?productId=@item.ProductId"><span>@subItem.Name</span></a></li>
+                                        <li><a href="/ClientShop/product/Details/@corname?productId=@subItem.ProductId"><span>@subItem.Name</span></a></li>
                                     }
                                 </ul>
                             </div>
