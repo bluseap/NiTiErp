@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,11 +12,11 @@ namespace NiTiAPI.Dapper.ViewModels.ClientShop
 
         public bool Available { set; get; }
 
-        //public List<ProductViewModel> RelatedProducts { get; set; }
+        public Task<List<ProductViewModel>> RelatedProducts { get; set; }
 
         public Task<CategoriesViewModel> Category { get; set; }
 
-        //public List<ProductImageViewModel> ProductImages { set; get; }
+        public Task<List<ProductImagesViewModel>> ProductImages { set; get; }
 
         //public List<ProductViewModel> UpsellProducts { get; set; }
 
@@ -23,8 +24,8 @@ namespace NiTiAPI.Dapper.ViewModels.ClientShop
 
         //public List<TagViewModel> Tags { set; get; }
 
-        //public List<SelectListItem> Colors { set; get; }
+        public List<SelectListItem> Colors { set; get; }
 
-        //public List<SelectListItem> Sizes { set; get; }
+        public List<SelectListItem> Sizes { set; get; }
     }
 }

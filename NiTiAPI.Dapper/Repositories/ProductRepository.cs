@@ -58,6 +58,24 @@ namespace NiTiAPI.Dapper.Repositories
             }
         }
 
+        public async Task<List<ProductViewModel>> GetListProductCorNameTop(string corporationName, string language, int top)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+                var paramaters = new DynamicParameters();
+
+                paramaters.Add("@corporationName", corporationName);
+                paramaters.Add("@language", language);
+                paramaters.Add("@top", top);
+
+                var result = await conn.QueryAsync<ProductViewModel>("Get_ProductCatalog_ByCorNameTop", paramaters, null, null, System.Data.CommandType.StoredProcedure);
+
+                return result.ToList();
+            }
+        }
+
         public async Task<ProductViewModel> GetById(long id, string culture)
         {
             using (var conn = new SqlConnection(_connectionString))

@@ -14,6 +14,8 @@ namespace NiTiAPI.Dapper.Repositories.Interfaces
 
         Task<List<ProductViewModel>> GetListProductCorporationName(string corporationName, string language);
 
+        Task<List<ProductViewModel>> GetListProductCorNameTop(string corporationName, string language, int top);
+
         Task<ProductViewModel> GetById(long id, string culture);
 
         Task<PagedResult<ProductViewModel>> GetPagingProduct(string keyword, int corporationId, int categoryId,
