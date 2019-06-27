@@ -117,16 +117,64 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddToCart" xml:space="preserve">
-    <value>Mua hàng</value>
+  <data name="AboutNiTiMart" xml:space="preserve">
+    <value>About NiTiMart</value>
   </data>
-  <data name="BestSelling" xml:space="preserve">
-    <value>Mặt hàng Bán chạy</value>
+  <data name="AboutUs" xml:space="preserve">
+    <value>About Us</value>
   </data>
-  <data name="PhoneCall" xml:space="preserve">
-    <value>Điện thoại</value>
+  <data name="Account" xml:space="preserve">
+    <value>Account</value>
   </data>
-  <data name="ProductNew" xml:space="preserve">
-    <value>Mới</value>
+  <data name="Careers" xml:space="preserve">
+    <value>Careers</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>Closed</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Discounts</value>
+  </data>
+  <data name="FAQs" xml:space="preserve">
+    <value>FAQs</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="Linke" xml:space="preserve">
+    <value>INSIDER</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>News</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="Service" xml:space="preserve">
+    <value>Service</value>
+  </data>
+  <data name="SiteMap" xml:space="preserve">
+    <value>Sites Map</value>
+  </data>
+  <data name="WorkingAddress" xml:space="preserve">
+    <value>641C Tran Hung Dao - P My Long - TP Long Xuyen - An Giang</value>
+  </data>
+  <data name="WorkingDays" xml:space="preserve">
+    <value>Monday-Friday:</value>
+  </data>
+  <data name="WorkingHours" xml:space="preserve">
+    <value>Working hours</value>
+  </data>
+  <data name="WorkingSaturday" xml:space="preserve">
+    <value>Saturday:</value>
+  </data>
+  <data name="WorkingSaturdayTimes" xml:space="preserve">
+    <value>9.00 a.m. - 2.00 p.m.</value>
+  </data>
+  <data name="WorkingSunday" xml:space="preserve">
+    <value>Sunday:</value>
+  </data>
+  <data name="WorkingTimes" xml:space="preserve">
+    <value>8.30 a.m. - 5.30 p.m.</value>
   </data>
 </root>

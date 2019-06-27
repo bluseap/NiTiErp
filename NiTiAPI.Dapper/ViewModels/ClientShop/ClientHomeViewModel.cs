@@ -14,6 +14,8 @@ namespace NiTiAPI.Dapper.ViewModels.ClientShop
 
         public Task<List<ProductViewModel>> HomeCategories { set; get; }
 
+        public Task<List<ProductViewModel>> RelatedProducts { get; set; }
+
         public string Title { set; get; }
         public string MetaKeyword { set; get; }
         public string MetaDescription { set; get; }

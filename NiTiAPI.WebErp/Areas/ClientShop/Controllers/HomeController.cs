@@ -47,6 +47,8 @@ namespace NiTiAPI.WebErp.Areas.ClientShop.Controllers
             //homeVm.LastestBlogs = _blogService.GetLastest(5);
             //homeVm.HomeSlides = _commonService.GetSlides("top");
 
+            homeVm.RelatedProducts = _productRepository.GetListProductCorNameTop(id, culture, 9);
+
             return View(homeVm);
         }
 
