@@ -13,6 +13,8 @@ namespace NiTiAPI.Dapper.Repositories.Interfaces
 
         Task<List<CategoriesViewModel>> GetListCategory();
 
+        Task<List<CategoriesViewModel>> GetListCateByCor(string corporationName);
+
         Task<PagedResult<CategoriesViewModel>> GetPaging(string keyword, int coporationId, int pageIndex, int pageSize);
 
         Task<bool> Create(CategoriesViewModel category);

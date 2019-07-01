@@ -13,16 +13,16 @@ using System.Threading.Tasks;
 
 namespace NiTiAPI.Dapper.Repositories
 {
-    public class CategoriesRepository: ICategoriesRepository
+    public class ContactRepository: IContactRepository
     {
         private readonly string _connectionString;
 
-        public CategoriesRepository(IConfiguration configuration)
+        public ContactRepository(IConfiguration configuration)
         {
             _connectionString = configuration.GetConnectionString("DbConnectionString");
         }
 
-        public async Task<CategoriesViewModel> GetById(int id)
+        public async Task<ContactViewModel> GetById(int id)
         {
             using (var conn = new SqlConnection(_connectionString))
             {
@@ -31,13 +31,28 @@ namespace NiTiAPI.Dapper.Repositories
                 var paramaters = new DynamicParameters();
                 paramaters.Add("@id", id);
 
-                var result = await conn.QueryAsync<CategoriesViewModel>("Get_Category_ById",
+                var result = await conn.QueryAsync<ContactViewModel>("Get_Contact_ById",
                     paramaters, null, null, System.Data.CommandType.StoredProcedure);
                 return result.FirstOrDefault();
             }
         }
 
-        public async Task<List<CategoriesViewModel>> GetListCategory()
+        public async Task<ContactViewModel> GetByCorName(string corporationName)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+                var paramaters = new DynamicParameters();
+                paramaters.Add("@CorporatiomName", corporationName);
+
+                var result = await conn.QueryAsync<ContactViewModel>("Get_Contact_ByCorporationName",
+                    paramaters, null, null, System.Data.CommandType.StoredProcedure);
+                return result.FirstOrDefault();
+            }
+        }
+
+        public async Task<List<ContactViewModel>> GetListContact()
         {
             using (var conn = new SqlConnection(_connectionString))
             {
@@ -45,28 +60,13 @@ namespace NiTiAPI.Dapper.Repositories
                     conn.Open();
                 var paramaters = new DynamicParameters();
 
-                var result = await conn.QueryAsync<CategoriesViewModel>("Get_Category_All",
+                var result = await conn.QueryAsync<ContactViewModel>("Get_Contact_All",
                     paramaters, null, null, System.Data.CommandType.StoredProcedure);
                 return result.AsList();
             }
-        }
+        }      
 
-        public async Task<List<CategoriesViewModel>> GetListCateByCor(string corporationName)
-        {
-            using (var conn = new SqlConnection(_connectionString))
-            {
-                if (conn.State == System.Data.ConnectionState.Closed)
-                    conn.Open();
-                var paramaters = new DynamicParameters();
-                paramaters.Add("@corporationName", corporationName);
-
-                var result = await conn.QueryAsync<CategoriesViewModel>("Get_Category_ByCorpo",
-                    paramaters, null, null, System.Data.CommandType.StoredProcedure);
-                return result.AsList();
-            }
-        }
-
-        public async Task<PagedResult<CategoriesViewModel>> GetPaging(string keyword, int cororationId, int pageIndex, int pageSize)
+        public async Task<PagedResult<ContactViewModel>> GetPaging(string keyword, int cororationId, int pageIndex, int pageSize)
         {
             using (var conn = new SqlConnection(_connectionString))
             {
@@ -82,12 +82,12 @@ namespace NiTiAPI.Dapper.Repositories
 
                 try
                 {
-                    var result = await conn.QueryAsync<CategoriesViewModel>("Get_Category_AllKey",
+                    var result = await conn.QueryAsync<ContactViewModel>("Get_Contact_AllKey",
                         paramaters, null, null, System.Data.CommandType.StoredProcedure);
 
                     int totalRow = paramaters.Get<int>("@totalRow");
 
-                    var pagedResult = new PagedResult<CategoriesViewModel>()
+                    var pagedResult = new PagedResult<ContactViewModel>()
                     {
                         Items = result.ToList(),
                         TotalRow = totalRow,
@@ -103,7 +103,7 @@ namespace NiTiAPI.Dapper.Repositories
             }
         }
 
-        public async Task<bool> Create(CategoriesViewModel category)
+        public async Task<bool> Create(ContactViewModel contact)
         {
             using (var conn = new SqlConnection(_connectionString))
             {
@@ -112,23 +112,23 @@ namespace NiTiAPI.Dapper.Repositories
 
                 var paramaters = new DynamicParameters();
 
-                paramaters.Add("@CorporationId", category.CorporationId);
-                paramaters.Add("@Name", category.Name);
-                paramaters.Add("@Description", category.Description);
-                paramaters.Add("@SeoAlias", category.SeoAlias);
-                paramaters.Add("@SeoTitle", category.SeoTitle);
-                paramaters.Add("@SeoKeyword", category.SeoKeyword);
-                paramaters.Add("@SeoDescription", category.SeoDescription);
-                paramaters.Add("@ParentId", category.ParentId);
-                paramaters.Add("@SortOrder", category.SortOrder);
-                paramaters.Add("@IsActive", category.IsActive);
+                paramaters.Add("@CorporationId", contact.CorporationId);
+                paramaters.Add("@Address", contact.Address);
+                paramaters.Add("@Email", contact.Email);
+                paramaters.Add("@Lat", contact.Lat);
+                paramaters.Add("@Lng", contact.Lng);
+                paramaters.Add("@Name", contact.Name);
+                paramaters.Add("@Other", contact.Other);
+                paramaters.Add("@Phone", contact.Phone);
+                paramaters.Add("@Website", contact.Website);
+                paramaters.Add("@SortOrder", contact.SortOrder);            
 
-                paramaters.Add("@CreateDate", category.CreateDate);
-                paramaters.Add("@CreateBy", category.CreateBy);
+                paramaters.Add("@CreateDate", contact.CreateDate);
+                paramaters.Add("@CreateBy", contact.CreateBy);
                 try
                 {
-                    await conn.QueryAsync<CategoriesViewModel>(
-                        "Create_Category", paramaters, commandType: CommandType.StoredProcedure);
+                    await conn.QueryAsync<ContactViewModel>(
+                        "Create_Contact", paramaters, commandType: CommandType.StoredProcedure);
                     return true;
                 }
                 catch (Exception ex)
@@ -138,7 +138,7 @@ namespace NiTiAPI.Dapper.Repositories
             }
         }
 
-        public async Task<bool> Update(CategoriesViewModel category)
+        public async Task<bool> Update(ContactViewModel contact)
         {
             using (var conn = new SqlConnection(_connectionString))
             {
@@ -147,24 +147,24 @@ namespace NiTiAPI.Dapper.Repositories
 
                 var paramaters = new DynamicParameters();
 
-                paramaters.Add("@Id", category.Id);
-                paramaters.Add("@CorporationId", category.CorporationId);
-                paramaters.Add("@Name", category.Name);
-                paramaters.Add("@Description", category.Description);
-                paramaters.Add("@SeoAlias", category.SeoAlias);
-                paramaters.Add("@SeoTitle", category.SeoTitle);
-                paramaters.Add("@SeoKeyword", category.SeoKeyword);
-                paramaters.Add("@SeoDescription", category.SeoDescription);
-                paramaters.Add("@ParentId", category.ParentId);
-                paramaters.Add("@SortOrder", category.SortOrder);
-                paramaters.Add("@IsActive", category.IsActive);
+                paramaters.Add("@Id", contact.Id);
+                paramaters.Add("@CorporationId", contact.CorporationId);
+                paramaters.Add("@Address", contact.Address);
+                paramaters.Add("@Email", contact.Email);
+                paramaters.Add("@Lat", contact.Lat);
+                paramaters.Add("@Lng", contact.Lng);
+                paramaters.Add("@Name", contact.Name);
+                paramaters.Add("@Other", contact.Other);
+                paramaters.Add("@Phone", contact.Phone);
+                paramaters.Add("@Website", contact.Website);
+                paramaters.Add("@SortOrder", contact.SortOrder);
 
-                paramaters.Add("@UpdateDate", category.UpdateDate);
-                paramaters.Add("@UpdateBy", category.UpdateBy);
+                paramaters.Add("@UpdateDate", contact.UpdateDate);
+                paramaters.Add("@UpdateBy", contact.UpdateBy);
                 try
                 {
-                    await conn.QueryAsync<CategoriesViewModel>(
-                        "Update_Category", paramaters, commandType: CommandType.StoredProcedure);
+                    await conn.QueryAsync<ContactViewModel>(
+                        "Update_Contact", paramaters, commandType: CommandType.StoredProcedure);
                     return true;
                 }
                 catch (Exception ex)
@@ -172,34 +172,7 @@ namespace NiTiAPI.Dapper.Repositories
                     throw ex;
                 }
             }
-        }
-
-        public async Task<bool> UpdateParent(int fromParent, int toParent, int parameter, string username)
-        {
-            using (var conn = new SqlConnection(_connectionString))
-            {
-                if (conn.State == System.Data.ConnectionState.Closed)
-                    conn.Open();
-
-                var paramaters = new DynamicParameters();              
-               
-                paramaters.Add("@FromParentId", fromParent);
-                paramaters.Add("@ToParentId", toParent);
-                paramaters.Add("@parameter", parameter);
-                paramaters.Add("@UpdateBy", username);
-
-                try
-                {
-                    await conn.QueryAsync<CategoriesViewModel>(
-                        "Update_Category_ParentIdFromTo", paramaters, commandType: CommandType.StoredProcedure);
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }
-        }
+        }       
 
         public async Task<bool> Delete(int id, string username)
         {
@@ -215,8 +188,8 @@ namespace NiTiAPI.Dapper.Repositories
 
                 try
                 {
-                    await conn.QueryAsync<CategoriesViewModel>(
-                       "Delete_Category_ById", paramaters, commandType: CommandType.StoredProcedure);
+                    await conn.QueryAsync<ContactViewModel>(
+                       "Delete_Contact_ById", paramaters, commandType: CommandType.StoredProcedure);
                     return true;
                 }
                 catch (Exception ex)

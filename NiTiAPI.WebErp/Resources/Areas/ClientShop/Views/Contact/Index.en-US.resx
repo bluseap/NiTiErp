@@ -117,16 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddToCart" xml:space="preserve">
-    <value>Xem hàng</value>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
   </data>
-  <data name="BestSelling" xml:space="preserve">
-    <value>Mặt hàng Bán chạy</value>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Contact Us</value>
   </data>
-  <data name="PhoneCall" xml:space="preserve">
-    <value>Điện thoại</value>
+  <data name="Everytime" xml:space="preserve">
+    <value>Everytime, everywhere</value>
   </data>
-  <data name="ProductNew" xml:space="preserve">
-    <value>Mới</value>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="mostcustomers" xml:space="preserve">
+    <value>Most Customers</value>
+  </data>
+  <data name="pleasecallme" xml:space="preserve">
+    <value>Please call me</value>
+  </data>
+  <data name="ServeQuickly" xml:space="preserve">
+    <value>Serve quickly</value>
+  </data>
+  <data name="WeServe" xml:space="preserve">
+    <value>We are ready to serve</value>
+  </data>
+  <data name="WeTrading" xml:space="preserve">
+    <value>We specialize in trading consumer electronics products Laptop, Iphone, Precious stones</value>
   </data>
 </root>

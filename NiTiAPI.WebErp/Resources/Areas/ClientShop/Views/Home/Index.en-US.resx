@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddToCart" xml:space="preserve">
-    <value>Add to Cart</value>
+    <value>View</value>
   </data>
   <data name="BestSelling" xml:space="preserve">
     <value>Best selling</value>

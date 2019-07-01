@@ -1,7 +1,7 @@
-﻿var ProductDetailController = function () {
+﻿var ProductSearchController = function () {
 
     //var userCorporationId = $("#hidUserCorporationId").val();
-    //var userName = $("#hidUserName").val();    
+    //var userName = $("#hidUserName").val();   
 
     this.initialize = function () {
         registerEvents();
@@ -9,7 +9,6 @@
     }
 
     function registerEvents() {
-
         $('body').on('click', '.btnSearchHeader', function (e) {
             e.preventDefault();
             var cateId = $('#ddlCategoryId').val();
@@ -69,7 +68,7 @@
     function loadCategoty() {
         return $.ajax({
             type: 'GET',
-            url: '/clientshop/product/GetListCategory',            
+            url: '/clientshop/product/GetListCategory',
             dataType: 'json',
             success: function (response) {
                 var choosen = resources["All"];

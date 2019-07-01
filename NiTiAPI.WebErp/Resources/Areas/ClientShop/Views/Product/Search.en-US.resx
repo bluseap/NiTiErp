@@ -117,16 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddToCart" xml:space="preserve">
-    <value>Xem hàng</value>
+  <data name="FindResult" xml:space="preserve">
+    <value>Result</value>
   </data>
-  <data name="BestSelling" xml:space="preserve">
-    <value>Mặt hàng Bán chạy</value>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
   </data>
-  <data name="PhoneCall" xml:space="preserve">
-    <value>Điện thoại</value>
+  <data name="New" xml:space="preserve">
+    <value>New</value>
   </data>
-  <data name="ProductNew" xml:space="preserve">
-    <value>Mới</value>
+  <data name="Sale" xml:space="preserve">
+    <value>Sale</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>Sort</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="ViewDetail" xml:space="preserve">
+    <value>View</value>
   </data>
 </root>

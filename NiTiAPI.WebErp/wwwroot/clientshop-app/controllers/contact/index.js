@@ -1,9 +1,21 @@
 ﻿var contactController = function () {
+
+    //var userCorporationId = $("#hidUserCorporationId").val();
+    //var userName = $("#hidUserName").val();    
+    var corname = $("#hidCorporationName").val();
+
     this.initialize = function () {
-        registerEvent();
-    }
-    function registerEvent() {
         initMap();
+        registerEvents();
+        loadData();
+    }
+
+    function registerEvents() {
+
+    }
+
+    function loadData() {
+
     }
 
     function initMap() {
@@ -26,4 +38,5 @@
         });
         infowindow.open(map, marker);
     }
+
 }

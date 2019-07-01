@@ -1,5 +1,7 @@
 ﻿@inject IViewLocalizer Localizer
-
+@{   
+    var @corname = @ViewData["CorporationName"];
+}
 <header>
     <div class="header-container">
         <div class="header-top">
@@ -26,7 +28,10 @@
                                 <li><a title="Checkout" href="checkout.html"><span>Checkout</span></a></li>*@
                             <li>
                                 <div class="dropdown">
-                                    <a class="current-open" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#"><span>My Account</span> <i class="fa fa-angle-down"></i></a>
+                                    <a class="current-open" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                                        <span>My Account</span>
+                                        <i class="fa fa-angle-down"></i>
+                                    </a>
                                     <ul class="dropdown-menu" role="menu">
                                         <li><a href="account_page.html">Account</a></li>
                                         <li><a href="wishlist.html">Wishlist</a></li>
@@ -51,7 +56,11 @@
                     <div class="col-sm-3 col-xs-12 jtv-logo-block">
 
                         <!-- Header Logo -->
-                        <div class="logo"><a title="e-commerce" href="index.html"><img alt="ShopMart" title="ShopMart" src="/clientshop-side/images/logoNitiApp.jpg"></a> </div>
+                        <div class="logo">
+                            <a title="e-commerce" href="/clientshop/home/index/@corname">
+                                <img alt="ShopMart" title="ShopMart" src="/clientshop-side/images/logoNitiApp.jpg">
+                            </a>
+                        </div>
                     </div>
                     <div class="col-xs-12 col-sm-5 col-md-6 jtv-top-search">
 
@@ -61,22 +70,9 @@
                             <div id="search">
                                 <form>
                                     <div class="input-group">
-                                        <select class="cate-dropdown hidden-xs hidden-sm" name="category_id">
-                                            <option>All Categories</option>
-                                            <option>women</option>
-                                            <option>&nbsp;&nbsp;&nbsp;Chair </option>
-                                            <option>&nbsp;&nbsp;&nbsp;Decoration</option>
-                                            <option>&nbsp;&nbsp;&nbsp;Lamp</option>
-                                            <option>&nbsp;&nbsp;&nbsp;Handbags </option>
-                                            <option>&nbsp;&nbsp;&nbsp;Sofas </option>
-                                            <option>&nbsp;&nbsp;&nbsp;Essential </option>
-                                            <option>Men</option>
-                                            <option>Electronics</option>
-                                            <option>&nbsp;&nbsp;&nbsp;Mobiles </option>
-                                            <option>&nbsp;&nbsp;&nbsp;Music &amp; Audio </option>
-                                        </select>
-                                        <input type="text" class="form-control" placeholder="Enter your search..." name="search">
-                                        <button class="btn-search" type="button"><i class="fa fa-search"></i></button>
+                                        <select id="ddlCategoryId" class="cate-dropdown hidden-xs hidden-sm"></select>
+                                        <input type="text" id="txtSearchHeader" class="form-control" placeholder="Enter your search..." name="search">
+                                        <button class="btnSearchHeader" type="button" ><i class="fa fa-search"></i></button>
                                     </div>
                                 </form>
                             </div>
@@ -92,7 +88,7 @@
                                 <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle">
                                     <a href="#">
                                         <div class="cart-icon"><i class="icon-basket-loaded icons"></i><span class="cart-total">3</span></div>
-                                        <div class="shoppingcart-inner hidden-xs"><span class="cart-title">My Cart</span> </div>
+                                        <div class="shoppingcart-inner hidden-xs"><span class="cart-title">@Localizer["MyCart"]</span> </div>
                                     </a>
                                 </div>
                                 <div>

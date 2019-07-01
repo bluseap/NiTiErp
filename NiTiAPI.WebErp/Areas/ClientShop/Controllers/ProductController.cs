@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Localization;
 using NiTiAPI.Dapper.Repositories.Interfaces;
 using NiTiAPI.Dapper.ViewModels.ClientShop;
@@ -18,14 +19,17 @@ namespace NiTiAPI.WebErp.Areas.ClientShop.Controllers
         private readonly IProductRepository _productRepository;
         private readonly ICategoriesRepository _categoriesRepository;
         private readonly IProductImagesRepository _productImagesRepository;
+        IConfiguration _configuration;
 
         public ProductController(IStringLocalizer<HomeController> localizer, IProductRepository productRepository,
-            ICategoriesRepository categoriesRepository, IProductImagesRepository productImagesRepository)
+            ICategoriesRepository categoriesRepository, IProductImagesRepository productImagesRepository,
+            IConfiguration configuration )
         {
             _localizer = localizer;
             _productRepository = productRepository;
             _categoriesRepository = categoriesRepository;
             _productImagesRepository = productImagesRepository;
+            _configuration = configuration;
         }
 
         public IActionResult Index(string id, string productId)
@@ -94,6 +98,49 @@ namespace NiTiAPI.WebErp.Areas.ClientShop.Controllers
 
             return View(model);
         }
+
+        public IActionResult Search(string id, string catelogyId, string keyword, int pageSize, string sortBy, int page = 1)
+        {
+            HttpContext.Session.Clear();
+            ViewData["BodyClass"] = "shop_grid_full_width_page";
+            ViewData["CorporationName"] = id;
+            if (id != null)
+            {
+                HttpContext.Session.SetString("corprationName", id);
+            }
+            else
+            {
+                HttpContext.Session.SetString("corprationName", "");
+            }
+
+            var culture = HttpContext.Features.Get<IRequestCultureFeature>().RequestCulture.Culture.Name;
+
+            var catalog = new SearchResultViewModel();
+           
+            if (pageSize == 0)
+                pageSize = _configuration.GetValue<int>("PageSize");
+
+            if (keyword == null)
+                keyword = "0";
+
+            catalog.PageSize = pageSize;
+            catalog.SortType = sortBy != null ? "1" : "0";
+            var productVm = _productRepository.GetAllPagingProductCate(id, catelogyId, culture, keyword, page, pageSize);
+            catalog.Data = productVm;
+            catalog.Keyword = keyword;
+
+            return View(catalog);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetListCategory()
+        {
+            var corporationName = HttpContext.Session.GetString("corprationName");
+
+            var model = await _categoriesRepository.GetListCateByCor(corporationName);
+            return new OkObjectResult(model);
+        }
+        
 
     }
 }

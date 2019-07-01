@@ -117,16 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddToCart" xml:space="preserve">
-    <value>Xem hàng</value>
+  <data name="Contact" xml:space="preserve">
+    <value>Liên hệ</value>
   </data>
-  <data name="BestSelling" xml:space="preserve">
-    <value>Mặt hàng Bán chạy</value>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Liên hệ với chúng tôi</value>
   </data>
-  <data name="PhoneCall" xml:space="preserve">
-    <value>Điện thoại</value>
+  <data name="Everytime" xml:space="preserve">
+    <value>Mọi lúc, mọi nơi</value>
   </data>
-  <data name="ProductNew" xml:space="preserve">
-    <value>Mới</value>
+  <data name="Home" xml:space="preserve">
+    <value>Trang chủ</value>
+  </data>
+  <data name="mostcustomers" xml:space="preserve">
+    <value>Khách hàng là nhất</value>
+  </data>
+  <data name="pleasecallme" xml:space="preserve">
+    <value>Hãy gọi cho tôi</value>
+  </data>
+  <data name="ServeQuickly" xml:space="preserve">
+    <value>Phục vụ một cách nhanh chóng</value>
+  </data>
+  <data name="WeServe" xml:space="preserve">
+    <value>Chúng tôi sẵn sàng phục vụ</value>
+  </data>
+  <data name="WeTrading" xml:space="preserve">
+    <value>Chúng tôi chuyên kinh doanh hàng điện tử tiêu dùng Laptop, Iphone, Đá quí</value>
   </data>
 </root>

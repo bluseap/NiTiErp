@@ -19,7 +19,7 @@
                 if (categories.Any(x => x.ParentId == item.Id))
                 {
                     <li>
-                        <a href="/ClientShop/product/index/@corname?productId=@item.Id">@item.Name</a>
+                        <a href="/ClientShop/product/Search/@corname?catelogyId=0">@item.Name</a>
                         <div class="wrap-popup column1">
                             <div class="popup">
                                 <ul class="nav">
@@ -34,7 +34,7 @@
                 }
                 else
                 {
-                    <li class="nosub"><a href="/ClientShop/product/index/@corname?productId=@item.Id">@item.Name</a></li>
+                    <li class="nosub"><a href="/ClientShop/product/Search/@corname?catelogyId=0">@item.Name</a></li>
                 }
             }
         </ul>

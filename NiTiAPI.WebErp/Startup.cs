@@ -220,6 +220,7 @@ namespace NiTiAPI.WebErp
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IProductImagesRepository, ProductImagesRepository>();
             services.AddTransient<IProductQuantitiesRepository, ProductQuantitiesRepository>();
+            services.AddTransient<IContactRepository, ContactRepository>();
 
             services.AddTransient<IProductWholePriceRepository, ProductWholePriceRepository>();
 

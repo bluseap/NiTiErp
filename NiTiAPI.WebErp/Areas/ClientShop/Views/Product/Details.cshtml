@@ -9,14 +9,15 @@
     var category = Model.Category.Result;
 
 }
-<!-- Breadcrumbs -->
-@section Scripts{   
+@section Scripts{
     <script src="~/clientshop-app/controllers/product/details.js" asp-append-version="true"></script>
     <script>
         var productObj = new ProductDetailController();
         productObj.initialize();
     </script>
 }
+
+<!-- Breadcrumbs -->
 <div class="breadcrumbs">
     <div class="container">
         <div class="row">
@@ -44,7 +45,7 @@
                             <ul class="previews-list slides">
                                 @foreach (var item in Model.ProductImages.Result)
                                 {
-                                    <li><a href='@item.Path' class='cloud-zoom-gallery' rel="useZoom: 'zoom1', smallImage: '@item.Path' "><img src="@item.Path" alt="@item.Caption" style="width:98px; height:98px"/></a></li>
+                                    <li><a href='@item.Path' class='cloud-zoom-gallery' rel="useZoom: 'zoom1', smallImage: '@item.Path' "><img src="@item.Path" alt="@item.Caption" style="width:98px; height:98px" /></a></li>
                                 }
                             </ul>
                         </div>
@@ -74,219 +75,222 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                                 @*<i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>*@
+                                    <i class="fa fa-star-o"></i>*@
                             </div>
-                            <p class="rating-links"> <a href="#">1 @Localizer["Review(s)"]</a> <span class="separator">|
-                                     </span> <a href="#">@Localizer["AddYourReview"]</a> </p>
-                            <p class="availability in-stock pull-right">@Localizer["Status"]
-                                <span>@Localizer["InStock"]</span>
+                            <p class="rating-links">
+                                <a href="#">1 @Localizer["Review(s)"]</a> <span class="separator">
+                                    |
+                                </span> <a href="#">@Localizer["AddYourReview"]</a>
                             </p>
-                        </div>
-                        <div class="short-description">
-                            <h2>@Localizer["QuickOverview"]</h2>
-                            @product.Description
-                        </div>
-                        @*<div class="product-color-size-area">
-            <div class="color-area">
-                <h2 class="saider-bar-title">@Localizer["Color"]</h2>
-                <div class="color">
-                    <select asp-items="Model.Colors" id="ddlColorId"></select>
-                </div>
-            </div>
-            <div class="size-area">
-                <h2 class="saider-bar-title">@Localizer["Sizes"]</h2>
-                <div class="size">
-                    <select asp-items="Model.Sizes" id="ddlSizeId"></select>
-                </div>
-            </div>
-        </div>*@
-                        <div class="product-color-size-area">
+                            <p class="availability in-stock pull-right">
+                                @Localizer["Status"]
+                            <span>@Localizer["InStock"]</span>
+                        </p>
+                    </div>
+                    <div class="short-description">
+                        <h2>@Localizer["QuickOverview"]</h2>
+                        @product.Description
+                    </div>
+                    @*<div class="product-color-size-area">
                             <div class="color-area">
-                                <h2 class="saider-bar-title">Color</h2>
+                                <h2 class="saider-bar-title">@Localizer["Color"]</h2>
                                 <div class="color">
-                                    <ul>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                    </ul>
+                                    <select asp-items="Model.Colors" id="ddlColorId"></select>
                                 </div>
                             </div>
                             <div class="size-area">
-                                <h2 class="saider-bar-title">Size</h2>
+                                <h2 class="saider-bar-title">@Localizer["Sizes"]</h2>
                                 <div class="size">
-                                    <ul>
-                                        <li><a href="#">S</a></li>
-                                        <li><a href="#">L</a></li>
-                                        <li><a href="#">M</a></li>
-                                        <li><a href="#">XL</a></li>
-                                        <li><a href="#">XXL</a></li>
-                                    </ul>
+                                    <select asp-items="Model.Sizes" id="ddlSizeId"></select>
                                 </div>
                             </div>
+                        </div>*@
+                    <div class="product-color-size-area">
+                        <div class="color-area">
+                            <h2 class="saider-bar-title">Color</h2>
+                            <div class="color">
+                                <ul>
+                                    <li><a href="#"></a></li>
+                                    <li><a href="#"></a></li>
+                                    <li><a href="#"></a></li>
+                                    <li><a href="#"></a></li>
+                                    <li><a href="#"></a></li>
+                                    <li><a href="#"></a></li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="product-variation">
-                            <form action="#" method="post">
-                                <div class="cart-plus-minus">
-                                    <label for="qty">@Localizer["Quantity"]</label>
-                                    <div class="numbers-row">
-                                        <div onClick="var result = document.getElementById('txtQuantity'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) result.value--;return false;" class="dec qtybutton"><i class="fa fa-minus">&nbsp;</i></div>
-                                        <input type="text" class="qty" title="Qty" value="1" maxlength="12" id="txtQuantity" name="txtQuantity">
-                                        <div onClick="var result = document.getElementById('txtQuantity'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="inc qtybutton"><i class="fa fa-plus">&nbsp;</i></div>
-                                    </div>
+                        <div class="size-area">
+                            <h2 class="saider-bar-title">Size</h2>
+                            <div class="size">
+                                <ul>
+                                    <li><a href="#">S</a></li>
+                                    <li><a href="#">L</a></li>
+                                    <li><a href="#">M</a></li>
+                                    <li><a href="#">XL</a></li>
+                                    <li><a href="#">XXL</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-variation">
+                        <form action="#" method="post">
+                            <div class="cart-plus-minus">
+                                <label for="qty">@Localizer["Quantity"]</label>
+                                <div class="numbers-row">
+                                    <div onClick="var result = document.getElementById('txtQuantity'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) result.value--;return false;" class="dec qtybutton"><i class="fa fa-minus">&nbsp;</i></div>
+                                    <input type="text" class="qty" title="Qty" value="1" maxlength="12" id="txtQuantity" name="txtQuantity">
+                                    <div onClick="var result = document.getElementById('txtQuantity'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="inc qtybutton"><i class="fa fa-plus">&nbsp;</i></div>
                                 </div>
-                                <button class="button pro-add-to-cart" id="btnAddToCart" data-id="@Model.Product.Id" title="Add to Cart" type="button"><span><i class="fa fa-shopping-basket"></i> @Localizer["AddToCart"]</span></button>
-                            </form>
-                        </div>
+                            </div>
+                            <button class="button pro-add-to-cart" id="btnAddToCart" data-id="@Model.Product.Id" title="Add to Cart" type="button"><span><i class="fa fa-shopping-basket"></i> @Localizer["AddToCart"]</span></button>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="product-overview-tab">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="product-tab-inner">
-                                <ul id="product-detail-tab" class="nav nav-tabs product-tabs">
-                                    <li class="active"> <a href="#description" data-toggle="tab">@Localizer["Description"]</a> </li>
-                                    <li> <a href="#reviews" data-toggle="tab">@Localizer["Review(s)"]</a> </li>
-                                </ul>
-                                <div id="productTabContent" class="tab-content">
-                                    <div class="tab-pane fade in active" id="description">
-                                        <div class="std">
-                                            @Html.Raw(product.Contents)
+        </div>
+        <div class="product-overview-tab">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="product-tab-inner">
+                            <ul id="product-detail-tab" class="nav nav-tabs product-tabs">
+                                <li class="active"> <a href="#description" data-toggle="tab">@Localizer["Description"]</a> </li>
+                                <li> <a href="#reviews" data-toggle="tab">@Localizer["Review(s)"]</a> </li>
+                            </ul>
+                            <div id="productTabContent" class="tab-content">
+                                <div class="tab-pane fade in active" id="description">
+                                    <div class="std">
+                                        @Html.Raw(product.Contents)
+                                    </div>
+                                </div>
+                                <div id="reviews" class="tab-pane fade">
+                                    <div class="col-sm-5 col-lg-5 col-md-5">
+                                        <div class="reviews-content-left">
+                                            <h2>Customer Reviews</h2>
+                                            <div class="review-ratting">
+                                                <p><a href="#">Amazing</a> Review by Company</p>
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Price</th>
+                                                            <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Value</th>
+                                                            <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Quality</th>
+                                                            <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <p class="author"> Angela Mack<small> (Posted on 16/12/2015)</small> </p>
+                                            </div>
+                                            <div class="review-ratting">
+                                                <p><a href="#">Good!!!!!</a> Review by Company</p>
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Price</th>
+                                                            <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Value</th>
+                                                            <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Quality</th>
+                                                            <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <p class="author"> Lifestyle<small> (Posted on 20/12/2015)</small> </p>
+                                            </div>
+                                            <div class="review-ratting">
+                                                <p><a href="#">Excellent</a> Review by Company</p>
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Price</th>
+                                                            <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Value</th>
+                                                            <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Quality</th>
+                                                            <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <p class="author"> Jone Deo<small> (Posted on 25/12/2015)</small> </p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div id="reviews" class="tab-pane fade">
-                                        <div class="col-sm-5 col-lg-5 col-md-5">
-                                            <div class="reviews-content-left">
-                                                <h2>Customer Reviews</h2>
-                                                <div class="review-ratting">
-                                                    <p><a href="#">Amazing</a> Review by Company</p>
+                                    <div class="col-sm-7 col-lg-7 col-md-7">
+                                        <div class="reviews-content-right">
+                                            <h2>Write Your Own Review</h2>
+                                            <form>
+                                                <h3>You're reviewing: <span>Donec Ac Tempus</span></h3>
+                                                <h4>How do you rate this product?<em>*</em></h4>
+                                                <div class="table-responsive reviews-table">
                                                     <table>
                                                         <tbody>
                                                             <tr>
-                                                                <th>Price</th>
-                                                                <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
+                                                                <th></th>
+                                                                <th>1 star</th>
+                                                                <th>2 stars</th>
+                                                                <th>3 stars</th>
+                                                                <th>4 stars</th>
+                                                                <th>5 stars</th>
                                                             </tr>
                                                             <tr>
-                                                                <th>Value</th>
-                                                                <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
+                                                                <td>Quality</td>
+                                                                <td><input type="radio"></td>
+                                                                <td><input type="radio"></td>
+                                                                <td><input type="radio"></td>
+                                                                <td><input type="radio"></td>
+                                                                <td><input type="radio"></td>
                                                             </tr>
                                                             <tr>
-                                                                <th>Quality</th>
-                                                                <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
+                                                                <td>Price</td>
+                                                                <td><input type="radio"></td>
+                                                                <td><input type="radio"></td>
+                                                                <td><input type="radio"></td>
+                                                                <td><input type="radio"></td>
+                                                                <td><input type="radio"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Value</td>
+                                                                <td><input type="radio"></td>
+                                                                <td><input type="radio"></td>
+                                                                <td><input type="radio"></td>
+                                                                <td><input type="radio"></td>
+                                                                <td><input type="radio"></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
-                                                    <p class="author"> Angela Mack<small> (Posted on 16/12/2015)</small> </p>
                                                 </div>
-                                                <div class="review-ratting">
-                                                    <p><a href="#">Good!!!!!</a> Review by Company</p>
-                                                    <table>
-                                                        <tbody>
-                                                            <tr>
-                                                                <th>Price</th>
-                                                                <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Value</th>
-                                                                <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Quality</th>
-                                                                <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                    <p class="author"> Lifestyle<small> (Posted on 20/12/2015)</small> </p>
-                                                </div>
-                                                <div class="review-ratting">
-                                                    <p><a href="#">Excellent</a> Review by Company</p>
-                                                    <table>
-                                                        <tbody>
-                                                            <tr>
-                                                                <th>Price</th>
-                                                                <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Value</th>
-                                                                <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Quality</th>
-                                                                <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                    <p class="author"> Jone Deo<small> (Posted on 25/12/2015)</small> </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-7 col-lg-7 col-md-7">
-                                            <div class="reviews-content-right">
-                                                <h2>Write Your Own Review</h2>
-                                                <form>
-                                                    <h3>You're reviewing: <span>Donec Ac Tempus</span></h3>
-                                                    <h4>How do you rate this product?<em>*</em></h4>
-                                                    <div class="table-responsive reviews-table">
-                                                        <table>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <th></th>
-                                                                    <th>1 star</th>
-                                                                    <th>2 stars</th>
-                                                                    <th>3 stars</th>
-                                                                    <th>4 stars</th>
-                                                                    <th>5 stars</th>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Quality</td>
-                                                                    <td><input type="radio"></td>
-                                                                    <td><input type="radio"></td>
-                                                                    <td><input type="radio"></td>
-                                                                    <td><input type="radio"></td>
-                                                                    <td><input type="radio"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Price</td>
-                                                                    <td><input type="radio"></td>
-                                                                    <td><input type="radio"></td>
-                                                                    <td><input type="radio"></td>
-                                                                    <td><input type="radio"></td>
-                                                                    <td><input type="radio"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Value</td>
-                                                                    <td><input type="radio"></td>
-                                                                    <td><input type="radio"></td>
-                                                                    <td><input type="radio"></td>
-                                                                    <td><input type="radio"></td>
-                                                                    <td><input type="radio"></td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
+                                                <div class="form-area">
+                                                    <div class="form-element">
+                                                        <label>Nickname <em>*</em></label>
+                                                        <input type="text">
                                                     </div>
-                                                    <div class="form-area">
-                                                        <div class="form-element">
-                                                            <label>Nickname <em>*</em></label>
-                                                            <input type="text">
-                                                        </div>
-                                                        <div class="form-element">
-                                                            <label>Summary of Your Review <em>*</em></label>
-                                                            <input type="text">
-                                                        </div>
-                                                        <div class="form-element">
-                                                            <label>Review <em>*</em></label>
-                                                            <textarea></textarea>
-                                                        </div>
-                                                        <div class="buttons-set">
-                                                            <button class="button submit" title="Submit Review" type="submit"><span><i class="fa fa-thumbs-up"></i> &nbsp;Review</span></button>
-                                                        </div>
+                                                    <div class="form-element">
+                                                        <label>Summary of Your Review <em>*</em></label>
+                                                        <input type="text">
                                                     </div>
-                                                </form>
-                                            </div>
+                                                    <div class="form-element">
+                                                        <label>Review <em>*</em></label>
+                                                        <textarea></textarea>
+                                                    </div>
+                                                    <div class="buttons-set">
+                                                        <button class="button submit" title="Submit Review" type="submit"><span><i class="fa fa-thumbs-up"></i> &nbsp;Review</span></button>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -297,6 +301,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <!-- Main Container End -->
@@ -321,8 +326,8 @@
                                             <div class="product-thumbnail">
                                                 <div class="pr-img-area">
                                                     <a title="@item.Name" href="@url">
-                                                        <figure> 
-                                                            <img class="first-img" src="@item.ImageUrl" alt="@item.Name" style="width:256px; height:256px"> 
+                                                        <figure>
+                                                            <img class="first-img" src="@item.ImageUrl" alt="@item.Name" style="width:256px; height:256px">
                                                             <img class="hover-img" src="@item.ImageUrl" alt="@item.Name">
                                                         </figure>
                                                     </a>
@@ -366,65 +371,65 @@
 <!-- Related Product Slider End -->
 <!-- Upsell Product Slider -->
 @*@if (Model.UpsellProducts.Count > 0)
-{
-    <section class="upsell-product-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="page-header">
-                        <h2>Sản phẩm khác</h2>
-                    </div>
-                    <div class="slider-items-products">
-                        <div id="upsell-product-slider" class="product-flexslider hidden-buttons">
-                            <div class="slider-items slider-width-col4">
-                                @foreach (var item in Model.UpsellProducts)
-                                {
-                                    var url = item.SeoAlias + "-" + "p." + item.Id + ".html";
-                                    <div class="product-item">
-                                        <div class="item-inner">
-                                            <div class="product-thumbnail">
-                                                <div class="pr-img-area">
-                                                    <a title="@item.Name" href="@url">
-                                                        <figure> <img class="first-img" src="@item.Image" alt="@item.Name"> <img class="hover-img" src="@item.Image" alt="@item.Name"></figure>
-                                                    </a>
-                                                </div>
-                                                <div class="pr-info-area">
-                                                    <div class="pr-button">
-                                                        <div class="mt-button add_to_wishlist"> <a href="#"> <i class="fa fa-heart-o"></i> </a> </div>
-                                                        <div class="mt-button quick-view"> <a href="#"> <i class="fa fa-search"></i> </a> </div>
+    {
+        <section class="upsell-product-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="page-header">
+                            <h2>Sản phẩm khác</h2>
+                        </div>
+                        <div class="slider-items-products">
+                            <div id="upsell-product-slider" class="product-flexslider hidden-buttons">
+                                <div class="slider-items slider-width-col4">
+                                    @foreach (var item in Model.UpsellProducts)
+                                    {
+                                        var url = item.SeoAlias + "-" + "p." + item.Id + ".html";
+                                        <div class="product-item">
+                                            <div class="item-inner">
+                                                <div class="product-thumbnail">
+                                                    <div class="pr-img-area">
+                                                        <a title="@item.Name" href="@url">
+                                                            <figure> <img class="first-img" src="@item.Image" alt="@item.Name"> <img class="hover-img" src="@item.Image" alt="@item.Name"></figure>
+                                                        </a>
+                                                    </div>
+                                                    <div class="pr-info-area">
+                                                        <div class="pr-button">
+                                                            <div class="mt-button add_to_wishlist"> <a href="#"> <i class="fa fa-heart-o"></i> </a> </div>
+                                                            <div class="mt-button quick-view"> <a href="#"> <i class="fa fa-search"></i> </a> </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="item-info">
-                                                <div class="info-inner">
-                                                    <div class="item-title"> <a title="@item.Name" href="@url">@item.Name</a> </div>
-                                                    <div class="item-content">
-                                                        <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                        <div class="item-price">
-                                                            <div class="price-box">
-                                                                <span class="regular-price">
-                                                                    <span class="price">@item.Price.ToString("N0")</span>
-                                                                </span>
+                                                <div class="item-info">
+                                                    <div class="info-inner">
+                                                        <div class="item-title"> <a title="@item.Name" href="@url">@item.Name</a> </div>
+                                                        <div class="item-content">
+                                                            <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                                            <div class="item-price">
+                                                                <div class="price-box">
+                                                                    <span class="regular-price">
+                                                                        <span class="price">@item.Price.ToString("N0")</span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="pro-action">
-                                                            <button type="button" class="add-to-cart" data-id="@item.Id"><span> Thêm vào giỏ</span> </button>
+                                                            <div class="pro-action">
+                                                                <button type="button" class="add-to-cart" data-id="@item.Id"><span> Thêm vào giỏ</span> </button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                }
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-}*@
+    }*@
 
 <!-- Upsell Product Slider End -->

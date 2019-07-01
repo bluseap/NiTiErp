@@ -24,6 +24,38 @@ namespace NiTiAPI.Dapper.Repositories
             _connectionString = configuration.GetConnectionString("DbConnectionString");
         }
 
+        public async Task<PagedResult<ProductViewModel>> GetAllPagingProductCate(string corporationName, string catelogyId, 
+            string culture, string keyword, int pageIndex, int pageSize)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+                var paramaters = new DynamicParameters();
+                paramaters.Add("@corporationName", corporationName);                
+                paramaters.Add("@categoryId", catelogyId);
+                paramaters.Add("@languageId", culture);
+                paramaters.Add("@keyword", keyword);
+                paramaters.Add("@pageIndex", pageIndex);
+                paramaters.Add("@pageSize", pageSize);               
+
+                paramaters.Add("@totalRow", dbType: System.Data.DbType.Int32, direction: System.Data.ParameterDirection.Output);
+
+                var result = await conn.QueryAsync<ProductViewModel>("Get_Product_PagingProductCate", paramaters, null, null, System.Data.CommandType.StoredProcedure);
+
+                int totalRow = paramaters.Get<int>("@totalRow");
+
+                var pagedResult = new PagedResult<ProductViewModel>()
+                {
+                    Items = result.ToList(),
+                    TotalRow = totalRow,
+                    PageIndex = pageIndex,
+                    PageSize = pageSize
+                };
+                return pagedResult;
+            }
+        }
+
         public async Task<List<ProductViewModel>> GetListProductCatelogCorName(string corporationName, string language)
         {
             using (var conn = new SqlConnection(_connectionString))
