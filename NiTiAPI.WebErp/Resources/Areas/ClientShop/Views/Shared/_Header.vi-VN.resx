@@ -120,10 +120,16 @@
   <data name="EnterYourSearch" xml:space="preserve">
     <value>Tìm theo danh mục sản phẩm..</value>
   </data>
+  <data name="Login" xml:space="preserve">
+    <value>Đăng nhập</value>
+  </data>
   <data name="MyCart" xml:space="preserve">
     <value>Giỏ hàng</value>
   </data>
   <data name="PhoneCall" xml:space="preserve">
     <value>Điện thoại</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Đăng ký</value>
   </data>
 </root>

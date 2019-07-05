@@ -40,6 +40,8 @@ using System.Reflection;
 using NiTiAPI.WebErp.Data;
 using NiTiAPI.WebErp.Helpers;
 using NiTiAPI.Dapper.ViewModels;
+using PaulMiami.AspNetCore.Mvc.Recaptcha;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace NiTiAPI.WebErp
 {
@@ -102,11 +104,11 @@ namespace NiTiAPI.WebErp
                 options.User.RequireUniqueEmail = true;
             });
 
-            //services.AddRecaptcha(new RecaptchaOptions()
-            //{
-            //    SiteKey = Configuration["Recaptcha:SiteKey"],
-            //    SecretKey = Configuration["Recaptcha:SecretKey"]
-            //});
+            services.AddRecaptcha(new RecaptchaOptions()
+            {
+                SiteKey = Configuration["Recaptcha:SiteKey"],
+                SecretKey = Configuration["Recaptcha:SecretKey"]
+            });
 
             services.AddSession(options =>
             {
@@ -115,16 +117,26 @@ namespace NiTiAPI.WebErp
             });
             services.AddImageResizer();
             services.AddAutoMapper();
-            //services.AddAuthentication()
-            //    .AddFacebook(facebookOpts =>
-            //    {
-            //        facebookOpts.AppId = Configuration["Authentication:Facebook:AppId"];
-            //        facebookOpts.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
-            //    })
-            //    .AddGoogle(googleOpts => {
-            //        googleOpts.ClientId = Configuration["Authentication:Google:ClientId"];
-            //        googleOpts.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
-            //    });
+            
+            services.AddAuthentication(options => {
+                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            })
+                .AddFacebook(facebookOpts =>
+                {
+                    facebookOpts.AppId = Configuration["Authentication:Facebook:AppId"];
+                    facebookOpts.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+                })
+                .AddGoogle(googleOpts =>
+                {
+                    googleOpts.ClientId = Configuration["Authentication:Google:ClientId"];
+                    googleOpts.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+                })
+                .AddCookie(options => {
+                     options.LoginPath = "/auth/signin";
+                 });
+
             // Add application services.
             services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>();

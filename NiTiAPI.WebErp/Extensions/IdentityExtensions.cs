@@ -18,5 +18,12 @@ namespace NiTiAPI.WebErp.Extensions
             var claim = claimsPrincipal.Claims.FirstOrDefault(x => x.Type == claimType);
             return (claim != null) ? claim.Value : string.Empty;
         }
+
+        public static string GetSpecificClaimClient(this ClaimsPrincipal claimsPrincipal, string claimType)
+        {
+            var claim = claimsPrincipal.Claims.FirstOrDefault(x => x.Type == claimType);
+            return (claim != null) ? claim.Value : string.Empty;
+        }
+
     }
 }

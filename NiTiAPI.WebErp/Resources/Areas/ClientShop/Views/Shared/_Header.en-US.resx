@@ -120,10 +120,16 @@
   <data name="EnterYourSearch" xml:space="preserve">
     <value>Search...</value>
   </data>
+  <data name="Login" xml:space="preserve">
+    <value>Log In</value>
+  </data>
   <data name="MyCart" xml:space="preserve">
     <value>My cart</value>
   </data>
   <data name="PhoneCall" xml:space="preserve">
     <value>Phone Call:</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
   </data>
 </root>
