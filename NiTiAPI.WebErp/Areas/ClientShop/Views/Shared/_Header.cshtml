@@ -28,7 +28,7 @@
                             @*<li class="hidden-xs"><a title="Help Center" href="#"><span>Help Center</span></a></li>
         <li><a title="Store Locator" href="#"><span>Store Locator</span></a></li>
         <li><a title="Checkout" href="checkout.html"><span>Checkout</span></a></li>*@
-                            <li>
+                            @*<li>
                                 <div class="dropdown">
                                     <a class="current-open" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
                                         <span>My Account</span>
@@ -44,30 +44,34 @@
                                         <li><a href="/clientshop/account/register/@corname">@Localizer["Register"]</a></li>
                                     </ul>
                                 </div>
-                            </li>
+                            </li>*@
                             @*<li><a title="login" href="account_page.html"><span>Login</span></a></li>*@
                             @if (User.Identity.IsAuthenticated)
                             {
                                 <li>
                                     <div class="dropdown">
-                                        <a class="current-open" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#"><span>@User.Identity.Name</span> <i class="fa fa-angle-down"></i></a>
+                                        <a class="current-open" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                                            <span>@User.Identity.Name</span> <i class="fa fa-angle-down"></i>
+                                        </a>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li><a href="/account.html">Account</a></li>
-                                            <li><a href="/wishlist.html">Wishlist</a></li>
-                                            <li><a href="/orders-list.html">Order Tracking</a></li>
+                                            <li><a href="/account.html">@Localizer["Account"]</a></li>
+                                            <li><a href="/wishlist.html">@Localizer["ContinueBuy"]</a></li>
+                                            <li><a href="/orders-list.html">@Localizer["Setting"]</a></li>
                                         </ul>
                                     </div>
                                 </li>
                                 <li>
-                                    <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
-                                        <a href="#" onclick="document.getElementById('logoutForm').submit()"><span>Thoát</span></a>
+                                    <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm">
+                                        <a class="current-open" href="#" onclick="document.getElementById('logoutForm').submit()">
+                                            <span>@Localizer["Exit"]</span>
+                                        </a>
                                     </form>
                                 </li>
                             }
                             else
                             {
-                                <li><a title="login" href="/login.html"><span>Đăng nhập</span></a></li>
-                                <li><a title="register" href="/register.html"><span>Đăng ký</span></a></li>
+                                <li><a href="/clientshop/account/login/@corname">@Localizer["Login"]</a></li>
+                                <li><a href="/clientshop/account/register/@corname">@Localizer["Register"]</a></li>
                             }
                         </ul>
                     </div>

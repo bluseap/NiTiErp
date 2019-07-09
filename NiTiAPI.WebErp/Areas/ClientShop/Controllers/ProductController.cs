@@ -19,16 +19,19 @@ namespace NiTiAPI.WebErp.Areas.ClientShop.Controllers
         private readonly IProductRepository _productRepository;
         private readonly ICategoriesRepository _categoriesRepository;
         private readonly IProductImagesRepository _productImagesRepository;
+        private readonly IAttributeOptionValueRepository _attributeOption;
         IConfiguration _configuration;
 
         public ProductController(IStringLocalizer<HomeController> localizer, IProductRepository productRepository,
             ICategoriesRepository categoriesRepository, IProductImagesRepository productImagesRepository,
+            IAttributeOptionValueRepository attributeOption,
             IConfiguration configuration )
         {
             _localizer = localizer;
             _productRepository = productRepository;
             _categoriesRepository = categoriesRepository;
             _productImagesRepository = productImagesRepository;
+            _attributeOption = attributeOption;
             _configuration = configuration;
         }
 
@@ -140,7 +143,14 @@ namespace NiTiAPI.WebErp.Areas.ClientShop.Controllers
             var model = await _categoriesRepository.GetListCateByCor(corporationName);
             return new OkObjectResult(model);
         }
-        
+
+        [HttpGet]
+        public async Task<IActionResult> GetListAttribute(int attributeId, string language)
+        {
+            var model = await _attributeOption.GetListByAttribute(attributeId, language);
+            return new OkObjectResult(model);
+        }
+
 
     }
 }

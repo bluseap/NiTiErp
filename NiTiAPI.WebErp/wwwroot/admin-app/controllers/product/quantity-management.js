@@ -12,8 +12,8 @@ var quantityController = function () {
     }
 
     this.initialize = function () {
-        loadColors();
-        loadSizes();
+        loadAttributeSize();
+        loadColors();        
         registerEvents();
         quantitiesClearData();
     }
@@ -36,20 +36,33 @@ var quantityController = function () {
         });        
 
         $('#btn-add-quantity').on('click', function () {
-            var template = $('#template-table-quantity').html();
-            var render = Mustache.render(template, {
-                Id: 0,
-                Colors: getColorOptions(null),
-                Sizes: getSizeOptions(null),
-                Quantity: 0
-            });
-            $('#table-quantity-content').append(render);
+            var attributeSize = $("#ddlAttributeSize").val();
+
+            if (attributeSize !== "0") {
+                var template = $('#template-table-quantity').html();
+                var render = Mustache.render(template, {
+                    Id: 0,
+                    Colors: getColorOptions(null),
+                    Sizes: getSizeOptions(null),
+                    Quantity: 0
+                });
+                $('#table-quantity-content').append(render);
+            }
+            else {
+                niti.notify(resources["BeforeAdd"], "error");
+            }
         });
 
         $('body').on('click', '.btn-delete-quantity', function (e) {
             e.preventDefault();
             $(this).closest('tr').remove();            
         });
+
+        $("#ddlAttributeSize").on('change', function () {
+            var attributeId = $("#ddlAttributeSize").val();
+            loadSizes(attributeId);
+        });
+      
     }
 
     function quantitiesClearData() {
@@ -74,12 +87,12 @@ var quantityController = function () {
         });
     }
 
-    function loadSizes() {
+    function loadSizes(attributeId) {
         return $.ajax({
             type: "GET",
             url: "/Admin/AttributeOptionValue/GetListAttribute",
             data: {
-                attributeId: 2, // Sizes
+                attributeId: attributeId, // Sizes
                 language: "vi-VN"
             },
             dataType: "json",
@@ -214,6 +227,22 @@ var quantityController = function () {
 
     function loadQuantityProduct(productid) {
         $.ajax({
+            url: '/admin/AttributeOptionValue/GetListAttributeSize',
+            data: {
+                productId: productid,
+                language: "vi-VN"
+            },
+            type: 'get',
+            dataType: 'json',
+            success: function (response) {              
+                cachedObj.sizes = response;
+                loadQuantityProductSize(productid);
+            }
+        });        
+    }
+
+    function loadQuantityProductSize(productid) {
+        $.ajax({
             url: '/admin/Product/GetProductQuantities',
             data: {
                 productId: productid
@@ -225,7 +254,7 @@ var quantityController = function () {
                     $('#hidInsertProductQuantities').val(1); // insert
                 }
                 else {
-                    $('#hidInsertProductQuantities').val(2); // update
+                    $('#hidInsertProductQuantities').val(2); // update                   
                 }
 
                 var render = '';
@@ -238,7 +267,31 @@ var quantityController = function () {
                         Quantity: item.Quantity
                     });
                 });
-                $('#table-quantity-content').html(render);                
+                $('#table-quantity-content').html(render);
+            }
+        });
+    }
+
+    function loadAttributeSize() {
+        return $.ajax({
+            type: 'GET',
+            url: '/admin/product/GetAttributeSize',
+            data: {
+                codeSize: "kich-co",
+                languageId: "vi-VN"
+            },
+            dataType: 'json',
+            success: function (response) {
+                var choosen = resources["Choose"];
+                var render = "<option value='0' >-- " + choosen + " --</option>";
+                $.each(response, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.Name + "</option>";
+                });
+                $('#ddlAttributeSize').html(render);
+                $("#ddlAttributeSize")[0].selectedIndex = 0;
+            },
+            error: function () {
+                niti.notify(resources['NotFound'], 'error');
             }
         });
     }

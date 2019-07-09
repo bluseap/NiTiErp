@@ -12,5 +12,6 @@
     "DeleteSure": "Bạn có muốn xóa?",
     "DeleteTableOK": "Xóa thành công",
     "UploadFile": "Tải file lên thành công.",
-    "UploadFileError": "Tải file bị lỗi."
+    "UploadFileError": "Tải file bị lỗi.",    
+    "BeforeAdd": "Chọn kích cỡ trước khi thêm"
 }

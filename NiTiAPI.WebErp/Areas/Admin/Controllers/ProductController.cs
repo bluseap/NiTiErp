@@ -17,14 +17,17 @@ namespace NiTiAPI.WebErp.Areas.Admin.Controllers
         private readonly IProductImagesRepository _productImages;
         private readonly IProductQuantitiesRepository _productQuantities;
         private readonly IProductWholePriceRepository _productWholePrice;
+        private readonly IAttributeRepository _attributeRepository;
 
         public ProductController(IProductRepository product, IProductImagesRepository productImages,
-            IProductQuantitiesRepository productQuantities, IProductWholePriceRepository productWholePrice)
+            IProductQuantitiesRepository productQuantities, IProductWholePriceRepository productWholePrice,
+            IAttributeRepository attributeRepository)
         {
             _product = product;
             _productImages = productImages;
             _productQuantities = productQuantities;
             _productWholePrice = productWholePrice;
+            _attributeRepository = attributeRepository;
         }
 
         public IActionResult Index()
@@ -174,7 +177,14 @@ namespace NiTiAPI.WebErp.Areas.Admin.Controllers
         {            
             var productWholePrice = await _productWholePrice.CreateProductWholePrice(productWholePriceXML, username, languageId);
             return new OkObjectResult(productWholePrice);           
-        }       
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAttributeSize(string codeSize, string languageId)
+        {
+            var model = await _attributeRepository.GetByCodeSize(codeSize, languageId);
+            return new OkObjectResult(model);
+        }
 
         #endregion
 

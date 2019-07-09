@@ -1,0 +1,90 @@
+﻿
+a.colorBack {
+    clear: both;
+    background: #333333;
+    float: left;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    height: 20px;
+    width: 20px;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+}
+
+a.colorRed {
+    clear: both;
+    background: #e32b00;
+    float: left;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    height: 20px;
+    width: 20px;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+}
+
+a.colorOrgane {
+    clear: both;
+    background: #ff9000;
+    float: left;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    height: 20px;
+    width: 20px;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+}
+
+a.colorGreen {
+    clear: both;
+    background: #8BC44A;
+    float: left;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    height: 20px;
+    width: 20px;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+}
+
+a.colorBlue {
+    clear: both;
+    background: #10b9b9;
+    float: left;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    height: 20px;
+    width: 20px;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+}
+
+a.colorWhile {
+    clear: both;
+    background: #FFFFFF;
+    float: left;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    height: 20px;
+    width: 20px;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+}
+
+a.sizeProduct {
+    border: 1px solid #e8e6e2;
+    padding: 3px 10px;
+    color: #666;
+    float: left;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 3px;
+}

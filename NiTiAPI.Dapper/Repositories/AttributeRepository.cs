@@ -80,6 +80,21 @@ namespace NiTiAPI.Dapper.Repositories
             }
         }
 
+        public async Task<List<AttributeViewModel>> GetByCodeSize(string codeSize, string culture)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+                var paramaters = new DynamicParameters();
+                paramaters.Add("@codesize", codeSize);
+                paramaters.Add("@language", culture);
+
+                var result = await conn.QueryAsync<AttributeViewModel>("Get_Attribute_ByCodeSize", paramaters, null, null, System.Data.CommandType.StoredProcedure);
+                return result.ToList();
+            }
+        }
+
         public async Task Update(int id, string culture, AttributeViewModel attribute)
         {
             using (var conn = new SqlConnection(_connectionString))

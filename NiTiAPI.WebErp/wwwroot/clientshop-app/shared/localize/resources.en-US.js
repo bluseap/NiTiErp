@@ -13,5 +13,11 @@
     "DeleteTableOK": "Delete successful",
     "UploadFile": "Upload file successful",
     "UploadFileError": "Upload file failed.",
-    "All": "All"
+    "All": "All",
+    "Active": "Active",
+    "Deactive": "Deactive",
+    "Comingsoon": "Coming soon",
+    "Color": "Color",
+    "Size": "Chọn kích cỡ",
+    "BeforeAdd": "Select the size before adding"
 }

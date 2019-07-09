@@ -12,6 +12,8 @@ namespace NiTiAPI.Dapper.Repositories.Interfaces
 
         Task<AttributeViewModel> GetById(int id, string culture);
 
+        Task<List<AttributeViewModel>> GetByCodeSize(string codeSize, string culture);
+
         Task Add(string culture, AttributeViewModel attribute);
 
         Task Update(int id, string culture, AttributeViewModel attribute);

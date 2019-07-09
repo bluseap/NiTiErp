@@ -28,6 +28,13 @@ namespace NiTiAPI.WebErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetListAttributeSize(long productId, string language)
+        {
+            var model = await _attributeOption.GetListByAttributeSize(productId, language);
+            return new OkObjectResult(model);
+        }
+
 
     }
 }

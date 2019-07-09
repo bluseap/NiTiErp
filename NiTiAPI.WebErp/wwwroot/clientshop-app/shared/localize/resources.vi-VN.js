@@ -13,5 +13,11 @@
     "DeleteTableOK": "Xóa thành công",
     "UploadFile": "Tải file lên thành công.",
     "UploadFileError": "Tải file bị lỗi.",
-    "All": "Tất cả"
+    "All": "Tất cả",
+    "Active": "Còn hàng",
+    "Deactive": "Hết hàng",
+    "Comingsoon": "Sắp về",
+    "Color": "Chọn màu",
+    "Size": "Chọn kích cỡ",
+    "BeforeAdd": "Chọn kích cỡ trước khi thêm"
 }

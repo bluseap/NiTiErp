@@ -35,5 +35,21 @@ namespace NiTiAPI.Dapper.Repositories
             }
         }
 
+        public async Task<List<AttributeOptionValueViewModel>> GetListByAttributeSize(long productId, string language)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+                var paramaters = new DynamicParameters();
+                paramaters.Add("@productId", productId);
+                paramaters.Add("@language", language);
+
+                var result = await conn.QueryAsync<AttributeOptionValueViewModel>("Get_AttributeOptionValue_SizeByProductId",
+                    paramaters, null, null, System.Data.CommandType.StoredProcedure);
+                return result.AsList();
+            }
+        }
+
     }
 }

@@ -7,9 +7,17 @@
                 <h4 class="modal-title">@Localizer["QuantityManagement"]</h4>
             </div>
             <div class="modal-body">
-                <div id="horizontal-form">
+                <div id="horizontal-form">                   
                     <form class="form-horizontal" role="form" id="frmMaintainanceQuantity">
                         <input type="hidden" id="hidId" value="" />
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label ">@Localizer["ChosseSize"] <a style="color:red"> (*)</a> </label>
+                            <div class="col-sm-3">
+                                <select id="ddlAttributeSize" class="form-control"></select>
+                            </div>
+                        </div>
+
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -24,7 +32,8 @@
                                 <tr>
                                     <td colspan="4">
                                         <button class="btn btn-xs btn-success" type="button" id="btn-add-quantity">@Localizer["Add"]</button>
-                                    </td>
+                                        <label class="control-label "><a style="color:red"> @Localizer["BeforeAdd"] </a></label>
+                                    </td>                                   
                                 </tr>
                             </tfoot>
                         </table>

@@ -12,5 +12,6 @@
     "DeleteSure": "Are you sure to delete?",
     "DeleteTableOK": "Delete successful",
     "UploadFile": "Upload file successful",
-    "UploadFileError": "Upload file failed."
+    "UploadFileError": "Upload file failed.",    
+    "BeforeAdd": "Select the size before adding"
 }

@@ -120,8 +120,14 @@
   <data name="Add" xml:space="preserve">
     <value>Thêm</value>
   </data>
+  <data name="BeforeAdd" xml:space="preserve">
+    <value>Chọn kích cỡ trước khi thêm</value>
+  </data>
   <data name="Cance" xml:space="preserve">
     <value>Hủy</value>
+  </data>
+  <data name="ChosseSize" xml:space="preserve">
+    <value>Chọn loại kích cỡ</value>
   </data>
   <data name="Color" xml:space="preserve">
     <value>Màu</value>
