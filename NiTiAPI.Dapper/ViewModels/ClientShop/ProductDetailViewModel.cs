@@ -27,5 +27,7 @@ namespace NiTiAPI.Dapper.ViewModels.ClientShop
         public List<SelectListItem> Colors { set; get; }
 
         public List<SelectListItem> Sizes { set; get; }
+
+        public Task<List<AttributeOptionValueViewModel>> AttributeSizes { set; get; }
     }
 }

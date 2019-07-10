@@ -56,14 +56,15 @@ namespace NiTiAPI.WebErp.Areas.ClientShop.Controllers
         {
             HttpContext.Session.Clear();
             ViewData["BodyClass"] = "product-page";
-            ViewData["CorporationName"] = id;            
+            ViewData["CorporationName"] = id;
+            ViewData["ProductId"] = productId;
             if (id != null)
             {
-                HttpContext.Session.SetString("corprationName", id);
+                HttpContext.Session.SetString("corprationName", id);               
             }
             else
             {
-                HttpContext.Session.SetString("corprationName", "");
+                HttpContext.Session.SetString("corprationName", "");               
             }
 
             var culture = HttpContext.Features.Get<IRequestCultureFeature>().RequestCulture.Culture.Name;
@@ -92,6 +93,8 @@ namespace NiTiAPI.WebErp.Areas.ClientShop.Controllers
                 //}).ToList();
 
                 model.RelatedProducts = _productRepository.GetListProductCorNameTop(id, culture, 9);
+
+                model.AttributeSizes = _attributeOption.GetListByAttributeSize(Convert.ToInt64(productId), culture);
             }
 
             //model.UpsellProducts = _productService.GetUpsellProducts(6);
@@ -150,6 +153,15 @@ namespace NiTiAPI.WebErp.Areas.ClientShop.Controllers
             var model = await _attributeOption.GetListByAttribute(attributeId, language);
             return new OkObjectResult(model);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetListAttributeSize(long productId, string language)
+        {
+            var model = await _attributeOption.GetListByAttributeSize(productId, language);
+            return new OkObjectResult(model);
+        }
+
+      
 
 
     }

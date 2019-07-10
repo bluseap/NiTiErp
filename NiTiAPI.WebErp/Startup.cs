@@ -118,23 +118,7 @@ namespace NiTiAPI.WebErp
             services.AddImageResizer();
             services.AddAutoMapper();
 
-            services.AddAuthentication()
-                .AddFacebook(facebookOpts =>
-                {
-                    facebookOpts.AppId = Configuration["Authentication:Facebook:AppId"];
-                    facebookOpts.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
-                })
-                .AddGoogle(googleOpts =>
-                {
-                    googleOpts.ClientId = Configuration["Authentication:Google:ClientId"];
-                    googleOpts.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
-                });
-            //services.AddAuthentication(options =>
-            //{
-            //    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            //    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            //    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            //})
+            //services.AddAuthentication()
             //    .AddFacebook(facebookOpts =>
             //    {
             //        facebookOpts.AppId = Configuration["Authentication:Facebook:AppId"];
@@ -144,12 +128,28 @@ namespace NiTiAPI.WebErp
             //    {
             //        googleOpts.ClientId = Configuration["Authentication:Google:ClientId"];
             //        googleOpts.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
-            //    })
-            //    .AddCookie(options =>
-            //    {
-            //        options.LoginPath = "/Admin/Home/Index";
-            //    })
-            //    ;
+            //    });
+            services.AddAuthentication(options =>
+            {
+                //options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                //options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            })
+                .AddFacebook(facebookOpts =>
+                {
+                    facebookOpts.AppId = Configuration["Authentication:Facebook:AppId"];
+                    facebookOpts.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+                })
+                .AddGoogle(googleOpts =>
+                {
+                    googleOpts.ClientId = Configuration["Authentication:Google:ClientId"];
+                    googleOpts.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+                })
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/Admin/Home/Index";
+                })
+                ;
 
             // Add application services.
             services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();

@@ -27,7 +27,7 @@ a.colorRed {
 
 a.colorOrgane {
     clear: both;
-    background: #ff9000;
+    background: #ff6a00;
     float: left;
     font-size: 11px;
     font-weight: 700;
@@ -40,7 +40,7 @@ a.colorOrgane {
 
 a.colorGreen {
     clear: both;
-    background: #8BC44A;
+    background: #00ff21;
     float: left;
     font-size: 11px;
     font-weight: 700;
@@ -53,7 +53,7 @@ a.colorGreen {
 
 a.colorBlue {
     clear: both;
-    background: #10b9b9;
+    background: #0026ff;
     float: left;
     font-size: 11px;
     font-weight: 700;
@@ -67,6 +67,45 @@ a.colorBlue {
 a.colorWhile {
     clear: both;
     background: #FFFFFF;
+    float: left;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    height: 20px;
+    width: 20px;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+}
+
+a.colorYellow {
+    clear: both;
+    background: #ffd800;
+    float: left;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    height: 20px;
+    width: 20px;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+}
+
+a.colorBrow {
+    clear: both;
+    background: #b98686;
+    float: left;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    height: 20px;
+    width: 20px;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+}
+
+a.colorPink {
+    clear: both;
+    background: #F778A1;
     float: left;
     font-size: 11px;
     font-weight: 700;

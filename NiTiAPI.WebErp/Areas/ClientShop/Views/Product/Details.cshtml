@@ -5,8 +5,10 @@
     ViewData["MetaKeyword"] = Model.Product.Result != null ? Model.Product.Result.SeoKeyword : "";
     ViewData["MetaDescription"] = Model.Product.Result != null ? Model.Product.Result.SeoDescription : "";
 
+    var productId = @ViewData["ProductId"];
     var product = Model.Product.Result;
     var category = Model.Category.Result;
+    var attributeSizes = Model.AttributeSizes.Result;
 
 }
 @section Styles{
@@ -38,6 +40,7 @@
 <!-- Main Container -->
 <div class="main-container col1-layout">
     <div class="container">
+        <input type="hidden" id="hidProductId" value=@productId />
         <div class="row">
             <div class="col-main">
                 <div class="product-view-area">
@@ -133,14 +136,15 @@
                             <div class="color-area">
                                 <h2 class="saider-bar-title"> @Localizer["Color"]</h2>
                                 <div class="color">
-                                    <ul>
-                                        <li><a class="color colorBack"></a></li>
-                                        <li><a class="color colorRed"></a></li>
-                                        <li><a class="color colorOrange"></a></li>
-                                        <li><a class="color colorGreen"></a></li>
-                                        <li><a class="color colorBlue"></a></li>
-                                        <li><a class="color colorWhite"></a></li>
-                                    </ul>
+                                    <select id="ddlSelectColor" class="form-control"></select>
+                                    @*<ul>
+            <li><a class="color colorBack"></a></li>
+            <li><a class="color colorRed"></a></li>
+            <li><a class="color colorOrange"></a></li>
+            <li><a class="color colorGreen"></a></li>
+            <li><a class="color colorBlue"></a></li>
+            <li><a class="color colorWhite"></a></li>
+        </ul>*@
                                 </div>
                             </div>
                             <div class="size-area">

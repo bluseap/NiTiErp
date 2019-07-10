@@ -19,5 +19,6 @@
     "Comingsoon": "Sắp về",
     "Color": "Chọn màu",
     "Size": "Chọn kích cỡ",
-    "BeforeAdd": "Chọn kích cỡ trước khi thêm"
+    "BeforeAdd": "Chọn kích cỡ trước khi thêm",
+    "PleaseSelectColor": "Chưa chọn màu, kích cỡ và số lượng."
 }
