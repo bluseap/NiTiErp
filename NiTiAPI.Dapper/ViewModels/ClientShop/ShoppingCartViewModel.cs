@@ -12,8 +12,8 @@ namespace NiTiAPI.Dapper.ViewModels.ClientShop
 
         public decimal Price { set; get; }
 
-        public ColorViewModel Color { get; set; }
+        public AttributeOptionValueViewModel Color { get; set; }
 
-        public SizeViewModel Size { get; set; }
+        public AttributeOptionValueViewModel Size { get; set; }
     }
 }

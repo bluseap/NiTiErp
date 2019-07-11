@@ -2,6 +2,8 @@
 
     //var userCorporationId = $("#hidUserCorporationId").val();
     //var userName = $("#hidUserName").val();  
+
+    var coporationNameId = $("#hidCorporationNameId").val();
     var productId = $("#hidProductId").val();
 
     var colorId = "0";
@@ -92,19 +94,22 @@
             }
             else {               
                 $.ajax({
-                    url: '/Cart/AddToCart',
+                    url: '/clientshop/Cart/AddToCart',
                     type: 'post',
                     dataType: 'json',
                     data: {
-                        productId: id,
+                        productId: productId,
                         quantity: parseInt($('#txtQuantity').val()),
                         color: colorId,
                         size: sizeId
                     },
                     success: function () {
-                        tedu.notify('Product was added successful', 'success');
-                        loadHeaderCart();
+                        niti.notify('Product was added successful', 'success');
+                         //loadHeaderCart();
                         clearDetailData();
+
+                        var href = "/clientshop/cart/index/" + coporationNameId ;
+                        window.open(href, '_parent');
                     }
                 });
             }

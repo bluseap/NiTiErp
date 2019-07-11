@@ -11,5 +11,11 @@ namespace NiTiAPI.Dapper.Repositories.Interfaces
         Task<List<AttributeOptionValueViewModel>> GetListByAttribute(int attributeId, string language);
 
         Task<List<AttributeOptionValueViewModel>> GetListByAttributeSize(long productId, string language);
+
+        Task<AttributeOptionValueViewModel> GetByProductId(long productId, string language);
+
+        Task<AttributeOptionValueViewModel> GetById(int attributeOptionValueId);
+
+        Task<List<AttributeOptionValueViewModel>> GetListAll();
     }
 }

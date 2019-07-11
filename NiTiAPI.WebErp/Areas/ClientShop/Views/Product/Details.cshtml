@@ -5,6 +5,7 @@
     ViewData["MetaKeyword"] = Model.Product.Result != null ? Model.Product.Result.SeoKeyword : "";
     ViewData["MetaDescription"] = Model.Product.Result != null ? Model.Product.Result.SeoDescription : "";
 
+    var corporationNameId = @ViewData["CorporationName"];
     var productId = @ViewData["ProductId"];
     var product = Model.Product.Result;
     var category = Model.Category.Result;
@@ -40,7 +41,9 @@
 <!-- Main Container -->
 <div class="main-container col1-layout">
     <div class="container">
+        <input type="hidden" id="hidCorporationNameId" value=@corporationNameId />
         <input type="hidden" id="hidProductId" value=@productId />
+
         <div class="row">
             <div class="col-main">
                 <div class="product-view-area">
@@ -81,7 +84,7 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                                 @*<i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>*@
+                                <i class="fa fa-star-o"></i>*@
                             </div>
                             <p class="rating-links">
                                 <a href="#">1 @Localizer["Review(s)"]</a> <span class="separator">
@@ -119,45 +122,45 @@
                             @product.Description
                         </div>
                         @*<div class="product-color-size-area">
-                                <div class="color-area">
-                                    <h2 class="saider-bar-title">@Localizer["Color"]</h2>
-                                    <div class="color">
-                                        <select asp-items="Model.Colors" id="ddlColorId"></select>
-                                    </div>
+                            <div class="color-area">
+                                <h2 class="saider-bar-title">@Localizer["Color"]</h2>
+                                <div class="color">
+                                    <select asp-items="Model.Colors" id="ddlColorId"></select>
                                 </div>
-                                <div class="size-area">
-                                    <h2 class="saider-bar-title">@Localizer["Sizes"]</h2>
-                                    <div class="size">
-                                        <select asp-items="Model.Sizes" id="ddlSizeId"></select>
-                                    </div>
+                            </div>
+                            <div class="size-area">
+                                <h2 class="saider-bar-title">@Localizer["Sizes"]</h2>
+                                <div class="size">
+                                    <select asp-items="Model.Sizes" id="ddlSizeId"></select>
                                 </div>
-                            </div>*@
+                            </div>
+                        </div>*@
                         <div class="product-color-size-area">
                             <div class="color-area">
                                 <h2 class="saider-bar-title"> @Localizer["Color"]</h2>
                                 <div class="color">
                                     <select id="ddlSelectColor" class="form-control"></select>
                                     @*<ul>
-            <li><a class="color colorBack"></a></li>
-            <li><a class="color colorRed"></a></li>
-            <li><a class="color colorOrange"></a></li>
-            <li><a class="color colorGreen"></a></li>
-            <li><a class="color colorBlue"></a></li>
-            <li><a class="color colorWhite"></a></li>
-        </ul>*@
+                                        <li><a class="color colorBack"></a></li>
+                                        <li><a class="color colorRed"></a></li>
+                                        <li><a class="color colorOrange"></a></li>
+                                        <li><a class="color colorGreen"></a></li>
+                                        <li><a class="color colorBlue"></a></li>
+                                        <li><a class="color colorWhite"></a></li>
+                                    </ul>*@
                                 </div>
                             </div>
                             <div class="size-area">
                                 <h2 class="saider-bar-title"> @Localizer["Sizes"]</h2>
                                 <div class="size">
-                                    <select id="ddlSelectSize" class="form-control" ></select>
+                                    <select id="ddlSelectSize" class="form-control"></select>
                                     @*<ul>
-            <li><a class="size sizeS">S</a></li>
-            <li><a class="size sizeL">L</a></li>
-            <li><a class="size sizeM">M</a></li>
-            <li><a class="size sizeXL">XL</a></li>
-            <li><a class="size sizeXXL">XXL</a></li>
-        </ul>*@
+                                        <li><a class="size sizeS">S</a></li>
+                                        <li><a class="size sizeL">L</a></li>
+                                        <li><a class="size sizeM">M</a></li>
+                                        <li><a class="size sizeXL">XL</a></li>
+                                        <li><a class="size sizeXXL">XXL</a></li>
+                                    </ul>*@
                                 </div>
                             </div>
                         </div>

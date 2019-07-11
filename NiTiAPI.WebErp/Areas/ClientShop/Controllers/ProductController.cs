@@ -161,7 +161,14 @@ namespace NiTiAPI.WebErp.Areas.ClientShop.Controllers
             return new OkObjectResult(model);
         }
 
-      
+        [HttpGet]
+        public async Task<IActionResult> GetListAttributeAll()
+        {
+            var model = await _attributeOption.GetListAll();
+            return new OkObjectResult(model);
+        }
+
+
 
 
     }
