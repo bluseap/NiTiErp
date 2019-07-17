@@ -24,7 +24,7 @@ namespace NiTiAPI.WebErp.Areas.ClientShop.Controllers
            
         public IActionResult Index(string id)
         {
-            HttpContext.Session.Clear();
+            //HttpContext.Session.Clear();
             ViewData["CorporationName"] = id;
             ViewData["BodyClass"] = "cms-index-index cms-home-page";
            

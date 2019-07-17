@@ -1,7 +1,7 @@
 ﻿var CartController = function () {
    var cachedObj = {
         colors: [],
-        sizes: [],
+        sizes: []
     }
     this.initialize = function () {
     $.when(loadColors(),
@@ -193,8 +193,8 @@
                             Image: item.Product.Image,
                             Price: tedu.formatNumber(item.Price, 0),
                             Quantity: item.Quantity,
-                            Colors: getColorOptions(item.Color == null? 0: item.Color.Id),
-                            Sizes:getSizeOptions(item.Size == null? "": item.Size.Id),
+                            Colors: getColorOptions(item.Color === null? 0: item.Color.Id),
+                            Sizes:getSizeOptions(item.Size === null? "": item.Size.Id),
                             Amount: tedu.formatNumber(item.Price * item.Quantity, 0),
                             Url: '/' + item.Product.SeoAlias + "-p." + item.Product.Id + ".html"
                         });

@@ -12,19 +12,184 @@
         $.when(loadColors(),
             loadSizes())
             .then(function () {
-                loadData();
+                loadCart();
             });
 
+        loadData();
         registerEvents();
     }
 
     function registerEvents() {
-       
+
+        $('body').on('click', '.btnSearchHeader', function (e) {
+            e.preventDefault();
+            var cateId = $('#ddlCategoryId').val();
+            var search = $('#txtSearchHeader').val();
+            searchProduct(cateId, search);                         
+        });
+
+        $('#txtSearchHeader').keypress(function (e) {
+            if (e.which === 13) {
+                e.preventDefault();
+                var cateId = $('#ddlCategoryId').val();
+                var search = $('#txtSearchHeader').val();
+                searchProduct(cateId, search);
+            }
+        });
+
+        $('body').on('click', '.btn-CartDelete', function (e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+            $.ajax({
+                url: '/clientshop/Cart/RemoveFromCart',
+                type: 'post',
+                data: {
+                    productId: id
+                },
+                success: function () {
+                    niti.notify(resources["RemoveCartOK"], 'success');
+                    loadHeaderCart();
+                    //loadData();
+                }
+            });
+        });
+
+        $('body').on('keyup', '.txtCartQuantity', function (e) {
+            e.preventDefault();
+            var ddlColor = 0;
+            var ddlSizeId = 0;
+
+            var id = $(this).data('id');
+            var q = $(this).val();
+            if (q > 0) {
+                $.ajax({
+                    url: '/clientshop/Cart/UpdateCart',
+                    type: 'post',
+                    data: {
+                        productId: id,
+                        quantity: q,
+                        color: ddlColor,
+                        size: ddlSizeId
+                    },
+                    success: function () {
+                        niti.notify(resources["UpdateCartOK"], 'success');
+                        loadHeaderCart();
+                        loadCart();
+                    }
+                });
+            } else {
+                niti.notify(resources["UpdateCartError"], 'error');
+            }
+        });
+
+        $('body').on('change', '.ddlColorId', function (e) {
+            e.preventDefault();
+            var ddlColor = $("#ddlColorId").val();
+            var ddlSizeId = 0;
+
+            var id = parseInt($(this).closest('tr').data('id'));
+            //var colorId = $(this).val();
+            var q = $(this).closest('tr').find('.txtQuantity').first().val();
+            //var sizeId = $(this).closest('tr').find('.ddlSizeId').first().val();
+
+            if (q > 0) {
+                $.ajax({
+                    url: '/clientshop/Cart/UpdateCart',
+                    type: 'post',
+                    data: {
+                        productId: id,
+                        quantity: q,
+                        color: ddlColor,
+                        size: ddlSizeId
+                    },
+                    success: function () {
+                        niti.notify(resources["UpdateCartOK"], 'success');
+                        loadHeaderCart();
+                        //loadData();
+                    }
+                });
+            } else {
+                niti.notify(resources["UpdateCartError"], 'error');
+            }
+        });
+
+        $('body').on('change', '.ddlSizeId', function (e) {
+            e.preventDefault();
+            var ddlColor = 0;
+            var ddlSizeId = $("#ddlSizeId").val();
+
+            var id = parseInt($(this).closest('tr').data('id'));
+            //var sizeId = $(this).val();
+            var q = parseInt($(this).closest('tr').find('.txtQuantity').first().val());
+            //var colorId = parseInt($(this).closest('tr').find('.ddlColorId').first().val());
+
+            if (q > 0) {
+                $.ajax({
+                    url: '/clientshop/Cart/UpdateCart',
+                    type: 'post',
+                    data: {
+                        productId: id,
+                        quantity: q,
+                        color: ddlColor,
+                        size: ddlSizeId
+                    },
+                    success: function () {
+                        niti.notify(resources["UpdateCartOK"], 'success');
+                        loadHeaderCart();
+                        //loadData();
+                    }
+                });
+            } else {
+                niti.notify(resources["UpdateCartError"], 'error');
+            }
+        });
+
+        $('#btnClearAll').on('click', function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: '/clientshop/Cart/ClearCart',
+                type: 'post',
+                success: function () {
+                    niti.notify(resources["ClearCart"] , 'success');
+                    loadHeaderCart();
+                    //loadData();
+                }
+            });
+        });
+
     }
 
     function loadData() {
-        loadCart();
+        //loadCart();
+        loadCategoty();
+    }
 
+    function searchProduct(cateId, search) {
+        //clientshop/product/search/nitiapp?catelogyId=0&keyword=0&sortBy=lastest&pageSize=24
+        var href = "/clientshop/product/search/nitiapp?catelogyId=" + cateId + "&keyword=" + search +
+            "&sortBy=lastest&pageSize=12";
+        window.open(href, '_parent');
+        return false;
+    }
+
+    function loadCategoty() {
+        return $.ajax({
+            type: 'GET',
+            url: '/clientshop/product/GetListCategory',
+            dataType: 'json',
+            success: function (response) {
+                var choosen = resources["All"];
+                var render = "<option value='0' >-- " + choosen + " --</option>";
+                $.each(response, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.Name + "</option>";
+                });
+                $('#ddlCategoryId').html(render);
+                $("#ddlCategoryId")[0].selectedIndex = 0;
+            },
+            error: function () {
+                niti.notify(resources['NotFound'], 'error');
+            }
+        });
     }
 
     function loadColors() {
@@ -40,7 +205,7 @@
                 cachedObj.colors = response;
             },
             error: function () {
-                tedu.notify('Has an error in progress', 'error');
+                niti.notify('Has an error in progress', 'error');
             }
         });
     }
@@ -54,7 +219,7 @@
                 cachedObj.sizes = response;
             },
             error: function () {
-                tedu.notify('Has an error in progress', 'error');
+                niti.notify('Has an error in progress', 'error');
             }
         });
     }
@@ -97,11 +262,11 @@
                         {
                             ProductId: item.Product.Id,
                             ProductName: item.Product.Name,
-                            Image: item.Product.Image,
+                            Image: item.Product.ImageUrl,
                             Price: niti.formatNumber(item.Price, 0),
                             Quantity: item.Quantity,
                             Colors: getColorOptions(item.Color === null ? 0 : item.Color.Id),
-                            Sizes: getSizeOptions(item.Size === null ? "" : item.Size.Id),
+                            Sizes: getSizeOptions(item.Size === null ? 0 : item.Size.Id),
                             Amount: niti.formatNumber(item.Price * item.Quantity, 0),
                             Url: '/' + item.Product.SeoAlias + "-p." + item.Product.Id + ".html"
                         });
@@ -115,6 +280,10 @@
             }
         });
         return false;
+    }
+
+    function loadHeaderCart() {
+        $("#headerCart").load("/clientshop/AjaxContent/HeaderCart");
     }
 
     

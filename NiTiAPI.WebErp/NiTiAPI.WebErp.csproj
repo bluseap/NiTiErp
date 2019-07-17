@@ -17,7 +17,9 @@
     <Folder Include="Resources\Areas\Admin\Views\Shared\Components\SideBar\" />
     <Folder Include="Resources\Areas\ClientShop\Controllers\" />
     <Folder Include="Resources\Areas\ClientShop\Models\" />
-    <Folder Include="Resources\Areas\ClientShop\Views\Shared\Components\SideBar\" />
+    <Folder Include="Resources\Areas\ClientShop\Views\Shared\Components\Brand\" />
+    <Folder Include="Resources\Areas\ClientShop\Views\Shared\Components\CategoryMenu\" />
+    <Folder Include="Resources\Areas\ClientShop\Views\Shared\Components\MobileMenu\" />
     <Folder Include="Resources\Areas\Client\Controllers\" />
     <Folder Include="Resources\Areas\Client\Models\" />
     <Folder Include="Resources\Areas\Client\Views\Shared\Components\SideBar\" />

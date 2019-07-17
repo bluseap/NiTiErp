@@ -54,7 +54,7 @@ namespace NiTiAPI.WebErp.Areas.ClientShop.Controllers
 
         public IActionResult Details(string id, string productId)
         {
-            HttpContext.Session.Clear();
+            //HttpContext.Session.Clear();
             ViewData["BodyClass"] = "product-page";
             ViewData["CorporationName"] = id;
             ViewData["ProductId"] = productId;
@@ -107,7 +107,7 @@ namespace NiTiAPI.WebErp.Areas.ClientShop.Controllers
 
         public IActionResult Search(string id, string catelogyId, string keyword, int pageSize, string sortBy, int page = 1)
         {
-            HttpContext.Session.Clear();
+            //HttpContext.Session.Clear();
             ViewData["BodyClass"] = "shop_grid_full_width_page";
             ViewData["CorporationName"] = id;
             if (id != null)

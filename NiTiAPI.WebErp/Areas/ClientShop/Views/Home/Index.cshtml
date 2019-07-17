@@ -1,6 +1,6 @@
 ﻿
 @inject IViewLocalizer Localizer
-@model ClientHomeViewModel
+@model NiTiAPI.Dapper.ViewModels.ClientShop.ClientHomeViewModel
 @{
     ViewData["Title"] = Model.Title;
     ViewData["MetaKeyword"] = Model.MetaKeyword;
@@ -20,8 +20,9 @@
 <div class="main-slider" id="home">
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-sm-3 col-xs-12 banner-left hidden-xs"><img src="images/banner-left.jpg" alt="banner"></div>
-            <div class="col-sm-9 col-md-9 col-lg-9 col-xs-12 jtv-slideshow">
+            @*<div class="col-md-3 col-sm-3 col-xs-12 banner-left hidden-xs"><img src="/clientshop-side/images/banner-left.jpg" alt="banner"></div>*@
+            @*<div class="col-sm-9 col-md-9 col-lg-9 col-xs-12 jtv-slideshow">*@
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 jtv-slideshow">
                 <div id="jtv-slideshow">
                     <div id='rev_slider_4_wrapper' class='rev_slider_wrapper fullwidthbanner-container'>
                         <div id='rev_slider_4' class='rev_slider fullwidthabanner'>

@@ -13,8 +13,7 @@
             e.preventDefault();
             var cateId = $('#ddlCategoryId').val();
             var search = $('#txtSearchHeader').val();
-            searchProduct(cateId, search);
-            //alert(cateId + '.' + search + '.' + corname);                 
+            searchProduct(cateId, search);                       
         });
 
         $('#txtSearchHeader').keypress(function (e) {

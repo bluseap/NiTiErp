@@ -105,7 +105,7 @@
                     },
                     success: function () {
                         niti.notify('Product was added successful', 'success');
-                         //loadHeaderCart();
+                        loadHeaderCart();
                         clearDetailData();
 
                         var href = "/clientshop/cart/index/" + coporationNameId ;
@@ -284,7 +284,7 @@
     }
 
     function loadHeaderCart() {
-        $("#headerCart").load("/AjaxContent/HeaderCart");
+        $("#headerCart").load("/clientshop/AjaxContent/HeaderCart");
     }
 
 }
