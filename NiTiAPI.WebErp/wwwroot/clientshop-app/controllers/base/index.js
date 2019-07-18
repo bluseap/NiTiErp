@@ -1,4 +1,6 @@
-﻿var BaseController = function () {
+﻿var BaseController = function () {    
+
+    var coporationNameId = $("#hidCorporationNameId").val();
 
     this.initialize = function () {
         registerEvents();
@@ -34,16 +36,24 @@
                     productId: id
                 },
                 success: function () {
-                    niti.notify(resources["RemoveCartOK"], 'success');
+                    niti.notify(resources["RemoveCartOK"], 'success');                
                     loadHeaderCart();
+
+                    var paraHeaderCart = $("#hidParaLoadHeaderCart").val();
+                    if (paraHeaderCart === "1") {                        
+                        var href = "/clientshop/cart/index/" + coporationNameId;
+                        window.open(href, '_parent');
+                        return false;
+                    }
                 }
-            });        
-            
+            });    
         });
     }
 
     function loadHeaderCart() {
         $("#headerCart").load("/clientshop/AjaxContent/HeaderCart");
     }
+
+   
 
 }

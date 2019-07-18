@@ -123,11 +123,17 @@
   <data name="Cart" xml:space="preserve">
     <value>Giỏ hàng</value>
   </data>
+  <data name="Color" xml:space="preserve">
+    <value>Màu</value>
+  </data>
   <data name="Exit" xml:space="preserve">
     <value>Thoát</value>
   </data>
   <data name="NoProduct" xml:space="preserve">
     <value>Chưa có sản phẩm</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Kích cỡ</value>
   </data>
   <data name="Total" xml:space="preserve">
     <value>Tổng cộng</value>

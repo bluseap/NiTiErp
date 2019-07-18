@@ -123,11 +123,17 @@
   <data name="Cart" xml:space="preserve">
     <value>Cart</value>
   </data>
+  <data name="Color" xml:space="preserve">
+    <value>Color</value>
+  </data>
   <data name="Exit" xml:space="preserve">
     <value>Exit</value>
   </data>
   <data name="NoProduct" xml:space="preserve">
     <value>Not Product</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Size</value>
   </data>
   <data name="Total" xml:space="preserve">
     <value>Total</value>

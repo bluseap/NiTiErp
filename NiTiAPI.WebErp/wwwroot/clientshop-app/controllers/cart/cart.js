@@ -6,9 +6,11 @@
     var cachedObj = {
         colors: [],
         sizes: []
-    }
+    }  
 
     this.initialize = function () {
+        $("#hidParaLoadHeaderCart").val("1");
+
         $.when(loadColors(),
             loadSizes())
             .then(function () {

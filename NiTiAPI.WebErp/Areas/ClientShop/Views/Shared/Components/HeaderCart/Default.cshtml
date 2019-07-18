@@ -6,6 +6,8 @@
 }
 
 <div class="mini-cart" id="headerCart">
+    <input type="hidden" id="hidParaLoadHeaderCart" value="0"/>
+
     <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle">
         <a href="#">
             <div class="cart-icon">
@@ -40,7 +42,15 @@
                                 <p class="product-name">
                                     <a href="@url">@item.Product.Name</a>
                                 </p>
-                                <strong>@item.Quantity</strong> x <span class="price">@((item.Product.DiscountPrice == 0 ? item.Product.Price : item.Product.DiscountPrice).ToString("N0"))</span>
+                                <strong>@item.Quantity</strong>
+                                    x 
+                                <span class="price">
+                                    @((item.Product.DiscountPrice == 0 ? item.Product.Price : item.Product.DiscountPrice).ToString("N0"))
+                                </span>
+                                <p class="product-name">
+                                    @Localizer["Color"]: <strong>@item.Color.Value</strong>
+                                    @Localizer["Size"]: <strong>@item.Size.Value</strong>
+                                </p>
                             </div>
                         </li>
                     }
