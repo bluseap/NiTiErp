@@ -70,17 +70,17 @@ namespace NiTiAPI.WebErp.Areas.ClientShop.Controllers
                 bool hasChanged = false;
 
                 //Check exist with item product id
-                if (session.Any(x => x.Product.Id == productId))
+                if (session.Any(x => x.Product.Id == productId && x.Size.Id == size && x.Color.Id == color))
                 {
                     foreach (var item in session)
                     {
                         //Update quantity for product if match product id
-                        if (item.Product.Id == productId)
+                        if (item.Product.Id == productId && item.Size.Id == size && item.Color.Id == color)
                         {
                             item.Quantity += quantity;
-                            item.Price = product.Result.DiscountPrice == 0 ? product.Result.DiscountPrice : product.Result.Price;
+                            item.Price = product.Result.DiscountPrice == 0 ? product.Result.Price : product.Result.DiscountPrice;
                             hasChanged = true;
-                        }
+                        }                        
                     }
                 }
                 else
@@ -91,8 +91,8 @@ namespace NiTiAPI.WebErp.Areas.ClientShop.Controllers
                         Quantity = quantity,
                         Color = _attributeOptionValueRepository.GetById(color).Result, 
                         Size = _attributeOptionValueRepository.GetById(size).Result,
-                        Price = product.Result.DiscountPrice == 0 ? product.Result.DiscountPrice : product.Result.Price
-                    });
+                        Price = product.Result.DiscountPrice == 0 ? product.Result.Price : product.Result.DiscountPrice
+                });
                     hasChanged = true;
                 }
 
@@ -112,8 +112,8 @@ namespace NiTiAPI.WebErp.Areas.ClientShop.Controllers
                     Quantity = quantity,
                     Color = _attributeOptionValueRepository.GetById(color).Result,
                     Size = _attributeOptionValueRepository.GetById(size).Result,
-                    Price = product.Result.DiscountPrice == 0 ? product.Result.DiscountPrice : product.Result.Price
-                });
+                    Price = product.Result.DiscountPrice == 0 ? product.Result.Price : product.Result.DiscountPrice
+            });
                 HttpContext.Session.Set(CommonConstants.CartSession, cart);
             }
             return new OkObjectResult(productId);
@@ -163,17 +163,16 @@ namespace NiTiAPI.WebErp.Areas.ClientShop.Controllers
                             //item.Size = _attributeOptionValueRepository.GetById(size).Result;
                             //item.Color = _attributeOptionValueRepository.GetById(color).Result;
                             item.Quantity = quantity;
-                            item.Price = product.Result.DiscountPrice == 0 ? product.Result.DiscountPrice : product.Result.Price;
+                            item.Price = product.Result.DiscountPrice == 0 ? product.Result.Price : product.Result.DiscountPrice;
                             hasChanged = true;
                         }
                         else if (size == 0)
                         {
-
                             item.Product = product.Result;
                             //item.Size = _attributeOptionValueRepository.GetById(size).Result;
                             item.Color = _attributeOptionValueRepository.GetById(color).Result;
                             item.Quantity = quantity;
-                            item.Price = product.Result.DiscountPrice == 0 ? product.Result.DiscountPrice : product.Result.Price;
+                            item.Price = product.Result.DiscountPrice == 0 ? product.Result.Price : product.Result.DiscountPrice;
                             hasChanged = true;
                         }
                         else if (color == 0)
@@ -182,7 +181,7 @@ namespace NiTiAPI.WebErp.Areas.ClientShop.Controllers
                             item.Size = _attributeOptionValueRepository.GetById(size).Result;
                             //item.Color = _attributeOptionValueRepository.GetById(color).Result;
                             item.Quantity = quantity;
-                            item.Price = product.Result.DiscountPrice == 0 ? product.Result.DiscountPrice : product.Result.Price;
+                            item.Price = product.Result.DiscountPrice == 0 ? product.Result.Price : product.Result.DiscountPrice;
                             hasChanged = true;
                         }
                     }

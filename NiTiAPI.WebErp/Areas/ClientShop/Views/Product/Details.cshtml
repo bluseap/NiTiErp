@@ -379,12 +379,26 @@
                                                 <div class="info-inner">
                                                     <div class="item-title"> <a title="@item.Name" href="@url">@item.Name</a> </div>
                                                     <div class="item-content">
-                                                        <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                                        <div class="rating"> 
+                                                            <i class="fa fa-star"></i> 
+                                                            <i class="fa fa-star"></i> 
+                                                            <i class="fa fa-star"></i> 
+                                                            <i class="fa fa-star"></i> 
+                                                            <i class="fa fa-star"></i> 
+                                                        </div>
                                                         <div class="item-price">
                                                             <div class="price-box">
-                                                                <span class="regular-price">
-                                                                    <span class="price">@item.Price.ToString("N0")</span>
-                                                                </span>
+                                                                @if (item.DiscountPrice == 0)
+                                                                {
+                                                                    <span class="regular-price">
+                                                                        <span class="price">@item.Price.ToString("N0") đ</span>
+                                                                    </span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> @item.DiscountPrice.ToString("N0") đ </span> </p>
+                                                                    <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> @item.Price.ToString("N0") đ </span> </p>
+                                                                }                                                                
                                                             </div>
                                                         </div>
                                                         <div class="pro-action">

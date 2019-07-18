@@ -123,6 +123,9 @@
   <data name="ClearCart" xml:space="preserve">
     <value>Clear cart</value>
   </data>
+  <data name="Color" xml:space="preserve">
+    <value>Color</value>
+  </data>
   <data name="ContinueShopping" xml:space="preserve">
     <value>Continue shopping</value>
   </data>
@@ -137,6 +140,9 @@
   </data>
   <data name="ShoppingCart" xml:space="preserve">
     <value>Shopping Cart</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Size</value>
   </data>
   <data name="Total" xml:space="preserve">
     <value>Total</value>

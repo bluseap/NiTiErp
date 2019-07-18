@@ -123,6 +123,9 @@
   <data name="ClearCart" xml:space="preserve">
     <value>Xóa giỏ hàng</value>
   </data>
+  <data name="Color" xml:space="preserve">
+    <value>Màu</value>
+  </data>
   <data name="ContinueShopping" xml:space="preserve">
     <value>Tiếp tục mua sắm</value>
   </data>
@@ -137,6 +140,9 @@
   </data>
   <data name="ShoppingCart" xml:space="preserve">
     <value>Mua sắm</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Kích cỡ</value>
   </data>
   <data name="Total" xml:space="preserve">
     <value>Tổng cộng</value>

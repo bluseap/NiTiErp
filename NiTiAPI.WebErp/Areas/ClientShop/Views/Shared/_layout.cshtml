@@ -22,7 +22,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Favicons Icon -->
-    <link rel="shortcut icon" type="image/x-icon" href="/clientshop-side/images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="~/clientshop-side/images/icon/niti2.ico">
 
     <!-- CSS Style -->
     <link href="~/clientshop-side/style.css" rel="stylesheet" />
@@ -187,6 +187,11 @@
     <script src="~/clientshop-app/shared/localize/resources.@(requestCulture.RequestCulture.Culture.Name).js"></script>
     <script src="~/clientshop-app/shared/niti.js" asp-append-version="true"></script>
 
+    <script src="~/clientshop-app/controllers/base/index.js" asp-append-version="true"></script>
+    <script>
+        var baseObj = new BaseController();
+        baseObj.initialize();
+    </script>
 
     @RenderSection("Scripts", required: false)
 </body>

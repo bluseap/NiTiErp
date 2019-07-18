@@ -5,7 +5,7 @@ using System.Text;
 namespace NiTiAPI.Dapper.ViewModels.ClientShop
 {
     public class ShoppingCartViewModel
-    {
+    {      
         public ProductViewModel Product { set; get; }
 
         public int Quantity { set; get; }

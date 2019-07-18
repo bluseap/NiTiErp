@@ -53,8 +53,8 @@
                                     </td>
                                     <td class="cart_description">
                                         <p class="product-name"><a href="#">{{ProductName}}</a></p>
-                                        <small><a href="#">Color : {{{Colors}}}</a></small>
-                                        <small><a href="#">Size : {{{Sizes}}}</a></small>
+                                        <small><a href="#">@Localizer["Color"]: {{{Colors}}}</a></small>
+                                        <small><a href="#">@Localizer["Size"]: {{{Sizes}}}</a></small>
                                     </td>
                                     <td class="price"><span>{{Price}}</span></td>
                                     <td class="qty"><input class="form-control input-sm txtCartQuantity" data-id="{{ProductId}}" type="text" value="{{Quantity}}"></td>
@@ -64,7 +64,7 @@
                             </script>
                         </div>
                         <div class="cart_navigation">
-                            <a class="continue-btn" href="/products.html"><i class="fa fa-arrow-left"> </i>&nbsp; @Localizer["ContinueShopping"]</a>
+                            <a class="btnContinueShopping" ><i class="fa fa-arrow-left"> </i>&nbsp; @Localizer["ContinueShopping"]</a>
                             <a id="btnClearAll" href="#"><i class="fa fa-remove"> </i>&nbsp; @Localizer["ClearCart"]</a>
                             <a class="checkout-btn" href="/checkout.html"><i class="fa fa-check"></i> @Localizer["Checkout"] </a>
                         </div>

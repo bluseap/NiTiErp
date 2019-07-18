@@ -96,13 +96,25 @@
                                                         <i class="fa fa-star"></i> 
                                                         <i class="fa fa-star"></i> </div>
                                                         <div class="item-price">
-                                                            <div class="price-box"> <span class="regular-price"> <span class="price">@item.Price.ToString("N0")</span> </span> </div>
+                                                            <div class="price-box">
+                                                                @if (item.DiscountPrice == 0)
+                                                                {
+                                                                    <span class="regular-price">
+                                                                        <span class="price">@item.Price.ToString("N0") đ</span>
+                                                                    </span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> @item.DiscountPrice.ToString("N0") đ </span> </p>
+                                                                    <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> @item.Price.ToString("N0") đ </span> </p>
+                                                                }                                                                
+                                                            </div>
                                                         </div>
                                                         <div class="pro-action">
-                                                            <button type="button" data-id="@item.Id" class="add-to-cart">
-                                                                <a href="/ClientShop/product/Details/@corname?productId=@item.Id" style="color:white">
-                                                                    <span> @Localizer["ViewDetail"]</span>
-                                                                </a>
+                                                            <button type="button" data-id="@item.Id" class="add-to-cart" onclick="window.location = '/ClientShop/product/Details/@corname?productId=@item.Id'">
+                                                                <span> @Localizer["ViewDetail"]</span>
+                                                                @*<a href="/ClientShop/product/Details/@corname?productId=@item.Id" style="color:white">          <span> @Localizer["ViewDetail"]</span>
+        </a>*@
                                                             </button>
                                                         </div>
                                                     </div>
