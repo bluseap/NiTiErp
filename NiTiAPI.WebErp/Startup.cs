@@ -42,6 +42,7 @@ using NiTiAPI.WebErp.Helpers;
 using NiTiAPI.Dapper.ViewModels;
 using PaulMiami.AspNetCore.Mvc.Recaptcha;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using NiTiAPI.WebErp.Resources;
 
 namespace NiTiAPI.WebErp
 {
@@ -201,7 +202,15 @@ namespace NiTiAPI.WebErp
             })
             .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix,
                     opts => { opts.ResourcesPath = "Resources"; })
-            .AddDataAnnotationsLocalization()
+            //.AddDataAnnotationsLocalization()
+            .AddDataAnnotationsLocalization(otp =>
+            {
+                otp.DataAnnotationLocalizerProvider = (type, factory) =>
+                {
+                    var assemblyName = new AssemblyName(typeof(SharedResource).GetTypeInfo().Assembly.FullName);
+                    return factory.Create("SharedResource", assemblyName.Name);
+                };
+            })
 
             .AddRazorPagesOptions(options => options.AllowAreas = true)
 
@@ -248,6 +257,7 @@ namespace NiTiAPI.WebErp
             services.AddTransient<IProductImagesRepository, ProductImagesRepository>();
             services.AddTransient<IProductQuantitiesRepository, ProductQuantitiesRepository>();
             services.AddTransient<IContactRepository, ContactRepository>();
+            services.AddTransient<IOrderRepository, OrderRepository>();
 
             services.AddTransient<IProductWholePriceRepository, ProductWholePriceRepository>();
 

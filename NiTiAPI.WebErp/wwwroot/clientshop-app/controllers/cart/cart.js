@@ -23,6 +23,11 @@
 
     function registerEvents() {
 
+        $('body').on('click', '.btnCartBeginOrder', function (e) {
+            e.preventDefault();
+            niti.notify("elkrjglk kl", "success");
+        });
+
         $('body').on('click', '.btnContinueShopping', function (e) {
             e.preventDefault();
             var cateId = $('#ddlCategoryId').val();

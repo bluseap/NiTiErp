@@ -12,9 +12,9 @@
         <a href="#">
             <div class="cart-icon">
                 <i class="icon-basket-loaded icons"></i>
-                @if (Model.Count > 0)
+                @if (Model.Count() > 0)
                 {
-                    <span class="cart-total">@Model.Count</span>
+                    <span class="cart-total">@Model.Count()</span>
                 }
             </div>
             <div class="shoppingcart-inner hidden-xs">
@@ -25,7 +25,7 @@
     </div>
     <div>
         <div class="top-cart-content">
-            @if (Model.Count > 0)
+            @if (Model.Count() > 0)
             {
                 <div class="block-subtitle hidden">@Localizer["AddProduct"]</div>
                 <ul id="cart-sidebar" class="mini-products-list">
@@ -58,6 +58,10 @@
                 <div class="top-subtotal">@Localizer["Total"]: <span class="price">@Model.Sum(x => x.Quantity * x.Price).ToString("N0")</span></div>
                 <div class="actions">
                     <button class="view-cart" type="button" onClick="location.href='/clientshop/cart/index/@corname'"><i class="fa fa-shopping-cart"></i><span>@Localizer["ViewCart"]</span></button>
+                    <button class="btn-checkout" type="button" style="background:#0094ff; color:white; " onClick="location.href='/clientshop/cart/Order/@corname'">
+                        <i class="fa fa-check"></i>
+                        <span>@Localizer["Buy"]</span>
+                    </button>
                 </div>
             }
             else

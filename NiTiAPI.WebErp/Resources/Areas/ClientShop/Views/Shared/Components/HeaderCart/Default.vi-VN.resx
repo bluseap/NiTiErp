@@ -120,6 +120,9 @@
   <data name="AddProduct" xml:space="preserve">
     <value>Sản phẩm mới thêm gần đây</value>
   </data>
+  <data name="Buy" xml:space="preserve">
+    <value>Mua</value>
+  </data>
   <data name="Cart" xml:space="preserve">
     <value>Giỏ hàng</value>
   </data>

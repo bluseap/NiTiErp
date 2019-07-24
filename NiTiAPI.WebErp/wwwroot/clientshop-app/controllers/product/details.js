@@ -95,8 +95,7 @@
             else {               
                 $.ajax({
                     url: '/clientshop/Cart/AddToCart',
-                    type: 'post',
-                    dataType: 'json',
+                    type: 'post',                   
                     data: {
                         productId: productId,
                         quantity: parseInt($('#txtQuantity').val()),

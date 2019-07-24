@@ -1,7 +1,8 @@
 ﻿@inject IViewLocalizer Localizer
 
 @{
-    ViewData["Title"] = "Cart";  
+    ViewData["Title"] = "Cart";
+    var @corname = @ViewData["CorporationName"];
 }
 @section Styles{
    
@@ -66,7 +67,7 @@
                         <div class="cart_navigation">
                             <a class="btnContinueShopping" ><i class="fa fa-arrow-left"> </i>&nbsp; @Localizer["ContinueShopping"]</a>
                             <a id="btnClearAll" href="#"><i class="fa fa-remove"> </i>&nbsp; @Localizer["ClearCart"]</a>
-                            <a class="checkout-btn" href="/checkout.html"><i class="fa fa-check"></i> @Localizer["Checkout"] </a>
+                            <a class="checkout-btn btnCartBeginOrder" onClick="location.href='/clientshop/cart/Order/@corname'" ><i class="fa fa-check"></i> @Localizer["BeginOrder"] </a>
                         </div>
                     </div>
                 </div>

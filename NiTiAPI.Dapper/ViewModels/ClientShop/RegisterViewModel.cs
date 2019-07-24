@@ -32,7 +32,7 @@ namespace NiTiAPI.Dapper.ViewModels.ClientShop
 
         [Display(Name = "Address")]
         public string Address { get; set; }
-
+        
         [Display(Name = "Phone number")]
         public string PhoneNumber { set; get; }
 

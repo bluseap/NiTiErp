@@ -120,6 +120,9 @@
   <data name="AddProduct" xml:space="preserve">
     <value>Add Product</value>
   </data>
+  <data name="Buy" xml:space="preserve">
+    <value>Buy</value>
+  </data>
   <data name="Cart" xml:space="preserve">
     <value>Cart</value>
   </data>

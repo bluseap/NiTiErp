@@ -16,13 +16,15 @@ namespace NiTiAPI.WebErp.Areas.ClientShop.Controllers
     {
         private readonly IProductRepository _productRepository;
         private readonly IAttributeOptionValueRepository _attributeOptionValueRepository;
+        private readonly IOrderRepository _orderRepository;
 
         public CartController(IProductRepository productRepository, 
-            IAttributeOptionValueRepository attributeOptionValueRepository
-            )
+            IAttributeOptionValueRepository attributeOptionValueRepository,
+            IOrderRepository orderRepository)
         {
             _productRepository = productRepository;
             _attributeOptionValueRepository = attributeOptionValueRepository;
+            _orderRepository = orderRepository;
         }
 
         public IActionResult Index(string id)
@@ -43,6 +45,79 @@ namespace NiTiAPI.WebErp.Areas.ClientShop.Controllers
             return View();
             
         }
+      
+        public IActionResult Order(string id, string returnUrl = null)
+        {
+            ViewData["CorporationName"] = id;
+
+            if (id != null)
+            {
+                HttpContext.Session.SetString("corprationName", id);
+            }
+            else
+            {
+                HttpContext.Session.SetString("corprationName", "");
+            }
+
+            ViewData["ReturnUrl"] = returnUrl;
+
+            var culture = HttpContext.Features.Get<IRequestCultureFeature>().RequestCulture.Culture.Name;
+
+            return View();
+        }
+
+        public IActionResult OrderInfo(string id, string returnUrl = null)
+        {
+            ViewData["CorporationName"] = id;
+
+            if (id != null)
+            {
+                HttpContext.Session.SetString("corprationName", id);
+            }
+            else
+            {
+                HttpContext.Session.SetString("corprationName", "");
+            }
+
+            ViewData["ReturnUrl"] = returnUrl;
+
+            var culture = HttpContext.Features.Get<IRequestCultureFeature>().RequestCulture.Culture.Name;
+
+            return View();
+        }
+       
+        public async Task<IActionResult> BeginOrder(string corporationname, string customerName, string customerEmail,
+            string customerPhone, string customerAddress)
+        {
+            string xml = "";
+            xml = xml + "<tables>";            
+
+            var session = HttpContext.Session.Get<List<ShoppingCartViewModel>>(CommonConstants.CartSession);
+          
+            if (session != null)
+            {   
+                for (int i = 0; i < session.Count; i++)
+                {
+                    var listfield = session[i];
+                    xml += "<items>";
+                    xml += "<CorporationName>" + corporationname.ToUpper() + "</CorporationName>";
+                    xml += "<CustomerName>" + customerName + "</CustomerName>";
+                    xml += "<CustomerEmail>" + customerEmail + "</CustomerEmail>";
+                    xml += "<CustomerPhone>" + customerPhone + "</CustomerPhone>";
+                    xml += "<CustomerAddress>" + customerAddress + "</CustomerAddress>";
+                    xml += "<ProductId>" + listfield.Product.Id + "</ProductId>";
+                    xml += "<Quantity>" + listfield.Quantity + "</Quantity>";
+                    xml += "<SizeId>" + listfield.Size.Id + "</SizeId>";
+                    xml += "<ColorId>" + listfield.Color.Id + "</ColorId>";
+                    xml += "</items>";
+                }                      
+            }
+
+            xml = xml + "</tables>";
+
+            var orderXML = await _orderRepository.CreateOrder(xml, "GuidId");
+            return new OkObjectResult(orderXML);            
+        }
 
         [HttpGet]
         public IActionResult GetCart()
@@ -52,8 +127,7 @@ namespace NiTiAPI.WebErp.Areas.ClientShop.Controllers
                 session = new List<ShoppingCartViewModel>();
             return new OkObjectResult(session);
         }
-
-        [HttpPost]
+       
         public IActionResult AddToCart(long productId, int quantity, int color, int size)
         {
 

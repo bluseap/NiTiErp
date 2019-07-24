@@ -16,7 +16,7 @@
         <ul class="nav">
             @foreach (var item in categories.Where(x => x.ParentId == 0))
             {
-                if (categories.Any(x => x.ParentId == item.Id))
+                @if (categories.Any(x => Convert.ToInt64(x.ParentId) == item.Id))
                 {
                     <li>
                         <a href="/ClientShop/product/Search/@corname?catelogyId=0">@item.Name</a>
