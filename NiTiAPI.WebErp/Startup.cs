@@ -132,8 +132,8 @@ namespace NiTiAPI.WebErp
             //    });
             services.AddAuthentication(options =>
             {
-                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                //options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                //options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             })
                 .AddFacebook(facebookOpts =>
@@ -299,13 +299,13 @@ namespace NiTiAPI.WebErp
 
             app.UseMvc(routes =>
             {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-                routes.MapAreaRoute(
-                    name: "default2",
-                    areaName: "ClientShop",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                //routes.MapRoute(
+                //    name: "default",
+                //    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                //routes.MapAreaRoute(
+                //    name: "default2",
+                //    areaName: "ClientShop",
+                //    template: "{controller=Home}/{action=Index}/{id?}");
 
                 //routes.MapRoute(
                 //    name: "default",
@@ -315,13 +315,13 @@ namespace NiTiAPI.WebErp
                 //    areaName: "Client",
                 //    template: "{controller=Home}/{action=Index}/{id?}");
 
-                //routes.MapRoute(
-                //    name: "default",
-                //    template: "{area:exists}/{controller=login}/{action=Index}/{id?}");
-                //routes.MapAreaRoute(
-                //    name: "default2",
-                //    areaName: "admin",
-                //    template: "{controller=login}/{action=Index}/{id?}");
+                routes.MapRoute(
+                    name: "default",
+                    template: "{area:exists}/{controller=login}/{action=Index}/{id?}");
+                routes.MapAreaRoute(
+                    name: "default2",
+                    areaName: "admin",
+                    template: "{controller=login}/{action=Index}/{id?}");
 
 
                 //routes.MapRoute(

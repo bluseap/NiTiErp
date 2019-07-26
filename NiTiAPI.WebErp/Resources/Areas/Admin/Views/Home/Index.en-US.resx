@@ -117,7 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="OnlineUsers" xml:space="preserve">
+    <value>Online Users</value>
+  </data>
   <data name="PhoneCall" xml:space="preserve">
     <value>Phone Call:</value>
+  </data>
+  <data name="TotalUsers" xml:space="preserve">
+    <value>Total Users</value>
   </data>
 </root>
