@@ -11,7 +11,8 @@ namespace NiTiAPI.WebErp.Filters
         SYSTEM_ROLE,
 
         SALES_CATALOG,
-        SALES_PRODUCT
+        SALES_PRODUCT,
+        SALES_ORDER
 
     }
 }

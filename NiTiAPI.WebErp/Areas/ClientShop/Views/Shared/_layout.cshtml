@@ -46,6 +46,11 @@
     <div id="page">
         <input type="hidden" id="hidCorporationName" value="@corname" />
 
+        <input type="hidden" id="hidUserNameId" value="" />
+        <input type="hidden" id="hidUserFullName" value="" />
+        <input type="hidden" id="hidUserImage" value="" />
+        <input type="hidden" id="hidAvatarUserId" value="" />
+
         <!-- Header -->
         <Partial name="_Header.cshtml" />
         <!-- end header -->
@@ -185,6 +190,9 @@
     </script>
 
     <script src="~/clientshop-app/shared/localize/resources.@(requestCulture.RequestCulture.Culture.Name).js"></script>
+    
+    <script src="~/vendor/signalr/lib/signalr.js" asp-append-version="true"></script>
+
     <script src="~/clientshop-app/shared/niti.js" asp-append-version="true"></script>
 
     <script src="~/clientshop-app/controllers/base/index.js" asp-append-version="true"></script>
@@ -192,6 +200,7 @@
         var baseObj = new BaseController();
         baseObj.initialize();
     </script>
+    <script src="~/clientshop-app/shared/useronline.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
 </body>

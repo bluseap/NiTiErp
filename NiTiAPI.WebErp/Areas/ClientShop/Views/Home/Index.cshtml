@@ -6,6 +6,7 @@
     ViewData["MetaKeyword"] = Model.MetaKeyword;
     ViewData["MetaDescription"] = Model.MetaDescription;
     var @corname = @ViewData["CorporationName"];
+
 }
 @section Scripts{
     <script src="~/clientshop-app/controllers/home/index.js" asp-append-version="true"></script>
@@ -15,7 +16,6 @@
         homeObj.initialize();
     </script>
 }
-
 <!-- Slideshow  -->
 <div class="main-slider" id="home">
     <div class="container">
@@ -366,10 +366,10 @@
                                                 </div>
                                                 <div class="pr-info-area">
                                                     @*<div class="pr-button">
-                    <div class="mt-button add_to_wishlist"> <a href="wishlist.html"> <i class="fa fa-heart-o"></i> </a> </div>
-                    <div class="mt-button add_to_compare"> <a href="compare.html"> <i class="fa fa-link"></i> </a> </div>
-                    <div class="mt-button quick-view"> <a href="quick_view.html"> <i class="fa fa-search"></i> </a> </div>
-                </div>*@
+                                                            <div class="mt-button add_to_wishlist"> <a href="wishlist.html"> <i class="fa fa-heart-o"></i> </a> </div>
+                                                            <div class="mt-button add_to_compare"> <a href="compare.html"> <i class="fa fa-link"></i> </a> </div>
+                                                            <div class="mt-button quick-view"> <a href="quick_view.html"> <i class="fa fa-search"></i> </a> </div>
+                                                        </div>*@
                                                 </div>
                                             </div>
                                             <div class="item-info">
@@ -396,7 +396,7 @@
                                                                     <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> @item.DiscountPrice.ToString("N0") đ </span> </p>
                                                                     <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> @item.Price.ToString("N0") đ </span> </p>
                                                                 }
-                                                            </div>                                                            
+                                                            </div>
                                                         </div>
                                                         <div class="pro-action">
                                                             <button type="button" id="btnViewProduct" class="add-to-cart">
@@ -407,7 +407,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>                                           
+                                            </div>
                                         </div>
                                     </div>
                                 }

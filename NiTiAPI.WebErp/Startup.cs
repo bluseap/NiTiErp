@@ -43,6 +43,7 @@ using NiTiAPI.Dapper.ViewModels;
 using PaulMiami.AspNetCore.Mvc.Recaptcha;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using NiTiAPI.WebErp.Resources;
+using NiTiAPI.WebErp.Hubs;
 
 namespace NiTiAPI.WebErp
 {
@@ -258,10 +259,12 @@ namespace NiTiAPI.WebErp
             services.AddTransient<IProductQuantitiesRepository, ProductQuantitiesRepository>();
             services.AddTransient<IContactRepository, ContactRepository>();
             services.AddTransient<IOrderRepository, OrderRepository>();
+            services.AddTransient<IOrderDetailsRepository, OrderDetailsRepository>();
+            services.AddTransient<IUserOnlineRepository, UserOnlineRepository>();
 
             services.AddTransient<IProductWholePriceRepository, ProductWholePriceRepository>();
 
-            //services.AddSignalR();
+            services.AddSignalR();
 
         }
 
@@ -291,10 +294,10 @@ namespace NiTiAPI.WebErp
 
             app.UseCors("CorsPolicy");
 
-            //app.UseSignalR(routes =>
-            //{
-            //    routes.MapHub<TeduHub>("/teduHub");
-            //});
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<UserOnlineHub>("/useronlinehub");
+            });
 
 
             app.UseMvc(routes =>

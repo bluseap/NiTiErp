@@ -4,6 +4,17 @@ using System.Text;
 
 namespace NiTiAPI.Dapper.ViewModels
 {
+    public static class ConnectionHelper
+    {
+        public static List<UserViewModel> Connections = new List<UserViewModel>();
+    }
+
+    public enum ChatRoom
+    {
+        chatroom1,
+        chatroom2
+    }
+
     public class UserViewModel
     {       
         public Guid Id { get; set; }
@@ -60,7 +71,9 @@ namespace NiTiAPI.Dapper.ViewModels
 
         public string UpdateBy { get; set; }
 
-        
 
+        public ChatRoom ChatRoom { get; set; }
+
+        public string ConnectionId { get; set; }
     }
 }
