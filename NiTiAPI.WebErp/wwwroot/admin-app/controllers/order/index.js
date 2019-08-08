@@ -83,18 +83,22 @@
                 });
                 $('#ddlCorporation').html(render);
                 $('#ddlAddEditCorporation').html(render);
+                $('#ddlPTOCorporation').html(render);
 
                 if (userCorporationId !== "1") {
                     $('#ddlCorporation').prop('disabled', true);
                     $('#ddlAddEditCorporation').prop('disabled', true);
+                    $('#ddlPTOCorporation').prop('disabled', true);
                 }
                 else {
                     $('#ddlCorporation').prop('disabled', false);
                     $('#ddlAddEditCorporation').prop('disabled', false);
+                    $('#ddlPTOCorporation').prop('disabled', false);
                 }
 
                 $("#ddlCorporation")[0].selectedIndex = 1;
                 $("#ddlAddEditCorporation")[0].selectedIndex = 1;
+                $("#ddlPTOCorporation")[0].selectedIndex = 1;
 
                 addeditOrder.loadTableOrder();            
             },

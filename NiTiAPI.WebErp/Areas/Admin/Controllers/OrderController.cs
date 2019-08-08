@@ -94,6 +94,22 @@ namespace NiTiAPI.WebErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        [HttpPost]
+        [ClaimRequirement(FunctionCode.SALES_ORDER, ActionCode.CREATE)]
+        public async Task<IActionResult> SaveListOrder(string listOrderXML, string username, string languageId)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var productQuantities = await _orderDetailsRepository.CreateOrderDetailsXML(listOrderXML, username, languageId);
+                return new OkObjectResult(productQuantities);
+            }
+        }
+
         #endregion
 
     }

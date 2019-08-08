@@ -283,9 +283,9 @@
     },
     getStatus: function (status) {
         if (status === 1)
-            return '<span class="badge bg-green">Kích hoạt</span>';
+            return '<span class="badge bg-green">Còn hàng</span>';
         else
-            return '<span class="badge bg-red">Khoá</span>';
+            return '<span class="badge bg-red">Hết hàng</span>';
     },
     getHoSoNhanVienStatus: function (status) {
         if (status === 1)

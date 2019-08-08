@@ -4,6 +4,7 @@ using NiTiAPI.Dapper.Repositories.Interfaces;
 using NiTiAPI.Dapper.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,32 @@ namespace NiTiAPI.Dapper.Repositories
                 return result.AsList();
             }
         }
-       
+
+        public async Task<bool> CreateOrderDetailsXML(string lisetOrderXML, string userName, string languageId)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+
+                var paramaters = new DynamicParameters();
+
+                paramaters.Add("@lisetOrderXML", lisetOrderXML);
+                paramaters.Add("@CreateBy", userName);
+                paramaters.Add("@languageId", languageId);
+
+                try
+                {
+                    await conn.QueryAsync<OrderDetailsViewModel>(
+                        "Create_OrderDetailsXML", paramaters, commandType: CommandType.StoredProcedure);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
     }
 }
