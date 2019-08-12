@@ -6,6 +6,8 @@ namespace NiTiAPI.Dapper.ViewModels
 {
     public class OrderDetailsViewModel
     {
+        public int SortNumber { get; set; }
+
         public long OrderId { get; set; }
 
         public long ProductId { get; set; }

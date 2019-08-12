@@ -36,6 +36,13 @@ namespace NiTiAPI.WebErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetByOrderId(long orderId)
+        {
+            var model = await _corporation.GetByOrderId(orderId);
+            return new OkObjectResult(model);
+        }
+
 
 
 

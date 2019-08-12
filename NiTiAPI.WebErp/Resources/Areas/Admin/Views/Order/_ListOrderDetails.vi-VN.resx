@@ -135,6 +135,9 @@
   <data name="CustomerName" xml:space="preserve">
     <value>Tên khách hàng</value>
   </data>
+  <data name="ExportExcelOrder" xml:space="preserve">
+    <value>Xuất Excel</value>
+  </data>
   <data name="ListOrderDetails" xml:space="preserve">
     <value>Danh sách chi tiết đơn hàng</value>
   </data>

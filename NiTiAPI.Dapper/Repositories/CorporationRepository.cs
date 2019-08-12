@@ -23,6 +23,21 @@ namespace NiTiAPI.Dapper.Repositories
             _connectionString = configuration.GetConnectionString("DbConnectionString");
         }
 
+        public async Task<CorporationViewModel> GetByOrderId(long orderId)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+                var paramaters = new DynamicParameters();
+                paramaters.Add("@orderId", orderId);
+
+                var result = await conn.QueryAsync<CorporationViewModel>("Get_Corporation_ByOrderId",
+                    paramaters, null, null, System.Data.CommandType.StoredProcedure);
+                return result.Single();
+            }
+        }
+
         public async Task<CorporationViewModel> GetById(int id)
         {
             using (var conn = new SqlConnection(_connectionString))

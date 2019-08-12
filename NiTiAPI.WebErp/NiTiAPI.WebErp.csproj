@@ -33,6 +33,7 @@
     <Folder Include="wwwroot\clientshop-side\images\" />
     <Folder Include="wwwroot\clientshop-side\js\" />
     <Folder Include="wwwroot\lib\" />
+    <Folder Include="wwwroot\template\cshop\" />
     <Folder Include="wwwroot\uploaded\ImageProduct\" />
     <Folder Include="wwwroot\vendor\gentelella\" />
   </ItemGroup>
@@ -40,6 +41,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.1.0" />
+    <PackageReference Include="EPPlus.Core" Version="1.5.4" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Localization" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />

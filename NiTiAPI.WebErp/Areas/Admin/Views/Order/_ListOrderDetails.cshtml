@@ -18,6 +18,13 @@
                             </div>
                         </div>
                         <br />
+                        <div class="form-group">
+                            <div class="col-sm-3 pull pull-right">
+                                <button class="btn btn-success bntExcelOrder" type="button">
+                                    @Localizer["ExportExcelOrder"]
+                                </button>
+                            </div>
+                        </div>
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -25,7 +32,7 @@
                                     <td>@Localizer["Color"]</td>
                                     <td>@Localizer["Size"]</td>
                                     <td>@Localizer["Quantity"]</td>
-                                    <td></td>                                    
+                                    <td></td>
                                 </tr>
                             </thead>
                             <tbody id="table-quantity-orderDetails"></tbody>
@@ -37,13 +44,13 @@
                                     </td>
                                 </tr>
                             </tfoot>
-                        </table>                        
+                        </table>
                         @*<div class="form-group">
-                            <label class="col-sm-2 control-label ">@Localizer["ChosseSize"] <a style="color:red"> (*)</a> </label>
-                            <div class="col-sm-3">
-                                <select id="ddlAttributeSize" class="form-control"></select>
-                            </div>
-                        </div>*@
+            <label class="col-sm-2 control-label ">@Localizer["ChosseSize"] <a style="color:red"> (*)</a> </label>
+            <div class="col-sm-3">
+                <select id="ddlAttributeSize" class="form-control"></select>
+            </div>
+        </div>*@
                     </form>
                     <script type="x-tmpl-mustache" id="template-table-orderDetails">
                         <tr data-id="{{Id}}">

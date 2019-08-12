@@ -74,7 +74,13 @@ var listOrderController = function () {
             e.preventDefault();
             var productId = $(this).data('id');
             loadEditProduct(productId);            
-        });       
+        });   
+
+        $('body').on('click', '.bntExcelOrder', function (e) {
+            e.preventDefault();
+            var orderId = $('#hidOrderId').val();
+            loadExportExcelOrder(orderId);
+        });
        
     }   
 
@@ -433,6 +439,24 @@ var listOrderController = function () {
             }
         });
 
+    }
+
+    function loadExportExcelOrder(orderid) {        
+        
+        $.ajax({
+            type: 'POST',
+            url: '/admin/order/ExportExcel',
+            data: {
+                orderId: orderid
+            },
+            beforeSend: function () {
+                niti.startLoading();
+            },
+            success: function (response) {
+                window.location.href = response;
+                niti.stopLoading();
+            }
+        });
     }
 
     function updateListOrderQuantity() {

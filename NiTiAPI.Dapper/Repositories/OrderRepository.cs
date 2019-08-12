@@ -32,7 +32,7 @@ namespace NiTiAPI.Dapper.Repositories
                 paramaters.Add("@id", id);
 
                 var result = await conn.QueryAsync<OrderViewModel>("Get_Order_ById", paramaters, null, null, System.Data.CommandType.StoredProcedure);
-                return result.FirstOrDefault();
+                return result.Single();
             }
         }
 

@@ -9,6 +9,8 @@ namespace NiTiAPI.Dapper.Repositories.Interfaces
 {
     public interface ICorporationRepository
     {
+        Task<CorporationViewModel> GetByOrderId(long orderId);
+
         Task<CorporationViewModel> GetById(int id);
 
         Task<List<CorporationViewModel>> GetListCorporations();
