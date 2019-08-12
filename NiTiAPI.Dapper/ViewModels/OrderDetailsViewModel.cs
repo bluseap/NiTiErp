@@ -10,6 +10,8 @@ namespace NiTiAPI.Dapper.ViewModels
 
         public long OrderId { get; set; }
 
+        public string CustomerName { get; set; }
+
         public long ProductId { get; set; }
 
         public string ProductName { get; set; }

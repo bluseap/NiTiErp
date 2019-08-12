@@ -215,12 +215,114 @@ namespace NiTiAPI.WebErp.Areas.Admin.Controllers
                         worksheet.Cells[rowIndex, 5].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
                         worksheet.Cells[rowIndex, 5].Style.Font.Size = 10;
 
-                       // worksheet.Cells[rowIndex, 5].Value = Convert.ToInt32(hdDetail.Price) > 0 ? Convert.ToInt32(hdDetail.Price) : Convert.ToInt32(hdDetail.DiscountPrice);
+                        worksheet.Cells[rowIndex, 6].Value = Convert.ToInt32(hdDetail.Price) > 0 ? Convert.ToInt32(hdDetail.Price) * hdDetail.Quantity: Convert.ToInt32(hdDetail.DiscountPrice) * hdDetail.Quantity;
                         worksheet.Cells[rowIndex, 6].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                         worksheet.Cells[rowIndex, 6].Style.Border.Right.Style = ExcelBorderStyle.Thick;
                         worksheet.Cells[rowIndex, 6].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
                         worksheet.Cells[rowIndex, 6].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
                         worksheet.Cells[rowIndex, 6].Style.Font.Size = 10;
+
+                        rowIndex++;
+                        count++;
+                    }
+
+                    package.SaveAs(file); //Save the workbook.    
+
+                }
+                return new OkObjectResult(url);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult ExcelOrderTo(DateTime FromDate, DateTime ToDate, string languageId)
+        {
+            string sWebRootFolder = _hostingEnvironment.WebRootPath;
+            string sFileName = $"OrderToDate.xlsx";
+            // Template File
+            string templateDocument = Path.Combine(sWebRootFolder, "template/cshop", "OrderToDate.xlsx");
+
+            string url = $"{Request.Scheme}://{Request.Host}/{"export-files"}/{sFileName}";
+
+            FileInfo file = new FileInfo(Path.Combine(sWebRootFolder, "export-files", sFileName));
+
+            if (file.Exists)
+            {
+                file.Delete();
+                file = new FileInfo(Path.Combine(sWebRootFolder, "export-files", sFileName));
+            }
+
+            using (FileStream templateDocumentStream = System.IO.File.OpenRead(templateDocument))
+            {
+                using (ExcelPackage package = new ExcelPackage(templateDocumentStream))
+                {
+                    // add a new worksheet to the empty workbook
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets["OrderToDate"];
+
+                    var orderDetails = _orderDetailsRepository.GetListOrderByCreateDate(FromDate, ToDate, languageId);
+
+                    worksheet.Cells[4, 2].Value = "Từ ngày " + FromDate.ToString("dd/MM/yyyy") + " đến ngày " + ToDate.ToString("dd/MM/yyyy");
+                    worksheet.Cells[4, 2].Style.Font.Size = 10;
+                    worksheet.Cells[4, 2].Style.Font.Bold = true;
+                    //worksheet.Cells[2, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    //worksheet.Cells[2, 3].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    
+                    int rowIndex = 8;
+                    int count = 1;                    
+
+                    worksheet.InsertRow(rowIndex + 1, orderDetails.Result.Count() - 1);
+
+                    foreach (var hdDetail in orderDetails.Result)
+                    {
+                        //Color DeepBlueHexCode = ColorTranslator.FromHtml("#254061");
+                        // Cell 1, Carton Count
+                        //worksheet.Cells[rowIndex, 2].Value = count.ToString();
+                        //worksheet.Cells[rowIndex, 2].Value = !string.IsNullOrEmpty(hdDetail.SortNumber) ? hdDetail.SoKyHieuCuaVanBan.ToString() : "";
+                        worksheet.Cells[rowIndex, 2].Value = hdDetail.SortNumber;
+                        worksheet.Cells[rowIndex, 2].Style.Border.Left.Style = ExcelBorderStyle.Thick; // to dam  
+                        //worksheet.Cells[rowIndex, 2].Style.Border.Top.Color.SetColor(Color.Red);
+                        //worksheet.Cells[rowIndex, 2].Style.Border.Left.Style = ExcelBorderStyle.Medium; // to dam vua
+                        worksheet.Cells[rowIndex, 2].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                        worksheet.Cells[rowIndex, 2].Style.Border.Top.Style = ExcelBorderStyle.Dotted; // khoan cach
+                        worksheet.Cells[rowIndex, 2].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 2].Style.Font.Size = 10;
+                        worksheet.Cells[rowIndex, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        //worksheet.Row(rowIndex).Height = 35;
+
+                        worksheet.Cells[rowIndex, 3].Value = hdDetail.CustomerName;
+                        worksheet.Cells[rowIndex, 3].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 3].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 3].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 3].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 3].Style.Font.Size = 10;
+
+                        //worksheet.Cells[rowIndex, 3].Value = hdDetail.ProductName != null ? hdDetail.NgayBanHanhCuaVanBan.Date.ToString("dd/M/yyyy", CultureInfo.InvariantCulture) : "";
+                        worksheet.Cells[rowIndex, 4].Value = hdDetail.ProductName;
+                        worksheet.Cells[rowIndex, 4].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 4].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 4].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 4].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 4].Style.Font.Size = 10;
+
+                        worksheet.Cells[rowIndex, 5].Value = hdDetail.Quantity;
+                        worksheet.Cells[rowIndex, 5].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 5].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 5].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 5].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 5].Style.Font.Size = 10;
+
+                        worksheet.Cells[rowIndex, 6].Value = Convert.ToInt32(hdDetail.Price) > 0 ? Convert.ToInt32(hdDetail.Price) : Convert.ToInt32(hdDetail.DiscountPrice);
+                        worksheet.Cells[rowIndex, 6].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 6].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 6].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 6].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 6].Style.Font.Size = 10;
+
+                        worksheet.Cells[rowIndex, 7].Value = Convert.ToInt32(hdDetail.Price) > 0 ? Convert.ToInt32(hdDetail.Price) * hdDetail.Quantity : Convert.ToInt32(hdDetail.DiscountPrice) * hdDetail.Quantity;
+                        worksheet.Cells[rowIndex, 7].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 7].Style.Border.Right.Style = ExcelBorderStyle.Thick;
+                        worksheet.Cells[rowIndex, 7].Style.Border.Top.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 7].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                        worksheet.Cells[rowIndex, 7].Style.Font.Size = 10;
 
                         rowIndex++;
                         count++;

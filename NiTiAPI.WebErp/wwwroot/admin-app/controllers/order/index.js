@@ -60,6 +60,16 @@
             deleteOrder(ordertId);
         });
 
+        $("#btnExportExcel").on('click', function () {
+            var fromdate = $('#txtFromDate').val();
+            var todate = $('#txtToDate').val();
+
+            var fromDate = niti.getFormatDateYYMMDD(fromdate);
+            var toDate = niti.getFormatDateYYMMDD(todate);
+
+            exportExcelOrder(fromDate, toDate);
+        });
+
     }
 
     function loadData() {
@@ -163,6 +173,26 @@
                     niti.stopLoading();
                 }
             });
+        });
+    }
+
+    function exportExcelOrder(fromDate, toDate) {
+        //alert(formDate + ',' + toDate);
+        $.ajax({
+            type: 'POST',
+            url: '/admin/order/ExcelOrderTo',
+            data: {
+                FromDate: fromDate,
+                ToDate: toDate,
+                languageId: "vi-VN"
+            },
+            beforeSend: function () {
+                niti.startLoading();
+            },
+            success: function (response) {
+                window.location.href = response;
+                niti.stopLoading();
+            }
         });
     }
 

@@ -10,7 +10,7 @@ namespace NiTiAPI.Dapper.Repositories.Interfaces
     public interface IOrderRepository
     {
         Task<OrderViewModel> GetById(long id);
-
+       
         Task<PagedResult<OrderViewModel>> GetAllPagingOrder(int corporationId,
             string keyword, int pageIndex, int pageSize);
 

@@ -20,6 +20,23 @@ namespace NiTiAPI.Dapper.Repositories
             _connectionString = configuration.GetConnectionString("DbConnectionString");
         }
 
+        public async Task<List<OrderDetailsViewModel>> GetListOrderByCreateDate(DateTime fromDate, DateTime toDate, string languageId)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+                var paramaters = new DynamicParameters();
+                paramaters.Add("@fromDate ", fromDate);
+                paramaters.Add("@toDate ", toDate); 
+                paramaters.Add("@languageId ", languageId);
+
+                var result = await conn.QueryAsync<OrderDetailsViewModel>("Get_OrderDetails_ByCreateDate",
+                    paramaters, null, null, System.Data.CommandType.StoredProcedure);
+                return result.AsList();
+            }
+        }
+
         public async Task<List<OrderDetailsViewModel>> GetListOrderDetails(long orderId, string languageId)
         {
             using (var conn = new SqlConnection(_connectionString))

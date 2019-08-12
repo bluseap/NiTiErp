@@ -441,8 +441,7 @@ var listOrderController = function () {
 
     }
 
-    function loadExportExcelOrder(orderid) {        
-        
+    function loadExportExcelOrder(orderid) {                
         $.ajax({
             type: 'POST',
             url: '/admin/order/ExportExcel',
