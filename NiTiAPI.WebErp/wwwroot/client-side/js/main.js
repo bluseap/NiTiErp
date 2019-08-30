@@ -7,15 +7,14 @@ jQuery(document).ready(function() {
    Newsletter popup
 ******************************************/
  
-  jQuery('#myModal').appendTo("body");
-          function show_modal(){
-            jQuery('#myModal').modal('show');
-          }
-
-            jQuery('#myModal').modal({
-            keyboard: false,
-           backdrop:false
-          }); 
+    jQuery('#myModal').appendTo("body");
+    function show_modal(){
+        jQuery('#myModal').modal('show');
+    }
+    jQuery('#myModal').modal({
+        keyboard: false,
+        backdrop: false
+    }); 
 		  
 /******************************************
    Navigation

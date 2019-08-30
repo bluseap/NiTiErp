@@ -23,6 +23,11 @@
     <Folder Include="Resources\Areas\Client\Controllers\" />
     <Folder Include="Resources\Areas\Client\Models\" />
     <Folder Include="Resources\Areas\Client\Views\Shared\Components\SideBar\" />
+    <Folder Include="Resources\Areas\CShop\Controllers\" />
+    <Folder Include="Resources\Areas\CShop\Models\" />
+    <Folder Include="Resources\Areas\CShop\Views\Shared\Components\BrandCShop\" />
+    <Folder Include="Resources\Areas\CShop\Views\Shared\Components\CategoryMenuCShop\" />
+    <Folder Include="Resources\Areas\CShop\Views\Shared\Components\MobileMenuCShop\" />
     <Folder Include="wwwroot\clientnews-app\controllers\" />
     <Folder Include="wwwroot\clientnews-app\shared\" />
     <Folder Include="wwwroot\client-side\images\" />
@@ -128,6 +133,72 @@
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\Client\Views\_ViewStart.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CShop\Views\Account\Login.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CShop\Views\Account\Register.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CShop\Views\Cart\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CShop\Views\Cart\Order.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CShop\Views\Cart\OrderInfo.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CShop\Views\Contact\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CShop\Views\Home\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CShop\Views\Product\Details.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CShop\Views\Product\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CShop\Views\Product\Search.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CShop\Views\Shared\Components\BrandCShop\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CShop\Views\Shared\Components\CategoryMenuCShop\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CShop\Views\Shared\Components\HeaderCartCShop\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CShop\Views\Shared\Components\MainMenuCShop\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CShop\Views\Shared\Components\MobileMenuCShop\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CShop\Views\Shared\_Footer.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CShop\Views\Shared\_Header.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CShop\Views\Shared\_layout.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CShop\Views\Shared\_SelectLanguagePartial.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CShop\Views\Shared\_ValidationScriptsPartial.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CShop\Views\_ViewImports.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CShop\Views\_ViewStart.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
   </ItemGroup>

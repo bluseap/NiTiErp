@@ -7,8 +7,8 @@
             <div class="container">
                 <div class="row">
                     <!-- Header Language -->
-                    <div class="col-xs-12 col-sm-6">
-                        <div class="welcome-msg">Welcome to ShopMart! </div>
+                    @*<div class="col-xs-12 col-sm-6">
+                        <div class="welcome-msg">Welcome to NiTiApp! </div>
                         <div class="dropdown jtv-language-box">
                             <a role="button" data-toggle="dropdown" data-target="#" class="block-language dropdown-toggle" href="#"> <img src="images/flag-english.jpg" alt="language"> English <span class="caret"></span> </a>
                             <ul class="dropdown-menu" role="menu">
@@ -32,10 +32,10 @@
                         </div>
                         <!-- End Header Currency -->
 
-                    </div>
+                    </div>*@
                     <div class="col-xs-6 hidden-xs">
                         <!-- Header Top Links -->
-                        <div class="jtv-top-links">
+                        @*<div class="jtv-top-links">
                             <div class="links">
                                 <ul>
                                     <li> <a title="My Account" href="account_page.html"><span class="hidden-xs">My Account</span></a> </li>
@@ -57,7 +57,7 @@
                                     <li> <a href="account_page.html"><span class="hidden-xs">Log In</span></a> </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div>*@
                         <!-- End Header Top Links -->
                     </div>
                 </div>
@@ -69,57 +69,67 @@
                     <div class="jtv-top-cart-box">
                         <!-- Top Cart -->
                         <div class="mini-cart">
-                            <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> <a href="shopping_cart.html"> <span class="cart_count">2</span><span class="price">My Bag / $259.00</span> </a> </div>
-                            <div>
-                                <div class="jtv-top-cart-content">
-
-                                    <!--block-subtitle-->
-                                    <ul class="mini-products-list" id="cart-sidebar">
-                                        <li class="item first">
-                                            <div class="item-inner">
-                                                <a class="product-image" title="Product Title Here" ref=" #"><img alt="Product Title Here"  src="images/products/img01.jpg"> </a>
-                                                <div class="product-details">
-                                                    <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
-                                                    <p class="product-name"><a href="#">Product Title Here</a> </p>
-                                                    <strong>1</strong> x <span class="price">$79.99</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="item">
-                                            <div class="item-inner">
-                                                <a class="product-image" title="Product Title Here" ref=" single_product.html"><img alt="Product Title Here"  src="images/products/img02.jpg"> </a>
-                                                <div class="product-details">
-                                                    <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
-                                                    <p class="product-name"><a href="#">Product Title Here</a> </p>
-                                                    <strong>1</strong> x <span class="price">$88.89</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="item last">
-                                            <div class="item-inner">
-                                                <a class="product-image" title="Product Title Here" ref=" single_product.html"><img alt="Product Title Here"  src="images/products/img04.jpg"> </a>
-                                                <div class="product-details">
-                                                    <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
-                                                    <p class="product-name"><a href="#">Product Title Here</a> </p>
-                                                    <strong>1</strong> x <span class="price">$85.99</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-
-                                    <!--actions-->
-                                    <div class="actions">
-                                        <button class="btn-checkout" title="Checkout" type="button" onClick="checkout.html"><span>Checkout</span> </button>
-                                        <a href="shopping_cart.html" class="view-cart"><span>View Cart</span></a>
-                                    </div>
-                                </div>
+                            <div class="logoNiTiApp"> 
+                                <a title="eCommerce" href="index.html">
+                                    <img alt="eCommerce" src="client-side/images/logoNiTiIcon.png">                                 
+                                </a> 
                             </div>
+                            @*<div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle">
+            <a href="shopping_cart.html">
+                <span class="cart_count">2</span>
+                <span class="price">My Bag / $259.00</span>
+            </a>
+        </div>*@
+                            @*<div>
+            <div class="jtv-top-cart-content">
+
+                <!--block-subtitle-->
+                <ul class="mini-products-list" id="cart-sidebar">
+                    <li class="item first">
+                        <div class="item-inner">
+                            <a class="product-image" title="Product Title Here" ref=" #"><img alt="Product Title Here"  src="images/products/img01.jpg"> </a>
+                            <div class="product-details">
+                                <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
+                                <p class="product-name"><a href="#">Product Title Here</a> </p>
+                                <strong>1</strong> x <span class="price">$79.99</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="item-inner">
+                            <a class="product-image" title="Product Title Here" ref=" single_product.html"><img alt="Product Title Here"  src="images/products/img02.jpg"> </a>
+                            <div class="product-details">
+                                <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
+                                <p class="product-name"><a href="#">Product Title Here</a> </p>
+                                <strong>1</strong> x <span class="price">$88.89</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item last">
+                        <div class="item-inner">
+                            <a class="product-image" title="Product Title Here" ref=" single_product.html"><img alt="Product Title Here"  src="images/products/img04.jpg"> </a>
+                            <div class="product-details">
+                                <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
+                                <p class="product-name"><a href="#">Product Title Here</a> </p>
+                                <strong>1</strong> x <span class="price">$85.99</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <!--actions-->
+                <div class="actions">
+                    <button class="btn-checkout" title="Checkout" type="button" onClick="checkout.html"><span>Checkout</span> </button>
+                    <a href="shopping_cart.html" class="view-cart"><span>View Cart</span></a>
+                </div>
+            </div>
+        </div>*@
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-4 col-sm-4 col-xs-12 jtv-logo-box">
                     <!-- Header Logo -->
-                    <div class="logo"> <a title="eCommerce" href="index.html"><img alt="eCommerce" src="images/logo.png"> </a> </div>
+                    <div class="logo"> <a title="eCommerce" href="index.html"><img alt="eCommerce" src="client-side/images/logoClientNitiApp.jpg"> </a> </div>
                     <!-- End Header Logo -->
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 hidden-xs">
