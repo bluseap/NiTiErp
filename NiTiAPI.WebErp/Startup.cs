@@ -233,8 +233,9 @@ namespace NiTiAPI.WebErp
              {
                  var supportedCultures = new List<CultureInfo>
                  {
-                        new CultureInfo("vi-VN"),
-                        new CultureInfo("en-US")                       
+                     new CultureInfo("en-US"),
+                     new CultureInfo("vi-VN")
+                                         
                  };
 
                  opts.DefaultRequestCulture = new RequestCulture("vi-VN");

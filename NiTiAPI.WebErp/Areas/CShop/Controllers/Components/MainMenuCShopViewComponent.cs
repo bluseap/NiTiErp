@@ -19,17 +19,19 @@ namespace NiTiAPI.WebErp.Areas.CShop.Controllers.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var corporationName = HttpContext.Session.GetString("corprationName");
+            var product = _productRepository.GetListProductCatelogCorId1(1, "vi-VN");
+            return View(product);
 
-            if (corporationName != null)
-            {
-                var product = _productRepository.GetListProductCatelogCorName(corporationName, "vi-VN");
-                return View(product);
-            }
-            else
-            {
-                return View();
-            }
+            //var corporationName = HttpContext.Session.GetString("corprationName");
+            //if (corporationName != null)
+            //{
+            //    var product = _productRepository.GetListProductCatelogCorName(corporationName, "vi-VN");
+            //    return View(product);
+            //}
+            //else
+            //{
+            //    return View();
+            //}
         }
 
     }

@@ -15,9 +15,13 @@ namespace NiTiAPI.Dapper.Repositories.Interfaces
 
         Task<List<ProductViewModel>> GetListProductCatelogCorName(string corporationName, string language);
 
+        Task<List<ProductViewModel>> GetListProductCatelogCorId1(int corporationId, string language);
+
         Task<List<ProductViewModel>> GetListProductCorporationName(string corporationName, string language);
 
         Task<List<ProductViewModel>> GetListProductCorNameTop(string corporationName, string language, int top);
+
+        Task<List<ProductViewModel>> GetListProductCorTopId2(int corporationId, string language, int top);
 
         Task<ProductViewModel> GetById(long id, string culture);
 

@@ -73,6 +73,23 @@ namespace NiTiAPI.Dapper.Repositories
             }
         }
 
+        public async Task<List<ProductViewModel>> GetListProductCatelogCorId1(int corporationId, string language)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+                var paramaters = new DynamicParameters();
+
+                paramaters.Add("@corporationId", corporationId);
+                paramaters.Add("@language", language);
+
+                var result = await conn.QueryAsync<ProductViewModel>("Get_ProductCatalog_ByCorTopId", paramaters, null, null, System.Data.CommandType.StoredProcedure);
+
+                return result.ToList();
+            }
+        }
+
         public async Task<List<ProductViewModel>> GetListProductCorporationName(string corporationName, string language)
         {
             using (var conn = new SqlConnection(_connectionString))
@@ -103,6 +120,24 @@ namespace NiTiAPI.Dapper.Repositories
                 paramaters.Add("@top", top);
 
                 var result = await conn.QueryAsync<ProductViewModel>("Get_ProductCatalog_ByCorNameTop", paramaters, null, null, System.Data.CommandType.StoredProcedure);
+
+                return result.ToList();
+            }
+        }
+
+        public async Task<List<ProductViewModel>> GetListProductCorTopId2(int corporationId, string language, int top)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+                var paramaters = new DynamicParameters();
+
+                paramaters.Add("@corporationId", corporationId);
+                paramaters.Add("@language", language);
+                paramaters.Add("@top", top);
+
+                var result = await conn.QueryAsync<ProductViewModel>("Get_ProductCatalog_ByCorTopId2", paramaters, null, null, System.Data.CommandType.StoredProcedure);
 
                 return result.ToList();
             }
