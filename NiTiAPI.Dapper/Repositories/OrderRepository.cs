@@ -91,6 +91,31 @@ namespace NiTiAPI.Dapper.Repositories
             }
         }
 
+        public async Task<bool> CreateOrderCorpoId(string orderXML, string CreateBy)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+
+                var paramaters = new DynamicParameters();
+
+                paramaters.Add("@orderXML", orderXML);
+                paramaters.Add("@CreateBy", CreateBy);
+
+                try
+                {
+                    await conn.QueryAsync<OrderViewModel>(
+                        "Create_OrderCorpoIdXML", paramaters, commandType: CommandType.StoredProcedure);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         public async Task<bool> UpdateOrder(OrderViewModel order)
         {
             using (var conn = new SqlConnection(_connectionString))

@@ -13,6 +13,8 @@ namespace NiTiAPI.Dapper.Repositories.Interfaces
 
         Task<ContactViewModel> GetByCorName(string corporationName);
 
+        Task<ContactViewModel> GetByCorId(int corporationId);
+
         Task<List<ContactViewModel>> GetListContact();
 
         Task<PagedResult<ContactViewModel>> GetPaging(string keyword, int coporationId, int pageIndex, int pageSize);

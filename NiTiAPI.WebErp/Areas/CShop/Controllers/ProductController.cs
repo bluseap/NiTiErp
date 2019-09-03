@@ -35,37 +35,43 @@ namespace NiTiAPI.WebErp.Areas.CShop.Controllers
             _configuration = configuration;
         }
 
-        public IActionResult Index(string id, string productId)
+        public IActionResult Index()
         {
-            ViewData["CorporationName"] = id;
+            ViewData["CorporationName"] = 1;
+            HttpContext.Session.SetString("corprationName", "1");
+            
+            var culture = HttpContext.Features.Get<IRequestCultureFeature>().RequestCulture.Culture.Name;
 
-            if (id != null)
-            {
-                HttpContext.Session.SetString("corprationName", id);
-            }
-            else
-            {
-                HttpContext.Session.SetString("corprationName", "");
-            }
-
-            var culture = HttpContext.Features.Get<IRequestCultureFeature>().RequestCulture.Culture.Name;     
             return View();
+            //ViewData["CorporationName"] = id;
+            //if (id != null)
+            //{
+            //    HttpContext.Session.SetString("corprationName", id);
+            //}
+            //else
+            //{
+            //    HttpContext.Session.SetString("corprationName", "");
+            //}
+            //var culture = HttpContext.Features.Get<IRequestCultureFeature>().RequestCulture.Culture.Name;     
+            //return View();
         }
 
         public IActionResult Details(string id, string productId)
         {
             //HttpContext.Session.Clear();
             ViewData["BodyClass"] = "product-page";
-            ViewData["CorporationName"] = id;
+            ViewData["CorporationName"] = 1;
             ViewData["ProductId"] = productId;
-            if (id != null)
-            {
-                HttpContext.Session.SetString("corprationName", id);               
-            }
-            else
-            {
-                HttpContext.Session.SetString("corprationName", "");               
-            }
+
+            HttpContext.Session.SetString("corprationName", "1");
+            //if (id != null)
+            //{
+            //    HttpContext.Session.SetString("corprationName", id);               
+            //}
+            //else
+            //{
+            //    HttpContext.Session.SetString("corprationName", "");               
+            //}
 
             var culture = HttpContext.Features.Get<IRequestCultureFeature>().RequestCulture.Culture.Name;
 
@@ -92,15 +98,14 @@ namespace NiTiAPI.WebErp.Areas.CShop.Controllers
                 //    Value = x.Id.ToString()
                 //}).ToList();
 
-                model.RelatedProducts = _productRepository.GetListProductCorNameTop(id, culture, 9);
+                //model.RelatedProducts = _productRepository.GetListProductCorNameTop(id, culture, 9);
+                model.RelatedProducts = _productRepository.GetListProductCorTopId2(1, culture, 9);
 
                 model.AttributeSizes = _attributeOption.GetListByAttributeSize(Convert.ToInt64(productId), culture);
             }
 
             //model.UpsellProducts = _productService.GetUpsellProducts(6);
-
             //model.Tags = _productService.GetProductTags(productId);
-
 
             return View(model);
         }
@@ -109,15 +114,16 @@ namespace NiTiAPI.WebErp.Areas.CShop.Controllers
         {
             //HttpContext.Session.Clear();
             ViewData["BodyClass"] = "shop_grid_full_width_page";
-            ViewData["CorporationName"] = id;
-            if (id != null)
-            {
-                HttpContext.Session.SetString("corprationName", id);
-            }
-            else
-            {
-                HttpContext.Session.SetString("corprationName", "");
-            }
+            ViewData["CorporationName"] = 1;
+            HttpContext.Session.SetString("corprationName", "1");
+            //if (id != null)
+            //{
+            //    HttpContext.Session.SetString("corprationName", id);
+            //}
+            //else
+            //{
+            //    HttpContext.Session.SetString("corprationName", "");
+            //}
 
             var culture = HttpContext.Features.Get<IRequestCultureFeature>().RequestCulture.Culture.Name;
 
@@ -131,7 +137,7 @@ namespace NiTiAPI.WebErp.Areas.CShop.Controllers
 
             catalog.PageSize = pageSize;
             catalog.SortType = sortBy != null ? "1" : "0";
-            var productVm = _productRepository.GetAllPagingProductCate(id, catelogyId, culture, keyword, page, pageSize);
+            var productVm = _productRepository.GetAllPagingProductCateCorId(1, catelogyId, culture, keyword, page, pageSize);
             catalog.Data = productVm;
             catalog.Keyword = keyword;
 
@@ -141,10 +147,13 @@ namespace NiTiAPI.WebErp.Areas.CShop.Controllers
         [HttpGet]
         public async Task<IActionResult> GetListCategory()
         {
-            var corporationName = HttpContext.Session.GetString("corprationName");
-
-            var model = await _categoriesRepository.GetListCateByCor(corporationName);
+            //var corporationName = HttpContext.Session.GetString("corprationName");
+            var model = await _categoriesRepository.GetListCateByCorId(1);
             return new OkObjectResult(model);
+
+            //var corporationName = HttpContext.Session.GetString("corprationName");
+            //var model = await _categoriesRepository.GetListCateByCor(corporationName);
+            //return new OkObjectResult(model);            
         }
 
         [HttpGet]

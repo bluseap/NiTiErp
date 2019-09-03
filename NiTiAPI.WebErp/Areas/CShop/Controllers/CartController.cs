@@ -27,63 +27,71 @@ namespace NiTiAPI.WebErp.Areas.CShop.Controllers
             _orderRepository = orderRepository;
         }
 
-        public IActionResult Index(string id)
+        public IActionResult Index()
         {
-            ViewData["CorporationName"] = id;
-
-            if (id != null)
-            {
-                HttpContext.Session.SetString("corprationName", id);
-            }
-            else
-            {
-                HttpContext.Session.SetString("corprationName", "");
-            }
-
-            var culture = HttpContext.Features.Get<IRequestCultureFeature>().RequestCulture.Culture.Name;
-
-            return View();
+            ViewData["CorporationName"] = 1;
+            HttpContext.Session.SetString("corprationName", "1");  
             
+            var culture = HttpContext.Features.Get<IRequestCultureFeature>().RequestCulture.Culture.Name;
+            return View();
+
+            //ViewData["CorporationName"] = id;
+            //if (id != null)
+            //{
+            //    HttpContext.Session.SetString("corprationName", id);
+            //}
+            //else
+            //{
+            //    HttpContext.Session.SetString("corprationName", "");
+            //}
+            //var culture = HttpContext.Features.Get<IRequestCultureFeature>().RequestCulture.Culture.Name;
+            //return View();            
         }
       
-        public IActionResult Order(string id, string returnUrl = null)
+        public IActionResult Order(string returnUrl = null)
         {
-            ViewData["CorporationName"] = id;
-
-            if (id != null)
-            {
-                HttpContext.Session.SetString("corprationName", id);
-            }
-            else
-            {
-                HttpContext.Session.SetString("corprationName", "");
-            }
-
+            ViewData["CorporationName"] = 1;
+            HttpContext.Session.SetString("corprationName", "1");       
+            
             ViewData["ReturnUrl"] = returnUrl;
-
             var culture = HttpContext.Features.Get<IRequestCultureFeature>().RequestCulture.Culture.Name;
-
             return View();
+
+            //ViewData["CorporationName"] = id;
+            //if (id != null)
+            //{
+            //    HttpContext.Session.SetString("corprationName", id);
+            //}
+            //else
+            //{
+            //    HttpContext.Session.SetString("corprationName", "");
+            //}
+            //ViewData["ReturnUrl"] = returnUrl;
+            //var culture = HttpContext.Features.Get<IRequestCultureFeature>().RequestCulture.Culture.Name;
+            //return View();
         }
 
-        public IActionResult OrderInfo(string id, string returnUrl = null)
+        public IActionResult OrderInfo(string returnUrl = null)
         {
-            ViewData["CorporationName"] = id;
-
-            if (id != null)
-            {
-                HttpContext.Session.SetString("corprationName", id);
-            }
-            else
-            {
-                HttpContext.Session.SetString("corprationName", "");
-            }
-
+            ViewData["CorporationName"] = 1;
+            HttpContext.Session.SetString("corprationName", "1");
+           
             ViewData["ReturnUrl"] = returnUrl;
-
             var culture = HttpContext.Features.Get<IRequestCultureFeature>().RequestCulture.Culture.Name;
-
             return View();
+
+            //ViewData["CorporationName"] = id;
+            //if (id != null)
+            //{
+            //    HttpContext.Session.SetString("corprationName", id);
+            //}
+            //else
+            //{
+            //    HttpContext.Session.SetString("corprationName", "");
+            //}
+            //ViewData["ReturnUrl"] = returnUrl;
+            //var culture = HttpContext.Features.Get<IRequestCultureFeature>().RequestCulture.Culture.Name;
+            //return View();
         }
        
         public async Task<IActionResult> BeginOrder(string corporationname, string customerName, string customerEmail,
@@ -100,7 +108,8 @@ namespace NiTiAPI.WebErp.Areas.CShop.Controllers
                 {
                     var listfield = session[i];
                     xml += "<items>";
-                    xml += "<CorporationName>" + corporationname.ToUpper() + "</CorporationName>";
+                    //xml += "<CorporationName>" + corporationname.ToUpper() + "</CorporationName>";
+                    xml += "<CorporationName>" + "1" + "</CorporationName>";
                     xml += "<CustomerName>" + customerName + "</CustomerName>";
                     xml += "<CustomerEmail>" + customerEmail + "</CustomerEmail>";
                     xml += "<CustomerPhone>" + customerPhone + "</CustomerPhone>";
@@ -115,7 +124,8 @@ namespace NiTiAPI.WebErp.Areas.CShop.Controllers
 
             xml = xml + "</tables>";
 
-            var orderXML = await _orderRepository.CreateOrder(xml, "GuidId");
+            //var orderXML = await _orderRepository.CreateOrder(xml, "GuidId");
+            var orderXML = await _orderRepository.CreateOrderCorpoId(xml, "GuidId");
             return new OkObjectResult(orderXML);            
         }
 

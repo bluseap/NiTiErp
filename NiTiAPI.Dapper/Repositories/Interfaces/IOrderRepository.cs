@@ -16,6 +16,8 @@ namespace NiTiAPI.Dapper.Repositories.Interfaces
 
         Task<bool> CreateOrder(string orderXML, string CreateBy);
 
+        Task<bool> CreateOrderCorpoId(string orderXML, string CreateBy);
+
         Task<bool> UpdateOrder(OrderViewModel order);
 
         Task<bool> DeleteOrder(long id, string username);

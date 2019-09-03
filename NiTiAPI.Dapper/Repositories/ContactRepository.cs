@@ -52,6 +52,21 @@ namespace NiTiAPI.Dapper.Repositories
             }
         }
 
+        public async Task<ContactViewModel> GetByCorId(int corporationId)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+                var paramaters = new DynamicParameters();
+                paramaters.Add("@CorporationId", corporationId);
+
+                var result = await conn.QueryAsync<ContactViewModel>("Get_Contact_ByCorporationId",
+                    paramaters, null, null, System.Data.CommandType.StoredProcedure);
+                return result.FirstOrDefault();
+            }
+        }
+
         public async Task<List<ContactViewModel>> GetListContact()
         {
             using (var conn = new SqlConnection(_connectionString))

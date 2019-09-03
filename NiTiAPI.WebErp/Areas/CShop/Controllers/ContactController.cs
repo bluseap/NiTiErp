@@ -18,22 +18,27 @@ namespace NiTiAPI.WebErp.Areas.CShop.Controllers
             _contactRepository = contactRepository;           
         }
 
-        public IActionResult Index(string id)
+        public IActionResult Index()
         {
-            ViewData["CorporationName"] = id;
-
-            if (id != null)
-            {
-                HttpContext.Session.SetString("corprationName", id);
-            }
-            else
-            {
-                HttpContext.Session.SetString("corprationName", "");
-            }
-
-            var contact = _contactRepository.GetByCorName(id);
+            ViewData["CorporationName"] = 1;
+            HttpContext.Session.SetString("corprationName", "1");
+           
+            var contact = _contactRepository.GetByCorId(1);
             var model = new ContactPageViewModel { Contact = contact.Result };
             return View(model);
+
+            //ViewData["CorporationName"] = id;
+            //if (id != null)
+            //{
+            //    HttpContext.Session.SetString("corprationName", id);
+            //}
+            //else
+            //{
+            //    HttpContext.Session.SetString("corprationName", "");
+            //}
+            //var contact = _contactRepository.GetByCorName(id);
+            //var model = new ContactPageViewModel { Contact = contact.Result };
+            //return View(model);
         }
 
     }

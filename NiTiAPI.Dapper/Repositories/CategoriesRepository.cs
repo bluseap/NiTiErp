@@ -66,6 +66,21 @@ namespace NiTiAPI.Dapper.Repositories
             }
         }
 
+        public async Task<List<CategoriesViewModel>> GetListCateByCorId(int corporationId)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+                var paramaters = new DynamicParameters();
+                paramaters.Add("@corporationId", corporationId);
+
+                var result = await conn.QueryAsync<CategoriesViewModel>("Get_Category_ByCorpoId",
+                    paramaters, null, null, System.Data.CommandType.StoredProcedure);
+                return result.AsList();
+            }
+        }
+
         public async Task<PagedResult<CategoriesViewModel>> GetPaging(string keyword, int cororationId, int pageIndex, int pageSize)
         {
             using (var conn = new SqlConnection(_connectionString))

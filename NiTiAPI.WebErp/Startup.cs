@@ -233,16 +233,15 @@ namespace NiTiAPI.WebErp
              {
                  var supportedCultures = new List<CultureInfo>
                  {
-                     new CultureInfo("en-US"),
                      new CultureInfo("vi-VN")
-                                         
+                     //new CultureInfo("vi-VN"),
+                     //new CultureInfo("en-US")                                         
                  };
-
                  opts.DefaultRequestCulture = new RequestCulture("vi-VN");
-                  // Formatting numbers, dates, etc.
-                  opts.SupportedCultures = supportedCultures;
-                  // UI strings that we have localized.
-                  opts.SupportedUICultures = supportedCultures;
+                 // Formatting numbers, dates, etc.
+                 opts.SupportedCultures = supportedCultures;
+                 // UI strings that we have localized.
+                 opts.SupportedUICultures = supportedCultures;                 
              });                 
 
             services.AddTransient<IAppUserLoginRepository, AppUserLoginRepository>();
