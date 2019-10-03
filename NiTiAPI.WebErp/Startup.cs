@@ -1,49 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json.Serialization;
-using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Razor;
-
-using System.Globalization;
-using Microsoft.AspNetCore.Localization;
-using Microsoft.AspNetCore.Mvc.Localization;
-using Microsoft.Extensions.Localization;
-
 using Microsoft.Extensions.Options;
-using NiTiAPI.WebErp.Extensions;
-using NiTiAPI.WebErp.Services;
-using Microsoft.Extensions.FileProviders;
-using System.IO;
-using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json.Serialization;
 using NiTiAPI.Dapper.Models;
 using NiTiAPI.Dapper.Repositories;
 using NiTiAPI.Dapper.Repositories.Interfaces;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using Newtonsoft.Json;
-using System.Net;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Localization.Routing;
-using System.Reflection;
 using NiTiAPI.WebErp.Data;
+using NiTiAPI.WebErp.Extensions;
 using NiTiAPI.WebErp.Helpers;
-using NiTiAPI.Dapper.ViewModels;
-using PaulMiami.AspNetCore.Mvc.Recaptcha;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using NiTiAPI.WebErp.Resources;
 using NiTiAPI.WebErp.Hubs;
+using NiTiAPI.WebErp.Resources;
+using NiTiAPI.WebErp.Services;
+using PaulMiami.AspNetCore.Mvc.Recaptcha;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Reflection;
 
 namespace NiTiAPI.WebErp
 {
@@ -80,9 +62,8 @@ namespace NiTiAPI.WebErp
             //    .AddEntityFrameworkStores<AppDbContext>()
             //    .AddDefaultTokenProviders();
 
-
             services.AddTransient<IUserStore<AppUser>, UserStore>();
-            services.AddTransient<IRoleStore<AppRole>, RoleStore>();           
+            services.AddTransient<IRoleStore<AppRole>, RoleStore>();
 
             services.AddMemoryCache();
 
@@ -156,7 +137,6 @@ namespace NiTiAPI.WebErp
             // Add application services.
             services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>();
-            
 
             services.AddSingleton(Mapper.Configuration);
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
@@ -215,9 +195,7 @@ namespace NiTiAPI.WebErp
 
             .AddRazorPagesOptions(options => options.AllowAreas = true)
 
-            .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver()); 
-            
-            
+            .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
             services.AddCors(options => options.AddPolicy("CorsPolicy",
                builder =>
@@ -235,14 +213,14 @@ namespace NiTiAPI.WebErp
                  {
                      new CultureInfo("vi-VN")
                      //new CultureInfo("vi-VN"),
-                     //new CultureInfo("en-US")                                         
+                     //new CultureInfo("en-US")
                  };
                  opts.DefaultRequestCulture = new RequestCulture("vi-VN");
                  // Formatting numbers, dates, etc.
                  opts.SupportedCultures = supportedCultures;
                  // UI strings that we have localized.
-                 opts.SupportedUICultures = supportedCultures;                 
-             });                 
+                 opts.SupportedUICultures = supportedCultures;
+             });
 
             services.AddTransient<IAppUserLoginRepository, AppUserLoginRepository>();
             services.AddTransient<IFunctionRepository, FunctionRepository>();
@@ -264,8 +242,9 @@ namespace NiTiAPI.WebErp
 
             services.AddTransient<IProductWholePriceRepository, ProductWholePriceRepository>();
 
-            services.AddSignalR();
+            services.AddTransient<ICategoryNewsRepository, CategoryNewsRepository>();
 
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -298,7 +277,6 @@ namespace NiTiAPI.WebErp
             {
                 routes.MapHub<UserOnlineHub>("/useronlinehub");
             });
-
 
             app.UseMvc(routes =>
             {
@@ -334,7 +312,6 @@ namespace NiTiAPI.WebErp
                 //    areaName: "admin",
                 //    template: "{controller=login}/{action=Index}/{id?}");
 
-
                 //routes.MapRoute(
                 //   name: "areaRoute",
                 //   template: "{area:exists}/{controller=Login}/{action=Index}/{id?}"); // localhost: login to admin
@@ -348,9 +325,7 @@ namespace NiTiAPI.WebErp
                 //    name: "ClientShop",
                 //    areaName: "ClientShop",
                 //    template: "{controller=Home}/{action=Index}/{id?}");         //  localhost/admin: login to client shop
-
             });
-
         }
     }
 }

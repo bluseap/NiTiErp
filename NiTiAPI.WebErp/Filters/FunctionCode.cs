@@ -12,7 +12,9 @@ namespace NiTiAPI.WebErp.Filters
 
         SALES_CATALOG,
         SALES_PRODUCT,
-        SALES_ORDER
+        SALES_ORDER,
+
+        NEWS_CATALOG,
 
     }
 }

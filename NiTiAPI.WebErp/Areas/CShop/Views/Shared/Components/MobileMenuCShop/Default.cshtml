@@ -2,7 +2,7 @@
 @model Task<List<ProductViewModel>>
 
 @{
-    var categories = Model.Result;
+    //var categories = Model.Result;
     var @corname = @ViewData["CorporationName"];
 }
 
@@ -14,21 +14,23 @@
         <li>
             <a href="/products.html">Sản phẩm</a>
             <ul>
-                @foreach (var item in categories.Where(x => x.ParentId == 0))
+                @foreach (var item in Model.Result.Where(x => x.ParentId == 0))
                 {
-                    <li>
-                        <a href="/@item.SeoAlias-c.@(item.Id).html">@item.Name </a>
-                        @if (categories.Any(x => x.ParentId == item.Id))
+                <li>
+                    <a href="/@item.SeoAlias-c.@(item.Id).html">@item.Name </a>
+                    @*@if (categories.Any(x => x.ParentId == item.Id))*@
+                    @if (Model.Result.Any(x => x.ParentId == item.Id))
+                    {
+                    <ul>
+                        @*@foreach (var subItem in categories.Where(x => x.ParentId == item.Id))*@
+                        @foreach (var subItem in Model.Result.Where(x => x.ParentId == item.Id))
                         {
-                            <ul>
-                                @foreach (var subItem in categories.Where(x => x.ParentId == item.Id))
-                                {
-                                    <li><a href="/@subItem.SeoAlias-c.@(subItem.Id).html"><span>@subItem.Name</span></a></li>
-                                }
-                            </ul>
+                            <li><a href="/@subItem.SeoAlias-c.@(subItem.Id).html"><span>@subItem.Name</span></a></li>
                         }
+                    </ul>
+                    }
 
-                    </li>
+                </li>
                 }
             </ul>
         </li>

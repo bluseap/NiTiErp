@@ -8,7 +8,24 @@ namespace NiTiAPI.Dapper.ViewModels
     {
         public int Id { get; set; }
 
+        public int CorporationId { get; set; }
+
+        public string CorporationName { get; set; }
+
         public string Name { get; set; }
+
+        public string Description { get; set; }
+
+        public string SeoAlias { get; set; }
+
+        public string SeoTitle { get; set; }
+
+        public string SeoKeyword { get; set; }
+
+        public string SeoDescription { get; set; }
+
+        public string SeoTags { get; set; }
+
 
         public int ParentId { get; set; }
 
@@ -20,6 +37,7 @@ namespace NiTiAPI.Dapper.ViewModels
 
         public string Thumbnail { get; set; }
 
+        public bool IsActive { get; set; }
 
         public int Status { get; set; }
 

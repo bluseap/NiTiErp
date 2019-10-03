@@ -117,16 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Help" xml:space="preserve">
-    <value>Help</value>
+  <data name="CatalogCance" xml:space="preserve">
+    <value>Hủy</value>
   </data>
-  <data name="LogOut" xml:space="preserve">
-    <value>Log out</value>
+  <data name="CatalogDescription" xml:space="preserve">
+    <value>Mô tả danh mục</value>
   </data>
-  <data name="Profile" xml:space="preserve">
-    <value>Profile info</value>
+  <data name="CatalogName" xml:space="preserve">
+    <value>Tên danh mục</value>
   </data>
-  <data name="Setting" xml:space="preserve">
-    <value>Setting</value>
+  <data name="CatalogParent" xml:space="preserve">
+    <value>Danh mục gốc</value>
+  </data>
+  <data name="CatalogSave" xml:space="preserve">
+    <value>Lưu</value>
+  </data>
+  <data name="CatalogSortOrder" xml:space="preserve">
+    <value>Số thứ tự</value>
+  </data>
+  <data name="CorporationName" xml:space="preserve">
+    <value>Tên công ty</value>
+  </data>
+  <data name="IsActive" xml:space="preserve">
+    <value>Kích hoạt.</value>
+  </data>
+  <data name="SeoAlias" xml:space="preserve">
+    <value>SEO Url</value>
+  </data>
+  <data name="SeoDescription" xml:space="preserve">
+    <value>SEO Description</value>
+  </data>
+  <data name="SeoKeyword" xml:space="preserve">
+    <value>SEO Keyword</value>
+  </data>
+  <data name="SeoTitle" xml:space="preserve">
+    <value>Chủ đề SEO</value>
+  </data>
+  <data name="ShowInHome" xml:space="preserve">
+    <value>Hiển thị trên trang chủ</value>
+  </data>
+  <data name="ShowInMenu" xml:space="preserve">
+    <value>Hiển thị trên thanh Menu</value>
+  </data>
+  <data name="UpdateCatalog" xml:space="preserve">
+    <value>Thêm / Sửa  danh mục</value>
   </data>
 </root>
