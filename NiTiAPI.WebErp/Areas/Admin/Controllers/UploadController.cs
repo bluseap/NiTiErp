@@ -172,6 +172,44 @@ namespace NiTiAPI.WebErp.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        public IActionResult UploadImagePost()
+        {
+            DateTime now = DateTime.Now;
+            var files = Request.Form.Files;
+            if (files.Count == 0)
+            {
+                return new BadRequestObjectResult(files);
+            }
+            else
+            {
+                var file = files[0];
+                var filename = ContentDispositionHeaderValue
+                                    .Parse(file.ContentDisposition)
+                                    .FileName
+                                    .Trim('"');
+
+                var imageFolder = $@"\uploaded\ImagePost\{now.ToString("yyyyMMdd")}";
+
+                string folder = _hostingEnvironment.WebRootPath + imageFolder;
+
+                if (!Directory.Exists(folder))
+                {
+                    Directory.CreateDirectory(folder);
+                }
+
+                var datetimeFilename = TextHelper.ConvertStringDatetime(now) + filename;
+                string filePath = Path.Combine(folder, datetimeFilename);
+                using (FileStream fs = System.IO.File.Create(filePath))
+                {
+                    file.CopyTo(fs);
+                    fs.Flush();
+                }
+
+                return new OkObjectResult(Path.Combine(imageFolder, datetimeFilename).Replace(@"\", @"/"));
+            }
+        }
+
+        [HttpPost]
         public IActionResult UploadVanBanDenFile()
         {
             DateTime now = DateTime.Now;

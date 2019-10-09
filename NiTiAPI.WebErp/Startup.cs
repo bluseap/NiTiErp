@@ -243,6 +243,7 @@ namespace NiTiAPI.WebErp
             services.AddTransient<IProductWholePriceRepository, ProductWholePriceRepository>();
 
             services.AddTransient<ICategoryNewsRepository, CategoryNewsRepository>();
+            services.AddTransient<IPostRepository, PostRepository>();
 
             services.AddSignalR();
         }

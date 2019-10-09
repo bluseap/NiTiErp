@@ -287,6 +287,13 @@
         else
             return '<span class="badge bg-red">Hết hàng</span>';
     },
+    getStatusPosts: function (status) {
+        if (status === 1)
+            return '<span class="badge bg-green">Active</span>';
+        else
+            return '<span class="badge bg-red">Inactive</span>';
+    },
+
     getHoSoNhanVienStatus: function (status) {
         if (status === 1)
             return '<span class="badge bg-green">Làm việc</span>';
@@ -360,7 +367,6 @@
         else
             return '<span class="badge bg-red">Không biết</span>';
     },
-
     getVanBanDiTTChoXuLy: function (trangthai) {
         if (trangthai === 1)
             return '<span class="badge bg-orange">Đang xử lý</span>';

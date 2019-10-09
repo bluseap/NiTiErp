@@ -15,6 +15,7 @@ namespace NiTiAPI.WebErp.Filters
         SALES_ORDER,
 
         NEWS_CATALOG,
+        NEWS_POST
 
     }
 }

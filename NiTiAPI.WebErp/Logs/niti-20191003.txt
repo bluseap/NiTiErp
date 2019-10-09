@@ -4528,3 +4528,4 @@ Error Number:50000,State:1,Class:16
 2019-10-03T10:36:38.5677619+07:00 0HLQ7MAEHUQFR:00000006 [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[NiTiAPI.Dapper.ViewModels.CategoryNewsViewModel, NiTiAPI.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
 2019-10-03T10:36:38.5680269+07:00 0HLQ7MAEHUQFR:00000006 [INF] Executed action "NiTiAPI.WebErp.Areas.Admin.Controllers.CategoryNewsController.GetListCategory (NiTiAPI.WebErp)" in 4.5718ms (afa2e885)
 2019-10-03T10:36:38.5684289+07:00 0HLQ7MAEHUQFR:00000006 [INF] Request finished in 6.2782ms 200 application/json; charset=utf-8 (791a596a)
+2019-10-03T10:44:10.1435458+07:00 0HLQ7MAEHUQFO:00000006 [INF] Request finished in 544461.6335ms 101  (791a596a)

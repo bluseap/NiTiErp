@@ -8,11 +8,13 @@ namespace NiTiAPI.Dapper.ViewModels
     {
         public int Id { get; set; }
 
-        public string Title { get; set; }
+        public int CorporationId { get; set; }
 
-        public string Description { get; set; }
+        public string CorporationName { get; set; }
 
-        public string Content { get; set; }
+        public int CategoryNewsId { get; set; }
+
+        public string CategoryNewsName { get; set; }
 
         public string Thumbnail { get; set; }
 
@@ -28,17 +30,11 @@ namespace NiTiAPI.Dapper.ViewModels
 
         public int Status { get; set; }
 
-        public string SeoAlias { get; set; }
-
-        public string SeoTitle { get; set; }
-
-        public string SeoMetaKeywords { get; set; }
-
-        public string SeoMetaDescription { get; set; }
-
         public DateTime HotDate { get; set; }
 
         public DateTime NewDate { get; set; }
+
+        public bool  IsActive { get; set; }
 
         public bool Active { get; set; }
 
@@ -49,6 +45,27 @@ namespace NiTiAPI.Dapper.ViewModels
         public DateTime UpdateDate { get; set; }
 
         public string UpdateBy { get; set; }
+
+        public string LanguageId { get; set; }
+
+        public string NameLanguage { get; set; }
+
+        public string Title { get; set; }
+
+        public string Content { get; set; }
+
+        public string Description { get; set; }                
+
+        public string SeoAlias { get; set; }
+
+        public string SeoTitle { get; set; }
+
+        public string SeoMetaKeywords { get; set; }
+
+        public string SeoMetaDescription { get; set; }
+
+        public string SeoTags { get; set; }
+
 
     }
 }
