@@ -244,6 +244,7 @@ namespace NiTiAPI.WebErp
 
             services.AddTransient<ICategoryNewsRepository, CategoryNewsRepository>();
             services.AddTransient<IPostRepository, PostRepository>();
+            services.AddTransient<IPostsImagesRepository, PostsImagesRepository>();
 
             services.AddSignalR();
         }

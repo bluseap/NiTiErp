@@ -7,7 +7,7 @@
     <link href="~/vendor/jquery-easyui/themes/icon.css" rel="stylesheet" />
 }
 @section Scripts{
-    <script src="~/vendor/jquery-easyui/jquery.easyui.min.js"></script>
+    <script src="~/vendor/jquery-easyui/jquery.easyui.min.js"></script>    
 
     <script src="~/admin-app/controllers/post/addedit-post.js" asp-append-version="true"></script>
     <script src="~/admin-app/controllers/post/index.js" asp-append-version="true"></script>
@@ -30,7 +30,7 @@
 <div class="page-title">
     <div class="title_left">
         <h3>  <small>@Localizer["ListPost"]</small></h3>
-    </div>   
+    </div>
 </div>
 <div class="page-title">
     <div class="title_left">
@@ -65,7 +65,7 @@
                         <tr>
                             <th>@Localizer["Title"]</th>
                             <th>@Localizer["CategoryNewsName"]</th>
-                            <th>@Localizer["Corporation"]</th>                            
+                            <th>@Localizer["Corporation"]</th>
                             <th>@Localizer["Image"]</th>
                             <th>@Localizer["Status"]</th>
                             <th width="20%">#</th>
@@ -104,15 +104,15 @@
     <tr>
         <td>{{Title}}</td>
         <td>{{CategoryNewsName}}</td>
-        <td>{{CorporationName}}</td>       
+        <td>{{CorporationName}}</td>
         <td>{{{Image}}}</td>
         <td>{{{Status}}}</td>
         <th scope="row">
             <a class="btn  btn-sm btn-edit" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title=@Localizer["UpdateProduct"]><i class="fa fa-pencil"></i></a>
             <a class="btn  btn-sm btn-delete" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title=@Localizer["DeleteProduct"]><i class="fa fa-trash"></i></a>
             @*<a href="#" data-id="{{Id}}" class="btn btn-xs btn-images" data-toggle="tooltip" data-placement="top" title=@Localizer["ImageProductManage"]><i class="fa fa-image"></i></a>
-            <a href="#" data-id="{{Id}}" class="btn btn-xs btn-quantity" data-toggle="tooltip" data-placement="top" title=@Localizer["QuantityProductManage"]><i class="fa fa-hourglass-start"></i></a>
-            <a href="#" data-id="{{Id}}" class="btn btn-xs btn-whole-price" data-toggle="tooltip" data-placement="top" title=@Localizer["PriceProductManage"]><i class="fa fa-money"></i></a>*@
+                <a href="#" data-id="{{Id}}" class="btn btn-xs btn-quantity" data-toggle="tooltip" data-placement="top" title=@Localizer["QuantityProductManage"]><i class="fa fa-hourglass-start"></i></a>
+                <a href="#" data-id="{{Id}}" class="btn btn-xs btn-whole-price" data-toggle="tooltip" data-placement="top" title=@Localizer["PriceProductManage"]><i class="fa fa-money"></i></a>*@
         </th>
     </tr>
 </script>

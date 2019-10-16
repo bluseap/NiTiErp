@@ -141,6 +141,9 @@
   <data name="IsActive" xml:space="preserve">
     <value>Active</value>
   </data>
+  <data name="ListImage" xml:space="preserve">
+    <value>List image</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>

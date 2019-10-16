@@ -3,6 +3,8 @@ var addeditPostController = function () {
 
     var userName = $("#hidUserName").val();
     var imagePostTitle = [];
+    var imagePostTitle2 = [];
+    var postImgesList = [];
 
     this.loadTablePost = function (isPageChanged) {
         loadTablePost(isPageChanged);
@@ -16,8 +18,7 @@ var addeditPostController = function () {
         loadCategoryNews(selectedId);
     }
 
-    this.initialize = function () {
-        loadAddEditData();
+    this.initialize = function () {        
         registerEvents();
     }
 
@@ -40,7 +41,7 @@ var addeditPostController = function () {
             }
         });  
 
-        $("#fileInputImagePost").on('change', function () {
+        $("#fileInputImagePost").on('change', function () {            
             var fileUpload = $(this).get(0);
             var files = fileUpload.files;
             var data = new FormData();
@@ -59,7 +60,7 @@ var addeditPostController = function () {
                     clearfileImagePost($("#fileInputImagePost"));
                     imagePostTitle.push(path);
 
-                    $('#imagelistImagePost').append('<div ><img width="100"  data-path="' + path + '" src="' + path + '"></div>');
+                    $('#imagelistImagePost').append('<div class="col-md-3"><img width="100"  data-path="' + path + '" src="' + path + '"></div>');
                     niti.notify(resources["UploadFile"], 'success');
                 },
                 error: function () {
@@ -68,6 +69,93 @@ var addeditPostController = function () {
             });
         });
 
+        $("#fileInputImagePost2").on('change', function () {
+            var fileUpload = $(this).get(0);
+            var files = fileUpload.files;
+
+            var data = new FormData();
+
+            for (var i = 0; i < files.length; i++) {
+                data.append(files[i].name, files[i]);
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Upload/UploadImagePost",
+                contentType: false,
+                processData: false,
+                data: data,
+                success: function (path) {
+                    clearfileImagePost2($("#fileInputImagePost2"));
+                    imagePostTitle2.push(path);                    
+
+                    $('#imagelistImagePost2').append('<div class="col-md-3"><img width="200"  data-path="' + path + '" src="' + path + '"></div>');
+
+                    var insertPost = $('#hidInsertPost').val();
+                    if (insertPost === "1") {
+                        postImgesList.push({
+                            Id: 0,
+                            Path: path,
+                            PostId: 0
+                        });                       
+                    }
+                    else if (insertPost === "2") {
+                        saveImageManagement(path);
+                    }
+                    else {
+                        niti.notify(resources["CreateTableError"], "error");
+                    }
+
+                    niti.notify(resources["UploadFile"], 'success');
+                },
+                error: function () {
+                    niti.notify(resources["UploadFileError"], 'error');
+                }
+            });
+        });
+
+        $('body').on('click', '.btn-delete-image', function (e) {
+            e.preventDefault();
+            $(this).closest('div').remove();
+
+            var postsImagesId = $(this).data("id");
+
+            $.ajax({
+                url: '/admin/post/DeletePostImage',
+                data: {
+                    Id: postsImagesId,
+                    username: userName
+                },
+                type: 'post',
+                dataType: 'json',
+                success: function (response) {
+                    niti.appUserLoginLogger(userName, "Delete Images Posts at Image Post Management.");                    
+                    //$('#imagelistImagePost2').html('');
+                    clearfileImagePost2($("#fileInputImagePost2"));
+                }
+            });
+        });
+
+    }
+
+    function saveImageManagement(imageManagement) {
+        var postid = $('#hidPostId').val();
+        $.ajax({
+            url: '/admin/Post/SavePostsImages',
+            data: {
+                postId: postid,
+                images: imageManagement,
+                username: userName
+            },
+            type: 'post',
+            dataType: 'json',
+            success: function (response) {
+                niti.appUserLoginLogger(userName, "Save Images Post at Posts.");              
+                //$('#imagelistImagePost2').html('');
+                clearfileImagePost2($("#fileInputImagePost2"));
+                imageManagement = [];
+            }
+        });
     }
 
     function registerControls() {
@@ -182,6 +270,17 @@ var addeditPostController = function () {
         }
     }
 
+    function clearfileImagePost2(ctrl) {
+        try {
+            imagePostTitle2 = [];
+            ctrl.value = null;
+            ctrl.value('');
+        }
+        catch (status) {
+            console.log(status);
+        }
+    }
+
     function savePost(e) {
         e.preventDefault();
 
@@ -200,11 +299,23 @@ var addeditPostController = function () {
             var seoDescripts = $('#txtSeoDescription').val();
             var seoTags = $('#txtSeoTag').val();
 
-            var activePost = $('#ckAddEditActive').prop('checked') === true ? true : false;            
+            var activePost = $('#ckAddEditActive').prop('checked') === true ? true : false;
+                        
+            var xml = '';
+            xml = xml + "<tables>";
+            for (var i = 0; i < postImgesList.length; i++) {
+                var listfield = postImgesList[i];
+                xml += "<items>";
+                xml += '<Id>' + listfield.Id + '</Id>';
+                xml += '<Path>' + listfield.Path + '</Path>';
+                xml += '<PostId>' + listfield.PostId + '</PostId>';              
+                xml += "</items>";
+            }
+            xml = xml + '</tables>';
 
             $.ajax({
                 type: "POST",
-                url: "/Admin/Post/CreatePost",
+                url: "/Admin/Post/CreatePostImageXML",
                 data: {
                     CorporationId: corporationId,
                     CategoryNewsId: categoryNewsId,
@@ -219,6 +330,8 @@ var addeditPostController = function () {
                     SeoMetaKeywords: seoKeyword,
                     SeoMetaDescription: seoDescripts,
                     SeoTags: seoTags,
+
+                    listImageXML: xml,
 
                     IsActive: activePost,
                     LanguageId: "vi-VN",
@@ -249,6 +362,8 @@ var addeditPostController = function () {
         e.preventDefault();
 
         if ($('#frmMaintainanceAddEdit').valid()) {
+            var postId = $('#hidPostId').val();
+
             var corporationId = $('#ddlAddEditCorporation').val();
             var categoryNewsId = $('#ddlAddEditCategoryNews').val();
             var title = $('#txtAddEditTitle').val();
@@ -267,8 +382,9 @@ var addeditPostController = function () {
 
             $.ajax({
                 type: "POST",
-                url: "/Admin/Post/CreatePost",
+                url: "/Admin/Post/UpdatePost",
                 data: {
+                    Id: postId,
                     CorporationId: corporationId,
                     CategoryNewsId: categoryNewsId,
                     Title: title,
@@ -309,6 +425,8 @@ var addeditPostController = function () {
     }
 
     function AddEditClearData() {
+        $('#hidInsertPost').val('');
+
         $('#ddlAddEditCorporation')[0].selectedIndex = 1;        
         $('#ddlAddEditCategoryNews')[0].selectedIndex = 0; 
 
@@ -366,11 +484,7 @@ var addeditPostController = function () {
             }
         });
     }
-
-    function loadAddEditData() {
-
-    }
-
+    
     function loadCategoryNews(selectedId) {
 
     }

@@ -37,7 +37,7 @@ namespace NiTiAPI.Dapper.Repositories
             }
         }
 
-        public async Task<PostViewModel> GetById(int id)
+        public async Task<PostViewModel> GetById(int id, string languageId)
         {
             using (var conn = new SqlConnection(_connectionString))
             {
@@ -45,6 +45,7 @@ namespace NiTiAPI.Dapper.Repositories
                     conn.Open();
                 var paramaters = new DynamicParameters();
                 paramaters.Add("@id", id);
+                paramaters.Add("@language", languageId);
 
                 var result = await conn.QueryAsync<PostViewModel>("Get_Posts_ById",
                     paramaters, null, null, System.Data.CommandType.StoredProcedure);
@@ -128,6 +129,55 @@ namespace NiTiAPI.Dapper.Repositories
                 {
                     await conn.QueryAsync<PostViewModel>(
                         "Create_Posts", paramaters, commandType: CommandType.StoredProcedure);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<bool> CreatePostImageXML(PostViewModel posts, string listImageXML)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+
+                var paramaters = new DynamicParameters();
+
+                paramaters.Add("@CorporationId", posts.CorporationId);
+                paramaters.Add("@CategoryNewsId", posts.CategoryNewsId);
+                paramaters.Add("@Thumbnail", posts.Thumbnail);
+                paramaters.Add("@Image", posts.Image);
+                paramaters.Add("@ImageCaption", posts.ImageCaption);
+                paramaters.Add("@CreatedDate", posts.CreatedDate);
+                paramaters.Add("@PublishedDate", posts.PublishedDate);
+                paramaters.Add("@Source", posts.Source);
+                paramaters.Add("@Status", posts.Status);
+                paramaters.Add("@HotDate", posts.HotDate);
+                paramaters.Add("@NewDate", posts.NewDate);
+                paramaters.Add("@IsActive", posts.IsActive);
+                paramaters.Add("@Title", posts.Title);
+                paramaters.Add("@contents", posts.Content);
+                paramaters.Add("@Description", posts.Description);
+                paramaters.Add("@SeoAlias", posts.SeoAlias);
+                paramaters.Add("@SeoTitle", posts.SeoTitle);
+                paramaters.Add("@SeoMetaKeywords", posts.SeoMetaKeywords);
+                paramaters.Add("@SeoMetaDescription", posts.SeoMetaDescription);
+                paramaters.Add("@SeoTags", posts.SeoTags);
+                paramaters.Add("@LanguageId", posts.LanguageId);
+
+                paramaters.Add("@listImagesXML", listImageXML);
+
+                paramaters.Add("@CreateDate", posts.CreateDate);
+                paramaters.Add("@CreateBy", posts.CreateBy);
+
+                try
+                {
+                    await conn.QueryAsync<PostViewModel>(
+                        "Create_Posts_ImagesXML", paramaters, commandType: CommandType.StoredProcedure);
                     return true;
                 }
                 catch (Exception ex)

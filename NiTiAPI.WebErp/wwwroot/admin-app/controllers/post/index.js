@@ -44,13 +44,13 @@
             var postId = $(this).data('id');
             // 2 - Update Post
             $('#hidInsertPost').val(2);
-            //loadEditProduct(productId);
+            loadEditPost(postId);
         });
 
         $('body').on('click', '.btn-delete', function (e) {
             e.preventDefault();
             var postId = $(this).data('id');
-            //deleteProduct(productId);
+            deletePost(postId);
         });
     }
 
@@ -81,9 +81,9 @@
                 $("#ddlAddEditCorporation")[0].selectedIndex = 1;
 
                 var corpoId = $('#ddlCorporation').val();
-                loadCategoryNews(corpoId);
 
-                //addeditproduct.loadTableProduct();
+                loadCategoryNews(corpoId);
+                addeditPost.loadTablePost();
             },
             error: function () {
                 niti.notify(resources['NotFound'], 'error');
@@ -114,6 +114,102 @@
             error: function () {
                 niti.notify(resources['NotFound'], 'error');
             }
+        });
+    }
+
+    function loadEditPost(postId) {
+        $.ajax({
+            type: "GET",
+            url: "/Admin/post/GetById",
+            data: {
+                id: postId
+            },
+            dataType: "json",
+            beforeSend: function () {
+                niti.startLoading();
+            },
+            success: function (response) {
+                var post = response;
+
+                $('#hidPostId').val(post.Id);
+
+                $('#ddlAddEditCorporation').val(post.CorporationId);
+                $('#ddlAddEditCategoryNews').val(post.CategoryNewsId);
+
+                loadPostImage(post.Id);
+
+                //addeditproduct.loadProductCatelogies(product.CategoryId);
+
+                $('#txtAddEditTitle').val(post.Title);
+                $('#txtAddEditDescription').val(post.Description);   
+
+                $('#imagelistImagePost').html('');
+                $('#imagelistImagePost').append('<div ><img width="100"  data-path="' + post.Image + '" src="' + post.Image + '" /></div>');
+                $('#hidImagePost').val(post.Image);
+
+                CKEDITOR.instances.txtAddEditContent.setData(post.Content);
+
+                $('#txtSeoTitle').val(post.SeoTitle);
+                $('#txtSeoAlias').val(post.SeoAlias);
+                $('#txtSeoKeyword').val(post.SeoMetaKeywords);
+                $('#txtSeoDescription').val(post.SeoMetaDescription);
+                $('#txtSeoTag').val(post.SeoTags);
+
+                $('#ckAddEditActive').prop('checked', post.IsActive);               
+
+                $('#modal-add-edit').modal('show');
+                niti.stopLoading();
+            },
+            error: function (status) {
+                niti.notify(status, 'error');
+                niti.stopLoading();
+            }
+        });
+    }
+
+    function loadPostImage(postid) {
+        $.ajax({
+            url: '/admin/post/GetImagePostId',
+            data: {
+                postId: postid
+            },
+            type: 'get',
+            dataType: 'json',
+            success: function (response) {
+                var render = '';
+                $.each(response, function (i, item) {
+                    render += '<div class="col-md-3"><img width="100" src="' + item.Path
+                        + '" /><br/><a href="#" class="btn-delete-image" data-id="' + item.Id + '" >Xóa</a></div>';
+                });
+
+                $('#imagelistImagePost2').html(render);
+            }
+        });
+    }
+
+    function deletePost(postId) {
+        niti.confirm(resources["DeleteSure"], function () {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/post/DeletePost",
+                data: {
+                    Id: postId,
+                    username: userName
+                },
+                beforeSend: function () {
+                    niti.startLoading();
+                },
+                success: function (response) {
+                    niti.appUserLoginLogger(userName, "Delete Post.");
+                    niti.notify(resources["DeleteTableOK"], 'success');
+                    niti.stopLoading();
+                    addeditPost.loadTablePost();
+                },
+                error: function (status) {
+                    niti.notify('Has an error in deleting progress', 'error');
+                    niti.stopLoading();
+                }
+            });
         });
     }
 
