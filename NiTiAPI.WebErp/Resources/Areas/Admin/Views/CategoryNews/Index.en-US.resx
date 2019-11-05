@@ -129,6 +129,9 @@
   <data name="ListCatalog" xml:space="preserve">
     <value>List Catalog</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
   <data name="Update" xml:space="preserve">
     <value>Update</value>
   </data>

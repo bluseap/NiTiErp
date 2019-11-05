@@ -129,6 +129,9 @@
   <data name="ListCatalog" xml:space="preserve">
     <value>Danh sách Danh mục</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Tìm</value>
+  </data>
   <data name="Update" xml:space="preserve">
     <value>Sửa</value>
   </data>

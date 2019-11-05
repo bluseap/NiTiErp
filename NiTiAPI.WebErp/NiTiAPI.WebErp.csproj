@@ -7,9 +7,6 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Components\" />
-    <Folder Include="Areas\ClientNews\Components\" />
-    <Folder Include="Areas\ClientNews\Controllers\" />
-    <Folder Include="Areas\ClientNews\Views\" />
     <Folder Include="Logs\" />
     <Folder Include="Middleware\" />
     <Folder Include="Resources\Areas\Admin\Controllers\" />
@@ -23,20 +20,23 @@
     <Folder Include="Resources\Areas\Client\Controllers\" />
     <Folder Include="Resources\Areas\Client\Models\" />
     <Folder Include="Resources\Areas\Client\Views\Shared\Components\SideBar\" />
+    <Folder Include="Resources\Areas\CNews\Controllers\" />
+    <Folder Include="Resources\Areas\CNews\Models\" />
+    <Folder Include="Resources\Areas\CNews\Views\Contact\" />
+    <Folder Include="Resources\Areas\CNews\Views\Home\" />
+    <Folder Include="Resources\Areas\CNews\Views\Shared\Components\" />
+    <Folder Include="Resources\Areas\CNews\Views\Stock\" />
     <Folder Include="Resources\Areas\CShop\Controllers\" />
     <Folder Include="Resources\Areas\CShop\Models\" />
     <Folder Include="Resources\Areas\CShop\Views\Shared\Components\BrandCShop\" />
     <Folder Include="Resources\Areas\CShop\Views\Shared\Components\CategoryMenuCShop\" />
     <Folder Include="Resources\Areas\CShop\Views\Shared\Components\MobileMenuCShop\" />
-    <Folder Include="wwwroot\clientnews-app\controllers\" />
-    <Folder Include="wwwroot\clientnews-app\shared\" />
     <Folder Include="wwwroot\client-side\images\" />
     <Folder Include="wwwroot\client-side\js\" />
-    <Folder Include="wwwroot\clientnews-side\css\" />
-    <Folder Include="wwwroot\clientnews-side\images\" />
-    <Folder Include="wwwroot\clientnews-side\js\" />
     <Folder Include="wwwroot\clientshop-side\images\" />
     <Folder Include="wwwroot\clientshop-side\js\" />
+    <Folder Include="wwwroot\cnews-app\controllers\contact\" />
+    <Folder Include="wwwroot\cnews-app\controllers\post\" />
     <Folder Include="wwwroot\lib\" />
     <Folder Include="wwwroot\template\cshop\" />
     <Folder Include="wwwroot\uploaded\ImageProduct\" />
@@ -133,6 +133,30 @@
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\Client\Views\_ViewStart.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CNews\Views\Shared\Components\CategoryMenuCNews\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CNews\Views\Shared\_Footer.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CNews\Views\Shared\_Header.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CNews\Views\Shared\_Layout.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CNews\Views\Shared\_SelectLanguagePartial.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CNews\Views\Shared\_ValidationScriptsPartial.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CNews\Views\_ViewImports.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CNews\Views\_ViewStart.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\CShop\Views\Account\Login.cshtml">

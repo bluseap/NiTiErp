@@ -46,6 +46,7 @@ namespace NiTiAPI.Dapper.ViewModels
 
         public string UpdateBy { get; set; }
 
+
         public string LanguageId { get; set; }
 
         public string ListImageXML { get; set; }

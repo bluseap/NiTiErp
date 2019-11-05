@@ -6,15 +6,10 @@
     var addeditCateNews = new addeditCategoryNewsController();   
 
     this.initialize = function () {
-
         loadCorporation();
-
         loadData();
-
         registerEvents();
-
-        addeditCateNews.initialize();
-        
+        addeditCateNews.initialize();        
     }
 
     function registerEvents() {
@@ -38,6 +33,12 @@
             e.preventDefault();
             var catalogId = $('#hidCatalogId').val();
             deleteCatalog(catalogId);
+        });
+
+        $('body').on('click', '#btnSearch', function (e) {
+            e.preventDefault();
+            addeditCateNews.loadListCatalog();
+            addeditCateNews.loadCatalogParent($("#ddlCorporation").val());
         });
 
     }
@@ -94,6 +95,8 @@
                 var data = response;
                 
                 $('#hidCatalogId').val(data.Id);
+
+                $('#ddlAddEditCorporation').val(data.CorporationId);
 
                 $('#txtCatalogName').val(data.Name);
                 $('#ddlCatalogParent').val(data.ParentId);

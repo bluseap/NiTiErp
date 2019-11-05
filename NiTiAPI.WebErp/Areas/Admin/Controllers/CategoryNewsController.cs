@@ -44,7 +44,7 @@ namespace NiTiAPI.WebErp.Areas.Admin.Controllers
         {
             var model = await _categoryNews.GetById(Id);
             return new OkObjectResult(model);
-        }
+        }       
 
         [HttpPost]
         [ClaimRequirement(FunctionCode.NEWS_CATALOG, ActionCode.CREATE)]

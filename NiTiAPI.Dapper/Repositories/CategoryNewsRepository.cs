@@ -66,7 +66,7 @@ namespace NiTiAPI.Dapper.Repositories
             }
         }
 
-        public async Task<List<CategoryNewsViewModel>> GetListCateByCorId(int corporationId)
+        public List<CategoryNewsViewModel> GetListCateByCorId(int corporationId)
         {
             using (var conn = new SqlConnection(_connectionString))
             {
@@ -75,9 +75,27 @@ namespace NiTiAPI.Dapper.Repositories
                 var paramaters = new DynamicParameters();
                 paramaters.Add("@corporationId", corporationId);
 
-                var result = await conn.QueryAsync<CategoryNewsViewModel>("Get_CategoryNews_ByCorpoId",
+                var result = conn.QueryAsync<CategoryNewsViewModel>("Get_CategoryNews_ByCorpoId",
                     paramaters, null, null, System.Data.CommandType.StoredProcedure);
-                return result.AsList();
+
+                return result.Result.ToList();
+            }
+        }
+
+        public List<CategoryNewsViewModel> GetListHomeCateByCorLangId(int corporationId, string languageId)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+                var paramaters = new DynamicParameters();
+                paramaters.Add("@corporationId", corporationId);
+                paramaters.Add("@languageId", languageId);
+
+                var result = conn.QueryAsync<CategoryNewsViewModel>("Get_CategoryNews_HomeByCorpoLanguageId",
+                    paramaters, null, null, System.Data.CommandType.StoredProcedure);
+
+                return result.Result.ToList();
             }
         }
 

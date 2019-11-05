@@ -15,7 +15,9 @@ namespace NiTiAPI.Dapper.Repositories.Interfaces
 
         Task<List<CategoryNewsViewModel>> GetListCateByCor(string corporationName);
 
-        Task<List<CategoryNewsViewModel>> GetListCateByCorId(int corporationId);
+        List<CategoryNewsViewModel> GetListCateByCorId(int corporationId);
+
+        List<CategoryNewsViewModel> GetListHomeCateByCorLangId(int corporationId, string languageId);
 
         Task<PagedResult<CategoryNewsViewModel>> GetPaging(string keyword, int coporationId, int pageIndex, int pageSize);
 
