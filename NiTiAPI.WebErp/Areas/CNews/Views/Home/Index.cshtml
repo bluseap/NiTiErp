@@ -56,152 +56,151 @@
                         <div class="item" style="background-image: url(cnews-side/images/banner/422_vn.png);">
                         </div>
                     </div>
-                    <!-- /.owl-carousel -->
                 </div>
             </div>
         </div>
-        <!-- ============================================== banners ============================================== -->
-        <div class="wide-banners wow fadeInUp outer-bottom-xs">
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="wide-banner cnt-strip">
-                        <div class="image"> <img class="img-responsive" src="images/banners/home-banner1.jpg" alt=""> </div>
+        <br /> <br /> 
+        <div class="scroll-tabs outer-top-vs wow fadeInUp animated">
+            <div class="col-xs-12 col-sm-12 col-md-9">
+                @foreach (var modelhome in Model.PostHomeCategoryNews)
+                {
+                    <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp">
+                        <div class="more-info-tab clearfix ">
+                            <h3 class="new-product-title pull-left">@modelhome.Name</h3>
+                            @*<ul class="nav nav-tabs nav-tab-line pull-right" id="new-products-1">
+            <li class="active"><a data-transition-type="backSlide" href="#all" data-toggle="tab">Giới thiệu chung</a></li>
+            <li><a data-transition-type="backSlide" href="#smartphone" data-toggle="tab">Cơ cấu tổ chức</a></li>
+            <li><a data-transition-type="backSlide" href="#laptop" data-toggle="tab">Chức năng nhiệm vụ</a></li>
+        </ul>*@
+                            <!-- /.nav-tabs -->
+                        </div>
+                        <div class="blog-page">
+                            <div class="blog-post outer-top-bd  wow fadeInUp">
+                                @if (modelhome.Id == 1)
+                                {
+                                    @foreach (var modelhoneintro in Model.PostIntro.Where(p => p.CategoryNewsId == modelhome.Id))
+                                    {
+                                        <a href="blog-details.html">
+                                            <img class="img-title-post" src=@modelhoneintro.Image alt="">
+                                        </a>
+                                        <h1><a href="blog-details.html">@modelhoneintro.Title</a></h1>
+                                        <span class="date-time">@modelhoneintro.CreatedDate</span>
+                                        <p>@modelhoneintro.Description</p>
+                                        <div class="wow">
+                                            <a data-id="@modelhoneintro.Id" class="btn btn-upper btn-primary read-more pull-right btnViewPost">Xem thêm</a>
+                                        </div>
+                                        <br />
+                                        <p></p><p></p>
+                                    }
+                                }
+                                else if (modelhome.Id == 2)
+                                {
+                                    @foreach (var modelhoneintro in Model.PostEvent.Where(p => p.CategoryNewsId == modelhome.Id))
+                                    {
+                                        <h1><a href="blog-details.html">@modelhoneintro.Title</a></h1>
+                                        <span class="date-time">@modelhoneintro.CreatedDate</span>
+                                        <p>@modelhoneintro.Description</p>
+                                        <div class="wow">
+                                            <a data-id="@modelhoneintro.Id" class="btn btn-upper btn-primary read-more pull-right btnViewPost">Xem thêm</a>
+                                        </div>
+                                        <br />
+                                        <p></p><p></p>
+                                    }
+                                }
+                                else if (modelhome.Id == 3)
+                                {
+                                    @foreach (var modelhoneintro in Model.PostProduct.Where(p => p.CategoryNewsId == modelhome.Id))
+                                    {
+                                        <h1><a href="blog-details.html">@modelhoneintro.Title</a></h1>
+                                        <span class="date-time">@modelhoneintro.CreatedDate</span>
+                                        <p>@modelhoneintro.Description</p>
+                                        <div class="wow">
+                                            <a data-id="@modelhoneintro.Id" class="btn btn-upper btn-primary read-more pull-right btnViewPost">Xem thêm</a>
+                                        </div>
+                                        <br />
+                                        <p></p><p></p>
+                                    }
+                                }
+                                else
+                                {
+                                    @foreach (var modelhoneintro in Model.PostCustomerInfo.Where(p => p.CategoryNewsId == modelhome.Id))
+                                    {
+                                        <h1><a href="blog-details.html">@modelhoneintro.Title</a></h1>
+                                        <span class="date-time">@modelhoneintro.CreatedDate</span>
+                                        <p>@modelhoneintro.Description</p>
+                                        <div class="wow">
+                                            <a data-id="@modelhoneintro.Id" class="btn btn-upper btn-primary read-more pull-right btnViewPost">Xem thêm</a>
+                                        </div>
+                                        <br />
+                                        <p></p><p></p>
+                                    }
+                                }
+                            </div>
+                            <!-- /.tab-content -->
+                        </div>
                     </div>
-                    <!-- /.wide-banner -->
-                </div>
-                <!-- /.col -->
-                <div class="col-md-6 col-sm-6">
-                    <div class="wide-banner cnt-strip">
-                        <div class="image"> <img class="img-responsive" src="images/banners/home-banner2.jpg" alt=""> </div>
-                    </div>
-                    <!-- /.wide-banner -->
-                </div>
-                <!-- /.col -->
+                }
             </div>
-            <!-- /.row -->
-        </div>
-        <br /><br />
-        @foreach (var modelhome in Model.PostHomeCategoryNews)
-        {
-            <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp">
-                <div class="more-info-tab clearfix ">
-                    <h3 class="new-product-title pull-left">@modelhome.Name</h3>
-                    @*<ul class="nav nav-tabs nav-tab-line pull-right" id="new-products-1">
-                        <li class="active"><a data-transition-type="backSlide" href="#all" data-toggle="tab">Giới thiệu chung</a></li>
-                        <li><a data-transition-type="backSlide" href="#smartphone" data-toggle="tab">Cơ cấu tổ chức</a></li>
-                        <li><a data-transition-type="backSlide" href="#laptop" data-toggle="tab">Chức năng nhiệm vụ</a></li>
-                    </ul>*@
-                    <!-- /.nav-tabs -->
-                </div>
-                <div class="blog-page">
-                    <div class="blog-post outer-top-bd  wow fadeInUp">
-                        @if (modelhome.Id == 1)
-                        {
-                            @foreach (var modelhoneintro in Model.PostIntro.Where(p => p.CategoryNewsId == modelhome.Id))
-                            {
-                                <a href="blog-details.html">
-                                    <img class="img-title-post" src=@modelhoneintro.Image alt="">
-                                </a>
-                                <h1><a href="blog-details.html">@modelhoneintro.Title</a></h1>
-                                <span class="date-time">@modelhoneintro.CreatedDate</span>
-                                <p>@modelhoneintro.Description</p>
-                                <div class="wow">
-                                    <a data-id="@modelhoneintro.Id"  class="btn btn-upper btn-primary read-more pull-right btnViewPost">Xem thêm</a>
-                                </div>
-                                <br />
-                                <p></p><p></p>
-                            }
-                        }
-                        else if (modelhome.Id == 2)
-                        {
-                            @foreach (var modelhoneintro in Model.PostEvent.Where(p => p.CategoryNewsId == modelhome.Id))
-                            {
-                                <h1><a href="blog-details.html">@modelhoneintro.Title</a></h1>
-                                <span class="date-time">@modelhoneintro.CreatedDate</span>
-                                <p>@modelhoneintro.Description</p>
-                                <div class="wow">
-                                    <a data-id="@modelhoneintro.Id" class="btn btn-upper btn-primary read-more pull-right btnViewPost">Xem thêm</a>
-                                </div>
-                                <br />
-                                <p></p><p></p>
-                            }
-                        }
-                        else if (modelhome.Id == 3)
-                        {
-                            @foreach (var modelhoneintro in Model.PostProduct.Where(p => p.CategoryNewsId == modelhome.Id))
-                            {
-                                <h1><a href="blog-details.html">@modelhoneintro.Title</a></h1>
-                                <span class="date-time">@modelhoneintro.CreatedDate</span>
-                                <p>@modelhoneintro.Description</p>
-                                <div class="wow">
-                                    <a data-id="@modelhoneintro.Id" class="btn btn-upper btn-primary read-more pull-right btnViewPost">Xem thêm</a>
-                                </div>
-                                <br />
-                                <p></p><p></p>
-                            }
-                        }
-                        else
-                        {
-                            @foreach (var modelhoneintro in Model.PostCustomerInfo.Where(p => p.CategoryNewsId == modelhome.Id))
-                            {
-                                <h1><a href="blog-details.html">@modelhoneintro.Title</a></h1>
-                                <span class="date-time">@modelhoneintro.CreatedDate</span>
-                                <p>@modelhoneintro.Description</p>
-                                <div class="wow">
-                                    <a data-id="@modelhoneintro.Id" class="btn btn-upper btn-primary read-more pull-right btnViewPost">Xem thêm</a>
-                                </div>
-                                <br />
-                                <p></p><p></p>
-                            }
-                        }
-                    </div>
-                    <!-- /.tab-content -->
-                </div>
-            </div>
-        }
+            <br /> <br/>
+                   <div class="col-xs-12 col-sm-12 col-md-3 sidebar">
+                       <div class="sidebar-module-container">
 
+                           <h3 class="section-title">@Localizer["News"] </h3>
+                           <ul class="nav nav-tabs nav-tabs-silder-right">
+                               <li class="active"><a href="#popular" data-toggle="tab">@Localizer["NewsNews"]</a></li>
+                               <li><a href="#recent" data-toggle="tab">@Localizer["Products"]</a></li>
+                           </ul>
+                           <div class="tab-content" style="padding-left:0">
+                               <div class="tab-pane active m-t-20" id="popular">
+                                   <div class="blog-post inner-bottom-30 ">
+                                       <img class="img-responsive" src="/cnews-side/images/blog-post/blog_big_01.jpg" alt="">
+                                       <h4><a href="blog-details.html">Simple Blog Post</a></h4>
+                                       <span class="review">6 Comments</span>
+                                       <span class="date-time">12/06/16</span>
+                                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
 
+                                   </div>
+                                   <div class="blog-post">
+                                       <img class="img-responsive" src="/cnews-side/images/blog-post/blog_big_02.jpg" alt="">
+                                       <h4><a href="blog-details.html">Simple Blog Post</a></h4>
+                                       <span class="review">6 Comments</span>
+                                       <span class="date-time">23/06/16</span>
+                                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
 
-        <div class="container">
-            <!-- /.row -->
-            <!-- ============================================== BRANDS CAROUSEL ============================================== -->
-            @*<div id="brands-carousel" class="logo-slider wow fadeInUp">
-                <div class="logo-slider-inner">
-                    <div id="brand-slider" class="owl-carousel brand-slider custom-carousel owl-theme">
-                        <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand1.png" src="assets/images/blank.gif" alt=""> </a> </div>
-                        <!--/.item-->
+                                   </div>
+                               </div>
+                               <div class="tab-pane m-t-20" id="recent">
+                                   <div class="blog-post inner-bottom-30">
+                                       <img class="img-responsive" src="/cnews-side/images/blog-post/blog_big_03.jpg" alt="">
+                                       <h4><a href="blog-details.html">Simple Blog Post</a></h4>
+                                       <span class="review">6 Comments</span>
+                                       <span class="date-time">5/06/16</span>
+                                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
 
-                        <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand2.png" src="assets/images/blank.gif" alt=""> </a> </div>
-                        <!--/.item-->
+                                   </div>
+                                   <div class="blog-post">
+                                       <img class="img-responsive" src="/cnews-side/images/blog-post/blog_big_01.jpg" alt="">
+                                       <h4><a href="blog-details.html">Simple Blog Post</a></h4>
+                                       <span class="review">6 Comments</span>
+                                       <span class="date-time">10/07/16</span>
+                                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
 
-                        <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand3.png" src="assets/images/blank.gif" alt=""> </a> </div>
-                        <!--/.item-->
+                                   </div>
+                               </div>
+                           </div>
 
-                        <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand4.png" src="assets/images/blank.gif" alt=""> </a> </div>
-                        <!--/.item-->
-
-                        <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand5.png" src="assets/images/blank.gif" alt=""> </a> </div>
-                        <!--/.item-->
-
-                        <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand6.png" src="assets/images/blank.gif" alt=""> </a> </div>
-                        <!--/.item-->
-
-                        <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand2.png" src="assets/images/blank.gif" alt=""> </a> </div>
-                        <!--/.item-->
-
-                        <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand4.png" src="assets/images/blank.gif" alt=""> </a> </div>
-                        <!--/.item-->
-
-                        <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand1.png" src="assets/images/blank.gif" alt=""> </a> </div>
-                        <!--/.item-->
-
-                        <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand5.png" src="assets/images/blank.gif" alt=""> </a> </div>
-                        <!--/.item-->
-                    </div>
-                    <!-- /.owl-carousel #logo-slider -->
-                </div>
-
-            </div>*@
+                       </div>
+                       <br/>
+                       <div class="home-banner outer-top-n outer-bottom-xs">
+                           <img src="/cnews-side/images/banners/LHS-banner.jpg" alt="Image">
+                       </div>
+                       <div class="home-banner outer-top-n outer-bottom-xs">
+                           <img src="/cnews-side/images/banners/LHS-banner.jpg" alt="Image">
+                       </div>
+                       <div class="home-banner outer-top-n outer-bottom-xs">
+                           <img src="/cnews-side/images/banners/LHS-banner.jpg" alt="Image">
+                       </div>
+                   </div>
         </div>
 
     </div>

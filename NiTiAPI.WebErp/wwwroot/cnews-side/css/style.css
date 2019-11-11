@@ -84,3 +84,13 @@ header .header-title2 {
 .style-ul-li .container li a:hover {
     color: #12cca7;
 }
+
+.sidebar-module-container .nav-tabs-silder-right li.active a, li.active a:hover {
+    color: #fff !important;
+    border: none !important;
+    font-size: 15px !important;
+    position: relative !important;
+    text-transform: capitalize !important;
+    border: 1px #59B210 solid !important;
+    background: #59B210 !important;
+}

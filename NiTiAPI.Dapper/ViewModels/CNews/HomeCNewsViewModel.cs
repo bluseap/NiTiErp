@@ -11,7 +11,9 @@ namespace NiTiAPI.Dapper.ViewModels.CNews
 
         public List<PostViewModel> PostIntro { set; get; }
         public List<PostViewModel> PostProduct { set; get; }
+        public List<PostViewModel> PostProductSilderRight { set; get; }
         public List<PostViewModel> PostEvent { set; get; }
+        public List<PostViewModel> PostEventSilderRight { set; get; }
         public List<PostViewModel> PostCustomerInfo { set; get; }
 
         public string Title { set; get; }

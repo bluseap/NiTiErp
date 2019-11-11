@@ -181,6 +181,8 @@ namespace NiTiAPI.WebErp
                         NoStore = true
                     });
             })
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+
             .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix,
                     opts => { opts.ResourcesPath = "Resources"; })
             //.AddDataAnnotationsLocalization()
@@ -200,9 +202,10 @@ namespace NiTiAPI.WebErp
             services.AddCors(options => options.AddPolicy("CorsPolicy",
                builder =>
                {
-                   builder.AllowAnyMethod()
+                   builder.AllowAnyOrigin()                        
                        .AllowAnyHeader()
-                       .WithOrigins("http://localhost:3000")
+                       .WithOrigins("http://localhost:44342", "https://localhost:44342")
+                       .AllowAnyMethod()
                        .AllowCredentials();
                }));
 

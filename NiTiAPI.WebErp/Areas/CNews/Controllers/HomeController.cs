@@ -38,7 +38,9 @@ namespace NiTiAPI.WebErp.Areas.CNews.Controllers
 
             homeVm.PostIntro = _postRepository.GetPaging("", culture, 1, 1, 1, 1).Result.Items.ToList();
             homeVm.PostProduct = _postRepository.GetPaging("", culture, 1, 3, 1, 5).Result.Items.ToList();
+            homeVm.PostProductSilderRight = _postRepository.GetPaging("", culture, 1, 3, 1, 2).Result.Items.ToList();
             homeVm.PostEvent = _postRepository.GetPaging("", culture, 1, 2, 1, 5).Result.Items.ToList();
+            homeVm.PostEventSilderRight = _postRepository.GetPaging("", culture, 1, 2, 1, 2).Result.Items.ToList();
             homeVm.PostCustomerInfo = _postRepository.GetPaging("", culture, 1, 4, 1, 5).Result.Items.ToList();
 
             return View(homeVm);
