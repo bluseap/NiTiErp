@@ -47,7 +47,7 @@ namespace NiTiAPI.WebErp.Areas.Admin.Controllers
         {
             var model = await _post.GetPaging(keyword, culture, corporationId , categoryNewsId, pageIndex, pageSize);
             return new OkObjectResult(model);
-        }
+        }       
 
         [HttpPost]
         [ClaimRequirement(FunctionCode.NEWS_POST, ActionCode.CREATE)]

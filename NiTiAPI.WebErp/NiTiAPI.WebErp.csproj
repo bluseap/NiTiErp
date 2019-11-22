@@ -34,7 +34,6 @@
     <Folder Include="wwwroot\clientshop-side\images\" />
     <Folder Include="wwwroot\clientshop-side\js\" />
     <Folder Include="wwwroot\cnews-app\controllers\contact\" />
-    <Folder Include="wwwroot\cnews-app\controllers\post\" />
     <Folder Include="wwwroot\lib\" />
     <Folder Include="wwwroot\template\cshop\" />
     <Folder Include="wwwroot\uploaded\ImageProduct\" />

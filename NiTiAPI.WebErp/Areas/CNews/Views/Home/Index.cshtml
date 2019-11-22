@@ -67,19 +67,34 @@
                     <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp">
                         <div class="more-info-tab clearfix ">
                             <h3 class="new-product-title pull-left">@modelhome.Name</h3>
-                            @*<ul class="nav nav-tabs nav-tab-line pull-right" id="new-products-1">
-            <li class="active"><a data-transition-type="backSlide" href="#all" data-toggle="tab">Giới thiệu chung</a></li>
-            <li><a data-transition-type="backSlide" href="#smartphone" data-toggle="tab">Cơ cấu tổ chức</a></li>
-            <li><a data-transition-type="backSlide" href="#laptop" data-toggle="tab">Chức năng nhiệm vụ</a></li>
-        </ul>*@
-                            <!-- /.nav-tabs -->
                         </div>
-                        <div class="blog-page">
-                            <div class="blog-post outer-top-bd  wow fadeInUp">
-                                @if (modelhome.Id == 1)
+                        <div class="blog-page">                           
+                            @if (modelhome.Id == 1)
+                            {
+                                @foreach (var modelhoneintro in Model.PostIntro.Where(p => p.CategoryNewsId == modelhome.Id))
                                 {
-                                    @foreach (var modelhoneintro in Model.PostIntro.Where(p => p.CategoryNewsId == modelhome.Id))
-                                    {
+                                    <div class="blog-post outer-top-bd">
+                                        <a href="blog-details.html">
+                                            <img class="img-title-post" src=@modelhoneintro.Image alt="">
+                                        </a>
+                                        <h1>
+                                            <a href="blog-details.html">@modelhoneintro.Title</a>
+                                        </h1>
+                                        <span class="date-time">@modelhoneintro.CreatedDate</span>
+                                        <p>@modelhoneintro.Description</p>
+                                        <div class="wow">
+                                            <a data-id="@modelhoneintro.Id" class="btn btn-upper btn-primary read-more pull-right btnViewPost">Xem thêm</a>
+                                        </div>
+                                        <br />
+                                        <p></p><p></p>
+                                    </div>
+                                }
+                            }
+                            else if (modelhome.Id == 2)
+                            {
+                                @foreach (var modelhoneintro in Model.PostEvent.Where(p => p.CategoryNewsId == modelhome.Id))
+                                {
+                                    <div class="blog-post outer-top-bd">
                                         <a href="blog-details.html">
                                             <img class="img-title-post" src=@modelhoneintro.Image alt="">
                                         </a>
@@ -91,12 +106,17 @@
                                         </div>
                                         <br />
                                         <p></p><p></p>
-                                    }
+                                    </div>
                                 }
-                                else if (modelhome.Id == 2)
+                            }
+                            else if (modelhome.Id == 3)
+                            {
+                                @foreach (var modelhoneintro in Model.PostProduct.Where(p => p.CategoryNewsId == modelhome.Id))
                                 {
-                                    @foreach (var modelhoneintro in Model.PostEvent.Where(p => p.CategoryNewsId == modelhome.Id))
-                                    {
+                                    <div class="blog-post outer-top-bd">
+                                        <a href="blog-details.html">
+                                            <img class="img-title-post" src=@modelhoneintro.Image alt="">
+                                        </a>
                                         <h1><a href="blog-details.html">@modelhoneintro.Title</a></h1>
                                         <span class="date-time">@modelhoneintro.CreatedDate</span>
                                         <p>@modelhoneintro.Description</p>
@@ -105,12 +125,17 @@
                                         </div>
                                         <br />
                                         <p></p><p></p>
-                                    }
+                                    </div>
                                 }
-                                else if (modelhome.Id == 3)
+                            }
+                            else
+                            {
+                                @foreach (var modelhoneintro in Model.PostCustomerInfo.Where(p => p.CategoryNewsId == modelhome.Id))
                                 {
-                                    @foreach (var modelhoneintro in Model.PostProduct.Where(p => p.CategoryNewsId == modelhome.Id))
-                                    {
+                                    <div class="blog-post outer-top-bd">
+                                        <a href="blog-details.html">
+                                            <img class="img-title-post" src=@modelhoneintro.Image alt="">
+                                        </a>
                                         <h1><a href="blog-details.html">@modelhoneintro.Title</a></h1>
                                         <span class="date-time">@modelhoneintro.CreatedDate</span>
                                         <p>@modelhoneintro.Description</p>
@@ -119,25 +144,11 @@
                                         </div>
                                         <br />
                                         <p></p><p></p>
-                                    }
+                                    </div>
                                 }
-                                else
-                                {
-                                    @foreach (var modelhoneintro in Model.PostCustomerInfo.Where(p => p.CategoryNewsId == modelhome.Id))
-                                    {
-                                        <h1><a href="blog-details.html">@modelhoneintro.Title</a></h1>
-                                        <span class="date-time">@modelhoneintro.CreatedDate</span>
-                                        <p>@modelhoneintro.Description</p>
-                                        <div class="wow">
-                                            <a data-id="@modelhoneintro.Id" class="btn btn-upper btn-primary read-more pull-right btnViewPost">Xem thêm</a>
-                                        </div>
-                                        <br />
-                                        <p></p><p></p>
-                                    }
-                                }
-                            </div>
-                            <!-- /.tab-content -->
-                        </div>
+                            }
+                                        <!-- /.tab-content -->
+                         </div>
                     </div>
                 }
             </div>

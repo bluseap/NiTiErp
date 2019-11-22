@@ -90,7 +90,7 @@ namespace NiTiAPI.Dapper.Repositories
                     throw ex;
                 }
             }
-        }
+        }       
 
         public async Task<bool> Create(PostViewModel posts)
         {

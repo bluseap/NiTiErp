@@ -71,24 +71,23 @@
         <!-- Header -->
         <Partial name="_Header.cshtml" />
         <!-- End Header -->
-
-        @*   
-        <nav>
-            <div class="container">
-                <div class="row">
-                    <div class="mm-toggle-wrap">
-                        <div class="mm-toggle"><i class="fa fa-align-justify"></i> </div>
-                        <span class="mm-label">All Categories</span>
-                    </div>
-                    <div class="col-md-3 col-sm-3 mega-container hidden-xs">
-                        @await Component.InvokeAsync("CategoryMenuCShop")
-                    </div>
-                    <div class="col-md-9 col-sm-9 jtv-megamenu">
-                        @await Component.InvokeAsync("MainMenuCShop")
+        @*
+            <nav>
+                <div class="container">
+                    <div class="row">
+                        <div class="mm-toggle-wrap">
+                            <div class="mm-toggle"><i class="fa fa-align-justify"></i> </div>
+                            <span class="mm-label">All Categories</span>
+                        </div>
+                        <div class="col-md-3 col-sm-3 mega-container hidden-xs">
+                            @await Component.InvokeAsync("CategoryMenuCShop")
+                        </div>
+                        <div class="col-md-9 col-sm-9 jtv-megamenu">
+                            @await Component.InvokeAsync("MainMenuCShop")
+                        </div>
                     </div>
                 </div>
-            </div>
-        </nav>*@
+            </nav>*@
 
         @RenderBody()
 
@@ -97,6 +96,10 @@
         <!-- End Footer -->
 
     </div>
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top">
+        <i class="fa fa-angle-double-up" id="myBtnGotoTop"></i>
+    </button>
 
     <!-- JavaScripts placed at the end of the document so the pages load faster -->
     <script src="~/cnews-side/js/jquery-1.11.1.min.js"></script>
@@ -112,8 +115,8 @@
     <script src="~/cnews-side/js/bootstrap-select.min.js"></script>
     <script src="~/cnews-side/js/wow.min.js"></script>
     <script src="~/cnews-side/js/scripts.js"></script>
-  
-   
+
+
     <script src="~/vendor/bootstrap-select/js/bootstrap-select.js"></script>
     <script src="~/vendor/mustache/mustache.js"></script>
     <!-- jQuery Sparklines -->
@@ -122,7 +125,7 @@
     <script src="~/vendor/notifyjs/dist/notify.js"></script>
     <script src="~/vendor/notifyjs/dist/styles/metro/notify-metro.js"></script>
 
-   
+
     <script type='text/javascript'>
         var dthen1 = new Date("12/25/17 11:59:00 PM");
         start = "08/04/15 03:02:11 AM";
@@ -156,7 +159,7 @@
     <script src="~/vendor/signalr/lib/signalr.js" asp-append-version="true"></script>
 
     <script src="~/cnews-app/shared/niti.js" asp-append-version="true"></script>
-    
+
     @*<script src="~/cshop-app/shared/useronline.js" asp-append-version="true"></script>*@
 
     @RenderSection("Scripts", required: false)

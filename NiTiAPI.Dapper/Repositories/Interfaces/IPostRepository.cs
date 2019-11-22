@@ -18,7 +18,7 @@ namespace NiTiAPI.Dapper.Repositories.Interfaces
         Task<PostViewModel> GetById(int id, string languageId);       
 
         Task<PagedResult<PostViewModel>> GetPaging(string keyword, string culture, int corporationId, int categoryNewsId, int pageIndex, int pageSize);
-
+              
         Task<bool> Create(PostViewModel posts);
 
         Task<bool> CreatePostImageXML(PostViewModel posts, string listImageXML);
