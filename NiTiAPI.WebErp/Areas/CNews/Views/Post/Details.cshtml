@@ -1,0 +1,26 @@
+﻿
+@inject IViewLocalizer Localizer
+@model NiTiAPI.Dapper.ViewModels.CNews.SearchResultCNewsViewModel
+
+@{
+    //ViewData["Title"] = Model.Title;
+    //ViewData["MetaKeyword"] = Model.MetaKeyword;
+    //ViewData["MetaDescription"] = Model.MetaDescription;
+    var @corname = @ViewData["CorporationName"];
+
+    var @corporationId = @ViewData["CorporationId"];
+    var @postId = @ViewData["postId"];
+
+}
+
+@section Scripts{
+    <script src="~/cnews-app/controllers/post/details.js" asp-append-version="true"></script>
+    <script>
+        var postDetailsObj = new PostDetailController();
+        postDetailsObj.initialize();
+    </script>
+}
+
+<input type="hidden" id="hidPostDetailcorporationId" value=@corporationId />
+<input type="hidden" id="hidPostDetailPostId" value=@postId />
+

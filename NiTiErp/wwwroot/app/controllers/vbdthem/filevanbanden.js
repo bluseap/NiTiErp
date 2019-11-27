@@ -71,7 +71,7 @@
     }
 
     function SaveVanBanDenFile() {
-        tedu.notify("save van band en file", "success");
+        tedu.notify("save van ban den file", "success");
 
         var insertvanbandenfile = $('#hidInsertFileVanBanDenId').val();
         var tenfile = $('#hidTenFileVanBanDenId').val();

@@ -62,6 +62,17 @@ namespace NiTiAPI.WebErp.Areas.CNews.Controllers
             return View(postNews);
         }
 
+        public IActionResult Details(string id, string postId)
+        {
+            HttpContext.Session.Clear();
+            ViewData["CorporationName"] = id; // corporationName convert to corporationId = 1
+
+            ViewData["CorporationId"] = id;
+            ViewData["postId"] = postId;
+
+            return View();
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetCoporationId(int cororationId)
         {
