@@ -117,6 +117,32 @@ namespace NiTiErp.Areas.Admin.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult GetAllPagingKhuVucCorPhong(string corporationId, string phongId, string keyword, int page, int pageSize)
+        {
+            var email = User.GetSpecificClaim("Email");
+
+            var id = User.GetSpecificClaim("UserId");
+            var username = User.GetSpecificClaim("UserName");
+            //var corporationId = User.GetSpecificClaim("CorporationId");
+
+            if (email.Equals("khoinguyenaglx@gmail.com"))
+            {
+                var model = _userService.GetAllPagingAsync(keyword, page, pageSize);
+                return new OkObjectResult(model);
+            }
+            else if (corporationId == "%")
+            {
+                var model = _userService.GetAllPagingAsync(keyword, page, pageSize);
+                return new OkObjectResult(model);
+            }
+            else
+            {
+                var model = _userService.GetAllPagingAsyncCorPhong(keyword, page, pageSize, corporationId, phongId);
+                return new OkObjectResult(model);
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> SaveEntity(AppUserViewModel userVm)
         {

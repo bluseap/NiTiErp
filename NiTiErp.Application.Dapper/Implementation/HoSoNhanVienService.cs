@@ -129,6 +129,37 @@ namespace NiTiErp.Application.Dapper.Implementation
             }
         }
 
+        public async Task<IQueryable<HoSoNhanVienViewModel>> HoSoDataTableQuery(string corporationId, string phongId, string keyword,
+            string hosoId, string hosoId2, string hosoId3, string parameters)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@corporationId", corporationId);
+                dynamicParameters.Add("@phongId", phongId);
+                dynamicParameters.Add("@keyword", keyword);
+                dynamicParameters.Add("@hosoId", hosoId);
+                dynamicParameters.Add("@hosoId2", hosoId2);
+                dynamicParameters.Add("@hosoId3", hosoId3);
+
+                dynamicParameters.Add("@parameters", parameters);
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<HoSoNhanVienViewModel>(
+                        "HoSoNhanVienGetList", dynamicParameters, commandType: CommandType.StoredProcedure);
+
+                    return query.AsQueryable();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         public async Task<Boolean> HoSoNhanVienAUD(HoSoNhanVienViewModel hoso, string parameters)
         {
             using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))

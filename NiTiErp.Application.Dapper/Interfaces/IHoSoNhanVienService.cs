@@ -2,6 +2,7 @@
 using NiTiErp.Utilities.Dtos;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace NiTiErp.Application.Dapper.Interfaces
@@ -14,6 +15,8 @@ namespace NiTiErp.Application.Dapper.Interfaces
         Task<List<HoSoNhanVienViewModel>> HoSoNhanVienGetList(string corporationId, string phongId, string keyword, string hosoId, string hosoId2, string hosoId3, string parameters);
 
         Task<IEnumerable<dynamic>> HoSoDataTable(string corporationId, string phongId, string keyword, string hosoId, string hosoId2, string hosoId3, string parameters);
+
+        Task<IQueryable<HoSoNhanVienViewModel>> HoSoDataTableQuery(string corporationId, string phongId, string keyword, string hosoId, string hosoId2, string hosoId3, string parameters);
 
         Task<Boolean> HoSoNhanVienAUD(HoSoNhanVienViewModel hosonhanvien, string parameters);
 

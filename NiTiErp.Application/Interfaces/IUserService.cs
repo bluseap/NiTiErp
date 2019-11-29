@@ -17,6 +17,7 @@ namespace NiTiErp.Application.Interfaces
 
         PagedResult<AppUserViewModel> GetAllPagingAsync(string keyword, int page, int pageSize);
         PagedResult<AppUserViewModel> GetAllPagingAsyncCor(string keyword, int page, int pageSize, string corporationId);
+        PagedResult<AppUserViewModel> GetAllPagingAsyncCorPhong(string keyword, int page, int pageSize, string corporationId, string phongbanId);
 
         Task<AppUserViewModel> GetById(string id);
 

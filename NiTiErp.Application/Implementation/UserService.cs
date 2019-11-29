@@ -20,11 +20,14 @@ namespace NiTiErp.Application.Implementation
     {        
         private readonly IAppUserRolesService _appuserrolesService;
         private readonly UserManager<AppUser> _userManager;
+        private readonly IHoSoNhanVienService _hosonhanvienService;
 
-        public UserService(UserManager<AppUser> userManager, IAppUserRolesService appuserrolesService)
+        public UserService(UserManager<AppUser> userManager, IAppUserRolesService appuserrolesService,
+                IHoSoNhanVienService hosonhanvienService )
         {
             _userManager = userManager;
-            _appuserrolesService = appuserrolesService;            
+            _appuserrolesService = appuserrolesService;
+            _hosonhanvienService = hosonhanvienService;
         }       
 
         public async Task<bool> AddAsync(AppUserViewModel userVm)
@@ -117,6 +120,52 @@ namespace NiTiErp.Application.Implementation
 
             if (!string.IsNullOrEmpty(keyword))
                 query = query.Where(x => x.FullName.Contains(keyword) 
+                    || x.UserName.Contains(keyword) || x.Email.Contains(keyword));
+
+            int totalRow = query.Count();
+            query = query.Skip((page - 1) * pageSize)
+               .Take(pageSize);
+
+            var data = query.Select(x => new AppUserViewModel()
+            {
+                UserName = x.UserName,
+                Avatar = x.Avatar,
+                BirthDay = x.BirthDay.ToString(),
+                Email = x.Email,
+                FullName = x.FullName,
+                Id = x.Id,
+                PhoneNumber = x.PhoneNumber,
+                Status = x.Status,
+                DateCreated = x.DateCreated
+
+            }).ToList();
+            var paginationSet = new PagedResult<AppUserViewModel>()
+            {
+                Results = data,
+                CurrentPage = page,
+                RowCount = totalRow,
+                PageSize = pageSize
+            };
+
+            return paginationSet;
+        }
+
+        public PagedResult<AppUserViewModel> GetAllPagingAsyncCorPhong(string keyword, int page, int pageSize, string corporationId, string phongbanId)
+        {
+            /*var query = _userManager.Users.Where(x => !x.Email.Equals("khoinguyenaglx@gmail.com")
+                    && !x.CorporationId.Substring(0, 2).Equals("NT"));*/
+            var queryUser = _userManager.Users.Where(x => x.CorporationId.Equals(corporationId));
+
+            var hosonhanvien = _hosonhanvienService.HoSoDataTableQuery(corporationId, phongbanId, "%", "", "", "", "GetAllHoSoNhanVienAll");
+
+            var query = from hs in hosonhanvien.Result
+                              join q in queryUser on hs.Id equals q.HoSoNhanVienId
+                              select q;
+                //from us in query
+                //              join hs in hoso on hs.Id equals us.HoSoNhanVienId
+
+            if (!string.IsNullOrEmpty(keyword))
+                query = query.Where(x => x.FullName.Contains(keyword)
                     || x.UserName.Contains(keyword) || x.Email.Contains(keyword));
 
             int totalRow = query.Count();
