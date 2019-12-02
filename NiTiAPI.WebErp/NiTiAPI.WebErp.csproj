@@ -22,7 +22,6 @@
     <Folder Include="Resources\Areas\Client\Views\Shared\Components\SideBar\" />
     <Folder Include="Resources\Areas\CNews\Controllers\" />
     <Folder Include="Resources\Areas\CNews\Models\" />
-    <Folder Include="Resources\Areas\CNews\Views\Shared\Components\" />
     <Folder Include="Resources\Areas\CNews\Views\Stock\" />
     <Folder Include="Resources\Areas\CShop\Controllers\" />
     <Folder Include="Resources\Areas\CShop\Models\" />
@@ -134,6 +133,9 @@
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\CNews\Views\Shared\Components\CategoryMenuCNews\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CNews\Views\Shared\Components\MenuRightCNews\Default.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\CNews\Views\Shared\_Footer.cshtml">
