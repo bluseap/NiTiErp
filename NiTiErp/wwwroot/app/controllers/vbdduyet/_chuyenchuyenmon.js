@@ -110,7 +110,8 @@
         var ngaychuyenchuyenmon = tedu.getFormatDateYYMMDD($('#txtNgayChuyenChuyenMon').val());
 
         var datetimeNow = new Date();
-        var ngayhientai = datetimeNow.getFullYear().toString() + '/' + (datetimeNow.getMonth() + 1).toString() + '/' + datetimeNow.getDay().toString();
+        var ngayhientai = datetimeNow.getFullYear().toString() + '/' + (datetimeNow.getMonth() + 1).toString() + '/'
+            + datetimeNow.getUTCDate().toString();
 
         $.ajax({
             type: "POST",
@@ -271,7 +272,7 @@
                 VanBanDenDuyetId: vanbandenduyetid,
                 HoSoNhanVienId: hosoid,
                 NgayNhanVBXL: ngaychuyenchuyenmon,
-                VBPhoiHopXuLyId: 3
+                VBPhoiHopXuLyId: 2
             },
             dataType: "json",
             beforeSend: function () {

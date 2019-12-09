@@ -46,8 +46,7 @@ var vbcoquanController = function () {
 
         $('body').on('click', '.btn-addeditVBCoQuan', function (e) {
             e.preventDefault();
-            var vbcoquanid = $(this).data('id');
-            $('#hidInsertThemCoQuanId').val(1);
+            var vbcoquanid = $(this).data('id');            
             addeditvbcoquan.loadAddEditVBCoQuan(vbcoquanid);
             $('#modal-add-edit-ThemCoQuan').modal('show');
         });

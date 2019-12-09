@@ -123,10 +123,10 @@
                     $.each(response.Result.Results, function (i, item) {
                         render += Mustache.render(template, {
                             Id: item.Id,
-                            TenSoVanBanDen: item.NamSoVanBan + '-' + item.TenSoVanBan,
+                            TenSoVanBanDen: item.NamSoVanBan.toString() + '-' + item.TenSoVanBan,
                             //HinhNhanVien: item.Image === null ? '<img src="/admin-side/images/user.png?h=90"' : '<img src="' + item.HinhNhanVien + '?h=90" />',
                             TrichYeuCuaVanBan: item.TrichYeuCuaVanBan,
-                            SoKyHieuDen: item.SoVanBanDenStt + ' ' + item.SoKyHieuCuaVanBan,
+                            SoKyHieuDen: item.SoVanBanDenStt.toString() + ' ' + item.SoKyHieuCuaVanBan,
                             TenCoQuanBanHanh: item.TenCoQuanBanHanh,
                             NgayBanHanhCuaVanBan: tedu.getFormattedDate(item.NgayBanHanhCuaVanBan),
                             NgayDenCuaVanBan: tedu.getFormattedDate(item.NgayDenCuaVanBan),

@@ -62,19 +62,19 @@
 
         $('body').on('click', '.btnSoTatCaPatchFileKyHieu', function (e) {
             e.preventDefault();
-            var vanbandenId = $(this).data('id');
+            var vanbandenId = $(this).data('Id');
             loadPatchFile(vanbandenId);
         });
 
         $('body').on('click', '.btnSoTatCaPatchFileTrichYeu', function (e) {
             e.preventDefault();
-            var vanbandenId = $(this).data('id');
+            var vanbandenId = $(this).data('Id');
             loadPatchFile(vanbandenId);
         });
 
         $('body').on('click', '.btnQTSoTatCa', function (e) {
             e.preventDefault();
-            var vanbandenId = $(this).data('id');
+            var vanbandenId = $(this).data('Id');
             _quatrinhxuly.loadQuaTrinhXuLy(vanbandenId);
             $('#modal-add-edit-QuaTrinhXuLy').modal('show');
         });

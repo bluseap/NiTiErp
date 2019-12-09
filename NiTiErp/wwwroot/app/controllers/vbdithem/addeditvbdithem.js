@@ -117,8 +117,16 @@
         });
              
         $("#ddlDonViNhanVanBan").on('change', function () {            
-            var donvinhan = $("#ddlDonViNhanVanBan").find(":selected").text();                    
-            $('#txtCacDonViNhanVanBan').addTag(donvinhan);   
+            var donvinhan = $("#ddlDonViNhanVanBan").val();
+            var donvinhanSelect = $("#ddlDonViNhanVanBan").find(":selected").text();                    
+            if (donvinhan === "8000") {
+                $('#txtCacDonViNhanVanBan').addTag(donvinhanSelect);
+            }
+            else {
+                $('#txtCacDonViNhanVanBan').addTag(donvinhanSelect);
+            }
+
+            //tedu.notify($('#txtCacDonViNhanVanBan').val(),"success");
 
         });
 

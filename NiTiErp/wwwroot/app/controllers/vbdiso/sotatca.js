@@ -245,7 +245,7 @@
 
         $.ajax({
             type: 'POST',
-            url: '/admin/vbdiso/ExcelVBDenSo',
+            url: '/admin/vbdiso/ExcelVBDiSo',
             data: {
                 corporationId: makhuvuc,
                 tungay: tungay2,
@@ -259,6 +259,10 @@
                 tedu.stopLoading();
             }
         });
+
+    }
+
+    function ExcelBCVBDi() {
 
     }
 

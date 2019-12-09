@@ -16,7 +16,7 @@ var addeditvbcoquanController = function () {
         $('#btnSaveThemCoQuan').on('click', function () {
             var insertvbcoquan = $('#hidInsertThemCoQuanId').val();
 
-            if (insertvbcoquan === 1) {
+            if (insertvbcoquan === "1" ) {
                 SaveCoQuanBanHanh();
             }
             else {
@@ -65,13 +65,14 @@ var addeditvbcoquanController = function () {
     }
 
     function UpdateCoQuanBanHanh() {
+        var themcoquanId = $('#hidThemCoQuanId').val();
         var tencoquan = $('#txtThemMoiCoQuanBanHanh').val();
         var sttcoquan = $('#txtSTTThemMoiCoQuanBanHanh').val();
         $.ajax({
             type: "POST",
             url: "/Admin/vbcoquan/AddUpdateVBCoQuan",
             data: {
-                Id: 1,
+                Id: themcoquanId,
                 InsertVanBanCoQuanId: 2,
                 Ten: tencoquan,
                 Stt: sttcoquan

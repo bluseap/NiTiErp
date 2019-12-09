@@ -170,7 +170,7 @@
                 }
                 else {
                     tedu.notify('Upload file.', 'success');
-                    $('#hidVanBanDenDuyetId').val('');
+                    //$('#hidVanBanDenDuyetId').val('');
                     $('#hidInsertVBDDuyetFileId').val(0);
                     $('#hidTenFileVBDDuyetFileId').val('');
                     
