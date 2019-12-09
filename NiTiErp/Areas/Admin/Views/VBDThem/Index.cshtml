@@ -87,13 +87,13 @@
                     <thead>
                         <tr>
                             <th width="=10%">#</th>
-                            <th>Tên sổ</th>
-                            <th>Trich yếu</th>
-                            <th>Số đến, ký hiệu</th>
-                            <th>Tên cơ quan ban hành</th>
-                            <th>Ngày ban hành</th>
-                            <th>Ngày đến</th>
-                            <th>Trạng thái</th>
+                            <th >Tên sổ</th>
+                            <th  >Trich yếu</th>
+                            <th >Số đến, ký hiệu</th>
+                            <th >Tên cơ quan ban hành</th>
+                            <th >Ngày ban hành</th>
+                            <th >Ngày đến</th>
+                            <th >Trạng thái</th>
                         </tr>
                     </thead>
                     <tbody id="tblContentVBDThem"></tbody>
@@ -128,10 +128,13 @@
                 <a class="btn btn-lg btn-addeditVBDThem" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa văn bản"><i class="fa fa-pencil"></i> </a>
             </th>
             <td>{{TenSoVanBanDen}}</td>
-            <td >
-                <a class="btn btn-link btnPatchFileTrichYeu" data-id="{{Id}}" data-toggle="tooltip" >
+            <td>
+                <a class="btn-link btnPatchFileTrichYeu" data-id="{{Id}}" data-toggle="tooltip">
                     {{TrichYeuCuaVanBan}}
                 </a>
+                @*<a class="btn btn-link btnPatchFileTrichYeu" data-id="{{Id}}" data-toggle="tooltip" >
+                    {{TrichYeuCuaVanBan}}
+                </a>*@
             </td>           
             <td>
                 <a class="btn btn-link btnPatchFileKyHieu" data-id="{{Id}}" data-toggle="tooltip" >

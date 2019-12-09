@@ -96,6 +96,11 @@
             $('#modal-add-edit-VBDDuyetFile').modal('show');  
         });
 
+        $('#ddlCCMPhong').on('change', function () {
+            var phongbanId = $('#ddlCCMPhong').val();
+            editHoSoNhanVienPhongBan(phongbanId);            
+        });
+
     }
 
     function loadTableVBDDuyetfile() {
@@ -535,6 +540,54 @@
             },
             error: function (status) {
                 tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function editHoSoNhanVienPhongBan(phongbanid) {
+        //tedu.notify(phongbanid, 'success'); 
+        var vanbandenduyet = $('#hidVanBanDenIdDuyet').val();
+        if (vanbandenduyet === "1") {
+            tedu.notify("Văn bản đã chuyển chuyên môn. Kiểm tra lại.", "error");
+        }
+        else if (vanbandenduyet === "0") {
+            addNhanVienToCCMPhong(phongbanid);
+        }          
+    }
+
+    function addNhanVienToCCMPhong(phongbanid) {        
+        var vanbandenduyetid = $('#hidVanBanDenDuyetId').val();       
+        var ngaychuyenchuyenmon = tedu.getFormatDateYYMMDD($('#txtNgayChuyenChuyenMon').val());
+
+        $.ajax({
+            type: "GET",
+            url: "/Admin/vbdduyet/InsertUpdateVBDDNVXLPhong",
+            data: {
+                InsertVanBanDenDuyetNVXLId: 1,
+                VanBanDenDuyetId: vanbandenduyetid,
+                HoSoNhanVienId: "00000000-0000-0000-0000-000000000000",
+                NgayNhanVBXL: ngaychuyenchuyenmon,
+                VBPhoiHopXuLyId: 2,
+                UpdateBy: phongbanid
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var query = response.Result[0];
+                if (query.KETQUA === "SAI") {
+                    tedu.notify('Nhân viên đăng ký rồi! Kiểm tra lại.', 'error');
+                }
+                else {
+                    loadNhanVienXLVanBan(vanbandenduyetid);
+                }
+                $('#hidHoSoNhanVienId').val('');
+                tedu.stopLoading();
+            },
+            error: function (status) {
+                tedu.notify('Nhân viên đã đăng ký rồi! Kiểm tra lại.', 'error');
                 tedu.stopLoading();
             }
         });
