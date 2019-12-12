@@ -92,7 +92,7 @@
             e.preventDefault();
             vbdduyetfile.loadTableVanBanDenDuyetFile();
             $('#btnVBDDUyetFileId').show();
-            loadTableVBDDuyetfile();
+            //loadTableVBDDuyetfile();
             $('#modal-add-edit-VBDDuyetFile').modal('show');  
         });
 

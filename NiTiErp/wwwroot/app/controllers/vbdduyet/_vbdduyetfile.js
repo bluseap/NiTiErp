@@ -17,7 +17,6 @@
         registerEvents();
 
         loadData();
-
     }    
 
     function registerEvents() {
@@ -238,7 +237,7 @@
         $.ajax({
             type: 'GET',
             data: {
-                VanBanDenDuyetId: vanbandenid
+                vanbandenId: vanbandenid
             },
             url: '/admin/vbdduyet/GetListVBDDuyetFileVBDIdPaging',
             dataType: 'json',
