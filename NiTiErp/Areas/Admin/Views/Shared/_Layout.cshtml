@@ -47,11 +47,11 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     @*<div class="navbar nav_title" style="border: 0;">
-            <a href="/admin/home" class="site_title">
-                <img src="/admin-side/images/powacmo.png" alt="..." class="img-thumbnail profile_img">
-                <span>  Văn bản - HRM</span>
-            </a>
-        </div>*@
+                            <a href="/admin/home" class="site_title">
+                                <img src="/admin-side/images/powacmo.png" alt="..." class="img-thumbnail profile_img">
+                                <span>  Văn bản - HRM</span>
+                            </a>
+                        </div>*@
 
                     <div class="navbar nav_title" style="border: 0;">
                         <a href="/admin/home" class="site_title">
@@ -61,8 +61,8 @@
                     </div>
 
                     @*<div class="navbar nav_title" style="border: 0;">
-            <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela Alela!</span></a>
-        </div>*@
+                            <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela Alela!</span></a>
+                        </div>*@
 
                     <div class="clearfix"></div>
 
@@ -72,16 +72,16 @@
                     <input type="hidden" id="hidAvatarUserId" value=@User.GetSpecificClaim("Avatar") />
                     <!-- menu profile quick info -->
                     @*<div class="profile clearfix">
-            <div class="profile_pic">
-                <img src="/admin-side/images/img.jpg" alt="..." class="img-circle profile_img">
-            </div>
-            <div class="profile_info">
-                <input type="hidden" id="hidUserCorporationId" value=@User.GetSpecificClaim("CorporationId") />
-                <input type="hidden" id="hidUserCorporationId" value=@User.GetSpecificClaim("FullName") />
-                <span> </span>
-                <h2>@User.GetSpecificClaim("FullName")</h2>
-            </div>
-        </div>*@
+                            <div class="profile_pic">
+                                <img src="/admin-side/images/img.jpg" alt="..." class="img-circle profile_img">
+                            </div>
+                            <div class="profile_info">
+                                <input type="hidden" id="hidUserCorporationId" value=@User.GetSpecificClaim("CorporationId") />
+                                <input type="hidden" id="hidUserCorporationId" value=@User.GetSpecificClaim("FullName") />
+                                <span> </span>
+                                <h2>@User.GetSpecificClaim("FullName")</h2>
+                            </div>
+                        </div>*@
                     <!-- /menu profile quick info -->
 
                     <br />
@@ -92,17 +92,17 @@
                     <!-- /menu footer buttons -->
                     <div class="sidebar-footer hidden-small">
                         @*<a data-toggle="tooltip" data-placement="top" title="Settings">
-                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-            </a>
-            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-            </a>
-            <a data-toggle="tooltip" data-placement="top" title="Lock">
-                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-            </a>
-            <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-            </a>*@
+                                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                            </a>
+                            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                            </a>
+                            <a data-toggle="tooltip" data-placement="top" title="Lock">
+                                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                            </a>
+                            <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                            </a>*@
                     </div>
                     <!-- /menu footer buttons -->
                 </div>
@@ -121,7 +121,7 @@
                                 @await Html.PartialAsync("_LoginPartial")
                             </li>
 
-                            
+
                         </ul>
                     </nav>
                 </div>
@@ -157,7 +157,7 @@
 
     </div>
 
-    
+
 
     <!-- jQuery -->
     <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -199,7 +199,7 @@
     <script src="~/lib/gentelella/vendors/pnotify/dist/pnotify.js" asp-append-version="true"></script>
     <script src="~/lib/gentelella/vendors/pnotify/dist/pnotify.buttons.js" asp-append-version="true"></script>
     <script src="~/lib/gentelella/vendors/pnotify/dist/pnotify.nonblock.js" asp-append-version="true"></script>
-   
+
     <!-- Custom Theme Scripts -->
     @*<script src="~/admin-side/js/custom.min.js" asp-append-version="true"></script>*@
     <script src="~/admin-side/js/custom.js" asp-append-version="true"></script>
@@ -209,6 +209,7 @@
 
     <script src="~/lib/signalr/lib/signalr.js" asp-append-version="true"></script>
 
+    
     <script src="~/app/shared/tedu.js" asp-append-version="true"></script>
 
     @*<script src="~/app/shared/tinnhanhub.js" asp-append-version="true"></script>*@

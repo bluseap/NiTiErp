@@ -67,6 +67,9 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
         public string TenLDDuyetVBDi { get; set; }
 
+        public string ChucVuTenLDDuyetVBDi { get; set; }
+
+
         public string GhiChu { get; set; }
 
         public int SoTo { get; set; }

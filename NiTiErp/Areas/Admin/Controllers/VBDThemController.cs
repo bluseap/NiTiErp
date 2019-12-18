@@ -472,9 +472,9 @@ namespace NiTiErp.Areas.Admin.Controllers
             var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
             var newGuid = new Guid();
 
-            var model = _vanbandenService.GetAllVanBanDenPaging(corporationId, 1, 1, 1, DateTime.Now, DateTime.Now, 1, 1, 
-                sovanbanden, "", false, 1, false, DateTime.Now,  "", newGuid, 1, 1, false, "", "", "",
-                keyword, page, pageSize, 1, "", ""  , "GetAllVanBanDen");
+            var model = _vanbandenService.GetAllVanBanDenPaging(khuvuc, 1, 1, 1, DateTime.Now, DateTime.Now, 1, 1,
+                phong, "", false, 1, false, DateTime.Now,  "", newGuid, 1, 1, false, "", "", "",
+                tukhoa, page, pageSize, 1, "", ""  , "GetAllVanBanDen");
 
             return new OkObjectResult(model);
         }
@@ -491,7 +491,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             var trichyeu = !string.IsNullOrEmpty(TrichYeu) ? TrichYeu : "%";
             var coquanbanhanh = CoQuanBanHanh == "%" ? 0 : Convert.ToInt32(CoQuanBanHanh);
 
-            var model = _vanbandenService.GetAllVanBanDenPaging(corporationId, 1, 1
+            var model = _vanbandenService.GetAllVanBanDenPaging(khuvuc, 1, 1
                 , coquanbanhanh
                 , DateTime.Now, DateTime.Now
                 , NamVanBan, SoVanBan, kyhieuvanban
@@ -513,7 +513,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             var trichyeu = !string.IsNullOrEmpty(TrichYeu) ? TrichYeu : "%";
             var coquanbanhanh = CoQuanBanHanh == "%" ? 0 : Convert.ToInt32(CoQuanBanHanh);
 
-            var model = _vanbandenService.GetAllVanBanDenPaging(corporationId, 1, 1
+            var model = _vanbandenService.GetAllVanBanDenPaging(khuvuc, 1, 1
                 , coquanbanhanh
                 , DateTime.Now, DateTime.Now
                 , NamVanBan, SoVanBan, kyhieuvanban
@@ -535,7 +535,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             var trichyeu = !string.IsNullOrEmpty(TrichYeu) ? TrichYeu : "%";
             var coquanbanhanh = CoQuanBanHanh == "%" ? 0 : Convert.ToInt32(CoQuanBanHanh);
 
-            var model = _vanbandenService.GetAllVanBanDenPaging(corporationId, 1, 1
+            var model = _vanbandenService.GetAllVanBanDenPaging(khuvuc, 1, 1
                 , coquanbanhanh
                 , DateTime.Now, DateTime.Now
                 , NamVanBan, SoVanBan, kyhieuvanban
@@ -557,7 +557,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             var trichyeu = !string.IsNullOrEmpty(TrichYeu) ? TrichYeu : "%";
             var coquanbanhanh = CoQuanBanHanh == "%" ? 0 : Convert.ToInt32(CoQuanBanHanh);
 
-            var model = _vanbandenService.GetAllVanBanDenPaging(corporationId, 1, 1
+            var model = _vanbandenService.GetAllVanBanDenPaging(khuvuc, 1, 1
                 , coquanbanhanh
                 , DateTime.Now, DateTime.Now
                 , NamVanBan, SoVanBan, kyhieuvanban
@@ -579,7 +579,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             var trichyeu = !string.IsNullOrEmpty(TrichYeu) ? TrichYeu : "%";
             var coquanbanhanh = CoQuanBanHanh == "%" ? 0 : Convert.ToInt32(CoQuanBanHanh);
 
-            var model = _vanbandenService.GetAllVanBanDenPaging(corporationId, 1, 1
+            var model = _vanbandenService.GetAllVanBanDenPaging(khuvuc, 1, 1
                 , coquanbanhanh
                 , DateTime.Now, DateTime.Now
                 , NamVanBan, SoVanBan, kyhieuvanban
@@ -603,7 +603,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             var trichyeu = !string.IsNullOrEmpty(TrichYeu) ? TrichYeu : "%";
             var coquanbanhanh = CoQuanBanHanh == "%" ? 0 : Convert.ToInt32(CoQuanBanHanh);
 
-            var model = _vanbandenService.GetAllVanBanDenPaging(corporationId, 1, 1
+            var model = _vanbandenService.GetAllVanBanDenPaging(khuvuc, 1, 1
                 , coquanbanhanh
                 , DateTime.Now, DateTime.Now
                 , NamVanBan, SoVanBan, kyhieuvanban
@@ -627,7 +627,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             var trichyeu = !string.IsNullOrEmpty(TrichYeu) ? TrichYeu : "%";
             var coquanbanhanh = CoQuanBanHanh == "%" ? 0 : Convert.ToInt32(CoQuanBanHanh);
 
-            var model = _vanbandenService.GetAllVanBanDenPaging(corporationId, 1, 1
+            var model = _vanbandenService.GetAllVanBanDenPaging(khuvuc, 1, 1
                 , coquanbanhanh
                 , DateTime.Now, DateTime.Now
                 , NamVanBan, SoVanBan, kyhieuvanban
@@ -651,7 +651,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             var trichyeu = !string.IsNullOrEmpty(TrichYeu) ? TrichYeu : "%";
             var coquanbanhanh = CoQuanBanHanh == "%" ? 0 : Convert.ToInt32(CoQuanBanHanh);
 
-            var model = _vanbandenService.GetAllVanBanDenPaging(corporationId, 1, 1
+            var model = _vanbandenService.GetAllVanBanDenPaging(khuvuc, 1, 1
                 , coquanbanhanh
                 , DateTime.Now, DateTime.Now
                 , NamVanBan, SoVanBan, kyhieuvanban
@@ -675,7 +675,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             var trichyeu = !string.IsNullOrEmpty(TrichYeu) ? TrichYeu : "%";
             var coquanbanhanh = CoQuanBanHanh == "%" ? 0 : Convert.ToInt32(CoQuanBanHanh);
 
-            var model = _vanbandenService.GetAllVanBanDenPaging(corporationId, 1, 1
+            var model = _vanbandenService.GetAllVanBanDenPaging(khuvuc, 1, 1
                 , coquanbanhanh
                 , DateTime.Now, DateTime.Now
                 , NamVanBan, SoVanBan, kyhieuvanban
@@ -699,7 +699,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             var trichyeu = !string.IsNullOrEmpty(TrichYeu) ? TrichYeu : "%";
             var coquanbanhanh = CoQuanBanHanh == "%" ? 0 : Convert.ToInt32(CoQuanBanHanh);
 
-            var model = _vanbandenService.GetAllVanBanDenPaging(corporationId, 1, 1
+            var model = _vanbandenService.GetAllVanBanDenPaging(khuvuc, 1, 1
                 , coquanbanhanh
                 , DateTime.Now, DateTime.Now
                 , NamVanBan, SoVanBan, kyhieuvanban
@@ -723,7 +723,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             var trichyeu = !string.IsNullOrEmpty(TrichYeu) ? TrichYeu : "%";
             var coquanbanhanh = CoQuanBanHanh == "%" ? 0 : Convert.ToInt32(CoQuanBanHanh);
 
-            var model = _vanbandenService.GetAllVanBanDenPaging(corporationId, 1, 1
+            var model = _vanbandenService.GetAllVanBanDenPaging(khuvuc, 1, 1
                 , coquanbanhanh
                 , DateTime.Now, DateTime.Now
                 , NamVanBan, SoVanBan, kyhieuvanban
@@ -747,7 +747,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             var trichyeu = !string.IsNullOrEmpty(TrichYeu) ? TrichYeu : "%";
             var coquanbanhanh = CoQuanBanHanh == "%" ? 0 : Convert.ToInt32(CoQuanBanHanh);
 
-            var model = _vanbandenService.GetAllVanBanDenPaging(corporationId, 1, 1
+            var model = _vanbandenService.GetAllVanBanDenPaging(khuvuc, 1, 1
                 , coquanbanhanh
                 , DateTime.Now, DateTime.Now
                 , NamVanBan, SoVanBan, kyhieuvanban
@@ -771,7 +771,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             var trichyeu = !string.IsNullOrEmpty(TrichYeu) ? TrichYeu : "%";
             var coquanbanhanh = CoQuanBanHanh == "%" ? 0 : Convert.ToInt32(CoQuanBanHanh);
 
-            var model = _vanbandenService.GetAllVanBanDenPaging(corporationId, 1, 1
+            var model = _vanbandenService.GetAllVanBanDenPaging(khuvuc, 1, 1
                 , coquanbanhanh
                 , DateTime.Now, DateTime.Now
                 , NamVanBan, SoVanBan, kyhieuvanban
@@ -795,7 +795,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             var trichyeu = !string.IsNullOrEmpty(TrichYeu) ? TrichYeu : "%";
             var coquanbanhanh = CoQuanBanHanh == "%" ? 0 : Convert.ToInt32(CoQuanBanHanh);
 
-            var model = _vanbandenService.GetAllVanBanDenPaging(corporationId, 1, 1
+            var model = _vanbandenService.GetAllVanBanDenPaging(khuvuc, 1, 1
                 , coquanbanhanh
                 , DateTime.Now, DateTime.Now
                 , NamVanBan, SoVanBan, kyhieuvanban
@@ -819,7 +819,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             var trichyeu = !string.IsNullOrEmpty(TrichYeu) ? TrichYeu : "%";
             var coquanbanhanh = CoQuanBanHanh == "%" ? 0 : Convert.ToInt32(CoQuanBanHanh);
 
-            var model = _vanbandenService.GetAllVanBanDenPaging(corporationId, 1, 1
+            var model = _vanbandenService.GetAllVanBanDenPaging(khuvuc, 1, 1
                 , coquanbanhanh
                 , DateTime.Now, DateTime.Now
                 , NamVanBan, SoVanBan, kyhieuvanban
@@ -861,7 +861,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
             var newGuid = new Guid();
 
-            var model = _vanbandenService.VanBanDennGetList(corporationId, 1, 1, 1, DateTime.Now, DateTime.Now, 1, 1,
+            var model = _vanbandenService.VanBanDennGetList(khuvuc, 1, 1, 1, DateTime.Now, DateTime.Now, 1, 1,
                 sovanbanden, "", false, 1, false, DateTime.Now, "", newGuid, 1, 1, false, "", "", "",
                 keyword, page, pageSize, 1, "", "", "GetAllVanBanDenTTXuLy");
 

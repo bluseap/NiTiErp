@@ -12,11 +12,12 @@
     <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
 
-    <!-- jQuery Tags Input -->    
+    <!-- jQuery Tags Input -->
     <script src="~/lib/gentelella/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
 
     <script src="~/app/controllers/vbdduyet/_quatrinhxuly.js" asp-append-version="true"></script>
 
+    <script src="~/app/controllers/vbdithem/vbdingayxem.js" asp-append-version="true"></script>
     @*<script src="~/app/controllers/vbdthem/vanbandendientu.js" asp-append-version="true"></script>*@
     <script src="~/app/controllers/vbdithem/vbdchophathanh.js" asp-append-version="true"></script>
     <script src="~/app/controllers/vbdithem/filevanbandi.js" asp-append-version="true"></script>
@@ -97,7 +98,7 @@
                             <th>Số đi, ký hiệu</th>
                             <th>Tên cơ quan ban hành</th>
                             <th>Ngày ban hành</th>
-                            <th>Ngày đi</th>
+                            @*<th>Ngày đến</th>*@
                             <th>Trạng thái</th>
                         </tr>
                     </thead>
@@ -145,8 +146,14 @@
             </td>
             <td>{{TenCoQuanBanHanh}}</td>
             <td>{{NgayBanHanhCuaVanBan}}</td>
-            <td>{{NgayDiCuaVanBan}}</td>
-            <td>{{{TTChuaPhatHanh}}}</td>
+            @*<td>
+                    {{NgayDiCuaVanBan}}
+                </td>*@
+            <td>
+                <a class="btn btn-link btnVBDiNgayXem" data-id="{{Id}}" data-toggle="tooltip">
+                    {{{TTChuaPhatHanh}}}
+                </a>
+            </td>
 
         </tr>
     </script>
@@ -155,6 +162,7 @@
 <partial name="_AddEditModel.cshtml" />
 <partial name="_FileVanBanDi.cshtml" />
 <partial name="_VBDChoPhatHanh.cshtml" />
+<partial name="_VBDiNgayXem.cshtml" />
 @*      <partial name="_VanBanDenDienTu.cshtml" />*@
 
 

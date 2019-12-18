@@ -40,8 +40,8 @@
         loadAddEditVanBanDen(vanbandenId);
     }
 
-    function registerEvents() {
-        
+    function registerEvents() {        
+
         $('#txtNgayBanHanh, #txtNgayDen, #txtThoiHanGiaiQuyet ').datepicker({
             autoclose: true,
             format: 'dd/mm/yyyy',
@@ -1221,7 +1221,7 @@
                 tedu.notify('Không có văn bản khẩn.', 'error');
             }
         });
-    }
+    }   
 
     function loadTableVanBanDienTu() {
 

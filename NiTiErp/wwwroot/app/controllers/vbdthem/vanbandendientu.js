@@ -74,7 +74,10 @@
                 $('#ddlCoQuanBanHanh').val(vanbanden.VBDiCoQuanBanHanhId);
 
                 $('#txtNoiLuuBanChinh').val(vanbanden.NoiLuuBanChinh);
-                //$('#ddlLanhDaoDuyet').val(vanbanden.HoSoNhanVienId);
+
+                $('#txtNguoiKyVanBan').val(vanbanden.TenLDDuyetVBDi);
+                $('#txtChucVuNguoiKy').val(vanbanden.ChucVuTenLDDuyetVBDi);
+               
                 //$('#ddlCapDoKhan').val(vanbanden.VanBanKhanId);
                 //$('#ddlCapDoMat').val(vanbanden.VanBanMatId);
                 //$('#txtGhiChu').val(vanbanden.GhiChu);

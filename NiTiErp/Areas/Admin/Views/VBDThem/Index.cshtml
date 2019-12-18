@@ -5,13 +5,16 @@
     <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
     <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
     <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+
+
 }
 @section Scripts{
-
     <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
-     
+
+    <script src="~/admin-side/js/jquery.autocomplete.js" asp-append-version="true"></script>
+
     <script src="~/app/controllers/vbdthem/vanbandendientu.js" asp-append-version="true"></script>
     <script src="~/app/controllers/vbdthem/themcoquan.js" asp-append-version="true"></script>
     <script src="~/app/controllers/vbdthem/filevanbanden.js" asp-append-version="true"></script>
@@ -20,6 +23,12 @@
     <script>
         var vbdthem = new vbdthemController();
         vbdthem.initialize();
+
+
+            //$('#txtChucVuNguoiKy').on('change', function () {
+            //    alert("dsfdf");
+            //});
+
     </script>
 
 }
@@ -87,13 +96,13 @@
                     <thead>
                         <tr>
                             <th width="=10%">#</th>
-                            <th >Tên sổ</th>
-                            <th  >Trich yếu</th>
-                            <th >Số đến, ký hiệu</th>
-                            <th >Tên cơ quan ban hành</th>
-                            <th >Ngày ban hành</th>
-                            <th >Ngày đến</th>
-                            <th >Trạng thái</th>
+                            <th>Tên sổ</th>
+                            <th>Trich yếu</th>
+                            <th>Số đến, ký hiệu</th>
+                            <th>Tên cơ quan ban hành</th>
+                            <th>Ngày ban hành</th>
+                            <th>Ngày đến</th>
+                            <th>Trạng thái</th>
                         </tr>
                     </thead>
                     <tbody id="tblContentVBDThem"></tbody>
@@ -133,14 +142,14 @@
                     {{TrichYeuCuaVanBan}}
                 </a>
                 @*<a class="btn btn-link btnPatchFileTrichYeu" data-id="{{Id}}" data-toggle="tooltip" >
-                    {{TrichYeuCuaVanBan}}
-                </a>*@
-            </td>           
+                        {{TrichYeuCuaVanBan}}
+                    </a>*@
+            </td>
             <td>
-                <a class="btn btn-link btnPatchFileKyHieu" data-id="{{Id}}" data-toggle="tooltip" >
+                <a class="btn btn-link btnPatchFileKyHieu" data-id="{{Id}}" data-toggle="tooltip">
                     {{SoKyHieuDen}}
                 </a>
-            </td>           
+            </td>
             <td>{{TenCoQuanBanHanh}}</td>
             <td>{{NgayBanHanhCuaVanBan}}</td>
             <td>{{NgayDenCuaVanBan}}</td>

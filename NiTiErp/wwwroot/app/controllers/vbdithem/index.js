@@ -5,6 +5,7 @@
     var fielvanbandi = new filevanbandiController();
     var vbdchophathanh = new vbdchophathanhController();
     //var vanbandendientu = new vanbandendientuController();
+    var vbdingayxem = new vbdingayxemController();
 
     this.initialize = function () {
         //tedu.isVanBanDen('VANBANDITHEM');
@@ -17,6 +18,7 @@
         addeditvbdithem.initialize();
         vbdchophathanh.initialize();
         //vanbandendientu.initialize();
+        vbdingayxem.initialize();
 
         loadData();
     }
@@ -82,6 +84,15 @@
             CodeFileGuidId(); // CodeId
            
             $('#modal-add-edit-VBDiThem').modal('show');
+        });
+
+        $('body').on('click', '.btnVBDiNgayXem', function (e) {
+            e.preventDefault();
+            var vanbandiId = $(this).data('id');
+            //tedu.notify(vanbandiId, "success"); 
+            vbdingayxem.loadTableVBDiNgayXem(vanbandiId);
+
+            $('#modal-add-edit-VBDiNgayXem').modal('show');
         });
 
     }
