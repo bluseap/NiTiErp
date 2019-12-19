@@ -281,6 +281,8 @@ namespace NiTiErp
             services.AddTransient<IVanBanDiService, VanBanDiService>();
             services.AddTransient<IMessageService, MessageService>();
 
+            services.AddTransient<IVBAutocompleteService, VBAutocompleteService>();
+
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 
             //dung DAO

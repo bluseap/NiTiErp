@@ -385,39 +385,34 @@
         });
     }
 
-    function loadAutocomplete(){
-
+    function loadAutocomplete() {
         $.ajax({
             type: 'GET',
-            url: "https://jsonplaceholder.typicode.com/users",            
+            url: "/admin/VBAutocomplete/GetListVBAuto",          
+            data: {
+                codeXL: "VANBAN"                
+            },
             async: true,
             dataType: 'json',
-            success: function (data) {
-                for (var i = 0, len = data.length; i < len; i++) {
-                    var id = (data[i].id).toString();
-                    arrayReturn.push({ 'value': data[i].name, 'data': id });
-                }
-                var countries = [
-                    { value: 'Andorra', data: 'AD' },
-                    // ...
-                    { value: 'Zimbabwe', data: 'ZZ' }
-                ];
+            success: function (database) {
+                arrayReturn = [];
+                var data = database.Result;
+                for (var i = 0, len = data.length; i < len; i++) {                    
+                    arrayReturn.push({ 'value': data[i].TenNhanVien, 'TenChucVu': data[i].TenChucVu });
+                }                
                 //send parse data to autocomplete function
                 loadSuggestions(arrayReturn);
-                //console.log(countries);
-                //console.log(arrayReturn);
+                //console.log(countries);               
             }
-        });
-       
+        });       
     }
 
     function loadSuggestions(options) {
         $('#txtNguoiKyVanBan').autocomplete({
             lookup: options,
-            onSelect: function (suggestion) {
-                //$('#selected_option').html(suggestion.value);
+            onSelect: function (suggestion) {                
                 //tedu.notify(suggestion.value, 'error');
-                $('#txtChucVuNguoiKy').val(suggestion.data);
+                $('#txtChucVuNguoiKy').val(suggestion.TenChucVu);
             }
         });
     }
