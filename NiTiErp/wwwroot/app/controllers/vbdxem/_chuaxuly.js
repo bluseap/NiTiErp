@@ -121,8 +121,9 @@
             data: {
                 Id: vanbandenduyetId,
                 VanBanDenDuyetId: vanbandenduyetId,
-                InsertVBDXuLyLId: 2,
-                NgayBatDauXuLy: ngaychuaxuly
+                InsertVBDXuLyLId: 2,                
+                NgayBatDauXuLy: ngaychuaxuly,
+                GhiChuXuLy: ghichuxuly
             },
             dataType: "json",
             beforeSend: function () {

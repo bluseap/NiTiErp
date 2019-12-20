@@ -21,6 +21,7 @@
                         <th>Ngày đến</th>
                         <th>QT Xử lý</th>
                         <th>Bút phê LĐ</th>
+                        <th>Ghi Chú</th>
                     </tr>
                 </thead>
                 <tbody id="tblContentDangXuLy"></tbody>
@@ -95,6 +96,11 @@
         <td>
             <a class="btn btn-link btnDangXLButPheLD" data-id="{{VanBanDenId}}" data-toggle="tooltip">
                 {{ButPheLanhDao}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-sm">
+                {{GhiChu}}
             </a>
         </td>
         <td><input type="hidden" id="vanbandenid" class="form-control" value="{{VanBanDenId}}" /></td>

@@ -226,6 +226,15 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        [HttpGet]
+        public IActionResult GetListVBDXemFileXuLyPaging(long vanbandenId)
+        {
+            var model = _vanbandenxulyfileService.GetAllVanBanDenXuLyFilePaging(1, vanbandenId, "", "",
+                1, 1000, "GetAllVBDXemFileXLVanBanDenId");
+
+            return new OkObjectResult(model);
+        }
+
         #endregion
 
         #endregion

@@ -2,6 +2,8 @@
 
     var vanbandenduyetfile = new vbdduyetfileController();
 
+    var _chuaxuly = new _chuaxulyController();
+
     var bientimClick = 0;
 
     this.initialize = function () {
@@ -46,7 +48,9 @@
         $('body').on('click', '.btnTatCaPatchFileXuLy', function (e) {
             e.preventDefault();
             var vanbandenId = $(this).data('id');
-            loadPatchFileVBDXuLy(vanbandenId);
+            loadXemPatchFileVBDXuLy(vanbandenId);
+            //loadPatchFileVBDXuLy(vanbandenId);
+            $('#modal-add-edit-VBDXemFileXuLy').modal('show');
         }); 
 
         $('body').on('click', '.btnTatCaXLButPheLD', function (e) {
@@ -57,6 +61,21 @@
             $('#modal-add-edit-VBDDuyetFile').modal('show');
         });
 
+        $('body').on('click', '.btnVBDXemFileXuLyTenFile', function (e) {
+            e.preventDefault();
+            var duongdan = $(this).data('id');
+            loadPatchFileVBDXuLyFile(duongdan);   
+        });
+
+        $('body').on('click', '.btnTatCaChuaXuLyXuLy', function (e) {
+            e.preventDefault();
+            var vanbandenduyetId = $(this).data('id');
+            $('#hidVanBanDenDuyetId').val(vanbandenduyetId);
+            _chuaxuly.loadNhanVienXuLyVanBanDen(vanbandenduyetId);
+            $('#modal-add-edit-ChuaXuLyXuLy').modal('show');
+            $('#frmMainDivChuaXuLyXuLy').hide();
+            
+        });
     }
 
     function loadPatchFileVBDXuLy(vanbandenid) {
@@ -129,8 +148,9 @@
                             VanBanDenId: item.VanBanDenId,
                             TenFile: item.TenFile,
                             VBDXuLyFilePatch: item.VBDXuLyFilePatch,
-                            ButPheLanhDao: item.ButPheLanhDao === "Invalid Date" ? "" : item.ButPheLanhDao
-                            // Price: tedu.formatNumber(item.Price, 0),                          
+                            ButPheLanhDao: item.ButPheLanhDao === "Invalid Date" ? "" : item.ButPheLanhDao,
+                            GhiChu: item.GhiChu
+                            // Price: tedu.formatNumber(item.Price, 0),
                         });
                     });
                 }
@@ -195,6 +215,73 @@
                 tedu.notify('Không thể lấy dữ liệu về.', 'error');
             }
         });
+    }
+
+    function loadXemPatchFileVBDXuLy(vanbandenid) {
+        //tedu.notify(vanbandenid, "success");
+        var template = $('#table-VBDXemFileXuLy').html();
+        var render = "";
+        $.ajax({
+            type: "GET",
+            url: "/Admin/vbdxem/GetListVBDXemFileXuLyPaging",
+            data: { vanbandenId: vanbandenid },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th></tr>";
+                }
+                else {
+                    $.each(response.Result.Results, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+                            TenFile: item.TenFile,
+                            //HinhNhanVien: item.Image === null ? '<img src="/admin-side/images/user.png?h=90"' : '<img src="' + item.HinhNhanVien + '?h=90" />',
+                            DuongDan: item.DuongDan                            
+                            //NgayDenCuaVanBan: tedu.getFormattedDate(item.NgayDenCuaVanBan),
+                            //TTXuLy: tedu.getVanBanDenTTXuLy(item.TTXuLy),                            
+                            // Price: tedu.formatNumber(item.Price, 0),
+                        });
+                    });
+                }
+                if (render !== '') {
+                    $('#tbl-contentVBDXemFileXuLy').html(render);
+                }                
+            },
+            error: function (status) {
+                //console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+        
+    }
+
+    function loadPatchFileVBDXuLyFile(duongdan) {
+        var win = window.open(duongdan, '_blank');
+        win.focus();
+        tedu.stopLoading();
+
+        //$.ajax({
+        //    type: "GET",
+        //    url: "/Admin/vbdxem/GetListVBDXemFileXuLyPaging",
+        //    data: { vanbandenId: vanbandenid },
+        //    dataType: "json",
+        //    beforeSend: function () {
+        //        tedu.startLoading();
+        //    },
+        //    success: function (response) {
+        //        var vanbanden = response.Result[0];
+        //        var win = window.open(vanbanden.VBDXuLyFilePatch, '_blank');
+        //        win.focus();
+        //        tedu.stopLoading();
+        //    },
+        //    error: function (status) {
+        //        tedu.notify('Có lỗi xảy ra', 'error');
+        //        tedu.stopLoading();
+        //    }
+        //});
     }
 
 }

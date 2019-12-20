@@ -134,7 +134,8 @@
                             NgayDenCuaVanBan: tedu.getFormattedDate(item.NgayDenCuaVanBan),
                             TTXuLy: tedu.getVanBanDenTTXuLy(item.TTXuLy),
                             VanBanDenId: item.VanBanDenId,
-                            ButPheLanhDao: item.ButPheLanhDao === "Invalid Date" ? "" : item.ButPheLanhDao
+                            ButPheLanhDao: item.ButPheLanhDao === "Invalid Date" ? "" : item.ButPheLanhDao,
+                            GhiChu: item.GhiChu
                             // Price: tedu.formatNumber(item.Price, 0),                          
                         });
                     });

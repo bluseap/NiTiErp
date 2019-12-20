@@ -17,11 +17,12 @@
                         <th>Số đến, ký hiệu</th>
                         <th>Trich yếu</th>
                         <th>Tên cơ quan ban hành</th>
-                        <th>Tên File xử lý</th>
+                        <th>File xử lý</th>
                         <th>Ngày ban hành</th>
                         <th>Ngày đến</th>
                         <th>QT Xử lý</th>
                         <th>Bút phê LĐ</th>
+                        <th>Ghi chú</th>
                     </tr>
                 </thead>
                 <tbody id="tblContentTatCaXuLy"></tbody>
@@ -53,8 +54,12 @@
 <script id="table-TatCaXuLy" type="x-tmpl-mustache">
     <tr>
         <th scope="row">
-            <a class="btn btn-sm btnTatCaXuLy" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Tất xử lý ">
+            @*<a class="btn btn-sm btnTatCaXuLy" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Tất xử lý ">
+            <i class="fa fa-mail-forward"></i>
+        </a>*@
+            <a class="btn btn-sm btnTatCaChuaXuLyXuLy" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xử lý">
                 <i class="fa fa-mail-forward"></i>
+                Xử lý lại
             </a>
         </th>
         <td>
@@ -79,7 +84,7 @@
         </td>
         <td>
             <a class="btn btn-link btnTatCaPatchFileXuLy" data-id="{{VanBanDenId}}" data-toggle="tooltip">
-                {{TenFile}}
+               Xem file @*{{TenFile}}*@
             </a>
         </td>
         <td>
@@ -102,7 +107,11 @@
                 {{ButPheLanhDao}}
             </a>
         </td>
+        <td>
+            <a class="btn btn-sm">
+                {{GhiChu}}
+            </a>
+        </td>
         <td><input type="hidden" id="vanbandenid" class="form-control" value="{{VanBanDenId}}" /></td>
     </tr>
 </script>
-

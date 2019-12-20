@@ -78,6 +78,7 @@
             $('#hidVanBanDenDuyetId').val(vanbandenduyetId);
             _chuaxuly.loadNhanVienXuLyVanBanDen(vanbandenduyetId);
             $('#modal-add-edit-ChuaXuLyXuLy').modal('show');
+            $('#frmMainDivChuaXuLyXuLy').show();
         });
 
         $('body').on('click', '.btnChuaXLButPheLD', function (e) {
