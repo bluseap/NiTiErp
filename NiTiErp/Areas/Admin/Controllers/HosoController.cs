@@ -166,7 +166,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult GetListHoSoFile(string hosonhanvienid)
         {           
-            var model = _hosofileService.GetAllHoSoFilePaging("", "", "", 1, 1000, hosonhanvienid, "", "", "", "GetAllHoSoFile");
+            var model = _hosofileService.GetAllHoSoFilePaging("", "", "", 1, 1000, hosonhanvienid, "", "", "", "GetHoSoFileHoSoId");
 
             return new OkObjectResult(model);
         }

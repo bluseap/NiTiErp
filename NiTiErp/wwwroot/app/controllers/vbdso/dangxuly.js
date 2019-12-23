@@ -1,5 +1,6 @@
-﻿var chuaduyetController = function () {
+﻿var dangxulyController = function () {
 
+    var vanbandenduyetfile = new vbdduyetfileController();
     var _quatrinhxuly = new _quatrinhxulyController();
 
     var bientimClick = 0;
@@ -10,13 +11,13 @@
 
     }
 
-    this.loadCountChuaDuyet = function (makv) {
-        loadCountChuaDuyet(makv);
+    this.loadCountDangXuLy = function (makv) {
+        loadCountDangXuLy(makv);
     }
 
-    this.loadTableVBDChuaDuyet = function () {
-        loadTableVBDChuaDuyet();
-        $('#btnTimChuaDuyet').hide();
+    this.loadTableVBDDangXuLy = function () {
+        loadTableVBDDangXuLy();
+        $('#btnTimDangXuLy').hide();
     }
 
     function registerEvents() {
@@ -24,44 +25,51 @@
         $('body').on('click', '.btnVBDSoTim', function (e) {
             e.preventDefault();
             if (bientimClick === 0) {
-                $('#btnTimChuaDuyet').show();
+                $('#btnTimDangXuLy').show();
                 bientimClick = 1;
             }
             else if (bientimClick === 1) {
-                $('#btnTimChuaDuyet').hide();
+                $('#btnTimDangXuLy').hide();
                 bientimClick = 0;
             }
         });
 
-        $('#btnTimChuaDuyet').on('click', function () {            
-            loadTableVBDChuaDuyet();
+        $('#btnTimDangXuLy').on('click', function () {
+            loadTableVBDDangXuLy();
         });
 
-        $("#ddl-show-pageChuaDuyet").on('change', function () {
+        $("#ddl-show-pageDangXuLy").on('change', function () {
             tedu.configs.pageSize = $(this).val();
             tedu.configs.pageIndex = 1;
-            loadTableVBDChuaDuyet(true);
+            loadTableVBDDangXuLy(true);
         });
 
-        $('body').on('click', '.btnChuaDuyetPatchFileKyHieu', function (e) {
+        $('body').on('click', '.btnDangXuLyPatchFileKyHieu', function (e) {
             e.preventDefault();
             var vanbandenId = $(this).data('id');
             loadPatchFile(vanbandenId);
         });
 
-        $('body').on('click', '.btnChuaDuyetPatchFileTrichYeu', function (e) {
+        $('body').on('click', '.btnDangXuLyPatchFileTrichYeu', function (e) {
             e.preventDefault();
             var vanbandenId = $(this).data('id');
             loadPatchFile(vanbandenId);
         });
 
-        $('body').on('click', '.btnQTChuaDuyet', function (e) {
+        $('body').on('click', '.btnQTDangXuLy', function (e) {
             e.preventDefault();
             var vanbandenId = $(this).data('id');
             _quatrinhxuly.loadQuaTrinhXuLy(vanbandenId);
             $('#modal-add-edit-QuaTrinhXuLy').modal('show');
         });
 
+        $('body').on('click', '.btnDangXuLyButPheLD', function (e) {
+            e.preventDefault();
+            var vanbandenId = $(this).data('id');
+            vanbandenduyetfile.loadTableVBDDuyetFileVBDId(vanbandenId);
+            $('#btnVBDDUyetFileId').hide();
+            $('#modal-add-edit-VBDDuyetFile').modal('show');
+        });
     }
 
     function loadPatchFile(vanbandenId) {
@@ -86,8 +94,8 @@
         });
     }
 
-    function loadTableVBDChuaDuyet(isPageChanged) {
-        var template = $('#table-ChuaDuyet').html();
+    function loadTableVBDDangXuLy(isPageChanged) {
+        var template = $('#table-DangXuLy').html();
         var render = "";
 
         var makhuvuc = $('#ddlKhuVuc').val();
@@ -99,7 +107,7 @@
 
         $.ajax({
             type: 'GET',
-            url: '/admin/vbdthem/GetListVBDSoChuaDuyet',
+            url: '/admin/vbdthem/GetListVBDSoDangXuLy',
             data: {
                 corporationId: makhuvuc,
                 keyword: "%",
@@ -123,29 +131,30 @@
                     $.each(response.Result.Results, function (i, item) {
                         render += Mustache.render(template, {
                             Id: item.Id,
-                            TenSoVanBanDen: item.NamSoVanBan.toString() + '-' + item.TenSoVanBan,
+                            TenSoVanBanDen: item.NamSoVanBan + '-' + item.TenSoVanBan,
                             //HinhNhanVien: item.Image === null ? '<img src="/admin-side/images/user.png?h=90"' : '<img src="' + item.HinhNhanVien + '?h=90" />',
                             TrichYeuCuaVanBan: item.TrichYeuCuaVanBan,
-                            SoKyHieuDen: item.SoVanBanDenStt.toString() + ' ' + item.SoKyHieuCuaVanBan,
+                            SoKyHieuDen: item.SoVanBanDenStt + ' ' + item.SoKyHieuCuaVanBan,
                             TenCoQuanBanHanh: item.TenCoQuanBanHanh,
                             NgayBanHanhCuaVanBan: tedu.getFormattedDate(item.NgayBanHanhCuaVanBan),
                             NgayDenCuaVanBan: tedu.getFormattedDate(item.NgayDenCuaVanBan),
                             TTXuLy: tedu.getVanBanDenTTXuLy(item.TTXuLy),
-                            VanBanDenId: item.VanBanDenId
+                            VanBanDenId: item.VanBanDenId,
+                            ButPheLanhDao: item.ButPheLanhDao === "Invalid Date" ? "" : item.ButPheLanhDao
                             // Price: tedu.formatNumber(item.Price, 0),                          
                         });
-                    });                    
+                    });
                 }
 
-                $('#lblChuaDuyetTotalRecords').text(response.Result.RowCount);
+                $('#lblDangXuLyTotalRecords').text(response.Result.RowCount);
 
                 if (render !== '') {
-                    $('#tblContentChuaDuyet').html(render);
+                    $('#tblContentDangXuLy').html(render);
                 }
 
                 if (response.Result.RowCount !== 0) {
-                    wrapPagingVBDSoChuaDuyet(response.Result.RowCount, function () {
-                        loadTableVBDChuaDuyet();
+                    wrapPagingVBDSoDangXuLy(response.Result.RowCount, function () {
+                        loadTableVBDDangXuLy();
                     },
                         isPageChanged);
                 }
@@ -156,16 +165,16 @@
             }
         });
     }
-    function wrapPagingVBDSoChuaDuyet(recordCount, callBack, changePageSize) {
+    function wrapPagingVBDSoDangXuLy(recordCount, callBack, changePageSize) {
         var totalsize = Math.ceil(recordCount / tedu.configs.pageSize);
         //Unbind pagination if it existed or click change pagesize
-        if ($('#paginationULChuaDuyet a').length === 0 || changePageSize === true) {
-            $('#paginationULChuaDuyet').empty();
-            $('#paginationULChuaDuyet').removeData("twbs-pagination");
-            $('#paginationULChuaDuyet').unbind("page");
+        if ($('#paginationULDangXuLy a').length === 0 || changePageSize === true) {
+            $('#paginationULDangXuLy').empty();
+            $('#paginationULDangXuLy').removeData("twbs-pagination");
+            $('#paginationULDangXuLy').unbind("page");
         }
         //Bind Pagination Event
-        $('#paginationULChuaDuyet').twbsPagination({
+        $('#paginationULDangXuLy').twbsPagination({
             totalPages: totalsize,
             visiblePages: 7,
             first: 'Đầu',
@@ -181,16 +190,16 @@
         });
     }
 
-    function loadCountChuaDuyet(makv) {
+    function loadCountDangXuLy(makv) {
         $.ajax({
             type: 'GET',
-            url: '/admin/vbdthem/GetCountVBDChuaDuyet',
+            url: '/admin/vbdthem/GetCountVBDSoDangXuLy',
             data: {
                 corporationId: makv
             },
             dataType: 'json',
             success: function (response) {
-                $('#spanChuaDuyet').text(response);
+                $('#spanDangXuLy').text(response);
             },
             error: function (status) {
                 console.log(status);

@@ -5,8 +5,9 @@ var vbdsoController = function () {
 
     var sotatca = new sotatcaController();
     var chuaphathanh = new chuaphathanhController();
-    var chuaduyet = new chuaduyetController();
+    var chuaduyet = new chuaduyetController();    
     var chuaxuly = new chuaxulyController();
+    var dangxuly = new dangxulyController();
     var chuachuyen = new chuachuyenController();
     var luutam = new luutamController();
     var _quatrinhxuly = new _quatrinhxulyController();
@@ -22,6 +23,7 @@ var vbdsoController = function () {
         
         chuaduyet.initialize();
         chuaxuly.initialize();
+        dangxuly.initialize();
         chuachuyen.initialize();
         luutam.initialize();
 
@@ -42,6 +44,7 @@ var vbdsoController = function () {
         luutam.loadCountLuuTam(makv);
         chuachuyen.loadCountChuaChuyen(makv);
         chuaxuly.loadCountChuaXuLy(makv);
+        dangxuly.loadCountDangXuLy(makv);
         chuaduyet.loadCountChuaDuyet(makv);
         sotatca.loadCountSoTatCa(makv);
     }
@@ -74,8 +77,9 @@ var vbdsoController = function () {
 
                 luutam.loadTableVBDSoLuuTam();
                 chuachuyen.loadTableVBDSoChuaChuyen();
-                chuaduyet.loadTableVBDChuaDuyet();
+                //chuaduyet.loadTableVBDChuaDuyet();
                 chuaxuly.loadTableVBDChuaXuLy();
+                dangxuly.loadTableVBDDangXuLy();
                 sotatca.loadTableVBDSoTatCa();
             },
             error: function (status) {

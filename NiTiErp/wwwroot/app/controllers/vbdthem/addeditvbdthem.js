@@ -101,6 +101,7 @@
 
                 if (ttxuly === "2") {
                     tedu.notify("Văn bản đã chuyển lãnh đạo. Xem lại.", "error");
+                    UpdateVanBanDenSttHoSo();
                 }
                 else if (ttxuly === "1") {
                     SaveVanBanDenChuyen();
@@ -1068,6 +1069,8 @@
                 }
                 else {
                     tedu.notify('Lưu văn bản đến chuyển lãnh đạo.', 'success');
+
+                    UpdateVanBanDenSttHoSo();
 
                     loadTableVanBanDen(true);
                     loadCountVanBanDen(makhuvuc);
