@@ -4,6 +4,7 @@ var vbdsoController = function () {
     var userCorporationId = $("#hidUserCorporationId").val();
 
     var sotatca = new sotatcaController();
+    var xulyroi = new xulyroiController();
     var chuaphathanh = new chuaphathanhController();
     var chuaduyet = new chuaduyetController();    
     var chuaxuly = new chuaxulyController();
@@ -20,7 +21,7 @@ var vbdsoController = function () {
         registerEvents();
 
         sotatca.initialize();
-        
+        xulyroi.initialize();
         chuaduyet.initialize();
         chuaxuly.initialize();
         dangxuly.initialize();
@@ -46,6 +47,7 @@ var vbdsoController = function () {
         chuaxuly.loadCountChuaXuLy(makv);
         dangxuly.loadCountDangXuLy(makv);
         chuaduyet.loadCountChuaDuyet(makv);
+        xulyroi.loadCountXuLyRoi(makv);
         sotatca.loadCountSoTatCa(makv);
     }
 

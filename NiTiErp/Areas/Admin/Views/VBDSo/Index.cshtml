@@ -17,6 +17,7 @@
     <script src="~/app/controllers/vbdduyet/_quatrinhxuly.js" asp-append-version="true"></script>
 
     <script src="~/app/controllers/vbdso/sotatca.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/vbdso/xulyroi.js" asp-append-version="true"></script>
     <script src="~/app/controllers/vbdso/chuaduyet.js" asp-append-version="true"></script>
     <script src="~/app/controllers/vbdso/dangxuly.js" asp-append-version="true"></script>
     <script src="~/app/controllers/vbdso/chuaxuly.js" asp-append-version="true"></script>
@@ -92,7 +93,7 @@
                     </li>
                     <li role="presentation" class="">
                         <a href="#tab_ChuaChuyen" role="tab" id="tabChuaChuyen" data-toggle="tab" aria-expanded="false">
-                            VB Chưa chuyển Chuyên môn
+                            VB Chưa chuyển C.Môn
                             <span id="spanChuaChuyen" class="badge bg-blue" style="font-size:large">0</span>
                         </a>
                     </li>
@@ -106,6 +107,12 @@
                         <a href="#tab_DangXuLy" role="tab" id="tabDangXuLy" data-toggle="tab" aria-expanded="false">
                             VB Đang xử lý
                             <span id="spanDangXuLy" class="badge bg-orange" style="font-size:large">0</span>
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="#tab_XuLyRoi" role="tab" id="tabXuLyRoi" data-toggle="tab" aria-expanded="false">
+                            VB Xử lý rồi
+                            <span id="spanXuLyRoi" class="badge bg-green" style="font-size:large">0</span>
                         </a>
                     </li>
                     @*<li role="presentation" class="">
@@ -139,6 +146,9 @@
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="tab_DangXuLy" aria-labelledby="profile-tab">
                         <partial name="_tabDangXuLy.cshtml" />
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="tab_XuLyRoi" aria-labelledby="profile-tab">
+                        <partial name="_tabXuLyRoi.cshtml" />
                     </div>
                     @*<div role="tabpanel" class="tab-pane fade" id="tab_ChuaDuyet" aria-labelledby="profile-tab">
                             <partial name="_tabChuaDuyet.cshtml" />

@@ -6,7 +6,8 @@ var vbdxemController = function () {
     var chuaxuly = new chuaxulyController();
     var dangxuly = new dangxulyController();
     var daxuly = new daxulyController();
-    var tatcaxuly = new tatcaxulyController();
+    var xulyroi = new xulyroiController();
+    var tatcaxuly = new tatcaxulyController();    
     var _chuaxuly = new _chuaxulyController();   
     var _quatrinhxuly = new _quatrinhxulyController();   
 
@@ -21,6 +22,7 @@ var vbdxemController = function () {
 
         dangxuly.initialize();
         daxuly.initialize();
+        xulyroi.initialize();
         tatcaxuly.initialize();
         _chuaxuly.initialize();
         _quatrinhxuly.initialize();
@@ -65,7 +67,10 @@ var vbdxemController = function () {
 
                 _chuaxuly.loadCountVBDDangXuLy(makv);
                 daxuly.loadCountVBDDaXuLyCLD(makv);
-                tatcaxuly.loadCountVanBanDenTatCaXuLy(makv);
+                xulyroi.loadCountVanBanDenXuLyRoi(makv);
+                tatcaxuly.loadCountVanBanDenTatCaXuLy(makv);     
+
+                xulyroi.loadTableVBDXuLyRoi();
                 tatcaxuly.loadTableVBDTatCaXuLy();
 
             },

@@ -52,6 +52,7 @@
                     //$('#imagelistBang1').append('<div class="col-md-3"><img width="100"  data-path="' + path + '" src="' + path + '"></div>');
                     //tedu.notify(fileUpload1, "success"); // duong dan file 
                     tedu.notify('Đã tải file lên thành công!', 'success');
+                    //SaveVanBanDenFile();
                 },
                 error: function () {
                     tedu.notify('There was error uploading files!', 'error');
@@ -113,7 +114,6 @@
                 tedu.stopLoading();
             }
         });
-
     }
 
     function loadTableVanBanDenFile(codeid) {

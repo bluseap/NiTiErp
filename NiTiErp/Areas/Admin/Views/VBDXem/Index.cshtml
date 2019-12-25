@@ -19,6 +19,7 @@
     <script src="~/app/controllers/vbdxem/_dangxuly.js" asp-append-version="true"></script>
     <script src="~/app/controllers/vbdxem/_chuaxuly.js" asp-append-version="true"></script>
     <script src="~/app/controllers/vbdxem/tatcaxuly.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/vbdxem/xulyroi.js" asp-append-version="true"></script>
     <script src="~/app/controllers/vbdxem/daxuly.js" asp-append-version="true"></script>
     <script src="~/app/controllers/vbdxem/dangxuly.js" asp-append-version="true"></script>
     <script src="~/app/controllers/vbdxem/chuaxuly.js" asp-append-version="true"></script>
@@ -58,15 +59,15 @@
                             <select id="ddlKhuVuc" class="form-control "></select>
                             @*<input type="text" id="txtTimNoiDung" class="form-control" placeholder="Từ khóa...">*@
                             @*<span class="input-group-btn">
-                            <button class="btn btn-warning" id="btnTimNhanVien" type="button">Tìm !</button>
-                        </span>*@
+                                    <button class="btn btn-warning" id="btnTimNhanVien" type="button">Tìm !</button>
+                                </span>*@
                         </div>
                     </div>
                     @*<div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
-                    <div class="input-group">
+                            <div class="input-group">
 
-                    </div>
-                </div>*@
+                            </div>
+                        </div>*@
                 </div>
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12" id="divVanBanDenXemTim">
@@ -80,13 +81,13 @@
                         </ul>
                         <div class="clearfix"></div>
                     </div>
-                    <div class="x_content" id="boxContentVBDTim">                        
+                    <div class="x_content" id="boxContentVBDTim">
                         <div class="row">
                             <partial name="/Areas/Admin/Views/Shared/_timVanBan.cshtml" />
                         </div>
                     </div>
                 </div>
-            </div>           
+            </div>
 
             <div class="clearfix"></div>
 
@@ -105,11 +106,17 @@
                         </a>
                     </li>
                     @*<li role="presentation" class="">
-                    <a href="#tab_DaXuLy" role="tab" id="tabDaXuLy" data-toggle="tab" aria-expanded="false">
-                        Văn bản đã xử lý chuyển lãnh đạo duyệt
-                        <span id="spanDaXuLy" class="badge bg-orange" style="font-size:large">0</span>
-                    </a>
-                </li>*@
+                            <a href="#tab_DaXuLy" role="tab" id="tabDaXuLy" data-toggle="tab" aria-expanded="false">
+                                Văn bản đã xử lý chuyển lãnh đạo duyệt
+                                <span id="spanDaXuLy" class="badge bg-orange" style="font-size:large">0</span>
+                            </a>
+                        </li>*@
+                    <li role="presentation" class="">
+                        <a href="#tab_XuLyRoi" role="tab" id="tabXuLyRoi" data-toggle="tab" aria-expanded="false">
+                            VB Xử lý rồi
+                            <span id="spanXuLyRoi" class="badge bg-green" style="font-size:large">0</span>
+                        </a>
+                    </li>
                     <li role="presentation" class="">
                         <a href="#tab_TatCa" role="tab" id="tabTatCa" data-toggle="tab" aria-expanded="false">
                             Tất cả Văn bản
@@ -125,8 +132,11 @@
                         <partial name="_tabDangXuLy.cshtml" />
                     </div>
                     @*<div role="tabpanel" class="tab-pane fade" id="tab_DaXuLy" aria-labelledby="profile-tab">
-                    <partial name="_tabDaXuLy.cshtml" />
-                </div>*@
+                            <partial name="_tabDaXuLy.cshtml" />
+                        </div>*@
+                    <div role="tabpanel" class="tab-pane fade" id="tab_XuLyRoi" aria-labelledby="profile-tab">
+                        <partial name="_tabXuLyRoi.cshtml" />
+                    </div>
                     <div role="tabpanel" class="tab-pane fade" id="tab_TatCa" aria-labelledby="profile-tab">
                         <partial name="_tabTatCa.cshtml" />
                     </div>

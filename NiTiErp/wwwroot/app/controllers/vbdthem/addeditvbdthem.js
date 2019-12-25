@@ -373,6 +373,10 @@
         $('#ddlLanhDaoDuyet')[0].selectedIndex = 0;
         $('#ddlCapDoKhan')[0].selectedIndex = 1;
         $('#ddlCapDoMat')[0].selectedIndex = 1;
+
+        var datenow = new Date();
+        $('#txtThoiHanGiaiQuyet').val(tedu.getFormattedDate(datenow));
+        $('#ddlDanhMucHoSo')[0].selectedIndex = 0;
         $('#txtGhiChu').val('');
     }
 
@@ -950,6 +954,16 @@
         });
     }
 
+    // new guid()
+    function CreateGuid() {
+        var d = new Date().getTime();
+        var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            var r = (d + Math.random() * 16) % 16 | 0;
+            d = Math.floor(d / 16);
+            return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+        });
+        return guid;
+    } 
     function loadAddEditVanBanDen(vanbandenid) {        
 
         $.ajax({
@@ -978,7 +992,8 @@
                 $('#hidVanBanDenId').val(vanbanden.Id);
                 $('#hidVanBanDenTTXuLy').val(vanbanden.TTXuLy);
 
-                $('#hidCodeFileGuidId').val(vanbanden.CodeFileGuidId);
+                var guid = CreateGuid();
+                $('#hidCodeFileGuidId').val(vanbanden.CodeFileGuidId === '00000000-0000-0000-0000-000000000000' ? guid : vanbanden.CodeFileGuidId  );
 
                 $('#txtTrichYeu').val(vanbanden.TrichYeuCuaVanBan);
                 $('#ddlLinhVuc').val(vanbanden.VanBanLinhVucId);
@@ -1015,6 +1030,7 @@
             }
         });
     }
+    
 
     function deleteVanBanDenFile(vanbandenfileid) {
         var inservanbandenfile = $('#hidInsertFileVanBanDenId').val(); // 3
