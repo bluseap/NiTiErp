@@ -75,5 +75,51 @@ namespace NiTiErp.Application.Dapper.Implementation
             }
         }
 
+        public async Task<List<VanBanDenDuyetViewModel>> VanBanDenDuyetGetId(long id, long vanbandenId, 
+            Guid hosonhanvienduyetId, string tennhanvienduyet, DateTime tungaynhan, DateTime denngaynhan,
+            DateTime tungayduyet, DateTime denngayduyet, string butphelanhdao, bool isChuyenChuyenMon,
+            int vanbanphoihopxulyId, int vanbannhomxulyId, bool issaiChuyenMon, bool isDuyetPhatHanh,
+            int isDangXuLyXem, bool isXuLyXem, string keyWord, string ghiChu,
+            string parameters)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@Id", id);
+                dynamicParameters.Add("@VanBanDenId", vanbandenId);
+                dynamicParameters.Add("@HoSoNhanVienDuyetId", hosonhanvienduyetId);
+                dynamicParameters.Add("@tennhanvienduyet", tennhanvienduyet);
+                dynamicParameters.Add("@tungaynhan", tungaynhan);
+                dynamicParameters.Add("@denngaynhan", denngaynhan);
+                dynamicParameters.Add("@tungayduyet", tungayduyet);
+                dynamicParameters.Add("@denngayduyet", denngayduyet);
+                dynamicParameters.Add("@ButPheLanhDao", butphelanhdao);
+                dynamicParameters.Add("@IsChuyenChuyenMon", isChuyenChuyenMon);
+                dynamicParameters.Add("@VanBanPhoiHopXuLyId", vanbanphoihopxulyId);
+                dynamicParameters.Add("@VanBanNhomXuLyId", vanbannhomxulyId);
+                dynamicParameters.Add("@IsSaiChuyenMon", issaiChuyenMon);
+                dynamicParameters.Add("@IsDuyetPhatHanh", isDuyetPhatHanh);
+                dynamicParameters.Add("@IsDangXuLyXem", isDangXuLyXem);
+                dynamicParameters.Add("@IsXuLyXem", isXuLyXem);
+                dynamicParameters.Add("@keyword", keyWord);
+                dynamicParameters.Add("@GhiChu", ghiChu);
+
+                dynamicParameters.Add("@parameters", parameters);
+
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<VanBanDenDuyetViewModel>(
+                        "VanBanDenDuyetGetList", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return query.AsList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
     }
 }

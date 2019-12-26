@@ -95,6 +95,49 @@ namespace NiTiErp.Areas.Admin.Controllers
             }
         }
 
+        public IActionResult UpdateVanBanDenXuLyLai(VanBanDenXuLyViewModel vanbandenxulytVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+
+                vanbandenxulytVm.CreateBy = username;
+                vanbandenxulytVm.CreateDate = DateTime.Now;
+                vanbandenxulytVm.UpdateBy = username;
+                vanbandenxulytVm.UpdateDate = DateTime.Now;
+
+                vanbandenxulytVm.NgayBatDauXuLy = DateTime.Now;
+                vanbandenxulytVm.NgayXuLy = DateTime.Now;
+                vanbandenxulytVm.NgayXemDeBiet = DateTime.Now;
+                vanbandenxulytVm.NgayChuyenLanhDao = DateTime.Now;
+                vanbandenxulytVm.NgaySaiXyLy = DateTime.Now;
+                vanbandenxulytVm.NgaySaiChuyenLanhDao = DateTime.Now;
+                vanbandenxulytVm.NgayLanhDaoXem = DateTime.Now;
+
+                if (vanbandenxulytVm.InsertVBDXuLyLId == 2)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "VANBANDENXEM", Operations.Create);
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
+                    }
+
+                    var vanbanden = _vanbandenxulyService.VanBanDenXuLyAUD(vanbandenxulytVm, "UpVanBanDenXuLyLai");
+
+                    return new OkObjectResult(vanbanden);
+                }
+                else
+                {
+                    return new OkObjectResult(vanbandenxulytVm);
+                }
+            }
+        }
+
         public IActionResult UpdateVanBanDenXuLyCLD(VanBanDenXuLyViewModel vanbandenxulytVm)
         {
             if (!ModelState.IsValid)

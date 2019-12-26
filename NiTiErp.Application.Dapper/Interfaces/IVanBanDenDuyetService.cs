@@ -11,9 +11,13 @@ namespace NiTiErp.Application.Dapper.Interfaces
     {
         Task<Boolean> VanBanDenDuyetAUD(VanBanDenDuyetViewModel vanbandenduyet, string parameters);
 
-        //Task<PagedResult<VanBanCoQuanViewModel>> GetAllVanBanCoQuanPaging(string tencoquan, string diachi,
-        //    string keyword, int page, int pageSize, int vanbancoquanid, string ghichu, string parameters);
+        Task<List<VanBanDenDuyetViewModel>> VanBanDenDuyetGetId(long id, long vanbandenId,
+            Guid hosonhanvienduyetId, string tennhanvienduyet, DateTime tungaynhan, DateTime denngaynhan,
+            DateTime tungayduyet, DateTime denngayduyet, string butphelanhdao, bool isChuyenChuyenMon,
+            int vanbanphoihopxulyId, int vanbannhomxulyId, bool issaiChuyenMon, bool isDuyetPhatHanh,
+            int isDangXuLyXem, bool isXuLyXem, string keyWord, string ghiChu,
+            string parameters);
 
-        //Task<List<VanBanCoQuanViewModel>> VanBanCoQuanGetList(string bangId, string id2, string id3, string parameters);
     }
 }
+        

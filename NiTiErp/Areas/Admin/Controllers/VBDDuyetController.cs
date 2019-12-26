@@ -27,6 +27,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         private readonly IVanBanDenService _vanbandenService;
         private readonly IVanBanDenDuyetNVXLService _vanbandenduyetnvxlduyetService;
         private readonly IVanBanDenDuyetService _vanbandenduyetService;
+        private readonly IVanBanDenXuLyService _vanbandenxulyService;
 
         public VBDDuyetController(IHostingEnvironment hostingEnvironment,
             NiTiErp.Application.Interfaces.IUserService userService,
@@ -37,7 +38,8 @@ namespace NiTiErp.Areas.Admin.Controllers
             IVanBanPHXLService vanbanphxlService,
             IVanBanDenService vanbandenService,
             IVanBanDenDuyetNVXLService vanbandenduyetnvxlduyetService,
-            IVanBanDenDuyetService vanbandenduyetService
+            IVanBanDenDuyetService vanbandenduyetService,
+            IVanBanDenXuLyService vanbandenxulyService
             )
         {
             _hostingEnvironment = hostingEnvironment;
@@ -50,6 +52,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             _vanbandenService = vanbandenService;
             _vanbandenduyetnvxlduyetService = vanbandenduyetnvxlduyetService;
             _vanbandenduyetService = vanbandenduyetService;
+            _vanbandenxulyService = vanbandenxulyService;
         }
 
         public IActionResult Index()
@@ -419,6 +422,18 @@ namespace NiTiErp.Areas.Admin.Controllers
 
             var model = _vanbandenduyetnvxlduyetService.VBDDNVXLGetList(1, vanbandenduyetid, newGuid,
             1, DateTime.Now, "", 1, "", "GetAllVBDDNVXLVBDIdList");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetVanBanDenXuLyId(long vanbandenduyetid)
+        {
+            var newGuid = new Guid();
+
+            var model = _vanbandenxulyService.VanBanDenXuLyGetId(1, vanbandenduyetid, newGuid, "",
+                DateTime.Now, DateTime.Now,DateTime.Now,DateTime.Now, "", true, true, true, true, true,
+                "", "GetVanBanDenDuyetId");
 
             return new OkObjectResult(model);
         }

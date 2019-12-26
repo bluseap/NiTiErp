@@ -62,15 +62,24 @@ var vbdsoController = function () {
                     render += "<option value='" + item.Id + "'>" + item.Name + "</option>";
                 });
                 $('#ddlKhuVuc').html(render);
+                $('#ddlChuaXuLyKhuVuc').html(render);
+
                 var userCorporationId = $("#hidUserCorporationId").val();
                 if (userCorporationId !== "PO") {
                     $('#ddlKhuVuc').prop('disabled', true);
+                    $('#ddlChuaXuLyKhuVuc').prop('disabled', true);
                 }
                 else {
                     $('#ddlKhuVuc').prop('disabled', false);
+                    $('#ddlChuaXuLyKhuVuc').prop('disabled', false);
                 }
                 $("#ddlKhuVuc")[0].selectedIndex = 1;
                 $('#ddlKhuVuc').prop('disabled', true);
+
+                $("#ddlChuaXuLyKhuVuc")[0].selectedIndex = 1;
+                $('#ddlChuaXuLyKhuVuc').prop('disabled', true);
+                var makvchuaxuly = $('#ddlChuaXuLyKhuVuc').val();
+                chuaxuly.loadChuaXuLyPhongKhuVuc(makvchuaxuly);
 
                 var makv = $('#ddlKhuVuc').val();
                 chuaphathanh.loadCountVBChuaPhatHanh(makv);
@@ -89,7 +98,7 @@ var vbdsoController = function () {
                 tedu.notify('Không có danh mục Công Ty.', 'error');
             }
         });
-    }
+    }    
 
     function loadData() {
         loadVanBanCoQuanBanHanhList();

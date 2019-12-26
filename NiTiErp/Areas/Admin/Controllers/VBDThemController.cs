@@ -839,6 +839,30 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetListVBDSoChuaXuLyKVPhong(string corporationId, string keyword, int NamVanBan, int SoVanBan, string KyHieuVanBan,
+           string TrichYeu, string CoQuanBanHanh, int page, int pageSize)
+        {
+            var username = User.GetSpecificClaim("UserName");
+
+            var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+            var newGuid = new Guid();
+
+            var kyhieuvanban = !string.IsNullOrEmpty(KyHieuVanBan) ? KyHieuVanBan : "%";
+            var trichyeu = !string.IsNullOrEmpty(TrichYeu) ? TrichYeu : "%";
+            var coquanbanhanh = CoQuanBanHanh == "%" ? 0 : Convert.ToInt32(CoQuanBanHanh);
+
+            var model = _vanbandenService.GetAllVanBanDenPaging(khuvuc, 1, 1
+                , coquanbanhanh
+                , DateTime.Now, DateTime.Now
+                , NamVanBan, SoVanBan, kyhieuvanban
+                , "", false, 1, false, DateTime.Now, "", newGuid, 1, 1, false, "", "1", "",
+                tukhoa, page, pageSize, 1, "", username, "GetAllVBDSoChuaXuLy0301KVPhong");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
         public IActionResult GetListVBDSoDangXuLy(string corporationId, string keyword, int NamVanBan, int SoVanBan, string KyHieuVanBan,
            string TrichYeu, string CoQuanBanHanh, int page, int pageSize)
         {

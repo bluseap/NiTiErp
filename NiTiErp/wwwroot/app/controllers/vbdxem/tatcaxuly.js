@@ -73,8 +73,12 @@
             $('#hidVanBanDenDuyetId').val(vanbandenduyetId);
             _chuaxuly.loadNhanVienXuLyVanBanDen(vanbandenduyetId);
             $('#modal-add-edit-ChuaXuLyXuLy').modal('show');
-            $('#frmMainDivChuaXuLyXuLy').hide();
-            
+
+            $('#frmMainDivChuaXuLyXuLy').show();
+            $('#txtNgayChuaXuLyXuLy').hide();
+            $('#lbNgayChuaXuLyXuLy').hide();
+
+            $('#hidChuaXuLyXuLyLai').val("2");
         });
     }
 

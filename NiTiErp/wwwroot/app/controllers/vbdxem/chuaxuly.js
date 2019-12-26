@@ -11,9 +11,9 @@
 
     var bientimClick = 0;
 
-    this.initialize = function () {     
-        registerEvents(); 
-        
+    this.initialize = function () {    
+        loadDataChuaXuLy();
+        registerEvents();         
     }
 
     this.loadCountVanBanDenChuaXuLy = function (makv) {
@@ -78,7 +78,12 @@
             $('#hidVanBanDenDuyetId').val(vanbandenduyetId);
             _chuaxuly.loadNhanVienXuLyVanBanDen(vanbandenduyetId);
             $('#modal-add-edit-ChuaXuLyXuLy').modal('show');
+
             $('#frmMainDivChuaXuLyXuLy').show();
+            $('#txtNgayChuaXuLyXuLy').show();
+            $('#lbNgayChuaXuLyXuLy').show();
+
+            $('#hidChuaXuLyXuLyLai').val("1");
         });
 
         $('body').on('click', '.btnChuaXLButPheLD', function (e) {
@@ -88,6 +93,10 @@
             $('#btnVBDDUyetFileId').hide();
             $('#modal-add-edit-VBDDuyetFile').modal('show');
         });
+
+    }
+
+    function loadDataChuaXuLy() {
 
     }
 
