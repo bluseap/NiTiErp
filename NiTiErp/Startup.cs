@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -68,7 +69,7 @@ namespace NiTiErp
                 options.Lockout.MaxFailedAccessAttempts = 10;
 
                 // User settings
-                options.User.RequireUniqueEmail = true;
+                options.User.RequireUniqueEmail = true;                
             });
 
             services.AddRecaptcha(new RecaptchaOptions()
@@ -129,8 +130,17 @@ namespace NiTiErp
                     });
             })
                 .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
-                       
 
+
+            services.Configure<FormOptions>(o =>  // currently all set to max, configure it to your needs!
+            {
+                o.MultipartBodyLengthLimit = 209715200;
+                //o.ValueLengthLimit = int.MaxValue;
+                //o.MultipartBodyLengthLimit = long.MaxValue; // <-- !!! long.MaxValue
+                //o.MultipartBoundaryLengthLimit = int.MaxValue;
+                //o.MultipartHeadersCountLimit = int.MaxValue;
+                //o.MultipartHeadersLengthLimit = int.MaxValue;
+            });
 
             services.AddSignalR();
 
@@ -314,6 +324,11 @@ namespace NiTiErp
             app.UseAuthentication();
             app.UseSession();
 
+            app.Use(async (context, next) =>
+            {
+                context.Features.Get<IHttpMaxRequestBodySizeFeature>().MaxRequestBodySize = null; // unlimited I guess
+                await next.Invoke();
+            });
 
             app.UseFileServer();
             app.UseSignalR(routes =>

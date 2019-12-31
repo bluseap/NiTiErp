@@ -3,6 +3,7 @@
     var userCorporationId = $("#hidUserCorporationId").val();
 
     var fileUpload1 = [];
+    var filePathVanBanDen = "";
 
     this.initialize = function () {
 
@@ -46,11 +47,11 @@
                 contentType: false,
                 processData: false,
                 data: data,
-                success: function (path) {
-                    clearFileInput($("#fileFileVanBanDen"));
+                success: function (path) {                    
                     fileUpload1.push(path);
+                    clearFileInput($("#fileFileVanBanDen"));                    
                     //$('#imagelistBang1').append('<div class="col-md-3"><img width="100"  data-path="' + path + '" src="' + path + '"></div>');
-                    //tedu.notify(fileUpload1, "success"); // duong dan file 
+                    filePathVanBanDen = path;
                     tedu.notify('Đã tải file lên thành công!', 'success');
                     //SaveVanBanDenFile();
                 },
@@ -61,8 +62,7 @@
         });
     }
     function clearFileInput(ctrl) {        
-        try {
-            fileUpload1 = [];
+        try {            
             ctrl.value = null;
             ctrl.value('');
         }
@@ -88,7 +88,7 @@
                 InsertVanBanDenFileId: insertvanbandenfile,
                 CodeId: codeid,
                 TenFile: tenfile,
-                DuongDan: fileUpload1,
+                DuongDan: filePathVanBanDen, //fileUpload1,
                 SoTrang: sotrang
             },
             dataType: "json",
@@ -103,6 +103,9 @@
                     tedu.notify('Upload file.', 'success');
                     $('#hidInsertFileVanBanDenId').val(0);                 
                     $('#hidTenFileVanBanDenId').val('');                    
+
+                    fileUpload1 = [];
+                    filePathVanBanDen = "";
 
                     $('#modal-add-edit-FileVanBanDen').modal('hide');  
                     loadTableVanBanDenFile(codeid);

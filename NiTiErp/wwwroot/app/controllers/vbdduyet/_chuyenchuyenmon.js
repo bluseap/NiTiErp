@@ -15,6 +15,10 @@
 
     }
 
+    this.loadCCMPhoiHopXuLy = function () {
+        loadPhoiHopXuLy();
+    }
+
     this.loadNhanVienXuLyVanBanDen = function (vanbandenduyetid) {
         loadNhanVienXLVanBan(vanbandenduyetid);
         loadVanBanDenId(vanbandenduyetid);
@@ -143,16 +147,19 @@
                     tedu.notify(response.Message, "error");
                 }
                 else {
-                    tedu.notify('Văn bản đến chuyển chuyên môn.', 'success'); 
+                    if (response.StateMachine.vanbandenduyet.KETQUA === "SAI") {
+                        tedu.notify('Chuyên môn đã xử lý. Xem lại.', 'error');
+                    }
+                    else {
+                        tedu.notify('Văn bản đến chuyển chuyên môn.', 'success');
+                        var makv = $('#ddlKhuVuc').val();
+                        loadCountVanBanDenChuaCCM(makv);
+                        loadCountVanBanDenChuyenChuyenMon(makv);
+                    }
 
-                    $('#tblContentChoChuyenChuyenMon').html('');
-
-                    var makv = $('#ddlKhuVuc').val();
-                    loadCountVanBanDenChuaCCM(makv);
-                    loadCountVanBanDenChuyenChuyenMon(makv);
-
+                    $('#txtButPheLanhDao').val('');
+                    $('#tblContentChoChuyenChuyenMon').html('');  
                     $('#modal-add-edit-ChuyenChuyenMon').modal('hide');
-
                     tedu.stopLoading();
                 }
             },
@@ -217,12 +224,11 @@
                 beforeSend: function () {
                     tedu.startLoading();
                 },
-                success: function (response) {
+                success: function (response) {                    
                     tedu.notify('Xóa thành công', 'success');
-                    tedu.stopLoading();                   
-
+                    tedu.stopLoading();
                     var vanbandenduyetId = $('#hidVanBanDenDuyetId').val();
-                    loadNhanVienXLVanBan(vanbandenduyetId);
+                    loadNhanVienXLVanBan(vanbandenduyetId);                                   
                 },
                 error: function (status) {
                     tedu.notify('Xóa Nhân viên phối hợp xử lý lỗi! Kiểm tra lại.', 'error');

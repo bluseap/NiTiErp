@@ -44,7 +44,13 @@
         $("#ddl-show-pageChuaXuLy").on('change', function () {
             tedu.configs.pageSize = $(this).val();
             tedu.configs.pageIndex = 1;
-            loadTableVBDChuaXuLy(true);
+            var maphong = $("#ddlChuaXuLyPhong").val();
+            if (maphong !== "%") {
+                loadTableVBDChuaXuLyKVPhong(true);
+            }
+            else {
+                loadTableVBDChuaXuLy(true);
+            }                      
         });
 
         $('body').on('click', '.btnChuaXuLyPatchFileKyHieu', function (e) {

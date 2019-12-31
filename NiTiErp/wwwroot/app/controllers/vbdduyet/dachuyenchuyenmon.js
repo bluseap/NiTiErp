@@ -44,6 +44,12 @@
             $('#btnVBDDUyetFileId').hide();
             $('#modal-add-edit-VBDDuyetFile').modal('show');
         });
+       
+        $("#ddl-show-pageDaChuyenChuyenMon").on('change', function () {           
+            tedu.configs.pageSize = $(this).val();
+            tedu.configs.pageIndex = 1;
+            loadTableDaCCM(true);
+        });  
 
     }    
 
@@ -125,7 +131,7 @@
 
                 if (response.Result.RowCount !== 0) {
                     wrapPagingDaCCM(response.Result.RowCount, function () {
-                        loadTableCCCM();
+                        loadTableDaCCM();
                     },
                         isPageChanged);
                 }

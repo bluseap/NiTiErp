@@ -132,7 +132,8 @@ namespace NiTiErp.Areas.Admin.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost]        
+        [RequestSizeLimit(209715200)]
         public IActionResult UploadVanBanDenFile()
         {
             DateTime now = DateTime.Now;

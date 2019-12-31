@@ -1,6 +1,7 @@
 ﻿var duyettatcaController = function () {
 
     var vanbandenduyetfile = new vbdduyetfileController();
+    var chuyenchuyenmon = new _chuyenchuyenmonController();
 
     var bientimClick = 0;
 
@@ -55,6 +56,17 @@
             vanbandenduyetfile.loadTableVBDDuyetFileVBDId(vanbandenId);
             $('#btnVBDDUyetFileId').hide();
             $('#modal-add-edit-VBDDuyetFile').modal('show');
+        });
+
+        $('body').on('click', '.btnDuyetTatCaChuyenCMLai', function (e) {
+            e.preventDefault();
+            var vanbandenduyetId = $(this).data('id');
+
+            $('#hidVanBanDenDuyetId').val(vanbandenduyetId);
+            $('#hidInsertVBDDNVXLId').val(1);
+            chuyenchuyenmon.loadCCMPhoiHopXuLy();
+            chuyenchuyenmon.loadNhanVienXuLyVanBanDen(vanbandenduyetId);
+            $('#modal-add-edit-ChuyenChuyenMon').modal('show');  
         });
     }
 

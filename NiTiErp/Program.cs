@@ -40,6 +40,21 @@ namespace NiTiErp
 
         public static IWebHostBuilder CreateWebHostBuilder (string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                //.UseStartup<Startup>()
+
+                .UseIISIntegration()  
+                .UseKestrel(options =>
+                {
+                    options.Limits.KeepAliveTimeout = TimeSpan.FromMinutes(120);
+                    options.Limits.RequestHeadersTimeout = TimeSpan.FromMinutes(120);
+                    //options.Limits.MaxRequestBodySize = 500_000_000;
+                    //options.Limits.MaxRequestBufferSize = null;
+                    //options.Limits.MaxResponseBufferSize = null;
+
+                })
+                //</ set upload timeout >
+
+                .UseStartup<Startup>()  ;
+
     }
 }

@@ -155,7 +155,7 @@
                             Id: item.Id,
                             UploadFile1: item.UploadFile1,
                             //HinhNhanVien: item.Image === null ? '<img src="/admin-side/images/user.png?h=90"' : '<img src="' + item.HinhNhanVien + '?h=90" />',
-                            CreateDate: tedu.getFormattedDate(item.CreateDate),
+                            CreateDate: tedu.getFormattedDate(item.CreateDate)
                            // Status: tedu.getHoSoNhanVienStatus(item.Status)
                             // Price: tedu.formatNumber(item.Price, 0),                          
                         });

@@ -3,6 +3,7 @@
     var fileUpload1 = [];
 
     var daxuly = new daxulyController();
+    var xulyroi = new xulyroiController();
 
     this.initialize = function () {
 
@@ -13,8 +14,7 @@
 
     this.loadTableVBDXuLyFile = function (vanbandenduyetid) {
         loadTableVanBanDenXuLyFileListId(vanbandenduyetid);
-    }
-   
+    }   
 
     function registerEvents() {
 
@@ -72,6 +72,8 @@
                     var makv = $('#ddlKhuVuc').val();                    
                     loadCountVBDDangXuLy(makv);
                     loadCountVBDDaXuLyCLD(makv);
+
+                    xulyroi.loadCountVanBanDenXuLyRoi(makv);
 
                     $('#hidVanBanDenDuyetId').val('');
                     $('#txtGhiChuXuLyDXL').val('');

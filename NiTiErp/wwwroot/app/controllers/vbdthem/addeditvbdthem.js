@@ -26,7 +26,7 @@
     }
 
     this.sovanbanden = function () {
-        loadVanBanDenSoList();
+        //loadVanBanDenSoList();
         $('#tbl-contentFileVanBanDen').html('');
 
         ClearFormAddEdit();
@@ -130,7 +130,7 @@
     }
 
     function loadAddEditData() {
-        $('#ddlSoVanBanDen').prop("disabled", true);
+        $('#ddlSoVanBanDen').prop("disabled", false);
         $('#txtSoVanBanDen').prop("disabled", true);
 
         var datenow = new Date();
@@ -364,9 +364,11 @@
         $('#ddlLoaiVanBan')[0].selectedIndex = 0;
         $('#txtNgayBanHanh').val('');
         $('#txtNgayDen').val('');
-        $('#ddlSoVanBanDen')[0].selectedIndex = 0;
+        //$('#ddlSoVanBanDen')[0].selectedIndex = 0;
+        $('#ddlSoVanBanDen')[0].selectedIndex = 1;
         $('#txtSoVanBanDen').val('');
         $('#txtSoKyHieu').val('');
+
         $('#txtNguoiKyVanBan').val('');
         $('#ddlCoQuanBanHanh')[0].selectedIndex = 0;
         $('#txtNoiLuuBanChinh').val('');
@@ -1002,9 +1004,10 @@
                 $('#txtNgayDen').val(tedu.getFormattedDate(vanbanden.NgayDenCuaVanBan));
 
                 $('#hidVanBanDenMaKhuVucId').val(vanbanden.CorporationId);
-                loadVanBanDenSoKV(vanbanden.CorporationId);
+                //loadVanBanDenSoKV(vanbanden.CorporationId);
                 $('#ddlSoVanBanDen').val(vanbanden.VanBanDenSoId);
                 $('#txtSoVanBanDen').val(vanbanden.SoVanBanDenStt);
+
                 $('#txtSoKyHieu').val(vanbanden.SoKyHieuCuaVanBan);
                 $('#txtNguoiKyVanBan').val(vanbanden.NguoiKyCuaVanBan);
                 $('#ddlCoQuanBanHanh').val(vanbanden.VanBanCoQuanBanHanhId);

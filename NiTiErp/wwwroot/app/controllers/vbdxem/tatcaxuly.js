@@ -39,7 +39,7 @@
             loadTableVBDTatCaXuLy();
         });
 
-        $("#ddl-show-pageTatCa").on('change', function () {
+        $("#ddl-show-pageTatCaXuLy").on('change', function () {
             tedu.configs.pageSize = $(this).val();
             tedu.configs.pageIndex = 1;
             loadTableVBDTatCaXuLy(true);

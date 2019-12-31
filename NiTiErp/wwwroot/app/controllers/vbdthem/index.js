@@ -197,6 +197,9 @@
                 }); 
                 $('#ddlVanBanDenSoMoi').html(render);
                 $('#ddlVanBanDenSoMoi')[0].selectedIndex = 1;
+
+                $('#ddlSoVanBanDen').html(render);
+                $('#ddlSoVanBanDen')[0].selectedIndex = 1;
             },
             error: function (status) {
                 console.log(status);
