@@ -1,0 +1,140 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@section Styles{
+    
+}
+@section Scripts{
+    
+    <script src="~/app/controllers/emailthem/sentfile.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/emailthem/emailsent.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/emailthem/index.js" asp-append-version="true"></script>
+
+    <script>
+        var emailthem = new emailthemController();
+        emailthem.initialize();
+    </script>
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link ">
+                    Email nội bộ
+                </a>
+                >>
+                <a class="btn btn-link ">
+                    Hộp thư nội bộ
+                </a>
+            </small>
+        </div>
+        <div class="title_right">
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <button class="btn btn-round btn-warning" id="btn-SoanEmailNoiBo" type="button">Soạn thư</button>
+            </div>            
+        </div>
+    </div>
+    @*<div class="page-title">
+        <div class="title_left">
+            <h3>  <small></small></h3>
+        </div>
+        <div class="title_right">
+            <div class="col-md-5 col-sm-2 col-xs-12 form-group pull-right">
+                <div class="input-group">
+                    <input type="text" id="txtTimNoiDung" class="form-control" placeholder="Từ khóa...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" id="btnTimNoiDung" type="button">Tìm !</button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <select id="ddlVanBanDenSoMoi" class="form-control"></select>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <select id="ddlKhuVuc" class="form-control"></select>
+                </div>
+            </div>
+
+        </div>
+    </div>*@
+    <div class="clearfix"></div>
+
+    @*<div class="row">
+        <div class="x_panel">
+            <div class="row no-print">                
+            </div>
+            <div class="table-responsive" id="table-responsiveVBDThem">
+                <table id="tblVBDThem" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th width="=10%">#</th>
+                            <th>Tên sổ</th>
+                            <th>Trich yếu</th>
+                            <th>Số đến, ký hiệu</th>
+                            <th>Tên cơ quan ban hành</th>
+                            <th>Ngày ban hành</th>
+                            <th>Ngày đến</th>
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblContentVBDThem"></tbody>
+                </table>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="dataTables_info" id="datatable-checkbox_infoVBDThem" role="status" aria-live="polite">
+                            <select id="ddl-show-pageVBDThem">
+                                <option value="10" selected="selected">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                            </select>
+                            <span class="item-per-page">
+                                dòng/trang.
+                            </span>
+                            Tổng cộng: <strong id="lblVBDThemTotalRecords"></strong>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="dataTables_paginate" id="datatable-checkbox_paginateVBDThem">
+                            <ul id="paginationULVBDThem"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+    <script id="table-VBDThem" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row">
+                <a class="btn btn-lg btn-addeditVBDThem" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa văn bản"><i class="fa fa-pencil"></i> </a>
+            </th>
+            <td>{{TenSoVanBanDen}}</td>
+            <td>
+                <a class="btn-link btnPatchFileTrichYeu" data-id="{{Id}}" data-toggle="tooltip">
+                    {{TrichYeuCuaVanBan}}
+                </a>
+                @*<a class="btn btn-link btnPatchFileTrichYeu" data-id="{{Id}}" data-toggle="tooltip" >
+                        {{TrichYeuCuaVanBan}}
+                    </a>*@
+            </td>
+            <td>
+                <a class="btn btn-link btnPatchFileKyHieu" data-id="{{Id}}" data-toggle="tooltip">
+                    {{SoKyHieuDen}}
+                </a>
+            </td>
+            <td>{{TenCoQuanBanHanh}}</td>
+            <td>{{NgayBanHanhCuaVanBan}}</td>
+            <td>{{NgayDenCuaVanBan}}</td>
+            <td>{{{TTXuLy}}}</td>
+
+        </tr>
+    </script>
+</div>
+
+<partial name="_EmailSent.cshtml" />
+
+

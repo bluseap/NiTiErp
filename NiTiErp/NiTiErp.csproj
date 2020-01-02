@@ -38,6 +38,7 @@
     <Folder Include="wwwroot\lib\jquery-signalr\" />
     <Folder Include="wwwroot\uploaded\hoso\" />
     <Folder Include="wwwroot\uploaded\chatuser\" />
+    <Folder Include="wwwroot\uploaded\emailsent\" />
     <Folder Include="wwwroot\uploaded\vanbandi\" />
     <Folder Include="wwwroot\uploaded\vanbanden\" />
   </ItemGroup>

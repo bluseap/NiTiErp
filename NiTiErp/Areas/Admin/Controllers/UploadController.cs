@@ -173,6 +173,65 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [RequestSizeLimit(2715200)]
+        public IActionResult UploadEmailSentFile()
+        {
+            DateTime now = DateTime.Now;
+            var files = Request.Form.Files;
+            if (files.Count == 0)
+            {
+                return new BadRequestObjectResult(files);
+            }
+            else
+            {
+                var imageFolder = $@"\uploaded\emailsent\{now.ToString("yyyyMMdd")}";
+                var datetimeFilename = "";
+                foreach (var file in files)
+                {
+                    var filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition)
+                                    .FileName.Trim('"');                    
+
+                    string folder = _hostingEnvironment.WebRootPath + imageFolder;
+                    if (!Directory.Exists(folder))
+                    {
+                        Directory.CreateDirectory(folder);
+                    }
+                    datetimeFilename = TextHelper.ConvertStringDatetime(now) + filename;
+                    string filePath = Path.Combine(folder, datetimeFilename);
+                    using (FileStream fs = System.IO.File.Create(filePath))
+                    {
+                        file.CopyTo(fs);
+                        fs.Flush();
+                    }                    
+                }
+                return new OkObjectResult(Path.Combine(imageFolder, datetimeFilename).Replace(@"\", @"/"));
+
+                //var file = files[0];
+                //var filename = ContentDispositionHeaderValue
+                //                    .Parse(file.ContentDisposition)
+                //                    .FileName
+                //                    .Trim('"');
+                ////var imageFolder = $@"\uploaded\images\{now.ToString("yyyyMMdd")}";
+                //var imageFolder = $@"\uploaded\emailsent\{now.ToString("yyyyMMdd")}";
+
+                //string folder = _hostingEnvironment.WebRootPath + imageFolder;
+
+                //if (!Directory.Exists(folder))
+                //{
+                //    Directory.CreateDirectory(folder);
+                //}
+                //var datetimeFilename = TextHelper.ConvertStringDatetime(now) + filename;
+                //string filePath = Path.Combine(folder, datetimeFilename);
+                //using (FileStream fs = System.IO.File.Create(filePath))
+                //{
+                //    file.CopyTo(fs);
+                //    fs.Flush();
+                //}
+                //return new OkObjectResult(Path.Combine(imageFolder, datetimeFilename).Replace(@"\", @"/"));
+            }
+        }
+
+        [HttpPost]
         public IActionResult UploadVanBanDiFile()
         {
             DateTime now = DateTime.Now;
