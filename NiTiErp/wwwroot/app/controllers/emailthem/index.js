@@ -20,15 +20,28 @@
     function registerEvents() {
 
         $("#btn-SoanEmailNoiBo").on('click', function (e) {
-            e.preventDefault();           
-
-            $('#modal-add-edit-EmailSent').modal('show');
+            e.preventDefault();    
+            $('#modal-add-edit-ViewEmail').modal('show');
+        });
+        
+        //$('body').on('click', '.compose', function (e) {   
+        $('#compose').on('click', function (e) {
+            e.preventDefault();
+            //$('.compose').slideToggle();
+            
+            var codenoiboGuid = $("#hidCodeEmailNoiBoNhanGuid").val();
+            if (codenoiboGuid !== "0") {
+                $("#hidInsCodeEmailNoiBoNhanId").val("1");
+            }
+            else {
+                $("#hidInsCodeEmailNoiBoNhanId").val("0");
+            }
         });
 
-    }
+    }    
 
     function loadKhuVuc() {
-
+        
     }
 
     function loadData() {

@@ -47,8 +47,9 @@
                 processData: false,
                 data: data,
                 success: function (path) {
-                    clearFileInput($("#fileFileVanBanDi"));
+                    $("#hidDuongDanFile").val(path);
                     fileUpload1.push(path);
+                    clearFileInput($("#fileFileVanBanDi"));                    
                     //$('#imagelistBang1').append('<div class="col-md-3"><img width="100"  data-path="' + path + '" src="' + path + '"></div>');
                     //tedu.notify(fileUpload1, "success"); // duong dan file 
                     tedu.notify('Đã tải file lên thành công!', 'success');
@@ -71,13 +72,15 @@
     }
 
     function SaveVanBanDiFile() {
-        tedu.notify("save van band en file", "success");
+        //tedu.notify("save van band en file", "success");
 
         var insertvanbandifile = $('#hidInsertFileVanBanDiId').val();
         var tenfile = $('#hidTenFileVanBanDiId').val();
         var codeid = $('#hidCodeFileGuidId').val();
 
         var sotrang = $("#txtFileSoTrang").val();
+
+        var duongdan = $("#hidDuongDanFile").val();
 
         $.ajax({
             type: "POST",
@@ -87,7 +90,7 @@
                 InsertVanBanDiFileId: insertvanbandifile,
                 CodeId: codeid,
                 TenFile: tenfile,
-                DuongDan: fileUpload1,
+                DuongDan: duongdan,
                 SoTrang: sotrang
             },
             dataType: "json",
@@ -102,6 +105,7 @@
                     tedu.notify('Upload file.', 'success');
                     $('#hidInsertFileVanBanDiId').val(0);
                     $('#hidTenFileVanBanDiId').val('');
+                    $("#hidDuongDanFile").val('');
 
                     $('#modal-add-edit-FileVanBanDi').modal('hide');
                     loadTableVanBanDiFile(codeid);

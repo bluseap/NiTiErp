@@ -1,0 +1,77 @@
+﻿<div id="modal-add-edit-TimNguoiGui" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Tìm người gửi Email nội bộ </h4>
+            </div>
+            <div class="modal-body">              
+                
+                <div class="table-responsive" id="table-responsiveTimNguoiGuiNguoiDung">
+                    <div class="row" id="rowTable-TimNguoiGui">
+                        <div class="col-md-3 col-sm-12 col-xs-12 form-group">
+                            <select id="ddlTimNguoiGuiKhuVuc" class="form-control"></select>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12 form-group">
+                            <select id="ddlTimNguoiGuiPhong" class="form-control"></select>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12 form-group">
+                            <input type="text" id="txtTimNguoiGuiTimNhanVien" class="form-control" placeholder="Từ khóa...">
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12 form-group">
+                            <button class="btn btn-primary " id="btnTimNguoiGuiTimNhanVien" type="button">Tìm !</button>
+                        </div>
+                    </div>
+                    <table id="tblTimNguoiGuiNguoiDung" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th width="=20%">#</th>
+                                <th>Họ và tên</th>
+                                <th>Khu vực</th>
+                                <th>Phòng, tổ</th>
+                                <th>Chức vụ</th>
+                                <th>Ngày tạo</th>
+                                <th>Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tblContentTimNguoiGuiNguoiDung"></tbody>
+                    </table>
+                    <div class="row" id="row-infoTimNguoiGuiNguoiDung">
+                        <div class="col-sm-5">
+                            <div class="dataTables_info" id="datatable-checkbox_infoCCMHoSoNhanVien" role="status" aria-live="polite">
+                                <select id="ddl-show-pageTimNguoiGuiNguoiDung">
+                                    <option value="10" selected="selected">10</option>
+                                    <option value="20">20</option>
+                                    <option value="30">30</option>
+                                    <option value="50">50</option>
+                                </select>
+                                <span class="item-per-page">
+                                    dòng/trang.
+                                </span>
+                                Tổng cộng: <strong id="lblTimNguoiGuiNguoiDungTotalRecords"></strong>
+                            </div>
+                        </div><div class="col-sm-7">
+                            <div class="dataTables_paginate" id="datatable-checkbox_paginateTimNguoiGuiNguoiDung">
+                                <ul id="paginationULTimNguoiGuiNguoiDung"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script id="table-TimNguoiGuiNguoiDung" type="x-tmpl-mustache">
+                    <tr>
+                        <th scope="row">
+                            <a class="btn btn-lg btn-editTimNguoiGuiNguoiDung" data-id="{{HoSoId}}" data-toggle="tooltip" data-placement="top" title="Tham gia xử lý"><i class="fa fa-arrow-up"></i> </a>
+                        </th>
+                        <td>{{Ten}}</td>
+                        <td>{{TenKhuVuc}}</td>
+                        <td>{{TenPhong}}</td>
+                        <td>{{TenChucVu}}</td>
+                        <td>{{CreateDate}}</td>
+                        <td>{{{Status}}}</td>
+                    </tr>
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

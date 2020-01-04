@@ -359,6 +359,8 @@
         $('#hidInsertVanBanDenDienTuId').val(0);
         $('#hidIsVanBanDenDienTuId').val(0);
 
+        $('#hidDuongDanFile').val('');
+
         $('#txtTrichYeu').val('');
         $('#ddlLinhVuc')[0].selectedIndex = 0;
         $('#ddlLoaiVanBan')[0].selectedIndex = 0;

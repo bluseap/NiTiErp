@@ -525,6 +525,7 @@
         $('#hidVanBanDiDienTuId').val('');
         $('#hidInsertVanBanDiDienTuId').val(0);
         $('#hidIsVanBanDiDienTuId').val(0);
+        $("#hidDuongDanFile").val('');
 
         $('#txtTrichYeu99').val('');
         $('#ddlLinhVuc')[0].selectedIndex = 0;
@@ -1060,7 +1061,7 @@
             },
             error: function (status) {
                 console.log(status);
-                tedu.notify('Không có văn bản khẩn.', 'error');
+                tedu.notify('Không có số thứ tự văn bản đi.', 'error');
             }
         });
     }

@@ -1,25 +1,54 @@
-﻿<div id="modal-add-edit-EmailSent" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog  modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Soạn Email nội bộ  </h4>
-            </div>
-            <div class="modal-body">
-                <div id="horizontal-form">
-                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainEmailSent">
-                        <input type="hidden" id="hidEmailSentId" value="" />
-
-                        <input type="hidden" id="hidInsertEmailSentId" value="" />
-
-
-                    </form>
-                    <partial name="_SentFile.cshtml" />
+﻿<!-- compose -->
+<div class="col-md-6 col-xs-12 compose">
+    <div class="compose-header">
+        Soạn tin
+        <button type="button" class="close compose-close">
+            <span>×</span>
+        </button>
+    </div>
+    <div class="compose-body">
+        <div class="btn-toolbar editor" data-role="editor-toolbar" data-target="#editor">
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button type="button" id="btnTimNguoiGui" class="btn btn-info">Tìm người</button>
+                        </span>
+                        <div id="listEmailSentNguoiNhan" class="col-md-12">
+                        </div>
+                    </div>                    
                 </div>
-                <div class="ln_solid"></div>
-
-                
+                <div class="col-xs-12">                    
+                    <input type="text" name="txtEmailSentChuDe" class="form-control" id="txtEmailSentChuDe" placeholder="Chủ đề">
+                </div>
+                <div class="col-xs-12">                    
+                    <textarea rows="4" name="txtEmailSentNoiDung" class="form-control" id="txtEmailSentNoiDung" placeholder="Nội dung"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div id="listEmailSentFile" class="col-md-12">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <div class="fa-hover col-xs-6 ">
+                        <button id="btnEmailSentGui" class="btn btn-sm btn-info" type="button">Gửi</button>
+                    </div>
+                    <div class="fa-hover col-xs-6 image-upload">
+                        <label for="fileFileSentFile2">
+                            <i class="fa fa-paperclip"></i>
+                        </label>
+                        <input type="file" multiple id="fileFileSentFile2" class="fa fa-paperclip" />
+                    </div>                    
+                </div>
             </div>
         </div>
     </div>
+    <div class="compose-footer col-md-offset-3">
+
+    </div>
+    
+
 </div>
+<!-- /compose -->
+@*<partial name="_SentFile.cshtml" />*@

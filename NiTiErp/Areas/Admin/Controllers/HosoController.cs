@@ -889,6 +889,18 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetAllPagingHoSoNguoiDung(string corporationId, string phongId, string keyword, int page, int pageSize)
+        {
+            var phong = !string.IsNullOrEmpty(phongId) ? phongId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+
+            var model = _hosonhanvienService.GetAllHoSoNhanVienPaging(corporationId, phong, tukhoa, page, pageSize,
+                "", "1", "", "GetAllHoSoNguoiDung"); // tim nhung nhan vien dang lam viec
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
         public IActionResult GetAllHoSoNghiViecPaging(string corporationId, string phongId, string keyword, int page, int pageSize)
         {
             var phong = !string.IsNullOrEmpty(phongId) ? phongId : "%";
