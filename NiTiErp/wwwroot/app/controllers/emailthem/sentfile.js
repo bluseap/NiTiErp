@@ -29,6 +29,14 @@
         });
 
         UploadSentFile();
+
+        $('body').on('click', '.deleteSentFile', function (e) {
+            e.preventDefault();
+            var emailSentFileId = $(this).data('id');           
+
+            tedu.notify(emailSentFileId, "success");
+        });
+        
     }
     
     function UploadSentFile() {
@@ -73,10 +81,9 @@
             var fileUpload = $(this).get(0);
             var files = fileUpload.files;
             //var files = evt.originalEvent.dataTransfer.files;
-
             //tedu.notify(files[0].name, "success");//ten file 
             //$('#hidTenFileVanBanDenId').val(files[0].name);
-            //$("#fileFileSentFile").html();
+            //$("#fileFileSentFile").html();            
 
             var data = new FormData();
             for (var i = 0; i < files.length; i++) {
@@ -88,44 +95,12 @@
                 contentType: false,
                 processData: false,
                 data: data,
-                success: function (path) {
-                    //fileUpload1.push(path);
-                    clearFileInput($("#fileFileSentFile"));
-
-                    var newguid = newGuid();
-                    $("#hidCodeEmailNoiBoNhanGuid").val(newguid);
-
-                    //loadDataSentFile(guidSentFile);
-                    for (var i = 0; i < files.length; i++) {    
-                        var fileName = files[i].name.trim();
-                        var fileNameLength = fileName.length;
-
-                        var fileNameDocXls = fileName.substr(fileNameLength - 3, fileNameLength);
-                        var fileNameDocXlsx = fileName.substr(fileNameLength - 4, fileNameLength);
-
-                        if (fileNameDocXls === "doc" || fileNameDocXlsx === "docx") {
-                            $('#listEmailSentFile').append('<div class="col-md-3 image-upload">' + files[i].name +
-                                '<br/><a href="#" class="fa fa-file-word-o" data-id=" gg" > x</a></div>');
-                        }
-                        else if (fileNameDocXls === "xls" || fileNameDocXlsx === "xlsx") {
-                            $('#listEmailSentFile').append('<div class="col-md-3 image-upload">' + files[i].name +
-                                '<br/><a href="#" class="fa fa-file-excel-o" data-id=" gg" > x</a></div>');
-                        }
-                        else if (fileNameDocXls === "jpg" || fileNameDocXls === "png") {
-                            $('#listEmailSentFile').append('<div class="col-md-3 image-upload">' + files[i].name +
-                                '<br/><a href="#" class="img" data-id=" gg" src=" "> x </a></div>');
-                        }
-                        else {
-                            $('#listEmailSentFile').append('<div class="col-md-3 image-upload">' + files[i].name +
-                                '<br/><a href="#" class="fa fa-clipboard" data-id=" gg" > x</a></div>');
-                        }
-
-                        
-                    }
-                    
-                    //filePathVanBanDen = path;
-                    tedu.notify('Đã tải file lên thành công!', 'success');
-                    //SaveVanBanDenFile();
+                success: function (newguid) {
+                    $("#hidCodeEmailNoiBoNhanSentFileGuid").val(newguid);   
+                    loadEmailSentFileGuid(newguid);
+    
+                    clearFileInput($("#fileFileSentFile2"));
+                    tedu.notify('Đã tải file lên thành công!', 'success');          
                 },
                 error: function () {
                     tedu.notify('There was error uploading files!', 'error');
@@ -148,6 +123,55 @@
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
             var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
             return v.toString(16);
+        });
+    }
+
+    function loadEmailSentFileGuid(newguid) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/emailthem/GetPagingByCodeNhanFile',
+            data: {
+                CodeEmailNoiBoNhanFile: newguid
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var dataFile = response.Results;
+                if (dataFile.length === 0) {
+                    $('#listEmailSentFile').append('<div class="col-md-3 image-upload"> Không có dữ liệu <br/><a href="#" class="fa fa-file-word-o" data-id=" gg" > x</a></div>');
+                }
+                else {
+                    for (var i = 0; i < dataFile.length; i++) {    
+                        var fileName = dataFile[i].TenFile.trim();
+                        var fileNameLength = fileName.length;
+                        var fileNameDocXls = fileName.substr(fileNameLength - 3, fileNameLength);
+                        var fileNameDocXlsx = fileName.substr(fileNameLength - 4, fileNameLength);
+
+                        if (fileNameDocXls === "doc" || fileNameDocXlsx === "docx") {
+                            $('#listEmailSentFile').append('<div class="col-md-3 image-upload">' + dataFile[i].TenFile +
+                                '<br/><a href="#" class="fa fa-file-word-o deleteSentFile" data-id="' + dataFile[i].Id + '" > x</a></div>');
+                        }
+                        else if (fileNameDocXls === "xls" || fileNameDocXlsx === "xlsx") {
+                            $('#listEmailSentFile').append('<div class="col-md-3 image-upload">' + dataFile[i].TenFile +
+                                '<br/><a href="#" class="fa fa-file-excel-o deleteSentFile" data-id="' + dataFile[i].Id + '" > x</a></div>');
+                        }
+                        else if (fileNameDocXls === "jpg" || fileNameDocXls === "png") {
+                            $('#listEmailSentFile').append('<div class="col-md-3 image-upload">' + dataFile[i].TenFile +
+                                '<br/><a href="#" class="img deleteSentFile" data-id="' + dataFile[i].Id + '" src=" "> x </a></div>');
+                        }
+                        else {
+                            $('#listEmailSentFile').append('<div class="col-md-3 image-upload">' + dataFile[i].TenFile +
+                                '<br/><a href="#" class="fa fa-clipboard deleteSentFile" data-id="' + dataFile[i].Id + '" > x</a></div>');
+                        }                        
+                    }
+                }
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có Email file.', 'error');
+            }
         });
     }
 

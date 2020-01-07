@@ -51,9 +51,18 @@
         $('body').on('click', '.btn-editTimNguoiGuiNguoiDung', function (e) {
             e.preventDefault();
             var hosoId = $(this).data('id');
-            $('#hidNhanVienNguoiNhanId').val(hosoId);
+            var newGuid = $("#hidCodeEmailNoiBoNhanGuid").val();
+            $('#hidNhanVienNguoiNhanId').val(hosoId); 
+            
+            addNhanVienNguoiNhan(newGuid, hosoId);
+            
+        });
 
-            addNhanVienNguoiNhan(hosoId);
+        $('body').on('click', '.deleteNguoiNhan', function (e) {
+            e.preventDefault();
+            var emailNguoiNhanId = $(this).data('id');
+
+            tedu.notify(emailNguoiNhanId, "success");
         });
 
         $("#btnEmailSentGui").on('click', function (e) {
@@ -210,13 +219,69 @@
         $("#hidInsCodeEmailNoiBoNhanId").val("0");
         $("#hidCodeEmailNoiBoNhanGuid").val("0");
 
-    }
-
-    function addNhanVienNguoiNhan(hosoId) {
-        var newguid = sentfile.newGuid();
-        $("#hidCodeEmailNoiBoNhanGuid").val(newguid); 
+        $("#hidInsCodeEmailNoiBoNhanSentFileId").val("0");
+        $("#hidCodeEmailNoiBoNhanSentFileGuid").val("0");
 
     }
+
+    function addNhanVienNguoiNhan(newguid, hosoId) {    
+        $.ajax({
+            type: "POST",
+            url: "/Admin/emailthem/AddNguoiNhan",
+            data: {
+                CodeEmailNoiBoNhan: newguid,
+                NguoiNhan: hosoId
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {  
+                loadListNguoiNhan(newguid, hosoId);
+                tedu.notify('Chọn người nhận.', 'success');  
+                tedu.stopLoading();                
+            },
+            error: function () {
+                tedu.notify('Has an error in update progress', 'error');
+                tedu.stopLoading();
+            }
+        });
+
+    }
+
+    function loadListNguoiNhan(newguid, hosoid) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/emailthem/GetPagingNhan',
+            data: {
+                CodeEmailNoiBoNhanFile: newguid,
+                hosonhanvienid: hosoid
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var dataFile = response.Results;
+                $('#listEmailSentNguoiNhan').html('');
+
+                if (dataFile.length === 0) {
+                    $('#listEmailSentNguoiNhan').append('<div class="col-md-3 image-upload"> Không có dữ liệu <br/><a href="#" class="fa fa-file-word-o" data-id=" gg" > x</a></div>');
+                }
+                else {                    
+                    for (var i = 0; i < dataFile.length; i++) {                        
+                        $('#listEmailSentNguoiNhan').append('<div class="col-md-3 image-upload">' + dataFile[i].TenNguoiNhan +
+                            '<br/><a href="#" class=" deleteNguoiNhan" data-id="' + dataFile[i].Id + '" > x</a></div>');                                               
+                    }
+                }
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có Người nhận.', 'error');
+            }
+        });
+
+    }    
 
     function loadDataEmailSent() {
 

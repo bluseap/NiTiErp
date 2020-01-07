@@ -54,6 +54,9 @@
             e.preventDefault();           
             $('#txtFileSoTrang').val(0);
             $('#hidInsertFileVanBanDenId').val(1);
+
+            $("#btnSaveFileVanBanDen").hide();
+            $("#btnCancelFileVanBanDen").hide();
             $('#modal-add-edit-FileVanBanDen').modal('show');  
         });
 

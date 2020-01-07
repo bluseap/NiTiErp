@@ -51,6 +51,9 @@
                     filePathVanBanDen = path;
                     $('#hidDuongDanFile').val(path);
 
+                    $("#btnSaveFileVanBanDen").show();
+                    $("#btnCancelFileVanBanDen").show();
+
                     fileUpload1.push(path);
                     
                     clearFileInput($("#fileFileVanBanDen"));                    

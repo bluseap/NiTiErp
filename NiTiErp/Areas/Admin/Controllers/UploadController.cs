@@ -7,18 +7,34 @@ using Microsoft.AspNetCore.Hosting;
 using System.Net.Http.Headers;
 using System.IO;
 using Microsoft.AspNetCore.Http;
-using NiTiErp.Utilities.Helpers;
+using Microsoft.AspNetCore.Authorization;
 
+using NiTiErp.Utilities.Helpers;
 using NiTiErp.Extensions;
+using NiTiErp.Application.Dapper.Interfaces;
+using NiTiErp.Authorization;
+using NiTiErp.Utilities.Dtos;
 
 namespace NiTiErp.Areas.Admin.Controllers
 {
     public class UploadController : BaseController
     {
         private readonly IHostingEnvironment _hostingEnvironment;
-        public UploadController(IHostingEnvironment hostingEnvironment)
+        private readonly NiTiErp.Application.Interfaces.IUserService _userService;
+        private readonly IAuthorizationService _authorizationService;
+
+        private readonly IEmailNoiBoNhanFileService _emailnoibonhanfileService;
+
+        public UploadController(IHostingEnvironment hostingEnvironment,
+            NiTiErp.Application.Interfaces.IUserService userService,
+            IAuthorizationService authorizationService,
+            IEmailNoiBoNhanFileService emailnoibonhanfileService)
         {
             _hostingEnvironment = hostingEnvironment;
+            _userService = userService;
+            _authorizationService = authorizationService;
+
+            _emailnoibonhanfileService = emailnoibonhanfileService;
         }
 
         [HttpPost]
@@ -145,30 +161,30 @@ namespace NiTiErp.Areas.Admin.Controllers
             else
             {
                 var file = files[0];
-                var filename = ContentDispositionHeaderValue
-                                    .Parse(file.ContentDisposition)
-                                    .FileName
-                                    .Trim('"');
+                var filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                var datetimeFilename = TextHelper.ConvertStringDatetime(now) + filename;                
 
                 //var imageFolder = $@"\uploaded\images\{now.ToString("yyyyMMdd")}";
                 var imageFolder = $@"\uploaded\vanbanden\{now.ToString("yyyyMMdd")}";
 
                 string folder = _hostingEnvironment.WebRootPath + imageFolder;
 
+                string pathFile = Path.Combine(imageFolder, datetimeFilename).Replace(@"\", @"/");
+
                 if (!Directory.Exists(folder))
                 {
                     Directory.CreateDirectory(folder);
-                }
-
-                var datetimeFilename = TextHelper.ConvertStringDatetime(now) + filename;
+                }      
+                
                 string filePath = Path.Combine(folder, datetimeFilename);
                 using (FileStream fs = System.IO.File.Create(filePath))
                 {
                     file.CopyTo(fs);
                     fs.Flush();
                 }
-
-                return new OkObjectResult(Path.Combine(imageFolder, datetimeFilename).Replace(@"\", @"/"));
+                
+                return new OkObjectResult(pathFile);
+                //return Json(pathFile);
             }
         }
 
@@ -176,8 +192,17 @@ namespace NiTiErp.Areas.Admin.Controllers
         [RequestSizeLimit(2715200)]
         public IActionResult UploadEmailSentFile()
         {
+            var username = User.GetSpecificClaim("UserName");
+
+            var result = _authorizationService.AuthorizeAsync(User, "EMAILNOIBOTHEM", Operations.Create); // nhap danh muc van ban phoi hop
+            if (result.Result.Succeeded == false)
+            {
+                return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
+            }
+
             DateTime now = DateTime.Now;
             var files = Request.Form.Files;
+
             if (files.Count == 0)
             {
                 return new BadRequestObjectResult(files);
@@ -186,6 +211,9 @@ namespace NiTiErp.Areas.Admin.Controllers
             {
                 var imageFolder = $@"\uploaded\emailsent\{now.ToString("yyyyMMdd")}";
                 var datetimeFilename = "";
+                string path = "";
+                Guid newGuid = Guid.NewGuid();
+
                 foreach (var file in files)
                 {
                     var filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition)
@@ -198,13 +226,23 @@ namespace NiTiErp.Areas.Admin.Controllers
                     }
                     datetimeFilename = TextHelper.ConvertStringDatetime(now) + filename;
                     string filePath = Path.Combine(folder, datetimeFilename);
+
+                    path = Path.Combine(imageFolder, datetimeFilename).Replace(@"\", @"/");
+
                     using (FileStream fs = System.IO.File.Create(filePath))
                     {
                         file.CopyTo(fs);
                         fs.Flush();
-                    }                    
-                }
-                return new OkObjectResult(Path.Combine(imageFolder, datetimeFilename).Replace(@"\", @"/"));
+                    }
+                    
+                    var addmailFile = _emailnoibonhanfileService.AddEmailNhanFileByCodeNhanFile(newGuid, filename, path,
+                        DateTime.Now, username);
+
+                }                
+                //return new OkObjectResult(Path.Combine(imageFolder, datetimeFilename).Replace(@"\", @"/"));
+                Guid newguid = newGuid;
+                return Json(newguid);
+
 
                 //var file = files[0];
                 //var filename = ContentDispositionHeaderValue
