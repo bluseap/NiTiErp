@@ -32,9 +32,9 @@
 
         $('body').on('click', '.deleteSentFile', function (e) {
             e.preventDefault();
-            var emailSentFileId = $(this).data('id');           
-
-            tedu.notify(emailSentFileId, "success");
+            var emailSentFileId = $(this).data('id');            
+           
+            deleteSentFile(emailSentFileId);
         });
         
     }
@@ -150,19 +150,19 @@
                         var fileNameDocXlsx = fileName.substr(fileNameLength - 4, fileNameLength);
 
                         if (fileNameDocXls === "doc" || fileNameDocXlsx === "docx") {
-                            $('#listEmailSentFile').append('<div class="col-md-3 image-upload">' + dataFile[i].TenFile +
+                            $('#listEmailSentFile').append('<div class="col-md-3 image-upload" id="sentfile' + dataFile[i].Id + '" >' + dataFile[i].TenFile +
                                 '<br/><a href="#" class="fa fa-file-word-o deleteSentFile" data-id="' + dataFile[i].Id + '" > x</a></div>');
                         }
                         else if (fileNameDocXls === "xls" || fileNameDocXlsx === "xlsx") {
-                            $('#listEmailSentFile').append('<div class="col-md-3 image-upload">' + dataFile[i].TenFile +
+                            $('#listEmailSentFile').append('<div class="col-md-3 image-upload" id="sentfile' + dataFile[i].Id + '" >' + dataFile[i].TenFile +
                                 '<br/><a href="#" class="fa fa-file-excel-o deleteSentFile" data-id="' + dataFile[i].Id + '" > x</a></div>');
                         }
                         else if (fileNameDocXls === "jpg" || fileNameDocXls === "png") {
-                            $('#listEmailSentFile').append('<div class="col-md-3 image-upload">' + dataFile[i].TenFile +
+                            $('#listEmailSentFile').append('<div class="col-md-3 image-upload" id="sentfile' + dataFile[i].Id + '" >' + dataFile[i].TenFile +
                                 '<br/><a href="#" class="img deleteSentFile" data-id="' + dataFile[i].Id + '" src=" "> x </a></div>');
                         }
                         else {
-                            $('#listEmailSentFile').append('<div class="col-md-3 image-upload">' + dataFile[i].TenFile +
+                            $('#listEmailSentFile').append('<div class="col-md-3 image-upload" id="sentfile' + dataFile[i].Id + '" >' + dataFile[i].TenFile +
                                 '<br/><a href="#" class="fa fa-clipboard deleteSentFile" data-id="' + dataFile[i].Id + '" > x</a></div>');
                         }                        
                     }
@@ -172,6 +172,32 @@
                 console.log(status);
                 tedu.notify('Không có Email file.', 'error');
             }
+        });
+    }
+
+    function deleteSentFile(emailsentfileid) {
+        tedu.confirm('Bạn có chắc chắn xóa bằng này?', function () {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/emailthem/DeleteSentFile",
+                data: {
+                    Id: emailsentfileid,
+                    username: userName
+                },
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {                    
+                    $('#sentfile' + emailsentfileid.toString()).remove();
+
+                    tedu.notify('Xóa thành công', 'success'); 
+                    tedu.stopLoading();
+                },
+                error: function (status) {
+                    tedu.notify('Xóa file văn bản đến lỗi! Kiểm tra lại.', 'error');
+                    tedu.stopLoading();
+                }
+            });
         });
     }
 

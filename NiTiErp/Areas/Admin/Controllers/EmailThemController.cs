@@ -20,12 +20,14 @@ namespace NiTiErp.Areas.Admin.Controllers
         private readonly NiTiErp.Application.Interfaces.IUserService _userService;
         private readonly IAuthorizationService _authorizationService;
 
+        private readonly IEmailNoiBoService _emailnoiboService;
         private readonly IEmailNoiBoNhanService _emailnoibonhanService;
         private readonly IEmailNoiBoNhanFileService _emailnoibonhanfileService;
 
         public EmailThemController(IHostingEnvironment hostingEnvironment,
             NiTiErp.Application.Interfaces.IUserService userService,
             IAuthorizationService authorizationService,
+            IEmailNoiBoService emailnoiboService,
             IEmailNoiBoNhanService emailnoibonhanService,
             IEmailNoiBoNhanFileService emailnoibonhanfileService
             )
@@ -34,6 +36,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             _userService = userService;
             _authorizationService = authorizationService;
 
+            _emailnoiboService = emailnoiboService;
             _emailnoibonhanService = emailnoibonhanService;
             _emailnoibonhanfileService = emailnoibonhanfileService;
         }
@@ -65,6 +68,34 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetListEmailThem(string NguoiNhan, int page, int pageSize)           
+        {
+            var model = await _emailnoiboService.GetPagingNhan(NguoiNhan, page, pageSize);
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetEmailThem(long emailnoibonhanId)
+        {
+            var model = await _emailnoiboService.GetByEmailNoiBoNhan(emailnoibonhanId);
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetListEmailFile(long emailnoibonhanId)
+        {
+            var model = await _emailnoibonhanfileService.GetListEmailFileNoiBoNhanId(emailnoibonhanId);
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetEmailFileId(long emailnoibonhanfileId)
+        {
+            var model = await _emailnoibonhanfileService.GetEmailFileId(emailnoibonhanfileId);
+            return new OkObjectResult(model);
+        }
+
         [HttpPost]
         public IActionResult AddNguoiNhan(Guid CodeEmailNoiBoNhan, Guid NguoiNhan)
         {
@@ -86,6 +117,80 @@ namespace NiTiErp.Areas.Admin.Controllers
                 var emailnguoinhan = _emailnoibonhanService.AddEmailNguoiNhan(CodeEmailNoiBoNhan, 
                     NguoiNhan, DateTime.Now, username);
                 return new OkObjectResult(emailnguoinhan);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult SentEmail(Guid CodeEmailNoiBoNhan, Guid CodeEmailNoiBoNhanFile, string NguoiGui, 
+            string TieuDe, string NoiDung)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+
+                var result = _authorizationService.AuthorizeAsync(User, "EMAILNOIBOTHEM", Operations.Create);
+                if (result.Result.Succeeded == false)
+                {
+                    return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
+                }
+
+                var sentmail = _emailnoiboService.SentEmail(CodeEmailNoiBoNhan, CodeEmailNoiBoNhanFile, 
+                    NguoiGui, TieuDe, NoiDung, DateTime.Now, username);
+
+                return new OkObjectResult(sentmail);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult DeleteSentFile(long Id, string username)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {                
+                var result = _authorizationService.AuthorizeAsync(User, "EMAILNOIBOTHEM", Operations.Delete); // xoa suc khoe nhan vien
+                if (result.Result.Succeeded == false)
+                {
+                    return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền xóa."));
+                }                
+
+                var emailnhanfile = _emailnoibonhanfileService.DeleteEmailNhanFileById(Id,
+                    DateTime.Now, username);
+
+                return new OkObjectResult(emailnhanfile);
+                
+            }
+        }
+
+        [HttpPost]
+        public IActionResult DeleteEmailNhan(long Id, string username)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var result = _authorizationService.AuthorizeAsync(User, "EMAILNOIBOTHEM", Operations.Delete); // xoa suc khoe nhan vien
+                if (result.Result.Succeeded == false)
+                {
+                    return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền xóa."));
+                }
+
+                var emailnhan = _emailnoibonhanService.DeleteEmailNhanById(Id,
+                    DateTime.Now, username);
+
+                return new OkObjectResult(emailnhan);
+
             }
         }
 

@@ -61,13 +61,17 @@
         $('body').on('click', '.deleteNguoiNhan', function (e) {
             e.preventDefault();
             var emailNguoiNhanId = $(this).data('id');
-
-            tedu.notify(emailNguoiNhanId, "success");
+            
+            deleteEmailNhan(emailNguoiNhanId);            
         });
 
         $("#btnEmailSentGui").on('click', function (e) {
             e.preventDefault();
-            tedu.notify("Bắt đầu gửi", "success");
+            var codenoiboGuid = $("#hidCodeEmailNoiBoNhanGuid").val();
+            if (codenoiboGuid !== "0") {
+                sentEmail();
+            }
+            
         });
     }
 
@@ -270,7 +274,7 @@
                 }
                 else {                    
                     for (var i = 0; i < dataFile.length; i++) {                        
-                        $('#listEmailSentNguoiNhan').append('<div class="col-md-3 image-upload">' + dataFile[i].TenNguoiNhan +
+                        $('#listEmailSentNguoiNhan').append('<div class="col-md-3 image-upload" id="nhanid' + dataFile[i].Id + '" >' + dataFile[i].TenNguoiNhan +
                             '<br/><a href="#" class=" deleteNguoiNhan" data-id="' + dataFile[i].Id + '" > x</a></div>');                                               
                     }
                 }
@@ -282,6 +286,74 @@
         });
 
     }    
+
+    function deleteEmailNhan(emailnhanid) {
+        tedu.confirm('Bạn có chắc chắn xóa bằng này?', function () {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/emailthem/DeleteEmailNhan",
+                data: {
+                    Id: emailnhanid,
+                    username: userName
+                },
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    $('#nhanid' + emailnhanid.toString()).remove();
+
+                    tedu.notify('Xóa thành công', 'success');
+                    tedu.stopLoading();
+                },
+                error: function (status) {
+                    tedu.notify('Xóa file văn bản đến lỗi! Kiểm tra lại.', 'error');
+                    tedu.stopLoading();
+                }
+            });
+        });
+    }
+
+    function sentEmail() {        
+
+        var codenoibonhanGuid = $("#hidCodeEmailNoiBoNhanGuid").val();
+        var codenoibonhanfileGuid = $("#hidCodeEmailNoiBoNhanSentFileGuid").val();
+
+        var nguoigui = userName;
+        var chude = $("#txtEmailSentChuDe").val();
+        var noidung = $("#txtEmailSentNoiDung").val();              
+
+        $.ajax({
+            type: "POST",
+            url: "/Admin/emailthem/SentEmail",
+            data: {
+                CodeEmailNoiBoNhan: codenoibonhanGuid,
+                CodeEmailNoiBoNhanFile: codenoibonhanfileGuid,
+                NguoiGui: nguoigui,
+                TieuDe: chude,
+                NoiDung: noidung
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Success === false) {
+                    tedu.notify(response.Message, "error");
+                }
+                else {
+                    tedu.notify('Gửi tin nhắn nội bộ.', 'success');            
+
+                    clearEmailSent();
+                    
+                    tedu.stopLoading();
+                }
+            },
+            error: function () {
+                tedu.notify('Có lỗi! Không thể Gửi tin nhắn nội bộ.', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
 
     function loadDataEmailSent() {
 

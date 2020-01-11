@@ -19,3 +19,30 @@
     cursor: pointer;
     font-size: 17px
 }
+
+.mail_list_NoView {
+    width: 100%;
+    border-bottom: 1px solid #DBDBDB;
+    margin-bottom: 1px;
+    display: inline-block;
+    background: rgba(38,185,154,0.16);
+}
+
+    .mail_list_NoView .left {
+        width: 5%;
+        float: left;
+        margin-right: 3%;
+    }
+
+    .mail_list_NoView .right {
+        width: 90%;
+        float: left;
+    }
+
+.mail_list_View {
+    width: 100%;
+    border-bottom: 1px solid #DBDBDB;
+    margin-bottom: 2px;
+    display: inline-block;   
+}
+

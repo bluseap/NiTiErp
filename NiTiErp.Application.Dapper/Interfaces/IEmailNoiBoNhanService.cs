@@ -13,5 +13,8 @@ namespace NiTiErp.Application.Dapper.Interfaces
 
         Boolean AddEmailNguoiNhan(Guid CodeEmailNoiBoNhan, Guid NguoiNhan,
             DateTime CreateDate, string CreateBy);
+
+        Boolean DeleteEmailNhanById(long Id, DateTime CreateDate, string CreateBy);
+
     }
 }

@@ -290,6 +290,7 @@ namespace NiTiErp
             services.AddTransient<IVanBanDiSoService, VanBanDiSoService>();
             services.AddTransient<IVanBanDiService, VanBanDiService>();
             services.AddTransient<IMessageService, MessageService>();
+            services.AddTransient<IEmailNoiBoService, EmailNoiBoService>();
             services.AddTransient<IEmailNoiBoNhanService, EmailNoiBoNhanService>();
             services.AddTransient<IEmailNoiBoNhanFileService, EmailNoiBoNhanFileService>();
 

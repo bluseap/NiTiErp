@@ -12,30 +12,28 @@ using System.Threading.Tasks;
 
 namespace NiTiErp.Application.Dapper.Implementation
 {
-    public class EmailNoiBoNhanService : IEmailNoiBoNhanService
+    public class EmailNoiBoService : IEmailNoiBoService
     {
         private readonly IConfiguration _configuration;
 
-        public EmailNoiBoNhanService(IConfiguration configuration)
+        public EmailNoiBoService(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
-        public async Task<PagedResult<EmailNoiBoNhanViewModel>> GetPaging(Guid CodeEmailNoiBoNhan,
-            Guid NguoiNhan, int pageIndex, int pageSize)
+        public async Task<PagedResult<EmailNoiBoViewModel>> GetPagingNhan(string NguoiNhan, int pageIndex, int pageSize)
         {
             using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
                 await sqlConnection.OpenAsync();
                 var dynamicParameters = new DynamicParameters();
 
-                dynamicParameters.Add("@CodeEmailNoiBoNhan", CodeEmailNoiBoNhan);
-                dynamicParameters.Add("@NguoiNhan", NguoiNhan);
+                dynamicParameters.Add("@NguoiNhan", NguoiNhan);                
 
                 try
                 {
-                    var hoso = await sqlConnection.QueryAsync<EmailNoiBoNhanViewModel>(
-                        "Get_EmailNoiBoNhan_ByNoiBoNguoiNhan", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    var hoso = await sqlConnection.QueryAsync<EmailNoiBoViewModel>(
+                        "Get_EmailNoiBo_ByNguoiNhan", dynamicParameters, commandType: CommandType.StoredProcedure);
 
                     var query = hoso.AsQueryable();
 
@@ -46,7 +44,7 @@ namespace NiTiErp.Application.Dapper.Implementation
 
                     var data = query.ToList();
 
-                    var paginationSet = new PagedResult<EmailNoiBoNhanViewModel>()
+                    var paginationSet = new PagedResult<EmailNoiBoViewModel>()
                     {
                         Results = data,
                         CurrentPage = pageIndex,
@@ -62,24 +60,49 @@ namespace NiTiErp.Application.Dapper.Implementation
             }
         }
 
-        public Boolean AddEmailNguoiNhan(Guid CodeEmailNoiBoNhan, Guid NguoiNhan,
-            DateTime CreateDate, string CreateBy)
+        public async Task<EmailNoiBoViewModel> GetByEmailNoiBoNhan(long id)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@Id", id);                
+
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<EmailNoiBoViewModel>(
+                        "Get_EmailNoiBo_ByEmailNoiBoNhanId", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return query.Single();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public Boolean SentEmail(Guid CodeEmailNoiBoNhan, Guid CodeEmailNoiBoNhanFile, string NguoiGui, 
+            string TieuDe, string NoiDung, DateTime CreateDate, string CreateBy)
         {
             using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
                 sqlConnection.OpenAsync();
                 var dynamicParameters = new DynamicParameters();
 
-                dynamicParameters.Add("@CodeEmailNoiBoNhan", CodeEmailNoiBoNhan);
-                dynamicParameters.Add("@NguoiNhan", NguoiNhan);
+                dynamicParameters.Add("@CodeEmailNoiBoNhan", CodeEmailNoiBoNhan); 
+                dynamicParameters.Add("@CodeEmailNoiBoNhanFile", CodeEmailNoiBoNhanFile);
+                dynamicParameters.Add("@NguoiGui", NguoiGui);
+                dynamicParameters.Add("@TieuDe", TieuDe);
+                dynamicParameters.Add("@NoiDung", NoiDung);
 
                 dynamicParameters.Add("@CreateDate", CreateDate);
                 dynamicParameters.Add("@CreateBy", CreateBy);
 
                 try
                 {
-                    var query = sqlConnection.Query<EmailNoiBoNhanViewModel>(
-                        "Create_EmailNoiBoNhan", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    var query = sqlConnection.Query<EmailNoiBoViewModel>(
+                        "Create_EmailNoiBo", dynamicParameters, commandType: CommandType.StoredProcedure);
 
                     return true;
                 }
@@ -89,33 +112,6 @@ namespace NiTiErp.Application.Dapper.Implementation
                 }
             }
         }
-
-        public Boolean DeleteEmailNhanById(long Id, DateTime CreateDate, string CreateBy)
-        {
-            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
-            {
-                sqlConnection.OpenAsync();
-                var dynamicParameters = new DynamicParameters();
-
-                dynamicParameters.Add("@Id", Id);
-
-                dynamicParameters.Add("@UpdateDate", CreateDate);
-                dynamicParameters.Add("@UpdateBy", CreateBy);
-
-                try
-                {
-                    var query = sqlConnection.Query<EmailNoiBoNhanViewModel>(
-                        "Delete_EmailNoiBoNhan_ById", dynamicParameters, commandType: CommandType.StoredProcedure);
-
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }
-        }
-
 
     }
 }
