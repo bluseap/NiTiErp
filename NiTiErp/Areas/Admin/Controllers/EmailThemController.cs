@@ -96,6 +96,13 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        [HttpGet]
+        public IActionResult GetEmailCount(string nguoinhan)
+        {
+            var countEmail = _emailnoibonhanService.GetEmailCountByNguoiNhan(nguoinhan);
+            return new OkObjectResult(countEmail);
+        }
+
         [HttpPost]
         public IActionResult AddNguoiNhan(Guid CodeEmailNoiBoNhan, Guid NguoiNhan)
         {
@@ -194,35 +201,30 @@ namespace NiTiErp.Areas.Admin.Controllers
             }
         }
 
-        //[HttpPost]
-        //public IActionResult AddEmailSentFile(EmailNoiBoNhanFileViewModel enbnfVm)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
-        //        return new BadRequestObjectResult(allErrors);
-        //    }
-        //    else
-        //    {
-        //        var username = User.GetSpecificClaim("UserName");
+        [HttpPost]
+        public IActionResult IsViewEmail(long emailNoiBoNhanId, string username)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var result = _authorizationService.AuthorizeAsync(User, "EMAILNOIBOTHEM", Operations.Update); // xoa suc khoe nhan vien
+                if (result.Result.Succeeded == false)
+                {
+                    return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền sửa."));
+                }
 
-        //        enbnfVm.CreateBy = username;
-        //        enbnfVm.CreateDate = DateTime.Now;
-        //        //enbnfVm.UpdateBy = username;
-        //        //enbnfVm.UpdateDate = DateTime.Now;
+                var emailnhan = _emailnoiboService.IsViewEmail(emailNoiBoNhanId, username);
 
-        //        var result = _authorizationService.AuthorizeAsync(User, "EMAILNOIBOTHEM", Operations.Create); // nhap danh muc van ban phoi hop
-        //        if (result.Result.Succeeded == false)
-        //        {
-        //            return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
-        //        }
+                return new OkObjectResult(emailnhan);
 
-        //        var emailnoiboFile = _emailnoibonhanfileService.AddEmailNhanFileByCodeNhanFile(enbnfVm);
-        //        return new OkObjectResult(emailnoiboFile);
+            }
+        }
 
-        //    }
-        //}
-
+        
         #endregion
 
 

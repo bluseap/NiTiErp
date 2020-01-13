@@ -11,21 +11,24 @@
     @*<img src="~/admin-side/images/img.jpg" alt="">@User.GetSpecificClaim("FullName")*@
     <span class=" fa fa-angle-down"></span>
 </a>
+
+
 <ul class="dropdown-menu dropdown-usermenu pull-right">
     @*<li><a href="javascript:;"> Thông tin người dùng</a></li>*@
     <li>
         @*<a href="javascript:;">
-            <span class="badge bg-red pull-right">0</span>
-            <span>Cấu hình</span>
-        </a>*@
+                <span class="badge bg-red pull-right">0</span>
+                <span>Cấu hình</span>
+            </a>*@
         <a href="~/uploaded/huongdan/QuiTrinhVanBan.pdf" class="btnHuongDan">
             <i class="fa fa-file-archive-o" style="color:dodgerblue"></i>
-                    Hướng dẫn
+            Hướng dẫn
         </a>
     </li>
     <li>
-        <a href="#" class="btnDoiMatMaUser"><i class="fa fa-key" style="color:orange"></i>
-                    Đổi mật mã
+        <a href="#" class="btnDoiMatMaUser">
+            <i class="fa fa-key" style="color:orange"></i>
+            Đổi mật mã
         </a>
     </li>
     <li>
@@ -36,76 +39,23 @@
         </form>
     </li>
 </ul>
+
 <li role="presentation" class="dropdown">
     <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
         <i class="fa fa-comments-o " style="font-size:x-large"></i>
         @*<span class="badge bg-green">6</span>*@
     </a>
-    <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-        @*<li>
-                <a class="btn btn-lg btnChatUserHub" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="mmm">
-                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                    <span>
-                        <span> </span>
-                        <span id="spanDenChuaXuLy22" >0</span>
-                    </span>
-                    <span class="message">
-                        ...
-                    </span>
-                </a>
-            </li>*@
+    <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">        
         <div class="box-footer box-comments" id="divusers">
         </div>
-        @*<li>
-                <a>
-                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                    <span>
-                        <span>John Smith</span>
-                        <span class="time">3 mins ago</span>
-                    </span>
-                    <span class="message">
-                        Film festivals used to be do-or-die moments for movie makers. They were where...
-                    </span>
-                </a>
-            </li>
-            <li>
-                <a>
-                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                    <span>
-                        <span>John Smith</span>
-                        <span class="time">3 mins ago</span>
-                    </span>
-                    <span class="message">
-                        Film festivals used to be do-or-die moments for movie makers. They were where...
-                    </span>
-                </a>
-            </li>
-            <li>
-                <a>
-                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                    <span>
-                        <span>John Smith</span>
-                        <span class="time">3 mins ago</span>
-                    </span>
-                    <span class="message">
-                        Film festivals used to be do-or-die moments for movie makers. They were where...
-                    </span>
-                </a>
-            </li>
-            <li>
-                <div class="text-center">
-                    <a>
-                        <strong>See All Alerts</strong>
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </div>
-            </li>*@
-
-
     </ul>
-
-
-
+    
+</li>
+<li role="presentation" class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle info-number bntGoToEmail" data-toggle="dropdown" aria-expanded="false">
+        <i class="fa fa-envelope-o"></i>
+        <div id="countEmailNguoiDung"></div>      
+    </a>   
 </li>
 
 <partial name="/Areas/Admin/Views/User/_EditPassword.cshtml" />

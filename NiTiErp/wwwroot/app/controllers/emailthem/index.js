@@ -56,7 +56,8 @@
         $('body').on('click', '.bntEmailNoiBoId', function (e) {
             e.preventDefault();
             var emailnoiboid = $(this).data('id');
-
+            $('#tblContentViewEmail').html("");
+            updateViewEmail(emailnoiboid);
             viewemail.loadViewEmailNoiBo(emailnoiboid);
             $('#modal-add-edit-ViewEmail').modal('show');
         });
@@ -154,6 +155,35 @@
                     tedu.configs.pageIndex = p;
                     setTimeout(callBack(), 200);
                 }
+            }
+        });
+    }
+
+    function updateViewEmail(emailnoibonhanid) {         
+        var nguoiNhan = userName;      
+        $.ajax({
+            type: "POST",
+            url: "/Admin/emailthem/IsViewEmail",
+            data: {
+                emailNoiBoNhanId: emailnoibonhanid,
+                username: nguoiNhan
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Success === false) {
+                    tedu.notify(response.Message, "error");
+                }
+                else {                 
+                    loadTableEmailThem(true);
+                    tedu.stopLoading();
+                }
+            },
+            error: function () {
+                tedu.notify('Có lỗi! Không thể Xem tin nhắn nội bộ.', 'error');
+                tedu.stopLoading();
             }
         });
     }

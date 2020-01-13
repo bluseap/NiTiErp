@@ -53,7 +53,7 @@
         });
     }
 
-    function loadViewEmailNoiBoFile(emailnoibonhanid) {
+    function loadViewEmailNoiBoFile(emailnoibonhanid) { 
         var template = $('#table-ViewEmail').html();
         var render = "";
 

@@ -11,6 +11,8 @@ namespace NiTiErp.Application.Dapper.Interfaces
         Task<PagedResult<EmailNoiBoNhanViewModel>> GetPaging(Guid CodeEmailNoiBoNhan,
             Guid NguoiNhan, int pageIndex, int pageSize);
 
+        int GetEmailCountByNguoiNhan(string nguoinhan);
+
         Boolean AddEmailNguoiNhan(Guid CodeEmailNoiBoNhan, Guid NguoiNhan,
             DateTime CreateDate, string CreateBy);
 

@@ -54,8 +54,7 @@
             var newGuid = $("#hidCodeEmailNoiBoNhanGuid").val();
             $('#hidNhanVienNguoiNhanId').val(hosoId); 
             
-            addNhanVienNguoiNhan(newGuid, hosoId);
-            
+            addNhanVienNguoiNhan(newGuid, hosoId);            
         });
 
         $('body').on('click', '.deleteNguoiNhan', function (e) {
@@ -69,9 +68,14 @@
             e.preventDefault();
             var codenoiboGuid = $("#hidCodeEmailNoiBoNhanGuid").val();
             if (codenoiboGuid !== "0") {
-                sentEmail();
-            }
-            
+                var listEmailNguoiNhan = $('#listEmailSentNguoiNhan').val();
+                if (listEmailNguoiNhan !== '') {
+                    sentEmail();
+                }
+                else {
+                    tedu.notify("Chưa chọn người nhận.", "error");
+                }  
+            }            
         });
     }
 
@@ -318,6 +322,13 @@
         var codenoibonhanGuid = $("#hidCodeEmailNoiBoNhanGuid").val();
         var codenoibonhanfileGuid = $("#hidCodeEmailNoiBoNhanSentFileGuid").val();
 
+        if (codenoibonhanfileGuid !== '0') {
+            codenoibonhanfileGuid = $("#hidCodeEmailNoiBoNhanSentFileGuid").val();
+        }
+        else {
+            codenoibonhanfileGuid = '00000000-0000-0000-0000-000000000000';
+        }
+
         var nguoigui = userName;
         var chude = $("#txtEmailSentChuDe").val();
         var noidung = $("#txtEmailSentNoiDung").val();              
@@ -342,7 +353,7 @@
                 }
                 else {
                     tedu.notify('Gửi tin nhắn nội bộ.', 'success');            
-
+                    $('.compose').slideToggle();
                     clearEmailSent();
                     
                     tedu.stopLoading();

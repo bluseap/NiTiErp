@@ -62,6 +62,31 @@ namespace NiTiErp.Application.Dapper.Implementation
             }
         }
 
+        public int GetEmailCountByNguoiNhan(string nguoinhan)
+        {  
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                sqlConnection.Open();
+
+                var paramaters = new DynamicParameters();
+
+                paramaters.Add("@AppUserName", nguoinhan);
+                
+                try
+                {
+                    var query = sqlConnection.Query<EmailNoiBoNhanViewModel>
+                        ("Get_EmailNoiBoNhan_ByAppUserNameCountNoView", paramaters, commandType: CommandType.StoredProcedure);
+
+                    return query.Count();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+            }
+        }
+
         public Boolean AddEmailNguoiNhan(Guid CodeEmailNoiBoNhan, Guid NguoiNhan,
             DateTime CreateDate, string CreateBy)
         {

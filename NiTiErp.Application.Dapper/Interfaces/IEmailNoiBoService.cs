@@ -15,5 +15,7 @@ namespace NiTiErp.Application.Dapper.Interfaces
         Boolean SentEmail(Guid CodeEmailNoiBoNhan, Guid CodeEmailNoiBoNhanFile, string NguoiGui,
             string TieuDe, string NoiDung, DateTime CreateDate, string CreateBy);
 
+        Boolean IsViewEmail(long emailNoiBoNhanId, string CreateBy);
+
     }
 }
