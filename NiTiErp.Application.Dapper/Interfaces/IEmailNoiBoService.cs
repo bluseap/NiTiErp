@@ -10,7 +10,11 @@ namespace NiTiErp.Application.Dapper.Interfaces
     {
         Task<PagedResult<EmailNoiBoViewModel>> GetPagingNhan(string NguoiNhan, int pageIndex, int pageSize);
 
+        Task<PagedResult<EmailNoiBoViewModel>> GetPagingGui(string NguoiGui, int pageIndex, int pageSize);
+
         Task<EmailNoiBoViewModel> GetByEmailNoiBoNhan(long id);
+
+        Task<EmailNoiBoViewModel> GetByEmailNoiBo(long id);
 
         Boolean SentEmail(Guid CodeEmailNoiBoNhan, Guid CodeEmailNoiBoNhanFile, string NguoiGui,
             string TieuDe, string NoiDung, DateTime CreateDate, string CreateBy);

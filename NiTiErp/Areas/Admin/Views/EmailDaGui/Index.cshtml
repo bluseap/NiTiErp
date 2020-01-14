@@ -1,1 +1,112 @@
-﻿<h1>Email Đã gửi</h1>
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@section Styles{
+    <link href="~/admin-side/css/main.css" rel="stylesheet" asp-append-version="true" />
+}
+@section Scripts{
+    <script src="~/app/controllers/emaildagui/detailemaildagui.js" asp-append-version="true"></script>    
+    <script src="~/app/controllers/emaildagui/index.js" asp-append-version="true"></script>
+
+    <script>
+        var emaildagui = new emaildaguiController();
+        emaildagui.initialize();
+    </script>
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link ">
+                    Email đã gửi
+                </a>
+                >>
+                <a class="btn btn-link ">
+                    Email đã gửi nội bộ
+                </a>
+            </small>
+        </div>
+        <div class="title_right">
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                @*<button class="btn btn-round btn-warning" id="btn-SoanEmailNoiBo" type="button">Soạn thư</button>*@
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" id="hidEmailNoiBoId" value="" />
+    <input type="hidden" id="hidEmailNoiBoNhanId" value="" />      
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Danh sách Email đã gửi  <small> </small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-sm-12 mail_list_column">                            
+
+                            <div id="tblContentEmailDaGui"></div>
+
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <div class="dataTables_info" id="datatable-checkbox_infoEmailDaGui" role="status" aria-live="polite">
+                                        <select id="ddl-show-pageEmailDaGui">
+                                            <option value="10" selected="selected">10</option>
+                                            <option value="20">20</option>
+                                            <option value="30">30</option>
+                                            <option value="50">50</option>
+                                        </select>
+                                        <span class="item-per-page">
+                                            dòng/trang.
+                                        </span>
+                                        Tổng cộng: <strong id="lblEmailDaGuiTotalRecords"></strong>
+                                    </div>
+                                </div>
+                                <div class="col-sm-7">
+                                    <div class="dataTables_paginate" id="datatable-checkbox_paginateEmailDaGui">
+                                        <ul id="paginationULEmailDaGui"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /MAIL LIST -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script id="table-EmailDaGui" type="x-tmpl-mustache">
+       
+        <a href="#">
+            @*<div class="mail_list_NoView">*@
+            <div class="{{ClassEmailChuaXem}} bntEmailNoiBoId" data-id="{{EmailNoiBoNhanId}}">
+                <div class="left">
+                    @*<i class="fa fa-star" ></i>*@
+                    <i class="{{ClassAddFile}}"></i>
+                </div>
+                <div class="right">
+                    <h4>
+                        Người nhận: {{TenNguoiNhan}}
+                        <small class="pull-right right">{{NgayGui}}</small>
+                    </h4>
+                    <p><span class="badge"></span>{{TieuDe}}</p>
+                </div>
+            </div>
+        </a>
+
+    </script>
+</div>
+
+<partial name="_DetailEmailDaGui.cshtml" />
+
+

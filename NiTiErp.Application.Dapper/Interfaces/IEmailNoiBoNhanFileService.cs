@@ -19,5 +19,6 @@ namespace NiTiErp.Application.Dapper.Interfaces
             string TenFile, string DuongDan, DateTime CreateDate, string CreateBy);
 
         Boolean DeleteEmailNhanFileById(long Id, DateTime CreateDate, string CreateBy);
+        
     }
 }

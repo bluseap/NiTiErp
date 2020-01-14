@@ -68,7 +68,7 @@
             e.preventDefault();
             var codenoiboGuid = $("#hidCodeEmailNoiBoNhanGuid").val();
             if (codenoiboGuid !== "0") {
-                var listEmailNguoiNhan = $('#listEmailSentNguoiNhan').val();
+                var listEmailNguoiNhan = $('#listEmailSentNguoiNhan').html();
                 if (listEmailNguoiNhan !== '') {
                     sentEmail();
                 }

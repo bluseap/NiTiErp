@@ -23,7 +23,7 @@
         loadPhongKhuVuc(makv);
     }
 
-    function registerEvents() {
+    function registerEvents() {        
 
         $('body').on('click', '.btnVBDSoTim', function (e) {
             e.preventDefault();
@@ -104,7 +104,7 @@
             success: function (response) {
                 var render = "<option value='%' >-- Lựa chọn --</option>";
                 $.each(response.Result, function (i, item) {
-                    render += "<option value='" + item.Id + "'>" + item.TenPhong + "</option>";
+                    render += "<option value='" + item.Id + "' > " + item.TenPhong + "</option>";
                 });
                 $('#ddlChuaXuLyPhong').html(render);
             },

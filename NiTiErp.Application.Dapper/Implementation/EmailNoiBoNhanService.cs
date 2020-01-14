@@ -141,6 +141,29 @@ namespace NiTiErp.Application.Dapper.Implementation
             }
         }
 
+        public Boolean IsViewEmailNhan(long emailNoiBoNhanId, string CreateBy)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@EmailNoiBoNhanId", emailNoiBoNhanId);
+                dynamicParameters.Add("@CreateBy", CreateBy);
+
+                try
+                {
+                    var query = sqlConnection.Query<EmailNoiBoViewModel>(
+                        "Create_EmailDaXem", dynamicParameters, commandType: CommandType.StoredProcedure);
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
 
     }
 }

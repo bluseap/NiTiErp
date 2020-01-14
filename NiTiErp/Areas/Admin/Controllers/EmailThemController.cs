@@ -224,7 +224,30 @@ namespace NiTiErp.Areas.Admin.Controllers
             }
         }
 
-        
+        [HttpPost]
+        public IActionResult IsViewEmailNhan(long emailNoiBoNhanId, string username)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var result = _authorizationService.AuthorizeAsync(User, "EMAILNOIBOTHEM", Operations.Update); // xoa suc khoe nhan vien
+                if (result.Result.Succeeded == false)
+                {
+                    return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền sửa."));
+                }
+
+                var emailnhan = _emailnoibonhanService.IsViewEmailNhan(emailNoiBoNhanId, username);
+
+                return new OkObjectResult(emailnhan);
+
+            }
+        }
+
+
         #endregion
 
 

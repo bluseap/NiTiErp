@@ -18,5 +18,7 @@ namespace NiTiErp.Application.Dapper.Interfaces
 
         Boolean DeleteEmailNhanById(long Id, DateTime CreateDate, string CreateBy);
 
+        Boolean IsViewEmailNhan(long emailNoiBoNhanId, string CreateBy);
+
     }
 }

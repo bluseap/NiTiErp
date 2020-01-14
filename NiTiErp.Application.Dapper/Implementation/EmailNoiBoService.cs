@@ -60,6 +60,45 @@ namespace NiTiErp.Application.Dapper.Implementation
             }
         }
 
+        public async Task<PagedResult<EmailNoiBoViewModel>> GetPagingGui(string NguoiGui, int pageIndex, int pageSize)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@NguoiGui", NguoiGui);
+
+                try
+                {
+                    var hoso = await sqlConnection.QueryAsync<EmailNoiBoViewModel>(
+                        "Get_EmailNoiBo_ByNguoiGui", dynamicParameters, commandType: CommandType.StoredProcedure);
+
+                    var query = hoso.AsQueryable();
+
+                    int totalRow = query.Count();
+
+                    query = query.OrderByDescending(x => x.CreateDate)
+                        .Skip((pageIndex - 1) * pageSize).Take(pageSize);
+
+                    var data = query.ToList();
+
+                    var paginationSet = new PagedResult<EmailNoiBoViewModel>()
+                    {
+                        Results = data,
+                        CurrentPage = pageIndex,
+                        RowCount = totalRow,
+                        PageSize = pageSize
+                    };
+                    return paginationSet;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         public async Task<EmailNoiBoViewModel> GetByEmailNoiBoNhan(long id)
         {
             using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
@@ -73,6 +112,28 @@ namespace NiTiErp.Application.Dapper.Implementation
                 {
                     var query = await sqlConnection.QueryAsync<EmailNoiBoViewModel>(
                         "Get_EmailNoiBo_ByEmailNoiBoNhanId", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return query.Single();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<EmailNoiBoViewModel> GetByEmailNoiBo(long id)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@Id", id);
+
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<EmailNoiBoViewModel>(
+                        "Get_EmailNoiBo_ById", dynamicParameters, commandType: CommandType.StoredProcedure);
                     return query.Single();
                 }
                 catch (Exception ex)

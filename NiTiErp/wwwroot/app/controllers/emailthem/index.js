@@ -163,7 +163,7 @@
         var nguoiNhan = userName;      
         $.ajax({
             type: "POST",
-            url: "/Admin/emailthem/IsViewEmail",
+            url: "/Admin/emailthem/IsViewEmailNhan",
             data: {
                 emailNoiBoNhanId: emailnoibonhanid,
                 username: nguoiNhan
