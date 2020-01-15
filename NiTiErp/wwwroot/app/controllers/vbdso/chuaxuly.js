@@ -95,8 +95,10 @@
     function loadPhongKhuVuc(makhuvuc) {
         $.ajax({
             type: 'GET',
-            url: '/admin/hoso/GetListPhongKhuVuc',
-            data: { makv: makhuvuc },
+            url: '/admin/hoso/GetListPhongKhuVucVBDCXL',//GetListPhongKhuVuc',
+            data: {
+                makv: makhuvuc
+            },
             dataType: "json",
             beforeSend: function () {
                 tedu.startLoading();
@@ -104,7 +106,8 @@
             success: function (response) {
                 var render = "<option value='%' >-- Lựa chọn --</option>";
                 $.each(response.Result, function (i, item) {
-                    render += "<option value='" + item.Id + "' > " + item.TenPhong + "</option>";
+                    render += "<option value='" + item.Id + "' > " +
+                        item.TenPhong + (item.Stt > 0 ? " - " + item.Stt : "") + "</option>";
                 });
                 $('#ddlChuaXuLyPhong').html(render);
             },

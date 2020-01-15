@@ -1017,6 +1017,13 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        [HttpGet]
+        public IActionResult GetListPhongKhuVucVBDCXL(string makv)
+        {
+            var model = _phongdanhmucService.PhongDanhMucGetList(makv, "", "", "GetListPhongMaKVVBDCXL");
+            return new OkObjectResult(model);
+        }
+
         #region Danh muc tab Ho so nhan vien
 
         [HttpGet]

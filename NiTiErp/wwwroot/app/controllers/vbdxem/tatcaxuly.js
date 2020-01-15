@@ -6,6 +6,8 @@
 
     var bientimClick = 0;
 
+    var fileUpload1 = [];
+
     this.initialize = function () {
 
         registerEvents();
@@ -48,6 +50,7 @@
         $('body').on('click', '.btnTatCaPatchFileXuLy', function (e) {
             e.preventDefault();
             var vanbandenId = $(this).data('id');
+            $('#hidXemFileXuLyVanBanDenId').val(vanbandenId);
             loadXemPatchFileVBDXuLy(vanbandenId);
             //loadPatchFileVBDXuLy(vanbandenId);
             $('#modal-add-edit-VBDXemFileXuLy').modal('show');
@@ -67,6 +70,12 @@
             loadPatchFileVBDXuLyFile(duongdan);   
         });
 
+        $('body').on('click', '.btnDeleteVBDXemFileXuLyXoaFile', function (e) {
+            e.preventDefault();
+            var vanbandenxulyfileId = $(this).data('id');
+            deleteVanBanDenXuLyFile(vanbandenxulyfileId);
+        });
+
         $('body').on('click', '.btnTatCaChuaXuLyXuLy', function (e) {
             e.preventDefault();
             var vanbandenduyetId = $(this).data('id');
@@ -79,6 +88,39 @@
             $('#lbNgayChuaXuLyXuLy').hide();
 
             $('#hidChuaXuLyXuLyLai').val("2");
+        });
+
+        $("#fileXemFileXuLyFileVanBanDen").on('change', function () {
+            var fileUpload = $(this).get(0);
+            var files = fileUpload.files;
+
+            //tedu.notify(files[0].name, "success");//ten file 
+            $('#hidXemFileXuLyTenFileXuLyId').val(files[0].name);
+
+            var data = new FormData();
+
+            for (var i = 0; i < files.length; i++) {
+                data.append(files[i].name, files[i]);
+            }
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Upload/UploadVanBanDenFile",
+                contentType: false,
+                processData: false,
+                data: data,
+                success: function (path) {
+                    $("#hidXemFileXuLyTenFileDuongDan").val(path);
+                    clearFileInput($("#fileXemFileXuLyFileVanBanDen"));
+                    fileUpload1.push(path);
+                    
+                    AddVanBanDenXuLyFile();
+
+                    tedu.notify('Đã tải file lên thành công!', 'success');
+                },
+                error: function () {
+                    tedu.notify('There was error uploading files!', 'error');
+                }
+            });
         });
     }
 
@@ -265,27 +307,80 @@
     function loadPatchFileVBDXuLyFile(duongdan) {
         var win = window.open(duongdan, '_blank');
         win.focus();
-        tedu.stopLoading();
+        tedu.stopLoading();       
+    }
 
-        //$.ajax({
-        //    type: "GET",
-        //    url: "/Admin/vbdxem/GetListVBDXemFileXuLyPaging",
-        //    data: { vanbandenId: vanbandenid },
-        //    dataType: "json",
-        //    beforeSend: function () {
-        //        tedu.startLoading();
-        //    },
-        //    success: function (response) {
-        //        var vanbanden = response.Result[0];
-        //        var win = window.open(vanbanden.VBDXuLyFilePatch, '_blank');
-        //        win.focus();
-        //        tedu.stopLoading();
-        //    },
-        //    error: function (status) {
-        //        tedu.notify('Có lỗi xảy ra', 'error');
-        //        tedu.stopLoading();
-        //    }
-        //});
+    function deleteVanBanDenXuLyFile(vanbandenxulyfileId) {       
+        tedu.confirm('Bạn có chắc chắn xóa bằng này?', function () {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/vbdxem/DeleteVanBanDenXuLyFile",
+                data: {
+                    Id: vanbandenxulyfileId,
+                    InsertVBDXuLyFileId: 3
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    tedu.notify('Xóa thành công', 'success');
+                    var vanbandenid = $('#hidXemFileXuLyVanBanDenId').val();
+                    loadXemPatchFileVBDXuLy(vanbandenid);
+                    tedu.stopLoading();
+                },
+                error: function (status) {
+                    tedu.notify('Xóa file văn bản đến lỗi! Kiểm tra lại.', 'error');
+                    tedu.stopLoading();
+                }
+            });
+        });
+    }
+
+    function clearFileInput(ctrl) {
+        try {
+            fileUpload1 = [];
+            ctrl.value = null;
+            ctrl.value('');
+        }
+        catch (ex) {
+            tedu.notify(ex, 'error');
+        }
+    }
+
+    function AddVanBanDenXuLyFile() {
+        var vanbandenId = $('#hidXemFileXuLyVanBanDenId').val();
+       
+        var tenfile = $('#hidXemFileXuLyTenFileXuLyId').val();
+        var duongdan = $("#hidXemFileXuLyTenFileDuongDan").val();
+
+        $.ajax({
+            type: "POST",
+            url: "/Admin/vbdxem/AddVanBanDenXuLyFile",
+            data: {
+                Id: vanbandenId,
+                TenFile: tenfile,
+                DuongDan: duongdan
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Success === false) {
+                    tedu.notify(response.Message, "error");
+                }
+                else {
+                    tedu.notify('Upload file.', 'success');   
+                    loadXemPatchFileVBDXuLy(vanbandenId);
+                    tedu.stopLoading();
+                }
+            },
+            error: function () {
+                tedu.notify('Có lỗi! Không thể add row file văn bản đến.', 'error');
+                tedu.stopLoading();
+            }
+        });
     }
 
 }

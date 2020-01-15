@@ -224,6 +224,47 @@ namespace NiTiErp.Areas.Admin.Controllers
             }
         }
 
+        public IActionResult AddVanBanDenXuLyFile(VanBanDenXuLyFileViewModel vanbandenxulyfileVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+
+                vanbandenxulyfileVm.CreateBy = username;
+                vanbandenxulyfileVm.CreateDate = DateTime.Now;
+                vanbandenxulyfileVm.UpdateBy = username;
+                vanbandenxulyfileVm.UpdateDate = DateTime.Now;
+
+                //if (vanbandenxulyfileVm.InsertVBDXuLyFileId == 1)
+                //{
+                    var result = _authorizationService.AuthorizeAsync(User, "VANBANDENXEM", Operations.Create);
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
+                    }
+
+                    var thongbao = _vanbandenxulyfileService.VanBanDenXuLyFileAUD(vanbandenxulyfileVm, "InVanBanDenXuLyFileVBDId");
+                    return new OkObjectResult(thongbao);
+                //}
+                //else
+                //{
+                //    var result = _authorizationService.AuthorizeAsync(User, "VANBANDENXEM", Operations.Update); //
+                //    if (result.Result.Succeeded == false)
+                //    {
+                //        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền sửa."));
+                //    }
+
+                //    var thongbao = _vanbandenxulyfileService.VanBanDenXuLyFileAUD(vanbandenxulyfileVm, "UpVanBanDenXuLyFile");
+                //    return new OkObjectResult(thongbao);
+                //}
+            }
+        }
+
         [HttpPost]
         public IActionResult DeleteVanBanDenXuLyFile(VanBanDenXuLyFileViewModel vanbandenfileVm)
         {
