@@ -189,7 +189,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [RequestSizeLimit(2715200)]
+        [RequestSizeLimit(27152000)]//209715200
         public IActionResult UploadEmailSentFile()
         {
             var username = User.GetSpecificClaim("UserName");
