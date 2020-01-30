@@ -50,6 +50,9 @@ namespace NiTiAPI.Web
             services.AddTransient<IRoleStore<AppRole>, RoleStore>();
             services.AddTransient<IProductRepository, ProductRepository>();
 
+            services.AddTransient<IPostRepository, PostRepository>();
+            services.AddTransient<ICategoryNewsRepository, CategoryNewsRepository>();
+
             services.AddIdentity<AppUser, AppRole>()
                 .AddDefaultTokenProviders();
 

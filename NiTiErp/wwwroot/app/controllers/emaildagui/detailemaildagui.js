@@ -14,7 +14,12 @@ var detailemaildaguiController = function () {
     }
 
     function registerEvents() {
+        $('body').on('click', '.bntViewEmailFileId', function (e) {
+            e.preventDefault();
+            var emailnoibofileid = $(this).data('id');
 
+            loadPatchFile(emailnoibofileid);
+        });
     }
 
     function loadDetailEmailDaGui(emailnoibonhanid) {
@@ -74,6 +79,30 @@ var detailemaildaguiController = function () {
                 if (render !== '') {
                     $('#tblContentDetailEmailDaGui').html(render);
                 }
+                tedu.stopLoading();
+            },
+            error: function (status) {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function loadPatchFile(emailnoibonhanfileid) {
+        $.ajax({
+            type: "GET",
+            url: "/Admin/emailthem/GetEmailFileId",
+            data: {
+                emailnoibonhanfileId: emailnoibonhanfileid
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+
+                var win = window.open(response.DuongDan, '_blank');
+                win.focus();
                 tedu.stopLoading();
             },
             error: function (status) {
