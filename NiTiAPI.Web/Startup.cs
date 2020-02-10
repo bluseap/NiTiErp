@@ -31,6 +31,8 @@ using NiTiAPI.Dapper.Models;
 using NiTiAPI.Dapper.Repositories;
 using NiTiAPI.Dapper.Repositories.Interfaces;
 using NiTiAPI.Web.Resources;
+using NiTiErp.Application.Dapper.Interfaces;
+using NiTiErp.Application.Dapper.Implementation;
 
 namespace NiTiAPI.Web
 {
@@ -55,6 +57,8 @@ namespace NiTiAPI.Web
 
             services.AddIdentity<AppUser, AppRole>()
                 .AddDefaultTokenProviders();
+
+            services.AddTransient<IRegisterDocService, RegisterDocService>();
 
             services.Configure<IdentityOptions>(opt =>
             {
