@@ -122,6 +122,33 @@
                 }
             });
         });
+
+        const slidertatca = document.querySelector('#table-responsiveTatCa');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        slidertatca.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slidertatca.classList.add('active');
+            startX = e.pageX - slidertatca.offsetLeft;
+            scrollLeft = slidertatca.scrollLeft;
+        });
+        slidertatca.addEventListener('mouseleave', () => {
+            isDown = false;
+            slidertatca.classList.remove('active');
+        });
+        slidertatca.addEventListener('mouseup', () => {
+            isDown = false;
+            slidertatca.classList.remove('active');
+        });
+        slidertatca.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slidertatca.offsetLeft;
+            const walk = (x - startX) * 3; //scroll-fast
+            slidertatca.scrollLeft = scrollLeft - walk;
+            //console.log(walk);
+        });
     }
 
     function loadPatchFileVBDXuLy(vanbandenid) {

@@ -90,6 +90,33 @@
             loadTableVBDChuaXuLyKVPhong(true);
         });
 
+        const sliderchuaxl = document.querySelector('#table-responsiveChuaXuLy');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        sliderchuaxl.addEventListener('mousedown', (e) => {
+            isDown = true;
+            sliderchuaxl.classList.add('active');
+            startX = e.pageX - sliderchuaxl.offsetLeft;
+            scrollLeft = sliderchuaxl.scrollLeft;
+        });
+        sliderchuaxl.addEventListener('mouseleave', () => {
+            isDown = false;
+            sliderchuaxl.classList.remove('active');
+        });
+        sliderchuaxl.addEventListener('mouseup', () => {
+            isDown = false;
+            sliderchuaxl.classList.remove('active');
+        });
+        sliderchuaxl.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - sliderchuaxl.offsetLeft;
+            const walk = (x - startX) * 3; //scroll-fast
+            sliderchuaxl.scrollLeft = scrollLeft - walk;
+            //console.log(walk);
+        });
+
     }
 
     function loadPhongKhuVuc(makhuvuc) {

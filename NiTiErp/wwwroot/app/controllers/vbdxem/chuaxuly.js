@@ -94,6 +94,33 @@
             $('#modal-add-edit-VBDDuyetFile').modal('show');
         });
 
+        const slidercxl = document.querySelector('.innerWrapper');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        slidercxl.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slidercxl.classList.add('active');
+            startX = e.pageX - slidercxl.offsetLeft;
+            scrollLeft = slidercxl.scrollLeft;
+        });
+        slidercxl.addEventListener('mouseleave', () => {
+            isDown = false;
+            slidercxl.classList.remove('active');
+        });
+        slidercxl.addEventListener('mouseup', () => {
+            isDown = false;
+            slidercxl.classList.remove('active');
+        });
+        slidercxl.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slidercxl.offsetLeft;
+            const walk = (x - startX) * 3; //scroll-fast
+            slidercxl.scrollLeft = scrollLeft - walk;
+            //console.log(walk);
+        });
+
     }
 
     function loadDataChuaXuLy() {

@@ -40,7 +40,7 @@ namespace NiTiAPI.Web.Controllers
         [HttpGet("{id}", Name = "GetRegisterDocId")]
         public async Task<RegisterDocViewModel> GetRegisterDocId(int id)
         {
-            return await _registerdocService.GetById(id);
+            return await _registerdocService.GetByIdErp(id);
         }
        
 

@@ -69,6 +69,33 @@
             $('#modal-add-edit-VBDDuyetFile').modal('show');
         });
 
+        const sliderxlroi = document.querySelector('#table-responsiveXuLyRoi');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        sliderxlroi.addEventListener('mousedown', (e) => {
+            isDown = true;
+            sliderxlroi.classList.add('active');
+            startX = e.pageX - sliderxlroi.offsetLeft;
+            scrollLeft = sliderxlroi.scrollLeft;
+        });
+        sliderxlroi.addEventListener('mouseleave', () => {
+            isDown = false;
+            sliderxlroi.classList.remove('active');
+        });
+        sliderxlroi.addEventListener('mouseup', () => {
+            isDown = false;
+            sliderxlroi.classList.remove('active');
+        });
+        sliderxlroi.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - sliderxlroi.offsetLeft;
+            const walk = (x - startX) * 3; //scroll-fast
+            sliderxlroi.scrollLeft = scrollLeft - walk;
+            //console.log(walk);
+        });
+
     }    
 
     function loadPatchFile(vanbandenId) {

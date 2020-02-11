@@ -71,6 +71,33 @@
             $('#modal-add-edit-VBDDuyetFile').modal('show');
         });
 
+        const sliderchuachuyen = document.querySelector('#table-responsiveChuaChuyen');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        sliderchuachuyen.addEventListener('mousedown', (e) => {
+            isDown = true;
+            sliderchuachuyen.classList.add('active');
+            startX = e.pageX - sliderchuachuyen.offsetLeft;
+            scrollLeft = sliderchuachuyen.scrollLeft;
+        });
+        sliderchuachuyen.addEventListener('mouseleave', () => {
+            isDown = false;
+            sliderchuachuyen.classList.remove('active');
+        });
+        sliderchuachuyen.addEventListener('mouseup', () => {
+            isDown = false;
+            sliderchuachuyen.classList.remove('active');
+        });
+        sliderchuachuyen.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - sliderchuachuyen.offsetLeft;
+            const walk = (x - startX) * 3; //scroll-fast
+            sliderchuachuyen.scrollLeft = scrollLeft - walk;
+            //console.log(walk);
+        });
+
     }
 
     function loadPatchFile(vanbandenId) {

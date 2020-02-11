@@ -17,6 +17,10 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
         public string FirebaseNotifiId { get; set; }
 
+        public string Body { get; set; }
+
+        public string Title { get; set; }
+
         public string TinNhan { get; set; }
 
         public string Imei { get; set; }

@@ -51,6 +51,33 @@
             loadTableDaCCM(true);
         });  
 
+        const sliderdacccm = document.querySelector('#table-responsiveDaChuyenChuyenMon');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        sliderdacccm.addEventListener('mousedown', (e) => {
+            isDown = true;
+            sliderdacccm.classList.add('active');
+            startX = e.pageX - sliderdacccm.offsetLeft;
+            scrollLeft = sliderdacccm.scrollLeft;
+        });
+        sliderdacccm.addEventListener('mouseleave', () => {
+            isDown = false;
+            sliderdacccm.classList.remove('active');
+        });
+        sliderdacccm.addEventListener('mouseup', () => {
+            isDown = false;
+            sliderdacccm.classList.remove('active');
+        });
+        sliderdacccm.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - sliderdacccm.offsetLeft;
+            const walk = (x - startX) * 3; //scroll-fast
+            sliderdacccm.scrollLeft = scrollLeft - walk;
+            //console.log(walk);
+        });
+
     }    
 
     function loadCountVanBanDenChuyenChuyenMon(makv) {

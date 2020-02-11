@@ -294,6 +294,8 @@ namespace NiTiErp
             services.AddTransient<IEmailNoiBoNhanService, EmailNoiBoNhanService>();
             services.AddTransient<IEmailNoiBoNhanFileService, EmailNoiBoNhanFileService>();
 
+            services.AddTransient<IRegisterDocService, RegisterDocService>();
+
             services.AddTransient<IVBAutocompleteService, VBAutocompleteService>();
 
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();

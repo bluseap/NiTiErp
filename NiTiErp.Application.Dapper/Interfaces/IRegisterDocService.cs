@@ -9,9 +9,25 @@ namespace NiTiErp.Application.Dapper.Interfaces
 {
     public interface IRegisterDocService
     {
+        #region DbConnectionString Database NiTiErp
         Task<RegisterDocViewModel> GetById(long id);
+
+        Task<List<RegisterDocViewModel>> GetByAppUserIdCode(Guid appuserId, string code);
 
         Task<PagedResult<RegisterDocViewModel>> GetAllPagingRegister(int corporationId,
             string keyword, int pageIndex, int pageSize);
+
+        Task<List<RegisterDocViewModel>> GetByVBDDuyetId(long vanbandenduyetid);
+
+        #endregion
+
+        #region connect stringErp Database NiTiErp
+        Task<RegisterDocViewModel> GetByIdErp(long id);
+
+        Task<PagedResult<RegisterDocViewModel>> GetAllPagingRegisterErp(int corporationId,
+            string keyword, int pageIndex, int pageSize);
+
+        #endregion
+
     }
 }

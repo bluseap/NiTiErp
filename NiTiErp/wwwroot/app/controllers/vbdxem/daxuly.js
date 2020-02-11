@@ -29,6 +29,33 @@
             loadPatchFileVBDXuLy(vanbandenId);
         }); 
 
+       /* const sliderdaxuly = document.querySelector("#table-responsiveDaXuLy");
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        sliderdaxuly.addEventListener('mousedown', (e) => {
+            isDown = true;
+            sliderdaxuly.classList.add('active');
+            startX = e.pageX - sliderdaxuly.offsetLeft;
+            scrollLeft = sliderdaxuly.scrollLeft;
+        });
+        sliderdaxuly.addEventListener('mouseleave', () => {
+            isDown = false;
+            sliderdaxuly.classList.remove('active');
+        });
+        sliderdaxuly.addEventListener('mouseup', () => {
+            isDown = false;
+            sliderdaxuly.classList.remove('active');
+        });
+        sliderdaxuly.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - sliderdaxuly.offsetLeft;
+            const walk = (x - startX) * 3; //scroll-fast
+            sliderdaxuly.scrollLeft = scrollLeft - walk;
+            //console.log(walk);
+        });
+        */
     }
 
     function loadPatchFileVBDXuLy(vanbandenid) {

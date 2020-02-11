@@ -46,3 +46,12 @@
     display: inline-block;   
 }
 
+.innerWrapper {
+    float: left;
+    margin-right: -32767px;
+}
+.outerWrapper {
+    width: 780px;
+    height: 180px;
+    overflow: hidden;
+}

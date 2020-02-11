@@ -63,6 +63,33 @@
             $('#modal-add-edit-QuaTrinhXuLy').modal('show');
         });
 
+        const sliderluutam = document.querySelector('#table-responsiveLuuTam');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        sliderluutam.addEventListener('mousedown', (e) => {
+            isDown = true;
+            sliderluutam.classList.add('active');
+            startX = e.pageX - sliderluutam.offsetLeft;
+            scrollLeft = sliderluutam.scrollLeft;
+        });
+        sliderluutam.addEventListener('mouseleave', () => {
+            isDown = false;
+            sliderluutam.classList.remove('active');
+        });
+        sliderluutam.addEventListener('mouseup', () => {
+            isDown = false;
+            sliderluutam.classList.remove('active');
+        });
+        sliderluutam.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - sliderluutam.offsetLeft;
+            const walk = (x - startX) * 3; //scroll-fast
+            sliderluutam.scrollLeft = scrollLeft - walk;
+            //console.log(walk);
+        });
+
     } 
 
     function loadCountLuuTam(makv) {

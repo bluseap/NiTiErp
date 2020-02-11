@@ -68,6 +68,34 @@
             chuyenchuyenmon.loadNhanVienXuLyVanBanDen(vanbandenduyetId);
             $('#modal-add-edit-ChuyenChuyenMon').modal('show');  
         });
+
+        const sliderduyettc = document.querySelector('#table-responsiveDuyetTatCa');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        sliderduyettc.addEventListener('mousedown', (e) => {
+            isDown = true;
+            sliderduyettc.classList.add('active');
+            startX = e.pageX - sliderduyettc.offsetLeft;
+            scrollLeft = sliderduyettc.scrollLeft;
+        });
+        sliderduyettc.addEventListener('mouseleave', () => {
+            isDown = false;
+            sliderduyettc.classList.remove('active');
+        });
+        sliderduyettc.addEventListener('mouseup', () => {
+            isDown = false;
+            sliderduyettc.classList.remove('active');
+        });
+        sliderduyettc.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - sliderduyettc.offsetLeft;
+            const walk = (x - startX) * 3; //scroll-fast
+            sliderduyettc.scrollLeft = scrollLeft - walk;
+            //console.log(walk);
+        });
+
     }
 
     function loadPatchFileVBDXuLy(vanbandenid) {

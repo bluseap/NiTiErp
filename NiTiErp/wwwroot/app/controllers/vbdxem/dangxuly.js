@@ -78,6 +78,33 @@
             $('#btnVBDDUyetFileId').hide();
             $('#modal-add-edit-VBDDuyetFile').modal('show');
         });
+
+        const sliderdxl = document.querySelector("#table-responsiveDangXuLy");//'.innerWrapper');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        sliderdxl.addEventListener('mousedown', (e) => {
+            isDown = true;
+            sliderdxl.classList.add('active');
+            startX = e.pageX - sliderdxl.offsetLeft;
+            scrollLeft = sliderdxl.scrollLeft;
+        });
+        sliderdxl.addEventListener('mouseleave', () => {
+            isDown = false;
+            sliderdxl.classList.remove('active');
+        });
+        sliderdxl.addEventListener('mouseup', () => {
+            isDown = false;
+            sliderdxl.classList.remove('active');
+        });
+        sliderdxl.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - sliderdxl.offsetLeft;
+            const walk = (x - startX) * 3; //scroll-fast
+            sliderdxl.scrollLeft = scrollLeft - walk;
+            //console.log(walk);
+        });
     }
 
     function loadDangXuLyData() {

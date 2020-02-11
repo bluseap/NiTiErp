@@ -43,7 +43,7 @@
         });
 
         $('#btnCCMTimNhanVien').on('click', function () {
-            LoadTableHoSo();
+            LoadTableHoSo();            
         });
 
         $('#txtCCMTimNhanVien').on('keypress', function (e) {
@@ -155,6 +155,8 @@
                         var makv = $('#ddlKhuVuc').val();
                         loadCountVanBanDenChuaCCM(makv);
                         loadCountVanBanDenChuyenChuyenMon(makv);
+
+                        sendNotificationToAppUser(vanbandenduyetId);
                     }
 
                     $('#txtButPheLanhDao').val('');
@@ -597,6 +599,56 @@
                 tedu.stopLoading();
             }
         });
+    }
+
+    function sendNotificationToAppUser(vanbandenduyetid) {
+        $.ajax({
+            type: "GET",
+            url: "/Admin/RegisterDoc/GetByVBDDuyetId",
+            data: {
+                vanbandenduyetId: vanbandenduyetid
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var registerdoc = response.Result;
+
+                $.each(registerdoc, function (i, item) {
+                    SendNotifiToAndroid(item.Body, item.Title, item.FirebaseNotifiId);
+                });
+                
+                tedu.stopLoading();
+            },
+            error: function (status) {
+                tedu.notify('Gửi thông báo lỗi! Kiểm tra lại.', 'error');
+                tedu.stopLoading();
+            }
+        });         
+    }
+
+    function SendNotifiToAndroid(Body, Title, FirebasenotifiId) {
+        $.ajax({
+            type: "GET",
+            url: "/Admin/SendNotification/SendNotifiToAndroid",
+            data: {
+                body: Body,
+                title: Title,
+                firebasenotifiid: FirebasenotifiId
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                tedu.stopLoading();
+            },
+            error: function (status) {
+                tedu.notify('Nhân viên đã đăng ký rồi! Kiểm tra lại.', 'error');
+                tedu.stopLoading();
+            }
+        });       
     }
 
 }
