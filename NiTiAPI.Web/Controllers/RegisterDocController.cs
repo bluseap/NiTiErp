@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 using NiTiAPI.Web.Extensions;
 using NiTiAPI.Web.Resources;
+using NiTiAPI.Web.Filters;
 
 using NiTiErp.Application.Dapper.ViewModels;
 using NiTiErp.Application.Dapper.Interfaces;
@@ -42,7 +43,17 @@ namespace NiTiAPI.Web.Controllers
         {
             return await _registerdocService.GetByIdErp(id);
         }
-       
+
+        [HttpPost]
+        [ValidateModel]
+        public async Task<IActionResult> CreateRegisterDoc(string firebasenotifiId, string username,
+            string softId, string softName, string platformImei)
+        {
+            var newId = await _registerdocService.CreateRegisterDoc(firebasenotifiId, username, 
+                softId, softName, platformImei);
+            return Ok(newId);
+        }
+
 
     }
 }

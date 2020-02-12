@@ -156,6 +156,8 @@
 
                     $('#hidChuaXuLyXuLyLai').val("0");
 
+                    sendNotificationToAppUser(vanbandenduyetId);
+
                     loadTableVBDChuaXuLy2(true);
                     tedu.stopLoading();
                 }
@@ -209,6 +211,8 @@
                     $('#modal-add-edit-ChuaXuLyXuLy').modal('hide');
 
                     $('#hidChuaXuLyXuLyLai').val("0");
+
+                    sendNotificationToAppUser(vanbandenduyetId);
 
                     tedu.stopLoading();
                 }
@@ -596,6 +600,79 @@
                     tedu.configs.pageIndex = p;
                     setTimeout(callBack(), 200);
                 }
+            }
+        });
+    }
+
+    function sendNotificationToAppUser(vanbandenduyetid) {
+        $.ajax({
+            type: "GET",
+            url: "/Admin/RegisterDoc/GetByVBDDuyetId",
+            data: {
+                vanbandenduyetId: vanbandenduyetid
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var registerdoc = response.Result;
+
+                $.each(registerdoc, function (i, item) {
+                    SendNotifiToAndroid(item.Body, item.Title, item.FirebaseNotifiId, vanbandenduyetid);
+                });
+
+                tedu.stopLoading();
+            },
+            error: function (status) {
+                tedu.notify('Gửi thông báo lỗi! Kiểm tra lại.', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function SendNotifiToAndroid(Body, Title, FirebasenotifiId, vanbandenduyetid) {
+        $.ajax({
+            type: "GET",
+            url: "/Admin/SendNotification/SendNotifiToAndroid",
+            data: {
+                body: Body,
+                title: Title,
+                firebasenotifiid: FirebasenotifiId
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                registerDocSendAdd(vanbandenduyetid, FirebasenotifiId);
+                tedu.stopLoading();
+            },
+            error: function (status) {
+                tedu.notify('Nhân viên đã đăng ký rồi! Kiểm tra lại.', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function registerDocSendAdd(vanbandenduyetid, firebasenotifiid) {
+        $.ajax({
+            type: "POST",
+            url: "/Admin/RegisterDocSend/CreateSend",
+            data: {
+                vanbandenduyetId: vanbandenduyetid,
+                firebasenotifiId: firebasenotifiid
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function () {
+
+                tedu.stopLoading();
+            },
+            error: function () {
+                tedu.stopLoading();
             }
         });
     }

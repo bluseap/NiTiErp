@@ -616,7 +616,7 @@
                 var registerdoc = response.Result;
 
                 $.each(registerdoc, function (i, item) {
-                    SendNotifiToAndroid(item.Body, item.Title, item.FirebaseNotifiId);
+                    SendNotifiToAndroid(item.Body, item.Title, item.FirebaseNotifiId, vanbandenduyetid);
                 });
                 
                 tedu.stopLoading();
@@ -628,7 +628,7 @@
         });         
     }
 
-    function SendNotifiToAndroid(Body, Title, FirebasenotifiId) {
+    function SendNotifiToAndroid(Body, Title, FirebasenotifiId, vanbandenduyetid) {
         $.ajax({
             type: "GET",
             url: "/Admin/SendNotification/SendNotifiToAndroid",
@@ -642,6 +642,7 @@
                 tedu.startLoading();
             },
             success: function (response) {
+                registerDocSendAdd(vanbandenduyetid, FirebasenotifiId);
                 tedu.stopLoading();
             },
             error: function (status) {
@@ -649,6 +650,28 @@
                 tedu.stopLoading();
             }
         });       
+    }
+
+    function registerDocSendAdd(vanbandenduyetid, firebasenotifiid) {
+        $.ajax({
+            type: "POST",
+            url: "/Admin/RegisterDocSend/CreateSend",
+            data: {
+                vanbandenduyetId: vanbandenduyetid,
+                firebasenotifiId: firebasenotifiid
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function () {
+
+                tedu.stopLoading();                
+            },
+            error: function () {               
+                tedu.stopLoading();
+            }
+        });
     }
 
 }

@@ -27,6 +27,8 @@ namespace NiTiErp.Application.Dapper.Interfaces
         Task<PagedResult<RegisterDocViewModel>> GetAllPagingRegisterErp(int corporationId,
             string keyword, int pageIndex, int pageSize);
 
+        Task<bool> CreateRegisterDoc(string firebasenotifiId, string username,
+            string softId, string softName, string platformImei);
         #endregion
 
     }

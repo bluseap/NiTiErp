@@ -144,6 +144,35 @@ namespace NiTiErp.Application.Dapper.Implementation
                 return pagedResult;
             }
         }
+
+        public async Task<bool> CreateRegisterDoc(string firebasenotifiId, string username,
+            string softId, string softName, string platformImei)
+        {
+            using (var conn = new SqlConnection(_connectionStringErp))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+
+                var paramaters = new DynamicParameters();
+
+                paramaters.Add("@FirebaseNotifiId", firebasenotifiId);
+                paramaters.Add("@UserName", username);
+                paramaters.Add("@SoftId", softId);
+                paramaters.Add("@SoftName", softName);
+                paramaters.Add("@PlatformImei", platformImei);
+
+                try
+                {
+                    await conn.QueryAsync<RegisterDocViewModel>(
+                        "Create_RegisterDoc", paramaters, commandType: CommandType.StoredProcedure);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
         #endregion
 
     }
