@@ -59,7 +59,7 @@
                     $.getJSON("http://jsonip.com?callback=?", function (data) {
                         //$(".ip").text(data.ip);
                         var ipAddress = data.ip;
-                        alert(ipAddress);
+                        //alert(ipAddress);
                     });
 
                 }

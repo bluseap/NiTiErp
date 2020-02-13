@@ -33,6 +33,8 @@ using NiTiAPI.Dapper.Repositories.Interfaces;
 using NiTiAPI.Web.Resources;
 using NiTiErp.Application.Dapper.Interfaces;
 using NiTiErp.Application.Dapper.Implementation;
+using NiTiErp.Data.EF;
+using Microsoft.EntityFrameworkCore;
 
 namespace NiTiAPI.Web
 {
@@ -55,8 +57,14 @@ namespace NiTiAPI.Web
             services.AddTransient<IPostRepository, PostRepository>();
             services.AddTransient<ICategoryNewsRepository, CategoryNewsRepository>();
 
-            services.AddIdentity<AppUser, AppRole>()
+
+            services.AddTransient<IUserStore<AppUserPoDoc>, UserDocStore>();
+            services.AddIdentity<AppUserPoDoc, AppRole>()
                 .AddDefaultTokenProviders();
+            //services.AddIdentity<AppUser, AppRole>()
+            //    .AddDefaultTokenProviders();
+            
+
 
             services.AddTransient<IRegisterDocService, RegisterDocService>();
 

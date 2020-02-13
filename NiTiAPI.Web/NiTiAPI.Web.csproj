@@ -20,6 +20,8 @@
   <ItemGroup>
     <ProjectReference Include="..\NiTiAPI.Dapper\NiTiAPI.Dapper.csproj" />
     <ProjectReference Include="..\NiTiErp.Application.Dapper\NiTiErp.Application.Dapper.csproj" />
+    <ProjectReference Include="..\NiTiErp.Data.EF\NiTiErp.Data.EF.csproj" />
+    <ProjectReference Include="..\NiTiErp.Data\NiTiErp.Data.csproj" />
   </ItemGroup>
 
 </Project>
