@@ -1,0 +1,176 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+}
+@section Scripts{
+
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+
+    <script src="~/app/controllers/hoso/nghiviec.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/hoso/filehoso.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/hoso/index.js" asp-append-version="true"></script>
+    <script>
+        var hoso = new hosoController();
+        hoso.initialize();
+    </script>
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link ">
+                    Hồ sơ nhân viên
+                </a>
+                >>
+                <a class="btn btn-link btnNhapHoSoNhanVien">
+                    Nhập hồ sơ nhân viên
+                </a>
+            </small>
+        </div>
+        <div class="title_right">
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <button class="btn btn-round btn-warning" id="btn-create" type="button">Tạo mới Hồ sơ</button>
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="x_content">
+        <div class="">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>  <small> </small></h3>
+                </div>
+                <div class="title_right">
+                    <div class="col-md-5 col-sm-2 col-xs-12 form-group pull-right">
+                        <div class="input-group">
+                            <select id="ddlDieuKienTim" class="form-control"></select>
+                        </div>
+                    </div>                    
+
+                </div>
+            </div>
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>  <small>Danh sách nhân viên</small></h3>
+                </div>
+                <div class="title_right">
+
+                    <div class="col-md-5 col-sm-2 col-xs-12 form-group pull-right">
+                        <div class="input-group">
+                            <input type="text" id="txtTimNhanVien" class="form-control" placeholder="Từ khóa...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" id="btnTimNhanVien" type="button">Tìm !</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-2 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                            <select id="ddlPhongBan" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                            <select id="ddlKhuVuc" class="form-control"></select>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="x_panel">
+                    <div class="row no-print">
+                        <div class="col-xs-12">
+                            <button class="btn btn-info pull-right" id="btnXuatExcel" style="margin-right: 5px;"><i class="fa fa-download"></i> Xuất Excel</button>
+                            <button class="btn btn-default pull-right" id="btnInHoSo"><i class="fa fa-print"></i> Print</button>
+                        </div>
+                    </div>
+                    <div class="table-responsive" id="table-responsiveHoSo">
+                        <table id="tblHoSoNhanVien" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th width="20px">#</th>
+                                    <th>Họ và tên</th>
+                                    <th>Hình </th>
+                                    <th>Khu vực</th>
+                                    <th>Phòng, tổ</th>
+                                    <th>Chức vụ</th>
+                                    <th>Ngày sinh</th>
+                                    @*<th>Ngày tạo</th>*@
+                                    <th>Trạng thái</th>
+                                    <th width="=5%"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblContentHoSoNhanVien"></tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <div class="dataTables_info" id="datatable-checkbox_infoHoSo" role="status" aria-live="polite">
+                                    <select id="ddl-show-pageHoSoNhanVien">
+                                        <option value="10" selected="selected">10</option>
+                                        <option value="20">20</option>
+                                        <option value="30">30</option>
+                                        <option value="50">50</option>
+                                    </select>
+                                    <span class="item-per-page">
+                                        dòng/trang.
+                                    </span>
+                                    Tổng cộng: <strong id="lblHoSoNhanVienTotalRecords"></strong>
+                                </div>
+                            </div><div class="col-sm-7">
+                                <div class="dataTables_paginate" id="datatable-checkbox_paginateHoSoNhanVien">
+                                    <ul id="paginationULHoSoNhanVien"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script id="table-HoSoNhanVien" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row">
+                <a class="btn btn-lg btn-edit" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa hồ sơ"><i class="fa fa-pencil-square-o" style='color:#f15f5f'></i> </a>
+                <a class="btn btn-lg btn-fileHoSo" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="File hồ sơ"><i class="fa fa-file-archive-o" style='color:deepskyblue'></i> </a>
+            </th>
+            <td>{{Ten}}</td>
+            <td>{{{HinhNhanVien}}}</td>
+            <td>{{TenKhuVuc}}</td>
+            <td>{{TenPhong}}</td>
+            <td>{{TenChucVu}}</td>
+            <td>{{NgaySinh}}</td>
+            @*<td>{{CreateDate}}</td>*@
+            <td>{{{Status}}}</td>
+            <th scope="row">
+                <a class="btn btn-lg btn-editNghiViec" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Nghĩ việc"><i class="fa fa-location-arrow" ></i> </a>
+            </th>
+        </tr>
+    </script>
+
+</div>
+
+<partial name="_AddEditModel.cshtml" />
+<partial name="_InHoSoNhanVien.cshtml" />
+<partial name="_FileHoSo.cshtml" />
+<partial name="_NghiViec" />
+
+@*@Html.Partial("_AddEditModel.cshtml")
+    @Html.Partial("_InHoSoNhanVien.cshtml")*@
+

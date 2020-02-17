@@ -1,0 +1,52 @@
+﻿<div id="modal-add-edit-ThongBao" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Tạo mới / Sửa Thông báo</h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainThongBao">
+                        <input type="hidden" id="hidThongBaoId" value="" />
+                        <input type="hidden" id="hidInsertThongbaoId" value="" />
+
+                        <div class="form-group">
+                            <label for="lbAddEditTenKhuVuc" class="control-label col-md-2 col-sm-2 col-xs-12 ">Khu vực</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlAddEditKhuVuc" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbAddEditTieuDe" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tiêu đề</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditTieuDe" placeholder="Tiêu đề">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbAddEditUploadFile1" class="control-label col-md-2 col-sm-2 col-xs-12 ">File nội dung</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="hidden" id="hidUploadFile1Id" value="" />
+                                <div id="imagelistUploadFile1" class="col-md-12">
+                                </div>
+                                <input type="file" id="fileInputUploadFile1" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbAddEditNoiDung" class="control-label col-md-2 col-sm-2 col-xs-12 ">Nội dung</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditNoiDung" placeholder="Nội dung">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnSaveThongBao" class="btn btn-success">Lưu</button>
+                                <button type="button" id="btnCanceThongBao" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿<div id="modal-add-edit-ThemCoQuan" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Thêm mới cơ quan ban hành </h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainThemCoQuan">
+                        <input type="hidden" id="hidThemCoQuanId" value="" />
+
+                        <input type="hidden" id="hidInsertThemCoQuanId" value="" />
+
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbThemMoiCoQuanBanHanh">Tên cơ quan ban hành văn bản mới <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtThemMoiCoQuanBanHanh" class="form-control has-feedback-right" id="txtThemMoiCoQuanBanHanh" placeholder="Tên cơ quan ban hành mới">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbSTTThemMoiCoQuanBanHanh">Số thứ tự </label>
+                                <input type="number" name="txtSTTThemMoiCoQuanBanHanh" class="form-control has-feedback-right" id="txtSTTThemMoiCoQuanBanHanh" >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnSaveThemCoQuan" class="btn btn-primary">Lưu </button>
+                                <button type="button" id="btnCancelThemCoQuan" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="ln_solid"></div>
+
+            </div>
+        </div>
+    </div>
+</div>

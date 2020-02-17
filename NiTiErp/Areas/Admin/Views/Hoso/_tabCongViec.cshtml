@@ -1,0 +1,82 @@
+﻿
+<form class="form-horizontal form-label-left input_mask" role="form" id="frmMainCongViec">
+    <input type="hidden" id="hidCongViecId" value="0" />
+
+    <input type="hidden" id="hidInsertCongViecId" value="" />
+    <input type="hidden" id="hidUpdateCongViecId" value="" />
+    <input type="hidden" id="hidTabCongViecHoSoId" value="" />
+
+    <div class="form-group">
+        <label for="lbCongTyXiNghiep" class="control-label col-md-2 col-sm-2 col-xs-12 ">Công ty, Xí nghiệp</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <select id="ddlCongTyXiNghiep" class="form-control"></select>
+        </div>
+        <label for="lbPhongBan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Phòng, ban</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <select id="ddlPhongtabCongViec" class="form-control"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lbChucVu" class="control-label col-md-2 col-sm-2 col-xs-12">Chức vụ</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <select id="ddlChucVuNhanVien" class="form-control"></select>
+        </div>
+        <label for="lbCongTacChinh" class="control-label col-md-2 col-sm-2 col-xs-12 ">Công tác chính</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" class="form-control has-feedback-right" id="txtCongTacChinh" placeholder="Công tác chính">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lbSoQuyetDinhCongViec" class="control-label col-md-2 col-sm-2 col-xs-12">Số quyết định</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" class="form-control has-feedback-right" id="txtSoQuyetDinhCongViec" placeholder="Số quyết định">
+        </div>
+        <label for="lbTenQuyetDinhCongViec" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tên quyết định</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" class="form-control has-feedback-right" id="txtTenQuyetDinhCongViec" placeholder="Tên quyết định">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lbNgayKyCongViec" class="control-label col-md-2 col-sm-2 col-xs-12">Ngày ký</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" name="txtNgayKyCongViec" class="form-control has-feedback-right" id="txtNgayKyCongViec" placeholder="Ngày ký">
+        </div>
+        <label for="lbNgayHieuLucCongViec" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày hiệu lực</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" name="txtNgayHieuLucCongViec" class="form-control has-feedback-right" id="txtNgayHieuLucCongViec" placeholder="Ngày hiệu lực">
+        </div>
+    </div>
+</form>
+
+<div class="table-responsive">
+    <table id="tbl-CongViecChiTiet" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Tên quyết định</th>
+                <th>Ghi chú</th>
+                <th>Ngày ký</th>
+                <th>Ngày hiệu lực</th>
+            </tr>
+        </thead>
+        <tbody id="tbl-contentCongViecChiTiet"></tbody>
+    </table>
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="dataTables_info" id="datatable-checkbox_infoCongViecChiTiet" role="status" aria-live="polite">                
+                Tổng cộng: <strong id="lbl-total-recordsCongViecChiTiet"></strong>
+            </div>
+        </div><div class="col-sm-7">
+            <div class="dataTables_paginate" id="datatable-checkbox_paginateCongViecChiTiet">
+                <ul id="paginationULCongViecChiTiet"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="table-CongViecChiTiet" type="x-tmpl-mustache">
+    <tr>
+        <td>{{TempTenLoaiQuyeDinh}}</td>
+        <td>{{TempNoiDung}}</td>
+        <td>{{TempNgayKyQuyetDinh}}</td>
+        <td>{{TempNgayHieuLuc}}</td>
+    </tr>
+</script>

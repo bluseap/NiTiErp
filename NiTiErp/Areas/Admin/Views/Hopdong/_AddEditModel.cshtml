@@ -1,0 +1,215 @@
+﻿<div id="modal-add-edit-HopDong" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Tạo mới / Sửa Hợp đồng nhân viên</h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainTrinhDo">
+                        <input type="hidden" id="hidHopDongNhanVienCuId" value="" />
+                        <input type="hidden" id="hidHopDongNhanVienMoiId" value="" />
+                        <input type="hidden" id="hidHoSoId" value="" />
+
+                        <input type="hidden" id="hidHopDongId" value="" />
+                        <input type="hidden" id="hidInsertHopDongId" value="" />
+
+                        <input type="hidden" id="hidHeSoLuongDanhMucCuId" value="" />
+                        <input type="hidden" id="hidHeSoLuongDanhMucId" value="" />
+
+                        <div class="form-group">
+                            <label for="lbSoHopDong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Họ tên</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtHoTenChiTiet" placeholder="Họ và tên">
+                            </div>
+                            <label for="lbLoaiHopDong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tên phòng, tổ</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtTenPhongChiTiet" placeholder="Tên phòng, tổ">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbSoHopDong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Số hợp đồng</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtSoHopDong" placeholder="Số hợp đồng">
+                            </div>
+                            <label for="lbLoaiHopDong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Loại hợp đồng</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlLoaiHopDongChiTietCu" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbNgayKyHopDong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày ký</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgayKyHopDong" placeholder="Ngày ký hợp đồng">
+                            </div>
+                            <label for="lbNgayHopDong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày hợp đồng</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgayHopDong" placeholder="Ngày hợp đồng">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbNgayHieuLuc" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày hiệu lực</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgayHieuLuc" placeholder="Ngày hiệu lực">
+                            </div>
+                            <label for="lbNgayHetHan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày hết hạn</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgayHetHan" placeholder="Ngày hết hạn">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbChucVuKyHopDongCu" class="control-label col-md-2 col-sm-2 col-xs-12 ">Chức vụ ký hợp đồng</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlChucVuKyHopDongChiTietCu" class="form-control"></select>
+                            </div>
+                            <label for="lbTenKyHopDongCu" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tên người sử dụng lao động cũ</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" name="txtTenKyHopDongCu" class="form-control has-feedback-right" id="txtTenKyHopDongCu" placeholder="Tên người sử dụng lao động cũ">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbHeSoLuongCoBan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Hệ số</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtHeSoLuongCoBan" placeholder="Hệ số lương cơ bản">
+                            </div>
+                            <label for="lbLuongCoBan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Lương cơ bản</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtLuongCoBan" placeholder="Lương cơ bản">
+                            </div>
+                        </div>
+
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <label for="lbSoHopDongMoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Số hợp đồng mới</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtSoHopDongMoi" placeholder="Số hợp đồng mới">
+                            </div>
+                            <label for="lbLoaiHopDongMoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Loại hợp đồng mới</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlLoaiHopDongChiTietMoi" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbNgayKyHopDongMoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày ký mới</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgayKyHopDongMoi" placeholder="Ngày ký hợp đồng mới">
+                            </div>
+                            <label for="lbNgayHopDongMoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày hợp đồng mới</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgayHopDongMoi" placeholder="Ngày hợp đồng mới">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbNgayHieuLucMoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày hiệu lực mới</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgayHieuLucMoi" placeholder="Ngày hiệu lực mới">
+                            </div>
+                            <label for="lbNgayHetHanMoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày hết hạn mới</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgayHetHanMoi" placeholder="Ngày hết hạn mới">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbChucVuKyHopDongMoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Chức vụ ký hợp đồng mới</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlChucVuKyHopDongChiTietMoi" class="form-control"></select>
+                            </div>
+                            <label for="lbTenKyHopDongMoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tên người sử dụng lao động mới</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtTenKyHopDongMoi" placeholder="Tên người sử dụng lao động mới">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbHeSoLuongCoBanMoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Hệ số mới</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtHeSoLuongCoBanMoi" placeholder="Hệ số lương cơ bản mới">
+                            </div>
+                            <label for="lbLuongCoBanMoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Lương cơ bản mới</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtLuongCoBanMoi" placeholder="Lương cơ bản mới">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnSaveHopDong" class="btn btn-success">Lưu</button>
+                                <button type="button" id="btnCancelHopDong" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row no-print">
+                    <div class="col-xs-12">
+                        <button class="btn btn-info pull-right" id="btnXuatExcelHopDongChiTiet" style="margin-right: 5px;">
+                            <i class="fa fa-download"></i>
+                            Xuất Excel
+                        </button>
+                        <button class="btn btn-default pull-right" id="btnInHopDongChiTiet">
+                            <i class="fa fa-print"></i>
+                            Print
+                        </button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table id="tbl-HopDongChiTiet" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th width="=20%">#</th>
+
+                                <th>Số hợp đồng</th>
+                                <th>Loại hợp đồng</th>
+                                <th>Hệ số</th>
+                                <th>Lương cơ bản</th>
+                                <th>Ngày hiệu lực</th>
+                                <th>Ngày hết hạn</th>
+                                <th>Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbl-contentHopDongChiTiet"></tbody>
+                    </table>
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="dataTables_info" id="datatable-checkbox_infoHopDongChiTiet" role="status" aria-live="polite">
+                                <select id="ddl-show-pageHopDongChiTiet">
+                                    <option value="10" selected="selected">10</option>
+                                    <option value="20">20</option>
+                                    <option value="30">30</option>
+                                    <option value="50">50</option>
+                                </select>
+                                <span class="item-per-page">
+                                    dòng/trang.
+                                </span>
+                                Tổng cộng: <strong id="lbl-total-recordsHopDongChiTiet"></strong>
+                            </div>
+                        </div><div class="col-sm-7">
+                            <div class="dataTables_paginate" id="datatable-checkbox_paginateHopDongChiTiet">
+                                <ul id="paginationULHopDongChiTiet"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script id="table-HopDongChiTiet" type="x-tmpl-mustache">
+                    <tr>
+                        <th scope="row">
+                            <a class="btn btn-lg btn-editHopDongChiTiet" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa hồ sơ"><i class="fa fa-pencil"></i> </a>
+                        </th>
+                        
+                        <td>{{SoHopDong}}</td>
+                        <td>{{HopDongDanhMucId}}</td>
+                        <td>{{HeSoLuong}}</td>
+                        <td>{{LuongCoBan}}</td>
+                        <td>{{NgayHieuLuc}}</td>
+                        <td>{{NgayHetHan}}</td>
+                        <td>{{{Status}}}</td>
+
+
+                    </tr>
+                </script>
+
+            </div>
+        </div>
+    </div>
+</div>

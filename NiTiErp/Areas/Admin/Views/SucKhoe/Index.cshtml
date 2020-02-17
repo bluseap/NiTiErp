@@ -1,0 +1,211 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+}
+@section Scripts{
+
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+
+    <script src="~/app/controllers/suckhoe/addeditsuckhoe.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/suckhoe/index.js" asp-append-version="true"></script>
+    <script>
+        var suckhoe = new suckhoeController();
+        suckhoe.initialize();
+    </script>
+}
+
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <small>
+                    <a class="btn btn-link ">
+                        Sức khỏe nhân viên
+                    </a>
+                    >>
+                    <a class="btn btn-link btnNhapHoSoNhanVien">
+                        Nhập tình trạng sức khỏe nhân viên
+                    </a>
+                </small>
+            </div>
+            <div class="title_right">
+                <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                    <button class="btn btn-round btn-warning" id="btn-create" type="button">Tạo mới</button>
+                </div>
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="x_content">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>  <small>Danh sách sức khỏe nhân viên</small></h3>
+                    </div>
+                    <div class="title_right">                        
+                        <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="txtNamKham" placeholder="Năm khám sức khỏe">
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right top_search">
+                            <div class="input-group">
+                                <label for="lbNamKham" class="control-label  ">Năm khám</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>  <small></small></h3>
+                    </div>
+                    <div class="title_right">
+                        <div class="col-md-5 col-sm-2 col-xs-12 form-group pull-right">
+                            <div class="input-group">
+                                <input type="text" id="txtTimNhanVien" class="form-control" placeholder="Từ khóa...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" id="btnTimNhanVien" type="button">Tìm !</button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-2 col-xs-12 form-group pull-right top_search">
+                            <div class="input-group">
+                                <select id="ddlPhongBan" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
+                            <div class="input-group">
+                                <select id="ddlKhuVuc" class="form-control"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-2 col-sm-12 col-xs-12 form-group pull-right">
+                        <button class="btn btn-info pull-right" id="btnXuatExcelSucKhoe" style="margin-right: 5px;">
+                            <i class="fa fa-download"></i>
+                            Xuất Excel
+                        </button>
+                    </div>
+                    <div class="col-md-3 col-sm-12 col-xs-12 form-group pull-right">
+                        <select id="ddlDieuKienKhac" class="form-control"></select>
+                    </div>
+                    <div class="col-md-3 col-sm-12 col-xs-12 form-group pull-right">
+                        <label class="control-label pull-right">Điều kiện khác</label>
+                    </div>
+
+                </div>
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="x_panel">                        
+                        <div class="table-responsive" id="table-responsiveSucKhoe">
+                            <table id="tblSucKhoe" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th width="=20%">#</th>
+                                        <th>Năm khám</th>
+                                        <th>Họ và tên</th>
+                                        <th>Khu vực</th>
+                                        <th>Phòng, tổ</th>
+                                        <th>Năm sinh</th>
+                                        <th>Giới tính</th>
+                                        <th>Cân năng</th>
+                                        <th>Chiều cao</th>
+                                        <th>Huyết áp</th>
+                                        <th>Mắt</th>
+                                        <th>Tai mũi họng</th>
+                                        <th>Răng hàm mặt</th>
+                                        <th>Siêu âm vùng bụng</th>
+                                        <th>XQ tim phổi</th>
+                                        <th>Đo điện tim</th>
+                                        <th>Phụ khoa</th>
+                                        <th>Phết TB âm đạo</th>
+                                        <th>Công thức máu</th>
+                                        <th>TPTNT</th>
+                                        <th>Gluco đường</th>
+                                        <th>Nhóm máu</th>
+                                        <th>Phân loại sức khỏe</th>
+                                        <th>Tên bệnh</th>
+                                        <th>Hướng điều trị</th>
+
+                                        <th>Trạng thái</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblContentSucKhoe"></tbody>
+                            </table>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <div class="dataTables_info" id="datatable-checkbox_infoSucKhoe" role="status" aria-live="polite">
+                                        <select id="ddl-show-pageSucKhoe">
+                                            <option value="10" selected="selected">10</option>
+                                            <option value="20">20</option>
+                                            <option value="30">30</option>
+                                            <option value="50">50</option>
+                                        </select>
+                                        <span class="item-per-page">
+                                            dòng/trang.
+                                        </span>
+                                        Tổng cộng: <strong id="lblSucKhoeTotalRecords"></strong>
+                                    </div>
+                                </div><div class="col-sm-7">
+                                    <div class="dataTables_paginate" id="datatable-checkbox_paginateSucKhoe">
+                                        <ul id="paginationULSucKhoe"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script id="table-SucKhoe" type="x-tmpl-mustache">
+            <tr>
+                <th scope="row">
+                    <a class="btn btn-lg btn-editSucKhoe" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa hồ sơ"><i class="fa fa-pencil"></i> </a>
+                    <a class="btn btn-lg btn-deleteSucKhoe" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xóa Sức khỏe">
+                        <i class="fa fa-bitbucket"></i>
+                    </a>
+                </th>
+                <td>{{NamKham}}</td>
+                <td>{{Ten}}</td>
+                <td>{{TenKhuVuc}}</td>
+                <td>{{TenPhong}}</td>
+                <td>{{NgaySinh}}</td>
+                <td>{{{GioiTinh}}}</td>
+
+                <td>{{CanNang}}</td>
+                <td>{{ChieuCao}}</td>
+                <td>{{HuyetAp}}</td>
+                <td>{{Mat}}</td>
+                <td>{{TaiMuiHong}}</td>
+                <td>{{RangHamMat}}</td>
+                <td>{{SieuAmVungBung}}</td>
+                <td>{{XQTimPhoi}}</td>
+                <td>{{DoDienTim}}</td>
+                <td>{{PhuKhoa}}</td>
+                <td>{{PhetTBAmDao}}</td>
+                <td>{{CongThucMau}}</td>
+                <td>{{TPTNT}}</td>
+                <td>{{GlucoDuong}}</td>
+                <td>{{NhomMau}}</td>
+                <td>{{PhanLoaiSucKhoe}}</td>
+                <td>{{TenBenh}}</td>
+                <td>{{HuongDieuTri}}</td>
+
+                <td>{{{Status}}}</td>
+            </tr>
+        </script>
+    </div>
+
+<partial name="_AddEditModel.cshtml" />

@@ -1,0 +1,151 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+}
+@section Scripts{
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+
+    <script src="~/app/controllers/daotao/daotaodangky.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/daotao/addeditdaotao.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/daotao/index.js" asp-append-version="true"></script>
+    <script>
+        var daotao = new daotaoController();
+        daotao.initialize();
+    </script>
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link ">
+                    Đào tạo
+                </a>
+                >>
+                <a class="btn btn-link btnDiaDiemDaoTao">
+                    Lớp Đào tạo
+                </a>
+            </small>
+        </div>
+        <div class="title_right">
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <button class="btn btn-round btn-warning" id="btn-create" type="button">Tạo mới</button>
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="x_content">
+        <div class="">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>  <small>Danh sách lớp Đào tạo</small></h3>
+                </div>
+                <div class="title_right">
+                    <div class="col-md-5 col-sm-2 col-xs-12 form-group pull-right">
+                        <div class="input-group">
+                            <input type="text" id="txtTimNhanVien" class="form-control" placeholder="Từ khóa...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" id="btnTimNhanVien" type="button">Tìm !</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-2 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                            <select id="ddlDaoTaoNoi" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            @*<div class="row">
+                    <div class="col-md-2 col-sm-12 col-xs-12 form-group pull-right">
+                        <button class="btn btn-info pull-right" id="btnXuatExcelDaoTaoNoi" style="margin-right: 5px;">
+                            <i class="fa fa-download"></i>
+                            Xuất Excel
+                        </button>
+                    </div>
+                </div>*@
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="x_panel">
+                    <div class="table-responsive" id="table-responsiveDaoTao">
+                        <table id="tblDaoTao" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th width="=20%">#</th>
+                                    <th>Loại đào tạo</th>
+                                    <th>Loại bằng</th>
+                                    <th>Chuyên môn</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Trường đào tạo</th>
+                                    <th>Ngày bắt đầu</th>
+                                    <th>Ngày kết thúc</th>
+                                    <th>Số lượng đăng ký</th>
+                                    <th>Số lượng thực học</th>
+                                    <th>Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblContentDaoTao"></tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <div class="dataTables_info" id="datatable-checkbox_infoDaoTao" role="status" aria-live="polite">
+                                    <select id="ddl-show-pageDaoTao">
+                                        <option value="10" selected="selected">10</option>
+                                        <option value="20">20</option>
+                                        <option value="30">30</option>
+                                        <option value="50">50</option>
+                                    </select>
+                                    <span class="item-per-page">
+                                        dòng/trang.
+                                    </span>
+                                    Tổng cộng: <strong id="lblDaoTaoTotalRecords"></strong>
+                                </div>
+                            </div><div class="col-sm-7">
+                                <div class="dataTables_paginate" id="datatable-checkbox_paginateDaoTao">
+                                    <ul id="paginationULDaoTao"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script id="table-DaoTao" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row">
+                <a class="btn btn-lg btn-editDaoTao" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa "><i class="fa fa-pencil"></i> </a>
+                <a class="btn btn-lg btn-AddNhanVienDaoTao" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Nhập Nhân viên đào tạo "><i class="fa fa-user-md"></i> </a>            
+    @*<a class="btn btn-lg btn-deleteDaoTao" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xóa ">
+                    <i class="fa fa-bitbucket"></i>
+                </a>*@
+            </th>
+            <td>{{TenLoaiHinhDaoTao}}</td>
+            <td>{{TenLoaiBang}}</td>
+            <td>{{ChuyenMon}}</td>
+            <td>{{DiaChiHoc}}</td>
+            <td>{{TenTruong}}</td>
+            <td>{{NgayBatDau}}</td>
+            <td>{{NgayKetThuc}}</td>
+            <td>{{SoLuongDangKy}}</td>
+            <td>{{SoLuongHoc}}</td>
+            <td>{{{Status}}}</td>
+        </tr>
+    </script>
+</div>
+
+<partial name="_AddEditModel.cshtml" />
+<partial name="_DaoTaoDangKy.cshtml" />

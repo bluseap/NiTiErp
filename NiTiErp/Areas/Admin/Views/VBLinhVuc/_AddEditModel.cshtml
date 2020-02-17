@@ -1,0 +1,48 @@
+﻿
+<div id="modal-add-edit-VanBanLinhVuc" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Thêm mới danh mục lĩnh vực văn bản </h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainVanBanLinhVuc">
+                        <input type="hidden" id="hidVanBanLinhVucId" value="" />
+
+                        <input type="hidden" id="hidInsertVanBanLinhVucId" value="" />
+
+
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbVanBanLinhVucTen">Tên danh mục lĩnh vực văn bản <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtVanBanLinhVucTen" class="form-control has-feedback-right" id="txtVanBanLinhVucTen" placeholder="Tên danh mục lĩnh vực văn bản">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbVanBanLinhVucCode">Code </label>
+                                <input type="text" name="txtVanBanLinhVucCode" class="form-control has-feedback-right" id="txtVanBanLinhVucCode" placeholder="CodeXL">
+                            </div>
+                        </div>
+                        <div class="form-group">                            
+                            <div class="col-sm-6">
+                                <label for="lbVanBanLinhVucSoThuTu">Số thứ tự <a style="color:red">(*)</a></label>
+                                <input type="number" name="txtVanBanLinhVucSoThuTu" class="form-control has-feedback-right" id="txtVanBanLinhVucSoThuTu">
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnSaveVanBanLinhVuc" class="btn btn-primary">Lưu </button>
+                                <button type="button" id="btnCancelVanBanLinhVuc" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="ln_solid"></div>
+
+            </div>
+        </div>
+    </div>
+</div>

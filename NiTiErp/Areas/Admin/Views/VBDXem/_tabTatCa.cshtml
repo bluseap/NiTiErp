@@ -1,0 +1,117 @@
+﻿
+
+<div class="row">
+    <div class="x_panel">
+        <div class="row no-print">
+            <div class="col-sm-12" style="text-align: center">
+                <button type="button" id="btnTimTatCa" class="btn btn-default" style="color:#1ABB9C;border-color:#1ABB9C">Tìm văn bản</button>
+            </div>
+        </div>
+        <br />
+        <div class="table-responsive" id="table-responsiveTatCa">
+            <table id="tblTatCa" class="table table-striped table-bordered dataTable no-footer" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th width="=5%">#</th>
+                        <th>Tên sổ</th>
+                        <th>Số đến, ký hiệu</th>
+                        <th>Trich yếu</th>
+                        <th>Tên cơ quan ban hành</th>
+                        <th>File xử lý</th>
+                        <th>Ngày ban hành</th>
+                        <th>Ngày đến</th>
+                        <th>QT Xử lý</th>
+                        <th>Bút phê LĐ</th>
+                        <th>Ghi chú</th>
+                    </tr>
+                </thead>
+                <tbody id="tblContentTatCaXuLy"></tbody>
+            </table>
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="dataTables_info" id="datatable-checkbox_infoTatCaXuLy" role="status" aria-live="polite">
+                        <select id="ddl-show-pageTatCaXuLy">
+                            <option value="10" selected="selected">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="50">50</option>
+                        </select>
+                        <span class="item-per-page">
+                            dòng/trang.
+                        </span>
+                        Tổng cộng: <strong id="lblTatCaXuLyTotalRecords"></strong>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="dataTables_paginate" id="datatable-checkbox_paginateTatCaXuLy">
+                        <ul id="paginationULTatCaXuLy"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="table-TatCaXuLy" type="x-tmpl-mustache">
+    <tr>
+        <th scope="row">
+            @*<a class="btn btn-sm btnTatCaXuLy" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Tất xử lý ">
+            <i class="fa fa-mail-forward"></i>
+        </a>*@
+            <a class="btn btn-sm btnTatCaChuaXuLyXuLy" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xử lý">
+                <i class="fa fa-mail-forward"></i>
+                Xử lý lại
+            </a>
+        </th>
+        <td>
+            <a class="btn btn-sm">
+                {{TenSoVanBanDen}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-link btnChuaXuLyPatchFileKyHieu" data-id="{{VanBanDenId}}" data-toggle="tooltip">
+                {{SoKyHieuDen}}
+            </a>
+        </td>
+        <td>
+            <a class="btn-link btnChuaXuLyPatchFileTrichYeu" data-id="{{VanBanDenId}}" data-toggle="tooltip">
+                {{TrichYeuCuaVanBan}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-sm">
+                {{TenCoQuanBanHanh}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-link btnTatCaPatchFileXuLy" data-id="{{VanBanDenId}}" data-toggle="tooltip">
+               Xem file @*{{TenFile}}*@
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-sm">
+                {{NgayBanHanhCuaVanBan}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-sm">
+                {{NgayDenCuaVanBan}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-lg btnQTChuaXuLy" data-id="{{VanBanDenId}}" data-toggle="tooltip" style="color:green">
+                <i class="fa fa-sitemap"></i>
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-link btnTatCaXLButPheLD" data-id="{{VanBanDenId}}" data-toggle="tooltip">
+                {{ButPheLanhDao}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-sm">
+                {{GhiChu}}
+            </a>
+        </td>
+        <td><input type="hidden" id="vanbandenid" class="form-control" value="{{VanBanDenId}}" /></td>
+    </tr>
+</script>

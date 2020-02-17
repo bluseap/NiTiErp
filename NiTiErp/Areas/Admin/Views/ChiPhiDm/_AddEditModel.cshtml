@@ -1,0 +1,79 @@
+﻿<div id="modal-add-edit-ChiPhiDM" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Tạo mới / Sửa Danh mục Chi phí lương</h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainChiPhiDM">
+                        <input type="hidden" id="hidChiPhiDMId" value="" />
+                        <input type="hidden" id="hidInsertChiPhiDMId" value="" />
+
+                        <div class="form-group">
+                            <label for="lbAddEditIsChiPhiTang" class="control-label col-md-2 col-sm-2 col-xs-12 ">Loại Chi phí</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlAddEditIsChiPhiTang" name="ddlAddEditIsChiPhiTang" class="form-control"></select>
+                            </div>
+                            <label for="lbAddEditIsChiPhiTang" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tên loại Chi phí</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlAddEditTenLoaiChiPhi" name="ddlAddEditTenLoaiChiPhi" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbAddEditTenChiPhi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tên Chi phí</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditTenChiPhi" name="txtAddEditTenChiPhi" placeholder="Tên chi phí">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbAddEditTenChiPhiBang" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tên bảng chi phí</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlAddEditTenChiPhiBang" name="ddlAddEditTenChiPhiBang" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbAddEditSoTienHeSo" class="control-label col-md-2 col-sm-2 col-xs-12 ">Số tiền hoặc hệ số</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditSoTienHeSo" name="txtAddEditSoTienHeSo" placeholder="Số tiền hoặc hệ số">
+                            </div>
+                            <label for="lbAddEditSoNgayGio" class="control-label col-md-2 col-sm-2 col-xs-12 ">Số ngày hoặc giờ</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditSoNgayGio" name="txtAddEditSoNgayGio" placeholder="Số ngày hoặc giờ">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lbAddEditSoThuTu" class="control-label col-md-2 col-sm-2 col-xs-12 ">Số thứ tự</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditSoThuTu" name="txtAddEditSoThuTu" placeholder="Số thứ tự">
+                            </div>                            
+                        </div>
+
+                        @*<div class="form-group">
+            <label for="lbAddEditHoatDong" class="control-label col-md-2 col-sm-2 col-xs-12 "></label>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" checked="checked" id="ckAddEditStatus">
+                    <span class="text">Hoạt động </span>
+                </label>
+            </div>
+            </div>
+        <div class="form-group">
+            <label for="lbAddEditHoatDong2" class="control-label col-md-2 col-sm-2 col-xs-12 "></label>
+        </div>*@
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnSaveChiPhiDM" class="btn btn-success">Lưu</button>
+                                <button type="button" id="btnCanceChiPhiDM" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

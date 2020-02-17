@@ -1,0 +1,151 @@
+﻿@model List<ProductCategoryViewModel>
+    
+@*<li class="drop-menu">
+    <a href="#"> <span>Pages 2</span> </a>
+    <ul>
+        <li class="sub-cat">
+            <a href="shop_grid.html"><span>Shop Grid</span></a>
+            <ul>
+                <li> <a href="shop_grid_right.html"> <span>Shop Grid Right Sidebar</span> </a> </li>
+                <li> <a href="shop_grid_fullwidth.html"> <span>Shop Grid Fullwidth</span> </a> </li>
+            </ul>
+        </li>
+        <li class="sub-cat">
+            <a href="shop_list.html"> <span>Shop List</span> </a>
+            <ul>
+                <li> <a href="shop_list_right.html"> <span>Shop List Right Sidebar</span> </a> </li>
+            </ul>
+        </li>
+        <li> 
+            <a href="single_product.html"> 
+                <span>Single Product</span> 
+            </a> 
+        </li>       
+    </ul>
+</li>*@
+
+@foreach (var item in Model.Where(x => x.ParentId == null))
+{
+    if (Model.Any(x => x.ParentId == item.Id))
+    {
+        <li class="drop-menu">
+            <a href="/@item.SeoAlias-c.@(item.Id).html">@item.Name</a>           
+            <ul >
+                @foreach (var subItem in Model.Where(x => x.ParentId == item.Id))
+                {
+                    <li class="sub-cat">
+                        <a href="/@subItem.SeoAlias-c.@(subItem.Id).html"><span>@subItem.Name</span></a>
+                    </li>
+
+                }
+            </ul>                
+        </li>
+    }
+    else
+    {
+        <li class="nosub"><a href="/@item.SeoAlias-c.@(item.Id).html">@item.Name</a></li>
+    }
+}
+        
+
+
+
+
+<li class="mega-menu">
+    <a class="level-top" href="shop_grid.html"><span>Smartphones</span></a>
+    <div class="jtv-menu-block-wrapper">
+        <div class="jtv-menu-block-wrapper2">
+            <div class="nav-block jtv-nav-block-center">
+                <div class="col-1">
+                    <ul class="level0">
+                        <li class="parent item">
+                            <a href="shop_grid.html"><span>Micromax Canvas</span></a>
+                            <ul class="level1">
+                                <li> <a href="shop_grid.html"><span>Computer Systems</span></a> </li>
+                                <li> <a href="shop_grid.html"><span>Digital Timer</span></a> </li>
+                                <li> <a href="shop_grid.html"><span>Dell Laptops</span></a> </li>
+                                <li> <a href="shop_grid.html"><span>Dish Antenna</span></a> </li>
+                            </ul>
+                        </li>
+                        <li class="parent item">
+                            <a href="shop_grid.html"><span>Coolpad Note 3</span></a>
+                            <ul class="level1">
+                                <li> <a href="shop_grid.html"><span>Data Cables</span></a> </li>
+                                <li> <a href="shop_grid.html"><span>HTC U11</span></a> </li>
+                                <li> <a href="shop_grid.html"><span>Premium Dual</span></a> </li>
+                                <li> <a href="shop_grid.html"><span>Coolpad</span></a> </li>
+                            </ul>
+                        </li>
+                        <li class="parent item">
+                            <a href="shop_grid.html"><span>Lenovo Phab 2</span></a>
+                            <ul class="level1">
+                                <li> <a href="shop_grid.html"><span>Honor 6X</span></a> </li>
+                                <li> <a href="shop_grid.html"><span>Lenovo Vibe K5</span></a> </li>
+                                <li> <a href="shop_grid.html"><span>Cases & Covers</span></a> </li>
+                                <li> <a href="shop_grid.html"><span>Oppo F3 Plus</span></a> </li>
+                            </ul>
+                        </li>
+                        <li class="parent item">
+                            <a href="shop_grid.html"><span>Moto G Plus</span></a>
+                            <ul class="level1">
+                                <li> <a href="shop_grid.html"><span>Screen Protectors</span></a> </li>
+                                <li> <a href="shop_grid.html"><span>Moto G5 Plus</span></a> </li>
+                                <li> <a href="shop_grid.html"><span>HTC U Play</span></a> </li>
+                                <li> <a href="shop_grid.html"><span>Infocus Turbo 5</span></a> </li>
+                            </ul>
+                        </li>
+                        <li class="parent item">
+                            <a href="shop_grid.html"><span>Lenovo K8 Note</span></a>
+                            <ul class="level1">
+                                <li> <a href="shop_grid.html"><span>Mobile Chargers</span></a> </li>
+                                <li> <a href="shop_grid.html"><span>VR headsets</span></a> </li>
+                                <li> <a href="shop_grid.html"><span>Bluetooth headsets</span></a> </li>
+                                <li> <a href="shop_grid.html"><span>Samsung On PRO</span></a> </li>
+                            </ul>
+                        </li>
+                        <li class="parent item">
+                            <a href="shop_grid.html"><span>Sony Xperia XZ</span></a>
+                            <ul class="level1">
+                                <li> <a href="shop_grid.html"><span>Mobile Phones</span></a> </li>
+                                <li> <a href="shop_grid.html"><span>Asus Micromax</span></a> </li>
+                                <li> <a href="shop_grid.html"><span>Moto G Plus 4th Gen</span></a> </li>
+                                <li> <a href="shop_grid.html"><span>Power Banks</span></a> </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-2">
+                    <div class="jtv-nav-image1"> <a title="" href="#"><img class="img-responsive" alt="menu_image" src="images/menu-img1.jpg"> </a> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>
+<li class="mega-menu"> <a class="level-top" href="blog.html"><span>Blog</span></a> </li>
+<li class="nav-custom-link mega-menu">
+    <a href="#" class="level-top"> <span>Buy this theme 5</span> </a>
+    <div class="jtv-menu-block-wrapper custom-menu">
+        <div class="header-nav-dropdown-wrapper">
+            <div class="jtv-custom-box">
+                <i class="fa fa-laptop"></i>
+                <h4 class="heading">100% Responsive Design 4</h4>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+            </div>
+            <div class="jtv-custom-box">
+                <i class="fa fa-book"></i>
+                <h4 class="heading">Easy Document </h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dignissim erat ut laoreet pharetra.</p>
+            </div>
+            <div class="jtv-custom-box">
+                <i class="fa fa-fort-awesome"></i>
+                <h4 class="heading">Awesome Icon Fonts</h4>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <div class="jtv-custom-box">
+                <i class="fa fa-home"></i>
+                <h4 class="heading">4 Layout Home Pages</h4>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </div>
+    </div>
+</li>

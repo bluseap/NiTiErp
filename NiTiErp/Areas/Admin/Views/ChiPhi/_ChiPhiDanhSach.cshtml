@@ -1,0 +1,144 @@
+﻿<div id="modal-add-edit-ChiPhiDanhSach" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Tạo mới / Sửa danh sách trực lễ nhân viên</h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainChiPhiDanhSachTruc">
+                        <input type="hidden" id="hidChiPhiDanhSachChiPhiId" value="" />                        
+                        
+                        @*<div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnSaveDangKyNhanVien" class="btn btn-success">Lưu</button>
+                                <button type="button" id="btnCanceDangKyNhanVien" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            </div>
+                        </div>*@
+                    </form>
+                </div>
+                <div id="formChiPhiDanhSachTruc">
+                    <form class="form-horizontal" role="form" id="frmMaintainanceChiPhiDanhSachTruc">
+                        <div class="row no-print">
+                            @*<div class="col-xs-12">
+                                <button type="button" class="btn btn-info pull-right" id="btnExcelChiPhiDanhSachTruc">Xuất Excel</button>
+                            </div>*@
+                        </div>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Họ và tên</th>
+                                    <th>Khu vực</th>
+                                    <th>Phòng, tổ</th>
+                                    <th>Chức vụ</th>
+                                    <th>Số ngày trực</th>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody id="table-contentChiPhiDanhSachTruc"></tbody>
+                        </table>
+                        <div class="row" id="row--infoChiPhiDanhSachTruc">
+                            <div class="col-sm-5">
+                                <div class="dataTables_info" id="datatable-checkbox_infoChiPhiDanhSachTruc" role="status" aria-live="polite">
+                                    <select id="ddl-show-pageDangKyDaoTaoNhanVien">
+                                        <option value="10" selected="selected">10</option>
+                                        <option value="20">20</option>
+                                        <option value="30">30</option>
+                                        <option value="50">50</option>
+                                    </select>
+                                    <span class="item-per-page">
+                                        dòng/trang.
+                                    </span>
+                                    Tổng cộng: <strong id="lblChiPhiDanhSachTrucTotalRecords"></strong>
+                                </div>
+                            </div><div class="col-sm-7">
+                                <div class="dataTables_paginate" id="datatable-checkbox_paginateChiPhiDanhSachTruc">
+                                    <ul id="paginationULChiPhiDanhSachTruc"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <script type="x-tmpl-mustache" id="template-table-ChiPhiDanhSachTruc">
+                        <tr>
+                            <td>{{Ten}}</td>
+                            <td>{{TenKhuVuc}}</td>
+                            <td>{{TenPhong}}</td>
+                            <td>{{TenChucVu}}</td>
+                            <td><input type="number" id="txtCPDSSoNgayTrucLe" class="txtCPDSSoNgayTrucLe form-control" value="{{SoNgayTrucLe}}" data-id="{{Id}}" /></td>                          
+                            <th scope="row">
+                                <a class="btn btn-danger btn-deleteChiPhiDanhSachTruc" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Hủy nhân viên"><i class="fa fa-trash-o"></i> </a>
+                            </th>
+                            <td><input type="hidden" class="hosoId form-control" value="{{Id}}" /></td>
+                        </tr>
+                    </script>
+                </div>
+                <div class="ln_solid"></div>
+                <div class="table-responsive" id="table-responsiveHoSoChiPhiDanhSachTruc">
+                    <div class="row" id="row-ChiPhiDanhSachTruc">
+                        <div class="col-md-3 col-sm-12 col-xs-12 form-group">
+                            <select id="ddlChiPhiDanhSachTrucKhuVuc" class="form-control"></select>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12 form-group">
+                            <select id="ddlChiPhiDanhSachTrucPhongBan" class="form-control"></select>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12 form-group">
+                            <input type="text" id="txtChiPhiDanhSachTrucTimNhanVien" class="form-control" placeholder="Từ khóa...">
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12 form-group">
+                            <button class="btn btn-primary " id="btnChiPhiDanhSachTrucTimNhanVien" type="button">Tìm !</button>
+                        </div>
+                    </div>
+                    <table id="tblHoSoNhanVienChiPhiDanhSachTruc" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th width="=20%">#</th>
+                                <th>Họ và tên</th>
+                                <th>Khu vực</th>
+                                <th>Phòng, tổ</th>
+                                <th>Chức vụ</th>
+                                <th>Ngày tạo</th>
+                                <th>Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tblContentHoSoChiPhiDanhSachTruc"></tbody>
+                    </table>
+                    <div class="row" id="row-AddEditDaoTao-infoHoSoChiPhiDanhSachTruc">
+                        <div class="col-sm-5">
+                            <div class="dataTables_info" id="datatable-checkbox_infoHoSoChiPhiDanhSachTruc" role="status" aria-live="polite">
+                                <select id="ddl-show-pageHoSoChiPhiDanhSachTruc">
+                                    <option value="10" selected="selected">10</option>
+                                    <option value="20">20</option>
+                                    <option value="30">30</option>
+                                    <option value="50">50</option>
+                                </select>
+                                <span class="item-per-page">
+                                    dòng/trang.
+                                </span>
+                                Tổng cộng: <strong id="lblHoSoChiPhiDanhSachTrucTotalRecords"></strong>
+                            </div>
+                        </div><div class="col-sm-7">
+                            <div class="dataTables_paginate" id="datatable-checkbox_paginateHoSoChiPhiDanhSachTruc">
+                                <ul id="paginationULHoSoChiPhiDanhSachTruc"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script id="table-HoSoChiPhiDanhSachTruc" type="x-tmpl-mustache">
+                    <tr>
+                        <th scope="row">
+                            <a class="btn btn-lg btn-editHoSoChiPhiDanhSachTruc" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Danh sách trực"><i class="fa fa-arrow-up"></i> </a>
+                        </th>
+                        <td>{{Ten}}</td>
+                        <td>{{TenKhuVuc}}</td>
+                        <td>{{TenPhong}}</td>
+                        <td>{{TenChucVu}}</td>
+                        <td>{{CreateDate}}</td>
+                        <td>{{{Status}}}</td>
+                    </tr>
+                </script>
+            </div>
+        </div>
+    </div>   
+</div>

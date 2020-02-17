@@ -1,0 +1,40 @@
+﻿<div id="modal-add-edit-DetailEmailDaGui" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Xem Email đã gửi</h4>
+            </div>
+            <div class="modal-body">
+                <div class="inbox-body">
+                    <div class="mail_heading row">
+                        <div class="col-md-8" id="lbViewNguoiGui">
+                        </div>
+                        <div class="col-md-4 text-right" id="lbViewNgayGui">
+                            <p class="date"></p>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="btn-group" id="lbViewNguoiNhan">
+                            </div>
+                        </div>
+                        <div class="col-md-12" id="lbViewChuDe">
+                        </div>
+                    </div>
+                    <div class="view-mail" id="lbViewNoiDung">
+                    </div>
+                    <div class="attachment">
+                        <strong>File đính kèm:</strong>
+                        <div id="tblContentDetailEmailDaGui"></div>
+                    </div>
+
+                </div>
+            </div>
+
+            <script id="table-DetailEmailDaGui" type="x-tmpl-mustache">
+                &nbsp;&nbsp;&nbsp;
+                <a class=" bntViewEmailFileId" data-id="{{Id}}">{{TenFile}}</a> &nbsp;&nbsp;&nbsp;
+            </script>
+
+        </div>
+    </div>
+</div>

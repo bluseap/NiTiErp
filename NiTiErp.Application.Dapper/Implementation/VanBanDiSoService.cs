@@ -1,0 +1,198 @@
+﻿using Dapper;
+using Microsoft.Extensions.Configuration;
+using NiTiErp.Application.Dapper.Interfaces;
+using NiTiErp.Application.Dapper.ViewModels;
+using NiTiErp.Utilities.Dtos;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace NiTiErp.Application.Dapper.Implementation
+{
+    public class VanBanDiSoService : IVanBanDiSoService
+    {
+        private readonly IConfiguration _configuration;
+
+        public VanBanDiSoService(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
+        public async Task<PagedResult<VanBanDiSoViewModel>> GetAllVanBanDiSoPaging(int nam, string corporationId, int vanbandiid,
+            string keyword, int page, int pageSize, string ghichu, string parameters)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@corporationId", corporationId);
+                dynamicParameters.Add("@nam", nam);
+                dynamicParameters.Add("@keyword", keyword);
+                dynamicParameters.Add("@vanbandiid", vanbandiid);
+                dynamicParameters.Add("@ghichu", ghichu);
+
+                dynamicParameters.Add("@parameters", parameters);
+                try
+                {
+                    var hoso = await sqlConnection.QueryAsync<VanBanDiSoViewModel>(
+                        "VanBanDiSoGetList", dynamicParameters, commandType: CommandType.StoredProcedure);
+
+                    var query = hoso.AsQueryable();
+
+                    int totalRow = query.Count();
+
+                    query = query.OrderByDescending(x => x.CreateDate)
+                        .Skip((page - 1) * pageSize).Take(pageSize);
+
+                    var data = query.ToList();
+
+                    var paginationSet = new PagedResult<VanBanDiSoViewModel>()
+                    {
+                        Results = data,
+                        CurrentPage = page,
+                        RowCount = totalRow,
+                        PageSize = pageSize
+                    };
+                    return paginationSet;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<List<VanBanDenSoViewModel>> VanBanDenSoGetList(string corporationid, int nam, string keyword,
+            int vanbandenid, string ghichu, string parameters)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@corporationId", corporationid);
+                dynamicParameters.Add("@nam", nam);
+                dynamicParameters.Add("@keyword", keyword);
+                dynamicParameters.Add("@vanbandenid", vanbandenid);
+                dynamicParameters.Add("@ghichu", ghichu);
+
+                dynamicParameters.Add("@parameters", parameters);
+
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<VanBanDenSoViewModel>(
+                        "VanBanDenSoGetList", dynamicParameters, commandType: CommandType.StoredProcedure);
+
+                    return query.AsList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<List<VanBanDiViewModel>> VBDiSoExcel(string corporationid, DateTime tungay,
+            DateTime denngay, string trangthai, string ghichu, string makv, string parameters)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@corporationId", corporationid);
+                dynamicParameters.Add("@tungay", tungay);
+                dynamicParameters.Add("@denngay", denngay);
+                dynamicParameters.Add("@trangthai", trangthai);
+                dynamicParameters.Add("@ghichu", ghichu);
+                dynamicParameters.Add("@makv", makv);
+
+                dynamicParameters.Add("@parameters", parameters);
+
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<VanBanDiViewModel>(
+                        "VBDiSoExcel", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return query.AsList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<List<VanBanDiSoViewModel>> VanBanDiSoGetList(string corporationid, int nam, string keyword,
+            int vanbandiid, string ghichu, string parameters)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@corporationId", corporationid);
+                dynamicParameters.Add("@nam", nam);
+                dynamicParameters.Add("@keyword", keyword);
+                dynamicParameters.Add("@vanbandiid", vanbandiid);
+                dynamicParameters.Add("@ghichu", ghichu);
+
+                dynamicParameters.Add("@parameters", parameters);
+
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<VanBanDiSoViewModel>(
+                        "VanBanDiSoGetList", dynamicParameters, commandType: CommandType.StoredProcedure);
+
+                    return query.AsList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<Boolean> VanBanDiSoAUD(VanBanDiSoViewModel vanbandiso, string parameters)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@Id", vanbandiso.Id);
+
+                dynamicParameters.Add("@Nam", vanbandiso.Nam);
+                dynamicParameters.Add("@CorporationId", vanbandiso.CorporationId);
+                dynamicParameters.Add("@TenSo", vanbandiso.TenSo);
+                dynamicParameters.Add("@SoDiHienTai", vanbandiso.SoDiHienTai);
+                dynamicParameters.Add("@SoDiHet", vanbandiso.SoDiHet);
+                dynamicParameters.Add("@DoUuTien", vanbandiso.DoUuTien);
+                dynamicParameters.Add("@Stt", vanbandiso.Stt);
+
+                dynamicParameters.Add("@CreateBy", vanbandiso.CreateBy);
+                dynamicParameters.Add("@CreateDate", vanbandiso.CreateDate);
+                dynamicParameters.Add("@UpdateDate", vanbandiso.UpdateDate);
+                dynamicParameters.Add("@UpdateBy", vanbandiso.UpdateBy);
+
+                dynamicParameters.Add("@parameters", parameters);
+
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<VanBanDiSoViewModel>(
+                        "VanBanDiSoAUD", dynamicParameters, commandType: CommandType.StoredProcedure);
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+    }
+}

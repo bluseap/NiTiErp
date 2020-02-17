@@ -1,0 +1,459 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    @*<link href="~/lib/jQuery-EasyUI/themes/color.css" rel="stylesheet" />*@
+    @*<link href="~/lib/jQuery-EasyUI/demo1.css" rel="stylesheet" />*@
+    <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+}
+@section Scripts{
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+
+    <script src="~/lib/jQuery-EasyUI/datagrid-groupview.js" asp-append-version="true"></script>
+    <script src="~/lib/jQuery-EasyUI/jquery.edatagrid.js" asp-append-version="true"></script>
+
+    @*<script src="~/lib/jQuery-EasyUI/jquery.edatagrid.js" asp-append-version="true"></script>
+        <script src="~/lib/jQuery-EasyUI/datagrid-detailview.js" asp-append-version="true"></script>
+        <script src="~/lib/jQuery-EasyUI/datagrid-groupview.js" asp-append-version="true"></script>
+        <script src="~/lib/jQuery-EasyUI/datagrid-bufferview.js" asp-append-version="true"></script>
+        <script src="~/lib/jQuery-EasyUI/datagrid-scrollview.js" asp-append-version="true"></script>*@
+    @*<script src="~/lib/jQuery-EasyUI/datagrid-cellediting.js" asp-append-version="true"></script>*@
+
+    <script src="~/lib/jQuery-EasyUI/datagrid-cellediting.js" asp-append-version="true"></script>
+    <script src="~/lib/jQuery-EasyUI/datagrid-export.js" asp-append-version="true"></script>
+
+   
+
+    <script src="~/app/controllers/hesodm/addedithesoluong.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/hesodm/index.js" asp-append-version="true"></script>
+    <script>
+        var hesoluong = new hesoluongController();
+        hesoluong.initialize();
+
+        var datamoi = new hesoluong.loadDataData();
+        var data = datamoi.datatablehesoluongmoi;        
+
+        //var clickDataGrid = new hesoluong.clickDataGrid();
+
+        $(function () {
+            var dg = $('#dg').datagrid({
+                singleSelect: true,
+                collapsible: true,
+                rownumbers: true,
+                fitColumns: true,
+                toolbar: '#tb',
+                data: data,
+                view: groupview,
+                groupField: 'TenChucVu',
+                groupFormatter: function (value, rows) {
+                    return value + ' - ' + rows.length + ' Bậc ';
+                },
+                onClickRow: onClickRow,
+                onBeginEdit: onBeginEdit
+            });            
+        });
+
+        $('#btnTimNhanVien').on('click', function () {
+            //alert('dd');
+            var datakv = loadTableHeSoLuongReturnKhuVuc();
+            var dg2 = $('#dg').datagrid({
+                singleSelect: true,
+                collapsible: true,
+                rownumbers: true,
+                fitColumns: true,
+                toolbar: '#tb',
+                data: datakv,
+                view: groupview,
+                groupField: 'TenChucVu',
+                groupFormatter: function (value, rows) {
+                    return value + ' - ' + rows.length + ' Bậc ';
+                },
+                onClickRow: onClickRow,
+                onBeginEdit: onBeginEdit
+            });
+            //$('#dg').datagrid();
+        });
+
+        $('#txtTimNhanVien').on('keypress', function (e) {
+            if (e.which === 13) {
+                alert('dwerwed');
+            }
+        });
+
+        var editIndex = undefined;
+        function endEditing() {
+            if (editIndex == undefined) { return true }
+            if ($('#dg').datagrid('validateRow', editIndex)) {
+                //var ed = $('#dg').datagrid('getEditor', { index: editIndex, field: 'productid' });
+                //var productname = $(ed.target).combobox('getText');
+                //$('#dg').datagrid('getRows')[editIndex]['productname'] = productname;
+                $('#dg').datagrid('endEdit', editIndex);
+                editIndex = undefined;
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        function onClickRow(index) {
+            if (editIndex != index) {
+                if (endEditing()) {
+                    $('#dg').datagrid('selectRow', index).datagrid('beginEdit', index);
+                    editIndex = index;
+                }
+                else {
+                    $('#dg').datagrid('selectRow', editIndex);
+                }
+            }
+        }
+        function onBeginEdit(index) {
+            var luongtoithieu = $('#txtAddEditMucLuongToiThieuVung').val();//'3530000';//$('#txtAddEditMucLuongToiThieuVung').val();
+            var editors = $('#dg').datagrid('getEditors', index);
+            var n1 = $(editors[0].target);
+            var n2 = $(editors[1].target);
+            var n3 = $(editors[2].target);
+            var n4 = $(editors[3].target); //  id
+
+            n1.numberbox({
+                onChange: function () {
+                    var cost = n1.numberbox('getValue') * luongtoithieu;
+                    n2.numberbox('setValue', cost);
+                    //alert(n1.numberbox('getValue'));
+                    //alert(n3.numberbox('getValue'));
+                    //$('#dg').datagrid('acceptChanges');
+
+                    updateHeSoDanhMuc(n4.numberbox('getValue'), n1.numberbox('getValue'));
+                }
+            });
+            n3.numberbox({
+                onChange: function () {
+                    //alert(n1.numberbox('getValue'));
+                    //alert(n3.numberbox('getValue'));
+                    //$('#dg').datagrid('acceptChanges');
+                    //alert(n4.numberbox('getValue'));
+
+                    updateSttHeSoDanhMuc(n4.numberbox('getValue'), n3.numberbox('getValue'));
+                }
+            });
+        }
+
+        function updateHeSoDanhMuc(hesoluongid, heso) {
+            //alert(heso);
+
+            var hesoluongId = hesoluongid;
+            //var hosoId = $('#hidHoSoBoNhiemId').val();
+            var inserthesoluongId = "6";//$('#hidInsertHeSoLuongId').val();
+
+            var makhuvuc = "PO";
+            //var luongtoithieu = $('#txtAddEditMucLuongToiThieuVung').val();
+            var chucvu = "PO";
+            var bacluong = "1";
+            var heso = parseFloat(heso);
+            var mucluong = "1";
+            var sothutu = "1";
+
+            //var ngaykyquyetdinh = tedu.getFormatDateYYMMDD($('#txtNgaKyQuyetDinh').val());
+
+            $.ajax({
+                type: "POST",
+                url: "/Admin/hesoluong/AddUpdateHeSoLuong",
+                data: {
+                    Id: hesoluongId,
+                    inserthesoluongId: inserthesoluongId,
+
+                    ChucVuNhanVienId: chucvu,
+                    BacLuongId: bacluong,
+                    HeSo: heso,
+                    MucLuong: mucluong,
+                    Stt: sothutu
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    if (response.Success === false) {
+                        tedu.notify(response.Message, "error");
+                    }
+                    else {
+                        tedu.notify('Tạo hệ số lương.', 'success');
+                        //$('#modal-add-edit-HeSoLuong').modal('hide');
+                        tedu.stopLoading();
+                    }
+                },
+                error: function () {
+                    tedu.notify('Có lỗi! Không thể lưu hế số danh mục.', 'error');
+                    tedu.stopLoading();
+                }
+            });
+
+        }
+
+        function updateSttHeSoDanhMuc(hesoluongid, stt) {
+            var hesoluongId = hesoluongid;
+            //var hosoId = $('#hidHoSoBoNhiemId').val();
+            var inserthesoluongId = "7";//$('#hidInsertHeSoLuongId').val();
+
+            var makhuvuc = "PO";
+            //var luongtoithieu = $('#txtAddEditMucLuongToiThieuVung').val();
+            var chucvu = "PO";
+            var bacluong = "1";
+            var heso = "1";
+            var mucluong = "1";
+            var sothutu = stt
+
+            //var ngaykyquyetdinh = tedu.getFormatDateYYMMDD($('#txtNgaKyQuyetDinh').val());
+
+            $.ajax({
+                type: "POST",
+                url: "/Admin/hesoluong/AddUpdateHeSoLuong",
+                data: {
+                    Id: hesoluongId,
+                    inserthesoluongId: inserthesoluongId,
+
+                    ChucVuNhanVienId: chucvu,
+                    BacLuongId: bacluong,
+                    HeSo: heso,
+                    MucLuong: mucluong,
+                    Stt: sothutu
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    if (response.Success === false) {
+                        tedu.notify(response.Message, "error");
+                    }
+                    else {
+                        tedu.notify('Tạo hệ số lương.', 'success');
+                        //$('#modal-add-edit-HeSoLuong').modal('hide');
+                        tedu.stopLoading();
+                    }
+                },
+                error: function () {
+                    tedu.notify('Có lỗi! Không thể lưu số thứ tự', 'error');
+                    tedu.stopLoading();
+                }
+            });
+
+        }
+        
+        function loadTableHeSoLuongReturnKhuVuc() {
+            //var moi = makhuvuc;
+            //return moi;   
+            var makv = $('#ddlKhuVuc').val();
+            var moi2;
+            $.ajax({
+                type: 'POST',
+                url: '/admin/hesoluong/PostHeSoLuongKhuVuc',
+                data: {
+                    corporationId: makv,
+                    phongId: "",
+                    keyword: "",
+                    page: tedu.configs.pageIndex,
+                    pageSize: tedu.configs.pageSize,
+                    hosoId: "",
+                    chucVuId: ""
+                },
+                async: false,
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    moi2 = response.Result;
+                    //callback(moi2);
+                },
+                error: function (status) {
+                    console.log(status);
+                    tedu.notify('Không thể lấy dữ liệu về.', 'error');
+                }
+            });
+            return moi2;
+        }   
+    </script>
+}
+
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link ">
+                    Danh mục
+                </a>
+                >>
+                <a class="btn btn-link btnDMHeSoLuong">
+                    Danh mục hệ số lương
+                </a>
+            </small>
+        </div>
+        <div class="title_right">
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <button class="btn btn-round btn-warning " id="btn-create" type="button">Tạo mới</button>
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="x_content">
+        <div class="">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>  <small>Danh sách hệ số lương</small></h3>
+                </div>
+                <div class="title_right">
+                    <div class="col-md-5 col-sm-2 col-xs-12 form-group pull-right">
+                        <div class="input-group">
+                            <input type="text" id="txtTimNhanVien" class="form-control" placeholder="Từ khóa...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" id="btnTimNhanVien" type="button">Tìm !</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-2 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                            <select id="ddlChucVu" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                            <select id="ddlKhuVuc" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <input type="hidden" id="hidMucLuongToiThieuId" value="" />
+
+            <div class="row">
+                <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+                    <label for="lbMucLuongToiThieuVungMain" class="control-label pull-right">Mức lương tối thiểu vùng</label>
+                </div>
+                <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+                    <input type="text" class="form-control has-feedback-right" id="txtMucLuongToiThieuVungMain" placeholder="Mức lương tối thiểu vùng ">
+                </div>
+                <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+                    <button class="btn btn-round btn-danger" id="btnUpLuongToiThieu" style="margin-right: 5px;"><i class="fa fa-money"></i> Cập nhật mức lương tối thiểu vùng</button>
+                </div>
+                <div class="x_panel">
+                    <div class="row no-print">
+                        <div class="col-xs-12">
+                            <button class="btn btn-info pull-right" id="btnXuatExcel" style="margin-right: 5px;"><i class="fa fa-download"></i> Xuất Excel</button>
+                            <button class="btn btn-default pull-right" id="btnInHeSoDM"><i class="fa fa-print"></i> Print</button>
+                        </div>
+                    </div>
+                    <div class="table-responsive" id="table-responsiveDMHeSoLuong">
+                        @*<table id="tblDMHeSoLuong" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th width="=20%">#</th>
+                                        <th>Tên chức vụ</th>
+                                        <th>Bậc lương</th>
+                                        <th>Mức lương tối thiểu</th>
+                                        <th>Hệ số lương</th>
+                                        <th>Mức lương</th>
+                                        <th>Ngày tạo</th>
+                                        <th>Trạng thái</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblContentDMHeSoLuong"></tbody>
+                            </table>*@
+                        <table id="dg" class="easyui-datagrid" title="Hệ số lương theo Chức vụ" style="width:auto;height:auto" cellspacing="0" >
+                            <thead>
+                                <tr>
+                                    <th data-options="field:'TenBacLuong',width:80 ">Bậc lương</th>
+                                    <th data-options="field:'MucLuongToiThieu',width:100, formatter:formatPrice ">Lương tối thiểu</th>
+                                    <th data-options="field:'HeSo',width:80,align:'right' , editor:{type:'numberbox',options:{min:0,precision:2,groupSeparator:','}} ">Hệ số</th>
+                                    <th data-options="field:'MucLuong', width:80, align:'right', editor:{type:'numberbox',options:{min:0,groupSeparator:','}} ">Mức lương </th>
+                                    <th data-options="field:'Stt',width:60,align:'center', editor:{type:'numberbox', options:{min:0}} ">Stt</th>
+                                    <th data-options="field:'Status',width:60,align:'center', hidden:'true' ">Trạng thái</th>
+                                    <th data-options="field:'Id',width:60,align:'center', hidden:'true', editor: 'numberbox' ">Id</th>
+                                </tr>
+                            </thead>
+                            @*<tbody id="tblContentDMHeSoLuong"></tbody>*@
+                        </table>
+                        <div id="tb" style="height:auto">
+                            <a class="easyui-linkbutton btndelete" data-options="iconCls:'icon-cut',plain:true">Xóa</a>
+                            <a class="easyui-linkbutton btnaccept" data-options="iconCls:'icon-save',plain:true">Lưu</a>
+
+                        </div>
+                        <script type="text/javascript">
+
+                            function formatPrice(val, row) {
+                                return '<span>' + tedu.formatNumber(val) + '</span>';
+                            }
+
+                        </script>
+                        @*<div class="row">
+                                <div class="col-sm-5">
+                                    <div class="dataTables_info" id="datatable-checkbox_infoDMHeSoLuong" role="status" aria-live="polite">
+                                        <select id="ddl-show-pageDMHeSoLuong">
+                                            <option value="10" selected="selected">10</option>
+                                            <option value="20">20</option>
+                                            <option value="30">30</option>
+                                            <option value="50">50</option>
+                                        </select>
+                                        <span class="item-per-page">
+                                            dòng/trang.
+                                        </span>
+                                        Tổng cộng: <strong id="lblDMHeSoLuongTotalRecords"></strong>
+                                    </div>
+                                </div><div class="col-sm-7">
+                                    <div class="dataTables_paginate" id="datatable-checkbox_paginateDMHeSoLuong">
+                                        <ul id="paginationULDMHeSoLuong"></ul>
+                                    </div>
+                                </div>
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div id="tblContentDMHeSoLuong"></div>*@
+    <script id="table-DMHeSoLuong" type="text/javascript">
+                                                                                                            //var data = [{ 'Id': 'dd' }, { 'Id': '33' }];
+    </script>
+    @*<script type="text/javascript">
+            var data = [
+                { "productid": "FI-SW-01", "productname": "Koi", "unitcost": 10.00, "status": "P", "listprice": 36.50, "attr1": "Large", "itemid": "EST-1" },
+                { "productid": "K9-DL-01", "productname": "Dalmation", "unitcost": 12.00, "status": "P", "listprice": 18.50, "attr1": "Spotted Adult Female", "itemid": "EST-10" },
+                { "productid": "RP-SN-01", "productname": "Rattlesnake", "unitcost": 12.00, "status": "P", "listprice": 38.50, "attr1": "Venomless", "itemid": "EST-11" },
+                { "productid": "RP-SN-01", "productname": "Rattlesnake", "unitcost": 12.00, "status": "P", "listprice": 26.50, "attr1": "Rattleless", "itemid": "EST-12" },
+                { "productid": "RP-LI-02", "productname": "Iguana", "unitcost": 12.00, "status": "P", "listprice": 35.50, "attr1": "Green Adult", "itemid": "EST-13" },
+                { "productid": "FL-DSH-01", "productname": "Manx", "unitcost": 12.00, "status": "P", "listprice": 158.50, "attr1": "Tailless", "itemid": "EST-14" },
+                { "productid": "FL-DSH-01", "productname": "Manx", "unitcost": 12.00, "status": "P", "listprice": 83.50, "attr1": "With tail", "itemid": "EST-15" },
+                { "productid": "FL-DLH-02", "productname": "Persian", "unitcost": 12.00, "status": "P", "listprice": 23.50, "attr1": "Adult Female", "itemid": "EST-16" },
+                { "productid": "FL-DLH-02", "productname": "Persian", "unitcost": 12.00, "status": "P", "listprice": 89.50, "attr1": "Adult Male", "itemid": "EST-17" },
+                { "productid": "AV-CB-01", "productname": "Amazon Parrot", "unitcost": 92.00, "status": "P", "listprice": 63.50, "attr1": "Adult Male", "itemid": "EST-18" }
+            ];
+        </script>*@
+    @*<script id="table-DMHeSoLuong" type="x-tmpl-mustache">
+            <tr>
+                <th scope="row">
+                    <a class="btn btn-lg btn-editDMHeSoLuong" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa hồ sơ"><i class="fa fa-pencil"></i> </a>
+                </th>
+                <td>{{TenChucVu}}</td>
+                <td>{{TenBacLuong}}</td>
+                <td>{{MucLuongToiThieu}}</td>
+                <td>{{HeSo}}</td>
+                <td>{{MucLuong}}</td>
+                <td>{{CreateDate}}</td>
+                <td>{{{Status}}}</td>
+            </tr>
+        </script>*@
+</div>
+
+<partial name="_MucLuongToiThieuVung.cshtml" />
+<partial name="_AddEditModel.cshtml" />

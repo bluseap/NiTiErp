@@ -1,0 +1,143 @@
+﻿<div id="modal-add-edit-QDTT" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Tạo mới / Sửa Quyết định thu tuyển</h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainQDTT">
+                        <input type="hidden" id="hidQDTTId" value="" />
+                        <input type="hidden" id="hidHoSoThuTuyenId" value="" />
+                        <input type="hidden" id="hidInsertQDTTIdId" value="" />
+
+                        <div class="form-group">
+                            <label for="lbAddEditHoTen" class="control-label col-md-2 col-sm-2 col-xs-12 ">Họ và tên</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditHoTen" placeholder="Họ và tên nhân viên">
+                            </div>
+                            <label for="lbAddEditPhongTo" class="control-label col-md-2 col-sm-2 col-xs-12 ">Phòng, tổ</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditPhongTo" placeholder="Phòng, tổ, nhà máy">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbTenQuyetDinh" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tên quyết định </label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlLoaiQuyetDinh" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbLyDoQuyetDinh" class="control-label col-md-2 col-sm-2 col-xs-12 ">Lý do </label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtLyDoQuyetDinh" placeholder="Lý do ">
+                            </div>
+                            <label for="lbGhiChuQuyetDinh" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ghi chú quyết định về thu tuyển</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtGhiChuQuyetDinh" placeholder="Ghi chú quyết định thu tuyển">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbSoQuyetDinh" class="control-label col-md-2 col-sm-2 col-xs-12 ">Số quyết định thu tuyển</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" name="txtSoQuyetDinh" class="form-control has-feedback-right" id="txtSoQuyetDinh" placeholder="Số quyết định thu tuyển">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbNgaKyQuyetDinh" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày ký quyết định thu tuyển</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgaKyQuyetDinh" placeholder="Ngày ký quyết định thu tuyển" />
+                            </div>
+                            <label for="lbTenNguoiKyQuyetDinh" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tên người ký quyết định</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtTenNguoiKyQuyetDinh" placeholder="Tên người ký Qđ thu tuyển">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbNgayHieuLuc" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày hiệu lực</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgayHieuLuc" placeholder="Ngày hiệu lực">
+                            </div>
+                            <label for="lbNgayHetHan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày hết hạn</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgayHetHan" placeholder="Ngày hết hạn">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnSaveQDTT" class="btn btn-success">Lưu</button>
+                                <button type="button" id="btnCancelQDTT" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="ln_solid"></div>
+                <div class="table-responsive" id="table-responsiveQDTT">
+                    <div class="row" id="row-AddEditQDTT">
+                        <div class="col-md-3 col-sm-12 col-xs-12 form-group">
+                            <select id="ddlKhuVucAddEdit" class="form-control"></select>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12 form-group">
+                            <select id="ddlPhongBanAddEdit" class="form-control"></select>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12 form-group">
+                            <input type="text" id="txtTimNhanVienAddEdit" class="form-control" placeholder="Từ khóa...">
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12 form-group">
+                            <button class="btn btn-primary " id="btnTimNhanVienAddEdit" type="button">Tìm !</button>
+                        </div>
+                    </div>
+                    <table id="tblHoSoNhanVienQDTT" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th width="=20%">#</th>
+                                <th>Họ và tên</th>
+                                <th>Khu vực</th>
+                                <th>Phòng, tổ</th>
+                                <th>Chức vụ</th>
+                                <th>Ngày tạo</th>
+                                <th>Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tblContentHoSoQDTT"></tbody>
+                    </table>
+                    <div class="row" id="row-AddEditQDTT-infoHoSoQDTT">
+                        <div class="col-sm-5">
+                            <div class="dataTables_info" id="datatable-checkbox_infoHoSoQDTT" role="status" aria-live="polite">
+                                <select id="ddl-show-pageHoSoQDTT">
+                                    <option value="10" selected="selected">10</option>
+                                    <option value="20">20</option>
+                                    <option value="30">30</option>
+                                    <option value="50">50</option>
+                                </select>
+                                <span class="item-per-page">
+                                    dòng/trang.
+                                </span>
+                                Tổng cộng: <strong id="lblHoSoQDTTTotalRecords"></strong>
+                            </div>
+                        </div><div class="col-sm-7">
+                            <div class="dataTables_paginate" id="datatable-checkbox_paginateHoSoQDTT">
+                                <ul id="paginationULHoSoQDTT"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script id="table-HoSoQDTT" type="x-tmpl-mustache">
+                    <tr>
+                        <th scope="row">
+                            <a class="btn btn-lg btn-editHoSoQDTT" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa hồ sơ"><i class="fa fa-pencil"></i> </a>
+                        </th>
+                        <td>{{Ten}}</td>
+                        <td>{{TenKhuVuc}}</td>
+                        <td>{{TenPhong}}</td>
+                        <td>{{TenChucVu}}</td>
+                        <td>{{CreateDate}}</td>
+                        <td>{{{Status}}}</td>
+                    </tr>
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

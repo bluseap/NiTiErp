@@ -1,0 +1,54 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace NiTiErp.Application.Dapper.ViewModels
+{
+    public class EmailNoiBoNhanViewModel
+    {
+        public long Id { get; set; }
+
+        public long EmailNoiBoId { get; set; }
+
+        public Guid CodeEmailNoiBoNhan { get; set; }
+
+        public Guid NguoiNhan { get; set; }
+
+
+        public string TenNguoiNhan { get; set; }
+
+        public Guid AppUserId { get; set; }
+
+        public string UserName { get; set; }
+
+
+        public DateTime NgayNhan { get; set; }
+
+        public int TTNhan { get; set; }
+
+        public bool IsTraLoi { get; set; }
+
+        public DateTime NgayTraLoi { get; set; }
+
+        public Guid CodeTraLoi { get; set; }
+
+        public string GhiChu { get; set; }
+
+
+
+        public int Status { get; set; }
+
+        public bool Active { get; set; }
+
+        public int Stt { get; set; }
+
+        public string CreateBy { get; set; }
+
+        public DateTime CreateDate { get; set; }
+
+        public string UpdateBy { get; set; }
+
+        public DateTime UpdateDate { get; set; }
+
+    }
+}

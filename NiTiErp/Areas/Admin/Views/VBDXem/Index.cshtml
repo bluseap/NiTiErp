@@ -1,0 +1,157 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+
+    <link href="~/admin-side/css/main.css" rel="stylesheet" />
+}
+@section Scripts{
+
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+
+    <script src="~/app/controllers/vbdduyet/_vbdduyetfile.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/vbdduyet/_quatrinhxuly.js" asp-append-version="true"></script>
+
+    <script src="~/app/controllers/vbdxem/_dangxuly.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/vbdxem/_chuaxuly.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/vbdxem/tatcaxuly.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/vbdxem/xulyroi.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/vbdxem/daxuly.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/vbdxem/dangxuly.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/vbdxem/chuaxuly.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/vbdxem/index.js" asp-append-version="true"></script>
+    <script>
+        var vbdxem = new vbdxemController();
+        vbdxem.initialize();
+    </script>
+}
+
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link ">
+                    Văn bản đến
+                </a>
+                >>
+                <a class="btn btn-link ">
+                    Xử lý văn bản đến
+                </a>
+            </small>
+        </div>
+    </div>
+
+    <div class="x_content">
+        <div class="">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>  <small> </small></h3>
+                </div>
+                <div class="title_right">
+
+                    <div class="col-md-4 col-sm-4 col-xs-12 form-group pull-right">
+                        <div class="input-group">
+                            <select id="ddlKhuVuc" class="form-control "></select>
+                            @*<input type="text" id="txtTimNoiDung" class="form-control" placeholder="Từ khóa...">*@
+                            @*<span class="input-group-btn">
+                                    <button class="btn btn-warning" id="btnTimNhanVien" type="button">Tìm !</button>
+                                </span>*@
+                        </div>
+                    </div>
+                    @*<div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
+                            <div class="input-group">
+
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12" id="divVanBanDenXemTim">
+                <div class="x_panel" id="boxPanelVBDTim">
+                    <div class="x_title">
+                        <h2> <small>  </small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link btnVBDTim">Tìm Văn bản đến <i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content" id="boxContentVBDTim">
+                        <div class="row">
+                            <partial name="/Areas/Admin/Views/Shared/_timVanBan.cshtml" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="" role="tabpanel" id="tabpanelXuLyVanBanDen" data-example-id="togglable-tabs">
+                <ul id="myTabXuLyVanBanDen" class="nav nav-tabs bar_tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#tab_ChuaXuLy" role="tab" id="tabChuaXuLy" data-toggle="tab" aria-expanded="true">
+                            Văn bản chưa xử lý
+                            <span id="spanChuaXuLy" class="badge bg-orange" style="font-size:large">0</span>
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="#tab_DangXuLy" role="tab" id="tabDangXuLy" data-toggle="tab" aria-expanded="false">
+                            Văn bản đang xử lý
+                            <span id="spanDangXuLy" class="badge bg-blue" style="font-size:large">0</span>
+                        </a>
+                    </li>
+                    @*<li role="presentation" class="">
+                            <a href="#tab_DaXuLy" role="tab" id="tabDaXuLy" data-toggle="tab" aria-expanded="false">
+                                Văn bản đã xử lý chuyển lãnh đạo duyệt
+                                <span id="spanDaXuLy" class="badge bg-orange" style="font-size:large">0</span>
+                            </a>
+                        </li>*@
+                    <li role="presentation" class="">
+                        <a href="#tab_XuLyRoi" role="tab" id="tabXuLyRoi" data-toggle="tab" aria-expanded="false">
+                            VB Xử lý rồi
+                            <span id="spanXuLyRoi" class="badge bg-green" style="font-size:large">0</span>
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="#tab_TatCa" role="tab" id="tabTatCa" data-toggle="tab" aria-expanded="false">
+                            Tất cả Văn bản
+                            <span id="spanTatCa" class="badge bg-green" style="font-size:large">0</span>
+                        </a>
+                    </li>
+                </ul>
+                <div id="myTabContentXuLyVanBanDen" class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade active in" id="tab_ChuaXuLy" aria-labelledby="home-tab">
+                        <partial name="_tabChuaXuLy.cshtml" />
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="tab_DangXuLy" aria-labelledby="profile-tab">
+                        <partial name="_tabDangXuLy.cshtml" />
+                    </div>
+                    @*<div role="tabpanel" class="tab-pane fade" id="tab_DaXuLy" aria-labelledby="profile-tab">
+                            <partial name="_tabDaXuLy.cshtml" />
+                        </div>*@
+                    <div role="tabpanel" class="tab-pane fade" id="tab_XuLyRoi" aria-labelledby="profile-tab">
+                        <partial name="_tabXuLyRoi.cshtml" />
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="tab_TatCa" aria-labelledby="profile-tab">
+                        <partial name="_tabTatCa.cshtml" />
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<partial name="~/Areas/Admin/Views/VBDDuyet/_QuaTrinhXuLy.cshtml" />
+<partial name="/Areas/Admin/Views/VBDDuyet/_VBDDuyetFile.cshtml" />
+
+<partial name="/Areas/Admin/Views/VBDXem/_ChuaXuLy.cshtml" />
+<partial name="/Areas/Admin/Views/VBDXem/_VBDXemFileXuLy.cshtml" />

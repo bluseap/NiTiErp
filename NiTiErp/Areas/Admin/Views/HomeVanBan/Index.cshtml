@@ -1,0 +1,149 @@
+﻿@section Scripts{
+
+    <!-- DateJS -->
+    <script src="~/lib/DateJS/build/date.js"></script>
+
+    <script src="~/app/controllers/homevanban/index.js" asp-append-version="true"></script>
+    <script>
+        var homevanban = new homevanbanController();
+        homevanban.initialize();
+    </script>
+
+    <script src="~/app/controllers/homevanban/vanbanden.js" asp-append-version="true"></script>
+}
+
+<div class="row">
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link btnTrangChu">
+                    Trang chủ Văn bản
+                </a>
+            </small>
+        </div>
+    </div>
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link ">
+                </a>
+            </small>
+        </div>
+        <div class="title_right">
+            <div class="col-md-5 col-sm-2 col-xs-12 form-group pull-right">
+                <div class="input-group">
+                    <input type="text" id="txtTimNhanVien" class="form-control" placeholder="Từ khóa...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" id="btnTimNhanVien" type="button">Tìm !</button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <select id="ddlKhuVuc" class="form-control"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Văn bản đến</h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li>
+                    <a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <input type="hidden" id="hidHoSoNhanVienId" value="" />
+
+            <div class="row">
+                <div class="col-md-2 col-sm-12 col-xs-12 " style="text-align:center">
+                    <a class="btn btn-app btnDenDienTu" style="color: #1f1d1d">
+                        <span id="spanDenDienTu" class="badge bg-blue" style="font-size:x-large">0</span>
+                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Văn bản điện tử
+                    </a>
+                </div>
+                <div class="col-md-2 col-sm-12 col-xs-12 " style="text-align:center">
+                    <a class="btn btn-app btnDenChuaXuLy" style="color: #1f1d1d">
+                        <span id="spanDenChuaXuLy" class="badge bg-red" style="font-size:x-large">0</span>
+                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Chưa xử lý
+                    </a>
+                </div>
+                <div class="col-md-2 col-sm-12 col-xs-12 " style="text-align: center">
+                    <a class="btn btn-app btnDenDangXuLy" style="color: #1f1d1d">
+                        <span id="spanDenDangXuLy" class="badge bg-green" style="font-size:x-large">0</span>
+                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Đang xử lý
+                    </a>
+                </div>
+                <div class="col-md-2 col-sm-12 col-xs-12 " style=" text-align: center">
+                    <a class="btn btn-app btnDenChoDuyet" style="color: #1f1d1d">
+                        <span id="spanDenChoDuyet" class="badge bg-orange" style="font-size:x-large">0</span>
+                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Chờ duyệt
+                    </a>
+                </div>
+                @*<div class="col-md-2 col-sm-12 col-xs-12 " style=" text-align: center">
+                    <a class="btn btn-app btnDenChuPhatHanh" style="color: #1f1d1d">
+                        <span id="spanDenChuaPhatHanh" class="badge bg-red" style="font-size:x-large">0</span>
+                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Chưa phát hành
+                    </a>
+                </div>*@
+
+            </div>
+
+        </div>
+
+    </div>
+
+    @*<div class="x_panel">
+        <div class="x_title">
+            <h2>Văn bản đi</h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li>
+                    <a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="row">
+                <div class="col-md-2 col-sm-12 col-xs-12 " style="text-align:center">
+
+                </div>
+                <div class="col-md-2 col-sm-12 col-xs-12 " style="text-align:center">
+                    <a class="btn btn-app btnDiChoXuLy" style="color: #1f1d1d">
+                        <span id="spanDiChoXuLy" class="badge bg-green " style="font-size:x-large">0</span>
+                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Chờ xử lý
+                    </a>
+                </div>
+                <div class="col-md-2 col-sm-12 col-xs-12 " style="text-align: center">
+                    <a class="btn btn-app btnDiChoDuyet" style="color: #1f1d1d">
+                        <span id="spanDiChoDuyet" class="badge bg-orange " style="font-size:x-large">0</span>
+                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Chờ duyệt
+                    </a>
+                </div>
+                <div class="col-md-2 col-sm-12 col-xs-12 " style=" text-align: center">
+                    <a class="btn btn-app btnDiChuaPhatHanh" style="color: #1f1d1d">
+                        <span id="spanDiChuaPhatHanh" class="badge bg-red " style="font-size:x-large">0</span>
+                        <i class="fa fa-files-o" style="color: dodgerblue"></i>
+                        Chưa phát hành
+                    </a>
+                </div>
+                <div class="col-md-2 col-sm-12 col-xs-12 " style="text-align:center">
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>*@
+
+</div>

@@ -1,0 +1,282 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@section Styles{
+
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+}
+@section Scripts{
+
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+
+    <script src="~/lib/jQuery-EasyUI/datagrid-groupview.js" asp-append-version="true"></script>
+    <script src="~/lib/jQuery-EasyUI/jquery.edatagrid.js" asp-append-version="true"></script>
+    <script src="~/lib/jQuery-EasyUI/datagrid-cellediting.js" asp-append-version="true"></script>
+    <script src="~/lib/jQuery-EasyUI/datagrid-export.js" asp-append-version="true"></script>
+
+
+    <script src="~/app/controllers/congngay/index.js" asp-append-version="true"></script>
+    <script>
+        var congngaymoi = new congngayController();
+        congngaymoi.initialize();
+
+        var congngay = new congngaymoi.loadDataData();
+        var data = congngay.datatablecongngay;
+
+    </script>
+    <script src="~/app/controllers/congngay/bangcongngay.js" asp-append-version="true"></script>
+}
+
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link ">
+                    Tiền lương
+                </a>
+                >>
+                <a class="btn btn-link btnNhapCongLuongNgay">
+                    Bảng chấm công ngày nhân viên
+                </a>
+            </small>
+        </div>
+        @*<div class="title_right">
+                <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                    <button class="btn btn-round btn-warning" id="btn-create" type="button">Tạo mới</button>
+                </div>
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                    </div>
+                </div>
+            </div>*@
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="x_content">
+        <div class="">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>  <small>Danh sách Bảng chấm công ngày nhân viên</small></h3>
+                </div>
+
+                <div class="title_right">
+                    <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="txtNam" placeholder="Năm ">
+                        </div>
+                    </div>
+                    @*<div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                        <label for="lbNam" class="control-label  ">Năm </label>
+                    </div>
+                </div>*@
+                    <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right">
+                        <div class="input-group">
+                            <select id="ddlThang" class="form-control"></select>
+                        </div>
+                    </div>
+                    @*<div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                        <label for="lbThang" class="control-label  ">Tháng </label>
+                    </div>
+                </div>*@
+
+                </div>
+            </div>
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>  <small></small></h3>
+                </div>
+                <div class="title_right">
+                    <div class="col-md-3 col-sm-12 col-xs-12 form-group pull-right">
+                        <select id="ddlLuongDotIn" class="form-control"></select>
+                    </div>
+                    <div class="col-md-3 col-sm-12 col-xs-12 form-group pull-right">
+                        <label class="control-label pull-right">Đợt in bảng lương</label>
+                    </div>
+                </div>                
+            </div>
+            <div class="clearfix"></div>
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>  <small></small></h3>
+                </div>               
+                <div class="title_right">
+                    <div class="col-md-5 col-sm-2 col-xs-12 form-group pull-right">
+                        <div class="input-group">
+                            <input type="text" id="txtTimNhanVien" class="form-control" placeholder="Từ khóa...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" id="btnTimNhanVien" type="button">Tìm !</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-2 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                            <select id="ddlPhongBan" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                            <select id="ddlKhuVuc" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-md-2 col-sm-12 col-xs-12 form-group pull-right">
+                    <button class="btn btn-info pull-right" id="btnXuatExcelCongNgay" style="margin-right: 5px;">
+                        <i class="fa fa-download"></i>
+                        Xuất Excel
+                    </button>
+                </div>
+                <div class="col-md-3 col-sm-12 col-xs-12 form-group pull-right">
+                    <select id="ddlDieuKienKhac" class="form-control"></select>
+                </div>
+                <div class="col-md-3 col-sm-12 col-xs-12 form-group pull-right">
+                    <label class="control-label pull-right">Điều kiện khác</label>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+            <div class="table-responsive" id="table-responsiveDMHeSoLuong">
+
+                <input type="hidden" id="hidLuongBaoHiemSoGio" value="" />
+                <input type="hidden" id="hidLuongBaoHiemSoNgay" value="" />
+                <input type="hidden" id="hidLuongBaoHiemMucLuong" value="" />
+                <input type="hidden" id="hidLuongBaoHiemThanhTien" value="" />
+                <input type="hidden" id="hidChiPhiGiamBHYT" value="" />
+                <input type="hidden" id="hidChiPhiGiamBHTN" value="" />
+                <input type="hidden" id="hidChiPhiGiamBHXH" value="" />
+                <input type="hidden" id="hidChiPhiBHXH" value="" />
+                <input type="hidden" id="hidTongTienThucLinh" value="" />
+
+                <input type="hidden" id="hidKhoaSoLuongThangDotIn" value="" />
+
+                <table id="dg" class="easyui-datagrid" title="Bảng chấm công nhân viên" style="width:1000px;height:auto" cellspacing="0">
+
+                    <thead data-options="frozen: true">
+
+                        <tr>
+                            <th data-options="field:'TenNhanVien',width:150 ">Tên nhân viên</th>
+                            <th data-options="field:'TenKhuVuc',width:100 ">Khu vực</th>
+                        </tr>
+                    </thead>
+                    <thead>
+                        <tr>
+                            <th data-options="field:'TenPhong',width:120 ">Phòng</th>
+
+                            <th data-options="field:'Ngay01',width:60, formatter: formatNgayCN, editor: {type: 'text'} ">01</th>
+                            <th data-options="field:'Ngay02',width:60,  formatter: formatNgayCN, editor: {type: 'text'}  ">02</th>
+                            <th data-options="field:'Ngay03',width:60,  formatter: formatNgayCN,  editor: {type: 'text'}  ">03</th>
+                            <th data-options="field:'Ngay04',width:60,  formatter: formatNgayCN, editor:'text' ">04</th>
+                            <th data-options="field:'Ngay05',width:60,  formatter: formatNgayCN,  editor:'text' ">05</th>
+                            <th data-options="field:'Ngay06',width:60,  formatter: formatNgayCN, editor:'text' ">06</th>
+                            <th data-options="field:'Ngay07',width:60,  formatter: formatNgayCN, editor:'text' ">07</th>
+                            <th data-options="field:'Ngay08',width:60,  formatter: formatNgayCN, editor:'text' ">08</th>
+                            <th data-options="field:'Ngay09',width:60,  formatter: formatNgayCN, editor:'text' ">09</th>
+                            <th data-options="field:'Ngay10',width:60,  formatter: formatNgayCN, editor:'text' ">10</th>
+                            <th data-options="field:'Ngay11',width:60,  formatter: formatNgayCN, editor:'text' ">11</th>
+                            <th data-options="field:'Ngay12',width:60,  formatter: formatNgayCN,
+                                editor:'text' ">12</th>
+                            <th data-options="field:'Ngay13',width:60,  formatter: formatNgayCN,
+                                 editor:'text' ">13</th>
+                            <th data-options="field:'Ngay14',width:60,  formatter: formatNgayCN,
+                                 editor:'text' ">14</th>
+                            <th data-options="field:'Ngay15',width:60,  formatter: formatNgayCN,
+                                 editor:'text' ">15</th>
+                            <th data-options="field:'Ngay16',width:60,  formatter: formatNgayCN,
+                                 editor:'text' ">16</th>
+                            <th data-options="field:'Ngay17',width:60,  formatter: formatNgayCN,
+                                editor:'text' ">17</th>
+                            <th data-options="field:'Ngay18',width:60,  formatter: formatNgayCN,
+                                 editor:'text' ">18</th>
+                            <th data-options="field:'Ngay19',width:60,  formatter: formatNgayCN,
+                                 editor:'text' ">19</th>
+                            <th data-options="field:'Ngay20',width:60,  formatter: formatNgayCN,
+                                 editor:'text' ">20</th>
+                            <th data-options="field:'Ngay21',width:60,  formatter: formatNgayCN,
+                                 editor:'text' ">21</th>
+                            <th data-options="field:'Ngay22',width:60,  formatter: formatNgayCN,
+                                 editor:'text' ">22</th>
+                            <th data-options="field:'Ngay23',width:60,  formatter: formatNgayCN,
+                                 editor:'text' ">23</th>
+                            <th data-options="field:'Ngay24',width:60,  formatter: formatNgayCN,
+                                 editor:'text' ">24</th>
+                            <th data-options="field:'Ngay25',width:60,  formatter: formatNgayCN,
+                                 editor:'text' ">25</th>
+                            <th data-options="field:'Ngay26',width:60,  formatter: formatNgayCN,
+                                editor:'text' ">26</th>
+                            <th data-options="field:'Ngay27',width:60,  formatter: formatNgayCN,
+                                 editor:'text' ">27</th>
+                            <th data-options="field:'Ngay28',width:60,  formatter: formatNgayCN,
+                                 editor:'text' ">28</th>
+                            <th data-options="field:'Ngay29',width:60,  formatter: formatNgayCN,
+                                 editor:'text' ">29</th>
+                            <th data-options="field:'Ngay30',width:60,  formatter: formatNgayCN,
+                                 editor:'text' ">30</th>
+
+                            <th data-options="field:'Ngay31',width:60,  formatter: formatNgayCN,
+                                 editor:'text' ">31</th>
+
+                            <th data-options="field:'SoGioCong',width:80, align:'right', editor:'numberbox' ">Số giờ</th>
+                            <th data-options="field:'SoNgay',width:80, align:'right', editor:'numberbox' ">Số ngày</th>
+                            <th data-options="field:'MucLuong',width:100,  align:'right', formatter:formatPrice2, editor:{type:'numberbox', options:{min:0,precision:0,groupSeparator:','}}   ">Mức lương</th>
+                            <th data-options="field:'TienBaoHiem',width:100,  align:'right', formatter:formatPrice2, editor:{type:'numberbox', options:{min:0,precision:0,groupSeparator:','}}  ">Thành tiền</th>
+
+                            <th data-options="field:'Id',width:60,align:'center', hidden:'true', editor: 'numberbox' ">Id</th>
+
+                            @*<th data-options="field:'SoNgayAn',width:80, align:'right', editor:'numberbox' ">Số ngày ăn</th>
+                    <th data-options="field:'TienAnGiuaCa',width:100,  align:'right', formatter:formatPrice2, editor:{type:'numberbox', options:{min:0,precision:0,groupSeparator:','}}  ">Ăn giữa ca</th>
+                    <th data-options="field:'TienHieuQuaKD',width:100,  align:'right', formatter:formatPrice2, editor:{type:'numberbox', options:{min:0,precision:0,groupSeparator:','}}  ">Hiệu quả KD</th>*@
+
+                            <th data-options="field:'TienBHYT',width:100,  align:'right', formatter:formatPrice2, editor:{type:'numberbox', options:{min:0,precision:0,groupSeparator:','}}  ">BH Y Tế</th>
+                            <th data-options="field:'TienBHTN',width:100,  align:'right', formatter:formatPrice2, editor:{type:'numberbox', options:{min:0,precision:0,groupSeparator:','}}  ">BH Thất Nghiệp</th>
+                            <th data-options="field:'TienBHXH',width:100,  align:'right', formatter:formatPrice2, editor:{type:'numberbox', options:{min:0,precision:0,groupSeparator:','}}  ">BH Xã Hội</th>
+                            <th data-options="field:'TongTienBaoHiem',width:100,  align:'right', formatter:formatPrice2, editor:{type:'numberbox', options:{min:0,precision:0,groupSeparator:','}}  ">Tổng tiền đóng BH</th>
+
+                            <th data-options="field:'TongTienThucLinh',width:100,  align:'right', formatter:formatPrice2, editor:{type:'numberbox', options:{min:0,precision:0,groupSeparator:','}}  ">Tiền thực lĩnh</th>
+                        </tr>
+                    </thead>
+
+                </table>
+
+                @*<div id="tb" style="height:auto">
+            <a class="easyui-linkbutton btndelete" data-options="iconCls:'icon-cut',plain:true">Xóa</a>
+            <a class="easyui-linkbutton btnaccept" data-options="iconCls:'icon-save',plain:true">Lưu</a>
+
+        </div>*@
+                <script type="text/javascript">
+                    function formatNgayCN(val, row) {
+                        if (val === 'CN') {
+                            return '<span disabled="disabled" style="color:red; boder:red">' + val + '</span>';
+                        }
+                        else if (val === 'KO') {
+                            return '<input type="hidden" value="" />';
+                        }
+                        else {
+                            return val;
+                        }
+                    }
+                    function formatPrice2(val) {
+                        return '<span>' + tedu.formatNumberKhongLe(val) + '</span>';
+                    }
+                </script>
+
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
