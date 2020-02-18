@@ -69,6 +69,9 @@
             $('#txtFileSoTrang').val(0);
             CodeFileGuidId();
             $('#hidInsertFileVanBanDiId').val(1);
+
+            $("#btnSaveFileVanBanDen").hide();
+            $("#btnCancelFileVanBanDen").hide();
             $('#modal-add-edit-FileVanBanDi').modal('show');
         });
 
@@ -544,6 +547,10 @@
         $('#ddlCapDoKhan')[0].selectedIndex = 1;
         $('#ddlCapDoMat')[0].selectedIndex = 1;
         $('#txtGhiChu').val('');
+
+        $('#ddlSoVanBanDi')[0].selectedIndex = 0;
+        $('#txtCacDonViNhanVanBan').val("");
+
     }
 
     function loadVanBanDiSoList(makv) {

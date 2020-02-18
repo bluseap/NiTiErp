@@ -93,8 +93,8 @@
             $('#btnVBDDUyetFileId').hide();
             $('#modal-add-edit-VBDDuyetFile').modal('show');
         });
-
-        const slidercxl = document.querySelector('.innerWrapper');
+       
+        const slidercxl = document.querySelector("#table-responsiveChuaXuLy");//'.innerWrapper');
         let isDown = false;
         let startX;
         let scrollLeft;

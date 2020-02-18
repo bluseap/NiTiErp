@@ -48,6 +48,10 @@
                 data: data,
                 success: function (path) {
                     $("#hidDuongDanFile").val(path);
+
+                    $("#btnSaveFileVanBanDi").show();
+                    $("#btnCancelFileVanBanDi").show();
+
                     fileUpload1.push(path);
                     clearFileInput($("#fileFileVanBanDi"));                    
                     //$('#imagelistBang1').append('<div class="col-md-3"><img width="100"  data-path="' + path + '" src="' + path + '"></div>');
