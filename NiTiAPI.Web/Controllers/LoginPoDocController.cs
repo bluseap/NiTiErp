@@ -31,7 +31,7 @@ namespace NiTiAPI.Web.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly SignInManager<AppUserPoDoc> _signInManager;
-        private readonly UserManager<AppUserPoDoc> _userManager;        
+        private readonly UserManager<AppUserPoDoc> _userManager;
 
         public LoginPoDocController(UserManager<AppUserPoDoc> userManager,
             IConfiguration configuration,
@@ -39,7 +39,7 @@ namespace NiTiAPI.Web.Controllers
         {
             _signInManager = signInManager;
             _userManager = userManager;
-            _configuration = configuration; 
+            _configuration = configuration;
         }
 
         [HttpPost]

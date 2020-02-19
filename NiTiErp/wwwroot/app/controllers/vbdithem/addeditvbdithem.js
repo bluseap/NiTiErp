@@ -70,8 +70,8 @@
             CodeFileGuidId();
             $('#hidInsertFileVanBanDiId').val(1);
 
-            $("#btnSaveFileVanBanDen").hide();
-            $("#btnCancelFileVanBanDen").hide();
+            $("#btnSaveFileVanBanDi").hide();
+            $("#btnCancelFileVanBanDi").hide();
             $('#modal-add-edit-FileVanBanDi').modal('show');
         });
 

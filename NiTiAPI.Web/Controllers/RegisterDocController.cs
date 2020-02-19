@@ -18,23 +18,23 @@ using Microsoft.Extensions.Logging;
 
 namespace NiTiAPI.Web.Controllers
 {
-    [Route("api/{culture}/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     [MiddlewareFilter(typeof(LocalizationPipeline))]
     public class RegisterDocController : ControllerBase
-    {        
+    {
         private readonly ILogger<RegisterDocController> _logger;
-        private readonly IStringLocalizer<RegisterDocController> _localizer;        
+        private readonly IStringLocalizer<RegisterDocController> _localizer;
 
         private readonly IRegisterDocService _registerdocService;
 
         public RegisterDocController(ILogger<RegisterDocController> logger,
             IRegisterDocService registerdocService,
             IStringLocalizer<RegisterDocController> localizer)
-        {            
-            _logger = logger;           
+        {
+            _logger = logger;
             _registerdocService = registerdocService;
-            _localizer = localizer;            
+            _localizer = localizer;
         }
 
         // GET: api/Post/1
@@ -49,7 +49,7 @@ namespace NiTiAPI.Web.Controllers
         public async Task<IActionResult> CreateRegisterDoc(string firebasenotifiId, string username,
             string softId, string softName, string platformImei)
         {
-            var newId = await _registerdocService.CreateRegisterDoc(firebasenotifiId, username, 
+            var newId = await _registerdocService.CreateRegisterDoc(firebasenotifiId, username,
                 softId, softName, platformImei);
             return Ok(newId);
         }
