@@ -125,17 +125,18 @@
 
     function disabledHopDongChiTiet(para) {
         $('#txtHoTenChiTiet').prop('disabled', para);
-        $('#txtTenPhongChiTiet').prop('disabled', para);
-        $('#txtSoHopDong').prop('disabled', para);
-        $('#ddlLoaiHopDongChiTietCu').prop('disabled', para);
-        $('#txtNgayKyHopDong').prop('disabled', para);
-        $('#txtNgayHopDong').prop('disabled', para);
-        $('#txtNgayHieuLuc').prop('disabled', para);
-        $('#txtNgayHetHan').prop('disabled', para);
-        $('#ddlChucVuKyHopDongChiTietCu').prop('disabled', para);
-        $('#txtTenKyHopDongCu').prop('disabled', para);
-        $('#txtHeSoLuongCoBan').prop('disabled', para);
-        $('#txtLuongCoBan').prop('disabled', para);
+        //$('#txtTenPhongChiTiet').prop('disabled', para);
+        //$('#txtSoHopDong').prop('disabled', para);
+        //$('#ddlLoaiHopDongChiTietCu').prop('disabled', para);
+        //$('#txtNgayKyHopDong').prop('disabled', para);
+        //$('#txtNgayHopDong').prop('disabled', para);
+        //$('#txtNgayHieuLuc').prop('disabled', para);
+        //$('#txtNgayHetHan').prop('disabled', para);
+        //$('#ddlChucVuKyHopDongChiTietCu').prop('disabled', para);
+        //$('#txtTenKyHopDongCu').prop('disabled', para);
+
+        //$('#txtHeSoLuongCoBan').prop('disabled', para);
+        //$('#txtLuongCoBan').prop('disabled', para);
     }       
 
     function loadDataChiTiet() {

@@ -82,11 +82,15 @@
             else if (insertvanbanden === "2") {
                 var ttxuly = $('#hidVanBanDenTTXuLy').val();
 
-                if (ttxuly === "2") {
-                    tedu.notify("Văn bản đã chuyển lãnh đạo. Xem lại.", "error");
+                //if (ttxuly === "2") {
+                //    tedu.notify("Văn bản đã chuyển lãnh đạo. Xem lại.", "error");
+                //    UpdateVanBanDenSttHoSo();
+                //}
+                if (ttxuly === "3") {
+                    tedu.notify("Văn bản đã chuyển chuyên môn. Xem lại.", "error");
                     UpdateVanBanDenSttHoSo();
                 }
-                else if (ttxuly === "1") {
+                else if (ttxuly === "1" || ttxuly === "2") {
                     UpdateVanBanDen();
                 }                
             }

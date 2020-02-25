@@ -619,7 +619,7 @@
                             TenLoaiHopDong: item.TenLoaiHopDong,
                             HeSoLuong: item.HeSoLuong,
                             LuongCoBan: item.LuongCoBan,
-                            NgayHieuLuc: tedu.getFormattedDate(item.LuongCoBan),
+                            NgayHieuLuc: tedu.getFormattedDate(item.NgayHieuLuc),
                             NgayHetHan: tedu.getFormattedDate(item.NgayHetHan),
                             Status: tedu.getHoSoNhanVienStatus(item.Status)    
                         });
@@ -702,7 +702,7 @@
                 tedu.startLoading();
             },
             success: function (response) {
-                if (response.Success == false) {
+                if (response.Success === false) {
                     tedu.notify(response.Message, "error");
                 }
                 else {

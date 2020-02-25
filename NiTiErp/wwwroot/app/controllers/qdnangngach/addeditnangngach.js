@@ -165,11 +165,11 @@
         $('#txtAddEditPhongTo').prop('disabled', para);
 
         $('#ddlLoaiQuyetDinh').prop('disabled', para);
-        $('#ddlChucVuCu').prop('disabled', para);
+        //$('#ddlChucVuCu').prop('disabled', para);
 
-        $('#ddlBacLuongCu').prop('disabled', para);
-        $('#txtHeSoCu').prop('disabled', para);
-        $('#txtMucLuongCu').prop('disabled', para);
+        //$('#ddlBacLuongCu').prop('disabled', para);
+        //$('#txtHeSoCu').prop('disabled', para);
+        //$('#txtMucLuongCu').prop('disabled', para);
     }
 
     function loadDataAddEdit() {

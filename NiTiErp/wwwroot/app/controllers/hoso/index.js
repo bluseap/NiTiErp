@@ -250,11 +250,11 @@
             var trinhdoId = $('#hidTrinhDoId').val(); // sua la bang = 1     
 
             //tedu.notify("Chưa lưu được Save Trình độ. Kiểm tra và vào Hợp đồng nhập mới.", "error");
-            if (hosoInserId === 1 && trinhdoId === 0) {  // tao moi ho so, trinh do
+            if (hosoInserId === "1" && trinhdoId === "0") {  // tao moi ho so, trinh do
                 SaveHoSoNhanVienTrinhDo2(e);
                 SaveTrinhDoNhanVien(e);
             }
-            else if (hosoInserId === 1 && trinhdoId === 1) {// add trinh do    
+            else if (hosoInserId === "1" && trinhdoId === "1") {// add trinh do    
                 UpdateTrinhDo(e);
             }
         });
@@ -264,7 +264,7 @@
             var trinhdoId = $('#hidTrinhDoId').val(); // sua la bang = 1     
 
             if ($('#frmMainHopDong').valid()) {
-                if (hosoInserId !== 1) { // add hop dong   
+                if (hosoInserId !== "1") { // add hop dong   
                     //SaveHoSoNhanVienTrinhDo(e);
 
                     if ($('#frmMainTrinhDo').valid()) {
@@ -290,7 +290,7 @@
                 }
                 else if ($('#frmMainTrinhDo').valid()) {
                     tedu.notify("Chưa lưu được hợp đồng. Kiểm tra và vào Hợp đồng nhập mới.", "error");
-                    if (hosoInserId === 1 && trinhdoId === 1) { // update ten bang                      
+                    if (hosoInserId === "1" && trinhdoId === "1") { // update ten bang                      
                         UpdateTrinhDo(e);
                     }
                     else {  // add bang moi
@@ -298,24 +298,24 @@
                     }
                 }
                 else {
-                    if (hosoInserId === 1) {
+                    if (hosoInserId === "1") {
                         SaveHoSoNhanVienTrinhDo(e);
                     }
                 }
             }
             else if ($('#frmMainTrinhDo').valid()) {
                 tedu.notify("Chưa lưu được hợp đồng. Kiểm tra và vào Hợp đồng nhập mới.", "error");
-                if (hosoInserId === 1) {  // tao moi ho so, trinh do
+                if (hosoInserId === "1") {  // tao moi ho so, trinh do
                     SaveHoSoNhanVienTrinhDo(e);
                     SaveTrinhDoNhanVien(e);
                 }
-                else if (hosoInserId === 1 && trinhdoId === 1) {// add trinh do    
+                else if (hosoInserId === "1" && trinhdoId === "1") {// add trinh do    
                     UpdateTrinhDo(e);
                 }
             }            
             else {
                 tedu.notify("Chưa lưu được trình độ. Kiểm tra và nhập lại trình độ.", "error");
-                if (hosoInserId === 1) {
+                if (hosoInserId === "1") {
                     SaveHoSoNhanVien(e);
                     //UpdateHoSoNhanVien(e);
                 }
@@ -330,7 +330,7 @@
             if (txtNgayVaoDang && chucvudang !== "%") {
                 var updateDangId = $('#hidUpdateDangId').val();
 
-                if ((hosoInserId === 0 && updateDangId === 0) || (hosoInserId === 1 && updateDangId === 0)) { // add dang  
+                if ((hosoInserId === "0" && updateDangId === "0") || (hosoInserId === "1" && updateDangId === "0")) { // add dang  
                     SaveDang(e);
                 }                
                 else {                    
@@ -346,7 +346,7 @@
             if (txtNgayVaoDoan && chucvudoan !== "%") {
                 var updateDoanId = $('#hidUpdateDoanId').val();
 
-                if ((hosoInserId === 0 && updateDoanId === 0) || (hosoInserId === 1 && updateDoanId === 0)) { // add doan 
+                if ((hosoInserId === "0" && updateDoanId === "0") || (hosoInserId === "1" && updateDoanId === "0")) { // add doan 
                     SaveDoan(e);
                 }
                 else {
@@ -359,7 +359,7 @@
             if (txtNgayVaoCongDoan && chucvucongdoan !== "%") {
                 var updateCongDoanId = $('#hidUpdateCongDoanId').val();
 
-                if ((hosoInserId === 0 && updateCongDoanId === 0) || (hosoInserId === 1 && updateCongDoanId === 0)) { // add cong doan
+                if ((hosoInserId === "0" && updateCongDoanId === "0") || (hosoInserId === "1" && updateCongDoanId === "0")) { // add cong doan
                     SaveCongDoan(e);
                 }
                 else {
@@ -371,7 +371,7 @@
             if (txtNgayThamGiaCachMang ) {
                 var updateThamGiaCachMangId = $('#hidUpdateCachMangId').val();
 
-                if ((hosoInserId === 0 && updateThamGiaCachMangId === 0) || (hosoInserId === 1 && updateThamGiaCachMangId === 0)) { // add tham gia cach mang
+                if ((hosoInserId === "0" && updateThamGiaCachMangId === "0") || (hosoInserId === "1" && updateThamGiaCachMangId === "0")) { // add tham gia cach mang
                     SaveThamGiaCachMang(e);
                 }
                 else {
@@ -384,7 +384,7 @@
             if (txtNgayNhapNgu && chucvuquandoi !== "%") {
                 var updateNhapNguId = $('#hidUpdateNhapNguId').val();
 
-                if ((hosoInserId === 0 && updateNhapNguId === 0) || (hosoInserId === 1 && updateNhapNguId === 0)) { // add quan dpo
+                if ((hosoInserId === "0" && updateNhapNguId === "0") || (hosoInserId === "1" && updateNhapNguId === "0")) { // add quan dpo
                     SaveNhapNgu(e);
                 }
                 else {
@@ -397,7 +397,7 @@
             if (phongbancongviec !== "%" && chucvucongviec !== "%") {
                 var inscongviecId = $('#hidInsertCongViecId').val();
 
-                if ((hosoInserId === 0 && inscongviecId === 0) || (hosoInserId === 1 && inscongviecId === 0)) { // add cong viec
+                if ((hosoInserId === "0" && inscongviecId === "0") || (hosoInserId === "1" && inscongviecId === "0")) { // add cong viec
                     SaveCongViec(e);
                 }
                 else {
@@ -611,7 +611,9 @@
             ctrl.value = null;
             ctrl.value('');
         }
-        catch { }
+        catch (ex) {
+            tedu.notify(ex, 'error');
+        }  
     }
     function clearFileBang1Input(ctrl) {
         try {
@@ -619,7 +621,9 @@
             ctrl.value = null;
             ctrl.value('');
         }
-        catch { } 
+        catch (ex) {
+            tedu.notify(ex, 'error');
+        } 
     }
     function clearFileBang2Input(ctrl) {
         try {
@@ -627,7 +631,9 @@
             ctrl.value = null;
             ctrl.value('');
         }
-        catch { }
+        catch (ex) {
+            tedu.notify(ex, 'error');
+        } 
     }
 
     function isFormMainValidate()
