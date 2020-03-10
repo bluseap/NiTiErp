@@ -308,6 +308,41 @@ namespace NiTiErp.Areas.Admin.Controllers
             }
         }
 
+        public IActionResult InsertUpdateVBDDNVXL2(VanBanDenDuyetNVXLViewModel vanbandenduyetnvxlVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+
+                vanbandenduyetnvxlVm.CreateBy = username;
+                vanbandenduyetnvxlVm.CreateDate = DateTime.Now;
+                vanbandenduyetnvxlVm.UpdateBy = username;
+                vanbandenduyetnvxlVm.UpdateDate = DateTime.Now;
+
+                if (vanbandenduyetnvxlVm.InsertVanBanDenDuyetNVXLId == 1)
+                {
+                    var result = _authorizationService.AuthorizeAsync(User, "VANBANDENDUYET", Operations.Create);
+                    if (result.Result.Succeeded == false)
+                    {
+                        return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm mới."));
+                    }
+
+                    var vanbanden = _vanbandenduyetnvxlduyetService.VanBanDenDuyetNVXLAUDList(vanbandenduyetnvxlVm, "InVBDDuyetNhanVienXLStatus2");
+
+                    return new OkObjectResult(vanbanden);
+                }
+                else
+                {
+                    return new OkObjectResult(vanbandenduyetnvxlVm);
+                }
+            }
+        }
+
         public IActionResult UpdateVBDDNVXL(VanBanDenDuyetNVXLViewModel vanbandenduyetnvxlVm)
         {
             if (!ModelState.IsValid)

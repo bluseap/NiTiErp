@@ -57,17 +57,16 @@
                         </div>
                         <div>
                             <a class="btn btn-default submit" href="#" id="btnLogin">Đăng nhập</a>
-
                         </div>
-
-
                         <br />
                         <div>
-
+                            <a class="fa fa-android aAppAndroid" style="font-size:30px" 
+                              id="btnAndroid" ></a>
+                        </div>
+                        <div>
                             <div class="clearfix"></div>
                             <br />
                             <p> ©2019  Công Ty Cổ Phần Điện Nước An Giang - POWACO</p>
-
                         </div>
                     </form>
                 </section>
@@ -91,6 +90,30 @@
     <script>
         var login = new loginController();
         login.initialize();
+
+        var url = '/uploaded/appandroid/output.json';
+        var urlGoogle = 'https://drive.google.com/file/d/12s69L8o8lwBhsA78b3S3hp67qFJD-5bf/view?usp=sharing';
+        
+        $(document).on("click", "a.aAppAndroid", function () {
+            window.location.href = urlGoogle;
+            /*fetch("https://drive.google.com/file/d/12s69L8o8lwBhsA78b3S3hp67qFJD-5bf/view?usp=sharing")
+                .then(resp => resp.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement("a");
+                    a.style.display = "none";
+                    a.href = url;
+                    // the filename you want
+                    a.download = "PowaAndroid";
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    //alert("your file has downloaded!"); // or you know, something with better UX...
+                })
+                .catch(() => alert("oh no!"));*/
+        });
+
+        
     </script>
 </body>
 </html>

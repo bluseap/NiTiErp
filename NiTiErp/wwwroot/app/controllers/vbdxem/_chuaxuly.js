@@ -83,7 +83,8 @@
 
         $.ajax({
             type: "GET",
-            url: "/Admin/vbdduyet/InsertUpdateVBDDNVXL",
+            //url: "/Admin/vbdduyet/InsertUpdateVBDDNVXL",
+            url: "/Admin/vbdduyet/InsertUpdateVBDDNVXL2",
             data: {
                 InsertVanBanDenDuyetNVXLId: 1,
                 VanBanDenDuyetId: vanbandenduyetid,
