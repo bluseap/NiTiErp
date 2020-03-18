@@ -289,23 +289,32 @@
     function loadHoSoNangNgach(hosoid) {       
         $.ajax({
             type: "GET",
-            url: "/Admin/qdnangngach/GetHeSoNVChucVuBac",
+            //url: "/Admin/qdnangngach/GetHeSoNVChucVuBac",
+            url: "/Admin/qdnangngach/GetListNangNgachHoSoId",
             data: { hosoId: hosoid },
             dataType: "json",
             beforeSend: function () {
                 tedu.startLoading();
             },
             success: function (response) {
-                var hesonhanvien = response.Result[0];
+                var nangngach = response.Result.Results[0];
 
+                $('#txtAddEditHoTen').val(nangngach.Ten);
+                $('#txtAddEditPhongTo').val(nangngach.TenPhong);
+                $('#hidHeSoLuongDanhMucCuId').val(nangngach.HeSoLuongDanhMucMoiId);
+                $('#ddlChucVuCu').val(nangngach.ChucVuNhanVienMoiId);
+                $('#ddlBacLuongCu').val(nangngach.BacLuongMoiId);
+                $('#txtHeSoCu').val(nangngach.HeSoMoi);
+                $('#txtMucLuongCu').val(nangngach.MucLuongMoi);
+
+                /*var hesonhanvien = response.Result[0];
                 $('#txtAddEditHoTen').val(hesonhanvien.Ten);
                 $('#txtAddEditPhongTo').val(hesonhanvien.TenPhong);
-
                 $('#hidHeSoLuongDanhMucCuId').val(hesonhanvien.HeSoLuongDanhMucId);
                 $('#ddlChucVuCu').val(hesonhanvien.ChucVuNhanVienId); 
                 $('#ddlBacLuongCu').val(hesonhanvien.BacLuongId); 
                 $('#txtHeSoCu').val(hesonhanvien.HeSo); 
-                $('#txtMucLuongCu').val(hesonhanvien.MucLuong);
+                $('#txtMucLuongCu').val(hesonhanvien.MucLuong);*/
 
                 tedu.stopLoading();
             },

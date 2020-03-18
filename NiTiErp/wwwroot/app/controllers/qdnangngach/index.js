@@ -122,6 +122,8 @@
 
                 loadTableNangNgach();
 
+                loadDataAddEditChucVuKhuVuc($("#ddlKhuVuc").val());
+
             },
             error: function (status) {
                 console.log(status);
@@ -529,6 +531,31 @@
                     render += "<option value='" + item.Id + "'>" + item.TenChucVu + "</option>";
                 });
                 $('#ddlChucVuCu').html(render);
+                $('#ddlChucVuMoi').html(render);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh Chức vụ hợp đồng.', 'error');
+            }
+        });
+    }
+
+    function loadDataAddEditChucVuKhuVuc(makhuvuc) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/hoso/ChucVuNhanVienKhuVuc',
+            data: {
+                makv: makhuvuc
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='%' >--- Lựa chọn ---</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.TenChucVu + "</option>";
+                });                
                 $('#ddlChucVuMoi').html(render);
             },
             error: function (status) {

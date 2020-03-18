@@ -119,6 +119,14 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetListNangNgachHoSoId(string hosoId)
+        {
+            var model = _qdnangngachService.GetAllNangNgachPaging("", "", "", 1, 1000, hosoId, "", "", "", "GetAllNangNgachHoSoId");
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
         public IActionResult GetHeSoNVChucVuBac(string hosoId)
         {
             var model = _hesonhanvienService.HeSoNhanVienGetList("", "", "", hosoId, "", "", "", "", "", "GetHeSoHoSoId");
