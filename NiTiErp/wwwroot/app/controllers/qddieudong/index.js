@@ -291,7 +291,7 @@
             url: "/Admin/qddieudong/AddUpdateQDDieuDong",
             data: {
                 Id: dieudongId,
-                HoSoNhanVienId: hosoId,
+                HoSoNhanVienId: hosoId === "0" ? "00000000-0000-0000-0000-000000000000" : hosoId,
                 InsertqdddId: insertqdddId,
 
                 LoaiQuyetDinhId: loaiquyetdinh,

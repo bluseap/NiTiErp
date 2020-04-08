@@ -259,7 +259,7 @@ html , body{
     width: 35%;
     float: left
 }
-.img-circle.profile_img {
+/*.img-circle.profile_img {
     width: 70%;
     background: #fff;
     margin-left: 15%;
@@ -267,6 +267,15 @@ html , body{
     position: inherit;
     margin-top: 20px;
     border: 1px solid rgba(52, 73, 94, 0.44);
+    padding: 4px
+}*/
+.img-circle.profile_img {
+    width: 70%;
+    background: #fff;
+    margin-left: 15%;
+    z-index: 1000;
+    position: inherit;
+    margin-top: 10px;    
     padding: 4px
 }
 .profile_info {
@@ -1798,10 +1807,15 @@ span.right {
 a.user-profile {
     color: #5E6974 !important
 }
-.user-profile img {
+/*.user-profile img {
     width: 29px;
     height: 29px;
-    border-radius: 50%;
+    border-radius: 50%;   
+    margin-right: 10px
+}*/
+.user-profile img {
+    width: 29px;
+    height: 29px;       
     margin-right: 10px
 }
 ul.top_profiles {
@@ -4288,4 +4302,45 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 
 .dataTables_wrapper > .row{
   overflow:auto !important; /*prevent datatables overflowing its container*/
+}
+
+
+.table-fixed-powa {
+    table-layout: fixed;
+    width: 100%;
+    white-space: nowrap;
+}
+
+    .table-fixed-powa td {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+/* Column widths are based on these cells */
+.row-stt {
+    width: 15%;
+}
+
+.row-trichyeu {
+    width: 40%;    
+}
+.row-tenso {
+    width: 13%;
+}
+
+.row-5 {
+    width: 5%;
+}
+.row-8 {
+    width: 8%;
+}
+.row-10 {
+    width: 10%;
+}
+.row-22 {
+    width: 22%;
+}
+.row-23 {
+    width: 23%;
 }

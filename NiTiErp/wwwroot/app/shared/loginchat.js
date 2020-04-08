@@ -58,11 +58,11 @@ connectionChatUser.on('sendPrivateMessage', (windowId, fromUserName, message, us
 
     var divChatP = '<div class="direct-chat-msg ' + Side + '">' +
         '<div class="direct-chat-info clearfix">' +
-        '<span class="direct-chat-name pull-' + Side + '">' + fromUserName + '  </span> &nbsp;' +
-        '<span class="direct-chat-timestamp pull-' + TimeSide + '""> ' + CurrentDateTime + '</span>' +
+        //'<span class="direct-chat-name pull-' + Side + '">' + fromUserName + '  </span> &nbsp;' +
+        ' &nbsp; <span class="direct-chat-timestamp pull-' + TimeSide + '""> ' + CurrentDateTime + '</span>' +
         '</div>' +
         '<span class="chat-img1 pull-left">' +
-        ' <img class="img-circle profile_img" src="' + userimg + '?h=29" alt="Message User Image">' +
+        ' <img class="profile_img" src="' + userimg + '?h=29" alt="Message User Image">' +
         '</span> &nbsp; ' +
         ' <div class="direct-chat-text" >' + message + '</div>' +
     
@@ -612,11 +612,11 @@ function GetPagingChatUser(fromuserid, touserid, sotrang, trangtrendong, tongdon
                 $.each(response.Result.Results, function (i, item) {
                     var divChatP = '<div class="direct-chat-msg ' + Side + '">' +
                         '<div class="direct-chat-info clearfix">' +
-                        '<span class="direct-chat-name pull-' + Side + '">' + item.FromUserName + '  </span> &nbsp;' +
-                        '<span class="direct-chat-timestamp pull-' + TimeSide + '""> ' + item.TimeMessage + '</span>' +
+                       // '<span class="direct-chat-name pull-' + Side + '">' + item.FromUserName + '  </span> &nbsp; ' +
+                        ' &nbsp; <span class="direct-chat-timestamp pull-' + TimeSide + '""> ' + item.TimeMessage + '</span>' +
                         '</div>' +
                         '<span class="chat-img1 pull-left">' +
-                        ' <img class="img-circle profile_img" src="' + item.FromAvatar + '?h=29" alt="Message User Image">' +
+                        ' <img class="profile_img" src="' + item.FromAvatar + '?h=29" alt="Message User Image">' +
                         '</span> &nbsp; ' +
                         ' <div class="direct-chat-text" >' + item.TextMessage + '</div>' +
                         '</div > ';
@@ -671,11 +671,11 @@ function GetPagingChatUserScroll(fromuserid, touserid, sotrang, trangtrendong, t
                 $.each(response.Result.Results, function (i, item) {
                     var divChatP = '<div class="direct-chat-msg ' + Side + '">' +
                         '<div class="direct-chat-info clearfix">' +
-                        '<span class="direct-chat-name pull-' + Side + '">' + item.FromUserName + '  </span> &nbsp;' +
-                        '<span class="direct-chat-timestamp pull-' + TimeSide + '""> ' + item.TimeMessage + '</span>' +
+                       // '<span class="direct-chat-name pull-' + Side + '">' + item.FromUserName + '  </span> &nbsp; ' +
+                        ' &nbsp; <span class="direct-chat-timestamp pull-' + TimeSide + '""> ' + item.TimeMessage + '</span>' +
                         '</div>' +
                         '<span class="chat-img1 pull-left">' +
-                        ' <img class="img-circle profile_img" src="' + item.FromAvatar + '?h=29" alt="Message User Image">' +
+                        ' <img class="profile_img" src="' + item.FromAvatar + '?h=29" alt="Message User Image">' +
                         '</span> &nbsp; ' +
                         ' <div class="direct-chat-text" >' + item.TextMessage + '</div>' +
                         '</div > ';

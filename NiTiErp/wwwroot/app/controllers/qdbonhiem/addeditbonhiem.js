@@ -156,9 +156,9 @@
         $('#txtAddEditHoTen').prop('disabled', para);
         $('#txtAddEditPhongTo').prop('disabled', para);
 
-        $('#ddlXiNghiepCu').prop('disabled', para);
-        $('#ddlPhongToCu').prop('disabled', para);
-        $('#ddlChucVuCu').prop('disabled', para);       
+        //$('#ddlXiNghiepCu').prop('disabled', para);
+        //$('#ddlPhongToCu').prop('disabled', para);
+        //$('#ddlChucVuCu').prop('disabled', para);       
 
         $('#ddlLoaiQuyetDinh').prop('disabled', para);
     }
