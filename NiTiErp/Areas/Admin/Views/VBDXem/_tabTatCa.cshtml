@@ -8,24 +8,22 @@
             </div>
         </div>
         <br />
-        <div class="table-responsive" id="table-responsiveTatCa">
-        @*<div id="table-responsiveTatCa">*@
-            <table id="tblTatCa" class="table table-striped table-bordered dataTable no-footer" cellspacing="0">
-            @*<table role="table" id="tblTatCa"  cellspacing="0" >*@
+        <div class="table-responsive" id="table-responsiveTatCa">       
+            <table id="tblTatCa" class="table table-striped table-bordered dataTable no-footer" cellspacing="0">          
                 <thead >
-                    <tr >
-                        <th width="=5%">#</th>
-                        <th >#</th>
-                        <th >Tên sổ</th>
-                        <th >Số đến, ký hiệu</th>
-                        <th >Trich yếu</th>
-                        <th >Tên cơ quan ban hành</th>
-                        <th >File xử lý</th>
-                        <th >Ngày ban hành</th>
-                        <th >Ngày đến</th>
-                        <th >QT Xử lý</th>
-                        <th >Bút phê LĐ</th>
-                        <th >Ghi chú</th>
+                    <tr>
+                        <th width="=5%">#</th>                        
+                        <th>Tên sổ</th>
+                        <th>Số đến, ký hiệu</th>
+                        <th>Trich yếu</th>
+                        <th>Tên cơ quan ban hành</th>
+                        <th>File xử lý</th>
+                        <th>Ngày ban hành</th>
+                        <th>Ngày đến</th>
+                        <th>QT Xử lý</th>
+                        <th>Bút phê LĐ</th>
+                        <th>Ghi chú</th>
+                        <th>#</th>
                     </tr>
                 </thead>
                 <tbody id="tblContentTatCaXuLy"></tbody>
@@ -55,21 +53,15 @@
     </div>
 </div>
 <script id="table-TatCaXuLy" type="x-tmpl-mustache">
-    <tr role="row">
-        <th scope="row">
-        @*<td role="cell">*@
-            @*<a class="btn btn-sm btnTatCaXuLy" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Tất xử lý ">
+    <tr >
+        <th >        
+            <a class="btn btn-sm btnTatCaChuaXuLyXuLy" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xử lý lại">
                 <i class="fa fa-mail-forward"></i>
-            </a>*@
-            <a class="btn btn-sm btnTatCaChuaXuLyXuLy" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xử lý">
-                <i class="fa fa-mail-forward"></i>
-                Xử lý lại
+                X.lý lại
             </a>
         </th>
-        <td >
-            <a class="btn btn-sm">
-                {{TenSoVanBanDen}}
-            </a>
+        <td>
+            {{TenSoVanBanDen}}
         </td>
         <td >
             <a class="btn btn-link btnChuaXuLyPatchFileKyHieu" data-id="{{VanBanDenId}}" data-toggle="tooltip">
@@ -81,25 +73,19 @@
                 {{TrichYeuCuaVanBan}}
             </a>
         </td>
-        <td >
-            <a class="btn btn-sm">
-                {{TenCoQuanBanHanh}}
-            </a>
+        <td>
+            {{TenCoQuanBanHanh}}
         </td>
         <td >
             <a class="btn btn-link btnTatCaPatchFileXuLy" data-id="{{VanBanDenId}}" data-toggle="tooltip">
-                Xem file @*{{TenFile}}*@
+                Xem file 
             </a>
         </td>
-        <td >
-            <a class="btn btn-sm">
-                {{NgayBanHanhCuaVanBan}}
-            </a>
+        <td>
+            {{NgayBanHanhCuaVanBan}}
         </td>
-        <td >
-            <a class="btn btn-sm">
-                {{NgayDenCuaVanBan}}
-            </a>
+        <td>
+            {{NgayDenCuaVanBan}}
         </td>
         <td >
             <a class="btn btn-lg btnQTChuaXuLy" data-id="{{VanBanDenId}}" data-toggle="tooltip" style="color:green">
@@ -111,10 +97,8 @@
                 {{ButPheLanhDao}}
             </a>
         </td>
-        <td >
-            <a class="btn btn-sm">
-                {{GhiChu}}
-            </a>
+        <td>
+            {{GhiChu}}
         </td>
         <td >
             <input type="hidden" id="vanbandenid" class="form-control" value="{{VanBanDenId}}" />

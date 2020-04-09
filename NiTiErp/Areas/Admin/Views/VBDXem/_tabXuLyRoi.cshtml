@@ -23,6 +23,7 @@
                         <th>QT Xử lý</th>
                         <th>Bút phê LĐ</th>
                         <th>Ghi chú</th>
+                        <th>#</th>
                     </tr>
                 </thead>
                 <tbody id="tblContentXuLyRoi"></tbody>
@@ -58,14 +59,11 @@
                     <i class="fa fa-mail-forward"></i>
                 </a>*@
             <a class="btn btn-sm btnXuLyLai" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xử lý">
-                <i class="fa fa-mail-forward"></i>
-               
+                <i class="fa fa-mail-forward"></i>               
             </a>
         </th>
         <td>
-            <a class="btn btn-sm">
-                {{TenSoVanBanDen}}
-            </a>
+            {{TenSoVanBanDen}}
         </td>
         <td>
             <a class="btn btn-link btnChuaXuLyPatchFileKyHieu" data-id="{{VanBanDenId}}" data-toggle="tooltip">
@@ -78,24 +76,13 @@
             </a>
         </td>
         <td>
-            <a class="btn btn-sm">
-                {{TenCoQuanBanHanh}}
-            </a>
-        </td>
-        @*<td>
-            <a class="btn btn-link btnVBDXuLyRoiXemFileXuLy" data-id="{{VanBanDenId}}" data-toggle="tooltip">
-             {{TenFile}}
-            </a>
-        </td>*@
+            {{TenCoQuanBanHanh}}
+        </td>       
         <td>
-            <a class="btn btn-sm">
-                {{NgayBanHanhCuaVanBan}}
-            </a>
+            {{NgayBanHanhCuaVanBan}}
         </td>
         <td>
-            <a class="btn btn-sm">
-                {{NgayDenCuaVanBan}}
-            </a>
+            {{NgayDenCuaVanBan}}
         </td>
         <td>
             <a class="btn btn-lg btnQTChuaXuLy" data-id="{{VanBanDenId}}" data-toggle="tooltip" style="color:green">
