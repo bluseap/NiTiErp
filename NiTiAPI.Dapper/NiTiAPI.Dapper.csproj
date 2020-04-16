@@ -36,6 +36,7 @@
   <ItemGroup>
     <Folder Include="Repositories\ClientShop\" />
     <Folder Include="Repositories\Interfaces\ClientShop\" />
+    <Folder Include="ViewModels\CPrice\" />
   </ItemGroup>
 
 </Project>

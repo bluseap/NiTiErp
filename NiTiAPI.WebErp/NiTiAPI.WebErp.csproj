@@ -7,6 +7,9 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Components\" />
+    <Folder Include="Areas\CPrice\Components\" />
+    <Folder Include="Areas\CPrice\Views\Contact\" />
+    <Folder Include="Areas\CPrice\Views\Shared\Components\SideBar\" />
     <Folder Include="Logs\" />
     <Folder Include="Middleware\" />
     <Folder Include="Resources\Areas\Admin\Controllers\" />
@@ -33,6 +36,11 @@
     <Folder Include="wwwroot\clientshop-side\images\" />
     <Folder Include="wwwroot\clientshop-side\js\" />
     <Folder Include="wwwroot\cnews-app\controllers\contact\" />
+    <Folder Include="wwwroot\cprice-app\controllers\contact\" />
+    <Folder Include="wwwroot\cprice-app\controllers\home\" />
+    <Folder Include="wwwroot\cprice-side\fonts\" />
+    <Folder Include="wwwroot\cprice-side\images\" />
+    <Folder Include="wwwroot\cprice-side\js\" />
     <Folder Include="wwwroot\lib\" />
     <Folder Include="wwwroot\template\cshop\" />
     <Folder Include="wwwroot\uploaded\ImageProduct\" />
@@ -157,6 +165,21 @@
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\CNews\Views\_ViewStart.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CPrice\Views\Shared\_Footer.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CPrice\Views\Shared\_Header.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CPrice\Views\Shared\_Layout.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CPrice\Views\_ViewImports.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\CPrice\Views\_ViewStart.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\CShop\_ViewStart.cshtml">

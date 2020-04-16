@@ -1,0 +1,11 @@
+﻿@inject IViewLocalizer Localizer
+@section Styles{
+
+}
+@section Scripts{
+    <script src="~/cprice-app/controllers/home/index.js" asp-append-version="true"></script>
+    <script>
+        var homeObj = new homeController();
+        homeObj.initialize();
+    </script>
+}
