@@ -37,7 +37,6 @@
     <Folder Include="wwwroot\clientshop-side\js\" />
     <Folder Include="wwwroot\cnews-app\controllers\contact\" />
     <Folder Include="wwwroot\cprice-app\controllers\contact\" />
-    <Folder Include="wwwroot\cprice-app\controllers\home\" />
     <Folder Include="wwwroot\cprice-side\fonts\" />
     <Folder Include="wwwroot\cprice-side\images\" />
     <Folder Include="wwwroot\cprice-side\js\" />
