@@ -1,0 +1,267 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+}
+@section Scripts{
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+
+    @*<script src="~/admin-side/js/jquery.autocomplete.js" asp-append-version="true"></script>*@
+
+    <script src="~/app/controllers/clgiaydd/index.js" asp-append-version="true"></script>
+
+    <script>
+        var clgiaydd = new clgiayddController();
+        clgiaydd.initialize();
+
+         
+    </script>
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link ">
+                    Công lệnh
+                </a>
+                >>
+                <a class="btn btn-link btnThemMoiGiayDiDuong">
+                    Giấy đi đường
+                </a>
+            </small>
+        </div>
+        @*<div class="title_right">
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <button class="btn btn-round btn-warning" id="btn-create" type="button">Tạo mới văn bản đến</button>
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                </div>
+            </div>
+        </div>*@
+    </div>
+    <div class="page-title">
+        <div class="title_left">
+            <h3>  <small></small></h3>
+        </div>
+        <div class="title_right">
+            <div class="col-md-5 col-sm-2 col-xs-12 form-group pull-right">
+                <div class="input-group">
+                    <input type="text" id="txtTimNoiDung" class="form-control" placeholder="Từ khóa...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" id="btnTimNoiDung" type="button">Tìm !</button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <select id="ddlPhongBan" class="form-control"></select>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <select id="ddlKhuVuc" class="form-control"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="modal-body">
+            <div id="horizontal-form">
+                <div>
+                    <form class="form-horizontal " role="form" id="frmCLGiayDD">
+                        <input type="hidden" id="hidVanBanDenId" value="" />
+                        <input type="hidden" id="hidInsertVBDThemId" value="" />
+
+                        <div class="form-group">
+                            <div class="col-sm-3">
+                                <label for="lbNgayNhap">Ngày nhập <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtNgayNhap" class="form-control has-feedback-right" id="txtNgayNhap" placeholder="Ngày nhập">
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="lbTen">Tên nhân viên <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtTen" class="form-control has-feedback-right" id="txtTen" placeholder="Tên nhân viên">
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="lbChucVu">Chức vụ <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtChucVu" class="form-control has-feedback-right" id="txtChucVu" placeholder="Chức vụ">
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="lbCongTacTai">Công tác tại <a style="color:red">(*)</a></label>
+                                <select id="ddlCongTacTai" class="form-control" name="ddlCongTacTai"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3">
+                                <label for="lbLyDo">Lý do <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtLyDo" class="form-control has-feedback-right" id="txtLyDo" placeholder="Lý do">
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="lbTuNgay">Từ ngày <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtTuNgay" class="form-control has-feedback-right" id="txtTuNgay" placeholder="Từ ngày">
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="lbDenNgay">Đến ngày <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtDenNgay" class="form-control has-feedback-right" id="txtDenNgay" placeholder="Đến ngày  ">
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="lbGhiChu">Ghi chú </label>
+                                <input type="text" name="txtGhiChu" class="form-control has-feedback-right" id="txtGhiChu" placeholder="Ghi chú">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3">
+                                <label for="lbTuNgay2">Từ ngày </label>
+                                <input type="text" name="txtTuNgay2" class="form-control has-feedback-right" id="txtTuNgay2" placeholder="Từ ngày">
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="lbDenNgay2">Đến ngày </label>
+                                <input type="text" name="txtDenNgay2" class="form-control has-feedback-right" id="txtDenNgay2" placeholder="Đến ngày  ">
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="lbChonNhanVienPhong">Chọn Nhân viên theo phòng, ban </label>
+                                <select id="ddlChonNhanVienPhong" class="form-control" name="ddlChonNhanVienPhong"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnCLGiayDDThem" class="btn btn-warning">Thêm</button>
+                                <button type="button" id="btnCLGiayDDIn" data-dismiss="modal" class="btn btn-success pull-right">Bắt đầu In</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div>
+                    <form class="form-horizontal" role="form" id="frmMainCLGiayDDIn">
+                        <input type="hidden" id="hidId" value="" />
+                       
+                        <div class="table-responsive" id="table-responsiveCLGiayDDIn">
+                            <table class="table table-striped table-bordered dataTable no-footer" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <td>Ngày nhập</td>
+                                        <td>Họ và tên</td>
+                                        <td>Chức vụ</td>
+                                        <td>Từ ngày</td>
+                                        <td>Đến ngày</td>
+                                        <td>Công tác</td>
+                                        <td>Lý do</td>
+                                        <td>Ghi chú</td>
+                                        <td>#</td>
+                                    </tr>
+                                </thead>
+                                <tbody id="table-CLGiayDiDuongIn-content"></tbody>
+                            
+                            </table>
+                         </div>
+                    </form>
+                    <script type="text/x-handlebars-template" id="template-table-CLGiayDiDuongIn">
+                        <tr data-id="{{Id}}">
+                            <td>{{{NgayNhap}}}</td>
+                            <td><input type="text" class="form-control" value="{{Ten}}" placeholder="Họ và tên"/></td>
+                            <td><input type="text" class="form-control" value="{{ChucVu}}" placeholder="Chức vụ"/></td>
+                            <td>{{{TuNgay}}}</td>
+                            <td>{{{DenNgay}}}</td>
+                            <td>{{{CongTacTai}}}</td>
+                            <td><input type="text" class="form-control" value="{{LyDo}}" placeholder="Lý do"/></td>
+                            <td><input type="text" class="form-control" value="{{GhiChu}}" placeholder="Ghi chú"/></td>
+                            <td>
+                                <button class="btn btn-xs btn-danger btn-delete-CLGiayDiDuongIn" type="button">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </script>
+                </div>
+              
+                <div class="row">
+                    <div class="x_panel">
+                        @*<div class="row no-print">
+                    <div class="col-xs-12">
+                        <button class="btn btn-info pull-right" id="btnXuatExcel" style="margin-right: 5px;"><i class="fa fa-download"></i> Xuất Excel</button>
+                        <button class="btn btn-default pull-right" id="btnInHoSo"><i class="fa fa-print"></i> Print</button>
+                    </div>
+                </div>*@
+                        <div class="table-responsive" id="table-responsiveCLGiayDD">
+                            <table id="tblCLGiayDD" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th width="10px">#</th>
+                                        <th>Ngày nhập</th>
+                                        <th>Họ và tên</th>
+                                        <th>Chức vụ</th>
+                                        <th>Từ ngày</th>
+                                        <th>Đến ngày</th>
+                                        <th>Công tác</th>
+                                        <th>Lý do</th>
+                                        <th>Ghi chú</th>
+                                        @*<th width="=5%"></th>*@
+                                    </tr>
+                                </thead>
+                                <tbody id="tblContentCLGiayDD"></tbody>
+                            </table>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <div class="dataTables_info" id="datatable-checkbox_infoCLGiayDD" role="status" aria-live="polite">
+                                        <select id="ddl-show-pageCLGiayDD">
+                                            <option value="10" selected="selected">10</option>
+                                            <option value="20">20</option>
+                                            <option value="30">30</option>
+                                            <option value="50">50</option>
+                                        </select>
+                                        <span class="item-per-page">
+                                            dòng/trang.
+                                        </span>
+                                        Tổng cộng: <strong id="lblCLGiayDDTotalRecords"></strong>
+                                    </div>
+                                </div><div class="col-sm-7">
+                                    <div class="dataTables_paginate" id="datatable-checkbox_paginateCLGiayDD">
+                                        <ul id="paginationULCLGiayDD"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            
+        </div>
+    </div>
+
+    <script id="table-CLGiayDD" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row">
+                <a class="btn btn-lg btn-edit" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Thêm nhân viên">
+                    <i class="fa fa-arrow-up" style='color:#f15f5f'>
+                    </i>
+                </a>
+            </th>
+            <td>{{NgayNhap}}</td>
+            <td>{{Ten}}</td>
+            <td>{{ChucVu}}</td>
+            <td>{{TuNgay}}</td>
+            <td>{{DenNgay}}</td>           
+            <td>{{{Status}}}</td>@*<td>{{{CongTacTai}}}</td>*@
+            <td>{{LyDo}}</td>
+            <td>{{GhiChu}}</td>
+            @*<th scope="row">
+            <a class="btn btn-lg btn-editNghiViec" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Nghĩ việc"><i class="fa fa-location-arrow"></i> </a>
+        </th>*@
+        </tr>
+    </script>
+
+</div>
+
+
+

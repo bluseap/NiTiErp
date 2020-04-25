@@ -405,6 +405,14 @@
         else
             return '<span class="badge bg-red">Không biết</span>';
     },
+    getCLGiayDiDuong: function (trangthai) {
+        if (trangthai === 1)
+            return '<span class="badge bg-orange">Ngoài tỉnh</span>';    
+        else if (trangthai === 2)
+            return '<span class="badge bg-green">Trong tỉnh</span>';
+        else 
+            return '<span class="badge bg-white"></span>';
+    },
 
     formatNumber: function (number, precision) {
         if (!isFinite(number)) {
