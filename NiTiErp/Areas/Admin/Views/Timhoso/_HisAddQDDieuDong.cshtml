@@ -1,0 +1,111 @@
+﻿<div id="modal-add-edit-QDDD" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Tạo mới / Sửa Quyết định điều động</h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainQDDD">
+                        <input type="hidden" id="hidQDDDId" value="" />
+                        <input type="hidden" id="hidHoSoDieuDongId" value="" />
+                        <input type="hidden" id="hidInsertQDDDIdId" value="" />
+
+                        <div class="form-group">
+                            <label for="lbAddEditHoTenQDDieuDong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Họ và tên</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditHoTenQDDieuDong" placeholder="Họ và tên nhân viên">
+                            </div>
+                            <label for="lbAddEditPhongToQDDieuDong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Phòng, tổ</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditPhongToQDDieuDong" placeholder="Phòng, tổ, nhà máy">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbTenQuyetDinhQDDieuDong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tên quyết định điều động</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlLoaiQuyetDinhQDDieuDong" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbXiNghiepCuQDDieuDong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Xí nghiệp</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlXiNghiepCuQDDieuDong" class="form-control"></select>
+                            </div>
+                            <label for="lbPhongToCuQDDieuDong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Phòng, tổ</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlPhongToCuQDDieuDong" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbChuVuCuQDDieuDong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Chức vụ</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlChucVuCuQDDieuDong" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbXiNghiepMoiQDDieuDong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Xí nghiệp mới</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlXiNghiepMoiQDDieuDong" class="form-control"></select>
+                            </div>
+                            <label for="lbPhongToMoiQDDieuDong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Phòng, tổ mới</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlPhongToMoiQDDieuDong" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbChucVuMoiQDDieuDong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Chức vụ mới</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlChucVuMoiQDDieuDong" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbLyDoQuyetDinhQDDieuDong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Lý do điều động</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtLyDoQuyetDinhQDDieuDong" placeholder="Lý do điều động">
+                            </div>
+                            <label for="lbGhiChuQuyetDinhQDDieuDong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ghi chú quyết định điều động</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtGhiChuQuyetDinhQDDieuDong" placeholder="Ghi chú quyết định điều động">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbSoQuyetDinhQDDieuDong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Số quyết định điều động</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" name="txtSoQuyetDinhQDDieuDong" class="form-control has-feedback-right" id="txtSoQuyetDinhQDDieuDong" placeholder="Số quyết định điều động">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbNgaKyQuyetDinhQDDieuDong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày ký quyết định điều động</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgaKyQuyetDinhQDDieuDong" placeholder="Ngày ký quyết định điều động" />
+                            </div>
+                            <label for="lbTenNguoiKyQuyetDinhQDDieuDong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tên người ký điều động</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtTenNguoiKyQuyetDinhQDDieuDong" placeholder="Tên người ký Qđ điều động">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbNgayHieuLucQDDieuDong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày hiệu lực</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgayHieuLucQDDieuDong" placeholder="Ngày hiệu lực">
+                            </div>
+                            <label for="lbNgayHetHanQDDieuDong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày hết hạn</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgayHetHanQDDieuDong" placeholder="Ngày hết hạn">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnSaveQDDD" class="btn btn-success">Lưu</button>
+                                <button type="button" id="btnCancelQDDD" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>

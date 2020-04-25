@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@using PaulMiami.AspNetCore.Mvc.Recaptcha
+<section class="main-container col1-layout">
+    <div class="login_wrapper_width" role="main">
+        <div class="">
+            <h1>Corporation</h1>
+            <form id="frCorporation" method="post" class="form-horizontal">
+                <div class="title_right">
+                    <div class="col-md-12 col-sm-12  form-group pull-right">
+                        <button id="btnCreate" class="btn btn-success" type="button">Create</button>
+                    </div>                   
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Logo</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbl-content"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <script id="table-template" type="x-tmpl-mustache">
+            <tr>
+                <td>{{Name}}</td>
+                <td>{{Email}}</td>
+                <td>{{PhoneNumber1}}</td>
+                <td>{{{ImageLogo}}}</td>
+            </tr>
+        </script>
+    </div>
+</section>
+
+@Html.Partial("_AddEditModal.cshtml")
+
+@section Scripts {
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
+    <script src="~/app/controllers/CorporationClient/index.js" asp-append-version="true"></script>
+    <script>
+    var corporationClient = new corporationClientController();
+    corporationClient.initialize();
+    </script>
+    
+
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <recaptcha-script validation-message-element-id="recaptchaErrorMessage" />
+
+    
+}
+
+
+
+

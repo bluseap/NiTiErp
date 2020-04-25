@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="AutoMapper\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.1.1" />
+    <PackageReference Include="EPPlus.Core" Version="1.5.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NiTiErp.Application.Dapper\NiTiErp.Application.Dapper.csproj" />
+    <ProjectReference Include="..\NiTiErp.Data.EF\NiTiErp.Data.EF.csproj" />
+    <ProjectReference Include="..\NiTiErp.Data\NiTiErp.Data.csproj" />
+    <ProjectReference Include="..\NiTiErp.Utilities\NiTiErp.Utilities.csproj" />
+  </ItemGroup>
+
+</Project>

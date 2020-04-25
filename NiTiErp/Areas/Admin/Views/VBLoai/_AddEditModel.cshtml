@@ -1,0 +1,52 @@
+﻿
+<div id="modal-add-edit-VanBanLoai" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Thêm mới danh mục loại văn bản </h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainVanBanLoai">
+                        <input type="hidden" id="hidVanBanLoaiId" value="" />
+
+                        <input type="hidden" id="hidInsertVanBanLoaiId" value="" />
+
+
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbVanBanLoaiTen">Tên danh mục loại văn bản <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtVanBanLoaiTen" class="form-control has-feedback-right" id="txtVanBanLoaiTen" placeholder="Tên danh mục loại văn bản">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbVanBanLoaiCode">Code </label>
+                                <input type="text" name="txtVanBanLoaiCode" class="form-control has-feedback-right" id="txtVanBanLoaiCode" placeholder="CodeXL">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbThoiGianBaoQuan">Thời gian bảo quản (tháng) <a style="color:red">(*)</a></label>
+                                <input type="number" name="txtThoiGianBaoQuan" class="form-control has-feedback-right" id="txtThoiGianBaoQuan">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbVanBanLoaiSoThuTu">Số thứ tự <a style="color:red">(*)</a></label>
+                                <input type="number" name="txtVanBanLoaiSoThuTu" class="form-control has-feedback-right" id="txtVanBanLoaiSoThuTu">
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnSaveVanBanLoai" class="btn btn-primary">Lưu </button>
+                                <button type="button" id="btnCancelVanBanLoai" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="ln_solid"></div>
+
+            </div>
+        </div>
+    </div>
+</div>

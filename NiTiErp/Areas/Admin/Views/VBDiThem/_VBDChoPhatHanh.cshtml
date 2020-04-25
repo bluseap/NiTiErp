@@ -1,0 +1,119 @@
+﻿
+<div id="modal-add-edit-VBDChoPhatHanh" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Xử lý Văn bản đến - Chờ phát hành</h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainVBDChoPhatHanh">
+
+                        <input type="hidden" id="hidVanBanDenId" value="" />
+
+                        <partial name="/Areas/Admin/Views/Shared/_timVanBan.cshtml" />
+                        <div class="row no-print">
+                            <div class="col-sm-12" style="text-align: center">
+                                <button type="button" id="btnTimChuaPhatHanh" class="btn btn-default" style="color:#f39c12;border-color:#f39c12">Tìm văn bản</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="x_panel">
+                            
+                            <br />
+                            <div class="table-responsive" id="table-responsiveChuaDuyet">
+                                <table id="tblChuaPhatHanh" class="table table-striped table-bordered dataTable no-footer" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th width="=5%">#</th>
+                                            <th>Tên sổ</th>
+                                            <th>Số đến, ký hiệu</th>
+                                            <th>Trich yếu</th>
+                                            <th>Tên cơ quan ban hành</th>
+                                            <th>Ngày ban hành</th>
+                                            <th>Ngày đến</th>
+                                            <th>QT Xử lý</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tblContentChuaPhatHanh"></tbody>
+                                </table>
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <div class="dataTables_info" id="datatable-checkbox_infoChuaPhatHanh" role="status" aria-live="polite">
+                                            <select id="ddl-show-pageChuaPhatHanh">
+                                                <option value="10" selected="selected">10</option>
+                                                <option value="20">20</option>
+                                                <option value="30">30</option>
+                                                <option value="50">50</option>
+                                            </select>
+                                            <span class="item-per-page">
+                                                dòng/trang.
+                                            </span>
+                                            Tổng cộng: <strong id="lblChuaPhatHanhTotalRecords"></strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <div class="dataTables_paginate" id="datatable-checkbox_paginateChuaPhatHanh">
+                                            <ul id="paginationULChuaPhatHanh"></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ln_solid"></div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="table-ChuaPhatHanh" type="x-tmpl-mustache">
+    <tr>
+        <th scope="row">
+            <a class="btn btn-sm btnChuaPhatHanh" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xử lý">
+                <i class="fa fa-mail-forward"></i>
+                Phát hành
+            </a>
+        </th>
+        <td>
+            <a class="btn btn-sm">
+                {{TenSoVanBanDen}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-link btnChuaPhatHanhPatchFileKyHieu" data-id="{{VanBanDenId}}" data-toggle="tooltip">
+                {{SoKyHieuDen}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-link btnChuaPhatHanhPatchFileTrichYeu" data-id="{{VanBanDenId}}" data-toggle="tooltip">
+                {{TrichYeuCuaVanBan}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-sm">
+                {{TenCoQuanBanHanh}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-sm">
+                {{NgayBanHanhCuaVanBan}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-sm">
+                {{NgayDenCuaVanBan}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-lg btnCPTQuaTrinhXL" data-id="{{VanBanDenId}}" data-toggle="tooltip" style="color:green">
+                <i class="fa fa-sitemap"></i>
+            </a>
+        </td>
+        <td><input type="hidden" id="vanbandenid" class="form-control" value="{{VanBanDenId}}" /></td>
+    </tr>
+</script>

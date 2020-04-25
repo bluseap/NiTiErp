@@ -1,0 +1,193 @@
+﻿
+@using NiTiAPI.WebErp.Extensions;
+@using Microsoft.AspNetCore.Localization
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic page needs -->
+    <meta charset="utf-8">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <![endif]-->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>NiTiApp </title>
+    <meta name="description" content="best template, template free, responsive theme, fashion store, responsive theme, responsive html theme, Premium website templates, web templates, Multi-Purpose Responsive HTML5 Template">
+    <meta name="keywords" content="bootstrap, ecommerce, fashion, layout, responsive, responsive template, responsive template download, responsive theme, retail, shop, shopping, store, Premium website templates, web templates, Multi-Purpose Responsive HTML5 Template" />
+
+    <!-- Mobile specific metas  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon  -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/client-side/images/niti2.ico">
+
+
+    <!-- CSS Style -->
+    <link href="~/client-side/style.css" rel="stylesheet" />
+    <link href="~/vendor/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet" />
+
+
+    <link href="~/client-side/css/selectlangue/selectlangue.css" rel="stylesheet" />
+
+    @RenderSection("Styles", required: false)
+</head>
+
+<body class="cms-index-index cms-home-page">
+
+    <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- mobile menu -->
+    @await Component.InvokeAsync("ClientMobile")
+    <!-- end mobile menu -->
+    <div id="page">
+
+        <!-- Header -->
+        <Partial name="_Header.cshtml" />
+        <!-- end header -->
+
+        <nav>
+            <div class="container">
+                <div class="mm-toggle-wrap">
+                    <div class="mm-toggle"><i class="fa fa-align-justify"></i><span class="mm-label">Menu</span> </div>
+                </div>
+                <div class="nav-inner">
+                    @await Component.InvokeAsync("ClientCategory")
+                </div>
+            </div>
+        </nav>
+
+        @RenderBody()
+
+        <!-- Footer -->
+        <Partial name="_Footer.cshtml" />
+        <!-- End Footer -->
+
+    </div>
+
+    <!-- JS -->
+    <!-- jquery js -->
+    <script src="~/client-side/js/jquery.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="~/client-side/js/bootstrap.min.js"></script>
+    <script src="~/vendor/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!-- owl.carousel.min js -->
+    <script src="~/client-side/js/owl.carousel.min.js"></script>
+    <!-- jquery.mobile-menu js -->
+    <script src="~/client-side/js/jtv-mobile-menu.js"></script>
+    <!-- countdown js -->
+    <script src="~/client-side/js/countdown.js"></script>
+    <!-- main js -->
+    <script src="~/client-side/js/main.js"></script>
+    <!-- rev-slider js -->
+    <script src="~/client-side/js/rev-slider.js"></script>
+
+    <script type='text/javascript'>
+        jQuery(document).ready(function () {
+            jQuery('#jtv-rev_slider').show().revolution({
+                dottedOverlay: 'none',
+                delay: 5000,
+                startwidth: 850,
+                startheight: 450,
+                hideThumbs: 200,
+                thumbWidth: 200,
+                thumbHeight: 50,
+                thumbAmount: 2,
+                navigationType: 'thumb',
+                navigationArrows: 'solo',
+                navigationStyle: 'round',
+                touchenabled: 'on',
+                onHoverStop: 'on',
+                swipe_velocity: 0.7,
+                swipe_min_touches: 1,
+                swipe_max_touches: 1,
+                drag_block_vertical: false,
+                spinner: 'spinner0',
+                keyboardNavigation: 'off',
+                navigationHAlign: 'center',
+                navigationVAlign: 'bottom',
+                navigationHOffset: 0,
+                navigationVOffset: 20,
+                soloArrowLeftHalign: 'left',
+                soloArrowLeftValign: 'center',
+                soloArrowLeftHOffset: 20,
+                soloArrowLeftVOffset: 0,
+                soloArrowRightHalign: 'right',
+                soloArrowRightValign: 'center',
+                soloArrowRightHOffset: 20,
+                soloArrowRightVOffset: 0,
+                shadow: 0,
+                fullWidth: 'on',
+                fullScreen: 'off',
+                stopLoop: 'off',
+                stopAfterLoops: -1,
+                stopAtSlide: -1,
+                shuffle: 'off',
+                autoHeight: 'off',
+                forceFullWidth: 'on',
+                fullScreenAlignForce: 'off',
+                minFullScreenHeight: 0,
+                hideNavDelayOnMobile: 1500,
+                hideThumbsOnMobile: 'off',
+                hideBulletsOnMobile: 'off',
+                hideArrowsOnMobile: 'off',
+                hideThumbsUnderResolution: 0,
+                hideSliderAtLimit: 0,
+                hideCaptionAtLimit: 0,
+                hideAllCaptionAtLilmit: 0,
+                startWithSlide: 0,
+                fullScreenOffsetContainer: ''
+            });
+        });
+    </script>
+
+    <!-- Hot Deals Timer 1-->
+    <script type="text/javascript">
+        var dthen1 = new Date("12/25/17 11:59:00 PM");
+        start = "08/04/15 03:02:11 AM";
+        start_date = Date.parse(start);
+        var dnow1 = new Date(start_date);
+        if (CountStepper > 0)
+            ddiff = new Date((dnow1) - (dthen1));
+        else
+            ddiff = new Date((dthen1) - (dnow1));
+        gsecs1 = Math.floor(ddiff.valueOf() / 1000);
+
+        var iid1 = "countbox_1";
+        CountBack_slider(gsecs1, "countbox_1", 1);
+    </script>
+
+    <!--Newsletter Popup Start-->
+    @*<div id="myModal" class="modal fade">
+        <div class="modal-dialog newsletter-popup">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div class="modal-body">
+                    <h4 class="modal-title">NEWSLETTER SIGNUP</h4>
+                    <form id="newsletter-form" method="post" action="#">
+                        <div class="content-subscribe">
+                            <div class="form-subscribe-header">
+                                <label>Subscribe to be the first to know about Sales, Events, and Exclusive Offers!</label>
+                            </div>
+                            <div class="input-box">
+                                <input type="text" class="input-text newsletter-subscribe" title="Sign up for our newsletter" name="email" placeholder="Enter your email address">
+                            </div>
+                            <div class="actions">
+                                <button class="button-subscribe" title="Subscribe" type="submit">Subscribe</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="subscribe-bottom">
+                        <input name="notshowpopup" id="notshowpopup" type="checkbox">
+                        Don’t show this popup again
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+    <!--End of Newsletter Popup-->
+</body>
+</html>

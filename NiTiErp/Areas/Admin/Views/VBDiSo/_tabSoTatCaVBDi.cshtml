@@ -1,0 +1,102 @@
+﻿
+<div class="row">
+    <div class="x_panel">
+        <div class="row no-print">
+            <div class="col-sm-12" style="text-align: center">
+                <button type="button" id="btnTimSoTatCaVBDi" class="btn btn-default" style="color:#f39c12;border-color:#f39c12">Tìm văn bản</button>
+            </div>
+        </div>
+       
+        <div class="row">
+            <div class="col-sm-4">
+                <label for="lbSoDieuKien">Điều kiện </label>
+                <select id="ddlSoDieuKien" class="form-control"></select>
+            </div>
+            <div class="col-sm-2">
+                <label for="lbSoTuNgay">Từ ngày </label>
+                <input type="text" name="txtSoTuNgay" class="form-control has-feedback-right" id="txtSoTuNgay" placeholder="Từ ngày">
+            </div>
+            <div class="col-sm-2">
+                <label for="lbSoDenNgay">Đến ngày </label>
+                <input type="text" name="txtSoDenNgay" class="form-control has-feedback-right" id="txtSoDenNgay" placeholder="Đến ngày">
+            </div>
+            <div class="col-sm-2">
+                <label for="lbSoDSExcelNgayBanHanh" style="color:white">Xuất Excel  </label>
+                <button type="button" id="btnSoDSExcel" class="form-control btn-default" style="color:#0094ff;border-color:#0094ff">Xuất Excel</button>
+            </div>
+        </div>
+        <br />
+        <div class="table-responsive" id="table-responsiveSoTatCaVBDi">
+            <table id="tblSoTatCaVBDi" class="table table-striped table-bordered dataTable no-footer" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th width="=5%">#</th>
+                        <th>Tên sổ</th>
+                        <th>Số đến, ký hiệu</th>
+                        <th>Trich yếu</th>
+                        <th>Ngày ban hành</th>
+                        <th>QT Xử lý</th>
+                    </tr>
+                </thead>
+                <tbody id="tblContentSoTatCaVBDi"></tbody>
+            </table>
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="dataTables_info" id="datatable-checkbox_infoSoTatCaVBDi" role="status" aria-live="polite">
+                        <select id="ddl-show-pageSoTatCaVBDi">
+                            <option value="10" selected="selected">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="50">50</option>
+                        </select>
+                        <span class="item-per-page">
+                            dòng/trang.
+                        </span>
+                        Tổng cộng: <strong id="lblSoTatCaVBDiTotalRecords"></strong>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="dataTables_paginate" id="datatable-checkbox_paginateSoTatCaVBDi">
+                        <ul id="paginationULSoTatCaVBDi"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="table-SoTatCaVBDi" type="x-tmpl-mustache">
+    <tr>
+        <th scope="row">
+            <a class="btn btn-sm btnSoTatCaVBDi" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title=" ">
+                <i class="fa fa-mail-forward"></i>
+            </a>
+        </th>
+        <td>
+            <a class="btn btn-sm">
+                {{TenSoVanBanDi}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-link btnSoTatCaVBDiPatchFileKyHieu" data-id="{{Id}}" data-toggle="tooltip">
+                {{SoKyHieuDi}}
+            </a>
+        </td>
+        <td>
+            <a class="btn-link btnSoTatCaVBDiPatchFileTrichYeu" data-id="{{Id}}" data-toggle="tooltip">
+                {{TrichYeuCuaVanBan}}
+            </a>
+        </td>        
+        <td>
+            <a class="btn btn-sm">
+                {{NgayBanHanhCuaVanBan}}
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-lg btnVBDiSoTatCaQTXL" data-id="{{Id}}" data-toggle="tooltip" style="color:green">
+                <i class="fa fa-sitemap"></i>
+            </a>
+        </td>    
+        @*<td><input type="hidden" id="vanbandiid" class="form-control" value="{{VanBanDiId}}" /></td>*@
+    </tr>
+</script>
+

@@ -1,0 +1,144 @@
+﻿
+<form class="form-horizontal form-label-left input_mask" role="form" id="frmMainLyLich">
+    <input type="hidden" id="hidLyLichIdInsert" value="0" />
+    <input type="hidden" id="hidLyLichId" value="0" />
+
+    <div class="form-group">
+        <label for="lbnonono" class="control-label col-md-2 col-sm-2 col-xs-12 "></label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+        </div>
+        <label for="lbHinhThe" class="control-label col-md-2 col-sm-2 col-xs-12 ">Hình thẻ</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="hidden" id="hidHinhTheId" value="" />
+            <div id="imagelistHinhThe" class="col-md-12">
+            </div>
+            <input type="file" id="fileInputHinhNhanVien" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lbSoTheNhanVien" class="control-label col-md-2 col-sm-2 col-xs-12 ">Số thẻ</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" class="form-control has-feedback-right" id="txtSoTheNhanVien" placeholder="Số thẻ nhân viên">
+        </div>
+        <label for="lbSoDienThoai" class="control-label col-md-2 col-sm-2 col-xs-12 ">Số điện thoại</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" class="form-control has-feedback-right" id="txtSoDienThoai" placeholder="Số điện thoại">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lbHoVaTen" class="control-label col-md-2 col-sm-2 col-xs-12">Họ và tên *</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" name="txtHoVaTen" class="form-control has-feedback-right" id="txtHoVaTen" placeholder="Họ và tên">
+        </div>
+        <label for="lbTenGoiKhac" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tên gọi khác</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" class="form-control has-feedback-right" id="txtTenGoiKhac" placeholder="Tên gọi khác">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lbGoiTinh" class="control-label col-md-2 col-sm-2 col-xs-12">Giới tính</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <select id="ddlGioiTinh" class="form-control"></select>
+        </div>
+        <label for="lbNgaySinh" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày sinh *</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" name="txtNgaySinh" class="form-control has-feedback-right" id="txtNgaySinh" placeholder="Ngày sinh">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lbSoCMND" class="control-label col-md-2 col-sm-2 col-xs-12">Số CMND</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" class="form-control has-feedback-right" id="txtSoCMND" placeholder="Số chứng minh nhân dân">
+        </div>
+        <label for="lbNgayCapCMND" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày cấp CMND</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" name="txtNgayCapCMND" class="form-control has-feedback-right" id="txtNgayCapCMND" placeholder="Ngày cấp chứng minh">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lbNoiCapCMND" class="control-label col-md-2 col-sm-2 col-xs-12">Nơi cấp CMND</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" class="form-control has-feedback-right" id="txtNoiCapCMND" placeholder="Nơi cấp chứng minh nhân dân">
+        </div>
+        <label for="lbNoiSinh" class="control-label col-md-2 col-sm-2 col-xs-12">Nơi sinh</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" class="form-control has-feedback-right" id="txtNoiSinh" placeholder="Nơi sinh">
+        </div>
+    </div>
+
+    @*<div class="form-group">
+            <label for="lbQueQuan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Quê quán</label>
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                <input type="text" class="form-control has-feedback-right" id="txtQueQuan" placeholder="Quê quán">
+            </div>
+            <label for="lbNoiOHienNay" class="control-label col-md-2 col-sm-2 col-xs-12">Nơi ở hiện nay *</label>
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                <input type="text" name="txtNoiOHienNay" class="form-control has-feedback-right" id="txtNoiOHienNay" placeholder="Nơi ở hiện nay">
+            </div>
+        </div>*@
+
+    <div class="form-group">
+        <label for="lbSoNhaTenDuong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Số nhà, tên đường</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" class="form-control has-feedback-right" id="txtSoNhaTenDuong" placeholder="Số nhà, tên đường">
+        </div>
+        <label for="lbThanhPhoTinh" class="control-label col-md-2 col-sm-2 col-xs-12">Thành phố, tỉnh </label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <select id="ddlThanhPhoTinh" name="ddlThanhPhoTinh" class="form-control"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lbQuanHuyen" class="control-label col-md-2 col-sm-2 col-xs-12">Quận, thành phố</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <select id="ddlQuanHuyen" name="ddlQuanHuyen" class="form-control"></select>
+        </div>
+        <label for="lbPhuongXa" class="control-label col-md-2 col-sm-2 col-xs-12">Phường, xã</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <select id="ddlPhuongXa" name="ddlPhuongXa" class="form-control"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lbSoNhaTenDuongQueQuan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Quê quán, số nhà, tên đường *</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <input type="text" name="txtSoNhaTenDuongQueQuan" class="form-control has-feedback-right" id="txtSoNhaTenDuongQueQuan" placeholder="Quê quán, số nhà, tên đường, phường, xã">
+        </div>
+        <label for="lbThanhPhoTinhQueQuan" class="control-label col-md-2 col-sm-2 col-xs-12">Quê quán thành phố, tỉnh *</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <select id="ddlThanhPhoTinhQueQuan" name="ddlThanhPhoTinhQueQuan" class="form-control"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lbQuanHuyenQueQuan" class="control-label col-md-2 col-sm-2 col-xs-12">Quê quán quận, thành phố *</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <select id="ddlQuanHuyenQueQuan" name="ddlQuanHuyenQueQuan" class="form-control"></select>
+        </div>
+        <label for="lbPhuongXaQueQuan" class="control-label col-md-2 col-sm-2 col-xs-12">Quê quán phường, xã *</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <select id="ddlPhuongXaQueQuan" name="ddlPhuongXa" class="form-control"></select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="lbHonNhan" class="control-label col-md-2 col-sm-2 col-xs-12">Hôn nhân *</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <select id="ddlHonNhan" name="ddlHonNhan" class="form-control"></select>
+        </div>
+        <label for="lbDanToc" class="control-label col-md-2 col-sm-2 col-xs-12">Dân tộc *</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <select id="ddlDanToc" name="ddlDanToc" class="form-control"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lbTonGiao" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tôn giáo *</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <select id="ddlTonGiao" name="ddlTonGiao" class="form-control"></select>
+        </div>
+        <label for="lbXuatThan" class="control-label col-md-2 col-sm-2 col-xs-12 ">Xuất thân *</label>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+            <select id="ddlXuatThan" name="ddlXuatThan" class="form-control"></select>
+        </div>
+    </div>
+
+</form>
+
+

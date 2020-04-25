@@ -1,0 +1,221 @@
+﻿<div id="modal-add-edit-VBDiThem" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Thêm mới / Sửa văn bản đi </h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <div>
+                        <form class="form-horizontal " role="form" id="frmMainVBDiThem">
+                            <input type="hidden" id="hidVanBanDiId" value="" />
+                            <input type="hidden" id="hidInsertVBDiThemId" value="" />
+
+                            <input type="hidden" id="hidVanBanDiTTChuaPhatHanh" value="" />
+
+                            <input type="hidden" id="hidVanBanDiMaKhuVucId" value="" />
+                            <input type="hidden" id="hidCodeFileGuidId" value="" />
+
+                            <input type="hidden" id="hidDuongDanFile" value="" />
+
+                            @*<div class="form-group">
+            <div class="col-md-12 pull-right" style="text-align:center">
+                <a class="btn btn-empty btnVBDChoPhatHanh" style="color: #1f1d1d">
+                    <i class="fa fa-files-o" style="color: dodgerblue"></i> Văn bản đến chờ phát hành
+                    <span id="spanVBDChoPhatHanh" class="badge bg-orange" style="font-size:x-large">0</span>
+                </a>
+            </div>
+        </div>*@
+
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label for="lbTrichYeu">Trích yếu <a style="color:red">(*)</a></label>
+                                    <textarea class="form-control" id="txtTrichYeu99" placeholder='Nội dung cơ bản của Văn bản đi'></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <label for="lbLinhVuc">Lĩnh vực văn bản <a style="color:red">(*)</a></label>
+                                    <select id="ddlLinhVuc" class="form-control" name="ddlLinhVuc"></select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="lbLoaiVanBan">Loại văn bản <a style="color:red">(*)</a></label>
+                                    <select id="ddlLoaiVanBan" class="form-control" name="ddlLoaiVanBan"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <label for="lbNgayBanHanh">Ngày văn bản ban hành <a style="color:red">(*)</a></label>
+                                    <input type="text" name="txtNgayBanHanh" class="form-control has-feedback-right" id="txtNgayBanHanh" placeholder="Ngày ban hành">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="lbNgayDi">Ngày đi <a style="color:red">(*)</a></label>
+                                    <input type="text" name="txtNgayDi" class="form-control has-feedback-right" id="txtNgayDi" placeholder="Ngày đi">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <label for="lbSoVanBanDi">Sổ văn bản đi <a style="color:red">(*)</a></label>
+                                    <div class="input-group">
+                                        <select id="ddlSoVanBanDi" class="form-control" name="ddlSoVanBanDi"></select>
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-warning" id="btnLaySoVBDi">Lấy số</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="lbSoVanBanDi">Số văn bản đi <a style="color:red">(*)</a></label>
+                                    <input type="text" name="txtSoVanBanDi" class="form-control has-feedback-right" id="txtSoVanBanDi" placeholder="Số văn bản đi">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <label for="lbSoKyHieu">Số ký hiệu văn bản đi <a style="color:red">(*)</a></label>
+                                    <input type="text" name="txtSoKyHieu" class="form-control has-feedback-right" id="txtSoKyHieu" placeholder="Số ký hiệu văn bản đi">
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="lbNguoiKyVanBan">Người ký văn bản đi <a style="color:red">(*)</a></label>
+                                    <select id="ddlNguoiKyVanBan" class="form-control" name="ddlNguoiKyVanBan"></select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div>
+                        <form class="form-horizontal " role="form" id="frmMainVBDiThem2">
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <label for="lbFileVanBanDi">
+                                        File văn bản đi
+                                        <a style="color:red">(*) </a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-6" style="text-align:right">
+                                    <a class="btn btn-lin btnFileVanBan" style="color:cornflowerblue"><i class="fa fa-chain-broken"></i> Chọn file văn bản đính kèm</a>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="table-wrapper-scroll-y">
+                                        <table id="tbl-FileVanBanDi" class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Tên file văn bản</th>
+                                                    <th>Số trang</th>
+                                                    <th width="=10%">#</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tbl-contentFileVanBanDi"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <script id="table-FileVanBanDi" type="x-tmpl-mustache">
+                            <tr>
+                                <td>{{TenFile}}</td>
+                                <td>{{SoTrang}}</td>
+                                <th scope="row">
+                                    <a class="btn btnDeleteFile" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xóa file văn bản đi">
+                                        <i class="fa fa-trash-o" style="color:red"></i>
+                                        Xóa
+                                    </a>
+                                </th>
+                            </tr>
+                        </script>
+                    </div>
+                    <div>
+                        <form class="form-horizontal " role="form" id="frmMainVBDiThem3">
+                            <div class="form-group">
+                                <div class="col-sm-6 ">
+                                    <label for="lbCoQuanBanHanh">Nơi ban hành văn bản <a style="color:red">(*)</a></label>
+                                    <select id="ddlCoQuanBanHanh99" class="form-control" name="ddlCoQuanBanHanh99"></select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="lbNoiLuuBanChinh">Nơi lưu bản chính <a style="color:red"> </a></label>
+                                    <input type="text" name="txtNoiLuuBanChinh" class="form-control has-feedback-right" id="txtNoiLuuBanChinh" placeholder="Nơi lưu bản chính ">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-6 ">
+                                    <label for="lbDonViNhanVanBan">Chọn đơn vị nhận văn bản <a style="color:red"> </a></label>
+                                    <select id="ddlDonViNhanVanBan" class="form-control" name="ddlDonViNhanVanBan"></select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="lbCacDonViNhanVanBan"> Các đơn vị nhận <a style="color:red"> (*) </a></label>
+                                    <input type="text" name="txtCacDonViNhanVanBan" id="txtCacDonViNhanVanBan" placeholder="Đơn vị nhận văn bản " value="">
+                                </div>
+                            </div>
+                            @*<div class="form-group">
+            <div class="col-sm-6 ">
+                <label for="lbTenNhanVienSoanVB">Tên nhân viên soạn Văn bản </label>
+                <input type="text" name="txtTenNhanVienSoanVB" class="form-control has-feedback-right" id="txtTenNhanVienSoanVB" placeholder="Tên nhân viên soạn Văn bản ">
+            </div>
+            <div class="col-sm-6">
+                <label for="lbYKienNhanVienSoanVB">Ý kiến nhân viên soạn Văn bản </label>
+                <input type="text" name="txtYKienNhanVienSoanVB" class="form-control has-feedback-right" id="txtYKienNhanVienSoanVB" placeholder="Ý kiến nhân viên soạn Văn bản ">
+            </div>
+        </div>*@
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <label for="lbLanhDaoDuyet">Tên lãnh đạo duyệt <a style="color:red">(*)</a></label>
+                                    <select id="ddlLanhDaoDuyet" class="form-control" name="ddlLanhDaoDuyet"></select>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="lbCapDoKhan">Cấp độ khẩn <a style="color:red">(*)</a></label>
+                                    <select id="ddlCapDoKhan" class="form-control" name="ddlCapDoKhan"></select>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="lbCapDoMat">Cấp độ mật <a style="color:red">(*)</a></label>
+                                    <select id="ddlCapDoMat" class="form-control" name="ddlCapDoMat"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-3">
+                                    <label for="lbNgonNguVanBan">Ngôn ngữ Văn bản </label>
+                                    <select id="ddlNgonNguVanBan" class="form-control" name="ddlNgonNguVanBan"></select>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="lbSoLuongVanBanPhatHanh">Số lượng Văn bản phát hành </label>
+                                    <input type="number" class="form-control has-feedback-right" name="txtSoLuongVanBanPhatHanh" id="txtSoLuongVanBanPhatHanh" value="2">
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="lbHanTraLoiVanBan">Hạn trả lời Văn bản </label>
+                                    <input type="text" name="txtHanTraLoiVanBan" class="form-control has-feedback-right" id="txtHanTraLoiVanBan">
+                                </div>                                
+                            </div>
+                            <div class="form-group">      
+                                <div class="col-sm-6">
+                                    <label for="lbNgonNguVanBan">Danh mục hồ sơ </label>
+                                    <select id="ddlDanhMucHoSo" class="form-control" name="ddlDanhMucHoSo"></select>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="lbHanTraLoiVanBan">Số thứ tự trong hồ sơ </label>
+                                    <input type="number" name="txtSoThuTuTrongHoSo" class="form-control has-feedback-right" id="txtSoThuTuTrongHoSo">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label for="lbGhiChu">Ghi chú <a style="color:red"></a></label>
+                                    <textarea class="form-control" id="txtGhiChu" placeholder='Nội dung ghi chú của Văn bản đi'></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="button" id="btnVBDiPhatHanh" class="btn btn-success">Phát hành</button>
+                                    <button type="button" id="btnVBDiLDDPhatHanh" class="btn btn-success">Đã duyệt - Phát hành </button>
+                                    <button type="button" id="btnCancelVBDiThem" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                    <button type="button" id="btnVBDiChuyenLD" data-dismiss="modal" class="btn btn-warning">Lưu và chuyển lãnh đạo</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="ln_solid"></div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

@@ -1,0 +1,51 @@
+﻿<div id="modal-add-edit-DMCT" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Tạo mới / Sửa Công ty, xí nghiệp</h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainDMCT">
+                        <input type="hidden" id="hidDMCTId" value="" />
+                        <input type="hidden" id="hidInsertDMCTId" value="" />
+
+                        <div class="form-group">
+                            <label for="lbAddEditTenCongTy" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tên</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditTenCongTy" placeholder="Tên Công ty, xí nghiệp">
+                            </div>
+                            <label for="lbAddEditSoDienThoai" class="control-label col-md-2 col-sm-2 col-xs-12 ">Số điện thoại</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditSoDienThoai" placeholder="Số điện thoại Công ty, xí nghiệp">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbAddEditDiaChi" class="control-label col-md-2 col-sm-2 col-xs-12 ">Địa chỉ</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditDiaChi" placeholder="Địa chỉ Công ty, xí nghiệp">
+                            </div>
+                            <label for="lbAddEditMaSoThue" class="control-label col-md-2 col-sm-2 col-xs-12 ">Mã số thuế</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditMaSoThue" placeholder="Mã số thuế chỉ Công ty, xí nghiệp">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbAddEditEmail" class="control-label col-md-2 col-sm-2 col-xs-12 ">Email</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditEmail" placeholder="Email Công ty, xí nghiệp">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnSaveDMCT" class="btn btn-success">Lưu</button>
+                                <button type="button" id="btnCanceDMCT" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

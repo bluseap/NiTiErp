@@ -1,0 +1,145 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@using NiTiErp.Authorization
+@inject IAuthorizationService AuthorizationService
+@{
+    ViewData["Title"] = "User List";
+}
+@section Scripts{
+    <script src="~/app/controllers/user/index.js" asp-append-version="true"></script>
+    <script>
+        var userObj = new UserController();
+        userObj.initialize();
+    </script>
+}
+@section Styles{
+
+}
+<input type="hidden" id="hid-category-id" value="0" />
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Người dùng</h3>
+        </div>
+        <div class="title_right">
+            <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right top_search">
+                @{
+                    var result = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Create);
+                }
+                @if (result.Succeeded)
+                {
+                    <button class="btn btn-success" id="btn-create" type="button">Tạo mới</button>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="page-title">
+        <div class="title_left">
+            <h3>  <small>Danh sách người dùng</small></h3>
+        </div>
+        <div class="title_right">
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <input type="text" id="txt-search-keyword" class="form-control" placeholder="Từ khóa...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" id="btn-search" type="button">Tìm!</button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <select id="ddlPhongBanIndex" class="form-control"></select>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <select id="ddlKhuVuc" class="form-control"></select>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_content">
+                    <table id="tbl-product" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Tài khoản</th>
+                                <th>Tên</th>
+                                <th>Biểu tượng</th>
+                                <th>Ngày tạo</th>
+                                <th>Trạng thái</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbl-content"></tbody>
+                    </table>
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="dataTables_info" id="datatable-checkbox_info" role="status" aria-live="polite">
+                                <select id="ddl-show-page">
+                                    <option value="10" selected="selected">10</option>
+                                    <option value="20">20</option>
+                                    <option value="30">30</option>
+                                    <option value="50">50</option>
+                                </select>
+                                <span class="item-per-page">
+                                    dòng/trang.
+                                </span>
+                                Tổng cộng: <strong id="lbl-total-records"></strong>
+                            </div>
+                        </div><div class="col-sm-7">
+                            <div class="dataTables_paginate" id="datatable-checkbox_paginate">
+                                <ul id="paginationUL"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script id="table-template" type="x-tmpl-mustache">
+        <tr>
+            <td>{{UserName}}</td>
+            <td>{{FullName}}</td>
+            <td>{{{Avatar}}}</td>
+            <td>{{{DateCreated}}}</td>
+            <td>{{{Status}}}</td>
+            <td>
+                @if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Update)).Succeeded)
+                {
+                    <a href="#" data-id="{{Id}}" class="btn-edit"><i class="fa fa-pencil-square-o" style="color:#5cb85c"></i></a>
+                }
+            </td>
+            <td>
+                @if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Update)).Succeeded)
+                {
+                    <a href="#" data-id="{{Id}}" class="btn-editpass"><i class="fa fa-key" style="color:orange"></i></a>
+                }
+            </td>
+            <td>
+                @if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Delete)).Succeeded)
+                {
+                    <a href="#" data-id="{{Id}}" class="btn-delete"><i class="fa fa-trash-o" style="color:orangered"></i></a>
+
+                }
+            </td>
+        </tr>
+    </script>
+</div>
+<script id="role-template" type="x-tmpl-mustache">
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" {{Checked}} value="{{Name}}" name="ckRoles">
+            <span class="text">{{Description}}</span>
+        </label>
+    </div>
+</script>
+<Partial name="_AddEditModal.cshtml" />
+<Partial name="_EditPassword.cshtml" />

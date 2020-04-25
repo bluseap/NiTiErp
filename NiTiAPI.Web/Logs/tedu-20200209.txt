@@ -1,0 +1,437 @@
+2020-02-09T20:28:12.6279542+07:00 0HLTDCFKM47BU:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44318/   (ca22a1cb)
+2020-02-09T20:28:12.6279542+07:00 0HLTDCFKM47BT:00000001 [INF] Request starting HTTP/1.1 DEBUG http://localhost:58335/  0 (ca22a1cb)
+2020-02-09T20:28:12.7127128+07:00 0HLTDCFKM47BT:00000001 [INF] Request finished in 61.3559ms 200  (791a596a)
+2020-02-09T20:28:13.5924975+07:00 0HLTDCFKM47BU:00000001 [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: The following errors occurred with attribute routing information:
+
+Error 1:
+Attribute routes with the same name 'GetById' must have the same template:
+Action: 'NiTiAPI.Web.Controllers.PostController.GetById (NiTiAPI.Web)' - Template: 'api/{culture}/Post/{id}'
+Action: 'NiTiAPI.Web.Controllers.RegisterDocController.GetById (NiTiAPI.Web)' - Template: 'api/{culture}/RegisterDoc/{id}'
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorBuilder.Build(ApplicationModel application)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.GetDescriptors()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.OnProvidersExecuting(ActionDescriptorProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider.UpdateCollection()
+   at Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider.get_ActionDescriptors()
+   at Microsoft.AspNetCore.Mvc.Internal.AttributeRoute.GetTreeRouter()
+   at Microsoft.AspNetCore.Mvc.Internal.AttributeRoute.RouteAsync(RouteContext context)
+   at Microsoft.AspNetCore.Routing.RouteCollection.RouteAsync(RouteContext context)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+2020-02-09T20:28:13.7969137+07:00 0HLTDCFKM47BU:00000001 [INF] Request finished in 1118.7044ms 500 application/json (791a596a)
+2020-02-09T20:28:13.9271652+07:00 0HLTDCFKM47BT:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44318/favicon.ico   (ca22a1cb)
+2020-02-09T20:28:13.9746153+07:00 0HLTDCFKM47BT:00000002 [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: The following errors occurred with attribute routing information:
+
+Error 1:
+Attribute routes with the same name 'GetById' must have the same template:
+Action: 'NiTiAPI.Web.Controllers.PostController.GetById (NiTiAPI.Web)' - Template: 'api/{culture}/Post/{id}'
+Action: 'NiTiAPI.Web.Controllers.RegisterDocController.GetById (NiTiAPI.Web)' - Template: 'api/{culture}/RegisterDoc/{id}'
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorBuilder.Build(ApplicationModel application)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.GetDescriptors()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.OnProvidersExecuting(ActionDescriptorProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider.UpdateCollection()
+   at Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider.get_ActionDescriptors()
+   at Microsoft.AspNetCore.Mvc.Internal.AttributeRoute.GetTreeRouter()
+   at Microsoft.AspNetCore.Mvc.Internal.AttributeRoute.RouteAsync(RouteContext context)
+   at Microsoft.AspNetCore.Routing.RouteCollection.RouteAsync(RouteContext context)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+2020-02-09T20:28:13.9815346+07:00 0HLTDCFKM47BT:00000002 [INF] Request finished in 55.0517ms 500 application/json (791a596a)
+2020-02-09T20:28:22.6800136+07:00 0HLTDCFKM47BU:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger   (ca22a1cb)
+2020-02-09T20:28:22.6872396+07:00 0HLTDCFKM47BU:00000002 [INF] Request finished in 5.4362ms 301  (791a596a)
+2020-02-09T20:28:22.6926845+07:00 0HLTDCFKM47BT:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/index.html   (ca22a1cb)
+2020-02-09T20:28:22.7406899+07:00 0HLTDCFKM47BT:00000003 [INF] Request finished in 48.1826ms 200 text/html (791a596a)
+2020-02-09T20:28:22.7848492+07:00 0HLTDCFKM47BU:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/swagger-ui-bundle.js   (ca22a1cb)
+2020-02-09T20:28:22.7888682+07:00 0HLTDCFKM47BT:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/swagger-ui.css   (ca22a1cb)
+2020-02-09T20:28:22.7889217+07:00 0HLTDCFKM47BV:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/swagger-ui-standalone-preset.js   (ca22a1cb)
+2020-02-09T20:28:22.8661979+07:00 0HLTDCFKM47BT:00000004 [INF] Sending file. Request path: '"/swagger-ui.css"'. Physical path: '"N/A"' (27b0a520)
+2020-02-09T20:28:22.9011865+07:00 0HLTDCFKM47BV:00000001 [INF] Sending file. Request path: '"/swagger-ui-standalone-preset.js"'. Physical path: '"N/A"' (27b0a520)
+2020-02-09T20:28:22.9293067+07:00 0HLTDCFKM47BU:00000003 [INF] Sending file. Request path: '"/swagger-ui-bundle.js"'. Physical path: '"N/A"' (27b0a520)
+2020-02-09T20:28:22.9365414+07:00 0HLTDCFKM47BV:00000001 [INF] Request finished in 119.1952ms 200 application/javascript (791a596a)
+2020-02-09T20:28:22.9439391+07:00 0HLTDCFKM47BU:00000003 [INF] Request finished in 148.2808ms 200 application/javascript (791a596a)
+2020-02-09T20:28:22.9502169+07:00 0HLTDCFKM47BT:00000004 [INF] Request finished in 102.7205ms 200 text/css (791a596a)
+2020-02-09T20:28:24.1020531+07:00 0HLTDCFKM47BT:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/swagger-ui-bundle.js.map   (ca22a1cb)
+2020-02-09T20:28:24.1735954+07:00 0HLTDCFKM47BT:00000005 [INF] Sending file. Request path: '"/swagger-ui-bundle.js.map"'. Physical path: '"N/A"' (27b0a520)
+2020-02-09T20:28:24.1779054+07:00 0HLTDCFKM47BT:00000005 [INF] Request finished in 75.1014ms 200 text/plain (791a596a)
+2020-02-09T20:28:25.3081014+07:00 0HLTDCFKM47BV:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/swagger-ui-standalone-preset.js.map   (ca22a1cb)
+2020-02-09T20:28:25.3393059+07:00 0HLTDCFKM47BV:00000002 [INF] Sending file. Request path: '"/swagger-ui-standalone-preset.js.map"'. Physical path: '"N/A"' (27b0a520)
+2020-02-09T20:28:25.3433732+07:00 0HLTDCFKM47BV:00000002 [INF] Request finished in 36.4755ms 200 text/plain (791a596a)
+2020-02-09T20:28:25.7947269+07:00 0HLTDCFKM47BU:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/v1/swagger.json   (ca22a1cb)
+2020-02-09T20:28:25.8330317+07:00 0HLTDCFKM47BU:00000004 [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: The following errors occurred with attribute routing information:
+
+Error 1:
+Attribute routes with the same name 'GetById' must have the same template:
+Action: 'NiTiAPI.Web.Controllers.PostController.GetById (NiTiAPI.Web)' - Template: 'api/{culture}/Post/{id}'
+Action: 'NiTiAPI.Web.Controllers.RegisterDocController.GetById (NiTiAPI.Web)' - Template: 'api/{culture}/RegisterDoc/{id}'
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorBuilder.Build(ApplicationModel application)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.GetDescriptors()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.OnProvidersExecuting(ActionDescriptorProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider.UpdateCollection()
+   at Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider.get_ActionDescriptors()
+   at Microsoft.AspNetCore.Mvc.ApiExplorer.ApiDescriptionGroupCollectionProvider.get_ApiDescriptionGroups()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwagger(String documentName, String host, String basePath, String[] schemes)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+2020-02-09T20:28:25.8779631+07:00 0HLTDCFKM47BU:00000004 [INF] Request finished in 45.3015ms 500 application/json (791a596a)
+2020-02-09T20:28:25.8803140+07:00 0HLTDCFKM47BT:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/favicon-32x32.png   (ca22a1cb)
+2020-02-09T20:28:25.8960320+07:00 0HLTDCFKM47BT:00000006 [INF] Sending file. Request path: '"/favicon-32x32.png"'. Physical path: '"N/A"' (27b0a520)
+2020-02-09T20:28:25.8991365+07:00 0HLTDCFKM47BT:00000006 [INF] Request finished in 31.0471ms 200 image/png (791a596a)
+2020-02-09T20:29:38.7762491+07:00 0HLTDCGEBLAA4:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44318/   (ca22a1cb)
+2020-02-09T20:29:38.7762491+07:00 0HLTDCGEBLAA5:00000001 [INF] Request starting HTTP/1.1 DEBUG http://localhost:58335/  0 (ca22a1cb)
+2020-02-09T20:29:38.8372665+07:00 0HLTDCGEBLAA5:00000001 [INF] Request finished in 62.8922ms 200  (791a596a)
+2020-02-09T20:29:39.1362410+07:00 0HLTDCGEBLAA4:00000001 [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: The following errors occurred with attribute routing information:
+
+Error 1:
+Attribute routes with the same name 'GetById' must have the same template:
+Action: 'NiTiAPI.Web.Controllers.PostController.GetById (NiTiAPI.Web)' - Template: 'api/{culture}/Post/{id}'
+Action: 'NiTiAPI.Web.Controllers.RegisterDocController.GetById (NiTiAPI.Web)' - Template: 'api/{culture}/RegisterDoc/{id}'
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorBuilder.Build(ApplicationModel application)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.GetDescriptors()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.OnProvidersExecuting(ActionDescriptorProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider.UpdateCollection()
+   at Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider.get_ActionDescriptors()
+   at Microsoft.AspNetCore.Mvc.Internal.AttributeRoute.GetTreeRouter()
+   at Microsoft.AspNetCore.Mvc.Internal.AttributeRoute.RouteAsync(RouteContext context)
+   at Microsoft.AspNetCore.Routing.RouteCollection.RouteAsync(RouteContext context)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+2020-02-09T20:29:39.2443878+07:00 0HLTDCGEBLAA4:00000001 [INF] Request finished in 469.9115ms 500 application/json (791a596a)
+2020-02-09T20:29:39.3848959+07:00 0HLTDCGEBLAA5:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44318/favicon.ico   (ca22a1cb)
+2020-02-09T20:29:39.4846172+07:00 0HLTDCGEBLAA5:00000002 [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: The following errors occurred with attribute routing information:
+
+Error 1:
+Attribute routes with the same name 'GetById' must have the same template:
+Action: 'NiTiAPI.Web.Controllers.PostController.GetById (NiTiAPI.Web)' - Template: 'api/{culture}/Post/{id}'
+Action: 'NiTiAPI.Web.Controllers.RegisterDocController.GetById (NiTiAPI.Web)' - Template: 'api/{culture}/RegisterDoc/{id}'
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorBuilder.Build(ApplicationModel application)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.GetDescriptors()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.OnProvidersExecuting(ActionDescriptorProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider.UpdateCollection()
+   at Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider.get_ActionDescriptors()
+   at Microsoft.AspNetCore.Mvc.Internal.AttributeRoute.GetTreeRouter()
+   at Microsoft.AspNetCore.Mvc.Internal.AttributeRoute.RouteAsync(RouteContext context)
+   at Microsoft.AspNetCore.Routing.RouteCollection.RouteAsync(RouteContext context)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+2020-02-09T20:29:39.5483985+07:00 0HLTDCGEBLAA5:00000002 [INF] Request finished in 160.4436ms 500 application/json (791a596a)
+2020-02-09T20:29:54.8920735+07:00 0HLTDCGEBLAA4:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger   (ca22a1cb)
+2020-02-09T20:29:54.8973498+07:00 0HLTDCGEBLAA4:00000002 [INF] Request finished in 3.9841ms 301  (791a596a)
+2020-02-09T20:29:54.9032219+07:00 0HLTDCGEBLAA5:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/index.html   (ca22a1cb)
+2020-02-09T20:29:54.9524310+07:00 0HLTDCGEBLAA5:00000003 [INF] Request finished in 50.1609ms 200 text/html (791a596a)
+2020-02-09T20:29:55.0125940+07:00 0HLTDCGEBLAA4:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/swagger-ui-bundle.js   (ca22a1cb)
+2020-02-09T20:29:55.0140765+07:00 0HLTDCGEBLAA5:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/swagger-ui.css   (ca22a1cb)
+2020-02-09T20:29:55.0169636+07:00 0HLTDCGEBLAA6:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/swagger-ui-standalone-preset.js   (ca22a1cb)
+2020-02-09T20:29:55.0810892+07:00 0HLTDCGEBLAA5:00000004 [INF] Sending file. Request path: '"/swagger-ui.css"'. Physical path: '"N/A"' (27b0a520)
+2020-02-09T20:29:55.1002057+07:00 0HLTDCGEBLAA6:00000001 [INF] Sending file. Request path: '"/swagger-ui-standalone-preset.js"'. Physical path: '"N/A"' (27b0a520)
+2020-02-09T20:29:55.1096639+07:00 0HLTDCGEBLAA5:00000004 [INF] Request finished in 85.1869ms 200 text/css (791a596a)
+2020-02-09T20:29:55.1118245+07:00 0HLTDCGEBLAA6:00000001 [INF] Request finished in 85.4358ms 200 application/javascript (791a596a)
+2020-02-09T20:29:55.1238406+07:00 0HLTDCGEBLAA4:00000003 [INF] Sending file. Request path: '"/swagger-ui-bundle.js"'. Physical path: '"N/A"' (27b0a520)
+2020-02-09T20:29:55.1281763+07:00 0HLTDCGEBLAA4:00000003 [INF] Request finished in 115.922ms 200 application/javascript (791a596a)
+2020-02-09T20:29:55.8052490+07:00 0HLTDCGEBLAA5:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/swagger-ui-bundle.js.map   (ca22a1cb)
+2020-02-09T20:29:55.8432629+07:00 0HLTDCGEBLAA5:00000005 [INF] Sending file. Request path: '"/swagger-ui-bundle.js.map"'. Physical path: '"N/A"' (27b0a520)
+2020-02-09T20:29:55.8472020+07:00 0HLTDCGEBLAA5:00000005 [INF] Request finished in 40.6654ms 200 text/plain (791a596a)
+2020-02-09T20:29:57.2174830+07:00 0HLTDCGEBLAA6:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/swagger-ui-standalone-preset.js.map   (ca22a1cb)
+2020-02-09T20:29:57.2295416+07:00 0HLTDCGEBLAA6:00000002 [INF] Sending file. Request path: '"/swagger-ui-standalone-preset.js.map"'. Physical path: '"N/A"' (27b0a520)
+2020-02-09T20:29:57.2326121+07:00 0HLTDCGEBLAA6:00000002 [INF] Request finished in 14.083ms 200 text/plain (791a596a)
+2020-02-09T20:29:57.5766536+07:00 0HLTDCGEBLAA4:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/v1/swagger.json   (ca22a1cb)
+2020-02-09T20:29:57.6287893+07:00 0HLTDCGEBLAA4:00000004 [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: The following errors occurred with attribute routing information:
+
+Error 1:
+Attribute routes with the same name 'GetById' must have the same template:
+Action: 'NiTiAPI.Web.Controllers.PostController.GetById (NiTiAPI.Web)' - Template: 'api/{culture}/Post/{id}'
+Action: 'NiTiAPI.Web.Controllers.RegisterDocController.GetById (NiTiAPI.Web)' - Template: 'api/{culture}/RegisterDoc/{id}'
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorBuilder.Build(ApplicationModel application)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.GetDescriptors()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.OnProvidersExecuting(ActionDescriptorProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider.UpdateCollection()
+   at Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider.get_ActionDescriptors()
+   at Microsoft.AspNetCore.Mvc.ApiExplorer.ApiDescriptionGroupCollectionProvider.get_ApiDescriptionGroups()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwagger(String documentName, String host, String basePath, String[] schemes)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+2020-02-09T20:29:57.6338577+07:00 0HLTDCGEBLAA4:00000004 [INF] Request finished in 55.2326ms 500 application/json (791a596a)
+2020-02-09T20:30:11.7679293+07:00 0HLTDCGEBLAA5:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/index.html   (ca22a1cb)
+2020-02-09T20:30:11.7782487+07:00 0HLTDCGEBLAA5:00000006 [INF] Request finished in 8.6629ms 200 text/html (791a596a)
+2020-02-09T20:30:11.8265722+07:00 0HLTDCGEBLAA4:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/swagger-ui-bundle.js   (ca22a1cb)
+2020-02-09T20:30:11.8287265+07:00 0HLTDCGEBLAA6:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/swagger-ui-standalone-preset.js   (ca22a1cb)
+2020-02-09T20:30:11.8301759+07:00 0HLTDCGEBLAA5:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/swagger-ui.css   (ca22a1cb)
+2020-02-09T20:30:11.8796924+07:00 0HLTDCGEBLAA5:00000007 [INF] Sending file. Request path: '"/swagger-ui.css"'. Physical path: '"N/A"' (27b0a520)
+2020-02-09T20:30:11.9090475+07:00 0HLTDCGEBLAA6:00000003 [INF] Sending file. Request path: '"/swagger-ui-standalone-preset.js"'. Physical path: '"N/A"' (27b0a520)
+2020-02-09T20:30:11.9134295+07:00 0HLTDCGEBLAA5:00000007 [INF] Request finished in 56.2514ms 200 text/css (791a596a)
+2020-02-09T20:30:11.9168610+07:00 0HLTDCGEBLAA6:00000003 [INF] Request finished in 86.0107ms 200 application/javascript (791a596a)
+2020-02-09T20:30:11.9202775+07:00 0HLTDCGEBLAA4:00000005 [INF] Sending file. Request path: '"/swagger-ui-bundle.js"'. Physical path: '"N/A"' (27b0a520)
+2020-02-09T20:30:11.9247139+07:00 0HLTDCGEBLAA4:00000005 [INF] Request finished in 97.2349ms 200 application/javascript (791a596a)
+2020-02-09T20:30:12.4561236+07:00 0HLTDCGEBLAA5:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/v1/swagger.json   (ca22a1cb)
+2020-02-09T20:30:12.4889806+07:00 0HLTDCGEBLAA5:00000008 [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: The following errors occurred with attribute routing information:
+
+Error 1:
+Attribute routes with the same name 'GetById' must have the same template:
+Action: 'NiTiAPI.Web.Controllers.PostController.GetById (NiTiAPI.Web)' - Template: 'api/{culture}/Post/{id}'
+Action: 'NiTiAPI.Web.Controllers.RegisterDocController.GetById (NiTiAPI.Web)' - Template: 'api/{culture}/RegisterDoc/{id}'
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorBuilder.Build(ApplicationModel application)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.GetDescriptors()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.OnProvidersExecuting(ActionDescriptorProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider.UpdateCollection()
+   at Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider.get_ActionDescriptors()
+   at Microsoft.AspNetCore.Mvc.ApiExplorer.ApiDescriptionGroupCollectionProvider.get_ApiDescriptionGroups()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwagger(String documentName, String host, String basePath, String[] schemes)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+2020-02-09T20:30:12.5388410+07:00 0HLTDCGEBLAA5:00000008 [INF] Request finished in 36.9287ms 500 application/json (791a596a)
+2020-02-09T20:30:12.5474239+07:00 0HLTDCGEBLAA6:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/favicon-32x32.png   (ca22a1cb)
+2020-02-09T20:30:12.5619807+07:00 0HLTDCGEBLAA6:00000004 [INF] Sending file. Request path: '"/favicon-32x32.png"'. Physical path: '"N/A"' (27b0a520)
+2020-02-09T20:30:12.5890238+07:00 0HLTDCGEBLAA6:00000004 [INF] Request finished in 16.9574ms 200 image/png (791a596a)
+2020-02-09T20:31:35.3627478+07:00 0HLTDCHH3MIJA:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/index.html   (ca22a1cb)
+2020-02-09T20:31:35.4853437+07:00 0HLTDCHH3MIJA:00000001 [INF] Request finished in 128.6071ms 200 text/html (791a596a)
+2020-02-09T20:31:35.6313535+07:00 0HLTDCHH3MIJA:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/v1/swagger.json   (ca22a1cb)
+2020-02-09T20:31:35.7458633+07:00 0HLTDCHH3MIJA:00000002 [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: The following errors occurred with attribute routing information:
+
+Error 1:
+Attribute routes with the same name 'GetById' must have the same template:
+Action: 'NiTiAPI.Web.Controllers.PostController.GetById (NiTiAPI.Web)' - Template: 'api/{culture}/Post/{id}'
+Action: 'NiTiAPI.Web.Controllers.RegisterDocController.GetById (NiTiAPI.Web)' - Template: 'api/{culture}/RegisterDoc/{id}'
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorBuilder.Build(ApplicationModel application)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.GetDescriptors()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.OnProvidersExecuting(ActionDescriptorProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider.UpdateCollection()
+   at Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider.get_ActionDescriptors()
+   at Microsoft.AspNetCore.Mvc.ApiExplorer.ApiDescriptionGroupCollectionProvider.get_ApiDescriptionGroups()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwagger(String documentName, String host, String basePath, String[] schemes)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+2020-02-09T20:31:35.7529812+07:00 0HLTDCHH3MIJA:00000002 [INF] Request finished in 122.7251ms 500 application/json (791a596a)
+2020-02-09T20:33:49.6348983+07:00 0HLTDCIP48PJD:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/index.html   (ca22a1cb)
+2020-02-09T20:33:49.7590295+07:00 0HLTDCIP48PJD:00000001 [INF] Request finished in 128.8988ms 200 text/html (791a596a)
+2020-02-09T20:33:49.8737241+07:00 0HLTDCIP48PJD:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/v1/swagger.json   (ca22a1cb)
+2020-02-09T20:33:49.9896330+07:00 0HLTDCIP48PJD:00000002 [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: The following errors occurred with attribute routing information:
+
+Error 1:
+Attribute routes with the same name 'GetById' must have the same template:
+Action: 'NiTiAPI.Web.Controllers.PostController.GetById (NiTiAPI.Web)' - Template: 'api/{culture}/Post/{id}'
+Action: 'NiTiAPI.Web.Controllers.RegisterDocController.GetById (NiTiAPI.Web)' - Template: 'api/{culture}/RegisterDoc/{id}'
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorBuilder.Build(ApplicationModel application)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.GetDescriptors()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.OnProvidersExecuting(ActionDescriptorProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider.UpdateCollection()
+   at Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider.get_ActionDescriptors()
+   at Microsoft.AspNetCore.Mvc.ApiExplorer.ApiDescriptionGroupCollectionProvider.get_ApiDescriptionGroups()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwagger(String documentName, String host, String basePath, String[] schemes)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+2020-02-09T20:33:50.0000179+07:00 0HLTDCIP48PJD:00000002 [INF] Request finished in 126.312ms 500 application/json (791a596a)
+2020-02-09T20:35:14.5085471+07:00 0HLTDCJIDLIFV:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/index.html   (ca22a1cb)
+2020-02-09T20:35:14.6269546+07:00 0HLTDCJIDLIFV:00000001 [INF] Request finished in 123.9234ms 200 text/html (791a596a)
+2020-02-09T20:35:14.7453128+07:00 0HLTDCJIDLIFV:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/v1/swagger.json   (ca22a1cb)
+2020-02-09T20:35:14.7558649+07:00 0HLTDCJIDLIG0:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/favicon-32x32.png   (ca22a1cb)
+2020-02-09T20:35:14.7772910+07:00 0HLTDCJIDLIG0:00000001 [INF] Sending file. Request path: '"/favicon-32x32.png"'. Physical path: '"N/A"' (27b0a520)
+2020-02-09T20:35:14.7775261+07:00 0HLTDCJIDLIG0:00000001 [INF] Request finished in 21.6851ms 200 image/png (791a596a)
+2020-02-09T20:35:14.8661792+07:00 0HLTDCJIDLIFV:00000002 [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: The following errors occurred with attribute routing information:
+
+Error 1:
+Attribute routes with the same name 'GetById' must have the same template:
+Action: 'NiTiAPI.Web.Controllers.PostController.GetById (NiTiAPI.Web)' - Template: 'api/{culture}/Post/{id}'
+Action: 'NiTiAPI.Web.Controllers.RegisterDocController.GetById (NiTiAPI.Web)' - Template: 'api/{culture}/RegisterDoc/{id}'
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorBuilder.Build(ApplicationModel application)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.GetDescriptors()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.OnProvidersExecuting(ActionDescriptorProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider.UpdateCollection()
+   at Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider.get_ActionDescriptors()
+   at Microsoft.AspNetCore.Mvc.ApiExplorer.ApiDescriptionGroupCollectionProvider.get_ApiDescriptionGroups()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwagger(String documentName, String host, String basePath, String[] schemes)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+2020-02-09T20:35:14.8739152+07:00 0HLTDCJIDLIFV:00000002 [INF] Request finished in 128.6629ms 500 application/json (791a596a)
+2020-02-09T20:37:09.4389755+07:00 0HLTDCKKLN18B:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/index.html   (ca22a1cb)
+2020-02-09T20:37:09.6079210+07:00 0HLTDCKKLN18B:00000001 [INF] Request finished in 173.7257ms 200 text/html (791a596a)
+2020-02-09T20:37:09.7257130+07:00 0HLTDCKKLN18B:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/v1/swagger.json   (ca22a1cb)
+2020-02-09T20:37:09.8354884+07:00 0HLTDCKKLN18B:00000002 [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: The following errors occurred with attribute routing information:
+
+Error 1:
+Attribute routes with the same name 'GetById' must have the same template:
+Action: 'NiTiAPI.Web.Controllers.PostController.GetById (NiTiAPI.Web)' - Template: 'api/{culture}/Post/{id}'
+Action: 'NiTiAPI.Web.Controllers.RegisterDocController.GetById (NiTiAPI.Web)' - Template: 'api/{culture}/RegisterDoc/{id}'
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorBuilder.Build(ApplicationModel application)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.GetDescriptors()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.OnProvidersExecuting(ActionDescriptorProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider.UpdateCollection()
+   at Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider.get_ActionDescriptors()
+   at Microsoft.AspNetCore.Mvc.ApiExplorer.ApiDescriptionGroupCollectionProvider.get_ApiDescriptionGroups()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwagger(String documentName, String host, String basePath, String[] schemes)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+2020-02-09T20:37:09.8431711+07:00 0HLTDCKKLN18B:00000002 [INF] Request finished in 118.5968ms 500 application/json (791a596a)
+2020-02-09T20:38:36.3093032+07:00 0HLTDCLEI505F:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/swagger-ui.css.map   (ca22a1cb)
+2020-02-09T20:38:36.3124932+07:00 0HLTDCLEI505I:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/v1/swagger.json   (ca22a1cb)
+2020-02-09T20:38:36.3093032+07:00 0HLTDCLEI505G:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/swagger-ui-bundle.js.map   (ca22a1cb)
+2020-02-09T20:38:36.3093032+07:00 0HLTDCLEI505H:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/swagger-ui-standalone-preset.js.map   (ca22a1cb)
+2020-02-09T20:38:36.4124027+07:00 0HLTDCLEI505F:00000001 [INF] Sending file. Request path: '"/swagger-ui.css.map"'. Physical path: '"N/A"' (27b0a520)
+2020-02-09T20:38:36.4184055+07:00 0HLTDCLEI505F:00000001 [INF] Request finished in 114.0659ms 200 text/plain (791a596a)
+2020-02-09T20:38:36.4445925+07:00 0HLTDCLEI505H:00000001 [INF] Sending file. Request path: '"/swagger-ui-standalone-preset.js.map"'. Physical path: '"N/A"' (27b0a520)
+2020-02-09T20:38:36.4581816+07:00 0HLTDCLEI505H:00000001 [INF] Request finished in 161.41ms 200 text/plain (791a596a)
+2020-02-09T20:38:36.4640265+07:00 0HLTDCLEI505G:00000001 [INF] Sending file. Request path: '"/swagger-ui-bundle.js.map"'. Physical path: '"N/A"' (27b0a520)
+2020-02-09T20:38:36.4641929+07:00 0HLTDCLEI505G:00000001 [INF] Request finished in 167.5835ms 200 text/plain (791a596a)
+2020-02-09T20:38:36.6198887+07:00 0HLTDCLEI505I:00000001 [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: The following errors occurred with attribute routing information:
+
+Error 1:
+Attribute routes with the same name 'GetById' must have the same template:
+Action: 'NiTiAPI.Web.Controllers.PostController.GetById (NiTiAPI.Web)' - Template: 'api/{culture}/Post/{id}'
+Action: 'NiTiAPI.Web.Controllers.RegisterDocController.GetById (NiTiAPI.Web)' - Template: 'api/{culture}/RegisterDoc/{id}'
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorBuilder.Build(ApplicationModel application)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.GetDescriptors()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.OnProvidersExecuting(ActionDescriptorProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider.UpdateCollection()
+   at Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider.get_ActionDescriptors()
+   at Microsoft.AspNetCore.Mvc.ApiExplorer.ApiDescriptionGroupCollectionProvider.get_ApiDescriptionGroups()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwagger(String documentName, String host, String basePath, String[] schemes)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+2020-02-09T20:38:36.7127594+07:00 0HLTDCLEI505I:00000001 [INF] Request finished in 400.3774ms 500 application/json (791a596a)
+2020-02-09T20:38:36.7741967+07:00 0HLTDCLEI505F:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44318/favicon.ico   (ca22a1cb)
+2020-02-09T20:38:36.8549356+07:00 0HLTDCLEI505F:00000002 [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: The following errors occurred with attribute routing information:
+
+Error 1:
+Attribute routes with the same name 'GetById' must have the same template:
+Action: 'NiTiAPI.Web.Controllers.PostController.GetById (NiTiAPI.Web)' - Template: 'api/{culture}/Post/{id}'
+Action: 'NiTiAPI.Web.Controllers.RegisterDocController.GetById (NiTiAPI.Web)' - Template: 'api/{culture}/RegisterDoc/{id}'
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorBuilder.Build(ApplicationModel application)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.GetDescriptors()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.OnProvidersExecuting(ActionDescriptorProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider.UpdateCollection()
+   at Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider.get_ActionDescriptors()
+   at Microsoft.AspNetCore.Mvc.Internal.AttributeRoute.GetTreeRouter()
+   at Microsoft.AspNetCore.Mvc.Internal.AttributeRoute.RouteAsync(RouteContext context)
+   at Microsoft.AspNetCore.Routing.RouteCollection.RouteAsync(RouteContext context)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+2020-02-09T20:38:36.8564503+07:00 0HLTDCLEI505F:00000002 [INF] Request finished in 82.4165ms 500 application/json (791a596a)
+2020-02-09T20:39:26.0367404+07:00 0HLTDCLTCIGUT:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/index.html   (ca22a1cb)
+2020-02-09T20:39:26.2000652+07:00 0HLTDCLTCIGUT:00000001 [INF] Request finished in 170.3397ms 200 text/html (791a596a)
+2020-02-09T20:39:26.5200797+07:00 0HLTDCLTCIGUT:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/v1/swagger.json   (ca22a1cb)
+2020-02-09T20:39:26.8766936+07:00 0HLTDCLTCIGUT:00000002 [INF] Request finished in 357.9166ms 200 application/json;charset=utf-8 (791a596a)
+2020-02-09T20:39:43.0389447+07:00 0HLTDCLTCIGUT:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44318/api/vi-VN/registerdoc/1   (ca22a1cb)
+2020-02-09T20:39:43.1307672+07:00 0HLTDCLTCIGUT:00000003 [INF] Route matched with "{action = \"GetRegisterDocId\", controller = \"RegisterDoc\"}". Executing action "NiTiAPI.Web.Controllers.RegisterDocController.GetRegisterDocId (NiTiAPI.Web)" (a44c0341)
+2020-02-09T20:39:43.1604930+07:00 0HLTDCLTCIGUT:00000003 [INF] Executing action method "NiTiAPI.Web.Controllers.RegisterDocController.GetRegisterDocId (NiTiAPI.Web)" with arguments (["1"]) - Validation state: Valid (4e3479ed)
+2020-02-09T20:39:43.4294501+07:00 0HLTDCLTCIGUT:00000003 [INF] Executed action "NiTiAPI.Web.Controllers.RegisterDocController.GetRegisterDocId (NiTiAPI.Web)" in 294.0793ms (afa2e885)
+2020-02-09T20:39:43.4967567+07:00 0HLTDCLTCIGUT:00000003 [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)
+   at NiTiErp.Application.Dapper.Implementation.RegisterDocService.GetById(Int64 id) in D:\netCore\NiTiErp\NiTiErp.Application.Dapper\Implementation\RegisterDocService.cs:line 36
+   at NiTiAPI.Web.Controllers.RegisterDocController.GetRegisterDocId(Int32 id) in D:\netCore\NiTiErp\NiTiAPI.Web\Controllers\RegisterDocController.cs:line 48
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.MiddlewareFilterBuilder.<>c.<<BuildPipeline>b__8_0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+2020-02-09T20:39:43.5054414+07:00 0HLTDCLTCIGUT:00000003 [INF] Request finished in 466.4988ms 500 application/json (791a596a)
+2020-02-09T20:41:15.0123908+07:00 0HLTDCLTCIGUU:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44318/api/vi-VN/registerdoc/1   (ca22a1cb)
+2020-02-09T20:41:15.0148370+07:00 0HLTDCLTCIGUU:00000001 [INF] Route matched with "{action = \"GetRegisterDocId\", controller = \"RegisterDoc\"}". Executing action "NiTiAPI.Web.Controllers.RegisterDocController.GetRegisterDocId (NiTiAPI.Web)" (a44c0341)
+2020-02-09T20:41:15.0161109+07:00 0HLTDCLTCIGUU:00000001 [INF] Executing action method "NiTiAPI.Web.Controllers.RegisterDocController.GetRegisterDocId (NiTiAPI.Web)" with arguments (["1"]) - Validation state: Valid (4e3479ed)
+2020-02-09T20:41:15.0266075+07:00 0HLTDCLTCIGUU:00000001 [INF] Executed action "NiTiAPI.Web.Controllers.RegisterDocController.GetRegisterDocId (NiTiAPI.Web)" in 11.5959ms (afa2e885)
+2020-02-09T20:41:15.0289202+07:00 0HLTDCLTCIGUU:00000001 [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)
+   at NiTiErp.Application.Dapper.Implementation.RegisterDocService.GetById(Int64 id) in D:\netCore\NiTiErp\NiTiErp.Application.Dapper\Implementation\RegisterDocService.cs:line 36
+   at NiTiAPI.Web.Controllers.RegisterDocController.GetRegisterDocId(Int32 id) in D:\netCore\NiTiErp\NiTiAPI.Web\Controllers\RegisterDocController.cs:line 48
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.MiddlewareFilterBuilder.<>c.<<BuildPipeline>b__8_0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+2020-02-09T20:41:15.0295741+07:00 0HLTDCLTCIGUU:00000001 [INF] Request finished in 17.233ms 500 application/json (791a596a)
+2020-02-09T20:42:10.1820555+07:00 0HLTDCLTCIGUU:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44318/api/vi-VN/registerdoc/1   (ca22a1cb)
+2020-02-09T20:42:10.1826417+07:00 0HLTDCLTCIGUU:00000002 [INF] Route matched with "{action = \"GetRegisterDocId\", controller = \"RegisterDoc\"}". Executing action "NiTiAPI.Web.Controllers.RegisterDocController.GetRegisterDocId (NiTiAPI.Web)" (a44c0341)
+2020-02-09T20:42:10.1831460+07:00 0HLTDCLTCIGUU:00000002 [INF] Executing action method "NiTiAPI.Web.Controllers.RegisterDocController.GetRegisterDocId (NiTiAPI.Web)" with arguments (["1"]) - Validation state: Valid (4e3479ed)
+2020-02-09T20:42:10.2021672+07:00 0HLTDCLTCIGUU:00000002 [INF] Executed action method "NiTiAPI.Web.Controllers.RegisterDocController.GetRegisterDocId (NiTiAPI.Web)", returned result "Microsoft.AspNetCore.Mvc.ObjectResult" in 6.4934ms. (50a9e262)
+2020-02-09T20:42:10.2114403+07:00 0HLTDCLTCIGUU:00000002 [INF] Executing ObjectResult, writing value of type '"NiTiErp.Application.Dapper.ViewModels.RegisterDocViewModel"'. (8a1b66c8)
+2020-02-09T20:42:10.2208423+07:00 0HLTDCLTCIGUU:00000002 [INF] Executed action "NiTiAPI.Web.Controllers.RegisterDocController.GetRegisterDocId (NiTiAPI.Web)" in 38.0474ms (afa2e885)
+2020-02-09T20:42:10.2211152+07:00 0HLTDCLTCIGUU:00000002 [INF] Request finished in 39.1039ms 200 application/json; charset=utf-8 (791a596a)
+2020-02-09T20:42:54.5006782+07:00 0HLTDCNRGHOT1:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/index.html   (ca22a1cb)
+2020-02-09T20:42:54.6162146+07:00 0HLTDCNRGHOT1:00000001 [INF] Request finished in 121.0764ms 200 text/html (791a596a)
+2020-02-09T20:42:54.7430088+07:00 0HLTDCNRGHOT1:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44318/swagger/v1/swagger.json   (ca22a1cb)
+2020-02-09T20:42:55.0061336+07:00 0HLTDCNRGHOT1:00000002 [INF] Request finished in 263.2477ms 200 application/json;charset=utf-8 (791a596a)
+2020-02-09T20:43:14.9675649+07:00 0HLTDCNRGHOT1:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44318/api/vi-VN/registerdoc/1   (ca22a1cb)
+2020-02-09T20:43:15.0594107+07:00 0HLTDCNRGHOT1:00000003 [INF] Route matched with "{action = \"GetRegisterDocId\", controller = \"RegisterDoc\"}". Executing action "NiTiAPI.Web.Controllers.RegisterDocController.GetRegisterDocId (NiTiAPI.Web)" (a44c0341)
+2020-02-09T20:43:15.0906672+07:00 0HLTDCNRGHOT1:00000003 [INF] Executing action method "NiTiAPI.Web.Controllers.RegisterDocController.GetRegisterDocId (NiTiAPI.Web)" with arguments (["1"]) - Validation state: Valid (4e3479ed)
+2020-02-09T20:43:15.2431513+07:00 0HLTDCNRGHOT1:00000003 [INF] Executed action method "NiTiAPI.Web.Controllers.RegisterDocController.GetRegisterDocId (NiTiAPI.Web)", returned result "Microsoft.AspNetCore.Mvc.ObjectResult" in 149.1643ms. (50a9e262)
+2020-02-09T20:43:15.2524327+07:00 0HLTDCNRGHOT1:00000003 [INF] Executing ObjectResult, writing value of type '"NiTiErp.Application.Dapper.ViewModels.RegisterDocViewModel"'. (8a1b66c8)
+2020-02-09T20:43:15.2711463+07:00 0HLTDCNRGHOT1:00000003 [INF] Executed action "NiTiAPI.Web.Controllers.RegisterDocController.GetRegisterDocId (NiTiAPI.Web)" in 207.4089ms (afa2e885)
+2020-02-09T20:43:15.2773593+07:00 0HLTDCNRGHOT1:00000003 [INF] Request finished in 309.8311ms 200 application/json; charset=utf-8 (791a596a)
+2020-02-09T20:43:56.4394422+07:00 0HLTDCODV9FP0:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44318/api/vi-VN/registerdoc/1   (ca22a1cb)
+2020-02-09T20:43:56.6633198+07:00 0HLTDCODV9FP0:00000001 [INF] Route matched with "{action = \"GetRegisterDocId\", controller = \"RegisterDoc\"}". Executing action "NiTiAPI.Web.Controllers.RegisterDocController.GetRegisterDocId (NiTiAPI.Web)" (a44c0341)
+2020-02-09T20:43:56.6957536+07:00 0HLTDCODV9FP0:00000001 [INF] Executing action method "NiTiAPI.Web.Controllers.RegisterDocController.GetRegisterDocId (NiTiAPI.Web)" with arguments (["1"]) - Validation state: Valid (4e3479ed)
+2020-02-09T20:43:56.8357875+07:00 0HLTDCODV9FP0:00000001 [INF] Executed action method "NiTiAPI.Web.Controllers.RegisterDocController.GetRegisterDocId (NiTiAPI.Web)", returned result "Microsoft.AspNetCore.Mvc.ObjectResult" in 136.909ms. (50a9e262)
+2020-02-09T20:43:56.8446314+07:00 0HLTDCODV9FP0:00000001 [INF] Executing ObjectResult, writing value of type '"NiTiErp.Application.Dapper.ViewModels.RegisterDocViewModel"'. (8a1b66c8)
+2020-02-09T20:43:56.9027849+07:00 0HLTDCODV9FP0:00000001 [INF] Executed action "NiTiAPI.Web.Controllers.RegisterDocController.GetRegisterDocId (NiTiAPI.Web)" in 233.7381ms (afa2e885)
+2020-02-09T20:43:56.9244696+07:00 0HLTDCODV9FP0:00000001 [INF] Request finished in 490.6458ms 200 application/json; charset=utf-8 (791a596a)
+2020-02-09T20:43:56.9350393+07:00 0HLTDCODV9FP0:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44318/favicon.ico   (ca22a1cb)
+2020-02-09T20:43:56.9407519+07:00 0HLTDCODV9FP0:00000002 [INF] Request finished in 5.736ms 404  (791a596a)

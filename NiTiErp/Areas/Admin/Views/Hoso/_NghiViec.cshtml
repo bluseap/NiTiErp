@@ -1,0 +1,41 @@
+﻿<div id="modal-add-edit-NghiViec" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Nhân viên nghĩ việc</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainNghiViec">
+                    <input type="hidden" id="hidNghiViec" value="" />
+                    <input type="hidden" id="hidInsertNghiViecId" value="" />
+                    <input type="hidden" id="hidNghiViecHoSoNhanVienId" value="" />
+
+                    <div class="form-group">
+                        <label for="lbNghiViecNgayNghi" class="control-label col-md-2 col-sm-2 col-xs-12">Ngày nghĩ việc</label>
+                        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                            <input type="text" name="txtNghiViecNgayNghi" class="form-control has-feedback-right" id="txtNghiViecNgayNghi" placeholder="Ngày nghĩ việc">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lbNghiViecLyDo" class="control-label col-md-2 col-sm-2 col-xs-12">Lý do nghĩ việc</label>
+                        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                            <input type="text" name="txtNghiViecLyDo" class="form-control has-feedback-right" id="txtNghiViecLyDo" placeholder="Lý do nghĩ việc">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" id="btnSaveNghiViec" class="btn btn-success">Lưu</button>
+                            <button type="button" id="btnCancelNghiViec" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            <button type="button" id="btnPhucHoiNghiViec" data-dismiss="modal" class="btn btn-warning">Phục hồi nghĩ việc</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+          
+
+        </div>
+    </div>
+</div>

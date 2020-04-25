@@ -1,0 +1,127 @@
+﻿
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+}
+@section Scripts{
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+
+    <script src="~/app/controllers/chucvunv/addeditchucvunv.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/chucvunv/index.js" asp-append-version="true"></script>
+    <script>
+        var chucvunv = new chucvunvController();
+        chucvunv.initialize();
+    </script>
+}
+
+
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Danh mục Chức vụ</h3>
+        </div>
+        <div class="title_right">
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <button class="btn btn-round btn-warning " id="btn-create" type="button">Tạo mới</button>
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="x_content">
+        <div class="">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>  <small>Danh sách danh mục Chức vụ</small></h3>
+                </div>
+                <div class="title_right">
+                    <div class="col-md-5 col-sm-2 col-xs-12 form-group pull-right">
+                        <div class="input-group">
+                            <input type="text" id="txtTimNhanVien" class="form-control" placeholder="Từ khóa...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" id="btnTimNhanVien" type="button">Tìm !</button>
+                            </span>
+                        </div>
+                    </div>                    
+                    <div class="col-md-3 col-sm-2 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                            <select id="ddlKhuVuc" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="x_panel">
+                    <div class="row no-print">
+                        <div class="col-xs-12">
+                            <button class="btn btn-info pull-right" id="btnXuatExcel" style="margin-right: 5px;"><i class="fa fa-download"></i> Xuất Excel</button>
+                        </div>
+                    </div>
+                    <div class="table-responsive" id="table-responsiveDMCV">
+                        <table id="tblDMCV" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th width="=20%">#</th>
+                                    <th>Tên chức vụ</th>
+                                    <th>Khu vực</th>
+                                    <th>Chức danh</th>
+                                    <th>Ngày tạo</th>
+                                    <th>Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblContentDMCV"></tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <div class="dataTables_info" id="datatable-checkbox_infoDMCV" role="status" aria-live="polite">
+                                    <select id="ddl-show-pageDMCV">
+                                        <option value="10" selected="selected">10</option>
+                                        <option value="20">20</option>
+                                        <option value="30">30</option>
+                                        <option value="50">50</option>
+                                    </select>
+                                    <span class="item-per-page">
+                                        dòng/trang.
+                                    </span>
+                                    Tổng cộng: <strong id="lblDMCVTotalRecords"></strong>
+                                </div>
+                            </div><div class="col-sm-7">
+                                <div class="dataTables_paginate" id="datatable-checkbox_paginateDMCV">
+                                    <ul id="paginationULDMCV"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script id="table-DMCV" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row">
+                <a class="btn btn-lg btn-editDMCV" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa hồ sơ"><i class="fa fa-pencil"></i> </a>
+            </th>
+            <td>{{TenChucVu}}</td>
+            <td>{{TenKhuVuc}}</td>
+            <td>{{TenChucDanh}}</td>
+            <td>{{CreateDate}}</td>
+            <td>{{{Status}}}</td>
+        </tr>
+    </script>
+
+</div>
+
+<partial name="_AddEditModel.cshtml" />

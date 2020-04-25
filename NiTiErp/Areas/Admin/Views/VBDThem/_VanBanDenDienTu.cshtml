@@ -1,0 +1,80 @@
+﻿<div id="modal-add-edit-DenDienTu" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Danh sách văn bản đến điện tử </h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainDenDienTu">
+                        <input type="hidden" id="hidVanBanDenDienTuId" value="" />
+                        <input type="hidden" id="hidInsertVanBanDenDienTuId" value="" />
+                        <input type="hidden" id="hidIsVanBanDenDienTuId" value="" />
+
+                        <div class="form-group">
+                        </div>
+                    </form>
+
+                    <div class="table-responsive" id="table-responsiveVanBanDienTu">
+                        <partial name="/Areas/Admin/Views/Shared/_shareTimVanBan.cshtml" />
+                        <div class="col-sm-12" style="text-align: center">
+                            <button type="button" id="btnTimVanBanDienTu" class="btn btn-warning" >Tìm văn bản</button>
+                        </div>
+                        <table id="tblVanBanDienTu" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th width="=10%">#</th>                                    
+                                    <th>Trich yếu</th>
+                                    <th>Số đến, ký hiệu</th>
+                                    <th>Tên cơ quan ban hành</th>
+                                    <th>Ngày ban hành</th>                                    
+                                    <th>Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblContentVanBanDienTu"></tbody>
+                        </table>
+                        <div class="row" id="row-AddEditVanBanDienTu">
+                            <div class="col-sm-5">
+                                <div class="dataTables_info" id="datatable-checkbox_infoVanBanDienTu" role="status" aria-live="polite">
+                                    <select id="ddl-show-pageVanBanDienTu">
+                                        <option value="10" selected="selected">10</option>
+                                        <option value="20">20</option>
+                                        <option value="30">30</option>
+                                        <option value="50">50</option>
+                                    </select>
+                                    <span class="item-per-page">
+                                        dòng/trang.
+                                    </span>
+                                    Tổng cộng: <strong id="lblVanBanDienTuTotalRecords"></strong>
+                                </div>
+                            </div><div class="col-sm-7">
+                                <div class="dataTables_paginate" id="datatable-checkbox_paginateVanBanDienTu">
+                                    <ul id="paginationULVanBanDienTu"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script id="table-VanBanDienTu" type="x-tmpl-mustache">
+                        <tr>
+                            <th scope="row">
+                                <a class="btn btn-lg btn-editVanBanDienTu" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa hồ sơ"><i class="fa fa-pencil"></i> </a>
+                            </th>                           
+                            <td>{{TrichYeuCuaVanBan}}</td>
+                            <td>{{SoKyHieuDi}}</td>
+                            <td>{{TenKhuVuc}}</td>
+                            <td>{{NgayBanHanhCuaVanBan}}</td>                            
+                            <td>{{{TTXuLy}}}</td>
+                        </tr>
+                    </script>
+                </div>
+                <div class="ln_solid"></div>
+
+            </div>
+        </div>
+    </div>
+
+  
+
+</div>

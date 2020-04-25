@@ -1,0 +1,201 @@
+﻿<div id="modal-add-edit-SucKhoe" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Tạo mới / Sửa Sức khỏe nhân viên</h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainSucKhoe">
+                        <input type="hidden" id="hidSucKhoeId" value="" />
+                        <input type="hidden" id="hidHoSoNhanVienId" value="" />
+                        <input type="hidden" id="hidInsertSucKhoeId" value="" />
+
+                        <div class="form-group">
+                            <label for="lbAddEditNamKham" class="control-label col-md-2 col-sm-2 col-xs-12 ">Năm khám</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditNamKham" placeholder="Năm khám sức khỏe">
+                            </div>
+                            <label for="lbAddEditNoiKham" class="control-label col-md-2 col-sm-2 col-xs-12 ">Nới khám</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlNoiKham" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbAddEditHoTen" class="control-label col-md-2 col-sm-2 col-xs-12 ">Họ và tên</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditHoTen" placeholder="Họ và tên nhân viên">
+                            </div>
+                            <label for="lbAddEditPhongTo" class="control-label col-md-2 col-sm-2 col-xs-12 ">Phòng, tổ</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditPhongTo" placeholder="Phòng, tổ, nhà máy">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbAddEditCanNang" class="control-label col-md-2 col-sm-2 col-xs-12 ">Cân nặng</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditCanNang" placeholder="Cân nặng">
+                            </div>
+                            <label for="lbAddEditChieuCao" class="control-label col-md-2 col-sm-2 col-xs-12 ">Chiều cao</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditChieuCao" placeholder="Chiều cao">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbAddEditHuyetAp" class="control-label col-md-2 col-sm-2 col-xs-12 ">Huyết áp</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditHuyetAp" placeholder="Huyết áp">
+                            </div>
+                            <label for="lbAddEditMat" class="control-label col-md-2 col-sm-2 col-xs-12 ">Mắt</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditMat" placeholder="Mắt">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbAddEditTaiMuiHong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tai, mũi, họng</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditTaiMuiHong" placeholder="Tai, mũi, họng">
+                            </div>
+                            <label for="lbAddEditRangHamMat" class="control-label col-md-2 col-sm-2 col-xs-12 ">Răng, hàm, mặt</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditRangHamMat" placeholder="Răng, hàm, mặt">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbAddEditSieuAmVungBung" class="control-label col-md-2 col-sm-2 col-xs-12 ">Siêu âm vùng bụng</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditSieuAmVungBung" placeholder="Siêu âm vùng bụng">
+                            </div>
+                            <label for="lbAddEditXQTimPhoi" class="control-label col-md-2 col-sm-2 col-xs-12 ">XQ Tim, phổi</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditXQTimPhoi" placeholder="XQ Tim, phổi">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbAddEditDoDienTim" class="control-label col-md-2 col-sm-2 col-xs-12 ">Đo điện tim</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditDoDienTim" placeholder="Đo điện tim">
+                            </div>
+                            <label for="lbAddEditPhuKhoa" class="control-label col-md-2 col-sm-2 col-xs-12 ">Phụ khoa</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditPhuKhoa" placeholder="Phụ khoa">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbAddEditPhetTBAmDao" class="control-label col-md-2 col-sm-2 col-xs-12 ">Phết TB Âm đạo</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditPhetTBAmDao" placeholder="Phết TB Âm đạo">
+                            </div>
+                            <label for="lbAddEditCongThucMau" class="control-label col-md-2 col-sm-2 col-xs-12 ">Công thức máu</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditCongThucMau" placeholder="Công thức máu">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbAddEditTPTNT" class="control-label col-md-2 col-sm-2 col-xs-12 ">TPTNT</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditTPTNT" placeholder="TPTNT">
+                            </div>
+                            <label for="lbAddEditGlucoDuong" class="control-label col-md-2 col-sm-2 col-xs-12 ">Glu co đường</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditGlucoDuong" placeholder="Glu co đường">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbAddEditNhomMau" class="control-label col-md-2 col-sm-2 col-xs-12 ">Nhóm máu</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditNhomMau" placeholder="Nhóm máu">
+                            </div>
+                            <label for="lbAddEditPhanLoaiSucKhoe" class="control-label col-md-2 col-sm-2 col-xs-12 ">Phân loại sức khỏe</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlPhanLoaiSucKhoe" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbAddEditTenBenh" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tên bệnh</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditTenBenh" placeholder="Tên bệnh">
+                            </div>
+                            <label for="lbAddEditHuongDieuTri" class="control-label col-md-2 col-sm-2 col-xs-12 ">Hướng điều trị</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditHuongDieuTri" placeholder="Hướng điều trị">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnSaveSucKhoe" class="btn btn-success">Lưu</button>
+                                <button type="button" id="btnCancelSucKhoe" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="ln_solid"></div>
+                <div class="table-responsive" id="table-responsiveHoSoSucKhoe">
+                    <div class="row" id="row-AddEditSucKhoe">
+                        <div class="col-md-3 col-sm-12 col-xs-12 form-group">
+                            <select id="ddlKhuVucAddEdit" class="form-control"></select>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12 form-group">
+                            <select id="ddlPhongBanAddEdit" class="form-control"></select>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12 form-group">
+                            <input type="text" id="txtTimNhanVienAddEdit" class="form-control" placeholder="Từ khóa...">
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12 form-group">
+                            <button class="btn btn-primary " id="btnTimNhanVienAddEdit" type="button">Tìm !</button>
+                        </div>
+                    </div>
+                    <table id="tblHoSoNhanVienSucKhoe" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th width="=20%">#</th>
+                                <th>Họ và tên</th>
+                                <th>Khu vực</th>
+                                <th>Phòng, tổ</th>
+                                <th>Chức vụ</th>
+                                <th>Ngày tạo</th>
+                                <th>Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tblContentHoSoSucKhoe"></tbody>
+                    </table>
+                    <div class="row" id="row-AddEditSucKhoe-infoHoSoSucKhoe">
+                        <div class="col-sm-5">
+                            <div class="dataTables_info" id="datatable-checkbox_infoHoSoSucKhoe" role="status" aria-live="polite">
+                                <select id="ddl-show-pageHoSoSucKhoe">
+                                    <option value="10" selected="selected">10</option>
+                                    <option value="20">20</option>
+                                    <option value="30">30</option>
+                                    <option value="50">50</option>
+                                </select>
+                                <span class="item-per-page">
+                                    dòng/trang.
+                                </span>
+                                Tổng cộng: <strong id="lblHoSoSucKhoeTotalRecords"></strong>
+                            </div>
+                        </div><div class="col-sm-7">
+                            <div class="dataTables_paginate" id="datatable-checkbox_paginateHoSoSucKhoe">
+                                <ul id="paginationULHoSoSucKhoe"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script id="table-HoSoSucKhoe" type="x-tmpl-mustache">
+                    <tr>
+                        <th scope="row">
+                            <a class="btn btn-lg btn-editHoSoSucKhoe" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa hồ sơ"><i class="fa fa-pencil"></i> </a>
+                        </th>
+                        <td>{{Ten}}</td>
+                        <td>{{TenKhuVuc}}</td>
+                        <td>{{TenPhong}}</td>
+                        <td>{{TenChucVu}}</td>
+                        <td>{{CreateDate}}</td>
+                        <td>{{{Status}}}</td>
+                    </tr>
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

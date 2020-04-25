@@ -1,0 +1,805 @@
+﻿
+
+create table VanBanLoaiHis
+
+create table VanBanLinhVucHis
+
+
+create procedure [VanBanLinhVucAUD]
+
+create procedure [VanBanLinhVucGetList]
+
+create procedure [dbo].[VanBanLoaiAUD]
+
+create procedure [dbo].[VanBanLoaiGetList]
+
+create PROC [dbo].[VBDenSoExcel]
+
+create PROC [dbo].[VBDiSoExcel]
+
+
+
+update procedure [TableHisProPara]
+
+update procedure [MessagesAUD]
+
+update procedure [MessagesGetList]
+
+update procedure [VanBanDenCount]
+
+update procedure [VanBanDenAUD]
+
+update procedure [QuanLyVanBanAUD]
+
+update procedure [QuanLyVanBanGetList]
+
+update procedure [VanBanPHXLAUD]
+
+update procedure [VanBanPHXLGetList]
+
+
+
+
+
+
+
+
+
+
+
+
+r
+update procedure [VanBanDenAUD]
+r
+update procedure [VanBanDenGetList]
+r
+update procedure [VanBanDenFileAUD]
+r
+update procedure [VanBanDiAUD]
+r
+update procudure [VanBanDiGetList]
+r
+update procedure [VanBanDiFileAUD]
+r
+update procedure [VanBanDiFileGetList]
+r
+update procedure [HoSoNhanVienAUD]
+r
+update procedure [VanBanCoQuanGetList]
+r
+update procedure [VanBanDenCount]
+r
+update procedure [AppUserLoginAUD]
+r
+update procedure [AppUserLoginGetList]
+
+r
+create procedure [TableHisProPara]
+r
+create procedure [dbo].[QuanLyVanBanAUD]
+r
+create procedure [dbo].[QuanLyVanBanGetList]
+r
+create procedure [MessagesAUD]
+r
+create procedure [MessagesGetList]
+
+r
+insert column ( DocCode	nvarchar(25)	Checked  ) in table VanBanDi
+insert column ( QuanLyVanBanId	bigint	Checked  ) in table VanBanDi
+insert column ( LanguageId	nvarchar(30)	Checked  ) in table VanBanDi
+insert column ( SoLuongPhatHanh	int	Checked  ) in table VanBanDi
+insert column ( HanTraLoiVanBan datetime 	Checked  ) in table VanBanDi
+insert column ( SoThuTuTrongHoSo int 	Checked  ) in table VanBanDi
+
+r
+insert column ( DocCode	nvarchar(25)	Checked  ) in table VanBanDiHis
+insert column ( QuanLyVanBanId	bigint	Checked  ) in table VanBanDiHis
+insert column ( LanguageId	nvarchar(30)	Checked  ) in table VanBanDiHis
+insert column ( SoLuongPhatHanh	int	Checked  ) in table VanBanDiHis
+insert column ( HanTraLoiVanBan datetime 	Checked  ) in table VanBanDiHis
+insert column ( SoThuTuTrongHoSo int 	Checked  ) in table VanBanDiHis
+
+r
+insert column ( DocCode	nvarchar(25)	Checked  ) in table VanBanDen
+insert column ( QuanLyVanBanId	bigint	Checked  ) in table VanBanDen
+insert column ( LanguageId	nvarchar(30)	Checked  ) in table VanBanDen
+insert column ( ChucVuNguoiKy	nvarchar(100)	Checked  ) in table VanBanDen
+insert column ( ThoiHanGiaiQuyet datetime 	Checked  ) in table VanBanDen
+insert column ( SoThuTuTrongHoSo int 	Checked  ) in table VanBanDen
+
+r
+insert column ( DocCode	nvarchar(25)	Checked  ) in table VanBanDenHis
+insert column ( QuanLyVanBanId	bigint	Checked  ) in table VanBanDenHis
+insert column ( LanguageId	nvarchar(30)	Checked  ) in table VanBanDenHis
+insert column ( ChucVuNguoiKy	nvarchar(100)	Checked  ) in table VanBanDenHis
+insert column ( ThoiHanGiaiQuyet datetime 	Checked  ) in table VanBanDenHis
+insert column ( SoThuTuTrongHoSo int 	Checked  ) in table VanBanDenHis
+
+r
+insert column ( SoTrang int 	Checked  ) in table VanBanDenFile
+insert column ( SoTrang int 	Checked  ) in table VanBanDiFile
+
+r
+insert column ( SoTrang int 	Checked  ) in table VanBanDenFileHis
+insert column ( SoTrang int 	Checked  ) in table VanBanDiFileHis
+
+r
+create table Languages (data generic table)
+
+create table QuanLyVanBan (data generic table)
+
+create table QuanLyVanBanHis
+
+create table Messages
+
+create table MessagesHis
+
+create table Rooms 
+
+create table AppUserOnOff
+
+create table AppUserOnOffHis
+r
+Create Table VanBanDenDuyetFile
+r
+create PROC [dbo].[VanBanDenDuyetFileAUD]
+r
+create PROC [dbo].[VanBanDenDuyetFileGetList]
+r
+update procedure [VanBanDenGetList]
+r
+update procedure [VanBanDenCount]
+
+
+
+r
+update procedure [VanBanDenQTXL]
+r
+update procedure [ThongBaoGetList]
+
+
+r
+create table VanBanDiNoiNhan
+r
+create table VanBanDiNoiNhanHis
+r
+create table VBDQuaTrinhXuLy
+r
+create table VBDiQuaTrinhXuLy
+
+create table VanBanCoQuanBanHanh
+
+create table VanBanCoQuanBanHanhHis
+
+create table VanBanDen
+
+create table VanBanDenHis
+ 
+create table VanBanDenDuyet
+
+create table VanBanDenDuyetHis
+
+create table VanBanDenDuyetNhanVienXL
+
+create table VanBanDenDuyetNhanVienXLHis
+
+create table VanBanDenFile
+
+create table VanBanDenFileHis
+ 
+create table VanBanDenFileLienQuan
+
+create table VanBanDenSo
+ 
+create table VanBanDenSoHis
+
+create table VanBanDenXLNhanVienXL
+
+create table VanBanDenXLNhanVienXLHis
+ 
+create table VanBanDenXuLy
+
+create table VanBanDenXuLyHis
+
+create table VanBanDenXuLyFile
+
+create table VanBanDenXuLyFileHis
+
+create table VanBanDi
+
+create table VanBanDiHis
+ 
+create table VanBanDiDuyet
+ 
+create table VanBanDienTu
+
+create table VanBanDienTuPhatHanh
+
+create table VanBanDiFile
+
+create table VanBanDiFileHis
+
+create table VanBanDiSo
+
+create table VanBanDiSoHis
+
+create table VanBanKhan
+
+create table VanBanLinhVuc
+
+create table VanBanLoai
+
+create table VanBanLoaiThongTinDH
+
+create table VanBanMat
+
+create table VanBanNhomNhanVien
+
+create table VanBanNhomNhanVienHis
+
+create table VanBanNhomXuLy
+
+create table VanBanNhomXuLyHis
+
+create table VanBanPhoiHopXuLy
+
+
+
+table genericate VanBanDenSo
+
+table genericate VanBanDiSo
+
+table genericate VanBanKhan
+
+table genericate VanBanLinhVuc
+
+table genericate VanBanLoai
+
+table genericate VanBanLoaiThongTinDH
+
+table genericate VanBanMat
+
+table genericate VanBanNhomXuLy
+
+table genericate VanBanPhoiHopXuLy
+
+table genericate VanBanPhoiHopXuLyHis
+
+
+
+
+create procedure [VanBanDenXuLyFileAUD]
+
+create procedure [VanBanDenXuLyFileGetList]
+
+create procedure [VanBanDenDuyetAUD]
+
+create procedure [VBDQuaTrinhXuLyAUD]
+
+create procedure [VBDiQuaTrinhXuLyAUD]
+
+create procedure [VanBanDenQTXL]
+
+create procedure [VanBanPHXLAUD]
+
+create procedure [VanBanPHXLGetList]
+
+create procedure [VanBanDenDuyetNhanVienXLAUD]
+
+create procedure [VanBanDenDuyetNhanVienXLGetList]
+
+create procedure [VanBanDenDuyetAUD]
+
+create procedure [VanBanDenDuyetGetList]
+
+create procedure [VanBanDienTuGetList]
+
+create procedure [VanBanDenAUD]
+
+create procedure VanBanDenCount
+
+create procedure VanBanDenGetList
+
+create procedure [VanBanDiAUD]
+
+create procedure VanBanDiCount
+
+create procedure VanBanDiGetList
+
+create procedure [VanBanNhomXuLyAUD]
+
+create procedure [VanBanNhomXuLyGetList]
+
+create procedure [VanBanDenFileAUD]
+
+create procedure [VanBanDenFileGetList]
+
+create procedure [VanBanDiFileAUD]
+
+create procedure [VanBanDiFileGetList]
+
+create procedure [VanBanCoQuanAUD]
+
+create procedure [VanBanCoQuanGetList]
+
+create procedure VanBanDenSoAUD
+
+create procedure [VanBanDenSoGetList]
+
+create procedure VanBanDiSoAUD
+
+create procedure [VanBanDiSoGetList]
+
+
+
+
+update  procedure [BangDanhMucGetList]
+
+
+
+
+
+
+
+
+
+r
+create procedure [HoSoFileAUD]
+r
+create procedure [HoSoFileGetList]
+r
+create procedure [HoSoNghiViecAUD]
+r
+create procedure [HoSoNghiViecGetList]
+r
+create procedure [ChiPhiAUD]
+r
+create procedure [ChiPhiGetList]
+r
+create procedure [ChiPhiKhoiTaoAUD]
+r
+create procedure [ChiPhiKhoiTaoGetList]
+r
+create procedure [ChiPhiLuongAUD]
+r
+create procedure [ChiPhiLuongGetList]
+r
+create procedure [LockBangGetList]
+r
+create procedure [LockLuongDotInAUD]
+r
+create procedure [LockLuongDotInAUDXML]
+r
+create procedure [LockLuongDotInKhoiTao]
+r
+create procedure [LockLuongDotInGetList]
+r
+create procedure [LuongBaoHiemAUD]
+r
+create procedure [LuongBaoHiemGetList]
+r
+create procedure [LuongCongNgayPara]
+
+
+r
+CREATE FUNCTION [dbo].[udf_GetNumDaysInMonth]
+r
+CREATE FUNCTION [dbo].[afCountOfWeekday] 
+
+
+
+
+r
+update procedure SumHoSoNhanVienPara
+r
+update procedure [BangDanhMucGetList]
+r
+update procedure [QDNangNgachAUD]
+
+
+
+
+r
+copy file template SucKhoeTK.xlsx 
+r
+copy file template SucKhoe.xlsx 
+r
+copy file template ChamCongNgay.xlsx
+r
+copy file template BangLuongThang.xlsx
+r
+copy file template HieuQuaKinhDoanh.xlsx
+r
+copy file template TienAn.xlsx
+r
+copy file template TienTrucLe.xlsx
+
+
+r
+create table HoSoFile
+r
+create table HoSoFileHis
+r
+create table HoSoNghiViec
+r
+create table HoSoNghiViecHis
+r
+create table LuongDotInKy
+r
+create table LuongKyHieuChamCong
+r
+create table LuongBaoHiem
+r
+create table LuongBaoHiemHis
+r
+create table LuongThemGio
+r
+create table LuongCaBa
+r
+create table ChiPhiKhoiTao
+r
+create table ChiPhiKhoiTaoHis
+r
+create table ChiPhi
+r
+create table ChiPhiHis
+r
+create table ChiPhiLoai
+r
+create table ChiPhiBangDanhMuc
+r
+create table LuongCPGiam
+r
+crreate table LuongCPGiamHis
+r
+create table LuongCPTang
+r
+create table LuongCPTangHis
+r
+create table LuongTongHop
+r
+create table LuongTongHopAll
+r
+create table LuongDotInKy
+r
+create table LuongKhoan
+r
+create table LuongKhoanHis
+r
+create table LuongKyHieuChamCong
+r
+create table LuongPhepNam
+r
+create table LuongPhepGio
+r
+create table LockLuongThang
+r
+create table LockLuongDotIn
+r
+create table LockLuongDotInHis
+r
+create table TrangThaiChiPhiBang
+
+
+
+
+r
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id] ,  MaKyHieu        ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'x','x', N'Đủ công'		, 1, 1, 1, 'admin', Getdate()	 )
+r
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'CT', 'CT',N'Đi công tác'		, 1, 1, 2, 'admin', Getdate()	 )
+r
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]        ,  MaKyHieu   ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'H',  'H',N'Hội họp, học tập'		, 1, 1, 3, 'admin', Getdate()	 )
+r
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'F',  'F',N'Nghỉ phép năm theo chế độ'		, 1, 1, 4, 'admin', Getdate()	 )
+r
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]
+           )
+VALUES           ( 'L', 'L', N'Nghỉ lễ tết do nhà nước qui định'		, 1, 1, 5, 'admin', Getdate()	 )
+r
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]    ,  MaKyHieu       ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'R', 'R',N'Nghỉ việc riêng có lương'		, 1, 1, 6, 'admin', Getdate()	 )
+
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'RO','RO', N'Nghỉ việc riêng không có lương'		, 1, 1, 7, 'admin', Getdate()	 )
+r
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'OM','OM', N'Nghỉ ốm'		, 1, 1, 8, 'admin', Getdate()	 )
+r
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'CO','CO', N'Nghỉ con ốm'		, 1, 1, 9, 'admin', Getdate()	 )
+r
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'VS','VS', N'Vợ sinh không hưởng lương'		, 1, 1, 10, 'admin', Getdate()	 )
+r
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'TS','TS', N'Nghỉ thai sản'		, 1, 1, 11, 'admin', Getdate()	 )
+
+--INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+--VALUES           ( 'TN','TN', N'Nghỉ tai nạn lao động'		, 1, 1, 12, 'admin', Getdate()	 )
+r
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'NB','NB', N'Nghỉ bù'		, 1, 1, 13, 'admin', Getdate()	 )
+
+--INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+--VALUES           ( 'AD','AD', N'Nghỉ an dưỡng'		, 1, 1, 14, 'admin', Getdate()	 )
+
+--INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+--VALUES           ( 'NV','NV', N'Ngừng việc, chờ việc'		, 1, 1, 15, 'admin', Getdate()	 )
+r
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'O','O', N'Nghỉ không lý do'		, 1, 1, 16, 'admin', Getdate()	 )
+r
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'T','T', N'Trực vào ngày lễ tết và nghĩ hàng tuần'		, 1, 1, 17, 'admin', Getdate()	 )
+
+--INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+--VALUES           ( 'HT','HT', N'Nghỉ chờ giải quyết chế độ hưu trí'		, 1, 1, 18, 'admin', Getdate()	 )
+
+--INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+--VALUES           ( 'PT','PT', N'Tham gia các hoạt động phong trào thể thao'		, 1, 1, 19, 'admin', Getdate()	 )
+r
+INSERT INTO [dbo].[LuongKyHieuChamCong]           ([Id]     ,  MaKyHieu      ,[TenKyHieu]
+           ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+VALUES           ( 'KO','KO', N'Không'		, 1, 1, 99, 'admin', Getdate()	 )
+
+r
+insert value genegic value from [ChiPhi] database
+r
+insert value genegic value from [ChiPhiLoai] database
+r
+insert value genegic value from [ChiPhiBangDanhMuc] database
+
+r
+insert column ( HoSoNhanVienId	uniqueidentifier	Checked  ) in table AppUsers
+
+
+//INSERT INTO [dbo].[ChiPhiLoai]    ([Id]    ,[TenLoai]     ,[Status]     ,[Active]      ,[Stt]       ,[CreateDate]      ,[CreateBy]      )
+//     VALUES ( 1, N'Bảo hiểm xã hội', 1, 1, 1	 , getdate(), 'admin'	 )
+
+//INSERT INTO [dbo].[ChiPhiLoai]    ([Id]    ,[TenLoai]     ,[Status]     ,[Active]      ,[Stt]       ,[CreateDate]      ,[CreateBy]      )
+//     VALUES ( 2, N'Tiền ăn', 1, 1, 2	 , getdate(), 'admin'	 )
+
+r
+update DieuKienTim set TenDieuKien = N'DS Bảng lương Nhân viên đóng BHXH', BangDieuKien = N'LuongBaoHiem', Active = 1, Stt = 9 where Id=9
+update DieuKienTim set TenDieuKien = N'DS Bảng chi phí lương (theo loại chi phí)', BangDieuKien = N'ChiPhi', Active = 1, Stt = 10 where Id=10
+
+r
+INSERT INTO [dbo].[LuongDotInKy]           ([Id]           ,[Nam]           ,[Thang]           ,[CorporationId]
+           ,[TenDotIn]                   ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+     VALUES           ( 1           , 2018,            10            , N'PO'
+           , N'Đợt 1'      ,           1           ,1, 1 		   , 'admin', getdate() )
+r
+INSERT INTO [dbo].[LuongDotInKy]           ([Id]           ,[Nam]           ,[Thang]           ,[CorporationId]
+           ,[TenDotIn]                   ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+     VALUES           ( 2           , 2018,            10            , N'CT'
+           , N'Đợt 1'      ,           1           ,1, 1 		   , 'admin', getdate() )
+
+		
+		
+		/*
+INSERT INTO [dbo].[LuongDotInKy]           ([Id]           ,[Nam]           ,[Thang]           ,[CorporationId]
+           ,[TenDotIn]                   ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+     VALUES           ( 3           , 2018,            10            , N'CT'
+           , N'Đợt 2'      ,           1           ,1, 2 		   , 'admin', getdate() )
+
+INSERT INTO [dbo].[LuongDotInKy]           ([Id]           ,[Nam]           ,[Thang]           ,[CorporationId]
+           ,[TenDotIn]                   ,[Status]           ,[Active]           ,[Stt]           ,[CreateBy]           ,[CreateDate]           )
+     VALUES           ( 4           , 2018,            10            , N'PO'
+           , N'Đợt 2'      ,           1           ,1, 2 		   , 'admin', getdate() )
+*/
+
+
+
+
+
+
+
+r
+update procedure [HopDongAUD]
+r
+update procedure [HopDongGetList]
+r
+update procedure [HopDongGetList]
+r
+update procedure [BangDanhMucGetList]
+r
+update procedure [SucKhoeNhanVienGetList]
+r
+update procedure [HoSoNhanVienAUD]
+r
+update procedure [CongViecAUD]
+
+
+
+r
+update table functions
+	update [functions] set [Name]=N'Bảng chấm công làm thêm giờ', [URl]=N'/admin/conggio/index' where Id='LUONGBANG'
+	update [functions] set [Name]=N'Bảng chấm công ngày', [URl]=N'/admin/congngay/index' where Id='LUONGNHAP'
+
+r
+INSERT INTO [dbo].[Functions]           ([Id]           ,[IconCss]           ,[Name]           ,[ParentId]
+           ,[SortOrder]           ,[Status]           ,[URL])
+     VALUES     (  'LUONGKHOITAO',	'fa-dollar',	N'Tạo kỳ lương mới',	'LUONG',	9	,1	, N'/admin/khoitao/index'	 )
+
+r
+INSERT INTO [dbo].[Functions]           ([Id]           ,[IconCss]           ,[Name]           ,[ParentId]
+           ,[SortOrder]           ,[Status]           ,[URL])
+     VALUES     (  'LUONGLOCK',	'fa-dollar',	N'Khóa sổ lương tháng',	'LUONG',	8	,1	, N'/admin/khoaso/index'	 )
+r
+INSERT INTO [dbo].[Functions]           ([Id]           ,[IconCss]           ,[Name]           ,[ParentId]
+           ,[SortOrder]           ,[Status]           ,[URL])
+     VALUES     (  'LUONGCHIPHIDM',	'fa-dollar',	N'Danh mục chi phí lương',	'LUONG',	7	,1	, N'/admin/chiphidm/index'	 )
+r
+INSERT INTO [dbo].[Functions]           ([Id]           ,[IconCss]           ,[Name]           ,[ParentId]
+           ,[SortOrder]           ,[Status]           ,[URL])
+     VALUES     (  'LUONGTIM',	'fa-dollar',	N'Tra cứu lương',	'LUONG',	6	,1	, N'/admin/luongtim/index'	 )
+r
+INSERT INTO [dbo].[Functions]           ([Id]           ,[IconCss]           ,[Name]           ,[ParentId]
+           ,[SortOrder]           ,[Status]           ,[URL])
+     VALUES     (  'LUONGTONG',	'fa-dollar',	N'Bảng lương tổng hợp',	'LUONG',	5	,1	, N'/admin/luongtong/index'	 )
+r
+INSERT INTO [dbo].[Functions]           ([Id]           ,[IconCss]           ,[Name]           ,[ParentId]
+           ,[SortOrder]           ,[Status]           ,[URL])
+     VALUES     (  'LUONGCHIPHI',	'fa-dollar',	N'Bảng chi phí lương',	'LUONG',	4	,1	, N'/admin/chiphi/index'	 )
+r
+INSERT INTO [dbo].[Functions]           ([Id]           ,[IconCss]           ,[Name]           ,[ParentId]
+           ,[SortOrder]           ,[Status]           ,[URL])
+     VALUES     (  'LUONGCABA',	'fa-dollar',	N'Bảng chấm công làm ca ba',	'LUONG',	3	,1	, N'/admin/congcaba/index'	 )
+
+
+r
+INSERT INTO [dbo].[DieuKienTim]    ([Id]   ,[TenDieuKien]  ,[BangDieuKien]  ,[Active]           ,[Stt])
+     VALUES           ( 8          , N'DS Bảng chấm công ngày'          , N'LuongBaoHiem'    , 1          , 8 )
+r
+INSERT INTO [dbo].[DieuKienTim]    ([Id]   ,[TenDieuKien]  ,[BangDieuKien]  ,[Active]           ,[Stt])
+     VALUES           ( 9          , N'DS Bảng lương Nhân viên'          , N'LuongBaoHiem'    , 1          , 9 )	 	 
+
+r
+copy file excel in tepmlate DaoTaoNhanVien.xlsx
+r
+copy file excel in tepmlate SucKhoeTKPL.xlsx
+r
+copy file excel in tepmlate SucKhoeTK.xlsx
+r
+copy file excel in tepmlate SucKhoe.xlsx
+
+r
+update table insert table 
+r
+insert into DieuKienTim (  [Id]      ,[TenDieuKien]      ,[BangDieuKien]      ,[Active]      ,[Stt] )
+	values (5 , N'DS Sức khỏe nhân viên', 	'SucKhoeNhanVien' ,	True ,	5)
+insert into DieuKienTim (  [Id]      ,[TenDieuKien]      ,[BangDieuKien]      ,[Active]      ,[Stt] )
+	values (6 ,	N'DS Tổng hợp thanh toán sức khỏe',	'SucKhoeNhanVien' ,	True ,	6 )
+insert into DieuKienTim (  [Id]      ,[TenDieuKien]      ,[BangDieuKien]      ,[Active]      ,[Stt] )
+	values (7 ,	N'DS Tổng hợp phân loại sức khỏe',	'SucKhoeNhanVien' ,	True ,	7 )
+
+r
+modi table SucKhoeNhanVien Columns NamKham [int] on HoSoNhanVienId	int	Checked  
+r
+modi table SucKhoeNhanVien Columns PhanLoaiSucKhoeId [varchar(20)] on PhanLoaiSucKhoe	int	Checked  
+r
+modi table [Slides]		Columns		CaptionInner	nvarchar(MAX)	null
+
+
+r
+update table Functions:  SUCKHOENHAP	fa fa-ambulance	Sức khỏe	SUCKHOE	1	1	/admin/suckhoe/index
+r
+update table Functions:	SUCKHOETIM	fa fa-ambulance	Tra cứu Sức khỏe	SUCKHOE	2	1	/admin/timsuckhoe/index
+
+r
+delete table AppUserLogins and create tabel AppUserLogins to database NiTi by scripts
+
+r
+create table AppUserOnline
+r
+create table DaoTaoNhanVien
+r
+create table DaoTaoNhanVienHis
+r
+create table DaoTaoGiaoVien
+r
+create table DaoTaoGiaoVienHis
+r
+create table DaoTaoLopGiaoVien
+r
+create table DaoTaoLop
+r
+create table DaoTaoLopHis
+r
+create table DaoTaoNoi
+r
+create table DaoTaoNoiHis
+r
+create table SucKhoeNoiKham
+r
+create table SucKhoeNoiKhamHis
+r
+create table SucKhoeNhanVienHis
+r
+create table PhanLoaiSucKhoe
+r
+update file table PhanLoaiSucKhoe
+insert into PhanLoaiSucKhoe ( [Id]      ,[TenPhanLoaiSucKhoe]      ,[Status]      ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate] )
+values (  1,	N'Loại 1',	1,	True	, 2, 	'admin',	'2018-01-01 00:00:00.000')
+insert into PhanLoaiSucKhoe ( [Id]      ,[TenPhanLoaiSucKhoe]      ,[Status]      ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate] )
+values (  2,	N'Loại 2',	1,	True	, 3,	'admin',	'2018-01-01 00:00:00.000')	
+insert into PhanLoaiSucKhoe ( [Id]      ,[TenPhanLoaiSucKhoe]      ,[Status]      ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate] )
+values ( 3,		N'Loại 3',	1,	True,	 4,	'admin',	'2018-01-01 00:00:00.000' )
+insert into PhanLoaiSucKhoe ( [Id]      ,[TenPhanLoaiSucKhoe]      ,[Status]      ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate] )
+values ( 4,		N'Loại 4',	1,	True,	 5,	'admin',	'2018-01-01 00:00:00.000' )
+insert into PhanLoaiSucKhoe ( [Id]      ,[TenPhanLoaiSucKhoe]      ,[Status]      ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate] )
+values ( 5,		N'Không phân loai',	1,	True,	 0,	'admin',	'2018-01-01 00:00:00.000' )
+
+r
+create proc [DaoTaoNhanVienAUD]
+r
+create proc [DaoTaoNhanVienGetList]
+r
+create proc [DaoTaoGiaoVienAUD]
+r
+create proc [DaoTaoGiaoVienGetList]
+r
+create proc [AppUserLoginGetList]
+r
+create proc [AppUserLoginAUD]
+r
+create proc [DaoTaoLopGetList]
+r
+create proc  [DaoTaoLopAUD]
+r
+create proc  [DaoTaoNoiGetList]
+r
+create proc [DaoTaoNoiAUD]
+r
+create proc SucKhoeNoiKhamAUD
+r
+create proc SucKhoeNoiKhamGetList
+r
+create proc [SucKhoeNhanVienAUD]
+r
+create PROC [dbo].[SucKhoeNhanVienGetList]
+
+r
+update proc [QDDieuDongAUD]
+r
+update proc [QDBoNhiemAUD]
+r
+update proc [BangDanhMucGetList]
+
+r
+update hoso - index.js
+
+r
+create daotao - index.js
+r
+create daotao - addeditdaotao.js
+r
+create suckhoe - index.js
+r
+create suckhoe - addeditsuckhoe.js
+r
+update hesodm - index.js
+
+r
+update app - share - tedu.js
+r
+update login - index.js

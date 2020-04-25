@@ -1,0 +1,121 @@
+﻿<div id="modal-add-edit-QDNN" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Tạo mới / Sửa Quyết định nâng lương</h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainQDNN">
+                        <input type="hidden" id="hidQDNNId" value="" />
+                        <input type="hidden" id="hidHoSoNangNgachId" value="" />
+                        <input type="hidden" id="hidInsertQDNNIdId" value="" />
+
+                        <input type="hidden" id="hidHeSoLuongDanhMucCuId" value="" />
+                        <input type="hidden" id="hidHeSoLuongDanhMucId" value="" />
+
+                        <div class="form-group">
+                            <label for="lbAddEditHoTenQDNN" class="control-label col-md-2 col-sm-2 col-xs-12 ">Họ và tên</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditHoTenQDNN" placeholder="Họ và tên nhân viên">
+                            </div>
+                            <label for="lbAddEditPhongToQDNN" class="control-label col-md-2 col-sm-2 col-xs-12 ">Phòng, tổ</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtAddEditPhongToQDNN" placeholder="Phòng, tổ, nhà máy">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbTenQuyetDinhQDNN" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tên quyết định nâng lương</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlLoaiQuyetDinhQDNN" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbChucVuCuQDNN" class="control-label col-md-2 col-sm-2 col-xs-12 ">Chức vụ hiện tại</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlChucVuCuQDNN" class="form-control"></select>
+                            </div>
+                            <label for="lbBacLuongCuQDNN" class="control-label col-md-2 col-sm-2 col-xs-12 ">Bậc lương hiện tại</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlBacLuongCuQDNN" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbHeSoCuQDNN" class="control-label col-md-2 col-sm-2 col-xs-12 ">Hệ số hiện tại</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtHeSoCuQDNN" placeholder="Hệ số lương hiện tại">
+                            </div>
+                            <label for="lbMucLuongCuQDNN" class="control-label col-md-2 col-sm-2 col-xs-12 ">Mức lương hiện tại</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtMucLuongCuQDNN" placeholder="Mức lương hiện tại">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbChucVuMoiQDNN" class="control-label col-md-2 col-sm-2 col-xs-12 ">Chức vụ mới</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlChucVuMoiQDNN" class="form-control"></select>
+                            </div>
+                            <label for="lbBacLuongMoiQDNN" class="control-label col-md-2 col-sm-2 col-xs-12 ">Bậc lương mới</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <select id="ddlBacLuongMoiQDNN" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbHeSoMoiQDNN" class="control-label col-md-2 col-sm-2 col-xs-12 ">Hệ số mới</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtHeSoMoiQDNN" placeholder="Hệ số lương mới">
+                            </div>
+                            <label for="lbMucLuongMoiQDNN" class="control-label col-md-2 col-sm-2 col-xs-12 ">Mức lương hiện tại</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtMucLuongMoiQDNN" placeholder="Mức lương mới">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbLyDoQuyetDinhQDNN" class="control-label col-md-2 col-sm-2 col-xs-12 ">Lý do nâng lương</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtLyDoQuyetDinhQDNN" placeholder="Lý do nâng lương">
+                            </div>
+                            <label for="lbGhiChuQuyetDinhQDNN" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ghi chú quyết định nâng lương</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtGhiChuQuyetDinhQDNN" placeholder="Ghi chú quyết định nâng lương">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbSoQuyetDinhQDNN" class="control-label col-md-2 col-sm-2 col-xs-12 ">Số quyết định nâng lương</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" name="txtSoQuyetDinhQDNN" class="form-control has-feedback-right" id="txtSoQuyetDinhQDNN" placeholder="Số quyết định nâng lương">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbNgaKyQuyetDinhQDNN" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày ký quyết định nâng lương</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgaKyQuyetDinhQDNN" placeholder="Ngày ký quyết định nâng lương" />
+                            </div>
+                            <label for="lbTenNguoiKyQuyetDinhQDNN" class="control-label col-md-2 col-sm-2 col-xs-12 ">Tên người ký nâng lương</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtTenNguoiKyQuyetDinhQDNN" placeholder="Tên người ký Qđ nâng lương">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbNgayHieuLucQDNN" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày hiệu lực</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgayHieuLucQDNN" placeholder="Ngày hiệu lực">
+                            </div>
+                            <label for="lbNgayHetHanQDNN" class="control-label col-md-2 col-sm-2 col-xs-12 ">Ngày hết hạn</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" id="txtNgayHetHanQDNN" placeholder="Ngày hết hạn">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnSaveQDNN" class="btn btn-success">Lưu</button>
+                                <button type="button" id="btnCancelQDNN" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

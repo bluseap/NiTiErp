@@ -1,0 +1,138 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@section Styles{
+    <link href="~/admin-side/css/main.css" rel="stylesheet" asp-append-version="true" />
+}
+@section Scripts{
+    <script src="~/admin-side/js/jquery.autocomplete.js" asp-append-version="true"></script>
+
+    <script src="~/app/controllers/emailthem/viewemail.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/emailthem/sentfile.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/emailthem/emailsent.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/emailthem/index.js" asp-append-version="true"></script>
+
+    <script>
+        var emailthem = new emailthemController();
+        emailthem.initialize();
+    </script>
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link ">
+                    Email nội bộ
+                </a>
+                >>
+                <a class="btn btn-link ">
+                    Hộp thư nội bộ
+                </a>
+            </small>
+        </div>
+        <div class="title_right">
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                @*<button class="btn btn-round btn-warning" id="btn-SoanEmailNoiBo" type="button">Soạn thư</button>*@
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="hidEmailNoiBoId" value="" />
+    <input type="hidden" id="hidEmailNoiBoNhanId" value="" />
+    <input type="hidden" id="hidEmailNoiBoNhanFileId" value="" />
+
+    <input type="hidden" id="hidNhanVienNguoiNhanId" value="" />
+
+    <input type="hidden" id="hidInsCodeEmailNoiBoNhanId" value="0" />
+    <input type="hidden" id="hidCodeEmailNoiBoNhanGuid" value="0" />
+
+    <input type="hidden" id="hidInsCodeEmailNoiBoNhanSentFileId" value="0" />
+    <input type="hidden" id="hidCodeEmailNoiBoNhanSentFileGuid" value="0" />
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Danh sách hộp thư nội bộ  <small> </small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-sm-12 mail_list_column">
+                            <button id="compose" class="btn btn-sm btn-info btn-block" type="button">Soạn thư</button>
+
+                            <div id="tblContentEmailThem"></div>
+
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <div class="dataTables_info" id="datatable-checkbox_infoEmailThem" role="status" aria-live="polite">
+                                        <select id="ddl-show-pageEmailThem">
+                                            <option value="10" selected="selected">10</option>
+                                            <option value="20">20</option>
+                                            <option value="30">30</option>
+                                            <option value="50">50</option>
+                                        </select>
+                                        <span class="item-per-page">
+                                            dòng/trang.
+                                        </span>
+                                        Tổng cộng: <strong id="lblEmailThemTotalRecords"></strong>
+                                    </div>
+                                </div>
+                                <div class="col-sm-7">
+                                    <div class="dataTables_paginate" id="datatable-checkbox_paginateEmailThem">
+                                        <ul id="paginationULEmailThem"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /MAIL LIST -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script id="table-EmailThem" type="x-tmpl-mustache">
+        @*<a href="#">
+                <div class="mail_list">
+                    <div class="left">
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <div class="right">
+                        <h3>Dennis Mugo <small>3.00 PM</small></h3>
+                        <p>Ut enim ad minim veniam, quis nostrud exercitation enim ad minim veniam, quis nostrud exercitation...</p>
+                    </div>
+                </div>
+            </a>*@
+        <a href="#">
+            @*<div class="mail_list_NoView">*@
+            <div class="{{ClassEmailChuaXem}} bntEmailNoiBoId" data-id="{{EmailNoiBoNhanId}}">
+                <div class="left">
+                    @*<i class="fa fa-star" ></i>*@
+                    <i class="{{ClassAddFile}}"></i>
+                </div>
+                <div class="right">
+                    <h3>
+                        {{TenNguoiGui}}
+                        <small >{{NgayGui}}</small>
+                    </h3>
+                    <p><span class="badge"></span>{{TieuDe}}</p>
+                </div>
+            </div>
+        </a>
+
+    </script>
+</div>
+
+<partial name="_EmailSent.cshtml" />
+<partial name="_TimNguoiGui.cshtml" />
+<partial name="_ViewEmail.cshtml" />
+
+

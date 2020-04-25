@@ -1,0 +1,44 @@
+﻿<div id="modal-add-edit-VBDiQuaTrinhXuLy" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Quá trình xử lý văn bản đi </h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainVBDiQuaTrinhXuLy">
+
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Họ và tên</th>
+                                    <th>Nội dung</th>
+                                    <td>Ngày nhập</td>
+                                    <th width="=5%">#</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-contentVBDiQuaTrinhXuLy"></tbody>
+                        </table>
+
+                    </form>
+                    <script type="x-tmpl-mustache" id="template-table-VBDiQuaTrinhXuLy">
+                        <tr>
+                            <td><a>{{TenNhanVien}}</a></td>
+                            <td><a>{{MoTa}}</a></td>
+                            <td><a>{{NgayNhap}}</a></td>
+                            <th scope="row">
+                                <a class="btn btn-sm btnVBDiQTXLNhanVienXuLy" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Nhân viên xử lý ">
+                                    <i class="fa fa-mail-forward"></i>
+                                </a>
+                            </th>
+                            <td><input type="hidden" id="vbdinvxlId" class="form-control" value="{{Id}}" /></td>
+                        </tr>
+                    </script>
+                </div>
+                <div class="ln_solid"></div>
+
+            </div>
+        </div>
+    </div>
+</div>

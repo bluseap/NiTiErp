@@ -1,0 +1,118 @@
+Logging in build 2017.0.2.60 started at: Fri Sep 21 22:04:38 2018
+========================================
+[00:00:30.984] 22:05:17.865 | Error - IMS : IMSLib not loaded
+[00:01:16.843] 22:06:03.720 | quitWithUI:Quitting Application. Called by: 
+[00:01:16.843] 22:06:03.722 | Quitting Application after 1.1 minutes. Called by: 
+[00:01:19.390] Logging shutdown normally
+
+==========
+Logging ended at: Fri Sep 21 22:06:06 2018
+
+Logging in build 2017.0.2.60 started at: Fri Sep 21 22:26:03 2018
+========================================
+[00:00:31.906] 22:26:37.359 | Error - IMS : IMSLib not loaded
+[00:01:59.016] 22:28:04.467 | quitWithUI:Quitting Application. Called by: 
+[00:02:01.203] 22:28:06.650 | Quitting Application after 1.9 minutes. Called by: 
+[00:02:04.844] Logging shutdown normally
+
+==========
+Logging ended at: Fri Sep 21 22:28:10 2018
+
+Logging in build 2017.0.2.60 started at: Sat Sep 22 21:15:20 2018
+========================================
+[00:00:16.328] 21:15:39.274 | Error - IMS : IMSLib not loaded
+[00:00:49.766] 21:16:12.699 | quitWithUI:Quitting Application. Called by: 
+[00:00:49.766] 21:16:12.699 | Quitting Application after 0.7 minutes. Called by: 
+[00:00:52.406] Logging shutdown normally
+
+==========
+Logging ended at: Sat Sep 22 21:16:15 2018
+
+Logging in build 2017.0.2.60 started at: Mon Sep 24 22:15:55 2018
+========================================
+[00:00:34.406] 22:16:30.562 | Error - IMS : IMSLib not loaded
+Logging in build 2017.0.2.60 started at: Mon Sep 24 22:31:43 2018
+========================================
+[00:00:52.297] 22:32:35.531 | Error - IMS : IMSLib not loaded
+[00:00:55.281] 22:32:38.519 | Doing recovery for null minisave fileA:4bBLVSa6Mfnu2Xoym9Xwgw fileB:w4rNSUPOrLgX35fJyZYvVg
+[00:00:55.281] 22:32:38.520 | Trying to recover unnamed file
+[00:00:55.578] 22:32:38.817 | Recovered file:Website-1 path:null highest UID:93 filesize:unknown mod date:unknown
+[00:00:56.468] 22:32:39.703 | Recovery Complete
+[00:01:37.312] 22:33:20.551 | Trying to open file 'D:\photoShop\musgreen-1\Musgreen.muse with size:4521984 mod Date:Sun Aug 9 15:00:36 GMT+0700 2015
+[00:01:37.312] 22:33:20.557 | Opening file 'D:\photoShop\musgreen-1\Musgreen.muse' with status:success size:4521984 mod Date:Sun Aug 9 15:00:36 GMT+0700 2015 highestUID: 375
+[00:01:39.578] 22:33:22.815 | Converting from file format 310 to format 363 for file:D:\photoShop\musgreen-1\Musgreen.muse
+[00:01:43.640] 22:33:26.871 | Error - IMS : IMSLib not loaded
+IntervalMgr::Interval::Fire called during dispatchEvent of event MuseQueueEvent::TASK_COMPLETE
+IntervalMgr::Interval::Fire called during dispatchEvent of event MuseQueueEvent::TASK_COMPLETE
+IntervalMgr::Interval::Fire called during dispatchEvent of event MuseQueueEvent::TASK_COMPLETE
+IntervalMgr::Interval::Fire called during dispatchEvent of event MuseQueueEvent::TASK_COMPLETE
+IntervalMgr::Interval::Fire called during dispatchEvent of event MuseQueueEvent::TASK_COMPLETE
+IntervalMgr::Interval::Fire called during dispatchEvent of event MuseQueueEvent::TASK_COMPLETE
+IntervalMgr::Interval::Fire called during dispatchEvent of event MuseQueueEvent::TASK_COMPLETE
+IntervalMgr::Interval::Fire called during dispatchEvent of event MuseQueueEvent::TASK_COMPLETE
+[00:02:09.093] 22:33:52.330 | Warning: Failed to find {param_width} in HTML string to replace in widget:Font Awesome Icons
+[00:02:09.422] 22:33:52.657 | Warning: Failed to find {param_width} in HTML string to replace in widget:Font Awesome Icons
+[00:02:09.453] 22:33:52.684 | Warning: Failed to find {param_width} in HTML string to replace in widget:Font Awesome Icons
+[00:02:09.484] 22:33:52.718 | Warning: Failed to find {param_width} in HTML string to replace in widget:Font Awesome Icons
+[00:02:09.906] 22:33:53.142 | Warning: Failed to find {param_width} in HTML string to replace in widget:Font Awesome Icons
+[00:02:09.922] 22:33:53.163 | Warning: Failed to find {param_width} in HTML string to replace in widget:Font Awesome Icons
+[00:02:09.953] 22:33:53.190 | Warning: Failed to find {param_width} in HTML string to replace in widget:Font Awesome Icons
+[00:02:09.968] 22:33:53.206 | Warning: Failed to find {param_width} in HTML string to replace in widget:Font Awesome Icons
+[00:02:10.125] 22:33:53.360 | Error - IMS : IMSLib not loaded
+[00:04:22.812] 22:36:06.043 | Error - IMS : IMSLib not loaded
+[00:04:28.859] 22:36:12.094 | Trying to open file 'D:\photoShop\Muse-Free-Web-Theme\Muse Free Web Theme.muse with size:4849664 mod Date:Mon Sep 29 14:01:58 GMT+0700 2014
+[00:04:28.859] 22:36:12.104 | Opening file 'D:\photoShop\Muse-Free-Web-Theme\Muse Free Web Theme.muse' with status:success size:4849664 mod Date:Mon Sep 29 14:01:58 GMT+0700 2014 highestUID: 938
+[00:04:31.265] 22:36:14.506 | Converting from file format 276 to format 363 for file:D:\photoShop\Muse-Free-Web-Theme\Muse Free Web Theme.muse
+[00:04:31.343] 22:36:14.589 | Error - IMS : IMSLib not loaded
+[00:04:32.062] 22:36:15.301 | File contains one or more objects with multiple owners. Attempting repairs.
+
+[00:04:32.062] 22:36:15.301 | U675 RectPageItem is owned by U703 Group  U673 Layer  
+[00:04:32.062] 22:36:15.302 | Successfully repaired U675 RectPageItem
+[00:04:32.062] 22:36:15.302 | U773 TextFrame is owned by U771 Layer  U774 Group  
+[00:04:32.062] 22:36:15.303 | Successfully repaired U773 TextFrame
+[00:05:29.234] 22:37:12.472 | Error - IMS : IMSLib not loaded
+[00:07:38.890] 22:39:22.132 | Error - IMS : IMSLib not loaded
+[00:08:19.687] 22:40:02.917 | HTMLExport Muse Free Web Theme(1 pages) to 'moiMus1.com' completed with 0 warnings.
+[00:09:47.015] 22:41:30.255 | Error - IMS : IMSLib not loaded
+[00:23:31.515] 22:55:14.753 | Error - IMS : IMSLib not loaded
+[00:31:02.515] 23:02:45.758 | Error - IMS : IMSLib not loaded
+[00:31:04.718] 23:02:47.955 | quitWithUI:Quitting Application. Called by: 
+[00:31:04.718] 23:02:47.955 | Quitting Application after 31 minutes. Called by: MuseApp/quitAfterProcessesComplete+closeOne+SiteFacade$/internalCloseAllSitesWithUI+SiteFacade$/attemptCloseAllSitesWithUI+MuseApp/quitWithUI
+[00:31:09.062] Logging shutdown normally
+
+==========
+Logging ended at: Mon Sep 24 23:02:52 2018
+
+Logging in build 2017.0.2.60 started at: Fri Nov  9 18:48:37 2018
+========================================
+[00:00:19.734] 18:48:57.777 | Error - IMS : IMSLib not loaded
+[00:03:13.015] 18:51:51.061 | Trying to open file 'D:\photoShop\musgreen-1\Musgreen.muse with size:4521984 mod Date:Sun Aug 9 15:00:36 GMT+0700 2015
+[00:03:13.015] 18:51:51.069 | Opening file 'D:\photoShop\musgreen-1\Musgreen.muse' with status:success size:4521984 mod Date:Sun Aug 9 15:00:36 GMT+0700 2015 highestUID: 375
+[00:03:16.328] 18:51:54.381 | Converting from file format 310 to format 363 for file:D:\photoShop\musgreen-1\Musgreen.muse
+[00:03:21.765] 18:51:59.816 | Error - IMS : IMSLib not loaded
+[00:04:11.812] 18:52:49.861 | Trying to open file 'D:\photoShop\Muse-Free-Web-Theme\Muse Free Web Theme.muse with size:4849664 mod Date:Mon Sep 29 14:01:58 GMT+0700 2014
+[00:04:11.828] 18:52:49.869 | Opening file 'D:\photoShop\Muse-Free-Web-Theme\Muse Free Web Theme.muse' with status:success size:4849664 mod Date:Mon Sep 29 14:01:58 GMT+0700 2014 highestUID: 938
+[00:04:14.234] 18:52:52.279 | Converting from file format 276 to format 363 for file:D:\photoShop\Muse-Free-Web-Theme\Muse Free Web Theme.muse
+[00:04:15.078] 18:52:53.124 | File contains one or more objects with multiple owners. Attempting repairs.
+
+[00:04:15.078] 18:52:53.125 | U773 TextFrame is owned by U774 Group  U771 Layer  
+[00:04:15.078] 18:52:53.125 | Successfully repaired U773 TextFrame
+[00:04:15.078] 18:52:53.125 | U675 RectPageItem is owned by U673 Layer  U703 Group  
+[00:04:15.078] 18:52:53.125 | Successfully repaired U675 RectPageItem
+[00:05:24.156] 18:54:02.207 | quitWithUI:Quitting Application. Called by: 
+[00:05:24.156] 18:54:02.207 | Quitting Application after 5.3 minutes. Called by: 
+[00:05:27.719] Logging shutdown normally
+
+==========
+Logging ended at: Fri Nov  9 18:54:06 2018
+
+Logging in build 2017.0.2.60 started at: Wed Dec 12 21:17:33 2018
+========================================
+[00:00:17.594] 21:17:51.447 | Error - IMS : IMSLib not loaded
+[00:10:59.141] 21:28:32.990 | quitWithUI:Quitting Application. Called by: 
+[00:10:59.141] 21:28:32.990 | Quitting Application after 10.9 minutes. Called by: 
+[00:11:02.079] Logging shutdown normally
+
+==========
+Logging ended at: Wed Dec 12 21:28:36 2018
+

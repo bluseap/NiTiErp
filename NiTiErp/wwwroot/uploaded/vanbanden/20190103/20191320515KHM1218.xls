@@ -1,0 +1,324 @@
+<style> TD { mso-number-format:\@; } </style><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">IDKH</th><th scope="col">TENKH</th><th scope="col">DB</th><th scope="col">SOHOPDONG</th><th scope="col">MAKHSQL</th><th scope="col">LDHN</th><th scope="col">CSDHN</th><th scope="col">SONO</th><th scope="col">NGAYLDM</th><th scope="col">CHISOCUOI</th><th scope="col">TTHAIGHI</th><th scope="col">KLTIEUTHU</th><th scope="col">KHONGTHU</th><th scope="col">GHICHU</th><th scope="col">SOHO</th><th scope="col">SODINHMUC</th><th scope="col">MST</th><th scope="col">CMND</th><th scope="col">SDT</th><th scope="col">SONHA</th>
+		</tr><tr class="textmode">
+			<td>163945</td><td>H&#192; BỬU VỐN</td><td>K@040161</td><td>20181128013</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-01883</td><td>29/10/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163949</td><td>B&#217;I THỊ &#218;T</td><td>K@040222</td><td>20181129001</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-00772</td><td>29/10/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163946</td><td>ĐINH TH&#192;NH NHƠN</td><td>K@040268</td><td>20181128014</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-00414</td><td>29/10/2018</td><td>10</td><td>GDH_BT</td><td>10</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163948</td><td>DƯƠNG VĂN T&#200;O</td><td>K@050215</td><td>20181128016</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-01554</td><td>29/10/2018</td><td>2</td><td>GDH_BT</td><td>2</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163947</td><td>HUỲNH THỊ TUYẾT</td><td>K@050343</td><td>20181128015</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-06531</td><td>29/10/2018</td><td>12</td><td>GDH_BT</td><td>12</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163944</td><td>B&#217;I VĂN CƯỜNG</td><td>K@091455</td><td>20181128009</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-01244</td><td>29/10/2018</td><td>1</td><td>GDH_BT</td><td>1</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164010</td><td>VÕ LONG ĐỊNH</td><td>KD001031</td><td>20181129011</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201350249</td><td>17/10/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164009</td><td>NGUY&#202;̃N THỊ THANH</td><td>KD002875</td><td>20181129010</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201350246</td><td>27/10/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164013</td><td>HUỲNH THỊ DI&#202;̃M</td><td>KD070941</td><td>20181129007</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-02462</td><td>02/11/2018</td><td>6</td><td>GDH_BT</td><td>6</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164008</td><td>NGUY&#202;̃N THỊ C&#194;̉M THỊ</td><td>KD090249</td><td>20181129008</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-06533</td><td>02/11/2018</td><td>4</td><td>GDH_BT</td><td>4</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164078</td><td>NGUY&#202;̃N THỊ DUNG</td><td>KM012216</td><td>20181130021</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-00223</td><td>10/10/2018</td><td>1</td><td>GDH_BT</td><td>1</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164079</td><td>TR&#194;̀N THỊ XU&#194;N ANH</td><td>KM012250</td><td>20181130022</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-00073</td><td>10/10/2018</td><td>1</td><td>GDH_BT</td><td>1</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164084</td><td>VÕ TRUNG HI&#202;̀N</td><td>KM030652</td><td>20181130027</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201349452</td><td>10/10/2018</td><td>3</td><td>GDH_BT</td><td>3</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164082</td><td>L&#202; THỊ KIM L&#202;N</td><td>KM031083</td><td>20181130025</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-06511</td><td>10/10/2018</td><td>1</td><td>GDH_BT</td><td>1</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164085</td><td>TRẠM Y T&#202;́ XÃ LONG KI&#202;́N</td><td>KM031117</td><td>20181130028</td><td>H</td><td>BMR-15C</td><td>15</td><td>04201352528</td><td>10/10/2018</td><td>64</td><td>GDH_BT</td><td>64</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164083</td><td>NGUY&#202;̃N MINH PHỤNG</td><td>KM031686</td><td>20181130026</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201350244</td><td>10/10/2018</td><td>8</td><td>GDH_BT</td><td>8</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164073</td><td>NGUY&#202;̃N ANH DŨNG</td><td>KM031688</td><td>20181204012</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201443828</td><td>25/10/2018</td><td>1</td><td>GDH_BT</td><td>1</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164069</td><td>L&#202; VĂN SÍNH</td><td>KM060263</td><td>20181130031</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201352193</td><td>28/10/2018</td><td>2</td><td>GDH_BT</td><td>2</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164080</td><td>PHẠM ANH KI&#202;̣T</td><td>KM060613</td><td>20181130023</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-01313</td><td>10/10/2018</td><td>1</td><td>GDH_BT</td><td>1</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164076</td><td>NGUY&#202;̃N NGỌC THO</td><td>KM061495</td><td>20181130019</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-01879</td><td>10/10/2018</td><td>1</td><td>GDH_BT</td><td>1</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164070</td><td>HUỲNH VĂN PHƯƠNG</td><td>KM080132</td><td>20181204006</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-01237</td><td>28/10/2018</td><td>3</td><td>GDH_BT</td><td>3</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164086</td><td>NGUY&#202;̃N THỊ KIM TUY&#202;́N</td><td>KM080174</td><td>20181130029</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201349459</td><td>10/10/2018</td><td>13</td><td>GDH_BT</td><td>13</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164081</td><td>NGUY&#202;̃N HỮU Đ&#212;</td><td>KM080219</td><td>20181130024</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201350224</td><td>10/10/2018</td><td>23</td><td>GDH_BT</td><td>23</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164072</td><td>BÙI THỊ NGOA</td><td>KM080342</td><td>20181204005</td><td>A</td><td>YONGXI</td><td>15</td><td>17-07-02505</td><td>25/10/2018</td><td>1</td><td>GDH_BT</td><td>1</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164071</td><td>NGUY&#202;̃N LONG TUY&#202;̀N</td><td>KM080378</td><td>20181204007</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201346716</td><td>28/10/2018</td><td>9</td><td>GDH_BT</td><td>9</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164075</td><td>HUỲNH TẤN TƯỚT</td><td>KM080392</td><td>20181130018</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201346717</td><td>10/10/2018</td><td>3</td><td>GDH_BT</td><td>3</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164077</td><td>HUỲNH THỊ MỸ</td><td>KM080395</td><td>20181130020</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201346713</td><td>10/10/2018</td><td>3</td><td>GDH_BT</td><td>3</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164074</td><td>NGUY&#202;̃N VĂN TRI&#202;̉N</td><td>KM090509</td><td>20181205021</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201348204</td><td>25/10/2018</td><td>5</td><td>GDH_BT</td><td>5</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164043</td><td>NGUYỄN PHƯƠNG</td><td>KO020446</td><td>20181201014</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201349434</td><td>12/11/2018</td><td>30</td><td>GDH_BT</td><td>30</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164047</td><td>PHẠM VĂN DỦM ANH</td><td>KO020786</td><td>20181201001</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201446938</td><td>12/11/2018</td><td>20</td><td>GDH_BT</td><td>20</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164049</td><td>NGUY&#202;̃N VĂN THU&#194;̣N</td><td>KO021376</td><td>20181201018</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201347760</td><td>12/11/2018</td><td>20</td><td>GDH_BT</td><td>20</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164051</td><td>L&#202; THỊ THÚY V&#194;N</td><td>KO060791</td><td>20181201023</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-11373</td><td>12/11/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164048</td><td>HÀ VĂN ĐÀNH</td><td>KO060861</td><td>20181201017</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201348967</td><td>12/11/2018</td><td>20</td><td>GDH_BT</td><td>20</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164056</td><td>Đ&#212;̃ VĂN BON</td><td>KO070905</td><td>20181201011</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201348963</td><td>12/11/2018</td><td>3</td><td>GDH_BT</td><td>3</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164063</td><td>NGUY&#202;̃N THỊ KIM ANH</td><td>KO070905</td><td>20181201002</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201348966</td><td>12/11/2018</td><td>12</td><td>GDH_BT</td><td>12</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164061</td><td>VÕ VĂN T&#194;́N</td><td>KO070905</td><td>20181201004</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201348961</td><td>12/11/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164060</td><td>ĐOÀN HỮU SĨ</td><td>KO070905</td><td>20181201006</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201348965</td><td>12/11/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164055</td><td>Đ&#212;̃ MINH HÙNG</td><td>KO072966</td><td>20181201012</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201348962</td><td>12/11/2018</td><td>9</td><td>GDH_BT</td><td>9</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164044</td><td>TRẦN Đ&#204;NH HUY</td><td>KO074408</td><td>20181201010</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201348758</td><td>12/11/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164050</td><td>H&#212;̀ THỊ RÀNH</td><td>KO074515</td><td>20181201022</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-00739</td><td>12/11/2018</td><td>2</td><td>GDH_BT</td><td>2</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164053</td><td>TR&#194;̀N VĂN NHÈ</td><td>KO075521</td><td>20181201015</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201346969</td><td>12/11/2018</td><td>9</td><td>GDH_BT</td><td>9</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164052</td><td>PHAN THỊ THÚY</td><td>KO075530</td><td>20181201016</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201346968</td><td>12/11/2018</td><td>30</td><td>GDH_BT</td><td>30</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164059</td><td>NGUY&#202;̃N THỊ HAI</td><td>KO075737</td><td>20181201005</td><td>Z</td><td>BMR-15C</td><td>15</td><td>04201348964</td><td>12/11/2018</td><td>5</td><td>GDH_BT</td><td>5</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164045</td><td>ĐẶNG VĂN SUỔI</td><td>KO080264</td><td>20181201009</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201348752</td><td>12/11/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164041</td><td>L&#202; VĂN TR&#205;</td><td>KO080733</td><td>20181201029</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-00306</td><td>12/11/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164046</td><td>L&#202; TRUNG NĂM</td><td>KO083370</td><td>20181201007</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201447001</td><td>12/11/2018</td><td>13</td><td>GDH_BT</td><td>13</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164057</td><td>L&#202; HÙNG EM</td><td>KO083370</td><td>20181201008</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201447006</td><td>12/11/2018</td><td>6</td><td>GDH_BT</td><td>6</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164040</td><td>L&#202; THỊ TRINH</td><td>KO083511</td><td>20181201028</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-01063</td><td>12/11/2018</td><td>6</td><td>GDH_BT</td><td>6</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164039</td><td>V&#213; VĂN KH&#205;CH</td><td>KO083732</td><td>20181201027</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-01305</td><td>12/11/2018</td><td>1</td><td>GDH_BT</td><td>1</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164038</td><td>V&#213; VĂN KH&#201;O</td><td>KO083733</td><td>20181201026</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-00706</td><td>12/11/2018</td><td>1</td><td>GDH_BT</td><td>1</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164037</td><td>HUỲNH VĂN CH&#211;T</td><td>KO083734</td><td>20181201025</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-01362</td><td>12/11/2018</td><td>1</td><td>GDH_BT</td><td>1</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164042</td><td>HUỲNH VĂN BẰNG</td><td>KO083735</td><td>20181201019</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-00339</td><td>12/11/2018</td><td>4</td><td>GDH_BT</td><td>4</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164034</td><td>HỒ VĂN LỐ</td><td>KO083736</td><td>20181201020</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-01070</td><td>12/11/2018</td><td>1</td><td>GDH_BT</td><td>1</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164036</td><td>ĐINH THỊ CHANH</td><td>KO083737</td><td>20181201024</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-06719</td><td>12/11/2018</td><td>2</td><td>GDH_BT</td><td>2</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164035</td><td>NGUYỄN THANH SƠN</td><td>KO083738</td><td>20181201021</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-00962</td><td>12/11/2018</td><td>1</td><td>GDH_BT</td><td>1</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164062</td><td>VÕ THÀNH SUM</td><td>KO083932</td><td>20181201003</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201352708</td><td>12/11/2018</td><td>2</td><td>GDH_BT</td><td>2</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164054</td><td>NGUY&#202;̃N THỊ CH&#202;NH</td><td>KO090615</td><td>20181201013</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201349431</td><td>12/11/2018</td><td>4</td><td>GDH_BT</td><td>4</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164012</td><td>L&#202; VĂN PHỤNG</td><td>KP000610</td><td>20181129014</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-02005</td><td>02/11/2018</td><td>4</td><td>GDH_BT</td><td>4</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164011</td><td>NGUY&#202;̃N VĂN QUẠ</td><td>KP013668</td><td>20181129012</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-02149</td><td>27/10/2018</td><td>5</td><td>GDH_BT</td><td>5</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164015</td><td>PHẠM VĂN DƯƠNG</td><td>KP020800</td><td>20181129006</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201351872</td><td>27/10/2018</td><td>5</td><td>GDH_BT</td><td>5</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164014</td><td>L&#202; VĂN T&#194;́N</td><td>KP053692</td><td>20181129016</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-00704</td><td>02/11/2018</td><td>8</td><td>GDH_BT</td><td>8</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163980</td><td>N&#212;NG THỊ T&#201;M</td><td>KQ000335</td><td>20181130001</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201352712</td><td>21/09/2018</td><td>5</td><td>GDH_BT</td><td>5</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163987</td><td>TR&#194;̀N THỊ NGA</td><td>KQ000450</td><td>20181126008</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201351529</td><td>28/09/2018</td><td>1</td><td>GDH_BT</td><td>1</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163988</td><td>NGUYỄN THỊ MAY</td><td>KQ000455</td><td>20181126007</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201350332</td><td>28/09/2018</td><td>1</td><td>GDH_BT</td><td>1</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163977</td><td>NGUY&#202;̃N VĂN THÀNH</td><td>KQ000570</td><td>20181203005</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201349123</td><td>21/09/2018</td><td>1</td><td>GDH_BT</td><td>1</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163978</td><td>NGUY&#202;̃N THỊ ÚT</td><td>KQ000826</td><td>20181203004</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201351743</td><td>21/09/2018</td><td>1</td><td>GDH_BT</td><td>1</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163979</td><td>NGUY&#202;̃N THỊ THU</td><td>KQ000827</td><td>20181203003</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201350337</td><td>21/09/2018</td><td>1</td><td>GDH_BT</td><td>1</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163959</td><td>NG&#212; VĂN H&#212;̉</td><td>KQ010503</td><td>20181126028</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201351522</td><td>28/09/2018</td><td>7</td><td>GDH_BT</td><td>7</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163965</td><td>THÁI VĂN H&#212;̀NG</td><td>KQ011265</td><td>20181126016</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201348501</td><td>04/10/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163969</td><td>TRƯƠNG NGỌC VŨ</td><td>KQ014666</td><td>20181126011</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201349053</td><td>28/09/2018</td><td>10</td><td>GDH_BT</td><td>10</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163962</td><td>PHẠM THỊ KI&#202;̀U DI&#202;̃M</td><td>KQ014667</td><td>20181126022</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201349054</td><td>28/09/2018</td><td>8</td><td>GDH_BT</td><td>8</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163968</td><td>TRƯƠNG THANH SƠN</td><td>KQ014668</td><td>20181126012</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201349055</td><td>28/09/2018</td><td>8</td><td>GDH_BT</td><td>8</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163985</td><td>NGUY&#202;̃N HỮU PHÉP</td><td>KQ020745</td><td>20181126020</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201348907</td><td>28/09/2018</td><td>61</td><td>GDH_BT</td><td>61</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163986</td><td>NGUY&#202;̃N THỊ DI&#202;̣U</td><td>KQ020786</td><td>20181126013</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201349057</td><td>28/09/2018</td><td>91</td><td>GDH_BT</td><td>91</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164090</td><td>PHAN VĂN KHUYẾN</td><td>KQ020915</td><td>20181130004</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201352192</td><td>11/09/2018</td><td>20</td><td>GDH_BT</td><td>20</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163981</td><td>NGUY&#202;̃N THỊ KIM THI</td><td>KQ021035</td><td>20181126032</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201351746</td><td>28/09/2018</td><td>9</td><td>GDH_BT</td><td>9</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163983</td><td>HUỲNH VĂN C&#194;́T</td><td>KQ021076</td><td>20181126027</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201348908</td><td>28/09/2018</td><td>32</td><td>GDH_BT</td><td>32</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163982</td><td>ĐOÀN THANH SEN</td><td>KQ021265</td><td>20181126030</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201350336</td><td>28/09/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163976</td><td>HUỲNH THỊ THU</td><td>KQ030175</td><td>20181203010</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201351742</td><td>21/09/2018</td><td>11</td><td>GDH_BT</td><td>11</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163984</td><td>TR&#194;̀N HỮU L&#212;̣C</td><td>KQ033676</td><td>20181126026</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201349125</td><td>28/09/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163974</td><td>NGUY&#202;̃N HOÀNG LONG</td><td>KQ033745</td><td>20181203012</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201351744</td><td>21/09/2018</td><td>4</td><td>GDH_BT</td><td>4</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163975</td><td>NGUY&#202;̃N THỊ NHỊ</td><td>KQ033746</td><td>20181203011</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201350340</td><td>21/09/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163973</td><td>VÕ VĂN M&#194;̀M</td><td>KQ034055</td><td>20181203013</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201351523</td><td>21/09/2018</td><td>14</td><td>GDH_BT</td><td>14</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163951</td><td>L&#202; KIM TƯ</td><td>KQ041225</td><td>20181203008</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201348505</td><td>21/09/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163953</td><td>ĐẶNG THÀNH TRI&#202;̀U</td><td>KQ041915</td><td>20181203006</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201348508</td><td>21/09/2018</td><td>6</td><td>GDH_BT</td><td>6</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163952</td><td>ĐẶNG HOÀI PHONG</td><td>KQ041916</td><td>20181203007</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201348502</td><td>21/09/2018</td><td>4</td><td>GDH_BT</td><td>4</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163955</td><td>PHẠM THỊ L&#202;̣ THU</td><td>KQ043015</td><td>20181203001</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201349126</td><td>21/09/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163961</td><td>L&#202; THỊ DUNG</td><td>KQ060645</td><td>20181126023</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201349051</td><td>28/09/2018</td><td>14</td><td>GDH_BT</td><td>14</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163963</td><td>L&#202; THỊ THU Y&#202;́N</td><td>KQ062266</td><td>20181126019</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201348904</td><td>28/09/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164091</td><td>HUỲNH VĂN THỨC</td><td>KQ072373</td><td>20181130003</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-00613</td><td>14/11/2018</td><td>22</td><td>GDH_BT</td><td>22</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164092</td><td>L&#221; THIỆN VINH</td><td>KQ072374</td><td>20181130002</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-00302</td><td>14/11/2018</td><td>8</td><td>GDH_BT</td><td>8</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163958</td><td>TRƯƠNG VĂN TH&#194;̣N</td><td>KQ072755</td><td>20181126029</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201351521</td><td>28/09/2018</td><td>4</td><td>GDH_BT</td><td>4</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163971</td><td>L&#202; VĂN DU</td><td>KQ072925</td><td>20181126006</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201349059</td><td>28/09/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163972</td><td>NGUY&#202;̃N THỊ MỴ</td><td>KQ074425</td><td>20181126005</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201351526</td><td>28/09/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163964</td><td>NGUY&#202;̃N VĂN HI&#202;̀N</td><td>KQ080499</td><td>20181126018</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201349052</td><td>28/09/2018</td><td>12</td><td>GDH_BT</td><td>12</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163954</td><td>NGUY&#202;̃N VĂN TÈO</td><td>KQ080774</td><td>20181203002</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201350331</td><td>21/09/2018</td><td>8</td><td>GDH_BT</td><td>8</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163957</td><td>NGUY&#202;̃N H&#212;̀NG KHA</td><td>KQ090525</td><td>20181126031</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201350339</td><td>28/09/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163970</td><td>PHẠM THANH HẢI</td><td>KQ090845</td><td>20181126009</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201349058</td><td>28/09/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163950</td><td>TR&#194;̉N THỊ PHƯƠNG THẢO</td><td>KQ091395</td><td>20181203009</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201348507</td><td>21/09/2018</td><td>9</td><td>GDH_BT</td><td>9</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163960</td><td>Đ&#212;̃ HOÀNG BÍCH</td><td>KQ0A0060</td><td>20181126025</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201348910</td><td>28/09/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164089</td><td>NGUY&#202;̃N THỊ L&#202;̣</td><td>KQ0A0070</td><td>20181126024</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201351876</td><td>04/10/2018</td><td>40</td><td>GDH_BT</td><td>40</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163956</td><td>NGUY&#202;̃N THỊ KIM SA</td><td>KQ0A0080</td><td>20181126021</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201351528</td><td>28/09/2018</td><td>24</td><td>GDH_BT</td><td>24</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164088</td><td>L&#202; VĂN LỢI</td><td>KQ0A0080</td><td>20181126010</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201349129</td><td>04/10/2018</td><td>40</td><td>GDH_BT</td><td>40</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164087</td><td>TR&#194;̀N THỊ NỮA</td><td>KQ0A0090</td><td>20181126017</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201348506</td><td>04/10/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163967</td><td>NGUY&#202;̃N THỊ XOÀN</td><td>KQ0A0110</td><td>20181126014</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201349056</td><td>28/09/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163966</td><td>NGUY&#202;̃N VĂN PHƯƠNG</td><td>KQ0A0120</td><td>20181126015</td><td>A</td><td>BMR-15C</td><td>15</td><td>04201349060</td><td>28/09/2018</td><td>40</td><td>GDH_BT</td><td>40</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163941</td><td>B&#217;I VĂN LY</td><td>KS015687</td><td>20181129003</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-00219</td><td>29/10/2018</td><td>3</td><td>GDH_BT</td><td>3</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163942</td><td>NGUYỄN DƯƠNG ĐỨC AN</td><td>KS015891</td><td>20181129004</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-00048</td><td>29/10/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163940</td><td>KHƯU THỊ L&#192;NH</td><td>KS020115</td><td>20181129002</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-00892</td><td>29/10/2018</td><td>7</td><td>GDH_BT</td><td>7</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163939</td><td>V&#213; THỊ LỆ B&#205;CH</td><td>KU010885</td><td>20181128017</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-01897</td><td>29/10/2018</td><td>3</td><td>GDH_BT</td><td>3</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163938</td><td>NGUYỄN QUANG Đ&#212;NG</td><td>KU011055</td><td>20181128012</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-00106</td><td>29/10/2018</td><td>8</td><td>GDH_BT</td><td>8</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163935</td><td>PHAN THI B&#201; NHỎ</td><td>KU011785</td><td>20181128008</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-00074</td><td>29/10/2018</td><td>26</td><td>GDH_BT</td><td>26</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163934</td><td>ĐẶNG THỊ KIỀU NƯƠNG</td><td>KU011865</td><td>20181128007</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-00547</td><td>29/10/2018</td><td>15</td><td>GDH_BT</td><td>15</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163943</td><td>L&#202; VĂN B&#201; S&#193;U</td><td>KV010915</td><td>20181129005</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-00917</td><td>29/10/2018</td><td>5</td><td>GDH_BT</td><td>5</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163936</td><td>TRỊNH THỊ Đ&#192;O</td><td>KV011345</td><td>20181128010</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-02491</td><td>29/10/2018</td><td>4</td><td>GDH_BT</td><td>4</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163937</td><td>TRỊNH NGỌC MINH</td><td>KV011346</td><td>20181128011</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-01726</td><td>29/10/2018</td><td>5</td><td>GDH_BT</td><td>5</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163932</td><td>PHẠM VĂN L&#192;NH</td><td>KV012214</td><td>20181128005</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-02441</td><td>29/10/2018</td><td>1</td><td>GDH_BT</td><td>1</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163933</td><td>PHẠM VĂN ĐỰC</td><td>KV012216</td><td>20181128006</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-02132</td><td>29/10/2018</td><td>20</td><td>GDH_BT</td><td>20</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163992</td><td>L&#202; VĂN T&#194;M</td><td>KW010368</td><td>20181129032</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-01277</td><td>01/11/2018</td><td>5</td><td>GDH_BT</td><td>5</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163991</td><td>NGUYỄN VĂN TIẾN EM</td><td>KW010368</td><td>20181129033</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-02468</td><td>01/11/2018</td><td>6</td><td>GDH_BT</td><td>6</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164007</td><td>TRẦN VĂN NĂNG</td><td>KW020263</td><td>20181129027</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-06490</td><td>01/11/2018</td><td>5</td><td>GDH_BT</td><td>5</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164006</td><td>NGUYỄN THỊ TR&#218;C Đ&#192;O</td><td>KW020415</td><td>20181129028</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-02654</td><td>01/11/2018</td><td>18</td><td>GDH_BT</td><td>18</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164000</td><td>L&#221; HỒNG NHUNG</td><td>KW031143</td><td>20181129022</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-00127</td><td>01/11/2018</td><td>11</td><td>GDH_BT</td><td>11</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164003</td><td>V&#213; THỊ NGỌC KIỀU</td><td>KW031598</td><td>20181129019</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-02136</td><td>01/11/2018</td><td>20</td><td>GDH_BT</td><td>20</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164002</td><td>NGUYỄN THỊ TUYẾT QU&#205;</td><td>KW031990</td><td>20181129020</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-02118</td><td>01/11/2018</td><td>7</td><td>GDH_BT</td><td>7</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164001</td><td>TRẦN THỊ XU&#194;N LAN</td><td>KW031993</td><td>20181129021</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-06612</td><td>01/11/2018</td><td>7</td><td>GDH_BT</td><td>7</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163994</td><td>NGUYỄN VĂN V&#192;NG</td><td>KW032038</td><td>20181129030</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-06529</td><td>01/11/2018</td><td>6</td><td>GDH_BT</td><td>6</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163995</td><td>TRẦN THỊ &#218;T</td><td>KW033068</td><td>20181129029</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-06441</td><td>01/11/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163999</td><td>L&#202; THỊ NGỌC B&#205;CH</td><td>KW040288</td><td>20181129023</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-06425</td><td>01/11/2018</td><td>8</td><td>GDH_BT</td><td>8</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163996</td><td>NGUYỄN VĂN &#205;T</td><td>KW040407</td><td>20181129026</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-06623</td><td>01/11/2018</td><td>281</td><td>GDH_BT</td><td>281</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163997</td><td>V&#213; THỊ ƯỚC</td><td>KW041221</td><td>20181129025</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-00726</td><td>01/11/2018</td><td>10</td><td>GDH_BT</td><td>10</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163998</td><td>V&#213; THỊ T&#212;I</td><td>KW041222</td><td>20181129024</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-06586</td><td>01/11/2018</td><td>1</td><td>GDH_BT</td><td>1</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163993</td><td>MAI VĂN NH&#192;N</td><td>KW041262</td><td>20181129031</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-00681</td><td>01/11/2018</td><td>7</td><td>GDH_BT</td><td>7</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163990</td><td>NGUYỄN HỮU PHƯỚC</td><td>KW050738</td><td>20181129034</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-06636</td><td>01/11/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163989</td><td>NGUYỄN VĂN PHUM</td><td>KW051410</td><td>20181129035</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-00444</td><td>01/11/2018</td><td>10</td><td>GDH_BT</td><td>10</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164005</td><td>CAO THỊ MỸ HẠNH</td><td>KW080614</td><td>20181129017</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-02523</td><td>01/11/2018</td><td>8</td><td>GDH_BT</td><td>8</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164004</td><td>HUỲNH THỊ NGỌC QUYỀN</td><td>KW080658</td><td>20181129018</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-00445</td><td>01/11/2018</td><td>46</td><td>GDH_BT</td><td>46</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164093</td><td>TR&#194;̀N MINH T&#194;́N</td><td>KX0E4500</td><td>20181207001</td><td>A</td><td>YONGXI</td><td>15</td><td>39802</td><td>03/12/2018</td><td>335</td><td>GDH_BT</td><td>16</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164064</td><td>MAI THIỆN L&#192;NH</td><td>KX0J0295</td><td>20181121002</td><td>A</td><td>BMR-15C</td><td>15</td><td>0420131154</td><td>30/10/2018</td><td>15</td><td>GDH_BT</td><td>15</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>163931</td><td>HUỲNH THỊ SINH</td><td>KY012328</td><td>20181121001</td><td>A</td><td>BLUE A</td><td>15</td><td>10934</td><td>21/11/2018</td><td>303</td><td>GDH_BT</td><td>15</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164031</td><td>TRẦN THỊ KIỀU</td><td>KZ021545</td><td>20181121019</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-02017</td><td>14/11/2018</td><td>29</td><td>GDH_BT</td><td>29</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164024</td><td>ĐẶNG THỊ TUYẾT</td><td>KZ040007</td><td>20181121018</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-01658</td><td>14/11/2018</td><td>2</td><td>GDH_BT</td><td>2</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164016</td><td>ĐẶNG VĂN TH&#192;NH</td><td>KZ040032</td><td>20181121016</td><td>A</td><td>BMR-15C</td><td>15</td><td>18-04-01190</td><td>14/11/2018</td><td>5</td><td>GDH_BT</td><td>5</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164017</td><td>ĐẶNG TẤN   KỊCH</td><td>KZ040037</td><td>20181121015</td><td>A</td><td>BMR-15C</td><td>15</td><td>18-04-00368</td><td>14/11/2018</td><td>3</td><td>GDH_BT</td><td>3</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164023</td><td>MAI VĂN TRƯỜNG</td><td>KZ050145</td><td>20181121003</td><td>A</td><td>BMR-15C</td><td>15</td><td>18-04-06424</td><td>14/11/2018</td><td>7</td><td>GDH_BT</td><td>7</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164018</td><td>NGUYỄN VĂN HIỆP</td><td>KZ051175</td><td>20181121014</td><td>A</td><td>BMR-15C</td><td>15</td><td>18-04-05489</td><td>14/11/2018</td><td>12</td><td>GDH_BT</td><td>12</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164020</td><td>TRẦN VĂN L&#217;NG</td><td>KZ051965</td><td>20181121012</td><td>A</td><td>BMR-15C</td><td>15</td><td>18-04-01613</td><td>14/11/2018</td><td>0</td><td>GDH_BT</td><td>0</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164022</td><td>L&#202; THỊ CẨM</td><td>KZ052024</td><td>20181121004</td><td>A</td><td>BMR-15C</td><td>15</td><td>18-04-06544</td><td>14/11/2018</td><td>3</td><td>GDH_BT</td><td>3</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164028</td><td>NGUYỄN THỊ KIM THOA</td><td>KZ063551</td><td>20181121009</td><td>A</td><td>BMR-15C</td><td>15</td><td>18-04-01225</td><td>14/11/2018</td><td>2</td><td>GDH_BT</td><td>2</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164029</td><td>L&#202; THỊ HỒNG LINH</td><td>KZ063683</td><td>20181121007</td><td>A</td><td>BMR-15C</td><td>15</td><td>18-04-01321</td><td>14/11/2018</td><td>26</td><td>GDH_BT</td><td>26</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164032</td><td>TRẦN VĂN HIỀN</td><td>KZ063771</td><td>20181121008</td><td>A</td><td>BMR-15C</td><td>15</td><td>18-04-02025</td><td>14/11/2018</td><td>2</td><td>GDH_BT</td><td>2</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164026</td><td>L&#202; THỊ HỒNG</td><td>KZ064059</td><td>20181121017</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-06400</td><td>14/11/2018</td><td>10</td><td>GDH_BT</td><td>10</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164033</td><td>TRƯƠNG HO&#192;I NGẬN</td><td>KZ065820</td><td>20181129036</td><td>A</td><td>NINGBO</td><td>15</td><td>18-04-02405</td><td>14/11/2018</td><td>15</td><td>GDH_BT</td><td>15</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164030</td><td>L&#194;M VĂN THUẬN</td><td>KZ067165</td><td>20181121005</td><td>A</td><td>BMR-15C</td><td>15</td><td>18-04-06571</td><td>14/11/2018</td><td>8</td><td>GDH_BT</td><td>8</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164019</td><td>L&#202; VĂN NHƠN</td><td>KZ072625</td><td>20181121013</td><td>A</td><td>BMR-15C</td><td>15</td><td>18-04-00657</td><td>14/11/2018</td><td>7</td><td>GDH_BT</td><td>7</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164021</td><td>NGUYỄN VĂN TUẤN</td><td>KZ074775</td><td>20181121011</td><td>A</td><td>BMR-15C</td><td>15</td><td>18-04-00749</td><td>14/11/2018</td><td>26</td><td>GDH_BT</td><td>26</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164025</td><td>PHẠM THANH B&#204;NH</td><td>KZ076985</td><td>20181121006</td><td>A</td><td>BMR-15C</td><td>15</td><td>18-04-06506</td><td>14/11/2018</td><td>11</td><td>GDH_BT</td><td>11</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr class="textmode">
+			<td>164027</td><td>CHUNG THỊ NH&#205;</td><td>KZ080945</td><td>20181121010</td><td>A</td><td>BMR-15C</td><td>15</td><td>18-04-02240</td><td>14/11/2018</td><td>4</td><td>GDH_BT</td><td>4</td><td>C</td><td>&nbsp;</td><td>1.00</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr>
+	</table>
+</div>

@@ -1,0 +1,100 @@
+﻿
+<div id="modal-add-edit-ChuaPhatHanh" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Văn bản đến - Phát hành văn bản </h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainChuaPhatHanh">
+                        <input type="hidden" id="hidVanBanDenXuLyId" value="" />
+                        <input type="hidden" id="hidVanBanDenId" value="" />
+                        <input type="hidden" id="hidHoSoNhanVienId" value="" />
+
+                        <input type="hidden" id="hidInsertVBDXuLyId" value="" />
+                        <input type="hidden" id="hidVanBanDenDuyetId" value="" />
+
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label for="lbGhiChuXuLyDXL">Ghi chú phát hành </label>
+                                <textarea type="text" name="txtGhiChuPhatHanh" class="form-control has-feedback-right" id="txtGhiPhatHanh" placeholder="Ghi chú phát hành ">
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label for="lbNgayPhatHanhL">Ngày phát hành <a style="color:red">(*) </a> </label>
+                                <input type="text" name="txtNgayPhatHanh" class="form-control has-feedback-right" id="txtNgayPhatHanh" placeholder="Ngày phát hành">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <label for="lbFileVanBanDen">
+                                        File phát hành văn bản đến
+                                        <a style="color:red">(*) </a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-6" style="text-align:right">
+                                    <a class="btn btn-lin btnFileVanBanPhatHanh" style="color:cornflowerblue"><i class="fa fa-chain-broken"></i> Chọn file phát hành văn bản đến đính kèm</a>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="table-wrapper-scroll-y">
+                                        <table id="tbl-FileVanBanDen" class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Tên file văn bản</th>
+                                                    <th width="=10%">#</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tbl-contentFileVanBanDen"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="lbVBDNoiPhatHanh">
+                                        Nơi phát hành văn bản điện tử
+                                    </label>
+                                    <select id="ddlVBDNoiPhatHanh" class="form-control" name="ddlVBDNoiPhatHanh"></select>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="lbChonNoiPhatHanh">
+
+                                    </label>
+                                    <p style="padding: 5px;">
+                                        <input type="checkbox" id="checkChonNoiPhatHanh" value="CHON" />
+                                        Chọn nơi phát hành văn bản điện tử
+                                    </p>
+                                </div>
+                            </div>
+                            <script id="table-FileVanBanDen" type="x-tmpl-mustache">
+                                <tr>
+                                    <td>{{TenFile}}</td>
+                                    <th scope="row">
+                                        <a class="btn btnDeleteFile" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xóa file văn bản đến">
+                                            <i class="fa fa-trash-o" style="color:red"></i>
+                                            Xóa
+                                        </a>
+                                    </th>
+                                </tr>
+                            </script>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnSaveChuaPhatHanh" class="btn btn-warning">Phát hành văn bản </button>
+                                <button type="button" id="btnCanceChuaPhatHanh" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="ln_solid"></div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="_FileVanBanDenPhatHanh.cshtml" />
