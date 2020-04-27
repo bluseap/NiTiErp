@@ -55,5 +55,14 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        [HttpGet]
+        public IActionResult GetListHoSoAuto(string codeXL)
+        {
+            var model = _vbAutocompleteServices.VBAutoGetList(codeXL, "",
+                "", "", "", "GetHoSoNhanVienAutocomplete");
+
+            return new OkObjectResult(model);
+        }
+
     }
 }

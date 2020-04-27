@@ -110,13 +110,13 @@
                             <div class="col-sm-3">
                                 <label for="lbDenNgay">Đến ngày <a style="color:red">(*)</a></label>
                                 <input type="text" name="txtDenNgay" class="form-control has-feedback-right" id="txtDenNgay" placeholder="Đến ngày  ">
-                            </div>
+                            </div>                            
+                        </div>
+                        <div class="form-group">
                             <div class="col-sm-3">
                                 <label for="lbGhiChu">Ghi chú </label>
                                 <input type="text" name="txtGhiChu" class="form-control has-feedback-right" id="txtGhiChu" placeholder="Ghi chú">
                             </div>
-                        </div>
-                        <div class="form-group">
                             <div class="col-sm-3">
                                 <label for="lbTuNgay2">Từ ngày </label>
                                 <input type="text" name="txtTuNgay2" class="form-control has-feedback-right" id="txtTuNgay2" placeholder="Từ ngày">
@@ -133,7 +133,7 @@
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="button" id="btnCLGiayDDThem" class="btn btn-warning">Thêm</button>
-                                <button type="button" id="btnCLGiayDDIn" data-dismiss="modal" class="btn btn-success pull-right">Bắt đầu In</button>
+                                <button type="button" id="btnCLGiayDDIn" data-dismiss="modal" class="btn btn-success pull-right">Bắt đầu In</button>                                
                             </div>
                         </div>
                     </form>
@@ -142,37 +142,45 @@
                 <div>
                     <form class="form-horizontal" role="form" id="frmMainCLGiayDDIn">
                         <input type="hidden" id="hidId" value="" />
-                       
+
                         <div class="table-responsive" id="table-responsiveCLGiayDDIn">
                             <table class="table table-striped table-bordered dataTable no-footer" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <td>Ngày nhập</td>
+                                        @*<td>Ngày nhập</td>*@
                                         <td>Họ và tên</td>
                                         <td>Chức vụ</td>
                                         <td>Từ ngày</td>
                                         <td>Đến ngày</td>
                                         <td>Công tác</td>
-                                        <td>Lý do</td>
+                                        @*<td>Lý do</td>*@
                                         <td>Ghi chú</td>
                                         <td>#</td>
                                     </tr>
                                 </thead>
                                 <tbody id="table-CLGiayDiDuongIn-content"></tbody>
-                            
+
                             </table>
-                         </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6 pull-right">
+                                <button type="button" id="btnCLGiayDDCLear" data-dismiss="modal" class="btn btn-danger">Xóa hết</button>
+                            </div>
+                            <div class="col-sm-6 pull-right">
+                                Tổng cộng: <strong id="lblTableCLGiayDDInTotalRecords"></strong>
+                            </div>
+                        </div>
                     </form>
                     <script type="text/x-handlebars-template" id="template-table-CLGiayDiDuongIn">
                         <tr data-id="{{Id}}">
-                            <td>{{{NgayNhap}}}</td>
-                            <td><input type="text" class="form-control" value="{{Ten}}" placeholder="Họ và tên"/></td>
-                            <td><input type="text" class="form-control" value="{{ChucVu}}" placeholder="Chức vụ"/></td>
-                            <td>{{{TuNgay}}}</td>
-                            <td>{{{DenNgay}}}</td>
+                            @*<td><input type="text" class="form-control txtDenNgayIn" value="{{NgayNhap}}" placeholder="Ngày nhập" /></td>*@
+                            <td><input type="text" class="form-control" value="{{Ten}}" placeholder="Họ và tên" /></td>
+                            <td><input type="text" class="form-control" value="{{ChucVu}}" placeholder="Chức vụ" /></td>
+                            <td><input type="text" class="form-control txtDenNgayIn" value="{{TuNgay}}" placeholder="Từ ngày" /></td>
+                            <td><input type="text" class="form-control txtDenNgayIn" value="{{DenNgay}}" placeholder="Đến ngày" /></td>
                             <td>{{{CongTacTai}}}</td>
-                            <td><input type="text" class="form-control" value="{{LyDo}}" placeholder="Lý do"/></td>
-                            <td><input type="text" class="form-control" value="{{GhiChu}}" placeholder="Ghi chú"/></td>
+                            @*<td><input type="text" class="form-control" value="{{LyDo}}" placeholder="Lý do" /></td>*@
+                            <td><input type="text" class="form-control" value="{{GhiChu}}" placeholder="Ghi chú" /></td>
                             <td>
                                 <button class="btn btn-xs btn-danger btn-delete-CLGiayDiDuongIn" type="button">
                                     <i class="fa fa-trash"></i>
@@ -180,6 +188,7 @@
                             </td>
                         </tr>
                     </script>
+                    
                 </div>
               
                 <div class="row">
