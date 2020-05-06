@@ -12,6 +12,7 @@ using NiTiErp.Utilities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace NiTiErp.Areas.Admin.Controllers
 {
@@ -21,17 +22,19 @@ namespace NiTiErp.Areas.Admin.Controllers
         private readonly NiTiErp.Application.Interfaces.IUserService _userService;
         private readonly IAuthorizationService _authorizationService;
 
-        
+        private readonly IGiayDiDuongService _giaydiduong;
 
         public CLGiayDDController(IHostingEnvironment hostingEnvironment,
             NiTiErp.Application.Interfaces.IUserService userService,
-            IAuthorizationService authorizationService
+            IAuthorizationService authorizationService,
+            IGiayDiDuongService giaydiduong
             )
         {
             _hostingEnvironment = hostingEnvironment;
             _userService = userService;
             _authorizationService = authorizationService;
-            
+
+            _giaydiduong = giaydiduong;
         }
 
         public IActionResult Index()
@@ -46,6 +49,19 @@ namespace NiTiErp.Areas.Admin.Controllers
 
         #region API Ajax
 
+        [HttpGet]
+        public async Task<IActionResult> GetListCLGiayDD(string khuvucId, string maphongIc, 
+            string keyword, int page, int pageSize)
+        {
+            var khuvuc = !string.IsNullOrEmpty(khuvucId) ? khuvucId : "%";
+            var phong = !string.IsNullOrEmpty(maphongIc) ? maphongIc : "%";
+            var tennv = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+
+            var model = await _giaydiduong.ListGiayDiDuongKVPhong(khuvucId, maphongIc, tennv, 
+                page, pageSize);
+
+            return new OkObjectResult(model);
+        }
 
         #endregion
 

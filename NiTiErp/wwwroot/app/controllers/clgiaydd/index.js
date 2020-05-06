@@ -34,6 +34,14 @@
             }
         });
 
+        $('#ddl-show-pageCLGiayDD').on('change', function (e) {
+            e.preventDefault();
+
+            tedu.configs.pageSize = $(this).val();
+            tedu.configs.pageIndex = 1;
+            loadTableCLGiayDD(true);
+        });
+
         $('#btnCLGiayDDThem').on('click', function () {        
             themIn();            
         });
@@ -59,9 +67,14 @@
             }
             else {
                 themNhanVienPhong(); 
-            }
-               
+            }               
         });
+
+        $('#ddlKhuVuc').on('change', function (e) {
+            e.preventDefault();
+            var makv = $('#ddlKhuVuc').val();
+            loadPhongKhuVuc(makv);            
+        });       
 
     }
 
@@ -90,6 +103,8 @@
                 var makv = $('#ddlKhuVuc').val();
 
                 loadPhongKhuVuc(makv);
+
+                //loadTableCLGiayDD();
 
             },
             error: function (status) {
@@ -317,8 +332,91 @@
         });
     }
 
-    function loadTableCLGiayDD() {
+    function loadTableCLGiayDD(isPageChanged) {
+        var template = $('#table-responsiveCLGiayDD').html();
+        var render = "";
 
+        var makhuvuc = $('#ddlKhuVuc').val();
+        var maphong = $('#ddlPhongBan').val();
+        var timnoidung = $('#txtTimNoiDung').val();
+
+        $.ajax({
+            type: 'GET',
+            url: '/admin/CLGiayDD/GetListCLGiayDD',
+            data: {
+                khuvucId: makhuvuc,
+                maphongIc: maphong,
+                keyword: timnoidung,
+                page: tedu.configs.pageIndex,
+                pageSize: tedu.configs.pageSize
+            },
+
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th></tr>";
+                }
+                else {
+                    $.each(response.Result.Results, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+                            NgayNhap: tedu.getFormattedDate(item.NgayNhap),
+                            Ten: item.Ten,
+                            ChucVu: item.ChucVu,
+                            //HinhNhanVien: item.Image === null ? '<img src="/admin-side/images/user.png?h=90"' : '<img src="' + item.HinhNhanVien + '?h=90" />',
+                            TuNgay: tedu.getFormattedDate(item.TuNgay),
+                            DenNgay: tedu.getFormattedDate(item.DenNgay),
+                            Status: tedu.getCLGiayDiDuong(item.Status),
+                            LyDo: item.LyDo,
+                            GhiChu: item.GhiChu                                                     
+                        });
+                    });
+                }
+
+                $('#lblCLGiayDDTotalRecords').text(response.Result.RowCount);
+
+                if (render !== '') {
+                    $('#tblContentCLGiayDD').html(render);
+                }
+
+                if (response.Result.RowCount !== 0) {
+                    wrapPagingCLGiayDD(response.Result.RowCount, function () {
+                        loadTableCLGiayDD();
+                    },
+                        isPageChanged);
+                }
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+    function wrapPagingCLGiayDD(recordCount, callBack, changePageSize) {
+        var totalsize = Math.ceil(recordCount / tedu.configs.pageSize);
+        //Unbind pagination if it existed or click change pagesize
+        if ($('#paginationULCLGiayDD a').length === 0 || changePageSize === true) {
+            $('#paginationULCLGiayDD').empty();
+            $('#paginationULCLGiayDD').removeData("twbs-pagination");
+            $('#paginationULCLGiayDD').unbind("page");
+        }
+        //Bind Pagination Event
+        $('#paginationULCLGiayDD').twbsPagination({
+            totalPages: totalsize,
+            visiblePages: 7,
+            first: 'Đầu',
+            prev: 'Trước',
+            next: 'Tiếp',
+            last: 'Cuối',
+            onPageClick: function (event, p) {
+                //tedu.configs.pageIndex = p;
+                //setTimeout(callBack(), 200);
+                if (tedu.configs.pageIndex !== p) {
+                    tedu.configs.pageIndex = p;
+                    setTimeout(callBack(), 200);
+                }
+            }
+        });
     }
 
 }
