@@ -294,6 +294,8 @@ namespace NiTiErp
             services.AddTransient<IEmailNoiBoNhanService, EmailNoiBoNhanService>();
             services.AddTransient<IEmailNoiBoNhanFileService, EmailNoiBoNhanFileService>();
 
+            services.AddTransient<IGiayDiDuongService, GiayDiDuongService>();
+
             services.AddTransient<IRegisterDocService, RegisterDocService>();
             services.AddTransient<IRegisterDocSendService, RegisterDocSendService>();
 

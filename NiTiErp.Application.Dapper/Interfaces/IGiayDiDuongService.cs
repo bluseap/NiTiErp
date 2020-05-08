@@ -12,5 +12,9 @@ namespace NiTiErp.Application.Dapper.Interfaces
         Task<PagedResult<GiayDiDuongViewModel>> ListGiayDiDuongKVPhong(string khuvucId, string maphongIc, 
             string keyword, int page, int pageSize);
 
+        Task<GiayDiDuongViewModel> GetGiayDiDuong(long id);
+
+        Task<bool> SaveXML(string giaydiduongXML, Guid code, string username);
+
     }
 }

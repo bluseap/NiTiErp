@@ -407,9 +407,9 @@
     },
     getCLGiayDiDuong: function (trangthai) {
         if (trangthai === 1)
-            return '<span class="badge bg-orange">Ngoài tỉnh</span>';    
+            return '<span class="badge bg-orange">Trong tỉnh</span>';    
         else if (trangthai === 2)
-            return '<span class="badge bg-green">Trong tỉnh</span>';
+            return '<span class="badge bg-green">Ngoài tỉnh</span>';
         else 
             return '<span class="badge bg-white"></span>';
     },

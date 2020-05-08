@@ -74,7 +74,17 @@
             e.preventDefault();
             var makv = $('#ddlKhuVuc').val();
             loadPhongKhuVuc(makv);            
-        });       
+        });    
+
+        $('body').on('click', '.btn-addGiayDD', function (e) {
+            e.preventDefault();
+            var giaydiduongId = $(this).data('id');
+            addToGiayDiDuong(giaydiduongId);        
+        });
+
+        $('#btnCLGiayDDIn').on('click', function () {
+            saveIn();
+        });
 
     }
 
@@ -150,7 +160,7 @@
 
     function clearData() {
         var datenow = new Date();       
-
+     
         $('#txtNgayNhap').val(tedu.getFormattedDate(datenow));
         $('#txtTen').val('');
         $('#txtChucVu').val('');
@@ -159,7 +169,7 @@
         $('#txtTuNgay').val('');
         $('#txtDenNgay').val('');
         $('#txtGhiChu').val('');
-
+        
         //$('#ddlCongTacTai')[0].selectedIndex = 0;
     }
 
@@ -333,7 +343,7 @@
     }
 
     function loadTableCLGiayDD(isPageChanged) {
-        var template = $('#table-responsiveCLGiayDD').html();
+        var template = $('#table-CLGiayDD').html();
         var render = "";
 
         var makhuvuc = $('#ddlKhuVuc').val();
@@ -353,11 +363,11 @@
 
             dataType: 'json',
             success: function (response) {
-                if (response.Result.Results.length === 0) {
-                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th></tr>";
+                if (response.Results.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
                 }
                 else {
-                    $.each(response.Result.Results, function (i, item) {
+                    $.each(response.Results, function (i, item) {
                         render += Mustache.render(template, {
                             Id: item.Id,
                             NgayNhap: tedu.getFormattedDate(item.NgayNhap),
@@ -373,14 +383,14 @@
                     });
                 }
 
-                $('#lblCLGiayDDTotalRecords').text(response.Result.RowCount);
+                $('#lblCLGiayDDTotalRecords').text(response.RowCount);
 
                 if (render !== '') {
                     $('#tblContentCLGiayDD').html(render);
                 }
 
-                if (response.Result.RowCount !== 0) {
-                    wrapPagingCLGiayDD(response.Result.RowCount, function () {
+                if (response.RowCount !== 0) {
+                    wrapPagingCLGiayDD(response.RowCount, function () {
                         loadTableCLGiayDD();
                     },
                         isPageChanged);
@@ -415,6 +425,125 @@
                     tedu.configs.pageIndex = p;
                     setTimeout(callBack(), 200);
                 }
+            }
+        });
+    }
+
+    function addToGiayDiDuong(giaydiduongId) {
+        $.ajax({
+            type: "GET",
+            url: "/Admin/CLGiayDD/GetCLGiayDD",
+            data: {
+                giaydiduongid: giaydiduongId
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var giaydiduong = response.Result[0];
+
+                var ngaynhap = $('#txtNgayNhap').val();
+                var tennhanvien = giaydiduong.Ten;
+                var chucvu = giaydiduong.ChucVu;
+
+                //var ddlCLGiayDDThem = giaydiduong.ChucVu;
+
+                var lydo = giaydiduong.LyDo;
+                var tungay = tedu.getFormattedDate(giaydiduong.TuNgay);
+                var denngay = tedu.getFormattedDate(giaydiduong.DenNgay);
+                var ghichu = giaydiduong.GhiChu;
+
+                var template = $('#template-table-CLGiayDiDuongIn').html();
+                var render = Mustache.render(template, {
+                    Id: 0,
+                    NgayNhap: ngaynhap,
+                    Ten: tennhanvien,
+                    ChucVu: chucvu,
+                    TuNgay: tungay,
+                    DenNgay: denngay,
+                    CongTacTai: getCongTacTai(giaydiduong.Status),//1 ngoai tinh; 2 trong tinh
+                    LyDo: lydo,
+                    GhiChu: ghichu
+                });
+
+                $('#table-CLGiayDiDuongIn-content').append(render);
+
+                var counttable = $('tr', $('#table-responsiveCLGiayDDIn').find('tbody')).length;
+
+                $('#lblTableCLGiayDDInTotalRecords').text(counttable);
+
+                $('.txtDenNgayIn').datepicker({
+                    autoclose: true,
+                    format: 'dd/mm/yyyy',
+                    language: 'vi'
+                });
+
+                //var guid = CreateGuid();
+                //$('#hidCodeFileGuidId').val(vanbanden.CodeFileGuidId === '00000000-0000-0000-0000-000000000000' ? guid : vanbanden.CodeFileGuidId);
+                tedu.stopLoading();
+            },
+            error: function (status) {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
+        });        
+       
+    }
+
+    function saveIn() {
+        var giaydiduongList = [];
+        $.each($('#table-CLGiayDiDuongIn-content').find('tr'), function (i, item) {
+            giaydiduongList.push({
+                Id: 0,
+                NgayNhap: tedu.getFormattedDateYYYYMMDD($(item).find('input.txtNgayNhapIn').first().val()),
+                Ten: $(item).find('input.txtTenIn').first().val(),
+                ChucVu: $(item).find('input.txtChucVuIn').first().val(),
+                TuNgay: tedu.getFormattedDateYYYYMMDD($(item).find('input.txtTuNgayIn').first().val()),
+                DenNgay: tedu.getFormattedDateYYYYMMDD($(item).find('input.txtDenNgayIn').first().val()),
+                CongTacTai: $(item).find('select.ddlCLGiayDDThem2').first().val(),//1 trong tinh; 2 ngoai tinh                //LyDo: lydo,
+                GhiChu: $(item).find('input.txtGhiChuIn').first().val()                   
+                //Quantity: $(item).find('input.txtQuantity').first().val(),               
+                //ColorId: $(item).find('select.ddlColorId').first().val()
+            });
+        });
+
+        var xml = '';
+        xml = xml + "<tables>";
+        for (var i = 0; i < giaydiduongList.length; i++) {
+            var listfield = giaydiduongList[i];
+            xml += "<items>";
+            xml += '<Id>0</Id>';
+            xml += '<NgayNhap>' + listfield.NgayNhap + '</NgayNhap>';
+            xml += '<Ten>' + listfield.Ten + '</Ten>';
+            xml += '<ChucVu>' + listfield.ChucVu + '</ChucVu>';
+            xml += '<TuNgay>' + listfield.TuNgay + '</TuNgay>';
+            xml += '<DenNgay>' + listfield.DenNgay + '</DenNgay>';
+            xml += '<CongTacTai>' + listfield.CongTacTai + '</CongTacTai>';
+            xml += '<GhiChu>' + listfield.GhiChu + '</GhiChu>';
+            xml += "</items>";
+        }
+        xml = xml + '</tables>';
+
+        //console.log(xml);
+
+        $.ajax({
+            type: "POST",
+            url: '/admin/CLGiayDD/SaveXML',
+            data: {
+                giaydiduongXML: xml,
+                username: userCorporationId
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function () {
+                tedu.notify("Thanh cong nhe","success");
+                tedu.stopLoading();
+                //quantitiesClearData();
+                //$('#modal-quantity-management').modal('hide');
+                //$('#table-quantity-content').html('');
             }
         });
     }

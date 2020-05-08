@@ -63,6 +63,34 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetCLGiayDD(long giaydiduongid)
+        {            
+            var model = await _giaydiduong.GetGiayDiDuong(giaydiduongid);
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SaveXML(string giaydiduongXML, string username2)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var username = User.GetSpecificClaim("UserName");
+                var codeGui = Guid.NewGuid();
+
+                var productQuantities = await _giaydiduong.SaveXML(giaydiduongXML, codeGui, username);
+
+                return new OkObjectResult(productQuantities);                
+            }
+        }
+       
+
         #endregion
 
     }

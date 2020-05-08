@@ -69,5 +69,53 @@ namespace NiTiErp.Application.Dapper.Implementation
             }
         }
 
+        public async Task<GiayDiDuongViewModel> GetGiayDiDuong(long id)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@Id", id);
+
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<GiayDiDuongViewModel>(
+                        "Get_GiayDiDuong_ById", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return query.Single();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<bool> SaveXML(string giaydiduongXML, Guid code, string username)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@giaydiduongXML", giaydiduongXML);
+                dynamicParameters.Add("@code", code);
+                dynamicParameters.Add("@CreateBy", username);               
+
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<GiayDiDuongViewModel>(
+                        "Create_GiayDiDuongXML", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return true;
+                    
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+
     }
 }
