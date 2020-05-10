@@ -14,6 +14,8 @@
 
         loadData();
         clearData();
+        loadNewGuid();
+
         //addeditclgdd.initialize();
     }
 
@@ -150,12 +152,17 @@
         });
     }
 
+    function loadNewGuid() {
+        var newGuid = tedu.getNewGuid();
+        $('hidNewGuidGiayDD').val(newGuid);
+    }
+
     function loadData() {
         loadAutocomplete();
 
         cachedObj.congtactai = [{ Id: '1', Value: 'Trong tỉnh' }, { Id: '2', Value: 'Ngoài tỉnh' }];
         $('#txtLyDo').val("Công tác");
-        $('#lblTableCLGiayDDInTotalRecords').text('0');
+        $('#lblTableCLGiayDDInTotalRecords').text('0');        
     }
 
     function clearData() {
@@ -168,8 +175,8 @@
         $('#txtLyDo').val('Công tác');
         $('#txtTuNgay').val('');
         $('#txtDenNgay').val('');
-        $('#txtGhiChu').val('');
-        
+        $('#txtGhiChu').val('');   
+
         //$('#ddlCongTacTai')[0].selectedIndex = 0;
     }
 
@@ -236,6 +243,8 @@
     function xoaHet() {
         $('#table-CLGiayDiDuongIn-content').html(''); 
         $('#lblTableCLGiayDDInTotalRecords').text('0');
+
+        loadNewGuid();
     }
 
     function themNhanVienPhong() {
@@ -493,6 +502,8 @@
 
     function saveIn() {
         var giaydiduongList = [];
+        var newGUid = $('hidNewGuidGiayDD').val();
+
         $.each($('#table-CLGiayDiDuongIn-content').find('tr'), function (i, item) {
             giaydiduongList.push({
                 Id: 0,
@@ -532,19 +543,40 @@
             url: '/admin/CLGiayDD/SaveXML',
             data: {
                 giaydiduongXML: xml,
-                username: userCorporationId
+                username: userCorporationId,
+                newguid: newGUid
             },
             dataType: "json",
             beforeSend: function () {
                 tedu.startLoading();
             },
             success: function () {
-                tedu.notify("Thanh cong nhe","success");
-                tedu.stopLoading();
-                //quantitiesClearData();
-                //$('#modal-quantity-management').modal('hide');
-                //$('#table-quantity-content').html('');
+                tedu.notify("Save data..", "success");
+                printGiayDD();
+                tedu.stopLoading();                
             }
+        });
+    }
+
+    function printGiayDD() {
+        $("#divInHoSoNhanVien").print({
+            //Use Global styles
+            globalStyles: false,
+            //Add link with attrbute media=print
+            mediaPrint: true,
+            //Custom stylesheet
+            stylesheet: "http://fonts.googleapis.com/css?family=Inconsolata",
+            //Print in a hidden iframe
+            iframe: false,
+            //Don't print this
+            noPrintSelector: ".avoid-this",
+            //Add this at top
+            //prepend: "Hello World!!!",   //Add this on bottom
+            //append : "Buh Bye!",      //Log to console when printing is done via a deffered callback
+            deferred: $.Deferred().done(function () {
+                console.log('Printing done', arguments);
+            }),
+            doctype: '<!doctype html> '
         });
     }
 

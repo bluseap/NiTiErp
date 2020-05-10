@@ -72,7 +72,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SaveXML(string giaydiduongXML, string username2)
+        public async Task<IActionResult> SaveXML(string giaydiduongXML, string username2, Guid newguid)
         {
             if (!ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             else
             {
                 var username = User.GetSpecificClaim("UserName");
-                var codeGui = Guid.NewGuid();
+                var codeGui = newguid;
 
                 var productQuantities = await _giaydiduong.SaveXML(giaydiduongXML, codeGui, username);
 
