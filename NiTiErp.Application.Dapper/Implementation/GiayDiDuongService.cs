@@ -91,6 +91,28 @@ namespace NiTiErp.Application.Dapper.Implementation
             }
         }
 
+        public async Task<List<GiayDiDuongViewModel>> GetCodeGiayDD(Guid codegiaydiduong)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@codegiaydiduong", codegiaydiduong);
+
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<GiayDiDuongViewModel>(
+                        "Get_GiayDiDuong_ByCode", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return query.AsList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         public async Task<bool> SaveXML(string giaydiduongXML, Guid code, string username)
         {
             using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))

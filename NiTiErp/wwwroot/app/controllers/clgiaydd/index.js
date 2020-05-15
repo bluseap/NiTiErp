@@ -154,7 +154,7 @@
 
     function loadNewGuid() {
         var newGuid = tedu.getNewGuid();
-        $('hidNewGuidGiayDD').val(newGuid);
+        $('#hidNewGuidGiayDD').val(newGuid);
     }
 
     function loadData() {
@@ -502,16 +502,16 @@
 
     function saveIn() {
         var giaydiduongList = [];
-        var newGUid = $('hidNewGuidGiayDD').val();
+        var newGUid = $('#hidNewGuidGiayDD').val();
 
         $.each($('#table-CLGiayDiDuongIn-content').find('tr'), function (i, item) {
             giaydiduongList.push({
                 Id: 0,
-                NgayNhap: tedu.getFormattedDateYYYYMMDD($(item).find('input.txtNgayNhapIn').first().val()),
+                NgayNhap: tedu.getFormatDateYYyyMMDD2($(item).find('input.txtNgayNhapIn').first().val()),
                 Ten: $(item).find('input.txtTenIn').first().val(),
                 ChucVu: $(item).find('input.txtChucVuIn').first().val(),
-                TuNgay: tedu.getFormattedDateYYYYMMDD($(item).find('input.txtTuNgayIn').first().val()),
-                DenNgay: tedu.getFormattedDateYYYYMMDD($(item).find('input.txtDenNgayIn').first().val()),
+                TuNgay: tedu.getFormatDateYYyyMMDD2($(item).find('input.txtTuNgayIn').first().val()),
+                DenNgay: tedu.getFormatDateYYyyMMDD2($(item).find('input.txtDenNgayIn').first().val()),
                 CongTacTai: $(item).find('select.ddlCLGiayDDThem2').first().val(),//1 trong tinh; 2 ngoai tinh                //LyDo: lydo,
                 GhiChu: $(item).find('input.txtGhiChuIn').first().val()                   
                 //Quantity: $(item).find('input.txtQuantity').first().val(),               
@@ -552,14 +552,61 @@
             },
             success: function () {
                 tedu.notify("Save data..", "success");
-                printGiayDD();
+                loadInGiayDiDuong();               
                 tedu.stopLoading();                
             }
         });
     }
 
+    function loadInGiayDiDuong() {
+        var template = $('#table-InGiayDiDuong2').html();
+        var render = "";
+        var codeGDD = $('#hidNewGuidGiayDD').val();
+
+        $.ajax({
+            type: 'GET',
+            url: '/admin/CLGiayDD/GetCodeCLGiayDD',
+            data: {
+                codegiaydiduong: codeGDD
+            },
+            dataType: 'json',
+            success: function (response) {
+                if (response.length === 0) {
+                    tedu.notify("Không có dữ liệu in. Kiểm tra lai.", "error");
+                }
+                else {
+                    $.each(response, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+                            NgayNhap: tedu.getFormattedDate(item.NgayNhap),
+                            Ten: item.Ten,
+                            ChucVu: item.ChucVu,
+                            SoGDD: item.SoGDD,
+                            //HinhNhanVien: item.Image === null ? '<img src="/admin-side/images/user.png?h=90"' : '<img src="' + item.HinhNhanVien + '?h=90" />',
+                            TuNgay: tedu.getFormattedDate(item.TuNgay),
+                            DenNgay: tedu.getFormattedDate(item.DenNgay),
+                            CongTacTai: item.CongTacTai,
+                            LyDo: item.LyDo,
+                            GhiChu: item.GhiChu
+                        });
+                    });
+                }                
+
+                if (render !== '') {
+                    $('#tblContenInGiayDiDuong2').html(render);
+                }
+
+                printGiayDD();
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });        
+    }
+
     function printGiayDD() {
-        $("#divInHoSoNhanVien").print({
+        $("#divInGiayDiDuong2").print({
             //Use Global styles
             globalStyles: false,
             //Add link with attrbute media=print

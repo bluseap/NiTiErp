@@ -217,6 +217,13 @@
 
         return f;
     },    
+    getFormatDateYYyyMMDD2: function (datetime) {
+        var ngaysinh = datetime.split("/");
+        var f = ngaysinh[2].toString() + "/" + (ngaysinh[1]).toString() + "/" +
+            ngaysinh[0].toString();
+
+        return f;
+    },  
 
     dateFormatJson: function (datetime) {
         if (datetime === null || datetime === '')

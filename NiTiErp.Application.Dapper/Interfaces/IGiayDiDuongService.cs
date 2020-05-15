@@ -14,6 +14,8 @@ namespace NiTiErp.Application.Dapper.Interfaces
 
         Task<GiayDiDuongViewModel> GetGiayDiDuong(long id);
 
+        Task<List<GiayDiDuongViewModel>> GetCodeGiayDD(Guid codegiaydiduong);
+
         Task<bool> SaveXML(string giaydiduongXML, Guid code, string username);
 
     }

@@ -71,6 +71,14 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetCodeCLGiayDD(Guid codegiaydiduong)
+        {
+            var model = await _giaydiduong.GetCodeGiayDD(codegiaydiduong);
+
+            return new OkObjectResult(model);
+        }
+
         [HttpPost]
         public async Task<IActionResult> SaveXML(string giaydiduongXML, string username2, Guid newguid)
         {
