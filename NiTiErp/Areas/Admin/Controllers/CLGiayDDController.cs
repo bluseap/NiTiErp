@@ -57,7 +57,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             var phong = !string.IsNullOrEmpty(maphongIc) ? maphongIc : "%";
             var tennv = !string.IsNullOrEmpty(keyword) ? keyword : "%";
 
-            var model = await _giaydiduong.ListGiayDiDuongKVPhong(khuvucId, maphongIc, tennv, 
+            var model = await _giaydiduong.ListGiayDiDuongKVPhong(khuvuc, phong, tennv, 
                 page, pageSize);
 
             return new OkObjectResult(model);

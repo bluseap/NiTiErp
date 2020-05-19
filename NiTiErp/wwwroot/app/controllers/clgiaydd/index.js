@@ -356,7 +356,7 @@
         var render = "";
 
         var makhuvuc = $('#ddlKhuVuc').val();
-        var maphong = $('#ddlPhongBan').val();
+        var maphong = "%";//$('#ddlPhongBan').val();
         var timnoidung = $('#txtTimNoiDung').val();
 
         $.ajax({
@@ -606,25 +606,32 @@
     }
 
     function printGiayDD() {
-        $("#divInGiayDiDuong2").print({
-            //Use Global styles
-            globalStyles: false,
-            //Add link with attrbute media=print
-            mediaPrint: true,
-            //Custom stylesheet
-            stylesheet: "http://fonts.googleapis.com/css?family=Inconsolata",
-            //Print in a hidden iframe
-            iframe: false,
-            //Don't print this
-            noPrintSelector: ".avoid-this",
-            //Add this at top
-            //prepend: "Hello World!!!",   //Add this on bottom
-            //append : "Buh Bye!",      //Log to console when printing is done via a deffered callback
-            deferred: $.Deferred().done(function () {
-                console.log('Printing done', arguments);
-            }),
-            doctype: '<!doctype html> '
-        });
+        $('#divInGiayDiDuong2').printThis({
+            styles: ['/admin-side/css/trangin.css']
+            // also accept array input: include: [<array>]
+            // you can specify id, class or even html element tag
+        });	
+        loadNewGuid();
+
+        //$("#divInGiayDiDuong2").print({
+        //    //Use Global styles
+        //    globalStyles: false,
+        //    //Add link with attrbute media=print
+        //    mediaPrint: true,
+        //    //Custom stylesheet
+        //    stylesheet: "http://fonts.googleapis.com/css?family=Inconsolata",
+        //    //Print in a hidden iframe
+        //    iframe: false,
+        //    //Don't print this
+        //    noPrintSelector: ".avoid-this",
+        //    //Add this at top
+        //    //prepend: "Hello World!!!",   //Add this on bottom
+        //    //append : "Buh Bye!",      //Log to console when printing is done via a deffered callback
+        //    deferred: $.Deferred().done(function () {
+        //        console.log('Printing done', arguments);
+        //    }),
+        //    doctype: '<!doctype html> '
+        //});
     }
 
 }

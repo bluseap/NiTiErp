@@ -45,22 +45,17 @@ namespace NiTiErp.Application.Dapper.Implementation
                         "Get_GiayDiDuong_ByKhuVucPhong", dynamicParameters, commandType: CommandType.StoredProcedure);
 
                     var query = giaydiduong.AsQueryable();
+                    
+                    int totalRow = dynamicParameters.Get<int>("@totalRow");                    
 
-                    int totalRow = query.Count();
-
-                    query = query.OrderByDescending(x => x.CreateDate)
-                        .Skip((pageIndex - 1) * pageSize).Take(pageSize);
-
-                    var data = query.ToList();
-
-                    var paginationSet = new PagedResult<GiayDiDuongViewModel>()
+                    var pagedResult = new PagedResult<GiayDiDuongViewModel>()
                     {
-                        Results = data,
-                        CurrentPage = pageIndex,
+                        Results = query.ToList(),
                         RowCount = totalRow,
+                        CurrentPage = pageIndex,
                         PageSize = pageSize
                     };
-                    return paginationSet;
+                    return pagedResult;                   
                 }
                 catch (Exception ex)
                 {
