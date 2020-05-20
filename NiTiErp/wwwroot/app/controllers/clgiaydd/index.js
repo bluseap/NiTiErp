@@ -116,7 +116,7 @@
 
                 loadPhongKhuVuc(makv);
 
-                //loadTableCLGiayDD();
+                loadAutocomplete();
 
             },
             error: function (status) {
@@ -157,8 +157,7 @@
         $('#hidNewGuidGiayDD').val(newGuid);
     }
 
-    function loadData() {
-        loadAutocomplete();
+    function loadData() {       
 
         cachedObj.congtactai = [{ Id: '1', Value: 'Trong tỉnh' }, { Id: '2', Value: 'Ngoài tỉnh' }];
         $('#txtLyDo').val("Công tác");
@@ -293,9 +292,10 @@
                             CongTacTai: getCongTacTai(ddlCLGiayDDThem),
                             LyDo: lydo,
                             GhiChu: ghichu
-                        });
-                        $('#table-CLGiayDiDuongIn-content').append(render);
+                        });                        
                     });
+
+                    $('#table-CLGiayDiDuongIn-content').append(render);
 
                     var counttable = $('tr', $('#table-responsiveCLGiayDDIn').find('tbody')).length;
 
@@ -579,6 +579,9 @@
                         render += Mustache.render(template, {
                             Id: item.Id,
                             NgayNhap: tedu.getFormattedDate(item.NgayNhap),
+                            Ngay: tedu.getFormattedDateDD(item.NgayNhap),
+                            Thang: tedu.getFormattedDateMM(item.NgayNhap),
+                            Nam: tedu.getFormattedDateYY(item.NgayNhap),
                             Ten: item.Ten,
                             ChucVu: item.ChucVu,
                             SoGDD: item.SoGDD,

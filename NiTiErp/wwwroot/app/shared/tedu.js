@@ -211,6 +211,43 @@
 
     },
 
+    getFormattedDateYY: function (datetime) {
+        if (datetime === null || datetime === '')
+            return '';
+
+        var newdate = new Date(datetime);
+        
+        var year = newdate.getFullYear();
+
+        return year.toString().substring(2, 4);
+    },
+    getFormattedDateMM: function (datetime) {
+        if (datetime === null || datetime === '')
+            return '';
+
+        var newdate = new Date(datetime);
+
+        var month = newdate.getMonth() + 1;          
+
+        if (month < 10)
+            month = "0" + month;       
+       
+        return month;
+    },
+    getFormattedDateDD: function (datetime) {
+        if (datetime === null || datetime === '')
+            return '';
+
+        var newdate = new Date(datetime);
+       
+        var day = newdate.getDate();     
+
+        if (day < 10)
+            day = "0" + day;        
+       
+        return day;
+    },
+
     getFormatDateYYMMDD: function (datetime) {    
         var ngaysinh = datetime.split("/");
         var f = new Date(ngaysinh[2], ngaysinh[1] - 1, ngaysinh[0]).toDateString("yyyy/MM/dd");

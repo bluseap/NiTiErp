@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #FAFAFA;
-    font: 12pt "TimesNewRoman";
+    font: "TimesNewRoman";
 }
 * {
     box-sizing: border-box;
@@ -57,22 +57,23 @@ body {
 }
 .sogdd {
 	display: block;  	
-	padding-left:40px;
+    padding-top:30px;
+	padding-left:48px;
 	background-color: #FFFFFF; 
-	font-size:12px;
+	font-size:13px;
 }
 .tennv1 {
 	display: block; 
-	padding-top:30px;	
-	padding-left:220px;	
+	padding-top:32px;	
+	padding-left:227px;	
 	background-color: #FFFFFF; 
-	font-size:12px;
+	font-size:13px;
 }
 .chucvu1 {
 	display: inline-block; 	 
-	padding-right:15px;	
+	padding-right:16px;	
 	background-color: #FFFFFF; 
-	font-size:12px;
+	font-size:13px;
 	text-align:right;
     float:right;
 }
@@ -80,9 +81,9 @@ body {
 .congtactai1 {
 	display: block; 
 	padding-top:7px;	
-	padding-left:220px;	
+	padding-left:253px;	
 	background-color: #FFFFFF; 
-	font-size:12px;
+	font-size:13px;
 }
 
 .lydo1 {
@@ -90,42 +91,42 @@ body {
 	padding-top:7px;	
 	padding-left:150px;	
 	background-color: #FFFFFF; 
-	font-size:12px;
+	font-size:13px;
 }
 .tungay1 {
     display: block; 
-	padding-top:7px;	
+	padding-top:8px;	
 	padding-left:190px;	
 	background-color: #FFFFFF; 
-	font-size:12px;
+	font-size:13px;
 }
 .denngay1 {
     display: inline-block; 	 
 	padding-right:80px;	
 	background-color: #FFFFFF; 
-	font-size:12px;
+	font-size:13px;
 	text-align:right;
     float:right;
 }
 
 .sogdd2 {
 	display: block;  	
-	padding-left:40px;
+	padding-left:70px;
 	background-color: #FFFFFF; 
-	font-size:12px;
+	font-size:13px;
 }
 .tennv2 {
 	display: block; 
 	padding-top:30px;	
-	padding-left:220px;	
+	padding-left:227px;	
 	background-color: #FFFFFF; 
-	font-size:12px;
+	font-size:13px;
 }
 .chucvu2 {
 	display: inline-block; 	 
 	padding-right:15px;	
 	background-color: #FFFFFF; 
-	font-size:12px;
+	font-size:13px;
 	text-align:right;
     float:right;
 }
@@ -133,39 +134,39 @@ body {
 .congtactai2 {
 	display: block; 
 	padding-top:7px;	
-	padding-left:220px;	
+	padding-left:232px;	
 	background-color: #FFFFFF; 
-	font-size:12px;
+	font-size:13px;
 }
 
 .lydo2 {
     display: block; 
-	padding-top:7px;	
+	padding-top:8px;	
 	padding-left:150px;	
 	background-color: #FFFFFF; 
-	font-size:12px;
+	font-size:13px;
 }
 .tungay2 {
     display: block; 
-	padding-top:7px;	
+	padding-top:8px;	
 	padding-left:190px;	
 	background-color: #FFFFFF; 
-	font-size:12px;
+	font-size:13px;
 }
 .denngay2 {
     display: inline-block; 	 
 	padding-right:80px;	
 	background-color: #FFFFFF; 
-	font-size:12px;
+	font-size:13px;
 	text-align:right;
     float:right;
 }
 .ngaynhap {
     display: block; 
-	padding-top:7px;	
+	padding-top:8px;	
 	padding-right:15px;	
 	background-color: #FFFFFF; 
-	font-size:12px;
+	font-size:13px;
 	text-align:right;
     float:right;
 }
@@ -174,7 +175,7 @@ body {
 	padding-left:60px;		
 	padding-right:60px;	
 	background-color: #FFFFFF; 
-	font-size:12px;
+	font-size:13px;
 	text-align:right;
     float:right;
 }
@@ -182,10 +183,9 @@ body {
     display: inline-block; 	 
 	padding-right:0px;	
 	background-color: #FFFFFF; 
-	font-size:12px;
+	font-size:13px;
 	text-align:right;
-    float:right;
-	text-color:red;
+    float:right;	
 }
 
 
