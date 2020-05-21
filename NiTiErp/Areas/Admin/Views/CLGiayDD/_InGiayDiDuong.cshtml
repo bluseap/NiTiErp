@@ -1,38 +1,44 @@
 ﻿
 <div id="modal-In-HoSoNhanVien" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    @*<div class="modal-dialog  modal-lg">*@
+   
         <div id="divInGiayDiDuong2"> 
             <div id="table-responsiveInGiayDiDuong2" >
-                <table id="tblInGiayDiDuong2" >
+                <table id="tblInGiayDiDuong2" class="report-container">
+                    <thead class="report-header">  </thead>
                     <tbody id="tblContenInGiayDiDuong2"></tbody>
+                    <tfoot class="report-footer">  </tfoot>
                 </table>
             </div>                
             <script id="table-InGiayDiDuong2" type="x-tmpl-mustache">
-                <div id="div_to_print" class="page">
-                    <span class="sogdd">{{SoGDD}}</span>
-                    <span class="tennv1"> {{Ten}}<span class="chucvu1">{{ChucVu}}</span></span>
-                    <span class="congtactai1">{{CongTacTai}}</span>
-                    <span class="lydo1">{{LyDo}}</span>
-                    <span class="tungay1">{{TuNgay}}<span class="denngay1">{{DenNgay}}</span> </span>
-                    </br></br></br></br></br></br></br></br></br></br>
-                    </br></br></br></br>
-                    <span class="sogdd2">{{SoGDD}}</span>
-                    <span class="tennv2"> {{Ten}}<span class="chucvu2">{{ChucVu}}</span></span>
-                    <span class="congtactai2">{{CongTacTai}}</span>
-                    <span class="lydo2">{{LyDo}}</span>
-                    <span class="tungay2">{{TuNgay}}<span class="denngay2">{{DenNgay}}</span> </span>
-                    </br>
-                    <span class="ngaynhap">
-                        {{Ngay}}
-                        <span class="namnhap">{{Nam}}</span>
-                        <span class="thangnhap">{{Thang}}</span>
-                    </span>
-                    </br></br></br></br></br></br></br></br></br></br>
-                    </br></br></br></br></br>
-                    </br></br></br></br></br></br></br></br></br></br>
-                    </br></br></br>
-                </div>
+                <tr>
+                    <td>
+                        <div id="div_to_print" class="page">
+                            <span class="sogdd">{{SoGDD}}</span>
+                            <span class="tennv1"> {{Ten}}<span class="chucvu1">{{ChucVu}}</span></span>
+                            <span class="congtactai1">{{CongTacTai}}</span>
+                            <span class="lydo1">{{LyDo}}</span>
+                            <span class="tungay1">{{TuNgay}}<span class="denngay1">{{DenNgay}}</span> </span>
+                            </br></br></br></br></br></br></br></br></br></br>
+                            </br></br></br></br>
+                            <span class="sogdd2">{{SoGDD}}</span>
+                            <span class="tennv2"> {{Ten}}<span class="chucvu2">{{ChucVu}}</span></span>
+                            <span class="congtactai2">{{CongTacTai}}</span>
+                            <span class="lydo2">{{LyDo}}</span>
+                            <span class="tungay2">{{TuNgay}}<span class="denngay2">{{DenNgay}}</span> </span>
+                            </br>
+                            <span class="ngaynhap">
+                                {{Ngay}}
+                                <span class="namnhap">{{Nam}}</span>
+                                <span class="thangnhap">{{Thang}}</span>
+                            </span>
+                            </br></br></br></br></br></br></br></br></br></br>
+                            </br></br></br></br></br>
+                            </br></br></br></br></br></br></br></br></br></br>
+                            </br></br></br>
+                        </div>
+                    </td>
+                </tr>
             </script>
         </div>      
-    @*</div>*@
+    
 </div>

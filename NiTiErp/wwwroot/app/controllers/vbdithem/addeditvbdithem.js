@@ -1037,7 +1037,7 @@
                 tedu.startLoading();
             },
             success: function (response) {
-                var render = "<option value='%' >--- Lựa chọn ---</option>";
+                var render = "<option value='0' >--- Lựa chọn ---</option>";
                 $.each(response.Result, function (i, item) {
                     render += "<option value='" + item.Id + "'>" + item.SoVaKyHieu + "</option>";
                 });
