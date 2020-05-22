@@ -51,6 +51,9 @@
         $('body').on('click', '.btn-delete-CLGiayDiDuongIn', function (e) {
             e.preventDefault();
             $(this).closest('tr').remove();
+
+            var counttable = $('tr', $('#table-responsiveCLGiayDDIn').find('tbody')).length;
+            $('#lblTableCLGiayDDInTotalRecords').text(counttable);
         });
 
         $('#btnCLGiayDDCLear').on('click', function () {
@@ -242,7 +245,6 @@
     function xoaHet() {
         $('#table-CLGiayDiDuongIn-content').html(''); 
         $('#lblTableCLGiayDDInTotalRecords').text('0');
-
         loadNewGuid();
     }
 

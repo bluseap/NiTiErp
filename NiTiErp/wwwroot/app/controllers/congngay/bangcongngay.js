@@ -1044,7 +1044,6 @@ function isNgayKyHieuChamCong(kyhieu) {
         || kyhieu === 'T'
         || kyhieu === 'CN'
     ) {
-
         return true;
     }
     else {
