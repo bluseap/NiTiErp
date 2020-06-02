@@ -25,7 +25,7 @@ namespace NiTiErp.WebApi.Filters
         public void OnAuthorization(AuthorizationFilterContext context)
         {
             var claimsIdentity = context.HttpContext.User.Identity as ClaimsIdentity;
-            var permissionsClaim = context.HttpContext.User.Claims.SingleOrDefault(c => c.Type == SystemConstants.UserClaim.Permissions);
+            var permissionsClaim = context.HttpContext.User.Claims.SingleOrDefault(c => c.Type == NiTiAPI.Utilities.Constants.SystemConstants.UserClaim.Permissions);
             if (permissionsClaim != null)
             {
                 var permissions = JsonConvert.DeserializeObject<List<string>>(permissionsClaim.Value);

@@ -14,12 +14,12 @@
   
   
   <ItemGroup>
+    <ProjectReference Include="..\NiTiAPI.Utilities\NiTiAPI.Utilities.csproj" />
     <ProjectReference Include="..\NiTiErp.Application.Dapper\NiTiErp.Application.Dapper.csproj" />
     <ProjectReference Include="..\NiTiErp.Application\NiTiErp.Application.csproj" />
     <ProjectReference Include="..\NiTiErp.Data.EF\NiTiErp.Data.EF.csproj" />
     <ProjectReference Include="..\NiTiErp.Data\NiTiErp.Data.csproj" />
     <ProjectReference Include="..\NiTiErp.Infrastructure\NiTiErp.Infrastructure.csproj" />
-    <ProjectReference Include="..\NiTiErp.Utilities\NiTiErp.Utilities.csproj" />
   </ItemGroup>
   
   

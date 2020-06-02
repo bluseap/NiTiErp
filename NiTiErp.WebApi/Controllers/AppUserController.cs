@@ -5,10 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+
 using NiTiErp.Application.Dapper.ViewModels;
-using NiTiErp.Utilities.Constants;
 using NiTiErp.WebApi.Extensions;
 using NiTiErp.WebApi.Filters;
+
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -59,11 +60,11 @@ namespace NiTiErp.WebApi.Controllers
                 var claims = new[]
                 {
                     new Claim("Email", user.Email),
-                    new Claim(SystemConstants.UserClaim.Id, user.Id.ToString()),
+                    new Claim(NiTiAPI.Utilities.Constants.SystemConstants.UserClaim.Id, user.Id.ToString()),
                     new Claim(ClaimTypes.Name, user.UserName),
-                    new Claim(SystemConstants.UserClaim.FullName, user.FullName??string.Empty),
-                    new Claim(SystemConstants.UserClaim.Roles, string.Join(";", roles)),
-                    new Claim(SystemConstants.UserClaim.Permissions, JsonConvert.SerializeObject(permissions)),
+                    new Claim(NiTiAPI.Utilities.Constants.SystemConstants.UserClaim.FullName, user.FullName??string.Empty),
+                    new Claim(NiTiAPI.Utilities.Constants.SystemConstants.UserClaim.Roles, string.Join(";", roles)),
+                    new Claim(NiTiAPI.Utilities.Constants.SystemConstants.UserClaim.Permissions, JsonConvert.SerializeObject(permissions)),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
                 };
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Tokens:Key"]));
