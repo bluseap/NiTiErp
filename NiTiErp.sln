@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiTiErp", "NiTiErp\NiTiErp.csproj", "{A7534DCF-B241-4F31-A898-225D5D742449}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -64,7 +64,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiTiAPI.Utilities", "NiTiAP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiTiAPI.WebErp", "NiTiAPI.WebErp\NiTiAPI.WebErp.csproj", "{C531BEE4-5AC3-4297-8383-92AFD6AFD151}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NiTiAPI.Infrastructure", "NiTiAPI.Infrastructure\NiTiAPI.Infrastructure.csproj", "{4D61E42F-DAF3-4E99-BDAD-4726A82597BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NiTiAPI.Infrastructure", "NiTiAPI.Infrastructure\NiTiAPI.Infrastructure.csproj", "{4D61E42F-DAF3-4E99-BDAD-4726A82597BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NiTiApp", "NiTiApp\NiTiApp.csproj", "{BF33A8EF-E684-45D6-8AAF-66B29830E00A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -124,6 +126,10 @@ Global
 		{4D61E42F-DAF3-4E99-BDAD-4726A82597BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D61E42F-DAF3-4E99-BDAD-4726A82597BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D61E42F-DAF3-4E99-BDAD-4726A82597BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF33A8EF-E684-45D6-8AAF-66B29830E00A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF33A8EF-E684-45D6-8AAF-66B29830E00A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF33A8EF-E684-45D6-8AAF-66B29830E00A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF33A8EF-E684-45D6-8AAF-66B29830E00A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -142,6 +148,7 @@ Global
 		{6497E03F-778E-43D9-8DF7-C73908A42F2F} = {0C9FF5A2-ED49-4384-87C4-CB683CCE9CAA}
 		{C531BEE4-5AC3-4297-8383-92AFD6AFD151} = {5D68087A-0EDF-43F9-B1A3-02D324EE3FC3}
 		{4D61E42F-DAF3-4E99-BDAD-4726A82597BD} = {0C9FF5A2-ED49-4384-87C4-CB683CCE9CAA}
+		{BF33A8EF-E684-45D6-8AAF-66B29830E00A} = {5D68087A-0EDF-43F9-B1A3-02D324EE3FC3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B330B1D3-E537-4DE2-92E3-AFF4FCFB5559}
