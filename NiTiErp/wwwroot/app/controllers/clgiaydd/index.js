@@ -452,7 +452,7 @@
                 tedu.startLoading();
             },
             success: function (response) {
-                var giaydiduong = response.Result[0];
+                var giaydiduong = response;
 
                 var ngaynhap = $('#txtNgayNhap').val();
                 var tennhanvien = giaydiduong.Ten;

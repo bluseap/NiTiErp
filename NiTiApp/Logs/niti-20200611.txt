@@ -1,0 +1,8 @@
+2020-06-11T08:32:10.2866322+07:00 0HM0DKT1ADKIT:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44386/   (ca22a1cb)
+2020-06-11T08:32:10.7159786+07:00 0HM0DKT1ADKIT:00000001 [INF] Route matched with "{action = \"Index\", controller = \"Home\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index()" on controller "NiTiApp.Controllers.HomeController" ("NiTiApp"). (122b2fdf)
+2020-06-11T08:32:10.7328410+07:00 0HM0DKT1ADKIT:00000001 [INF] Executing action method "NiTiApp.Controllers.HomeController.Index (NiTiApp)" - Validation state: Valid (dad538d7)
+2020-06-11T08:32:10.7385089+07:00 0HM0DKT1ADKIT:00000001 [INF] Executed action method "NiTiApp.Controllers.HomeController.Index (NiTiApp)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.6266ms. (50a9e262)
+2020-06-11T08:32:10.7712535+07:00 0HM0DKT1ADKIT:00000001 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2020-06-11T08:32:10.9277154+07:00 0HM0DKT1ADKIT:00000001 [INF] Executed ViewResult - view "Index" executed in 178.1512ms. (f66409e9)
+2020-06-11T08:32:10.9282228+07:00 0HM0DKT1ADKIT:00000001 [INF] Executed action "NiTiApp.Controllers.HomeController.Index (NiTiApp)" in 211.5232ms (afa2e885)
+2020-06-11T08:32:10.9430362+07:00 0HM0DKT1ADKIT:00000001 [INF] Request finished in 665.4229ms 200 text/html; charset=utf-8 (791a596a)

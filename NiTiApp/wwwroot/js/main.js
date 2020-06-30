@@ -39,11 +39,14 @@
     scrollProperty: 'scroll'
   });
 
-	$("#body-main").on('click', function (e) {	
-		e.preventDefault();
-		var collapse = $('.collapse');
-		collapse.hide();
-	});
+	//$(".body").on('click', function () {			
+	//	var collapse = $('.collapse');
+	//	collapse.hide();		
+	//});
+	//$("#aWeb1Trang").attr("href", "#web1trang");
+	//$("aWeb1Trang").on("click", function (e) {
+	//	e.preventDefault();
+	//});
 
 	$("#navbarToggler2").on('click', function (e) {
 		e.preventDefault();
