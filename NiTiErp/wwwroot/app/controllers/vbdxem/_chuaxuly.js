@@ -72,6 +72,16 @@
             deleteNhanVienXuLy(vbnvxlid);
         });
 
+        $('#btnChuyenPhongKhacChuaXuLyXuLy').on('click', function () {
+            var chuaxualylai = $('#hidChuaXuLyXuLyLai').val();
+            if (chuaxualylai === "1") {
+                SaveVBDChuaXuLyChuyenPhongKhac();
+            }
+            else if (chuaxualylai === "2") {
+                tedu.notify("Chuyển qua phòng, ban khác lỗi. Kiểm tra lại!","error");
+            }      
+        });
+
     }
 
     function addNhanVienToCCM(hosoid) {
@@ -82,8 +92,7 @@
         var ngaychuyenchuyenmon = tedu.getFormatDateYYMMDD($('#txtNgayChuaXuLyXuLy').val());
 
         $.ajax({
-            type: "GET",
-            //url: "/Admin/vbdduyet/InsertUpdateVBDDNVXL",
+            type: "GET",           
             url: "/Admin/vbdduyet/InsertUpdateVBDDNVXL2",
             data: {
                 InsertVanBanDenDuyetNVXLId: 1,
@@ -673,6 +682,63 @@
                 tedu.stopLoading();
             },
             error: function () {
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function SaveVBDChuaXuLyChuyenPhongKhac() {
+        var vanbandenduyetId = $('#hidVanBanDenDuyetId').val();
+
+        var ghichuxuly = $('#txtGhiChuXuLy').val();
+        var ngaychuaxuly = tedu.getFormatDateYYMMDD($('#txtNgayChuaXuLyXuLy').val());
+
+        var datetimeNow = new Date();
+        var ngayhientai = datetimeNow.getFullYear().toString() + '/' + (datetimeNow.getMonth() + 1).toString() + '/' + datetimeNow.getDay().toString();
+
+        $.ajax({
+            type: "POST",
+            //url: "/Admin/vbdxem/UpdateVanBanDenXuLy",
+            url: "/Admin/vbdxem/UpVBDXuLyChuyenPhong",
+            data: {
+                Id: vanbandenduyetId,
+                VanBanDenDuyetId: vanbandenduyetId,
+                InsertVBDXuLyLId: 2,
+                NgayBatDauXuLy: ngaychuaxuly,
+                GhiChuXuLy: ghichuxuly
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Success === false) {
+                    tedu.notify(response.Message, "error");
+                }
+                else {
+                    tedu.notify('Văn bản xử lý.', 'success');
+
+                    var makv = $('#ddlKhuVuc').val();
+                    loadCountVBDChuaXuLy(makv);
+                    loadCountVBDDangXuLy(makv);
+
+                    $('#hidVanBanDenDuyetId').val('');
+                    $('#txtGhiChuXuLy').val('');
+
+                    $('#tblContentChuaXuLy').html('');
+
+                    $('#modal-add-edit-ChuaXuLyXuLy').modal('hide');
+
+                    $('#hidChuaXuLyXuLyLai').val("0");
+
+                    sendNotificationToAppUser(vanbandenduyetId);
+
+                    loadTableVBDChuaXuLy2(true);
+                    tedu.stopLoading();
+                }
+            },
+            error: function () {
+                tedu.notify('Có lỗi! Không thể lưu Văn bản xử lý chuyển phòng, ban.', 'error');
                 tedu.stopLoading();
             }
         });

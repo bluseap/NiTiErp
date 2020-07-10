@@ -1,0 +1,8 @@
+2020-07-08T09:29:56.0146323+07:00 0HM12SR6OJDS5:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44352/   (ca22a1cb)
+2020-07-08T09:29:56.5879444+07:00 0HM12SR6OJDS5:00000001 [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"Login\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index()" on controller "NiTiErp.Areas.Admin.Controllers.LoginController" ("NiTiErp"). (122b2fdf)
+2020-07-08T09:29:56.6098603+07:00 0HM12SR6OJDS5:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.LoginController.Index (NiTiErp)" - Validation state: Valid (dad538d7)
+2020-07-08T09:29:56.6157530+07:00 0HM12SR6OJDS5:00000001 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.LoginController.Index (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.8268ms. (50a9e262)
+2020-07-08T09:29:56.6552916+07:00 0HM12SR6OJDS5:00000001 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2020-07-08T09:29:56.8639638+07:00 0HM12SR6OJDS5:00000001 [INF] Executed ViewResult - view "Index" executed in 230.2963ms. (f66409e9)
+2020-07-08T09:29:56.8647610+07:00 0HM12SR6OJDS5:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.LoginController.Index (NiTiErp)" in 276.1914ms (afa2e885)
+2020-07-08T09:29:57.6106808+07:00 0HM12SR6OJDS5:00000001 [INF] Request finished in 1604.0992ms 200 text/html; charset=utf-8 (791a596a)
