@@ -769,108 +769,7 @@ namespace NiTiErp.Areas.Admin.Controllers
                         count++;
                     }
 
-                    package.SaveAs(file); //Save the workbook.
-
-                    //DataTable dt = TextHelper.ToDataTable2(hosoDetail.Result);
-                    //worksheet.Cells[1, 1].LoadFromDataTable(dt, true);
-
-                    //var hosoDetail3 = _hosonhanvienService.HoSoDataTable("%", "%", "%", "", "", "", "GetAllHoSoNhanVien");
-                    //DataTable dt = TextHelper.ListToDataTable(hosoDetail3.Result.ToList());
-                    //worksheet.Cells[1, 1].LoadFromDataTable(dt, true);
-
-                    //var hosoDetail3 = _hosonhanvienService.HoSoDataTable("%", "%", "%", "", "", "", "GetAllHoSoNhanVien");
-
-                    //worksheet.Cells[1, 1].LoadFromDataTable(hosoDetail3.Result.ToList(), true);
-
-
-                    //var hosoDetail = _hosonhanvienService.HoSoNhanVienGetList("%", "%", "%", "", "", "", "GetAllHoSoNhanVien");
-
-                    //DataTable dt1;
-                    //dt1 = hosoDetail.Result.ToDataTable();
-                    //List<HoSoNhanVienViewModel> list = new List<HoSoNhanVienViewModel>();
-                    //var hoso = hosoDetail.Result.ToList();
-
-                    //DataTable dt = TextHelper.ToDataTable(hosoDetail.Result.ToList());
-
-                    //DataTable dt3 = TextHelper.ToDataTable3(hosoDetail.Result.ToList());
-
-                    //int colend2 =  dt.Columns.Count;
-
-                    //foreach (var dt2 in hosoDetail.Result)
-                    //{
-                    //    ExcelWorksheet ws = package.Workbook.Worksheets.Add("hoso");
-
-                    //    int rowstart = 2;
-                    //    int colstart = 2;
-                    //    int rowend = rowstart;
-                    //    int colend = colstart + dt.Columns.Count;
-
-                    //    ws.Cells[rowstart, colstart, rowend, colend].Merge = true;
-                    //    ws.Cells[rowstart, colstart, rowend, colend].Value = "DANH SÁCH HỒ SƠ NHÂN VIÊN";
-                    //    ws.Cells[rowstart, colstart, rowend, colend].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
-                    //    ws.Cells[rowstart, colstart, rowend, colend].Style.Font.Bold = true;
-                    //    ws.Cells[rowstart, colstart, rowend, colend].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
-                    //    ws.Cells[rowstart, colstart, rowend, colend].Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightGray);
-
-                    //    rowstart += 2;
-                    //    rowend = rowstart + dt.Columns.Count;
-                    //    ws.Cells[rowstart, colstart].LoadFromDataTable(dt, true);
-                    //    int i = 1;
-
-                    //    ws.Cells[ws.Dimension.Address].AutoFitColumns();
-
-                    //    ws.Cells[rowstart, colstart, rowend, colend].Style.Border.Top.Style =
-                    //       ws.Cells[rowstart, colstart, rowend, colend].Style.Border.Bottom.Style =
-                    //       ws.Cells[rowstart, colstart, rowend, colend].Style.Border.Left.Style =
-                    //       ws.Cells[rowstart, colstart, rowend, colend].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-
-                    //}
-
-                    //DataTable dt3 = TextHelper.ToDataTable2(hosoDetail3.Result.ElementAt(1).ToList());
-                    //worksheet.Cells[1, 1].LoadFromDataTable(dt3, true);
-
-                    // Insert customer data into template
-                    //worksheet.Cells[4, 1].Value = "Customer Name: ";// + billDetail.CustomerName;
-                    //worksheet.Cells[5, 1].Value = "Address: ";// + billDetail.CustomerAddress;
-                    //worksheet.Cells[6, 1].Value = "Phone: ";// + billDetail.CustomerMobile;
-
-                    //worksheet.Cells[2, 1].Value = "DANH SÁCH HỒ SƠ NHÂN VIÊN ";// + billDetail.CustomerName;
-
-                    // Start Row for Detail Rows
-                    //int rowIndex = 9;
-
-                    //int rowIndex = 4;
-
-                    // load order details
-                    //var orderDetails = _hosonhanvienService.HoSoNhanVienGetList("%", "%", "%", "", "", "", "GetAllHoSoNhanVien");
-
-                    ////var orderDetails = _billService.GetBillDetails(billId);
-                    //int count = 1;
-                    //foreach (var orderDetail in orderDetails.Result)
-                    //{
-                    //    // Cell 1, Carton Count
-                    //    worksheet.Cells[rowIndex, 1].Value = count.ToString();
-                    //    // Cell 2, Order Number (Outline around columns 2-7 make it look like 1 column)
-                    //    worksheet.Cells[rowIndex, 2].Value = orderDetail.Ten.ToString();
-                    //    // Cell 8, Weight in LBS (convert KG to LBS, and rounding to whole number)
-                    //    worksheet.Cells[rowIndex, 3].Value = orderDetail.NgaySinh.ToString();
-
-                    //    worksheet.Cells[rowIndex, 4].Value = orderDetail.SoDienThoai.ToString();
-
-                    //    // Increment Row Counter
-                    //    rowIndex++;
-                    //    count++;
-                    //}
-
-                    //decimal total = (decimal)(orderDetails.Sum(x => x.Quantity * x.Price));
-                    //worksheet.Cells[24, 5].Value = total.ToString("N0");
-
-                    //var numberWord = "Total amount (by word): " + TextHelper.ToString(total);
-                    //worksheet.Cells[26, 1].Value = numberWord;
-                    //var billDate = billDetail.DateCreated;
-                    //worksheet.Cells[28, 3].Value = billDate.Day + ", " + billDate.Month + ", " + billDate.Year;
-
-                    //package.SaveAs(file); //Save the workbook.
+                    package.SaveAs(file); //Save the workbook.                    
                 }
             }
             return new OkObjectResult(url);
@@ -920,6 +819,18 @@ namespace NiTiErp.Areas.Admin.Controllers
 
             var model = _hosonhanvienService.GetAllHoSoNhanVienPaging(corporationId, phong, tukhoa, page, pageSize,
                 "", "1", "", "GetAllHoSoNhanVienVeHuu"); // tim nhung nhan vien ve huu
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetAllHoSoChuanBiVeHuuPaging(string corporationId, string phongId, string keyword, int page, int pageSize)
+        {
+            var phong = !string.IsNullOrEmpty(phongId) ? phongId : "%";
+            var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
+
+            var model = _hosonhanvienService.GetAllHoSoNhanVienPaging(corporationId, phong, tukhoa, page, pageSize,
+                "", "1", "", "GetAllHoSoNVChuanBiVeHuu"); // tim nhung nhan vien chuan bi ve huu
 
             return new OkObjectResult(model);
         }

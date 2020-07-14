@@ -88,58 +88,7 @@
         formMainValidate();
 
         $('#btnTimNhanVien').on('click', function () {
-            var dieukientim = $('#ddlDieuKienTim').val();
-            if (dieukientim === "11") // tim nhan vien dang lam viec
-            {
-                //loadData();  
-                LoadHopDongDangCongViec();
-                LoadTableHoSoNhanVien();
-                LoadTableInHoSo();
-
-                var khuvuc = $('#ddlKhuVuc').val();
-                loadChucVuNhanVien(khuvuc);
-                $('#ddlCongTyXiNghiep').val(khuvuc);
-                loadPhongKhuVucTabCongViec(khuvuc);
-                LoadCongViecKhuVuc(khuvuc);
-            }
-            else if (dieukientim === "12") // tim nhan vien nghi viec
-            {
-                //loadData();  
-                LoadHopDongDangCongViec();
-                LoadTableHoSoNhanVienNghiViec();
-                LoadTableInHoSo();
-
-                var khuvucnghiviec = $('#ddlKhuVuc').val();
-                loadChucVuNhanVien(khuvucnghiviec);
-                $('#ddlCongTyXiNghiep').val(khuvucnghiviec);
-                loadPhongKhuVucTabCongViec(khuvucnghiviec);
-                LoadCongViecKhuVuc(khuvucnghiviec);
-            }
-            else if (dieukientim === "13") // tim nhan vien ve huu
-            {
-                //loadData();  
-                LoadHopDongDangCongViec();
-                LoadTableHoSoNhanVienVeHuu();
-                LoadTableInHoSo();
-
-                var khuvucvehuu = $('#ddlKhuVuc').val();
-                loadChucVuNhanVien(khuvucvehuu);
-                $('#ddlCongTyXiNghiep').val(khuvucvehuu);
-                loadPhongKhuVucTabCongViec(khuvucvehuu);
-                LoadCongViecKhuVuc(khuvucvehuu);
-            }
-            else { // dang lam viec
-                //loadData();  
-                LoadHopDongDangCongViec();
-                LoadTableHoSoNhanVienAll();
-                LoadTableInHoSo();
-
-                var khuvuc2 = $('#ddlKhuVuc').val();
-                loadChucVuNhanVien(khuvuc2);
-                $('#ddlCongTyXiNghiep').val(khuvuc2);
-                loadPhongKhuVucTabCongViec(khuvuc2);
-                LoadCongViecKhuVuc(khuvuc2);
-            }
+            btnTimNhanVien();            
         });
 
         $('#txtTimNhanVien').on('keypress', function (e) {
@@ -4300,6 +4249,136 @@
                 pageSize: tedu.configs.pageSize
             },
             url: '/admin/hoso/GetAllHoSoAllPaging',
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                }
+                else {
+                    $.each(response.Result.Results, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+                            Ten: item.Ten,
+                            HinhNhanVien: item.HinhNhanVien === null ? '<img src="/admin-side/images/user.png?h=90" />' : '<img src="' + item.HinhNhanVien + '?h=90" />',
+                            TenKhuVuc: item.CorporationName,
+                            TenPhong: item.TenPhong,
+                            TenChucVu: item.TenChucVu,
+                            NgaySinh: tedu.getFormattedDate(item.NgaySinh),
+                            CreateDate: tedu.getFormattedDate(item.CreateDate),
+                            Status: tedu.getHoSoNhanVienStatus(item.Status)
+                            // Price: tedu.formatNumber(item.Price, 0),                          
+                        });
+                    });
+                }
+
+                $('#lblHoSoNhanVienTotalRecords').text(response.Result.RowCount);
+
+                if (render !== '') {
+                    $('#tblContentHoSoNhanVien').html(render);
+                }
+
+                if (response.Result.RowCount !== 0) {
+                    wrapPaging(response.Result.RowCount, function () {
+                        LoadTableHoSoNhanVien();
+                    },
+                        isPageChanged);
+                }
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+
+    function btnTimNhanVien() {
+        var dieukientim = $('#ddlDieuKienTim').val();
+        if (dieukientim === "11") // tim nhan vien dang lam viec
+        {
+            //loadData();  
+            LoadHopDongDangCongViec();
+            LoadTableHoSoNhanVien();
+            LoadTableInHoSo();
+
+            var khuvuc = $('#ddlKhuVuc').val();
+            loadChucVuNhanVien(khuvuc);
+            $('#ddlCongTyXiNghiep').val(khuvuc);
+            loadPhongKhuVucTabCongViec(khuvuc);
+            LoadCongViecKhuVuc(khuvuc);
+        }
+        else if (dieukientim === "12") // tim nhan vien nghi viec
+        {
+            //loadData();  
+            LoadHopDongDangCongViec();
+            LoadTableHoSoNhanVienNghiViec();
+            LoadTableInHoSo();
+
+            var khuvucnghiviec = $('#ddlKhuVuc').val();
+            loadChucVuNhanVien(khuvucnghiviec);
+            $('#ddlCongTyXiNghiep').val(khuvucnghiviec);
+            loadPhongKhuVucTabCongViec(khuvucnghiviec);
+            LoadCongViecKhuVuc(khuvucnghiviec);
+        }
+        else if (dieukientim === "13") // tim nhan vien ve huu
+        {
+            //loadData();  
+            LoadHopDongDangCongViec();
+            LoadTableHoSoNhanVienVeHuu();
+            LoadTableInHoSo();
+
+            var khuvucvehuu = $('#ddlKhuVuc').val();
+            loadChucVuNhanVien(khuvucvehuu);
+            $('#ddlCongTyXiNghiep').val(khuvucvehuu);
+            loadPhongKhuVucTabCongViec(khuvucvehuu);
+            LoadCongViecKhuVuc(khuvucvehuu);
+        }
+        else if (dieukientim === "14") // tim nhan vien chuan bi ve huu
+        {              
+            LoadHopDongDangCongViec();
+            LoadTableHoSoNhanVienChuanBiVeHuu();
+            LoadTableInHoSo();
+
+            var khuvucvehuu = $('#ddlKhuVuc').val();
+            loadChucVuNhanVien(khuvucvehuu);
+
+            $('#ddlCongTyXiNghiep').val(khuvucvehuu);
+            loadPhongKhuVucTabCongViec(khuvucvehuu);
+            LoadCongViecKhuVuc(khuvucvehuu);
+        }
+        else { // dang lam viec
+            //loadData();  
+            LoadHopDongDangCongViec();
+            LoadTableHoSoNhanVienAll();
+            LoadTableInHoSo();
+
+            var khuvuc2 = $('#ddlKhuVuc').val();
+            loadChucVuNhanVien(khuvuc2);
+            $('#ddlCongTyXiNghiep').val(khuvuc2);
+            loadPhongKhuVucTabCongViec(khuvuc2);
+            LoadCongViecKhuVuc(khuvuc2);
+        }
+    }
+
+    function LoadTableHoSoNhanVienChuanBiVeHuu(isPageChanged) {
+        var template = $('#table-HoSoNhanVien').html();
+        var render = "";
+
+        var makhuvuc = $('#ddlKhuVuc').val();
+        var phongId = $('#ddlPhongBan').val();
+        var timnhanvien = $('#txtTimNhanVien').val();
+
+        tedu.notify(timnhanvien, "success");
+
+        $.ajax({
+            type: 'GET',
+            data: {
+                corporationId: makhuvuc,
+                phongId: phongId,
+                keyword: timnhanvien,
+                page: tedu.configs.pageIndex,
+                pageSize: tedu.configs.pageSize
+            },
+            url: '/admin/hoso/GetAllHoSoChuanBiVeHuuPaging',
             dataType: 'json',
             success: function (response) {
                 if (response.Result.Results.length === 0) {
