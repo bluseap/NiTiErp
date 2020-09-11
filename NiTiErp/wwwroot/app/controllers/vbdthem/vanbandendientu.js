@@ -18,7 +18,8 @@
             var vanbandientuId = $(this).data('id');
             $('#hidVanBanDenDienTuId').val(vanbandientuId);  
 
-            $('#divbtnFileVanBan').hide();
+            //$('#divbtnFileVanBan').hide();
+            $('#divbtnFileVanBan').show();
 
             loadVBDToVBDienTu(vanbandientuId);    
 
