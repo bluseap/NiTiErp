@@ -6,10 +6,8 @@
 }
 @section Scripts{
     <script src="~/app/controllers/user/index.js" asp-append-version="true"></script>
-    <script>
-        var userObj = new UserController();
-        userObj.initialize();
-    </script>
+    <script>var userObj = new UserController();
+        userObj.initialize();</script>
 }
 @section Styles{
 
@@ -59,7 +57,7 @@
         </div>
     </div>
     <div class="clearfix"></div>
-    
+
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
@@ -143,3 +141,4 @@
 </script>
 <Partial name="_AddEditModal.cshtml" />
 <Partial name="_EditPassword.cshtml" />
+<partial name="_TimNhanVien.cshtml" />
