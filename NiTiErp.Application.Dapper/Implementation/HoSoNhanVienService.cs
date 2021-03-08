@@ -46,7 +46,7 @@ namespace NiTiErp.Application.Dapper.Implementation
 
                     int totalRow = query.Count();
 
-                    query = query.OrderByDescending(x => x.CreateDate)
+                    query = query//.OrderByDescending(x => x.CreateDate)
                         .Skip((page - 1) * pageSize).Take(pageSize);
 
                     var data = query.ToList();

@@ -285,13 +285,13 @@ namespace NiTiAPI.WebErp
 
             app.UseMvc(routes =>
             {
-                routes.MapRoute(
-                    name: "default5",
-                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-                routes.MapAreaRoute(
-                    name: "default55",
-                    areaName: "CPrice",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                //routes.MapRoute(
+                //    name: "default5",
+                //    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                //routes.MapAreaRoute(
+                //    name: "default55",
+                //    areaName: "CPrice",
+                //    template: "{controller=Home}/{action=Index}/{id?}");
 
                 //routes.MapRoute(
                 //    name: "default4",
@@ -301,13 +301,13 @@ namespace NiTiAPI.WebErp
                 //    areaName: "CNews",
                 //    template: "{controller=Home}/{action=Index}/{id?}");
 
-                //routes.MapRoute(
-                //    name: "default3",
-                //    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-                //routes.MapAreaRoute(
-                //    name: "default33",
-                //    areaName: "CShop",
-                //    template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
+                    name: "default3",
+                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                routes.MapAreaRoute(
+                    name: "default33",
+                    areaName: "CShop",
+                    template: "{controller=Home}/{action=Index}/{id?}");
 
                 //routes.MapRoute(
                 //    name: "default",
